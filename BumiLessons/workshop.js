@@ -74,7 +74,7 @@
     function openChat(kind) {
         const space = 'Bumi-' + run + '-' + kind;
         const local = ['localhost','127.0.0.1','[::1]'].includes(location.hostname);
-        const url = new URL(local ? '../../../../AIChat.html' : 'https://keepwork.com/chat', location.href);
+        const url = new URL(local && /\/tools\/OfficialLearningTools\//.test(location.pathname) ? '../../../../AIChat.html' : 'https://keepwork.com/chat', location.href);
         url.searchParams.set('workspace', space);
         url.searchParams.set('chat', opened[kind] ? 'workspace' : 'new');
         if (windows[kind] && !windows[kind].closed) windows[kind].focus();

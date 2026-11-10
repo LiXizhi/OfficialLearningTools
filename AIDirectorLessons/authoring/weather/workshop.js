@@ -211,7 +211,7 @@
     const windows = {};
     async function openChat(fieldId='request') {
         const lecture=fieldId==='lecture-text';
-        const url=new URL(location.protocol.startsWith('http') && /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? '../../../../AIChat.html' : 'https://keepwork.com/chat',location.href);
+        const url=new URL(location.protocol.startsWith('http') && /^(localhost|127\.0\.0\.1)$/.test(location.hostname) && /\/tools\/OfficialLearningTools\//.test(location.pathname) ? '../../../../AIChat.html' : 'https://keepwork.com/chat',location.href);
         const space='Weather-'+book.dataset.role+'-'+state.run+'-'+(lecture?'class':state.track);
         url.searchParams.set('workspace',space);
         url.searchParams.set('chat',state.opened?.[space] ? 'workspace' : 'new');
