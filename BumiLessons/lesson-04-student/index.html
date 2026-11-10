@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>谁在判断何时停止 · 学生动手</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-4">← 课程目录</a>
+<span>指令与人的判断　 /　 学生动手</span><div class="lesson-cover"><div><small>第 04 课　·　Bumi 具身智能</small><h1>谁在判断何时停止</h1><p>停在标记前，是谁在看、谁在判断、谁在操作？</p></div><figure class="lesson-art" style="--sx:-300%;--sy:0%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="谁在判断何时停止的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="2" data-lesson="4">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　闭着眼睛走到门口</option><option value="1">02　准备</option><option value="2">03　任务 A：第一种停法——先约定好</option><option value="3">04　任务 B：第二种停法——观察员喊“停”</option><option value="4">05　记录表</option><option value="5">06　记录表</option><option value="6">07　任务 C：画出“人”的流程</option><option value="7">08　任务 C：画出“人”的流程</option><option value="8">09　任务 D：小布米知道标记在哪里吗？</option><option value="9">10　观察员三问</option><option value="10">11　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="闭着眼睛走到门口" ><h2>闭着眼睛走到门口</h2><aside class="film-cue"><b>0–5 分钟</b> 勾选、写理由</aside><div class="film-content"><p>如果闭着眼睛，从座位走到教室门口停下，你会怎么做？</p><p><input aria-label="先数好步数，闭眼数着走" type="checkbox"/> 先数好步数，闭眼数着走　<input aria-label="请同学看着，喊“停”" type="checkbox"/> 请同学看着，喊“停”　<input aria-label="其他：" type="checkbox"/> 其他：<input aria-label="其他：" type="text"/></p><p>哪种更容易刚好停在门口？为什么？<input aria-label="哪种更容易刚好停在门口？为什么？" type="text"/></p></div></section><section class="film-page" data-title="准备" hidden><h2>准备</h2><aside class="film-cue"><b>5–9 分钟</b> 加载、暂停、记标记</aside><div class="film-content"><ol>
+<li>加载小布米，点“暂停仿真”。</li>
+<li>老师会告诉你今天的<strong>停止标记</strong>是什么：<input aria-label="是什么：" type="text"/></li>
+<li>每一轮开始前：“归零站立”→“重置姿态”→“暂停仿真”，让小布米回到起点。</li>
+</ol></div></section><section class="film-page" data-title="任务 A：第一种停法——先约定好" hidden><h2>任务 A：第一种停法——先约定好</h2><aside class="film-cue"><b>9–15 分钟</b> 第 1 轮、记录</aside><div class="film-content"><p>规则：开始前约定好“走几秒就停”。操作员点“开始行走”后<strong>低头不看屏幕</strong>，心里数到约定的秒数，点“归零站立”。</p><p>我们约定：数到<input aria-label="我们约定：数到" type="text"/>秒。</p></div></section><section class="film-page" data-title="任务 B：第二种停法——观察员喊“停”" hidden><h2>任务 B：第二种停法——观察员喊“停”</h2><aside class="film-cue"><b>15–24 分钟</b> 第 2、3 轮、记录</aside><div class="film-content"><p>规则：操作员点“开始行走”后，眼睛只看观察员；<strong>观察员盯着小布米，觉得该停了就喊“停”</strong>，操作员立刻点“归零站立”。</p><p>可以玩两到三轮。观察员可以根据上一轮的结果，调整喊“停”的时机。</p></div></section><section class="film-page" data-title="记录表" hidden><h2>记录表</h2><aside class="film-cue"><b>15–24 分钟</b> 第 2、3 轮、记录</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>停法</th>
+<th>谁决定停</th>
+<th>小布米停在标记的</th>
+<th>大约差多少</th>
+<th>点了“归零站立”后，它还走了吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>约定秒数</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+<tr>
+<td>2</td>
+<td>观察员喊停</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+<tr>
+<td>3</td>
+<td>观察员喊停（调整后）</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+</tbody>
+</table><p>观察员在第 3 轮做了什么调整？<input aria-label="观察员在第 3 轮做了什么调整？" type="text"/></p></div></section><section class="film-page" data-title="记录表" hidden><h2>记录表</h2><aside class="film-cue"><b>15–24 分钟</b> 第 2、3 轮、记录</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-stop-compare">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-04/visual-stop-compare.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-04/visual-stop-compare.webp" alt="两种停法对照：按预先约定的秒数停，或由观察员看行进画面后喊停。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">教学示意，非 Web 截图。两种停法中都有人决定停止；标记是人观看画面的参照。</p></div></div></section><section class="film-page" data-title="任务 C：画出“人”的流程" hidden><h2>任务 C：画出“人”的流程</h2><aside class="film-cue"><b>24–30 分钟</b> 画图</aside><div class="film-content"><p>把下面的词填进方框，画上箭头，说明第二种停法是怎么工作的：</p><p><strong>人看　→　人判断　→　人点按钮　→　小布米动了　→　（回到哪里？）</strong></p><pre><code>[ 观察员看到 <input aria-label="[ 观察员看到" type="text"/> ] → [ 观察员判断 <input aria-label="] → [ 观察员判断" type="text"/> ] → [ 操作员点 <input aria-label="] → [ 操作员点" type="text"/> ]
+          ↑                                              ↓
+          └──────────── [ 小布米 <input aria-label="]
+          ↑                                              ↓
+          └──────────── [ 小布米" type="text"/> ] ←──────────────┘
+</code></pre><p>第一种停法里，有没有“人看到结果再改”这一步？<input aria-label="有" type="checkbox"/> 有　<input aria-label="没有" type="checkbox"/> 没有</p></div></section><section class="film-page" data-title="任务 C：画出“人”的流程" hidden><h2>任务 C：画出“人”的流程</h2><aside class="film-cue"><b>24–30 分钟</b> 画图</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-human-signal">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-04/visual-human-signal.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-04/visual-human-signal.webp" alt="观察员从网页画面看见小布米接近标记，判断并喊停，操作员点归零站立，再观察停的位置。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">画完流程再核对。机器人采用原型美化插画；标记线用于讲解，不是新增的自动识别功能。</p></div></div></section><section class="film-page" data-title="任务 D：小布米知道标记在哪里吗？" hidden><h2>任务 D：小布米知道标记在哪里吗？</h2><aside class="film-cue"><b>30–36 分钟</b> 勾选、写需要的能力</aside><div class="film-content"><p>在今天的活动中：</p><ul>
+<li>发现“快到标记了”的是：<input aria-label="小布米" type="checkbox"/> 小布米　<input aria-label="观察员" type="checkbox"/> 观察员</li>
+<li>决定“现在停”的是：<input aria-label="小布米" type="checkbox"/> 小布米　<input aria-label="观察员" type="checkbox"/> 观察员</li>
+<li>让小布米停下来的按钮是：<input aria-label="让小布米停下来的按钮是：" type="text"/></li>
+</ul><p>小布米能看到停止标记吗？<input aria-label="能" type="checkbox"/> 能　<input aria-label="不能" type="checkbox"/> 不能　<input aria-label="不确定　我的依据：" type="checkbox"/> 不确定　我的依据：<input aria-label="不确定　我的依据：" type="text"/></p><p>如果将来想让小布米<strong>自己</strong>停在标记前，它至少还需要：<input aria-label="停在标记前，它至少还需要：" type="text"/></p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>36–40 分钟</b> 三问、自检</aside><div class="film-content"><ol>
+<li>小布米这次停下来，是由什么产生的？<input aria-label="小布米这次停下来，是由什么产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="我的依据是：" type="text"/></li>
+<li>今天的活动不能证明小布米能自己<input aria-label="今天的活动不能证明小布米能自己" type="text"/></li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>36–40 分钟</b> 三问、自检</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用两种停法完成并记录</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说出哪种停法用到了“看到结果再调整”</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>画出人看—人判断—人操作的流程</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说清楚今天“停”的决定是人做的</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table><p><strong>收尾：</strong>“归零站立”→“暂停仿真”。</p></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-robot="data:image/webp;base64,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" data-lesson="4" data-role="student">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">做预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>打开实验材料袋</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">一、想一想：闭着眼睛走到门口</a><a href="#section-1">二、准备</a><a href="#section-2">三、任务</a><a href="#section-3">四、观察员三问</a><a href="#section-4">五、自我检查</a></nav></details>
+<p><strong>学生学习单</strong> · 单元二 指令与人的判断 · 适用：小学 5–6 年级，40 分钟</p>
+<p>课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">打开小布米单例世界</a></p>
+<p>组内代号：<input aria-label="组内代号：" type="text"/>　小组：<input aria-label="小组：" type="text"/>　日期：<input aria-label="日期：" type="text"/>　我今天的角色：<input aria-label="操作员" type="checkbox"/> 操作员　<input aria-label="观察员" type="checkbox"/> 观察员　<input aria-label="记录员" type="checkbox"/> 记录员</p>
+<blockquote>
+<p><strong>今天的问题：</strong>让小布米停在“停止标记”前面。是谁知道它到了？是谁决定停？</p>
+</blockquote>
+<h2 id="section-0">一、想一想：闭着眼睛走到门口</h2>
+<p>如果闭着眼睛，从座位走到教室门口停下，你会怎么做？</p>
+<p><input aria-label="先数好步数，闭眼数着走" type="checkbox"/> 先数好步数，闭眼数着走　<input aria-label="请同学看着，喊“停”" type="checkbox"/> 请同学看着，喊“停”　<input aria-label="其他：" type="checkbox"/> 其他：<input aria-label="其他：" type="text"/></p>
+<p>哪种更容易刚好停在门口？为什么？<input aria-label="哪种更容易刚好停在门口？为什么？" type="text"/></p>
+<h2 id="section-1">二、准备</h2>
+<ol>
+<li>加载小布米，点“暂停仿真”。</li>
+<li>老师会告诉你今天的<strong>停止标记</strong>是什么：<input aria-label="是什么：" type="text"/></li>
+<li>每一轮开始前：“归零站立”→“重置姿态”→“暂停仿真”，让小布米回到起点。</li>
+</ol>
+<h2 id="section-2">三、任务</h2>
+<h3>任务 A：第一种停法——先约定好</h3>
+<p>规则：开始前约定好“走几秒就停”。操作员点“开始行走”后<strong>低头不看屏幕</strong>，心里数到约定的秒数，点“归零站立”。</p>
+<p>我们约定：数到<input aria-label="我们约定：数到" type="text"/>秒。</p>
+<h3>任务 B：第二种停法——观察员喊“停”</h3>
+<p>规则：操作员点“开始行走”后，眼睛只看观察员；<strong>观察员盯着小布米，觉得该停了就喊“停”</strong>，操作员立刻点“归零站立”。</p>
+<p>可以玩两到三轮。观察员可以根据上一轮的结果，调整喊“停”的时机。</p>
+<h3>记录表</h3>
+<table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>停法</th>
+<th>谁决定停</th>
+<th>小布米停在标记的</th>
+<th>大约差多少</th>
+<th>点了“归零站立”后，它还走了吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>约定秒数</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+<tr>
+<td>2</td>
+<td>观察员喊停</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+<tr>
+<td>3</td>
+<td>观察员喊停（调整后）</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="前面" type="checkbox"/> 前面 <input aria-label="正好" type="checkbox"/> 正好 <input aria-label="超过" type="checkbox"/> 超过</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="马上停" type="checkbox"/> 马上停 <input aria-label="又走了几步" type="checkbox"/> 又走了几步</td>
+</tr>
+</tbody>
+</table>
+<p>观察员在第 3 轮做了什么调整？<input aria-label="观察员在第 3 轮做了什么调整？" type="text"/></p>
+<p><img alt="两种停法对照：按预先约定的秒数停，或由观察员看行进画面后喊停。" loading="lazy" data-local="../assets/bumi-course/lesson-04/visual-stop-compare.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-04/visual-stop-compare.webp"/></p>
+<p><em>教学示意，非 Web 截图。两种停法中都有人决定停止；标记是人观看画面的参照。</em></p>
+<h3>任务 C：画出“人”的流程</h3>
+<p>把下面的词填进方框，画上箭头，说明第二种停法是怎么工作的：</p>
+<p><strong>人看　→　人判断　→　人点按钮　→　小布米动了　→　（回到哪里？）</strong></p>
+<pre><code>[ 观察员看到 <input aria-label="[ 观察员看到" type="text"/> ] → [ 观察员判断 <input aria-label="] → [ 观察员判断" type="text"/> ] → [ 操作员点 <input aria-label="] → [ 操作员点" type="text"/> ]
+          ↑                                              ↓
+          └──────────── [ 小布米 <input aria-label="]
+          ↑                                              ↓
+          └──────────── [ 小布米" type="text"/> ] ←──────────────┘
+</code></pre>
+<p>第一种停法里，有没有“人看到结果再改”这一步？<input aria-label="有" type="checkbox"/> 有　<input aria-label="没有" type="checkbox"/> 没有</p>
+<p><img alt="观察员从网页画面看见小布米接近标记，判断并喊停，操作员点归零站立，再观察停的位置。" loading="lazy" data-local="../assets/bumi-course/lesson-04/visual-human-signal.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-04/visual-human-signal.webp"/></p>
+<p><em>画完流程再核对。机器人采用原型美化插画；标记线用于讲解，不是新增的自动识别功能。</em></p>
+<h3>任务 D：小布米知道标记在哪里吗？</h3>
+<p>在今天的活动中：</p>
+<ul>
+<li>发现“快到标记了”的是：<input aria-label="小布米" type="checkbox"/> 小布米　<input aria-label="观察员" type="checkbox"/> 观察员</li>
+<li>决定“现在停”的是：<input aria-label="小布米" type="checkbox"/> 小布米　<input aria-label="观察员" type="checkbox"/> 观察员</li>
+<li>让小布米停下来的按钮是：<input aria-label="让小布米停下来的按钮是：" type="text"/></li>
+</ul>
+<p>小布米能看到停止标记吗？<input aria-label="能" type="checkbox"/> 能　<input aria-label="不能" type="checkbox"/> 不能　<input aria-label="不确定　我的依据：" type="checkbox"/> 不确定　我的依据：<input aria-label="不确定　我的依据：" type="text"/></p>
+<p>如果将来想让小布米<strong>自己</strong>停在标记前，它至少还需要：<input aria-label="停在标记前，它至少还需要：" type="text"/></p>
+<h2 id="section-3">四、观察员三问</h2>
+<ol>
+<li>小布米这次停下来，是由什么产生的？<input aria-label="小布米这次停下来，是由什么产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="我的依据是：" type="text"/></li>
+<li>今天的活动不能证明小布米能自己<input aria-label="今天的活动不能证明小布米能自己" type="text"/></li>
+</ol>
+<h2 id="section-4">五、自我检查</h2>
+<table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用两种停法完成并记录</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说出哪种停法用到了“看到结果再调整”</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>画出人看—人判断—人操作的流程</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说清楚今天“停”的决定是人做的</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table>
+<p><strong>收尾：</strong>“归零站立”→“暂停仿真”。</p>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-03-student/index.html">上一课</a> · <a href="../lesson-04-teacher/index.html">本课教师教案</a> · <a href="../lesson-05-student/index.html">下一课：走路时为什么要调整身体</a></p></details><section id="studio"><div id="make-panel"><h2>我的观察挑战卡</h2><p>为下一组同学做一道展台题。先在仿真或纸卡实验中找证据，再把鼠标交给试玩者。</p>
+<label>给试玩者的问题<input id="question" value="停在标记前，是谁在看、谁在判断、谁在操作？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>请 AI 帮我推敲展题</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

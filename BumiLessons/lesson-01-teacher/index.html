@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>认识小布米的身体 · 教师大屏</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-1">← 课程目录</a>
+<span>身体与虚拟世界　 /　 教师大屏</span><div class="lesson-cover"><div><small>第 01 课　·　Bumi 具身智能</small><h1>认识小布米的身体</h1><p>小布米的身体由哪些部分组成？和人有什么异同？</p></div><figure class="lesson-art" style="--sx:0%;--sy:0%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="认识小布米的身体的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="1" data-lesson="1">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　观察小布米</option><option value="1">02　如果胳膊不能弯</option><option value="2">03　进入小布米世界</option><option value="3">04　进入小布米世界</option><option value="4">05　进入小布米世界</option><option value="5">06　进入小布米世界</option><option value="6">07　任务 A：给身体贴标签</option><option value="7">08　任务 A：给身体贴标签</option><option value="8">09　任务 A：给身体贴标签</option><option value="9">10　任务 A：给身体贴标签</option><option value="10">11　任务 B：找一处“连接”</option><option value="11">12　任务 B：找一处“连接”</option><option value="12">13　任务 B：找一处“连接”</option><option value="13">14　任务 B：找一处“连接”</option><option value="14">15　任务 B：找一处“连接”</option><option value="15">16　任务 C：我和小布米，一同一异</option><option value="16">17　任务 C：我和小布米，一同一异</option><option value="17">18　任务 D：外形能告诉我一切吗？</option><option value="18">19　观察员三问</option><option value="19">20　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="观察小布米" ><h2>观察小布米</h2><div class="film-content"><div class="film-diagram" data-diagram="visual-bumi-observer">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/visual-bumi-observer.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-bumi-observer.webp" alt="依据真实 Bumi 原型美化的观察伙伴插画，旁边是放大镜与观察纸，提示先看身体、记录发现与问题。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">认识我们的观察伙伴：材质与光照作了教学美化，身体外形依据 Bumi 原型。它不是网页截图，也不用于判定关节数或感知能力；后面的身体标注仍用原模型观察图。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>开篇观察伙伴插画：请学生提出一个想观察的问题，说明这是依据原型美化的教学插画。身体任务仍对照网页与原模型图，不能用美化细节判断关节或传感器。</p></details></div></section><section class="film-page" data-title="如果胳膊不能弯" hidden><h2>如果胳膊不能弯</h2><aside class="film-cue"><b>0–5 分钟</b> 请学生拿笔，问“哪里弯了”；追问“如果胳膊是直木棍”</aside><div class="film-content"><p>把手放在桌上，拿起一支笔。哪些地方弯了、转了？</p><p>如果你的胳膊是一根直直的木棍，拿笔会变成什么样？</p><p>我的想法：<input aria-label="我的想法：" type="text"/></p></div></section><section class="film-page" data-title="进入小布米世界" hidden><h2>进入小布米世界</h2><aside class="film-cue"><b>5–12 分钟</b> 投影示范步骤 1–5；强调今天不点行走按钮；介绍三个角色</aside><div class="film-content"><p>小布米是网页世界里的一台<strong>虚拟机器人</strong>，不是教室里的真机器人。每个网页里只有一台小布米。</p></div></section><section class="film-page" data-title="进入小布米世界" hidden><h2>进入小布米世界</h2><aside class="film-cue"><b>5–12 分钟</b> 投影示范步骤 1–5；强调今天不点行走按钮；介绍三个角色</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>点什么</th>
+<th>看到什么就对了</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>点开上面的链接，等世界加载</td>
+<td>右边出现“小布米 Bumi 仿真控制”面板</td>
+</tr>
+<tr>
+<td>2</td>
+<td>选“仿真控制”分栏，点“加载小布米机器人”</td>
+<td>屏幕上方提示加载完成，按钮变成“小布米已加载”</td>
+</tr>
+<tr>
+<td>3</td>
+<td>看“状态：”</td>
+<td>显示“站立中”（可能先闪过“等待策略推理”）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>点“暂停仿真”</td>
+<td>状态变成“已暂停”</td>
+</tr>
+<tr>
+<td>5</td>
+<td>点“机器人视角”</td>
+<td>镜头对准小布米</td>
+</tr>
+</tbody>
+</table><p>今天只观察身体，<strong>不点前进、后退、转向这些按钮</strong>。</p><p>我的观察方式：<input aria-label="小组网页" type="checkbox"/> 小组网页　<input aria-label="老师投影" type="checkbox"/> 老师投影　<input aria-label="图片（网页打不开时）" type="checkbox"/> 图片（网页打不开时）</p></div></section><section class="film-page" data-title="进入小布米世界" hidden><h2>进入小布米世界</h2><aside class="film-cue"><b>5–12 分钟</b> 投影示范步骤 1–5；强调今天不点行走按钮；介绍三个角色</aside><div class="film-content"><p>我看到的状态是：<input aria-label="我看到的状态是：" type="text"/>　　我第一眼注意到小布米的：<input aria-label="我第一眼注意到小布米的：" type="text"/></p></div></section><section class="film-page" data-title="进入小布米世界" hidden><h2>进入小布米世界</h2><aside class="film-cue"><b>5–12 分钟</b> 投影示范步骤 1–5；强调今天不点行走按钮；介绍三个角色</aside><div class="film-content"><div class="film-diagram" data-diagram="simulation-web-reference">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/simulation-web-reference.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/simulation-web-reference.webp" alt="核对面板：本图保留此前网页测试中的暂停状态。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">核对面板：本图保留此前网页测试中的暂停状态。</p></div></div></section><section class="film-page" data-title="任务 A：给身体贴标签" hidden><h2>任务 A：给身体贴标签</h2><aside class="film-cue"><b>12–20 分钟</b> 巡视，提醒先在网页里指，再填图</aside><div class="film-content"><p>先在网页里找到这五个部位：<strong>头部、躯干、手臂、腿、脚</strong>。再把词填到下图数字旁边。</p></div></section><section class="film-page" data-title="任务 A：给身体贴标签" hidden><h2>任务 A：给身体贴标签</h2><aside class="film-cue"><b>12–20 分钟</b> 巡视，提醒先在网页里指，再填图</aside><div class="film-content"><div class="film-diagram" data-diagram="body-worksheet">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/body-worksheet.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/body-worksheet.webp" alt="小布米身体观察单：五条带数字的引线分别指向身体不同部位，旁边留有填写横线。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">这张图由小布米的三维模型做成，不是网页截图。数字只是部位编号，不是关节编号。</p></div></div></section><section class="film-page" data-title="任务 A：给身体贴标签" hidden><h2>任务 A：给身体贴标签</h2><aside class="film-cue"><b>12–20 分钟</b> 巡视，提醒先在网页里指，再填图</aside><div class="film-content"><p>1：<input aria-label="1：" type="text"/>　2：<input aria-label="2：" type="text"/>　3：<input aria-label="3：" type="text"/>　4：<input aria-label="4：" type="text"/>　5：<input aria-label="5：" type="text"/></p><p>和同伴交换检查。我改过的一处：<input aria-label="和同伴交换检查。我改过的一处：" type="text"/></p></div></section><section class="film-page" data-title="任务 A：给身体贴标签" hidden><h2>任务 A：给身体贴标签</h2><aside class="film-cue"><b>12–20 分钟</b> 巡视，提醒先在网页里指，再填图</aside><div class="film-content"><div class="film-diagram" data-diagram="body-labeled">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/body-labeled.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/body-labeled.webp" alt="先给无标签图作答，再逐个核对。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">先给无标签图作答，再逐个核对。</p></div></div></section><section class="film-page" data-title="任务 B：找一处“连接”" hidden><h2>任务 B：找一处“连接”</h2><aside class="film-cue"><b>20–28 分钟</b> 讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</aside><div class="film-content"><p><strong>关节</strong>是让两段身体能相对转动的连接处。就像门的合页让门板能转——不过很多关节不只会像门一样朝一个方向转。</p></div></section><section class="film-page" data-title="任务 B：找一处“连接”" hidden><h2>任务 B：找一处“连接”</h2><aside class="film-cue"><b>20–28 分钟</b> 讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-connections">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/visual-connections.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-connections.webp" alt="门的合页、人的肘部与 Bumi 原模型并列，帮助理解两段部件之间的可动连接；合页只是类比。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">看图指一指：合页连着什么？肘部连着什么？再到网页小布米身上找一个连接区域。结构和运动范围需要分别核对。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 B 用连接处比较图：先指门板与门框，再指上臂与前臂，问“相同的是哪种连接关系，哪些不能直接类比？”</p></details></div></section><section class="film-page" data-title="任务 B：找一处“连接”" hidden><h2>任务 B：找一处“连接”</h2><aside class="film-cue"><b>20–28 分钟</b> 讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</aside><div class="film-content"><p>在网页里看小布米的胳膊和腿，找一处像我们<strong>肩、肘、髋（大腿根）、膝、踝</strong>的地方。</p></div></section><section class="film-page" data-title="任务 B：找一处“连接”" hidden><h2>任务 B：找一处“连接”</h2><aside class="film-cue"><b>20–28 分钟</b> 讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>我找到的关节区域</th>
+<th>它连着哪两段</th>
+<th>我在自己身上也能找到吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/> 和 <input aria-label="和" type="text"/></td>
+<td><input aria-label="能" type="checkbox"/> 能　<input aria-label="不能" type="checkbox"/> 不能</td>
+</tr>
+<tr>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/> 和 <input aria-label="和" type="text"/></td>
+<td><input aria-label="能" type="checkbox"/> 能　<input aria-label="不能" type="checkbox"/> 不能</td>
+</tr>
+</tbody>
+</table><p>在上面的图上圈出你找到的一处。</p><p><strong>小提醒：</strong>外壳上的缝不一定是关节，有的关节藏在外壳里面。找大概位置就可以，不用数清楚有几个。</p></div></section><section class="film-page" data-title="任务 B：找一处“连接”" hidden><h2>任务 B：找一处“连接”</h2><aside class="film-cue"><b>20–28 分钟</b> 讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</aside><div class="film-content"><div class="film-diagram" data-diagram="body-front">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/body-front.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/body-front.webp" alt="真实模型离线渲染。沿上臂、前臂指认连接处。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">真实模型离线渲染。沿上臂、前臂指认连接处。</p></div></div></section><section class="film-page" data-title="任务 C：我和小布米，一同一异" hidden><h2>任务 C：我和小布米，一同一异</h2><aside class="film-cue"><b>28–34 分钟</b> 组织两两说一同一异；用“像眼睛”的例子引出任务 D</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-body-compare">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-01/visual-body-compare.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-body-compare.webp" alt="人的身体与网页中的 Bumi 模型并排，下面留出共同部位、不同结构和未知问题三条观察线索。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">教学比较图。先说自己能指出的部位，再说明不同点的依据；美化外观不代表机器人有人的全部结构或本领。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 C 用身体比较图：让学生分别说出观察、资料与未知问题，不预先发完整标签答案。</p></details></div></section><section class="film-page" data-title="任务 C：我和小布米，一同一异" hidden><h2>任务 C：我和小布米，一同一异</h2><aside class="film-cue"><b>28–34 分钟</b> 组织两两说一同一异；用“像眼睛”的例子引出任务 D</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th></th>
+<th>我写的</th>
+<th>我是怎么知道的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一样的地方</td>
+<td>我和小布米都有<input aria-label="我和小布米都有" type="text"/></td>
+<td><input aria-label="自己看到的" type="checkbox"/> 自己看到的　<input aria-label="老师或资料说的" type="checkbox"/> 老师或资料说的</td>
+</tr>
+<tr>
+<td>不一样的地方</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="自己看到的" type="checkbox"/> 自己看到的　<input aria-label="老师或资料说的" type="checkbox"/> 老师或资料说的</td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 D：外形能告诉我一切吗？" hidden><h2>任务 D：外形能告诉我一切吗？</h2><aside class="film-cue"><b>28–34 分钟</b> 组织两两说一同一异；用“像眼睛”的例子引出任务 D</aside><div class="film-content"><p>小布米的头上有一块像“眼睛”的地方。</p><p>“看起来像眼睛”和“能用它认出我”，是一回事吗？<input aria-label="是" type="checkbox"/> 是　<input aria-label="不是" type="checkbox"/> 不是　<input aria-label="还不确定" type="checkbox"/> 还不确定</p><p>只看外形，我还不知道小布米能不能<input aria-label="只看外形，我还不知道小布米能不能" type="text"/>。</p><p>想知道答案，我还需要<input aria-label="想知道答案，我还需要" type="text"/>。</p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>34–40 分钟</b> 出示核对图；请 2–3 组分享；带全班回答三问</aside><div class="film-content"><ol>
+<li>今天我看到的小布米，是在动还是被暂停了？<input aria-label="今天我看到的小布米，是在动还是被暂停了？" type="text"/></li>
+<li>我对身体部位的判断，依据是：<input aria-label="我对身体部位的判断，依据是：" type="text"/></li>
+<li>只看身体外形，我还不能证明它会<input aria-label="只看身体外形，我还不能证明它会" type="text"/></li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>34–40 分钟</b> 出示核对图；请 2–3 组分享；带全班回答三问</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在网页里找到五个身体部位</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>指出一处关节，说出它连着哪两段</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说出一个相同点、一个不同点，并说出依据</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>提出一个只看外形回答不了的问题</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table><p>可以口述，请同伴或老师帮你写。</p></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-robot="data:image/webp;base64,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" data-lesson="1" data-role="teacher">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">全班预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>备课材料与完整教案</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">本课一览</a><a href="#section-1">学习目标与证据</a><a href="#section-2">课前预演（约 5 分钟）</a><a href="#section-3">配图怎样用</a><a href="#section-4">课堂流程（40 分钟）</a><a href="#section-5">关键讲解（可以这样说）</a><a href="#section-6">参考回答</a><a href="#section-7">常见误解与回应</a><a href="#section-8">网页打不开时</a><a href="#section-9">本课评价</a><a href="#section-10">学段调整</a><a href="#section-11">课后记录</a></nav></details>
+<p>单元一 身体与虚拟世界 · 基线：小学 5–6 年级，40 分钟 · <a href="../lesson-01-student/index.html">学生学习单</a> · 课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">小布米单例世界</a>（研发环境）</p>
+<h2 id="section-0">本课一览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>小布米的身体由哪些部分组成？和人有什么异同？</td>
+</tr>
+<tr>
+<td>学生成果</td>
+<td>身体标注图（任务 A、B）、一同一异（任务 C）、一个外形回答不了的问题（任务 D）</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>身体部位、关节、观察与资料</td>
+</tr>
+<tr>
+<td>本课操作</td>
+<td>进入世界、加载、暂停、机器人视角。不做行走、回放、缩放和配色</td>
+</tr>
+<tr>
+<td>准备</td>
+<td>学习单（建议彩打或投影身体图）、核对图 <a data-local="../assets/bumi-course/lesson-01/body-labeled.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/body-labeled.webp">body-labeled.svg</a> 先不发</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-1">学习目标与证据</h2>
+<table>
+<thead>
+<tr>
+<th>学生能够</th>
+<th>对应任务</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>在网页模型中指认头部、躯干、手臂、腿、脚</td>
+<td>A</td>
+<td>五个标签填对，至少能在网页上指出三个</td>
+</tr>
+<tr>
+<td>指出一处关节区域并说出它连接的两段身体</td>
+<td>B</td>
+<td>区域位置大致正确，连接的两段说对</td>
+</tr>
+<tr>
+<td>说出人与小布米的一个相同点和一个不同点，并说明依据来源</td>
+<td>C</td>
+<td>有依据，能区分“看到的”和“资料说的”</td>
+</tr>
+<tr>
+<td>知道外形不能直接证明能力</td>
+<td>D</td>
+<td>能提出一个需要测试或资料才能回答的问题</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2">课前预演（约 5 分钟）</h2>
+<ol>
+<li>打开链接，等待世界加载，右侧出现“小布米 Bumi 仿真控制”面板，默认在“仿真控制”分栏。</li>
+<li>点“加载小布米机器人”。屏幕上方依次提示正在预加载模型、初始化物理模型、初始化行走策略，最后提示“小布米机器人加载完成”。记下加载用时，课上据此留时间。</li>
+<li>状态先显示“等待策略推理”，随后为“站立中”。点“暂停仿真”，状态为“已暂停”。</li>
+<li>点“机器人视角”，确认镜头对准小布米；试试鼠标拖动、滚轮能否换角度，看清侧面和背面。</li>
+<li>不关闭面板。课后保持暂停即可。</li>
+</ol>
+<p>界面可对照这张此前的 Web 测试截图（当前布局以实际网页为准）：</p>
+<p><img alt="此前 Web 测试中的小布米与仿真控制面板，状态为已暂停，机器人视角按钮为选中状态。" loading="lazy" data-local="../assets/bumi-course/lesson-01/simulation-web-reference.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/simulation-web-reference.webp"/></p>
+<h2 id="section-3">配图怎样用</h2>
+<ul>
+<li>开篇<a data-local="../assets/bumi-course/lesson-01/visual-bumi-observer.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-bumi-observer.webp">观察伙伴插画</a>：请学生提出一个想观察的问题，说明这是依据原型美化的教学插画。身体任务仍对照网页与原模型图，不能用美化细节判断关节或传感器。</li>
+<li>任务 B 用<a data-local="../assets/bumi-course/lesson-01/visual-connections.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-connections.webp">连接处比较图</a>：先指门板与门框，再指上臂与前臂，问“相同的是哪种连接关系，哪些不能直接类比？”</li>
+<li>任务 C 用<a data-local="../assets/bumi-course/lesson-01/visual-body-compare.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/visual-body-compare.webp">身体比较图</a>：让学生分别说出观察、资料与未知问题，不预先发完整标签答案。</li>
+</ul>
+<p>以上看图提问融入原有任务时段，不另加课堂环节。</p>
+<h2 id="section-4">课堂流程（40 分钟）</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>环节</th>
+<th>教师做什么</th>
+<th>学生做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td>想一想</td>
+<td>请学生拿笔，问“哪里弯了”；追问“如果胳膊是直木棍”</td>
+<td>动手体验，写下想法</td>
+</tr>
+<tr>
+<td>5–12</td>
+<td>进世界</td>
+<td>投影示范步骤 1–5；强调今天不点行走按钮；介绍三个角色</td>
+<td>跟做，记录状态</td>
+</tr>
+<tr>
+<td>12–20</td>
+<td>任务 A</td>
+<td>巡视，提醒先在网页里指，再填图</td>
+<td>指认、填图、交换检查</td>
+</tr>
+<tr>
+<td>20–28</td>
+<td>任务 B</td>
+<td>讲“关节”与合页比喻及其局限；请学生在自己身上找对应位置</td>
+<td>找关节、填表、圈图</td>
+</tr>
+<tr>
+<td>28–34</td>
+<td>任务 C、D</td>
+<td>组织两两说一同一异；用“像眼睛”的例子引出任务 D</td>
+<td>填表、勾依据、写问题</td>
+</tr>
+<tr>
+<td>34–40</td>
+<td>分享与三问</td>
+<td>出示核对图；请 2–3 组分享；带全班回答三问</td>
+<td>修改一次、自我检查</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>35 分钟：</strong>任务 D 改为全班口头讨论，学生只写一句话。</li>
+<li><strong>45 分钟：</strong>任务 B 增加一轮“我做动作你找关节”：学生做抬手、弯膝，同伴说出用了哪个关节区域，再到网页模型上找对应位置。</li>
+</ul>
+<h2 id="section-5">关键讲解（可以这样说）</h2>
+<ul>
+<li>进入世界时：“这是网页里的虚拟机器人，按我们的指令在电脑里计算。今天我们只看它的身体，所以先让它暂停。”</li>
+<li>讲关节时：“关节把两段身体连起来，让它们能相对转动。合页只能朝一个方向转，我们的肩膀却能转好几个方向，所以合页只是帮我们想象。”</li>
+<li>讲依据时：“你亲眼在网页上看到的，勾‘自己看到的’；我讲给你的数字，比如关节有多少个，勾‘老师或资料说的’。两种都有用，但要说清楚。”</li>
+</ul>
+<h2 id="section-6">参考回答</h2>
+<p><strong>任务 A：</strong>1 头部、2 躯干、3 手臂、4 腿、5 脚（与核对图一致；图中左右为画面左右）。</p>
+<p><strong>任务 B：</strong>肩（躯干和上臂）、肘（上臂和前臂）、髋（躯干/腰部和大腿）、膝（大腿和小腿）、踝（小腿和脚）。学生说“腰”也可接受。</p>
+<p><strong>资料补充（老师掌握，按需讲）：</strong>小布米共有 21 个可动关节：腰 1 个；每条手臂 4 个（肩部 3 个方向、肘 1 个）；每条腿 6 个（髋部 3 个方向、膝 1 个、踝 2 个方向）。1 + 4×2 + 6×2 = 21。它<strong>没有</strong>能动的脖子、手腕和手指，头和躯干是固定在一起的，手是固定的形状。这些从外壳看不出来，不要求学生数。</p>
+<p><strong>任务 C：</strong>
+- 相同：都有头、躯干、两只手臂、两条腿；都有肘、膝这样的连接处；都靠两条腿站立。
+- 不同：小布米的头不能转（资料说的）；没有能动的手指（资料说的，外形上可看到手是一团固定形状）；身体是硬外壳；它的“眼睛”位置是一块面罩（看到的）。
+- 依据：外形差异勾“自己看到的”；关节有无勾“老师或资料说的”。</p>
+<p><strong>任务 D：</strong>能不能看见/认出人、听见声音、自己决定去哪里、感觉到被碰到等。需要：查资料、看它有没有相应的设备和程序、做测试。合理即可。</p>
+<p><strong>三问：</strong>1. 被暂停了，没在动；2. 网页里看到的模型和身体图；3. 例如“会看东西”“会走路很稳”。</p>
+<h2 id="section-7">常见误解与回应</h2>
+<table>
+<thead>
+<tr>
+<th>学生可能说</th>
+<th>可以这样回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“外壳上每条缝都是一个关节”</td>
+<td>缝可能只是外壳拼接处。请找“两段身体可以相对转动”的地方，下节课看它动起来时再核对</td>
+</tr>
+<tr>
+<td>“机器人视角就是机器人眼睛看到的”</td>
+<td>先记下这个想法，第 2 课专门比较两个视角，再判断</td>
+</tr>
+<tr>
+<td>“它有眼睛，所以能看见我们”</td>
+<td>像眼睛不等于能看见。看见需要相机一类的设备和处理图像的程序，本课平台里小布米没有这样使用</td>
+</tr>
+<tr>
+<td>“头可以转”</td>
+<td>资料显示没有脖子关节。如果有人觉得看到头转了，请他说清楚是整个身体在转还是只有头在转</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-8">网页打不开时</h2>
+<p>用 <a data-local="../assets/bumi-course/lesson-01/body-front.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-01/body-front.webp">body-front.png</a> 和学习单上的图完成任务 A–C。请学生在“我的观察方式”勾“图片”，在状态处写“未观察 Web”。任务 D 照常讨论。课后记下页面提示反馈研发人员。</p>
+<h2 id="section-9">本课评价</h2>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>达到</th>
+<th>需要支持</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>部位指认（A）</td>
+<td>五个标签正确，能在网页上指出</td>
+<td>需提示才能找到三个以上</td>
+</tr>
+<tr>
+<td>关节与连接（B）</td>
+<td>至少一处区域和连接说对</td>
+<td>能指出区域但说不出连接哪两段</td>
+</tr>
+<tr>
+<td>依据意识（C、D）</td>
+<td>能区分看到的和资料说的，提出一个合理问题</td>
+<td>依据栏空白或全部勾同一项</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-10">学段调整</h2>
+<ul>
+<li><strong>1–2 年级：</strong>老师操作网页，学生贴词卡（配图标）到大幅身体图上，口述“我和小布米都有<input aria-label="老师操作网页，学生贴词卡（配图标）到大幅身体图上，口述“我和小布米都有" type="text"/>”。跳过任务 D 的书写，改为举手投票。</li>
+<li><strong>3–4 年级：</strong>任务 B 只找一处关节；任务 C 用句子填空。</li>
+<li><strong>初中：</strong>补充“自由度”概念，请学生对照资料说出每条腿 6 个关节分别在哪三个区域，并讨论为什么腿比手臂需要更多关节。</li>
+<li><strong>高中：</strong>阅读教师摘录的关节名称表（如 <code>l_knee_pitch_joint</code>），推测命名规则（左右、部位、转动方向），讨论没有手腕关节会限制哪些任务。</li>
+</ul>
+<h2 id="section-11">课后记录</h2>
+<table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>网页加载实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>每个环节实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>学生不懂的词</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>反复出现的错误</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>下次要改的一处</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-01-student/index.html">学生学习单</a> · <a href="../lesson-02-teacher/index.html">下一课教案</a></p></details><section id="studio"><div id="make-panel"><h2>投屏制作演示</h2><p>投屏改写一道展台题。请一位同学接过鼠标，用第一版独立作答，再让全班决定改哪一句。</p>
+<label>给试玩者的问题<input id="question" value="小布米的身体由哪些部分组成？和人有什么异同？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>讲课与制作演示</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+<button id="lecture">打开讲课会话 ↗</button>
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

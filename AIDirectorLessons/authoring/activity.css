@@ -1,0 +1,28 @@
+body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+main:has(.activity){max-width:1360px;padding:20px clamp(16px,4vw,60px) 60px}
+main:has(.activity)>nav{padding:0 0 12px;border-bottom:1px solid #bdc9c4;font-size:.85em}
+main:has(.activity)>header{padding:18px 0 8px;border:0}
+main:has(.activity)>header h1{margin:6px 0 8px;font-size:clamp(28px,3.6vw,46px)}
+main:has(.activity)>header p{color:#35525a;font-size:.96em;margin:0 0 10px}
+.learn-card{background:#fff;border:2px solid #267369;border-radius:16px;padding:18px 24px;margin:12px 0 20px;box-shadow:0 4px 16px #193b3a0d}
+.learn-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78em;font-weight:700}
+.badge.mod{background:#135d56;color:#fff}
+.badge.lit{background:#e1eee9;color:#0f4c45;border:1px solid #9ec5bb}
+.learn-card h2{font-size:1.22em;margin:0 0 8px;color:#114b44}
+.learn-list{margin:0 0 12px;padding-left:20px;font-size:.92em;line-height:1.65}
+.learn-list li{margin:4px 0}
+.five-steps-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding-top:10px;border-top:1px dashed #b8d0ca;font-size:.82em;font-weight:700;text-align:center}
+.five-steps-bar span{background:#f0f7f5;color:#135d56;padding:6px 8px;border-radius:8px;border:1px solid #cbe0da}
+.activity{--accent:#155c67;--mist:#dcecf0;margin:0}.activity.gallery{--accent:#95452c;--mist:#f7e4ce}.activity.stage{--accent:#59457f;--mist:#e7e2f1}
+.intro{display:flex;align-items:baseline;gap:12px;margin:12px 0 16px;background:#fff;padding:12px 18px;border-radius:12px;border-left:5px solid var(--accent)}.intro small{color:var(--accent);font-weight:700;white-space:nowrap}.intro p{margin:0;font-size:.95em}
+.workbench{display:grid;grid-template-columns:1.22fr 1fr;background:white;border:1px solid #bac6bf;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px #2b433811}
+.activity figure{margin:0;background:var(--mist);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.activity canvas{display:block;width:100%;height:auto}.activity figcaption{padding:14px 22px;background:#173637;color:white;display:grid;gap:4px}.activity figcaption strong{letter-spacing:.06em;font-size:.84em;color:#c5decc}
+.console,.follow{padding:clamp(16px,2.2vw,30px)}.activity label{display:block;font-weight:650;margin:.7em 0 .25em;font-size:.92em}.activity select,.activity textarea{font:inherit;color:inherit;border:1px solid #96aaa8;border-radius:8px;padding:7px 10px;background:white;width:100%;max-width:100%}.activity textarea{display:block;margin-bottom:12px}
+.activity button{min-height:42px;border-radius:8px;margin:3px 5px 3px 0;padding:6px 12px;background:white;font-size:.9em}.activity button:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.activity button[aria-pressed=true],.activity .run{background:var(--accent);color:white}.activity .run{margin-top:12px;font-weight:700}
+.activity blockquote,.activity #placard:not(:empty){background:var(--mist);border-left:5px solid var(--accent);margin:12px 0;padding:12px 16px;font-weight:650;white-space:pre-line;font-size:.92em;border-radius:0 8px 8px 0}
+.feedback:not(:empty),#scores,.observation{margin:12px 0 0;border-top:1px solid #bbc9c8;padding-top:10px;font-size:.92em;line-height:1.6}
+.observation{background:#f7fbfa;padding:10px 14px;border-radius:8px;border:1px solid #cfe2de}
+.follow{margin-top:14px;border-radius:16px;background:white;border:1px solid #bac6bf}.follow:has(#observations:empty){display:none}
+@media(max-width:860px){.workbench{grid-template-columns:1fr}.activity canvas{max-height:42vh;object-fit:contain}.intro{display:block}.five-steps-bar{grid-template-columns:1fr 1fr}}

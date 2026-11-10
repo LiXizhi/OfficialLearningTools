@@ -1,0 +1,696 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>让它行动 · 教师大屏</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-3">← 课程目录</a>
+<span>指令与人的判断　 /　 教师大屏</span><div class="lesson-cover"><div><small>第 03 课　·　Bumi 具身智能</small><h1>让它行动</h1><p>一句任务怎样拆成按钮步骤？执行和预测不一样时怎么办？</p></div><figure class="lesson-art" style="--sx:-200%;--sy:0%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="让它行动的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="2" data-lesson="3">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　给外星人写说明书</option><option value="1">02　认识今天的指令卡</option><option value="2">03　认识今天的指令卡</option><option value="3">04　任务</option><option value="4">05　任务 A：排出第一版步骤</option><option value="5">06　任务 A：排出第一版步骤</option><option value="6">07　任务 B：照卡执行</option><option value="7">08　任务 B：照卡执行</option><option value="8">09　任务 C：找到“虫子”，修好它</option><option value="9">10　任务 C：找到“虫子”，修好它</option><option value="10">11　任务 D：谁在“编程”？</option><option value="11">12　观察员三问</option><option value="12">13　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="给外星人写说明书" ><h2>给外星人写说明书</h2><aside class="film-cue"><b>0–5 分钟</b> “给外星人写倒水说明书”，请一组读出，全班挑漏掉的步骤</aside><div class="film-content"><p>一位外星朋友完全听不懂“去倒杯水”。你要把它拆成一步一步的动作，至少写 4 步：</p><ol>
+<li><input aria-label="填写实验记录" type="text"/>　2. <input aria-label="2." type="text"/>　3. <input aria-label="3." type="text"/>　4. <input aria-label="4." type="text"/></li>
+</ol><p>少写一步，会发生什么？<input aria-label="少写一步，会发生什么？" type="text"/></p></div></section><section class="film-page" data-title="认识今天的指令卡" hidden><h2>认识今天的指令卡</h2><aside class="film-cue"><b>5–10 分钟</b> 投影面板，逐张介绍卡片；不演示按下效果，请学生写“我猜”</aside><div class="film-content"><p>先在“仿真控制”分栏加载小布米，再点“暂停仿真”。<strong>每一轮开始前，都让状态是“已暂停”。</strong></p><p>下面是可以用的指令卡（老师会发纸卡，也可以写编号）：</p></div></section><section class="film-page" data-title="认识今天的指令卡" hidden><h2>认识今天的指令卡</h2><aside class="film-cue"><b>5–10 分钟</b> 投影面板，逐张介绍卡片；不演示按下效果，请学生写“我猜”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>卡号</th>
+<th>指令卡</th>
+<th>我猜它会让小布米……</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>恢复仿真</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>②</td>
+<td>开始行走</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>③</td>
+<td>前进 0.5</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>④</td>
+<td>后退 0.5</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>⑤</td>
+<td>左转</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>⑥</td>
+<td>右转</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>⑦</td>
+<td>归零站立</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>⑧</td>
+<td>暂停仿真</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>⑨</td>
+<td>等待 <input aria-label="等待" type="text"/> 秒（操作员心里数）</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table><p>面板上有一行“速度 <input aria-label="面板上有一行“速度" type="text"/> m/s · 转向 <input aria-label="m/s · 转向" type="text"/> rad/s”，它会告诉你当前的指令。</p></div></section><section class="film-page" data-title="任务" hidden><h2>任务</h2><aside class="film-cue"><b>5–10 分钟</b> 投影面板，逐张介绍卡片；不演示按下效果，请学生写“我猜”</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-command-cards">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-03/visual-command-cards.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-03/visual-command-cards.webp" alt="纸卡给操作员阅读，操作员再点击网页按钮；准备时先归零、再恢复。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">教学美化插画与操作分工示意，非 Web 截图。纸卡上的步骤由你们填写。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 A 排卡前展示纸卡到网页：请学生指出“谁读纸卡、谁按按钮”；纸卡空白保留给学生设计。图中准备顺序用于避免恢复旧方向指令，提醒“归零站立”本身不恢复暂停。</p></details></div></section><section class="film-page" data-title="任务 A：排出第一版步骤" hidden><h2>任务 A：排出第一版步骤</h2><aside class="film-cue"><b>10–16 分钟</b> 发卡，小组排步骤；提醒“每轮从已暂停开始”</aside><div class="film-content"><p>用指令卡排出完成任务的步骤（可以重复用同一张卡）：</p></div></section><section class="film-page" data-title="任务 A：排出第一版步骤" hidden><h2>任务 A：排出第一版步骤</h2><aside class="film-cue"><b>10–16 分钟</b> 发卡，小组排步骤；提醒“每轮从已暂停开始”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>第几步</th>
+<th>卡号</th>
+<th>我预测小布米会</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>3</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>4</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>5</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>6</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>7</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>8</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 B：照卡执行" hidden><h2>任务 B：照卡执行</h2><aside class="film-cue"><b>16–25 分钟</b> 巡视，确保操作员只照卡按；提醒记录员抄读数</aside><div class="film-content"><p>规则：<strong>操作员只按卡片做，不能自己加步骤。</strong>观察员看小布米和状态，记录员填表。</p></div></section><section class="film-page" data-title="任务 B：照卡执行" hidden><h2>任务 B：照卡执行</h2><aside class="film-cue"><b>16–25 分钟</b> 巡视，确保操作员只照卡按；提醒记录员抄读数</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>第几步</th>
+<th>点了什么</th>
+<th>状态显示</th>
+<th>速度 · 转向读数</th>
+<th>和预测一样吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>3</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>4</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>5</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>6</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>7</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+<tr>
+<td>8</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="一样" type="checkbox"/> 一样 <input aria-label="不一样" type="checkbox"/> 不一样</td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 C：找到“虫子”，修好它" hidden><h2>任务 C：找到“虫子”，修好它</h2><aside class="film-cue"><b>25–32 分钟</b> 请发现弧线或按钮点不动的组分享；引导改卡、复位后再试</aside><div class="film-content"><p>程序里不按预想工作的地方叫“bug（虫子）”。</p><p>我们发现的不一样：<input aria-label="我们发现的不一样：" type="text"/></p><p>我们猜原因是：<input aria-label="我们猜原因是：" type="text"/></p><p>我们改成：在第<input aria-label="我们改成：在第" type="text"/>步<input aria-label="加上" type="checkbox"/> 加上 <input aria-label="换成" type="checkbox"/> 换成 <input aria-label="删掉 卡号" type="checkbox"/> 删掉 卡号<input aria-label="删掉 卡号" type="text"/></p><p>重新执行前，先点“归零站立”“重置姿态”“暂停仿真”，让小布米回到起点。第二轮结果：<input aria-label="成功" type="checkbox"/> 成功　<input aria-label="还要再改" type="checkbox"/> 还要再改</p><p><strong>小发现记录：</strong>正在往前走的时候点“左转”，小布米会<input aria-label="正在往前走的时候点“左转”，小布米会" type="text"/>。</p></div></section><section class="film-page" data-title="任务 C：找到“虫子”，修好它" hidden><h2>任务 C：找到“虫子”，修好它</h2><aside class="film-cue"><b>25–32 分钟</b> 请发现弧线或按钮点不动的组分享；引导改卡、复位后再试</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-turn-compare">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-03/visual-turn-compare.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-03/visual-turn-compare.webp" alt="转向对照示意：前进中直接左转会保留前进速度；先归零再左转才是原地转向。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">完成第一次修正后再核对。路线是教学示意，请以本组状态与读数记录为依据。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 C 完成第一轮修正后展示转向对照，追问：“哪一个读数被保留了？想原地转，少了哪一步？”先看本组记录，再用示意图解释。</p></details></div></section><section class="film-page" data-title="任务 D：谁在“编程”？" hidden><h2>任务 D：谁在“编程”？</h2><aside class="film-cue"><b>32–37 分钟</b> 讨论“小布米看得懂纸卡吗”</aside><div class="film-content"><p>今天的步骤是谁排的？<input aria-label="今天的步骤是谁排的？" type="text"/>　每一步是谁按的？<input aria-label="每一步是谁按的？" type="text"/></p><p>小布米能看懂我们写的纸卡吗？<input aria-label="能" type="checkbox"/> 能　<input aria-label="不能" type="checkbox"/> 不能</p><p>所以，今天把一句话变成步骤、再一步步执行的，是<input aria-label="所以，今天把一句话变成步骤、再一步步执行的，是" type="text"/>；小布米收到的只是按钮发出的<input aria-label="；小布米收到的只是按钮发出的" type="text"/>。</p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>37–40 分钟</b> 全班做“归零站立 → 暂停仿真”</aside><div class="film-content"><ol>
+<li>小布米这次的转弯，是由哪张卡（哪个按钮）产生的？<input aria-label="小布米这次的转弯，是由哪张卡（哪个按钮）产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="状态文字" type="checkbox"/> 状态文字　<input aria-label="速度 · 转向读数" type="checkbox"/> 速度 · 转向读数　<input aria-label="看到它的动作" type="checkbox"/> 看到它的动作　<input aria-label="其他" type="checkbox"/> 其他<input aria-label="其他" type="text"/></li>
+<li>今天的活动不能证明小布米会自己<input aria-label="今天的活动不能证明小布米会自己" type="text"/></li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>37–40 分钟</b> 全班做“归零站立 → 暂停仿真”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把一句任务拆成按钮步骤</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>照卡执行并记录状态和读数</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>找到一个“虫子”并修改步骤</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说清楚步骤是人排的、人执行的</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table><p><strong>收尾：</strong>点“归零站立”，再点“暂停仿真”。</p></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-lesson="3" data-role="teacher">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">全班预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>备课材料与完整教案</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">本课一览</a><a href="#section-1">学习目标与证据</a><a href="#section-2">课前预演（约 8 分钟）</a><a href="#section-3">课堂流程（40 分钟）</a><a href="#section-4">配图怎样用</a><a href="#section-5">关键讲解（可以这样说）</a><a href="#section-6">参考回答</a><a href="#section-7">常见误解与回应</a><a href="#section-8">网页打不开时</a><a href="#section-9">本课评价</a><a href="#section-10">学段调整</a><a href="#section-11">课后记录</a></nav></details>
+<p>单元二 指令与人的判断 · 基线：小学 5–6 年级，40 分钟 · <a href="../lesson-03-student/index.html">学生学习单</a> · 课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">小布米单例世界</a>（研发环境）</p>
+<h2 id="section-0">本课一览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>一句任务怎样拆成按钮步骤？执行和预测不一样时怎么办？</td>
+</tr>
+<tr>
+<td>学生成果</td>
+<td>指令流程卡（任务 A）、执行记录（B）、一次修正（C）、“谁在编程”说明（D）</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>任务分解、顺序、指令、调试</td>
+</tr>
+<tr>
+<td>本课操作</td>
+<td>仿真控制分栏：恢复/暂停仿真、开始行走、前进/后退、左右转、归零站立、重置姿态</td>
+</tr>
+<tr>
+<td>准备</td>
+<td>每组一套指令卡（学习单表格可剪下）、学习单</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-1">学习目标与证据</h2>
+<table>
+<thead>
+<tr>
+<th>学生能够</th>
+<th>对应任务</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>把一句任务拆成有顺序的按钮步骤，并写出预测</td>
+<td>A</td>
+<td>步骤完整，含开始、转向、停下的处理</td>
+</tr>
+<tr>
+<td>按卡执行并记录状态与读数</td>
+<td>B</td>
+<td>每步有状态文字和速度/转向读数</td>
+</tr>
+<tr>
+<td>发现预测与结果的差异，提出并验证修改</td>
+<td>C</td>
+<td>写出差异、原因猜测、修改和第二轮结果</td>
+</tr>
+<tr>
+<td>说明步骤由人设计和执行，小布米只接收按钮指令</td>
+<td>D</td>
+<td>句子填写准确</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2">课前预演（约 8 分钟）</h2>
+<p>按下面的“参考正确流程”走一遍，再故意走一遍“常见 bug 流程”，看清现象：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>点击</th>
+<th>预期状态</th>
+<th>读数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>准备</td>
+<td>加载后点“暂停仿真”</td>
+<td>已暂停</td>
+<td>0.0 · 0.0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>恢复仿真</td>
+<td>等待策略推理 → 站立中</td>
+<td>0.0 · 0.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>前进 0.5，等 3 秒</td>
+<td>行走中</td>
+<td>0.5 · 0.0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>归零站立，等它站稳</td>
+<td>站立中</td>
+<td>0.0 · 0.0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>左转，等 3 秒</td>
+<td>行走中（原地转）</td>
+<td>0.0 · 0.5</td>
+</tr>
+<tr>
+<td>5</td>
+<td>归零站立</td>
+<td>站立中</td>
+<td>0.0 · 0.0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>暂停仿真</td>
+<td>已暂停</td>
+<td>0.0 · 0.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>常见 bug 流程：</strong>
+- 暂停状态下直接点“前进 0.5”——按钮是灰的，点不动（暂停时方向按钮不可用）。
+- 前进中直接点“左转”——读数变成 0.5 · 0.5，小布米<strong>边走边转出弧线</strong>，不是原地转。因为“左转”只改转向，保留原来的前进速度。
+- 只点“开始行走”——它会直接以 0.5 m/s 前进，相当于“恢复仿真 + 前进 0.5”。</p>
+<p><strong>重新开始一轮：</strong>归零站立 → 重置姿态（回到初始站姿，课前确认是否回到起点）→ 暂停仿真。</p>
+<p>记下 3 秒原地左转大约转了多少（理论值约 0.5 × 3 = 1.5 弧度，接近四分之一圈，实际会有偏差）。</p>
+<h2 id="section-3">课堂流程（40 分钟）</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>环节</th>
+<th>教师做什么</th>
+<th>学生做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–5</td>
+<td>想一想</td>
+<td>“给外星人写倒水说明书”，请一组读出，全班挑漏掉的步骤</td>
+<td>写 4 步</td>
+</tr>
+<tr>
+<td>5–10</td>
+<td>认识指令卡</td>
+<td>投影面板，逐张介绍卡片；不演示按下效果，请学生写“我猜”</td>
+<td>填“我猜”一列</td>
+</tr>
+<tr>
+<td>10–16</td>
+<td>任务 A</td>
+<td>发卡，小组排步骤；提醒“每轮从已暂停开始”</td>
+<td>排卡、写预测</td>
+</tr>
+<tr>
+<td>16–25</td>
+<td>任务 B</td>
+<td>巡视，确保操作员只照卡按；提醒记录员抄读数</td>
+<td>执行、记录</td>
+</tr>
+<tr>
+<td>25–32</td>
+<td>任务 C</td>
+<td>请发现弧线或按钮点不动的组分享；引导改卡、复位后再试</td>
+<td>修改、第二轮</td>
+</tr>
+<tr>
+<td>32–37</td>
+<td>任务 D</td>
+<td>讨论“小布米看得懂纸卡吗”</td>
+<td>填写</td>
+</tr>
+<tr>
+<td>37–40</td>
+<td>三问与收尾</td>
+<td>全班做“归零站立 → 暂停仿真”</td>
+<td>三问、自检</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>35 分钟：</strong>跳过“认识指令卡”的“我猜”一列，教师直接讲卡；第二轮只做一组展示。</li>
+<li><strong>45 分钟：</strong>任务 C 后加挑战：“走出一个 L 形路线再停下”，比较各组的卡片数，讨论“更短的步骤是否更好”。</li>
+</ul>
+<h2 id="section-4">配图怎样用</h2>
+<ul>
+<li>任务 A 排卡前展示<a data-local="../assets/bumi-course/lesson-03/visual-command-cards.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-03/visual-command-cards.webp">纸卡到网页</a>：请学生指出“谁读纸卡、谁按按钮”；纸卡空白保留给学生设计。图中准备顺序用于避免恢复旧方向指令，提醒“归零站立”本身不恢复暂停。</li>
+<li>任务 C 完成第一轮修正后展示<a data-local="../assets/bumi-course/lesson-03/visual-turn-compare.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-03/visual-turn-compare.webp">转向对照</a>，追问：“哪一个读数被保留了？想原地转，少了哪一步？”先看本组记录，再用示意图解释。</li>
+</ul>
+<h2 id="section-5">关键讲解（可以这样说）</h2>
+<ul>
+<li>“按钮是给小布米的指令，指令卡是给操作员的指令。你们排卡，就是在为操作员写程序。”</li>
+<li>发现弧线时：“看读数：速度 0.5、转向 0.5。两个指令同时生效，所以它边走边转。想原地转，得先让速度归零。”</li>
+<li>“程序出 bug 很正常。工程师的做法就是：记录哪里不一样，猜原因，改一处，再试一次。”</li>
+</ul>
+<h2 id="section-6">参考回答</h2>
+<p><strong>指令卡“我猜”：</strong>学生预测合理即可，核对时按下表：</p>
+<table>
+<thead>
+<tr>
+<th>卡</th>
+<th>实际效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 恢复仿真</td>
+<td>仿真继续运行，按原来的指令；原来为 0 则站着</td>
+</tr>
+<tr>
+<td>② 开始行走</td>
+<td>恢复并以 0.5 m/s 前进</td>
+</tr>
+<tr>
+<td>③ 前进 0.5 / ④ 后退 0.5</td>
+<td>前后速度 0.5 / -0.5，转向归零</td>
+</tr>
+<tr>
+<td>⑤ 左转 / ⑥ 右转</td>
+<td>转向 0.5 / -0.5，前后速度保持原样</td>
+</tr>
+<tr>
+<td>⑦ 归零站立</td>
+<td>速度和转向归零，停下站着，仿真仍在运行</td>
+</tr>
+<tr>
+<td>⑧ 暂停仿真</td>
+<td>冻结仿真</td>
+</tr>
+</tbody>
+</table>
+<p><strong>任务 A：</strong>参考正确流程见课前预演表；“② 开始行走”代替“① + ③”也正确。</p>
+<p><strong>任务 C：</strong>典型 bug 与修正：
+- 弧线：在“左转”前加“⑦ 归零站立”。
+- 按钮点不动：在最前面加“① 恢复仿真”。
+- 停不下来/一直转：缺少最后的“⑦ 归零站立”。
+- 小发现：边走边转（走出弧线）。</p>
+<p><strong>任务 D：</strong>我们（人）排的；操作员按的；不能；人；指令（速度和转向的数值）。</p>
+<p><strong>三问：</strong>1. 左转卡；2. 看到转向读数变成 0.5，以及看到它转动；3. 不能证明它会自己理解一句话、自己规划路线或自己决定停下。</p>
+<h2 id="section-7">常见误解与回应</h2>
+<table>
+<thead>
+<tr>
+<th>学生可能说</th>
+<th>可以这样回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“我们给小布米编了程序”</td>
+<td>我们给操作员写了步骤。小布米只收到按钮的数值指令，纸卡它看不到</td>
+</tr>
+<tr>
+<td>“归零站立就是暂停”</td>
+<td>看状态：归零后是“站立中”，仿真还在运行；暂停后是“已暂停”</td>
+</tr>
+<tr>
+<td>“它转弯不准，坏了”</td>
+<td>转向是“每秒转多少”，转多少取决于等了多久，人数秒本身就不准</td>
+</tr>
+<tr>
+<td>“开始行走就是开始”</td>
+<td>它会直接往前走。只想让仿真动起来、原地站着，要用“恢复仿真”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-8">网页打不开时</h2>
+<p>教师用课前预演表讲解每张卡的效果，学生用纸卡“人扮机器人”：一位同学扮小布米，只按卡片指令走，其他同学执行与记录。在任务 B 的表头注明“人扮演，非 Web”。</p>
+<h2 id="section-9">本课评价</h2>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>达到</th>
+<th>需要支持</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分解与顺序（A）</td>
+<td>步骤含开始、行进、停、转、收尾</td>
+<td>漏掉开始或停止</td>
+</tr>
+<tr>
+<td>执行与记录（B）</td>
+<td>每步有状态和读数</td>
+<td>只写“成功/失败”</td>
+</tr>
+<tr>
+<td>调试（C）</td>
+<td>能说出差异与原因，改一处后复试</td>
+<td>只重复执行，不改步骤</td>
+</tr>
+<tr>
+<td>角色理解（D）</td>
+<td>说清人设计、人执行</td>
+<td>认为小布米理解了任务</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-10">学段调整</h2>
+<ul>
+<li><strong>1–2 年级：</strong>只用“开始行走、归零站立、左转”三张大图卡；老师操作，学生举卡排序，全班喊口令。</li>
+<li><strong>3–4 年级：</strong>提供部分排好的步骤，学生补两张卡。</li>
+<li><strong>初中：</strong>用读数写出“状态—指令表”，讨论“左转保留前进速度”这种设计的好处和坏处。</li>
+<li><strong>高中：</strong>把步骤改写成伪代码（含“等待直到状态为站立中”这类条件），讨论按时间等待和按条件等待的区别，为第 4 课铺垫。</li>
+</ul>
+<h2 id="section-11">课后记录</h2>
+<table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每个环节实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>最常见的 bug</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>学生不懂的词</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>下次要改的一处</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-03-student/index.html">学生学习单</a> · <a href="../lesson-02-teacher/index.html">上一课教案</a> · <a href="../lesson-04-teacher/index.html">下一课教案</a></p></details><section id="studio"><div id="make-panel"><h2>投屏制作演示</h2><p>投屏改写一道展台题。请一位同学接过鼠标，用第一版独立作答，再让全班决定改哪一句。</p>
+<label>给试玩者的问题<input id="question" value="一句任务怎样拆成按钮步骤？执行和预测不一样时怎么办？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>讲课与制作演示</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+<button id="lecture">打开讲课会话 ↗</button>
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

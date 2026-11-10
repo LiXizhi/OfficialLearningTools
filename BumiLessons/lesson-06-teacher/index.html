@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>使用模型与训练模型 · 教师大屏</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-6">← 课程目录</a>
+<span>已有模型与行走　 /　 教师大屏</span><div class="lesson-cover"><div><small>第 06 课　·　Bumi 具身智能</small><h1>使用模型与训练模型</h1><p>课堂上点按钮让小布米走，是在训练模型还是在使用模型？</p></div><figure class="lesson-art" style="--sx:-100%;--sy:-100%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="使用模型与训练模型的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="3" data-lesson="6">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　学骑自行车</option><option value="1">02　认识两个词</option><option value="2">03　认识两个词</option><option value="3">04　任务 A：做个小实验——它会越走越好吗？</option><option value="4">05　任务 A：做个小实验——它会越走越好吗？</option><option value="5">06　任务 A：做个小实验——它会越走越好吗？</option><option value="6">07　任务 B：分一分</option><option value="7">08　任务 B：分一分</option><option value="8">09　任务 C：训练与使用对照卡</option><option value="9">10　任务 D：写一句准确的话</option><option value="10">11　观察员三问</option><option value="11">12　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="学骑自行车" ><h2>学骑自行车</h2><aside class="film-cue"><b>0–6 分钟</b> 讲骑车故事，带学生分“练”和“用”</aside><div class="film-content"><p>把下面的句子分成两类，在括号里写“练”或“用”：</p><ul>
+<li>小明在操场上摔了很多次，慢慢找到平衡的感觉。（　）</li>
+<li>小明骑车去同学家。（　）</li>
+<li>教练看小明骑歪了，提醒他调整方向，小明再试一次。（　）</li>
+<li>小明骑车去买早餐，路上遇到红灯停下。（　）</li>
+</ul><p>“练”的时候，小明的本领在<input aria-label="变化" type="checkbox"/> 变化 <input aria-label="不变；“用”的时候，本领" type="checkbox"/> 不变；“用”的时候，本领<input aria-label="变化" type="checkbox"/> 变化 <input aria-label="基本不变。" type="checkbox"/> 基本不变。</p></div></section><section class="film-page" data-title="认识两个词" hidden><h2>认识两个词</h2><aside class="film-cue"><b>6–11 分钟</b> 讲解对照表；说明行走模型的来历（见资料卡）</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th></th>
+<th>训练</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>像什么</td>
+<td>学骑车时一次次练习</td>
+<td>学会以后骑车去上学</td>
+</tr>
+<tr>
+<td>模型会怎样</td>
+<td>根据结果不断被调整</td>
+<td>不改变，按已经学会的本领工作</td>
+</tr>
+<tr>
+<td>需要什么</td>
+<td>大量练习材料、大量计算、很长时间</td>
+<td>一个训练好的模型和当下的输入</td>
+</tr>
+</tbody>
+</table><p>资料说：小布米的行走模型，是<strong>开发团队事先在电脑仿真里训练好的</strong>，然后保存成一个模型文件放进了这个世界。</p></div></section><section class="film-page" data-title="认识两个词" hidden><h2>认识两个词</h2><aside class="film-cue"><b>6–11 分钟</b> 讲解对照表；说明行走模型的来历（见资料卡）</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-training-use">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-06/visual-training-use.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-06/visual-training-use.webp" alt="训练与使用对照：训练依据大量尝试的结果调整模型；课堂使用现成模型，根据当前输入计算动作。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">教学美化插画与资料示意，非 Web 截图。课堂使用已有模型、按钮不训练模型，依据的是平台资料。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>认识两个词时展示训练与使用，请学生指出“训练时被调整的是什么、课堂上做的是哪一侧”，强调这是资料说明，不是训练过程录像。</p></details></div></section><section class="film-page" data-title="任务 A：做个小实验——它会越走越好吗？" hidden><h2>任务 A：做个小实验——它会越走越好吗？</h2><aside class="film-cue"><b>11–22 分钟</b> 先问“如果是训练，会看到什么？”再做实验</aside><div class="film-content"><p>有人说：“点按钮多走几次，小布米就会越走越好，这是在训练。”我们先做三轮观察，检验“越走越好”的预测；是否训练，还要结合平台资料判断。</p><p>每一轮：“重置姿态”→“恢复仿真”→ 等到“站立中”→“前进 0.5”→ 数 5 秒 →“归零站立”→“暂停仿真”。</p></div></section><section class="film-page" data-title="任务 A：做个小实验——它会越走越好吗？" hidden><h2>任务 A：做个小实验——它会越走越好吗？</h2><aside class="film-cue"><b>11–22 分钟</b> 先问“如果是训练，会看到什么？”再做实验</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>轮次</th>
+<th>走得稳吗</th>
+<th>步子的样子（大、小、快、慢）</th>
+<th>大约走了多远（几步）</th>
+<th>和上一轮比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input aria-label="稳" type="checkbox"/> 稳 <input aria-label="晃" type="checkbox"/> 晃 <input aria-label="摔" type="checkbox"/> 摔</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td>—</td>
+</tr>
+<tr>
+<td>2</td>
+<td><input aria-label="稳" type="checkbox"/> 稳 <input aria-label="晃" type="checkbox"/> 晃 <input aria-label="摔" type="checkbox"/> 摔</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="更好" type="checkbox"/> 更好 <input aria-label="差不多" type="checkbox"/> 差不多 <input aria-label="更差" type="checkbox"/> 更差</td>
+</tr>
+<tr>
+<td>3</td>
+<td><input aria-label="稳" type="checkbox"/> 稳 <input aria-label="晃" type="checkbox"/> 晃 <input aria-label="摔" type="checkbox"/> 摔</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="更好" type="checkbox"/> 更好 <input aria-label="差不多" type="checkbox"/> 差不多 <input aria-label="更差" type="checkbox"/> 更差</td>
+</tr>
+</tbody>
+</table><p>我的发现：三轮下来，小布米<input aria-label="越走越好" type="checkbox"/> 越走越好 <input aria-label="差不多" type="checkbox"/> 差不多 <input aria-label="越走越差" type="checkbox"/> 越走越差</p><p>这说明：<input aria-label="这说明：" type="text"/></p></div></section><section class="film-page" data-title="任务 A：做个小实验——它会越走越好吗？" hidden><h2>任务 A：做个小实验——它会越走越好吗？</h2><aside class="film-cue"><b>11–22 分钟</b> 先问“如果是训练，会看到什么？”再做实验</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-inputs">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-06/visual-inputs.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-06/visual-inputs.webp" alt="同一个已有模型接收前进、后退或归零指令，输出可不同；输入变化不代表模型更新。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">把两类依据分开：三轮记录说明你观察到了什么；“本平台模型文件不变”来自资料，不能只用三轮画面证明。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>三轮记录完成后展示输入变化与模型更新，请学生分说“我看到了什么”和“资料告诉我什么”。追问：“同一模型能否给出不同动作？仅凭三轮差不多，能确认模型是否更新吗？”不以画面相近推导模型固定。</p></details></div></section><section class="film-page" data-title="任务 B：分一分" hidden><h2>任务 B：分一分</h2><aside class="film-cue"><b>22–29 分钟</b> 小组讨论，逐题核对，重点讲 4、5、7</aside><div class="film-content"><p>在每件事后面写“训练”“使用”或“都不是”：</p></div></section><section class="film-page" data-title="任务 B：分一分" hidden><h2>任务 B：分一分</h2><aside class="film-cue"><b>22–29 分钟</b> 小组讨论，逐题核对，重点讲 4、5、7</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>事情</th>
+<th>训练 / 使用 / 都不是</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. 开发团队让电脑里的虚拟小布米练习走路很多很多次，根据结果调整模型</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2. 我们点“前进 0.5”，小布米走起来</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>3. 我们点“左转”，小布米转弯</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>4. 我们把小布米换成蓝白配色</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>5. 我们把显示比例调到 2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>6. 我们点“暂停仿真”</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>7. 我们重复走三轮，观察它有没有变好</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>8. 把很多次“摔倒”和“站稳”的结果拿来，让模型下次少摔</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 C：训练与使用对照卡" hidden><h2>任务 C：训练与使用对照卡</h2><aside class="film-cue"><b>29–35 分钟</b> 请两组读改写的句子，比较哪个更准确</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th></th>
+<th>训练</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>小布米的行走模型，是谁做的这一步？</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>在哪里做的？</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>做的时候，模型会改变吗？</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>我们在课堂上做了吗？</td>
+<td><input aria-label="做了" type="checkbox"/> 做了 <input aria-label="没做" type="checkbox"/> 没做</td>
+<td><input aria-label="做了" type="checkbox"/> 做了 <input aria-label="没做" type="checkbox"/> 没做</td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 D：写一句准确的话" hidden><h2>任务 D：写一句准确的话</h2><aside class="film-cue"><b>29–35 分钟</b> 请两组读改写的句子，比较哪个更准确</aside><div class="film-content"><p>请把下面这句不准确的话改准确：</p><blockquote>
+<p>“我们今天在课上训练出了一个会走路的机器人。”</p>
+</blockquote><p>改成：<input aria-label="改成：" type="text"/></p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>35–40 分钟</b> 带全班说出“我们今天使用了一个已经训练好的模型”</aside><div class="film-content"><ol>
+<li>小布米今天会走路，是由什么产生的？<input aria-label="小布米今天会走路，是由什么产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="任务 A 的实验" type="checkbox"/> 任务 A 的实验　<input aria-label="老师给的资料" type="checkbox"/> 老师给的资料　<input aria-label="都有" type="checkbox"/> 都有</li>
+<li>今天的活动不能证明<input aria-label="今天的活动不能证明" type="text"/>（提示：模型是怎样训练出来的，我们亲眼看到了吗？）</li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>35–40 分钟</b> 带全班说出“我们今天使用了一个已经训练好的模型”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用自己的话说出训练和使用的区别</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>完成三轮实验并说出发现</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>正确分类 8 件事</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>写出一句准确描述今天课堂的话</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table><p><strong>收尾：</strong>“归零站立”→“暂停仿真”。</p></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-lesson="6" data-role="teacher">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">全班预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>备课材料与完整教案</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">本课一览</a><a href="#section-1">学习目标与证据</a><a href="#section-2">课前预演（约 5 分钟）</a><a href="#section-3">课堂流程（40 分钟）</a><a href="#section-4">配图怎样用</a><a href="#section-5">关键讲解（可以这样说）</a><a href="#section-6">资料卡（教师掌握）</a><a href="#section-7">参考回答</a><a href="#section-8">常见误解与回应</a><a href="#section-9">网页打不开时</a><a href="#section-10">本课评价</a><a href="#section-11">学段调整</a><a href="#section-12">课后记录</a></nav></details>
+<p>单元三 已有模型与行走 · 基线：小学 5–6 年级，40 分钟 · <a href="../lesson-06-student/index.html">学生学习单</a> · 课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">小布米单例世界</a>（研发环境）</p>
+<h2 id="section-0">本课一览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>课堂上点按钮让小布米走，是在训练模型还是在使用模型？</td>
+</tr>
+<tr>
+<td>学生成果</td>
+<td>三轮重复实验记录（任务 A）、分类（B）、训练与使用对照卡（C）、一句准确表述（D）</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>训练、使用（推理）、模型文件、检验一个说法</td>
+</tr>
+<tr>
+<td>本课操作</td>
+<td>重置姿态、恢复仿真、前进 0.5、归零站立、暂停仿真</td>
+</tr>
+<tr>
+<td>准备</td>
+<td>学习单；可准备自行车或学写字的图片</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-1">学习目标与证据</h2>
+<table>
+<thead>
+<tr>
+<th>学生能够</th>
+<th>对应任务</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用生活例子说明训练和使用的区别</td>
+<td>想一想、C</td>
+<td>能说出“训练时模型被调整，使用时不变”</td>
+</tr>
+<tr>
+<td>设计并完成检验“按钮=训练”的重复观察</td>
+<td>A</td>
+<td>三轮记录完整，结论与记录对应</td>
+</tr>
+<tr>
+<td>判断课堂操作属于训练、使用还是都不是</td>
+<td>B</td>
+<td>8 项中至少 6 项正确</td>
+</tr>
+<tr>
+<td>准确表述“本课使用了已有行走模型”</td>
+<td>D</td>
+<td>改写句子不含“我们训练了”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2">课前预演（约 5 分钟）</h2>
+<p>按学习单任务 A 的一轮流程走两遍，确认“重置姿态”后小布米回到初始站姿、两轮表现相近。记下每轮所需时间（约 20–30 秒）。</p>
+<h2 id="section-3">课堂流程（40 分钟）</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>环节</th>
+<th>教师做什么</th>
+<th>学生做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–6</td>
+<td>想一想</td>
+<td>讲骑车故事，带学生分“练”和“用”</td>
+<td>分类、勾选</td>
+</tr>
+<tr>
+<td>6–11</td>
+<td>认识两个词</td>
+<td>讲解对照表；说明行走模型的来历（见资料卡）</td>
+<td>阅读、提问</td>
+</tr>
+<tr>
+<td>11–22</td>
+<td>任务 A</td>
+<td>先问“如果是训练，会看到什么？”再做实验</td>
+<td>三轮实验、写发现</td>
+</tr>
+<tr>
+<td>22–29</td>
+<td>任务 B</td>
+<td>小组讨论，逐题核对，重点讲 4、5、7</td>
+<td>分类</td>
+</tr>
+<tr>
+<td>29–35</td>
+<td>任务 C、D</td>
+<td>请两组读改写的句子，比较哪个更准确</td>
+<td>填卡、改句</td>
+</tr>
+<tr>
+<td>35–40</td>
+<td>三问与收尾</td>
+<td>带全班说出“我们今天使用了一个已经训练好的模型”</td>
+<td>三问、自检、收尾</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>35 分钟：</strong>任务 A 做两轮；任务 B 只讨论 1、2、4、5、8。</li>
+<li><strong>45 分钟：</strong>加“如果真的要训练”讨论：需要多少次练习、谁来判断好坏、要用多少电脑，由学生写出两条。</li>
+</ul>
+<h2 id="section-4">配图怎样用</h2>
+<ul>
+<li>认识两个词时展示<a data-local="../assets/bumi-course/lesson-06/visual-training-use.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-06/visual-training-use.webp">训练与使用</a>，请学生指出“训练时被调整的是什么、课堂上做的是哪一侧”，强调这是资料说明，不是训练过程录像。</li>
+<li>三轮记录完成后展示<a data-local="../assets/bumi-course/lesson-06/visual-inputs.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-06/visual-inputs.webp">输入变化与模型更新</a>，请学生分说“我看到了什么”和“资料告诉我什么”。追问：“同一模型能否给出不同动作？仅凭三轮差不多，能确认模型是否更新吗？”不以画面相近推导模型固定。</li>
+</ul>
+<h2 id="section-5">关键讲解（可以这样说）</h2>
+<ul>
+<li>“检验一个说法，要先想：如果它是真的，我应该看到什么？然后去看。”</li>
+<li>“训练就像练习，模型在变；使用就像考试或上学路上骑车，用已经练好的本领。我们点按钮，是请模型干活，不是在教它。”</li>
+<li>“行走模型训练时，需要虚拟机器人在电脑里练习非常多次，还要大量计算。我们的课堂网页只是装着训练好的结果。”</li>
+<li>若学生问到“动作回放”里的舞蹈：“播放舞蹈既不是训练，也没有使用这个行走模型——它用的是另一种办法，第 7 课开始学。”</li>
+</ul>
+<h2 id="section-6">资料卡（教师掌握）</h2>
+<ul>
+<li>依据 Bumi 资产说明和行走合同：行走模型来自 Noetix（松延动力）公开的 Bumi 训练项目与 SDK 中的现成策略文件，本项目直接使用，<strong>没有重新训练或修改数值</strong>。</li>
+<li>模型输入 355 个数、输出 21 个数（见第 05 课资料卡）。课堂上每次按按钮，改变的只是输入中的 3 个指令数；模型文件本身不变。</li>
+<li>课程平台没有提供训练入口，课堂不训练模型。</li>
+<li>这类行走模型通常用“强化学习”在仿真中训练：让虚拟机器人反复尝试，表现好就“奖励”，再据此调整模型。本课只需让学生理解“反复练习并调整”，不讲算法。具体训练方法以开发方资料为准。</li>
+</ul>
+<h2 id="section-7">参考回答</h2>
+<p><strong>想一想：</strong>练、用、练、用；练的时候本领在变化，用的时候本领基本不变。</p>
+<p><strong>任务 A：</strong>预期三轮表现相近（以实际观察为准）。发现按实际记录填写。三轮表现不能单独证明模型是否训练或更新；“课堂只使用已有模型、按钮不训练”依据下面的资料卡。若某一轮差别明显，引导学生想想起点、数秒长短是否一样，不急于下结论。</p>
+<p><strong>任务 B：</strong>1 训练；2 使用；3 使用；4 都不是；5 都不是；6 都不是；7 使用；8 训练。</p>
+<p><strong>任务 C：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>训练</th>
+<th>使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谁做的</td>
+<td>开发团队</td>
+<td>我们（课堂）</td>
+</tr>
+<tr>
+<td>在哪里</td>
+<td>开发团队的电脑仿真里</td>
+<td>小布米网页世界里</td>
+</tr>
+<tr>
+<td>模型会改变吗</td>
+<td>会，不断调整</td>
+<td>不会</td>
+</tr>
+<tr>
+<td>课堂上做了吗</td>
+<td>没做</td>
+<td>做了</td>
+</tr>
+</tbody>
+</table>
+<p><strong>任务 D：</strong>“我们今天在课上使用一个已经训练好的行走模型，让虚拟小布米走路，我们没有训练它。”意思准确即可。</p>
+<p><strong>三问：</strong>1. 已经训练好的行走模型（加上人的方向指令）；2. 实验和资料都有；3. 不能证明训练是怎样进行的、训练用了多久，也不能证明它在真实机器人上表现一样。</p>
+<h2 id="section-8">常见误解与回应</h2>
+<table>
+<thead>
+<tr>
+<th>学生可能说</th>
+<th>可以这样回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“我们让它走，它就在学习”</td>
+<td>三轮记录能描述表现变化，不能单独证明学习。资料卡说明：本平台按钮改变输入，不更新行走模型。</td>
+</tr>
+<tr>
+<td>“人工智能一直在学习”</td>
+<td>有的系统使用时也会继续学习，但小布米这个行走模型在课堂上是固定的文件，不会被改变</td>
+</tr>
+<tr>
+<td>“模型就是一段写好的程序”</td>
+<td>普通程序是人一条条写规则；这个模型的数值是训练时调出来的，人没有一条条写“左脚抬多高”</td>
+</tr>
+<tr>
+<td>“重置姿态就是重新训练”</td>
+<td>重置只是让身体回到站姿，模型没有变</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-9">网页打不开时</h2>
+<p>任务 A 改为思想实验：“如果按钮是训练，你预测会看到什么？如果不是呢？”学生写预测，标注“未观察 Web”。其他任务照常。</p>
+<h2 id="section-10">本课评价</h2>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>达到</th>
+<th>需要支持</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>检验思路（A）</td>
+<td>记录真实表现，并用平台资料区分“表现变化”和“模型是否更新”</td>
+<td>只记录，不联系问题</td>
+</tr>
+<tr>
+<td>分类（B）</td>
+<td>6 项以上正确</td>
+<td>把换色、缩放也当作训练</td>
+</tr>
+<tr>
+<td>准确表述（D）</td>
+<td>写出“使用已经训练好的模型”</td>
+<td>仍写“我们训练了”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-11">学段调整</h2>
+<ul>
+<li><strong>1–2 年级：</strong>只做骑车故事和“练还是用”举牌游戏；教师演示两轮行走，问“它变厉害了吗？”。</li>
+<li><strong>3–4 年级：</strong>任务 B 只保留 1、2、4、8 四题。</li>
+<li><strong>初中：</strong>介绍“训练数据—模型—推理”三个词；讨论为什么训练要在仿真里做，而不是直接在真机上摔几万次。</li>
+<li><strong>高中：</strong>讨论仿真训练到真机部署的差距（模型误差、传感器噪声、延迟），以及“预训练模型”的来源说明和使用责任。</li>
+</ul>
+<h2 id="section-12">课后记录</h2>
+<table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>三轮实验的典型结果</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>每个环节实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>分类题中错得最多的一题</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>下次要改的一处</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-06-student/index.html">学生学习单</a> · <a href="../lesson-05-teacher/index.html">上一课教案</a> · <a href="../lesson-07-teacher/index.html">下一课教案</a></p></details><section id="studio"><div id="make-panel"><h2>投屏制作演示</h2><p>投屏改写一道展台题。请一位同学接过鼠标，用第一版独立作答，再让全班决定改哪一句。</p>
+<label>给试玩者的问题<input id="question" value="课堂上点按钮让小布米走，是在训练模型还是在使用模型？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>讲课与制作演示</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+<button id="lecture">打开讲课会话 ↗</button>
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>慢放和快放 · 教师大屏</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-8">← 课程目录</a>
+<span>动作数据　 /　 教师大屏</span><div class="lesson-cover"><div><small>第 08 课　·　Bumi 具身智能</small><h1>慢放和快放</h1><p>回放速度改变了什么，没有改变什么？</p></div><figure class="lesson-art" style="--sx:-300%;--sy:-100%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="慢放和快放的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="4" data-lesson="8">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　体育比赛的慢镜头</option><option value="1">02　先预测</option><option value="2">03　先预测</option><option value="3">04　任务 A：准备</option><option value="4">05　任务 B：每种速度量 10 秒</option><option value="5">06　任务 B：每种速度量 10 秒</option><option value="6">07　任务 B：每种速度量 10 秒</option><option value="7">08　任务 C：三个容易混的“快慢”</option><option value="8">09　任务 C：三个容易混的“快慢”</option><option value="9">10　任务 C：三个容易混的“快慢”</option><option value="10">11　任务 D：2× 能说明什么？</option><option value="11">12　观察员三问</option><option value="12">13　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="体育比赛的慢镜头" ><h2>体育比赛的慢镜头</h2><aside class="film-cue"><b>0–4 分钟</b> 讲慢镜头的例子</aside><div class="film-content"><p>电视上回放进球的慢镜头时，球员真的跑慢了吗？<input aria-label="是" type="checkbox"/> 是　<input aria-label="不是" type="checkbox"/> 不是</p><p>慢镜头改变了<input aria-label="慢镜头改变了" type="text"/>，没有改变<input aria-label="，没有改变" type="text"/>。</p></div></section><section class="film-page" data-title="先预测" hidden><h2>先预测</h2><aside class="film-cue"><b>4–10 分钟</b> 带学生算 0.5× 和 2× 播完整段要多久</aside><div class="film-content"><p>舞蹈片段总长约 <strong>2 分 11.5 秒（131.5 秒）</strong>。</p></div></section><section class="film-page" data-title="先预测" hidden><h2>先预测</h2><aside class="film-cue"><b>4–10 分钟</b> 带学生算 0.5× 和 2× 播完整段要多久</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>播放速度</th>
+<th>动作看起来</th>
+<th>播完整段大约要多少秒（现实时间）</th>
+<th>动作的先后顺序会变吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5×</td>
+<td><input aria-label="更快" type="checkbox"/> 更快 <input aria-label="一样" type="checkbox"/> 一样 <input aria-label="更慢" type="checkbox"/> 更慢</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="变" type="checkbox"/> 变 <input aria-label="不变" type="checkbox"/> 不变</td>
+</tr>
+<tr>
+<td>1×</td>
+<td><input aria-label="更快" type="checkbox"/> 更快 <input aria-label="一样" type="checkbox"/> 一样 <input aria-label="更慢" type="checkbox"/> 更慢</td>
+<td>131.5</td>
+<td><input aria-label="变" type="checkbox"/> 变 <input aria-label="不变" type="checkbox"/> 不变</td>
+</tr>
+<tr>
+<td>2×</td>
+<td><input aria-label="更快" type="checkbox"/> 更快 <input aria-label="一样" type="checkbox"/> 一样 <input aria-label="更慢" type="checkbox"/> 更慢</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="变" type="checkbox"/> 变 <input aria-label="不变" type="checkbox"/> 不变</td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 A：准备" hidden><h2>任务 A：准备</h2><aside class="film-cue"><b>10–15 分钟</b> 投影示范准备步骤；解释为什么从“继续回放”开始计时；示范一轮任务 B</aside><div class="film-content"><ol>
+<li>“仿真控制”分栏：“归零站立”→“暂停仿真”，状态为“已暂停”。</li>
+<li>“动作回放”分栏：片段选“舞蹈”，速度选“1×”，点“播放所选片段”。</li>
+<li>等它变成“正在回放”，让它跳几秒，点“暂停回放”。</li>
+</ol><p><strong>为什么不从头开始计时？</strong>刚点播放时，它要先“动作加载中”，这段等待不算播放时间。从“暂停”继续就没有等待，更公平。</p></div></section><section class="film-page" data-title="任务 B：每种速度量 10 秒" hidden><h2>任务 B：每种速度量 10 秒</h2><aside class="film-cue"><b>15–27 分钟</b> 巡视，提醒“先改速度再继续”“读数 A 每轮都要重新记”</aside><div class="film-content"><p>每一轮都这样做：</p><ol>
+<li>在暂停状态下，记下进度时间 → <strong>读数 A</strong>。</li>
+<li>选好这一轮的播放速度。</li>
+<li>操作员点“继续回放”，<strong>计时员同时开始计时</strong>。</li>
+<li>计时员数到 10 秒喊“停”，操作员点“暂停回放”。</li>
+<li>记下进度时间 → <strong>读数 B</strong>。</li>
+</ol></div></section><section class="film-page" data-title="任务 B：每种速度量 10 秒" hidden><h2>任务 B：每种速度量 10 秒</h2><aside class="film-cue"><b>15–27 分钟</b> 巡视，提醒“先改速度再继续”“读数 A 每轮都要重新记”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>播放速度</th>
+<th>读数 A（秒）</th>
+<th>读数 B（秒）</th>
+<th>片段走了多少秒（B − A）</th>
+<th>我预测会走多少秒</th>
+<th>动作看起来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>0.5×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table><p><em>进度显示“01:05.3”的意思是 1 分 5.3 秒，也就是 65.3 秒。</em></p><p>我的发现：现实中都过了约 10 秒，片段时间走得最多的是<input aria-label="我的发现：现实中都过了约 10 秒，片段时间走得最多的是" type="text"/>×，最少的是<input aria-label="×，最少的是" type="text"/>×。</p><p>规律：片段走的秒数 ≈ 现实秒数 × <input aria-label="规律：片段走的秒数 ≈ 现实秒数 ×" type="text"/>。</p><p>做完后：速度改回“1×”，点“停止回放并归位”。</p></div></section><section class="film-page" data-title="任务 B：每种速度量 10 秒" hidden><h2>任务 B：每种速度量 10 秒</h2><aside class="film-cue"><b>15–27 分钟</b> 巡视，提醒“先改速度再继续”“读数 A 每轮都要重新记”</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-speed-ten-seconds">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-08/visual-speed-ten-seconds.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-08/visual-speed-ten-seconds.webp" alt="预测时间尺：现实中每轮同样约10秒，0.5倍、1倍、2倍预计分别推进约5、10、20秒片段时间；本组实测栏为空白。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">教学预测图，不是实测数据。用本组的 B − A 核对预测，并保留差别。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 B 记录后：用现实10秒的预测时间尺核对趋势，强调“预测”与本组实测分开。追问：“哪个是网页进度，哪个是教室里的10秒？”不要把图上5、10、20抄作实测。</p></details></div></section><section class="film-page" data-title="任务 C：三个容易混的“快慢”" hidden><h2>任务 C：三个容易混的“快慢”</h2><aside class="film-cue"><b>27–32 分钟</b> 逐句讨论，重点区分 ① 和 ③</aside><div class="film-content"><p>把每句话连到正确的词上（写字母）：</p></div></section><section class="film-page" data-title="任务 C：三个容易混的“快慢”" hidden><h2>任务 C：三个容易混的“快慢”</h2><aside class="film-cue"><b>27–32 分钟</b> 逐句讨论，重点区分 ① 和 ③</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>说法</th>
+<th>是哪个？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 舞蹈数据里，每秒存了 30 个姿态</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>② 我们在面板上选了“2×”</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>③ 同学的电脑比较旧，画面有点卡</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>④ 换成 0.5× 后，动作变慢了</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table><p>A．<strong>数据帧率</strong>：数据文件里每秒存了多少个姿态，写好了不会变
+B．<strong>回放倍率</strong>：我们选的播放速度，决定片段时间走得多快
+C．<strong>屏幕流畅度</strong>：电脑每秒能画出多少次画面，和电脑有关</p></div></section><section class="film-page" data-title="任务 C：三个容易混的“快慢”" hidden><h2>任务 C：三个容易混的“快慢”</h2><aside class="film-cue"><b>27–32 分钟</b> 逐句讨论，重点区分 ① 和 ③</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-three-kinds-of-speed">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-08/visual-three-kinds-of-speed.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-08/visual-three-kinds-of-speed.webp" alt="三种快慢对照：数据文件一秒内保存的30个姿态槽位、选择回放倍率的旋钮、显示画面的屏幕，分别对应数据帧率、回放倍率和屏幕流畅度。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">概念示意，不是面板截图。文件、时钟和屏幕分别回答不同的问题。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 C 连线后：用三种快慢图请学生指向文件、旋钮、屏幕。追问：“调成2×，哪一项改变，文件里的30帧有没有重写？”</p></details></div></section><section class="film-page" data-title="任务 D：2× 能说明什么？" hidden><h2>任务 D：2× 能说明什么？</h2><aside class="film-cue"><b>32–37 分钟</b> 组织正反观点各说一句</aside><div class="film-content"><p>小明说：“我把舞蹈调到 2×，小布米跳得好快！说明它真的能用两倍速度跳舞。”</p><p>你同意吗？<input aria-label="同意" type="checkbox"/> 同意　<input aria-label="不同意" type="checkbox"/> 不同意　<input aria-label="还不能确定" type="checkbox"/> 还不能确定</p><p>我的理由：<input aria-label="我的理由：" type="text"/></p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>37–40 分钟</b> 确认各组改回 1× 并停止归位</aside><div class="film-content"><ol>
+<li>这次动作变快或变慢，是由什么产生的？<input aria-label="这次动作变快或变慢，是由什么产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="我的依据是：" type="text"/></li>
+<li>调速度的实验不能证明<input aria-label="调速度的实验不能证明" type="text"/></li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>37–40 分钟</b> 确认各组改回 1× 并停止归位</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>先预测，再测量三种速度</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>用读数 B − A 算出片段走了多少秒</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>分清数据帧率、回放倍率和屏幕流畅度</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说出 2× 不能证明真实运动能力</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table><p><strong>收尾：</strong>速度改回 1×，“停止回放并归位”，切回“仿真控制”。</p></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-lesson="8" data-role="teacher">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">全班预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>备课材料与完整教案</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">本课一览</a><a href="#section-1">学习目标与证据</a><a href="#section-2">课前预演（约 8 分钟）</a><a href="#section-3">课堂流程（40 分钟）</a><a href="#section-4">配图怎样用</a><a href="#section-5">关键讲解（可以这样说）</a><a href="#section-6">参考回答</a><a href="#section-7">常见误解与回应</a><a href="#section-8">网页打不开时</a><a href="#section-9">本课评价</a><a href="#section-10">学段调整</a><a href="#section-11">课后记录</a></nav></details>
+<p>单元四 动作数据 · 基线：小学 5–6 年级，40 分钟 · <a href="../lesson-08-student/index.html">学生学习单</a> · 课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">小布米单例世界</a>（研发环境）</p>
+<h2 id="section-0">本课一览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>回放速度改变了什么，没有改变什么？</td>
+</tr>
+<tr>
+<td>学生成果</td>
+<td>预测表、三档速度测量记录（任务 B）、三个“快慢”的区分（C）、对 2× 说法的判断（D）</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>回放倍率、片段时间与现实时间、数据帧率、屏幕流畅度</td>
+</tr>
+<tr>
+<td>本课操作</td>
+<td>动作回放：选片、播放速度、播放、暂停回放、继续回放、停止回放并归位</td>
+</tr>
+<tr>
+<td>准备</td>
+<td>每组一个计时工具（秒表、手机计时或投影计时器）；学习单</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-1">学习目标与证据</h2>
+<table>
+<thead>
+<tr>
+<th>学生能够</th>
+<th>对应任务</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预测并计算不同倍率下播完整段所需时间</td>
+<td>预测表</td>
+<td>0.5× 约 263 秒，2× 约 66 秒</td>
+</tr>
+<tr>
+<td>用“暂停—继续—计时—暂停”量出片段时间的增量</td>
+<td>A、B</td>
+<td>三行读数完整，B − A 计算正确</td>
+</tr>
+<tr>
+<td>归纳“片段时间 ≈ 现实时间 × 倍率”</td>
+<td>B</td>
+<td>规律填写，承认读数有偏差</td>
+</tr>
+<tr>
+<td>区分数据帧率、回放倍率和屏幕流畅度</td>
+<td>C</td>
+<td>4 题正确</td>
+</tr>
+<tr>
+<td>说明倍率实验不能证明真实运动能力</td>
+<td>D</td>
+<td>理由提到“回放不算物理”或“只是播放快”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2">课前预演（约 8 分钟）</h2>
+<ol>
+<li>归零站立、暂停仿真；动作回放选舞蹈、1×，播放，几秒后暂停回放。</li>
+<li><strong>确认暂停状态下能否修改播放速度</strong>（按当前实现可以）。若不行，改为“继续回放后立即切换速度”，并把读数 A 改为切换速度那一刻的读数，课上同步告诉学生。</li>
+<li>按任务 B 完整做一轮 1×、0.5×、2×，记下自己的数据，体验人工计时误差（按下与喊停有约 0.2–0.5 秒的反应差）。</li>
+<li>确认 2× 下播放不会在 10 秒内播完：若起点约在 5 秒，三轮共走约 5 + 10 + 5 + 20 = 40 秒，远小于 131 秒。</li>
+<li>改回 1×，停止回放并归位。</li>
+</ol>
+<h2 id="section-3">课堂流程（40 分钟）</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>环节</th>
+<th>教师做什么</th>
+<th>学生做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–4</td>
+<td>想一想</td>
+<td>讲慢镜头的例子</td>
+<td>勾选、填空</td>
+</tr>
+<tr>
+<td>4–10</td>
+<td>预测</td>
+<td>带学生算 0.5× 和 2× 播完整段要多久</td>
+<td>填预测表</td>
+</tr>
+<tr>
+<td>10–15</td>
+<td>任务 A</td>
+<td>投影示范准备步骤；解释为什么从“继续回放”开始计时；示范一轮任务 B</td>
+<td>准备到“回放已暂停”</td>
+</tr>
+<tr>
+<td>15–27</td>
+<td>任务 B</td>
+<td>巡视，提醒“先改速度再继续”“读数 A 每轮都要重新记”</td>
+<td>三轮测量、计算</td>
+</tr>
+<tr>
+<td>27–32</td>
+<td>任务 C</td>
+<td>逐句讨论，重点区分 ① 和 ③</td>
+<td>连线</td>
+</tr>
+<tr>
+<td>32–37</td>
+<td>任务 D</td>
+<td>组织正反观点各说一句</td>
+<td>判断并写理由</td>
+</tr>
+<tr>
+<td>37–40</td>
+<td>三问与收尾</td>
+<td>确认各组改回 1× 并停止归位</td>
+<td>三问、自检、收尾</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>35 分钟：</strong>预测表只算 2×；任务 B 只做 1× 和 2×。</li>
+<li><strong>45 分钟：</strong>任务 B 后增加 0.25× 一轮，请学生先用规律预测再测量。</li>
+</ul>
+<h2 id="section-4">配图怎样用</h2>
+<ul>
+<li><strong>任务 B 记录后：</strong>用<a data-local="../assets/bumi-course/lesson-08/visual-speed-ten-seconds.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-08/visual-speed-ten-seconds.webp">现实10秒的预测时间尺</a>核对趋势，强调“预测”与本组实测分开。追问：“哪个是网页进度，哪个是教室里的10秒？”不要把图上5、10、20抄作实测。</li>
+<li><strong>任务 C 连线后：</strong>用<a data-local="../assets/bumi-course/lesson-08/visual-three-kinds-of-speed.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-08/visual-three-kinds-of-speed.webp">三种快慢图</a>请学生指向文件、旋钮、屏幕。追问：“调成2×，哪一项改变，文件里的30帧有没有重写？”</li>
+</ul>
+<h2 id="section-5">关键讲解（可以这样说）</h2>
+<ul>
+<li>“进度条上的时间，是<strong>片段里</strong>的时间；秒表上的时间，是<strong>我们教室里</strong>的时间。倍率就是两者的比例。”</li>
+<li>“从头播放时要先加载，那段等待不算播放。所以我们从‘暂停’出发，按‘继续’的同一刻开始计时。”</li>
+<li>“数据文件里每秒有 30 个姿态，这个数写死在文件里。2× 时，电脑在同样的现实时间里取更多片段时间的姿态，并在两帧之间补出中间姿态，所以不需要重新做数据。”</li>
+<li>“回放不计算重力和地面，所以调到 2× 只是播放得快，不说明真的机器人能这么快地跳。”</li>
+</ul>
+<h2 id="section-6">参考回答</h2>
+<p><strong>想一想：</strong>不是；改变了我们看的速度，没有改变球员当时真实的动作。</p>
+<p><strong>预测表：</strong>0.5× 更慢，约 263 秒；1× 一样，131.5 秒；2× 更快，约 66 秒；顺序都不变。</p>
+<p><strong>任务 B：</strong>以实际测量为准。预测值：1× 约 10 秒，0.5× 约 5 秒，2× 约 20 秒。实测有偏差正常（例如 2× 测出 19.4 或 20.8）。发现：最多 2×，最少 0.5×；规律：倍率。</p>
+<p><strong>任务 C：</strong>① A；② B；③ C；④ B。</p>
+<p><strong>任务 D：</strong>不同意（或不能确定）。理由：回放是把已有的姿态数据播得更快，不计算重力和地面平衡；没有证据说明真实机器人能以两倍速度完成这些动作。</p>
+<p><strong>三问：</strong>1. 我们选的回放倍率；2. 测量记录（B − A 与现实 10 秒的关系）；3. 不能证明机器人真的能更快地跳舞或保持平衡。</p>
+<h2 id="section-7">常见误解与回应</h2>
+<table>
+<thead>
+<tr>
+<th>学生可能说</th>
+<th>可以这样回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“2× 就是每秒 60 帧”</td>
+<td>数据还是每秒 30 帧。2× 是片段时间走得快一倍，电脑取姿态时跳得更快</td>
+</tr>
+<tr>
+<td>“我们的电脑卡，所以测得不准，是倍率坏了”</td>
+<td>卡顿影响画面流畅度；片段时间按经过的现实时间计算，偏差主要来自人工计时</td>
+</tr>
+<tr>
+<td>“测出来不是正好 20 秒，实验失败了”</td>
+<td>人按按钮有反应时间，不可能完全相等。差一点不是失败，下节课会专门讨论误差</td>
+</tr>
+<tr>
+<td>“调成 2× 可以让行走也变快”</td>
+<td>倍率只在动作回放里有效。行走速度由“前进 0.5”这样的指令决定</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-8">网页打不开时</h2>
+<p>预测表、任务 C、D 照常完成。任务 B 改为教师在投影上演示一次或口述预演数据，学生在表格旁注明“教师数据，非本组测量”。</p>
+<h2 id="section-9">本课评价</h2>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>达到</th>
+<th>需要支持</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>测量与计算（B）</td>
+<td>三行读数完整，B − A 正确，归纳出倍率规律</td>
+<td>漏记读数 A 或计算出错</td>
+</tr>
+<tr>
+<td>概念区分（C）</td>
+<td>4 题正确</td>
+<td>混淆帧率与流畅度</td>
+</tr>
+<tr>
+<td>证据边界（D）</td>
+<td>理由指向回放不计算物理</td>
+<td>认为 2× 证明能力</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-10">学段调整</h2>
+<ul>
+<li><strong>1–2 年级：</strong>只看 0.5× 和 2× 各 10 秒，用“乌龟/兔子”卡片排序快慢；不读数、不计算。</li>
+<li><strong>3–4 年级：</strong>只做任务 B 的读数记录，教师帮助计算 B − A。</li>
+<li><strong>初中：</strong>计算每轮“实测比例 =（B − A）÷ 实际秒数”，比较与倍率的差异，列出误差来源。</li>
+<li><strong>高中：</strong>讨论“回放时钟按经过时间 × 倍率推进、到末尾封顶”的设计，以及显示帧率不稳时插值如何保证动作连贯。</li>
+</ul>
+<h2 id="section-11">课后记录</h2>
+<table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>暂停时能否改倍率</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>各组 2× 测量值的范围</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>每个环节实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>下次要改的一处</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-08-student/index.html">学生学习单</a> · <a href="../lesson-07-teacher/index.html">上一课教案</a> · <a href="../lesson-09-teacher/index.html">下一课教案</a></p></details><section id="studio"><div id="make-panel"><h2>投屏制作演示</h2><p>投屏改写一道展台题。请一位同学接过鼠标，用第一版独立作答，再让全班决定改哪一句。</p>
+<label>给试玩者的问题<input id="question" value="回放速度改变了什么，没有改变什么？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>讲课与制作演示</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+<button id="lecture">打开讲课会话 ↗</button>
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

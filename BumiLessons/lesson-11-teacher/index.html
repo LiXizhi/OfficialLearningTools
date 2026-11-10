@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/"><script src="../course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer"><title>一次只改变一个条件 · 教师大屏</title><link rel="stylesheet" href="../course.css"></head>
+<body><main><script type="text/plain" id="portable-style">:root{color-scheme:light;font:17px/1.65 "Microsoft YaHei",system-ui,sans-serif;color:#193e42;background:#f3f6f0}
+*{box-sizing:border-box}body{margin:0}main{max-width:960px;margin:auto;padding:24px clamp(14px,4vw,48px) 72px;background:#fffefa}
+header{padding:clamp(20px,4vw,42px);background:#d9ede4;border-radius:20px;border-bottom:5px solid #297169}
+h1,h2,h3{line-height:1.3;text-wrap:balance}h1{font-size:clamp(2rem,5vw,3.6rem);margin:.3em 0}h2{margin-top:2em;color:#165750}h3{margin-bottom:.25em}
+img{max-width:100%;height:auto}p>img{display:block;margin:1em auto;max-height:550px}figure{margin:0}figcaption,small{font-size:.8rem;color:#486362}
+main:has(>.hero){max-width:1240px;background:transparent}
+.hero{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:center;min-height:clamp(375px,40vw,505px);padding:clamp(28px,4.5vw,64px);border:0;border-radius:24px;background:#eff7e8;box-shadow:0 12px 36px #234e311a}
+.hero-scene{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#f5faecef 0%,#f5faecdd 27%,#f5faec99 43%,transparent 61%)}
+.hero-copy{width:46%;color:#163f36}.hero-copy p{margin:0 0 1.25em;max-width:23em}
+.hero-copy .hero-meta{font-size:clamp(.72rem,1.22vw,.88rem);font-weight:650;letter-spacing:.04em}
+.hero-copy h1{font-size:clamp(2.5rem,4.8vw,4rem);line-height:1.13;letter-spacing:-.035em;margin:0 0 .35em}
+.hero-copy a{padding:.6em 1.05em;border-radius:10px;background:#135446;box-shadow:0 3px 0 #093e31}
+.hero-copy a:hover{background:#0b4639}
+.catalog{display:grid;grid-template-columns:1fr 1fr;gap:14px}.catalog h2{grid-column:1/-1}.catalog article,details,#studio{border:1px solid #b4d0c7;border-radius:14px;padding:20px}
+details,#studio{margin-top:20px}summary{cursor:pointer;font-weight:700}nav{display:flex;flex-wrap:wrap;gap:10px;margin:.8em 0}
+a{color:#135e57;text-underline-offset:.18em}nav a,button,.hero a{display:inline-block;background:#1a605b;color:white;border:none;border-radius:7px;padding:.45em .9em;font:inherit;text-decoration:none;cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #c56011;outline-offset:2px}
+blockquote{margin:1em 0;padding:1px 16px;border-left:4px solid #de8544;background:#fff2e4}table{display:block;overflow-x:auto;border-collapse:collapse;max-width:100%}td,th{border:1px solid #c1d2c9;padding:.5em}th{background:#edf5ef}pre{overflow:auto;white-space:pre-wrap}
+input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #709389;border-radius:5px;padding:.3em;background:#fffcf4;color:inherit;max-width:100%}input[type=text]{width:9em}#studio label{display:block;margin:.85em 0}#studio label input,textarea{display:block;width:100%}#studio h2{margin:0}.exhibit{border-left:4px solid #dc8743;padding:12px 18px;margin:15px 0;background:#fff5e7;white-space:pre-wrap}output{display:block;color:#145b53}
+.catalog article{background:#fffefa;border-color:#cbd9cc}.catalog article h3{margin-top:.3em}
+@media(max-width:700px){
+    .hero{display:block;min-height:0;padding:0;border-radius:18px}
+    .hero-scene{position:static;display:block;width:100%;height:clamp(170px,44vw,270px);object-position:73% center}
+    .hero::before{display:none}
+    .hero-copy{width:100%;padding:22px clamp(20px,6vw,34px) 26px}
+    .hero-copy h1{font-size:clamp(2.35rem,8vw,3rem)}
+    .hero-copy .hero-meta{margin-bottom:.75em}
+}
+@media(max-width:620px){.catalog{grid-template-columns:1fr}.catalog h2{margin-bottom:0}main{padding:12px}td,th{min-width:5em}}
+
+/* Lesson workspace */
+main:has(#classroom){max-width:1070px}
+.lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
+.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+.phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
+.phase-strip button[aria-current=step]{color:white;background:#205c49}
+#classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}
+.lesson-desk{margin-top:12px;border:1px solid #c2d6c6;background:#f6faf1;border-radius:18px;padding:clamp(15px,3vw,30px)}
+.lesson-desk h2{margin:.25em 0 .5em;font-size:clamp(1.45rem,3vw,2rem)}
+#lesson-stage button,.next,#to-studio{margin:4px 6px 4px 0;padding:.55em .9em}
+#lesson-stage button[aria-pressed=true]{outline:3px solid #e7a73f;outline-offset:1px}
+.briefing{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.briefing img{display:block;width:100%;max-height:300px;object-fit:contain;border-radius:12px}
+.briefing .next{display:block;margin-top:1.25em}
+.world-link{display:inline-block;margin:12px 0}
+.lesson-archive{margin:.4em 0;color:#34584b}
+main:has(#studio:not([hidden])){display:flex;flex-direction:column}
+main:has(#studio:not([hidden])) .lesson-archive{order:1}
+#trial-panel{border-top:1px solid #c1d2c7;margin-top:18px}
+#trial-record:empty::before{content:"完成操作后，结果会记在这里。";color:#546b5c}
+#trial-record li{margin:.4em 0}
+.case-card,.body-map,.zoom-view,.drive-grid,.stop-track{border:1px solid #a7c4ad;border-radius:12px;background:#fffefa}
+.case-card{padding:24px;font-size:1.3rem}.live{font-weight:600;color:#285544}
+.stop-track{position:relative;height:135px;overflow:hidden;background:linear-gradient(#c8e9fc 0 64%,#a8d484 64% 72%,#6f9859 72%)}
+.flag{position:absolute;left:60%;top:15%;height:57%;border-left:3px solid #795916;padding-left:4px;color:#5b3d05;font-weight:700}
+.walker{position:absolute;bottom:30%;left:0;width:34px;height:45px;border-radius:8px;background:#fafbf5;color:#25474d;text-align:center;font-size:16px;box-shadow:inset 0 -9px #7b9693;transform:translateX(-50%)}
+.blindfold{position:absolute;inset:0;display:grid;place-items:center;background:#234b42;color:white}
+.drive-grid{display:grid;grid-template-columns:repeat(3,52px);width:max-content;overflow:hidden}.drive-grid span{padding:8px;text-align:center;border:1px solid #d2dec9;font-size:1.45rem}
+.body-map,.zoom-view{position:relative;width:min(100%,260px);margin:auto;overflow:hidden}.body-map img,.zoom-view img{width:100%;display:block}
+#lesson-stage .body-map button{position:absolute;transform:translate(-50%,-50%);padding:.25em .55em;border-radius:50%}
+.zoom-view img{transform-origin:60% 68%}
+@media(max-width:650px){.briefing{grid-template-columns:1fr;gap:10px}.briefing img{max-height:180px}.lesson-mast span{font-size:.82rem}.phase-strip button{font-size:.9rem}}
+.briefing .stop-cover{object-fit:cover;object-position:72% center;aspect-ratio:1.75}
+.stop-track{height:clamp(155px,19vw,215px);background:radial-gradient(ellipse at 12% 115%,#94c794 0 36%,transparent 36.5%) 0 0/100% 60% no-repeat,radial-gradient(ellipse at 89% 114%,#a3d4a0 0 40%,transparent 40.5%) 0 0/100% 60% no-repeat,linear-gradient(#cef0fc 0 59%,#c6dfa3 59% 70%,#efd9a7 70% 81%,#acd080 81%)}
+.stop-track .walker{width:clamp(42px,7vw,70px);height:auto;bottom:24%;box-shadow:none;background:transparent;mix-blend-mode:multiply;border-radius:0;transform:translateX(-50%)}
+.flag{height:54%;top:22%;font-size:1.15rem}.blindfold{z-index:2}
+.lab-discussion{background:#fffefa}.lab-discussion label{display:block;margin-top:.8em}
+.pose-stage{display:flex;align-items:center;gap:20px;border:1px solid #b4cebc;border-radius:14px;background:#e6f2e8;padding:16px;font-weight:700}
+.pose-figure{--angle:25deg;position:relative;width:100px;height:110px}
+.pose-figure span{position:absolute;background:#37736a;border-radius:8px}
+.pose-head{left:36px;top:3px;width:22px;height:22px}.pose-torso{left:34px;top:28px;width:26px;height:37px}
+.pose-arm{left:53px;top:32px;width:9px;height:36px;transform-origin:50% 4px;transform:rotate(calc(-1 * var(--angle)))}
+.pose-forearm{left:30px;top:31px;width:9px;height:35px;transform-origin:50% 4px;transform:rotate(18deg)}
+.pose-legs{left:35px;top:61px;width:9px;height:35px;box-shadow:16px 0 #37736a}
+
+/* Presentation stage for the independently hosted course */
+main:has(.film){max-width:1200px;background:#fbfcf7}
+.lesson-mast .lesson-cover{position:relative;isolation:isolate;overflow:hidden;border-radius:20px;margin-top:12px;color:#fff;display:grid;grid-template-columns:minmax(0,1fr) clamp(190px,23vw,265px);align-items:center;background:radial-gradient(ellipse at 70% 115%,#466c56,transparent 60%),#173b3b}
+.lesson-cover>div{padding:clamp(20px,3.7vw,48px)}.lesson-cover small{color:#dfedab;font-weight:700;letter-spacing:.08em}.lesson-cover h1{font-size:clamp(1.9rem,4vw,3.35rem);line-height:1.16;letter-spacing:-.035em}.lesson-cover p{margin:.7em 0 0;max-width:35em;color:#ebf1e1}
+.lesson-art{width:100%;aspect-ratio:1;position:relative;overflow:hidden;border-left:5px solid #dfd796}
+.lesson-art img{position:absolute;width:400%;max-width:none;height:400%;left:var(--sx);top:var(--sy)}
+.film{--ink:#193d3e;--lime:#d7ed92;color:var(--ink);background:#fff;border:1px solid #cedbd1;border-radius:19px;overflow:hidden;box-shadow:0 12px 30px #1d443214;margin:0 0 28px;scroll-margin:8px}
+.film-bar,.film footer{display:flex;align-items:center;gap:10px;padding:12px clamp(14px,2.5vw,32px)}
+.film-bar{background:#193f3f;color:white}.film-bar label{flex:1;font-weight:700;font-size:.85rem}.film-bar select{max-width:64%;margin-left:.45em;border:1px solid #87a39a;border-radius:6px;background:#254c49;color:#fff;padding:.5em;font:inherit}
+.film-bar button,.film-bar a{color:var(--ink);background:#f4f8e5;padding:.45em .8em;border-radius:6px;text-decoration:none;font-size:.85rem}
+.film-body{padding:clamp(15px,3vw,38px);background:linear-gradient(135deg,#fff 72%,#f3f8ef)}
+.film-page{animation:bumi-slide-in .36s ease-out}.film-page:focus{outline:0}.film-page h2{margin:0 0 .45em;color:var(--ink);font-size:clamp(1.45rem,3vw,2.36rem)}
+.film-cue{color:#446259;font-size:.9rem;border-left:4px solid #c8df8a;padding:.3em .85em;margin:0 0 1em}
+.film-cue b{color:#255144;margin-right:.5em}.film-content{font-size:clamp(1rem,1.55vw,1.24rem);line-height:1.75}.film-content p{margin:.55em 0}.film-content strong{color:#0c665e}
+.film-content table{width:100%}.film-content input[type=text]{background:#f4f8ef;border:none;border-bottom:2px solid #7a9e8e}.film-content input[type=checkbox]{width:1.15em;height:1.15em;accent-color:#1a6c58;vertical-align:middle}
+.film footer{border-top:1px solid #e0e6dd;background:linear-gradient(90deg,#8caf57 var(--progress),#e2eada var(--progress)) top/100% 3px no-repeat;justify-content:space-between}
+.film footer button{background:#e7eee2;color:#25463d}.film footer [data-next]{background:#235846;color:white}.film-count{font:bold .9rem monospace;letter-spacing:.05em}
+.film-viewport{position:relative;overflow:hidden;border:1px solid #c6d6d1;border-radius:13px;background:#f5faf8;width:min(100%,890px);margin:auto}
+.film-viewport img{width:100%;display:block;transform-origin:0 0;transition:transform .85s cubic-bezier(.22,.8,.22,1)}
+.film-pointer{position:absolute;width:34px;height:34px;border:3px solid #ef9524;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 0 7px #ffd77466;transition:top .85s,left .85s;pointer-events:none}
+.film-shots{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-top:.8em}
+.film-shots button{border:1px solid #b9cfc6;background:white;color:#21574c;font-size:.88rem}.film-shots button[aria-pressed=true]{background:#154d40;color:white}.film-shots button[data-playing]{background:#d7ed92}
+.film-narration{color:#30574b;text-align:center;min-height:1.8em}
+.projecting{overflow:hidden}.film.expanded{position:fixed;inset:0;margin:0;z-index:10000;border-radius:0;display:flex;flex-direction:column}.film.expanded .film-body{flex:1;overflow:auto}.film.expanded .film-content{font-size:clamp(1.1rem,2vw,1.65rem)}.film.expanded .film-diagram{margin:auto;max-width:min(100%,1020px)}
+@keyframes bumi-slide-in{from{opacity:.3;transform:translateY(7px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.film *{animation:none!important;transition:none!important}}
+@media(max-width:650px){.lesson-mast .lesson-cover{grid-template-columns:minmax(0,1fr) 30%;min-height:145px}.lesson-cover>div{padding:16px}.lesson-art{border-width:2px;border-radius:8px 0 0 8px}.lesson-cover h1{font-size:1.65rem}.lesson-cover p{font-size:.88rem}.film-bar{flex-wrap:wrap;gap:6px}.film-bar label{flex:1 0 100%}.film-content{overflow-wrap:anywhere}.film-content pre{white-space:pre-wrap}.film-bar select{max-width:73%}}
+.film-scrub,.timing-panel{display:flex;align-items:center;flex-wrap:wrap;gap:14px;padding:14px 20px;border-radius:12px;background:#e9f4ed;color:#204d47}
+.film-scrub input{flex:1;min-width:100px;accent-color:#13786c}.film-scrub output,.timing-panel{font-variant-numeric:tabular-nums}
+.film-cursor{position:absolute;top:22%;height:49%;border-left:3px solid #ce761c;pointer-events:none}
+.timing-panel progress{flex:1;accent-color:#267868;min-width:100px}.film-teacher{background:#f7faef}
+.film-rulers{display:grid;gap:.35em;padding:.65em 1em;background:#f3f8ee}.film-rulers>div{display:grid;grid-template-columns:3em 1fr 6em;align-items:center;gap:.7em}
+.film-rulers progress{width:100%;height:1.1em;accent-color:#267975}.film-rulers>div:last-child progress{accent-color:#ca812f}.film-rulers output{font-size:.85em}
+</script><header class="lesson-mast"><a href="../index.html#lesson-11">← 课程目录</a>
+<span>像研究者一样验证　 /　 教师大屏</span><div class="lesson-cover"><div><small>第 11 课　·　Bumi 具身智能</small><h1>一次只改变一个条件</h1><p>怎样用公平的实验确认倍率与片段时间的关系？</p></div><figure class="lesson-art" style="--sx:-200%;--sy:-200%"><img data-local="../assets/lesson-openings.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/lesson-openings.webp" alt="一次只改变一个条件的 AI 情境插画"></figure></div></header><section class="film" id="lesson-film" aria-label="逐幕课堂" data-unit="6" data-lesson="11">
+    <div class="film-bar"><label>课堂导航 <select aria-label="选择课堂画面"><option value="0">01　公平的纸飞机比赛</option><option value="1">02　任务 A：写实验计划</option><option value="2">03　任务 A：写实验计划</option><option value="3">04　任务 B：做实验</option><option value="4">05　任务 B：做实验</option><option value="5">06　任务 B：做实验</option><option value="6">07　任务 C：整理结果</option><option value="7">08　任务 D：误差和下一步</option><option value="8">09　观察员三问</option><option value="9">10　自我检查</option></select></label>
+    <button type="button" data-theater>放大授课</button><a href="#classroom">进入互动实验 ↓</a></div>
+    <div class="film-body"><section class="film-page" data-title="公平的纸飞机比赛" ><h2>公平的纸飞机比赛</h2><aside class="film-cue"><b>0–4 分钟</b> 纸飞机故事，引出“只改一个条件”</aside><div class="film-content"><p>比较两架纸飞机谁飞得远。小红在走廊里对着风扔，小明在教室里轻轻扔，结果小红的远。</p><p>这个比较公平吗？<input aria-label="公平" type="checkbox"/> 公平　<input aria-label="不公平　　因为" type="checkbox"/> 不公平　　因为<input aria-label="不公平　　因为" type="text"/></p><p>要公平，哪些条件必须一样？<input aria-label="要公平，哪些条件必须一样？" type="text"/></p></div></section><section class="film-page" data-title="任务 A：写实验计划" hidden><h2>任务 A：写实验计划</h2><aside class="film-cue"><b>4–11 分钟</b> 带全班讨论自变量、因变量；小组写控制变量</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>计划项</th>
+<th>我们的写法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>研究问题</td>
+<td>回放倍率变了，相同现实时间里片段时间走的秒数会怎样变？</td>
+</tr>
+<tr>
+<td>我们的预测</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>只改变的条件（一个）</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>要测量的结果</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>保持不变的条件（至少 4 个）</td>
+<td>1.<input aria-label="1." type="text"/>　2.<input aria-label="2." type="text"/>　3.<input aria-label="3." type="text"/>　4.<input aria-label="4." type="text"/></td>
+</tr>
+<tr>
+<td>每种情况做几次</td>
+<td><input aria-label="填写实验记录" type="text"/>次，为什么不只做一次？<input aria-label="次，为什么不只做一次？" type="text"/></td>
+</tr>
+</tbody>
+</table></div></section><section class="film-page" data-title="任务 A：写实验计划" hidden><h2>任务 A：写实验计划</h2><aside class="film-cue"><b>4–11 分钟</b> 带全班讨论自变量、因变量；小组写控制变量</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-fair-test-conditions">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-11/visual-fair-test-conditions.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-11/visual-fair-test-conditions.webp" alt="公平实验的同一张实验桌：只改变0.5倍、1倍、2倍回放倍率，同一舞蹈、设备网页、约10秒现实时间、人员与计时方法保持一致，测量片段增加量B减A。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">实验设计示意，不是本组实验照片或结果。检查计划里哪些条件需要保持一样。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 A 计划完成后：用公平实验条件图逐项核对，让学生说出唯一改变的倍率、测量的B−A，以及至少4个不变条件。追问：“换片段会同时多改哪一个条件？”</p></details></div></section><section class="film-page" data-title="任务 B：做实验" hidden><h2>任务 B：做实验</h2><aside class="film-cue"><b>11–26 分钟</b> 巡视，检查“同时开始计时”“记录实际 T”“保留失败”</aside><div class="film-content"><p><strong>准备：</strong>“仿真控制”分栏“归零站立”→“暂停仿真”；“动作回放”分栏选“舞蹈”、1×，播放到约 5 秒后“暂停回放”。</p><p><strong>每一次测量：</strong></p><ol>
+<li>暂停状态下，记<strong>读数 A</strong>，选好倍率。</li>
+<li>操作员点“继续回放”，计时员<strong>同时</strong>开始计时。</li>
+<li>计时员看到秒表到 10 秒时喊“停”，操作员点“暂停回放”；计时员同时停表。</li>
+<li>记<strong>读数 B</strong>，和计时员秒表上的<strong>实际秒数 T</strong>。</li>
+</ol><p><strong>顺序：</strong>先做完 0.5× 三次，再做 1× 三次，最后 2× 三次。如果读数 A 超过 01:40，先“停止回放并归位”，重新播放到 5 秒左右再继续。</p></div></section><section class="film-page" data-title="任务 B：做实验" hidden><h2>任务 B：做实验</h2><aside class="film-cue"><b>11–26 分钟</b> 巡视，检查“同时开始计时”“记录实际 T”“保留失败”</aside><div class="film-content"><div class="film-diagram" data-diagram="visual-measure-a-b-t">
+    <div class="film-viewport"><img loading="lazy" data-local="../assets/bumi-course/lesson-11/visual-measure-a-b-t.webp" src="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-11/visual-measure-a-b-t.webp" alt="一次测量的四步图：暂停记A并选倍率，继续回放与秒表同时开始，约10秒喊停并暂停停表，分别记B与实际T，再比较B减A与T乘倍率；全部实测空白。"><i class="film-pointer" hidden></i></div>
+    <div class="film-shots"></div><p class="film-narration" aria-live="polite">记录方法示意，不含实测结果。目标是约10秒，预测计算使用秒表实际读数 T；A 超过01:40时按上面的约定重播。</p></div><details class="film-teacher"><summary>这一幕怎样提问</summary><p>任务 B 首轮之前：用A/B/T四步图指读网页进度与秒表的来源，轮到学生时所有读数仍需实测。追问：“秒表停在10.3秒，预测用10还是10.3？”提醒A超过01:40先重播，失败记录保留。</p></details></div></section><section class="film-page" data-title="任务 B：做实验" hidden><h2>任务 B：做实验</h2><aside class="film-cue"><b>11–26 分钟</b> 巡视，检查“同时开始计时”“记录实际 T”“保留失败”</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>倍率</th>
+<th>次数</th>
+<th>读数 A（秒）</th>
+<th>读数 B（秒）</th>
+<th>实测 B − A</th>
+<th>秒表实际 T</th>
+<th>预测 T × 倍率</th>
+<th>差多少</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5×</td>
+<td>1</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>0.5×</td>
+<td>2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>0.5×</td>
+<td>3</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>1×</td>
+<td>1</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>1×</td>
+<td>2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>1×</td>
+<td>3</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2×</td>
+<td>1</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2×</td>
+<td>2</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>2×</td>
+<td>3</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table><p>没做成功的一次也保留，写上原因：<input aria-label="没做成功的一次也保留，写上原因：" type="text"/></p><p>做完后：速度改回 1×，“停止回放并归位”。</p></div></section><section class="film-page" data-title="任务 C：整理结果" hidden><h2>任务 C：整理结果</h2><aside class="film-cue"><b>26–32 分钟</b> 示范一次平均值计算；请一组把柱状图画到黑板</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>倍率</th>
+<th>三次实测的平均（B − A）</th>
+<th>预测（约 10 × 倍率）</th>
+<th>接近吗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.5×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td>5</td>
+<td><input aria-label="很接近" type="checkbox"/> 很接近 <input aria-label="有点差别" type="checkbox"/> 有点差别 <input aria-label="差很多" type="checkbox"/> 差很多</td>
+</tr>
+<tr>
+<td>1×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td>10</td>
+<td><input aria-label="很接近" type="checkbox"/> 很接近 <input aria-label="有点差别" type="checkbox"/> 有点差别 <input aria-label="差很多" type="checkbox"/> 差很多</td>
+</tr>
+<tr>
+<td>2×</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+<td>20</td>
+<td><input aria-label="很接近" type="checkbox"/> 很接近 <input aria-label="有点差别" type="checkbox"/> 有点差别 <input aria-label="差很多" type="checkbox"/> 差很多</td>
+</tr>
+</tbody>
+</table><p>在下面画一个简单的柱状图（横轴：倍率；纵轴：平均实测秒数）：</p><p><br/><br/><br/><br/><br/><br/></p><p>我们的结论：<input aria-label="我们的结论：" type="text"/></p></div></section><section class="film-page" data-title="任务 D：误差和下一步" hidden><h2>任务 D：误差和下一步</h2><aside class="film-cue"><b>32–37 分钟</b> 收集误差来源，按“人”“电脑”“方法”分类</aside><div class="film-content"><p>为什么实测不会正好等于预测？写出至少两个原因：</p><ol>
+<li><input aria-label="填写实验记录" type="text"/></li>
+<li><input aria-label="填写实验记录" type="text"/></li>
+</ol><p>哪个倍率的“差多少”最大？<input aria-label="哪个倍率的“差多少”最大？" type="text"/>　我猜原因是<input aria-label="我猜原因是" type="text"/></p><p>如果再做一次，我们会这样改进：<input aria-label="如果再做一次，我们会这样改进：" type="text"/></p><p>这个实验<strong>不能</strong>回答的一个问题：<input aria-label="回答的一个问题：" type="text"/></p></div></section><section class="film-page" data-title="观察员三问" hidden><h2>观察员三问</h2><aside class="film-cue"><b>37–40 分钟</b> 确认改回 1× 并停止归位</aside><div class="film-content"><ol>
+<li>片段时间走得快或慢，是由什么产生的？<input aria-label="片段时间走得快或慢，是由什么产生的？" type="text"/></li>
+<li>我的依据是：<input aria-label="我的依据是：" type="text"/></li>
+<li>这个实验不能证明<input aria-label="这个实验不能证明" type="text"/></li>
+</ol></div></section><section class="film-page" data-title="自我检查" hidden><h2>自我检查</h2><aside class="film-cue"><b>37–40 分钟</b> 确认改回 1× 并停止归位</aside><div class="film-content"><table>
+<thead>
+<tr>
+<th>今天我能</th>
+<th>自己做到</th>
+<th>有人帮忙做到</th>
+<th>还想再练</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写出只改变的条件和至少 4 个不变的条件</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>每种倍率重复 3 次，如实记录</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>算平均值、比较预测与实测</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+<tr>
+<td>说出误差来源和实验的局限</td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+<td><input aria-label="填写实验记录" type="checkbox"/></td>
+</tr>
+</tbody>
+</table></div></section></div><footer><button type="button" data-prev>← 上一幕</button><output class="film-count"></output><button type="button" data-next>下一幕 →</button></footer>
+    </section><section id="classroom" data-lesson="11" data-role="teacher">
+<nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">全班预测</button>
+<button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
+<div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
+<div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
+<button id="to-studio">带上记录做挑战卡 →</button></section></div>
+<a class="world-link" href="https://emscripten.keepwork.com/?pid=5316902" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section><details class="lesson-archive"><summary>备课材料与完整教案</summary><details><summary>跳到教学环节</summary><nav><a href="#section-0">本课一览</a><a href="#section-1">学习目标与证据</a><a href="#section-2">课前预演（约 8 分钟）</a><a href="#section-3">课堂流程（40 分钟）</a><a href="#section-4">配图怎样用</a><a href="#section-5">关键讲解（可以这样说）</a><a href="#section-6">参考回答</a><a href="#section-7">常见误解与回应</a><a href="#section-8">网页打不开时</a><a href="#section-9">本课评价</a><a href="#section-10">学段调整</a><a href="#section-11">课后记录</a></nav></details>
+<p>单元六 像研究者一样验证 · 基线：小学 5–6 年级，40 分钟 · <a href="../lesson-11-student/index.html">学生学习单</a> · 课堂入口：<a href="https://emscripten.keepwork.com/?pid=5316902" rel="noopener noreferrer" target="_blank">小布米单例世界</a>（研发环境）</p>
+<h2 id="section-0">本课一览</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>核心问题</td>
+<td>怎样用公平的实验确认倍率与片段时间的关系？</td>
+</tr>
+<tr>
+<td>学生成果</td>
+<td>实验计划（任务 A）、九次测量记录（B）、平均值与柱状图（C）、误差分析与局限（D）</td>
+</tr>
+<tr>
+<td>关键词</td>
+<td>变量、控制变量、重复测量、平均值、误差</td>
+</tr>
+<tr>
+<td>本课操作</td>
+<td>与第 8 课相同的“暂停—继续—计时—暂停”方法，三种倍率各三次</td>
+</tr>
+<tr>
+<td>准备</td>
+<td>每组计时工具；学习单；可准备计算器</td>
+</tr>
+</tbody>
+</table>
+<p>本课在第 8 课的基础上加入<strong>完整计划、重复测量和误差分析</strong>。第 8 课每种倍率只量一次，本课每种三次。</p>
+<h2 id="section-1">学习目标与证据</h2>
+<table>
+<thead>
+<tr>
+<th>学生能够</th>
+<th>对应任务</th>
+<th>看什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>写出一个自变量、一个因变量和至少 4 个控制变量</td>
+<td>A</td>
+<td>计划表完整、变量对应正确</td>
+</tr>
+<tr>
+<td>重复测量并如实记录，包括失败</td>
+<td>B</td>
+<td>九行数据，失败有原因</td>
+</tr>
+<tr>
+<td>计算平均值并与预测比较</td>
+<td>C</td>
+<td>平均值正确，结论与数据一致</td>
+</tr>
+<tr>
+<td>分析误差来源并说明实验局限</td>
+<td>D</td>
+<td>至少两个合理误差来源和一个局限</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-2">课前预演（约 8 分钟）</h2>
+<ol>
+<li>按任务 B 做 0.5×、1×、2× 各一次，确认暂停时能修改倍率（第 8 课已确认可省略）。</li>
+<li>估算片段用量：从约 5 秒开始，三种倍率各三次共约 3×5 + 3×10 + 3×20 = 105 秒，会到约 1 分 50 秒，接近舞蹈结尾 2 分 11.5 秒。学习单规定读数 A 超过 01:40 时重新播放，避免播完自动归位打断测量。</li>
+<li>自己做一次，体验喊停与按键之间的延迟。</li>
+</ol>
+<h2 id="section-3">课堂流程（40 分钟）</h2>
+<table>
+<thead>
+<tr>
+<th>时间</th>
+<th>环节</th>
+<th>教师做什么</th>
+<th>学生做什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0–4</td>
+<td>想一想</td>
+<td>纸飞机故事，引出“只改一个条件”</td>
+<td>判断并列出条件</td>
+</tr>
+<tr>
+<td>4–11</td>
+<td>任务 A</td>
+<td>带全班讨论自变量、因变量；小组写控制变量</td>
+<td>写计划</td>
+</tr>
+<tr>
+<td>11–26</td>
+<td>任务 B</td>
+<td>巡视，检查“同时开始计时”“记录实际 T”“保留失败”</td>
+<td>九次测量</td>
+</tr>
+<tr>
+<td>26–32</td>
+<td>任务 C</td>
+<td>示范一次平均值计算；请一组把柱状图画到黑板</td>
+<td>计算、画图、写结论</td>
+</tr>
+<tr>
+<td>32–37</td>
+<td>任务 D</td>
+<td>收集误差来源，按“人”“电脑”“方法”分类</td>
+<td>写误差和局限</td>
+</tr>
+<tr>
+<td>37–40</td>
+<td>三问与收尾</td>
+<td>确认改回 1× 并停止归位</td>
+<td>三问、自检</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>35 分钟：</strong>每种倍率测两次；任务 C 不画柱状图。</li>
+<li><strong>45 分钟：</strong>加一轮“只改计时员”：换一个人计时，同一倍率再测三次，比较两人数据的差别，讨论“人”也是一个需要控制的条件。</li>
+</ul>
+<h2 id="section-4">配图怎样用</h2>
+<ul>
+<li><strong>任务 A 计划完成后：</strong>用<a data-local="../assets/bumi-course/lesson-11/visual-fair-test-conditions.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-11/visual-fair-test-conditions.webp">公平实验条件图</a>逐项核对，让学生说出唯一改变的倍率、测量的B−A，以及至少4个不变条件。追问：“换片段会同时多改哪一个条件？”</li>
+<li><strong>任务 B 首轮之前：</strong>用<a data-local="../assets/bumi-course/lesson-11/visual-measure-a-b-t.webp" href="https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/bumi-course/lesson-11/visual-measure-a-b-t.webp">A/B/T四步图</a>指读网页进度与秒表的来源，轮到学生时所有读数仍需实测。追问：“秒表停在10.3秒，预测用10还是10.3？”提醒A超过01:40先重播，失败记录保留。</li>
+</ul>
+<h2 id="section-5">关键讲解（可以这样说）</h2>
+<ul>
+<li>“实验里我们<strong>故意改变</strong>的只有倍率，这叫改变的条件；我们<strong>测量</strong>的是片段时间走了多少秒，这叫结果；其他的都要尽量保持一样。”</li>
+<li>“为什么要做三次？因为人按按钮每次都不完全一样。多做几次取平均，偶然的偏差会互相抵消一部分。”</li>
+<li>“预测不是‘10 × 倍率’，而是‘秒表实际读数 × 倍率’。秒表停在 10.3，就用 10.3 去乘。”</li>
+<li>“实测和预测有差别，不是实验失败。说清楚差别有多大、可能为什么，这才是研究者的做法。”</li>
+</ul>
+<h2 id="section-6">参考回答</h2>
+<p><strong>想一想：</strong>不公平，因为地点、风、扔的力气都不一样。要一样：扔的人、力气、地点、风、纸飞机的纸张等。</p>
+<p><strong>任务 A：</strong>
+- 预测：倍率越大，相同现实时间里片段走的秒数越多，大约是“现实秒数 × 倍率”。
+- 改变的条件：回放倍率（0.5×、1×、2×）。
+- 测量的结果：片段时间的增加量（B − A）。
+- 不变的条件：同一个片段（舞蹈）、同一台电脑和网页、同样约 10 秒的现实时间、同样的计时方法和计时员、都从“继续回放”开始计时、不在中途切换分栏或做其他操作。
+- 做 3 次，因为一次可能碰巧不准。</p>
+<p><strong>任务 B、C：</strong>数据以学生实测为准。按 0.2–0.5 秒的人工反应误差估计（不是实测数据），平均值大致落在：0.5× 约 4.8–5.3 秒，1× 约 9.5–10.5 秒，2× 约 19–21 秒；明显超出时，先检查是否漏记读数 A 或计时没同时开始。结论：倍率越大，片段时间走得越多，大致是现实时间乘倍率。</p>
+<p><strong>任务 D：</strong>
+- 误差来源：计时员喊“停”和操作员按键有反应时间；开始计时和按“继续回放”不完全同时；电脑卡顿；读数只精确到 0.1 秒。
+- 2× 的差别通常最大，因为同样的反应延迟在 2× 下会让片段多走一倍的时间。
+- 改进：让同一个人既按按钮又计时；用更长的测量时间（如 20 秒）让延迟占比更小。
+- 不能回答：真实机器人能不能用 2× 的速度完成舞蹈；不同片段的动作难度；小布米是否更聪明。</p>
+<p><strong>三问：</strong>1. 我们选择的回放倍率；2. 九次测量数据和平均值；3. 不能证明机器人真实运动能力会随倍率改变。</p>
+<h2 id="section-7">常见误解与回应</h2>
+<table>
+<thead>
+<tr>
+<th>学生可能说</th>
+<th>可以这样回应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>“三次结果不一样，说明倍率不稳定”</td>
+<td>三次差了多少？差别和人按按钮的延迟比，哪个更大？</td>
+</tr>
+<tr>
+<td>“我们把那次不准的删掉吧”</td>
+<td>研究者不删数据，而是写清楚原因；如果要排除，也要说明为什么</td>
+</tr>
+<tr>
+<td>“平均值正好等于预测才算成功”</td>
+<td>看平均值离预测有多近，再说明可能原因</td>
+</tr>
+<tr>
+<td>“换个片段也算控制变量”</td>
+<td>片段变了就是又改了一个条件，本实验要保持同一个片段</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-8">网页打不开时</h2>
+<p>用教师课前测得的一组九次数据（标注“教师数据”），学生完成任务 A、C、D。不让学生编造“本组数据”。</p>
+<h2 id="section-9">本课评价</h2>
+<table>
+<thead>
+<tr>
+<th>看什么</th>
+<th>达到</th>
+<th>需要支持</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实验设计（A）</td>
+<td>变量清楚，控制变量 4 个以上</td>
+<td>把结果当作改变的条件</td>
+</tr>
+<tr>
+<td>数据记录（B）</td>
+<td>九行完整，失败有记录</td>
+<td>只记成功的几次</td>
+</tr>
+<tr>
+<td>分析（C、D）</td>
+<td>平均值正确，结论与数据一致，误差合理</td>
+<td>结论脱离数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="section-10">学段调整</h2>
+<ul>
+<li><strong>1–2 年级：</strong>不建议本课。若需要，改为“同一段舞蹈，快放和慢放，哪个先跳到举手的动作？”的比较游戏。</li>
+<li><strong>3–4 年级：</strong>只做 1× 和 2×，各两次，不算平均，比较大小。</li>
+<li><strong>初中：</strong>计算每次的“实测比例 =（B − A）÷ T”，求平均和最大最小值，讨论“系统误差”和“偶然误差”。</li>
+<li><strong>高中：</strong>估算人工反应延迟对每个倍率造成的误差上限；设计一个能减少人工误差的改进方案（如录屏逐帧读数），并说明它需要哪些额外条件。</li>
+</ul>
+<h2 id="section-11">课后记录</h2>
+<table>
+<thead>
+<tr>
+<th>记录项</th>
+<th>本次情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>各倍率平均值范围</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>学生列出的控制变量数量</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>每个环节实际用时</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+<tr>
+<td>下次要改的一处</td>
+<td><input aria-label="填写实验记录" type="text"/></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<p><a href="../index.html">课程目录</a> · <a href="../lesson-11-student/index.html">学生学习单</a> · <a href="../lesson-10-teacher/index.html">上一课教案</a> · <a href="../lesson-12-teacher/index.html">下一课教案</a></p></details><section id="studio"><div id="make-panel"><h2>投屏制作演示</h2><p>投屏改写一道展台题。请一位同学接过鼠标，用第一版独立作答，再让全班决定改哪一句。</p>
+<label>给试玩者的问题<input id="question" value="怎样用公平的实验确认倍率与片段时间的关系？"></label>
+<label>试玩者要做哪个动作？<textarea id="action" placeholder="写清从哪里开始、要观察什么。"></textarea></label>
+<label>完成后可以核对的证据<textarea id="evidence" placeholder="只写本组实际看到的现象，并说明观察条件。"></textarea></label>
+<details><summary>讲课与制作演示</summary>
+<p>选一个目的，再改写委托。只带本组的实验现象，AI 的建议由试玩者验证。</p>
+<button data-mode="ask">提问 · Ask</button> <button data-mode="plan">定方案 · Plan</button> <button data-mode="iterate">试玩后修改</button>
+<label>给 AI 的委托<textarea id="request"></textarea></label>
+<button id="copy">复制委托</button> <button id="chat">打开制作会话 ↗</button>
+<button id="lecture">打开讲课会话 ↗</button>
+<details><summary>离线练习 · 同桌扮演 AI</summary><p>请同桌指出一个无法从记录核对的词。把它换成看得见的动作或位置，再按改过的提示做一次。</p></details></details>
+<button id="first">制作第一版</button></div><div id="preview1"></div><div id="peer-panel"><h2>把鼠标交给试玩者</h2><p>请同伴读第一版的操作，回到动手实验试一次。只改一句提示，再请他完成同一个动作。</p>
+<label>试玩者的原话<textarea id="feedback" placeholder="我做到哪一步？我在哪里需要帮助？"></textarea></label>
+<label>改进后的操作提示<textarea id="revision"></textarea></label>
+<button id="second">制作第二版</button><div id="preview2"></div>
+<label>请同伴再做同一动作，记录结果<textarea id="retest"></textarea></label>
+</div><button id="export">导出挑战卡与制作记录</button><output id="status" aria-live="polite"></output>
+</section><script defer src="../workshop.js"></script><script defer src="../missions.js"></script><script defer src="../classroom.js"></script><script defer src="../figure_shots.js"></script><script defer src="../lesson_film.js"></script></main></body></html>

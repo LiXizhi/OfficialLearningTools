@@ -1,0 +1,1105 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>生成式AI与模型评测：给校园问答助手做“四象限体检” · 学生上机课 · 超级学生AI通识课</title><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f6f5ee;color:#193b3a;font:18px/1.75 'Segoe UI','Microsoft YaHei',sans-serif}main{max-width:1120px;margin:auto;padding:24px clamp(16px,4vw,46px) 60px}header{padding:28px 0 20px;border-bottom:4px solid #267369}h1,h2,h3,h4,p{margin:0 0 .55em}h1{font-size:clamp(30px,4.5vw,48px);line-height:1.22;margin-top:10px}h2{font-size:1.34em;color:#114b44}h3{font-size:1.08em;color:#143d39}h4{font-size:.98em;color:#1c524d;margin-top:10px}small,nav span{color:#536965}section{margin-top:24px}a{color:#09645c;text-underline-offset:4px}nav,footer,article{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}nav.grades{justify-content:flex-start;padding:14px 0;position:sticky;top:0;background:#f6f5ee;z-index:5;border-bottom:1px solid #d5e0dc}.grades a,button,.action{padding:6px 14px;border-radius:6px;background:#e1eee9}article,fieldset,details,.card-box{padding:14px 18px;border:1px solid #c5d4cd;background:white;border-radius:10px;margin:10px 0}fieldset{min-width:0}legend{font-weight:600}button{font:inherit;border:1px solid #95b3a8;margin:3px;cursor:pointer;color:inherit}button[aria-pressed=true],.action{background:#135d56;color:white}summary{cursor:pointer;font-weight:700;color:#114b44}li{margin:8px 0}footer{margin-top:30px;border-top:1px solid #abc;padding-top:18px}.action{text-decoration:none;display:inline-block}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #bb640f}fieldset p:empty{display:none}.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.pill{display:inline-block;padding:2px 10px;border-radius:999px;background:#e1eee9;color:#114b44;font-size:.8em;font-weight:600}.pill.dark{background:#135d56;color:#fff}.sample-card{border:2px solid #135d56;background:#f9fdfb}.sample-desc{font-size:.9em;color:#35525a;margin:6px 0 0}.sample-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.turnkey-banner{position:sticky;top:0;z-index:12;background:#fff;border:2px solid #135d56;border-radius:14px;padding:12px 18px;margin:14px 0 20px;box-shadow:0 8px 24px #114b4418}
+.banner-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.mission-track{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.mission-step{display:flex;flex-direction:column;gap:2px;padding:8px 12px;border-radius:10px;background:#f2f8f6;border:1px solid #bdd4ce;text-decoration:none;color:#16423d;font-size:.82em;transition:all .15s}
+.mission-step strong{font-size:.95em;color:#0e4f48}
+.mission-step .step-state{font-style:normal;font-size:.78em;color:#5c7672;font-weight:700}
+.mission-step.done{background:#e3f7ec;border-color:#1f8b5c;color:#0d4a2f}
+.mission-step.done .step-state{color:#137547}
+.toast-bar{margin:8px 0 0;padding:7px 12px;border-radius:8px;background:#f0f8f6;border-left:4px solid #135d56;font-size:.84em;color:#124640;transition:background .2s}
+.toast-bar.flash{background:#d4f4e2;border-left-color:#0f7a49;font-weight:700}
+.turnkey-stage{background:#fff;border:2px solid #c3d6d0;border-radius:16px;padding:20px 24px;margin:20px 0;box-shadow:0 4px 16px #193b3a0a}
+.stage-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-bottom:10px;border-bottom:2px dashed #d3e2dd;margin-bottom:14px}
+.stage-header h2{margin:0;flex:1;min-width:240px}
+.stage-badge{background:#135d56;color:#fff;padding:4px 12px;border-radius:999px;font-size:.78em;font-weight:700;white-space:nowrap}
+.tts-btn,.tts-mini{background:#fff8e6;border:1px solid #d9a441;color:#6e4b00;font-size:.82em;font-weight:700;padding:5px 11px;border-radius:999px}
+.quick-guide-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:10px 0 14px;font-size:.86em}
+.guide-chip{background:#eef6f4;border:1px solid #c2dad3;padding:5px 11px;border-radius:8px}
+.stage-lead{font-size:.93em;color:#274c48;background:#f5fbf9;padding:10px 14px;border-radius:10px;border-left:4px solid #1e7a6e}
+.prompt-builder{background:#f7fbf9;border:1px solid #c4dbd4;border-radius:12px;padding:14px 16px;margin:12px 0}
+.builder-row{margin:8px 0}
+.builder-row label{display:block;font-weight:700;font-size:.88em;color:#114b44;margin-bottom:4px}
+.chip-group{display:flex;flex-wrap:wrap;gap:6px}
+.chip-group button{font-size:.86em;background:#fff;padding:6px 12px;border-radius:999px}
+.chip-group button[aria-pressed=true]{background:#135d56;color:#fff;border-color:#0e4741}
+.turnkey-textarea,.turnkey-input{width:100%;font:inherit;font-size:.92em;padding:10px 12px;border:2px solid #8eb3a8;border-radius:10px;background:#fcfefd;color:#142f37}
+.turnkey-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.action-btn{padding:8px 16px;border-radius:8px;font-weight:700;font-size:.9em;border:1px solid transparent}
+.action-btn.primary{background:#135d56;color:#fff}
+.action-btn.accent{background:#b85014;color:#fff}
+.action-btn.secondary{background:#e7f2ef;color:#114b44;border-color:#98bbb0}
+.ai-sim-output{background:#f2faf7;border:2px solid #2b8a6e;border-radius:12px;padding:14px 18px;margin-top:12px;font-size:.9em}
+.cmd-cards{background:#f8fbfa;border:1px solid #c7dcd5;border-radius:12px;padding:14px 16px;margin:12px 0}
+.cmd-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 10px;border-bottom:1px dashed #d3e3de;font-size:.88em}
+.cmd-row:last-child{border-bottom:0}
+.cmd-row code{background:#16292b;color:#7df9c6;padding:3px 8px;border-radius:6px;font-size:.92em}
+.copy-chip{background:#135d56;color:#fff;font-size:.82em;font-weight:700;padding:5px 12px;border-radius:6px}
+.code-fold{background:#f9fcfb;border:2px solid #8ab0a5;border-radius:12px;margin:12px 0}
+.code-note{font-size:.86em;color:#35525a;margin:8px 0}
+.code-toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overflow-x:auto;font:13.5px/1.55 ui-monospace,SFMono-Regular,Consolas,monospace;margin:8px 0;white-space:pre-wrap;word-break:break-word}
+.prompt-pre{background:#f4f9f7;color:#153b37;border:1px solid #bdd4cd;font-family:inherit;font-size:.88em}
+.poll-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:12px 0}
+.poll-card{background:#f7fbfa;border:1px solid #bdd4cd;border-radius:10px;padding:12px}
+.poll-card h3{font-size:.96em;margin-bottom:4px}
+.poll-card p{font-size:.82em;color:#4b6561;margin-bottom:8px}
+.poll-btns{display:flex;gap:6px;flex-wrap:wrap}
+.poll-btns button{font-size:.8em;padding:4px 9px}
+.poll-ans{display:block;margin-top:8px;padding:6px 8px;background:#e6f5ee;border-radius:6px;color:#0f4c35;font-size:.8em}
+.portfolio-builder{background:#f7fbf9;border:2px solid #267369;border-radius:14px;padding:16px 20px;margin-top:16px}
+.pledge-check{display:flex;align-items:flex-start;gap:8px;margin:12px 0;padding:10px 12px;background:#fff9e6;border:1px solid #e0b84c;border-radius:8px;font-size:.88em}
+.pledge-check input{margin-top:5px;transform:scale(1.25)}
+.portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
+@media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
+@media(min-width:1100px){body:has(nav span){font-size:19px}}
+</style><main><nav><a href="../index.html#g8">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span></nav><header><small>初中二年级（8年级 · 8课时） / 第 5 课（第5章 问答助手四象限评测） · 学生上机课 · 🌟 示范互动样课</small><h1>生成式AI与模型评测：给校园问答助手做“四象限体检”</h1><div class="tag-row"><span class="pill dark">第5章 问答助手四象限评测</span><span class="pill">打开人工智能黑箱（下）：生成式AI判断、模型评测与智能体初步</span><span class="pill">工具环境：AIChat 智能助手工作台</span><span class="pill">🦸 学生机房独立闯关</span></div><p>为什么一个敢于对未知问题说“通知里没有写，我不知道”的校园AI助手，比一个“什么问题都敢流利编出答案”的助手得分更高？今天我们化身【AI系统评测工程师】，打开检索增强（RAG）问答系统的黑箱，用科学的“四象限评测矩阵”和“控制变量实验”给校园问答助手做一次全面体检！</p></header><style>body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+main:has(.activity){max-width:1360px;padding:20px clamp(16px,4vw,60px) 60px}
+main:has(.activity)>nav{padding:0 0 12px;border-bottom:1px solid #bdc9c4;font-size:.85em}
+main:has(.activity)>header{padding:18px 0 8px;border:0}
+main:has(.activity)>header h1{margin:6px 0 8px;font-size:clamp(28px,3.6vw,46px)}
+main:has(.activity)>header p{color:#35525a;font-size:.96em;margin:0 0 10px}
+.learn-card{background:#fff;border:2px solid #267369;border-radius:16px;padding:18px 24px;margin:12px 0 20px;box-shadow:0 4px 16px #193b3a0d}
+.learn-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78em;font-weight:700}
+.badge.mod{background:#135d56;color:#fff}
+.badge.lit{background:#e1eee9;color:#0f4c45;border:1px solid #9ec5bb}
+.learn-card h2{font-size:1.22em;margin:0 0 8px;color:#114b44}
+.learn-list{margin:0 0 12px;padding-left:20px;font-size:.92em;line-height:1.65}
+.learn-list li{margin:4px 0}
+.five-steps-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding-top:10px;border-top:1px dashed #b8d0ca;font-size:.82em;font-weight:700;text-align:center}
+.five-steps-bar span{background:#f0f7f5;color:#135d56;padding:6px 8px;border-radius:8px;border:1px solid #cbe0da}
+.activity{--accent:#155c67;--mist:#dcecf0;margin:0}.activity.gallery{--accent:#95452c;--mist:#f7e4ce}.activity.stage{--accent:#59457f;--mist:#e7e2f1}
+.intro{display:flex;align-items:baseline;gap:12px;margin:12px 0 16px;background:#fff;padding:12px 18px;border-radius:12px;border-left:5px solid var(--accent)}.intro small{color:var(--accent);font-weight:700;white-space:nowrap}.intro p{margin:0;font-size:.95em}
+.workbench{display:grid;grid-template-columns:1.22fr 1fr;background:white;border:1px solid #bac6bf;border-radius:20px;overflow:hidden;box-shadow:0 8px 24px #2b433811}
+.activity figure{margin:0;background:var(--mist);display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.activity canvas{display:block;width:100%;height:auto}.activity figcaption{padding:14px 22px;background:#173637;color:white;display:grid;gap:4px}.activity figcaption strong{letter-spacing:.06em;font-size:.84em;color:#c5decc}
+.console,.follow{padding:clamp(16px,2.2vw,30px)}.activity label{display:block;font-weight:650;margin:.7em 0 .25em;font-size:.92em}.activity select,.activity textarea{font:inherit;color:inherit;border:1px solid #96aaa8;border-radius:8px;padding:7px 10px;background:white;width:100%;max-width:100%}.activity textarea{display:block;margin-bottom:12px}
+.activity button{min-height:42px;border-radius:8px;margin:3px 5px 3px 0;padding:6px 12px;background:white;font-size:.9em}.activity button:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}.activity button[aria-pressed=true],.activity .run{background:var(--accent);color:white}.activity .run{margin-top:12px;font-weight:700}
+.activity blockquote,.activity #placard:not(:empty){background:var(--mist);border-left:5px solid var(--accent);margin:12px 0;padding:12px 16px;font-weight:650;white-space:pre-line;font-size:.92em;border-radius:0 8px 8px 0}
+.feedback:not(:empty),#scores,.observation{margin:12px 0 0;border-top:1px solid #bbc9c8;padding-top:10px;font-size:.92em;line-height:1.6}
+.observation{background:#f7fbfa;padding:10px 14px;border-radius:8px;border:1px solid #cfe2de}
+.follow{margin-top:14px;border-radius:16px;background:white;border:1px solid #bac6bf}.follow:has(#observations:empty){display:none}
+@media(max-width:860px){.workbench{grid-template-columns:1fr}.activity canvas{max-height:42vh;object-fit:contain}.intro{display:block}.five-steps-bar{grid-template-columns:1fr 1fr}}
+</style>
+        <section class="learn-card" aria-label="本课教学定位与目标">
+          <div class="learn-meta">
+            <span class="badge mod">模块02/03 模型评价与生成内容判断 · 对应PPT初中第3、5、6章《打开人工智能黑箱》</span>
+            <span class="badge lit">04 数据与模型实践素养</span><span class="badge lit">05 计算思维与工程思维素养</span><span class="badge lit">06 批判思维与创新问题解决素养</span><span class="badge lit">08 伦理安全与社会责任素养</span>
+          </div>
+          <h2>🎯 一分钟看懂：这节课教什么？</h2>
+          <ul class="learn-list"><li>【打开系统黑箱 · RAG工作流】理解知识库问答助手（检索增强生成 RAG）的内部机制：用户提问 → 检索权威知识库证据 → 模型比对证据生成回答或触发拒答保护。</li><li>【科学评价模型 · 四象限评测矩阵】超越“只看回答流不流利”的粗放印象，掌握四象限量化评价标准：✅有据答对（资料有+答对）、🛡️合理拒答（资料无+诚实说未知）、❌无据幻觉/答错（资料无却瞎编或答反）、⚠️有据漏答（资料明明有却说不知道）。</li><li>【控制变量思维 · 动态证据链实验】通过增删知识库中的关键字段（如隐藏“礼堂”地点），观察四道测试题的标准评级如何随之动态迁移，深刻理解“忠实于证据（Faithfulness）”是评测AI的核心标尺。</li><li>【工程与伦理治理 · 拒答边界与转人工】学会诊断模型的“幻觉率”与“漏答率”，设计带引用编号、知之为知之、超纲转人工的可靠校园智能体。</li></ul>
+          <div class="five-steps-bar" aria-label="五步教学法流程">
+            <span>① 情境导入</span><span>② 概念理解</span><span>③ 工具体验</span><span>④ 项目实践</span><span>⑤ 伦理反思</span>
+          </div>
+        </section>
+        <section class="activity stage" data-theme="stage" aria-label="五步教学互动实验 · 初中阶段（8年级第5课）">
+        <div class="intro"><small>五步教学互动实验 · 初中阶段（8年级第5课）</small><p>本课核心任务：① 理解检索增强（RAG）问答系统的证据比对机制；② 用【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵评测AI回答；③ 通过移除地点证据的控制变量实验，探究证据链对评测结论的决定作用。</p></div>
+        <div class="workbench"><figure><canvas width="800" height="510" role="img" aria-label="校园AI问答助手 · RAG检索黑箱拆解与2×2四象限评测看板插画"></canvas><figcaption><strong>校园AI问答助手 · RAG检索黑箱拆解与2×2四象限评测看板</strong><output id="notice"></output></figcaption></figure>
+        <div class="console"><h2>第一步：四道基准测试题逐题评测</h2>
+        <p>先看上方【校园知识库】里有什么证据，再评判AI助手的回答属于哪一象限：</p>
+        <div class="steps" data-group="case"><button type="button" data-choice="0" aria-pressed="false">第 1 题（问地点·答礼堂）</button><button type="button" data-choice="1" aria-pressed="false">第 2 题（问票价·编10元）</button><button type="button" data-choice="2" aria-pressed="false">第 3 题（问票价·答未说明）</button><button type="button" data-choice="3" aria-pressed="false">第 4 题（问场馆·答不知道）</button></div>
+        <blockquote id="case"></blockquote>
+        <label>选择你的四象限评测结论：</label>
+        <div data-group="rating"><button type="button" data-choice="0" aria-pressed="false">✅ 有据答对</button><button type="button" data-choice="1" aria-pressed="false">❌ 无据幻觉或答错</button><button type="button" data-choice="2" aria-pressed="false">🛡️ 合理拒答（守边界）</button><button type="button" data-choice="3" aria-pressed="false">⚠️ 有据漏答（检索失败）</button></div><p class="feedback" role="status"></p></div></div><div class="follow"><h2>第二步：🔬 控制变量实验——改变知识库证据，再评一次！</h2>
+        <p>保持助手刚才的4句回答一字不改，但从后台知识库里删掉【在大礼堂】这条地点信息。请点击下方按钮切换证据，重新评测第 1 题和第 4 题！</p>
+        <button id="toggle" class="run" aria-pressed="false">🔬 控制变量：隐藏通知里的【地点】证据</button>
+        <div id="scores" aria-live="polite"></div></div></section>
+        <script>(()=>{// Interactive visual canvas renderer for the 3 sample AI General Education lessons.
+const root = document.querySelector('.activity');
+const canvas = root.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+const theme = root.dataset.theme;
+
+function rect(color, x, y, w, h, r = 0) {
+    ctx.fillStyle = color;
+    if (!r) { ctx.fillRect(x, y, w, h); return; }
+    ctx.beginPath();
+    ctx.roundRect(x, y, w, h, r);
+    ctx.fill();
+}
+function strokeRect(color, x, y, w, h, lineWidth = 2, r = 0, dash = []) {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.setLineDash(dash);
+    ctx.beginPath();
+    if (r) ctx.roundRect(x, y, w, h, r);
+    else ctx.rect(x, y, w, h);
+    ctx.stroke();
+    ctx.restore();
+}
+function circle(color, x, y, r) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+}
+function text(str, x, y, color = '#142f37', font = '600 15px "Microsoft YaHei", sans-serif', align = 'left') {
+    ctx.fillStyle = color;
+    ctx.font = font;
+    ctx.textAlign = align;
+    ctx.fillText(str, x, y);
+}
+function arrow(x1, y1, x2, y2, color = '#155c67', dashed = false) {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.fillStyle = color;
+    ctx.lineWidth = 2.5;
+    if (dashed) ctx.setLineDash([6, 4]);
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+    const angle = Math.atan2(y2 - y1, x2 - x1);
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(x2, y2);
+    ctx.lineTo(x2 - 9 * Math.cos(angle - 0.4), y2 - 9 * Math.sin(angle - 0.4));
+    ctx.lineTo(x2 - 9 * Math.cos(angle + 0.4), y2 - 9 * Math.sin(angle + 0.4));
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+}
+
+function paintSnowScene(state = {}) {
+    const dev = state.device ?? 0;
+    const cond = state.condition ?? 0;
+    const names = ['🤖 校门刷脸迎宾具身机器人', '🌿 平板拍照识花', '🏠 智能语音音箱', '💡 普通电灯开关'];
+    const isAI = dev !== 3;
+    const condLabels = ['☀️ 环境正常（画面清晰 / 声音清楚）', '🕶️ 视觉干扰（逆光遮挡一半特征）', '📢 语音干扰（周围嘈杂 / 同音字）'];
+
+    // Background
+    rect('#eaf3f5', 0, 0, 800, 510);
+    rect('#124952', 0, 0, 800, 52);
+    text('小学低段第1课 · 校园与虚拟具身机器人 AI 探索实验室', 20, 32, '#ffffff', '700 17px "Microsoft YaHei", sans-serif');
+    text(condLabels[cond], 780, 32, '#ffd97d', '600 14px "Microsoft YaHei", sans-serif', 'right');
+
+    // Left: Scene Visual Box
+    rect('#ffffff', 20, 68, 430, 275, 14);
+    strokeRect('#b8d0d4', 20, 68, 430, 275, 2, 14);
+    rect('#d7ecef', 20, 68, 430, 40, 14);
+    text('当前观察：' + names[dev], 32, 94, '#103f47', '700 15px "Microsoft YaHei", sans-serif');
+    rect(isAI ? '#146c54' : '#6c757d', 326, 76, 110, 24, 12);
+    text(isAI ? '🤖 AI具身/智能' : '⚙️ 普通机器', 381, 93, '#ffffff', '700 12px "Microsoft YaHei", sans-serif', 'center');
+
+    // Draw specific device illustration inside (20, 110, 430, 230)
+    if (dev === 0) {
+        // Paracraft 3D Virtual Embodied Greeting Robot at School Gate
+        rect('#f3f8f9', 36, 120, 398, 206, 10);
+        // 3D Voxel Embodied Robot body + head + antenna
+        rect('#2b5876', 54, 188, 52, 72, 8); // torso
+        rect('#3a7bd5', 58, 144, 44, 40, 8); // voxel robot head
+        rect('#00d2ff', 77, 130, 6, 14, 2);  // antenna
+        circle(cond === 0 ? '#2ec4b6' : '#ff6b6b', 80, 128, 5); // status beacon
+        // Robot camera eyes & chest screen
+        circle('#00f5d4', 71, 162, 5);
+        circle('#00f5d4', 89, 162, 5);
+        rect('#10252b', 64, 198, 32, 24, 4);
+        text('AI', 80, 215, '#4dd4ac', '700 12px sans-serif', 'center');
+        text('具身迎宾机器人', 80, 278, '#103f47', '700 11px "Microsoft YaHei", sans-serif', 'center');
+
+        // Camera vision cone & Student face preview screen
+        rect('#10252b', 124, 150, 78, 96, 6);
+        circle('#ffdfc4', 163, 192, 21);
+        circle('#222', 155, 187, 2.5);
+        circle('#222', 171, 187, 2.5);
+        if (cond === 1) {
+            rect('#222', 145, 181, 36, 10, 2);
+            rect('#78909c', 147, 194, 32, 15, 4);
+            strokeRect('#e63946', 135, 164, 56, 54, 2, 4, [4, 3]);
+            text('遮挡 42%', 163, 237, '#ff6b6b', '700 11px sans-serif', 'center');
+        } else {
+            strokeRect('#2ec4b6', 135, 164, 56, 54, 2, 4);
+            circle('#2ec4b6', 155, 187, 3.5);
+            circle('#2ec4b6', 171, 187, 3.5);
+            circle('#2ec4b6', 163, 201, 3.5);
+            text('特征匹配 98%', 163, 237, '#4dd4ac', '700 11px sans-serif', 'center');
+        }
+        // Gate barrier & Embodied action output
+        rect('#5c767d', 222, 230, 26, 80, 4);
+        if (cond === 1 || cond === 2) {
+            rect('#e63946', 244, 242, 165, 13, 4);
+            text('⚠️ 具身动作：停步亮黄灯', 228, 178, '#c1121f', '700 13px "Microsoft YaHei", sans-serif');
+            text('语音：“请摘下遮挡或请老师核验”', 228, 202, '#7f1d1d', '600 12px "Microsoft YaHei", sans-serif');
+        } else {
+            rect('#2a9d8f', 230, 148, 13, 95, 4);
+            text('✅ 具身动作：挥手迎宾+开闸', 228, 178, '#146c54', '700 13px "Microsoft YaHei", sans-serif');
+            text('语音：“同学早安，欢迎入校！”', 228, 202, '#103f47', '600 12px "Microsoft YaHei", sans-serif');
+        }
+    } else if (dev === 1) {
+        // Plant Recognition App
+        rect('#f3f8f9', 36, 120, 398, 206, 10);
+        // Leaf drawing
+        circle('#52b788', 145, 220, 42);
+        circle('#40916c', 165, 210, 34);
+        rect('#2d6a4f', 115, 218, 75, 4);
+        if (cond === 1) {
+            rect('#374151', 125, 180, 68, 65, 6);
+            text('阴影遮挡叶片边缘', 159, 217, '#ffffff', '600 11px sans-serif', 'center');
+        }
+        // Tablet frame
+        strokeRect(cond === 1 ? '#e63946' : '#2a9d8f', 95, 162, 130, 115, 3, 10, [6, 4]);
+        text(cond === 1 ? '❓ 疑似：塑料绿植 (38%)' : '✅ 识别结果：月季叶 (96%)', 245, 195, cond === 1 ? '#c1121f' : '#146c54', '700 14px "Microsoft YaHei", sans-serif');
+        text(cond === 1 ? '原因：关键叶脉与锯齿被遮挡' : '依据：卵形叶片 + 边缘锯齿特征', 245, 225, '#455a64', '13px "Microsoft YaHei", sans-serif');
+    } else if (dev === 2) {
+        // Smart Voice Speaker
+        rect('#f3f8f9', 36, 120, 398, 206, 10);
+        rect('#2b4c59', 82, 185, 76, 105, 18);
+        circle('#4dd4ac', 120, 205, 18);
+        circle('#122b34', 120, 205, 10);
+        // Sound waves
+        for (let i = 1; i <= 3; i++) {
+            strokeRect(cond === 2 ? '#e63946' : '#2a9d8f', 168 + i * 12, 205 - i * 12, 6, i * 24, 2, 3);
+        }
+        rect('#ffffff', 225, 145, 190, 65, 8);
+        strokeRect('#90b4bc', 225, 145, 190, 65, 1.5, 8);
+        text('🎙️ 你说：“今天下午下雪”', 238, 170, '#142f37', '600 13px "Microsoft YaHei", sans-serif');
+        text(cond === 2 ? '📝 转写：“今天下午下学”(错!)' : '📝 转写：“今天下午下雪”(准!)', 238, 196, cond === 2 ? '#c1121f' : '#146c54', '700 13px "Microsoft YaHei", sans-serif');
+
+        rect('#e3f2fd', 225, 225, 190, 65, 8);
+        text(cond === 2 ? '🔊 音箱答：“放学请注意安全”' : '🔊 音箱答：“下雪天路面湿滑”', 238, 255, '#0d3b66', '600 13px "Microsoft YaHei", sans-serif');
+        text(cond === 2 ? '⚠️ 嘈杂+同音字导致语音识别偏差' : '✅ 语音识别 + 语义理解 + 语音合成', 238, 278, '#555', '12px "Microsoft YaHei", sans-serif');
+    } else {
+        // Ordinary Light Switch
+        rect('#f3f8f9', 36, 120, 398, 206, 10);
+        rect('#d8e2dc', 85, 175, 84, 100, 8);
+        rect('#ffffff', 105, 198, 44, 54, 4);
+        circle('#ffd166', 310, 210, 34);
+        rect('#adb5bd', 298, 244, 24, 18, 3);
+        arrow(175, 225, 265, 225, '#6c757d');
+        text('电线物理通断', 220, 212, '#495057', '600 12px "Microsoft YaHei", sans-serif', 'center');
+        text('⚙️ 普通机器：只会按固定电路通断亮灭', 75, 152, '#495057', '700 14px "Microsoft YaHei", sans-serif');
+        text('不会看图像、不会听声音、没有AI模型判断', 75, 305, '#6c757d', '13px "Microsoft YaHei", sans-serif');
+    }
+
+    // Right: AI Principle Box (470, 68, 310, 275)
+    rect('#ffffff', 470, 68, 310, 275, 14);
+    strokeRect('#b8d0d4', 470, 68, 310, 275, 2, 14);
+    rect('#155c67', 470, 68, 310, 40, 14);
+    text('🧠 为什么它是（或不是）AI？', 488, 94, '#ffffff', '700 15px "Microsoft YaHei", sans-serif');
+
+    const steps = isAI ? [
+        ['① 感知环境（输入）', dev === 2 ? '麦克风采集声音波形' : '摄像头采集图像画面', '#e0f2f1'],
+        ['② AI模型分析（大脑）', cond === 0 ? '提取特征并与训练模型匹配' : '⚠️ 特征受干扰，匹配度下降', cond === 0 ? '#e0f2f1' : '#ffebee'],
+        ['③ 智能反应（输出）', cond === 0 ? '准确识别并做出行动 (96%+)' : '❌ 识别偏差：需人工核实！', cond === 0 ? '#e8f5e9' : '#fff3e0']
+    ] : [
+        ['① 物理按键（输入）', '手指按下塑料翘板开关', '#f1f3f5'],
+        ['② 固定电路（无AI模型）', '金属片接触导电，不会动脑分析', '#f1f3f5'],
+        ['③ 固定动作（输出）', '不管周围是谁，永远只管通电亮灯', '#f1f3f5']
+    ];
+    steps.forEach(([t, d, bg], idx) => {
+        const y = 122 + idx * 70;
+        rect(bg, 486, y, 278, 54, 8);
+        text(t, 498, y + 22, '#103f47', '700 13px "Microsoft YaHei", sans-serif');
+        text(d, 498, y + 43, '#37474f', '12.5px "Microsoft YaHei", sans-serif');
+        if (idx < 2) arrow(625, y + 54, 625, y + 70, '#155c67');
+    });
+
+    // Bottom: Five-Step & Safety Summary Banner (20, 358, 760, 134)
+    rect('#ffffff', 20, 358, 760, 134, 14);
+    strokeRect('#b8d0d4', 20, 358, 760, 134, 2, 14);
+    rect('#fff8e6', 36, 372, 728, 48, 8);
+    text('📌 核心结论：AI应用 = 感知（看/听）+ 模型判断 + 行动；但环境遮挡或嘈杂时 AI 也会出错！', 50, 401, '#8a5a00', '700 14px "Microsoft YaHei", sans-serif');
+    rect('#e8f5e9', 36, 430, 728, 48, 8);
+    text('🛡️ 小学低段《AI安全小约定》：不输入真实姓名、家庭住址、电话号码、身份证号，不上传同学隐私照片！', 50, 459, '#1b5e20', '700 14px "Microsoft YaHei", sans-serif');
+}
+
+function paintGalleryScene(state = {}) {
+    const promptMode = state.promptMode ?? 0; // 0 = vague prompt, 1 = constrained prompt
+    const claimIdx = state.claimIdx ?? 0;
+    const verdict = state.verdict;
+    const published = state.published || '';
+
+    rect('#faf3eb', 0, 0, 800, 510);
+    rect('#7c3626', 0, 0, 800, 52);
+    text('小学高段样课 · 生成式AI提示词与“AI幻觉”事实核查台', 20, 32, '#ffffff', '700 17px "Microsoft YaHei", sans-serif');
+    text(promptMode === 0 ? '当前实验：模糊无约束提示词（易出幻觉）' : '当前实验：限定资料提示词（减少幻觉）', 780, 32, '#ffe0b2', '600 14px "Microsoft YaHei", sans-serif', 'right');
+
+    // Left Box: Reliable Archive Card (20, 68, 250, 280)
+    rect('#ffffff', 20, 68, 250, 280, 12);
+    strokeRect('#d4b098', 20, 68, 250, 280, 2, 12);
+    rect('#95452c', 20, 68, 250, 38, 12);
+    text('📋 馆藏真实档案（核查依据）', 34, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    const archives = [
+        ['[档案1] 展品与时间', '五年级科学社本周五展出', '《校园气象站记录仪》'],
+        ['[档案2] 展出数量', '共展出 3 份手绘观测图表', '（记录连续7天气温降水）'],
+        ['[档案3] 指导与体验', '林老师担任指导教师，', '参观者可现场体验读数']
+    ];
+    archives.forEach(([h, l1, l2], idx) => {
+        const y = 118 + idx * 72;
+        const active = (claimIdx === 0 && (idx === 0 || idx === 2)) || (claimIdx === 1 && idx === 1);
+        rect(active ? '#fff3e0' : '#f8f5f2', 32, y, 226, 62, 8);
+        strokeRect(active ? '#e65100' : '#e0d4c8', 32, y, 226, 62, active ? 2 : 1, 8);
+        text(h, 42, y + 20, '#7c3626', '700 12.5px "Microsoft YaHei", sans-serif');
+        text(l1, 42, y + 39, '#2b2b2b', '12px "Microsoft YaHei", sans-serif');
+        text(l2, 42, y + 55, '#555555', '12px "Microsoft YaHei", sans-serif');
+    });
+
+    // Center Box: AI Generation & Verification Lens (290, 68, 240, 280)
+    rect('#ffffff', 290, 68, 240, 280, 12);
+    strokeRect('#d4b098', 290, 68, 240, 280, 2, 12);
+    rect('#b85d3b', 290, 68, 240, 38, 12);
+    text('🤖 AI词语接龙与事实比对', 304, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    const claimTitles = ['正在核查：第 1 句', '正在核查：第 2 句', '正在核查：第 3 句'];
+    const claimSnippets = [
+        ['“科学社周五展出气象仪”', '✅ 对应[档案1][档案3]', '#2e7d32', '#e8f5e9'],
+        ['“一共展出五份观测图表”', '❌ 与[档案2]“3份”冲突！', '#c62828', '#ffebee'],
+        ['“曾获市级一等奖、首次展”', '❓ 档案未提！属AI脑补幻觉', '#ef6c00', '#fff3e0']
+    ];
+    const [snip, diag, color, bg] = claimSnippets[claimIdx];
+    text(claimTitles[claimIdx], 306, 130, '#7c3626', '700 14px "Microsoft YaHei", sans-serif');
+    rect(bg, 304, 144, 212, 78, 8);
+    strokeRect(color, 304, 144, 212, 78, 2, 8);
+    text(snip, 314, 172, '#1f2937', '700 13px "Microsoft YaHei", sans-serif');
+    text(diag, 314, 202, color, '700 12.5px "Microsoft YaHei", sans-serif');
+
+    rect('#f8f5f2', 304, 236, 212, 96, 8);
+    text('💡 为什么AI会“多说一句”？', 314, 258, '#7c3626', '700 12.5px "Microsoft YaHei", sans-serif');
+    text('大模型按概率接龙高频词（如', 314, 279, '#444', '12px "Microsoft YaHei", sans-serif');
+    text('“展览→荣获大奖”），看起来很', 314, 297, '#444', '12px "Microsoft YaHei", sans-serif');
+    text('通顺，但未核对真实档案！', 314, 315, '#444', '12px "Microsoft YaHei", sans-serif');
+
+    // Evidence connector arrows
+    if (claimIdx === 0) arrow(258, 148, 304, 175, '#2e7d32');
+    else if (claimIdx === 1) arrow(258, 220, 304, 185, '#c62828', true);
+
+    // Right Box: Final Placard Preview (550, 68, 230, 280)
+    rect('#ffffff', 550, 68, 230, 280, 12);
+    strokeRect('#d4b098', 550, 68, 230, 280, 2, 12);
+    rect('#4a3531', 550, 68, 230, 38, 12);
+    text('🖼️ 展厅正式展牌预览', 566, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    rect('#fffdf9', 564, 118, 202, 146, 8);
+    strokeRect('#c89f81', 564, 118, 202, 146, 1.5, 8);
+    text('《校园气象站记录仪》展签', 576, 140, '#7c3626', '700 13px "Microsoft YaHei", sans-serif');
+    const previewLines = (published || '本周五由五年级科学社展出3份手绘气象图表（林老师指导）。').match(/.{1,13}/g) || [];
+    previewLines.slice(0, 4).forEach((line, idx) => {
+        text(line, 576, 166 + idx * 20, '#222', '12.5px "Microsoft YaHei", sans-serif');
+    });
+    rect('#e8f5e9', 564, 276, 202, 58, 8);
+    text('✅ 已核对馆藏档案[1]-[3]', 574, 298, '#1b5e20', '700 12px "Microsoft YaHei", sans-serif');
+    text('📝 已标注：AIChat初稿+人工审校', 574, 318, '#2e7d32', '11.5px "Microsoft YaHei", sans-serif');
+
+    // Bottom: Three-Step Verification & Governance Rule (20, 362, 760, 130)
+    rect('#ffffff', 20, 362, 760, 130, 12);
+    strokeRect('#d4b098', 20, 362, 760, 130, 2, 12);
+    text('🔍 生成式AI内容“三步核查法”与诚信规范：', 38, 390, '#7c3626', '700 15px "Microsoft YaHei", sans-serif');
+    const boxes = [
+        ['1. 有据可查（保留）', '时间、数量、人物在可靠原文中有直接原句支持', '#e8f5e9', '#1b5e20'],
+        ['2. 事实冲突（更正）', '数字或属性与原文矛盾（如3份写成5份），按原文改回', '#ffebee', '#b71c1c'],
+        ['3. 无据幻觉（删/查）', '原文未提的奖项或“首次”，必须删去或标明待查并附AI使用声明', '#fff3e0', '#e65100']
+    ];
+    boxes.forEach(([t, d, bg, fg], idx) => {
+        const x = 36 + idx * 246;
+        rect(bg, x, 404, 234, 72, 8);
+        text(t, x + 12, 428, fg, '700 13px "Microsoft YaHei", sans-serif');
+        const parts = d.match(/.{1,17}/g) || [d];
+        parts.slice(0, 2).forEach((p, pi) => text(p, x + 12, 448 + pi * 18, '#333', '11.5px "Microsoft YaHei", sans-serif'));
+    });
+}
+
+function paintStageScene(state = {}) {
+    const hidden = Boolean(state.hidden);
+    const current = state.current ?? 0;
+    const records = state.records || [];
+
+    rect('#f1eff8', 0, 0, 800, 510);
+    rect('#3f2e66', 0, 0, 800, 52);
+    text('初中样课 · 校园问答助手 RAG 黑箱拆解与四象限评测看板', 20, 32, '#ffffff', '700 17px "Microsoft YaHei", sans-serif');
+    text(hidden ? '🔬 实验状态：已移除知识库[E2]地点' : '📚 实验状态：完整知识库（含时间与地点）', 780, 32, '#ffd166', '600 14px "Microsoft YaHei", sans-serif', 'right');
+
+    // Left Box: Knowledge Base (RAG Evidence Store) (20, 68, 250, 275)
+    rect('#ffffff', 20, 68, 250, 275, 12);
+    strokeRect('#c5bce0', 20, 68, 250, 275, 2, 12);
+    rect('#59457f', 20, 68, 250, 38, 12);
+    text('📚 校园权威知识库 (RAG)', 34, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    const docs = [
+        ['[E1] 举办时间（已收录）', '本周六 14:00 举行校园演出', '#e8f5e9', '#1b5e20'],
+        [hidden ? '[E2] 举办地点（已移除!）' : '[E2] 举办地点（已收录）', hidden ? '❌ 地点字段已从通知中删去' : '在学校大礼堂举行', hidden ? '#ffebee' : '#e8f5e9', hidden ? '#c62828' : '#1b5e20'],
+        ['[缺失项] 票价与私人电话', '通知未说明票价（无证据）', '#fff3e0', '#e65100']
+    ];
+    docs.forEach(([h, d, bg, fg], idx) => {
+        const y = 118 + idx * 72;
+        rect(bg, 32, y, 226, 60, 8);
+        text(h, 42, y + 23, fg, '700 12.5px "Microsoft YaHei", sans-serif');
+        text(d, 42, y + 45, '#333333', '12px "Microsoft YaHei", sans-serif');
+    });
+
+    // Center Box: Black-Box RAG Pipeline for Current Case (286, 68, 228, 275)
+    rect('#ffffff', 286, 68, 228, 275, 12);
+    strokeRect('#c5bce0', 286, 68, 228, 275, 2, 12);
+    rect('#4a3b6b', 286, 68, 228, 38, 12);
+    text('⚙️ 当前测试题黑箱追踪', 302, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    const qList = ['Q1 问：演出在哪里？', 'Q2 问：门票多少钱？', 'Q3 问：门票多少钱？', 'Q4 问：演出在哪里？'];
+    const aList = ['答：“在学校大礼堂。”', '答：“每张票10元。”', '答：“通知未写明票价。”', '答：“通知未写明地点。”'];
+    const hasEvidence = [hidden ? false : true, false, false, hidden ? false : true][current];
+    const expectedIdx = (hidden ? [1, 1, 2, 2] : [0, 1, 2, 3])[current];
+    const ratingNames = ['✅ 有据答对', '❌ 无据幻觉/答错', '🛡️ 合理拒答', '⚠️ 有据漏答'];
+
+    const flow = [
+        ['① 用户提问', qList[current], '#f3f0fa'],
+        ['② 知识库检索证据', hasEvidence ? '🟢 命中[E2]地点证据' : '🟠 知识库无此项证据', hasEvidence ? '#e8f5e9' : '#fff3e0'],
+        ['③ 助手实际输出', aList[current], '#f3f0fa'],
+        ['④ 科学评测归类', '应评为：' + ratingNames[expectedIdx], '#ede7f6']
+    ];
+    flow.forEach(([t, d, bg], idx) => {
+        const y = 114 + idx * 54;
+        rect(bg, 298, y, 204, 46, 6);
+        text(t, 308, y + 18, '#4a3b6b', '700 11.5px "Microsoft YaHei", sans-serif');
+        text(d, 308, y + 36, '#1f2937', '600 12px "Microsoft YaHei", sans-serif');
+    });
+
+    // Right Box: 2x2 Four-Quadrant Evaluation Matrix (530, 68, 250, 275)
+    rect('#ffffff', 530, 68, 250, 275, 12);
+    strokeRect('#c5bce0', 530, 68, 250, 275, 2, 12);
+    rect('#59457f', 530, 68, 250, 38, 12);
+    text('📊 四象限评测矩阵 (2×2)', 546, 93, '#ffffff', '700 14px "Microsoft YaHei", sans-serif');
+
+    const quads = [
+        [0, '✅ 有据答对', '有证据 + 准确作答', 542, 118, '#e8f5e9', '#1b5e20'],
+        [2, '🛡️ 合理拒答', '无证据 + 诚实说未知', 660, 118, '#e3f2fd', '#0d47a1'],
+        [3, '⚠️ 有据漏答', '有证据 + 却说不知道', 542, 224, '#fff8e1', '#e65100'],
+        [1, '❌ 无据幻觉', '无证据 + 凭空瞎编', 660, 224, '#ffebee', '#b71c1c']
+    ];
+    quads.forEach(([qCode, title, sub, x, y, bg, fg]) => {
+        const count = records.filter(v => v === qCode).length;
+        const isCurrentExpected = expectedIdx === qCode;
+        rect(bg, x, y, 108, 96, 8);
+        strokeRect(isCurrentExpected ? fg : '#d0c8e8', x, y, 108, 96, isCurrentExpected ? 2.5 : 1, 8);
+        text(title, x + 8, y + 24, fg, '700 12.5px "Microsoft YaHei", sans-serif');
+        text(sub, x + 8, y + 44, '#444', '10.5px "Microsoft YaHei", sans-serif');
+        text('已评：' + count + ' 题', x + 8, y + 78, fg, '700 14px "Microsoft YaHei", sans-serif');
+    });
+
+    // Bottom Summary Box (20, 358, 760, 134)
+    rect('#ffffff', 20, 358, 760, 134, 12);
+    strokeRect('#c5bce0', 20, 358, 760, 134, 2, 12);
+    rect('#ede7f6', 36, 372, 728, 48, 8);
+    text('🎯 核心原理：评价生成式AI不能只看“话术流不流利”，必须对照给定证据评判【忠实度】与【拒答边界】！', 50, 401, '#3f2e66', '700 13.5px "Microsoft YaHei", sans-serif');
+    rect('#fff3e0', 36, 430, 728, 48, 8);
+    text('🔬 控制变量发现：当移除[E2]地点后，仍答“在大礼堂”会从【有据答对】变成【无据幻觉】，答“未说明”则变为【合理拒答】！', 50, 459, '#bf360c', '700 13px "Microsoft YaHei", sans-serif');
+}
+
+window.__paintLessonScene = function(state = {}) {
+    if (theme === 'snow') paintSnowScene(state);
+    if (theme === 'gallery') paintGalleryScene(state);
+    if (theme === 'stage') paintStageScene(state);
+};
+window.__paintLessonScene({});
+
+const find = id => root.querySelector('#' + id);
+const feedback = root.querySelector('.feedback');
+function group(name) { return root.querySelector('[data-group="' + name + '"]'); }
+function select(name, value) {
+    const g = group(name);
+    if (!g) return;
+    for (const button of g.querySelectorAll('button'))
+        button.setAttribute('aria-pressed', String(Number(button.dataset.choice) === value));
+}
+function onChoice(name, fn) {
+    const g = group(name);
+    if (!g) return;
+    g.addEventListener('click', event => {
+        const button = event.target.closest('button');
+        if (!button) return;
+        const value = Number(button.dataset.choice);
+        select(name, value);
+        fn(value);
+    });
+}
+
+if (theme === 'snow') {
+    let device = 0, prediction = null, condition = 0, trial = 0;
+    const devNames = ['🤖 校门刷脸迎宾具身机器人', '🌿 平板拍照识花App', '🏠 客厅智能语音音箱', '💡 教室普通电灯开关'];
+    const expectedClass = [0, 0, 1, 2]; // 0=图像识别AI, 1=语音交互AI, 2=普通机器无AI
+    const classLabels = ['🤖 AI：图像识别（机器会看+具身迎宾）', '🤖 AI：语音交互（机器会听会说）', '⚙️ 普通机器（固定电路，无AI）'];
+    const condLabels = ['☀️ 正常清晰', '🕶️ 遮挡一半/逆光', '📢 环境嘈杂/同音字'];
+
+    function syncSnowCanvas() {
+        window.__paintLessonScene({ device, condition });
+    }
+    select('condition', 0);
+
+    find('density').onchange = () => {
+        device = Number(find('density').value);
+        prediction = null;
+        select('prediction', -1);
+        syncSnowCanvas();
+        feedback.textContent = '已切换到「' + devNames[device] + '」，请先判断它属于哪一类、用了什么本领。';
+    };
+
+    onChoice('prediction', i => {
+        prediction = i;
+        const right = expectedClass[device] === i;
+        feedback.textContent = (right ? '✅ 分类判断正确！' : '💡 再想一想：该设备应归为「' + classLabels[expectedClass[device]] + '」。') + ' 接下来可切换环境条件并点击【运行识别测试】。';
+    });
+
+    onChoice('condition', c => {
+        condition = c;
+        syncSnowCanvas();
+        feedback.textContent = '已切换实验条件为「' + condLabels[c] + '」，点击【运行识别测试并记录】观察结果。';
+    });
+
+    find('reply').onclick = () => {
+        const card = document.createElement('p');
+        card.className = 'observation';
+        card.textContent = '🪪 我的《AI在哪里观察卡》｜观察设备：' + devNames[device] + ' ｜ 核心类型：' + classLabels[expectedClass[device]] + ' ｜ 识别边界：当遇到遮挡或嘈杂干扰时可能认错，需人工核实 ｜ 🛡️ 安全约定：绝不输入真实姓名、家庭住址、电话号码与同学隐私照片！';
+        find('observations').prepend(card);
+        feedback.textContent = '✅ 已生成你的《AI在哪里观察卡》与安全小约定（见下方记录栏）！';
+        window.dispatchEvent(new CustomEvent('lesson1:lab-complete', { detail: { type: 'card', device: devNames[device] } }));
+    };
+
+    find('run').onclick = () => {
+        if (prediction === null) {
+            feedback.textContent = '请先在第 2 步选择你对该设备类别与AI本领的判断！';
+            return;
+        }
+        syncSnowCanvas();
+        const actualClass = expectedClass[device];
+        let resultText = '';
+        if (device === 3) {
+            resultText = '普通电灯开关：不管光线亮暗或周围吵不吵，按下去只会机械接通电路，没有传感器与AI模型。';
+        } else if ((device === 0 || device === 1) && condition === 1) {
+            resultText = '⚠️ 视觉受遮挡/逆光干扰！图像关键特征丢失，具身机器人识别置信度降至 42% 并主动亮黄灯请老师人工核验（说明AI也会出错）。';
+        } else if (device === 2 && condition === 2) {
+            resultText = '⚠️ 语音受嘈杂/同音字干扰！把“今天下午下雪”误转写为“今天下午下学”（说明语音识别需核对文字）。';
+        } else {
+            resultText = '✅ 环境清晰正常：传感器顺利采集特征 → AI模型高置信度（98%）匹配成功 → 具身迎宾机器人挥手问好并开闸！';
+        }
+        find('weather').textContent = '当前设备：' + devNames[device] + ' · 条件：' + condLabels[condition] + ' · ' + (actualClass === prediction ? '分类判断正确' : '分类待修正');
+        feedback.textContent = (actualClass === prediction ? '🎯 类别判断吻合！' : '📌 提示：该设备属于「' + classLabels[actualClass] + '」。') + ' ' + resultText;
+        const entry = document.createElement('p');
+        entry.className = 'observation';
+        entry.textContent = '实验 ' + (++trial) + ' ｜ 设备：' + devNames[device] + ' ｜ 条件：' + condLabels[condition] + ' ｜ 你的判断：' + classLabels[prediction] + ' ｜ 观察结论：' + resultText;
+        find('observations').prepend(entry);
+        window.dispatchEvent(new CustomEvent('lesson1:lab-complete', { detail: { type: 'run', trial, device: devNames[device], condition: condLabels[condition] } }));
+    };
+}
+
+if (theme === 'gallery') {
+    const claims = [
+        '第1句：“五年级科学社团于本周五展出《校园气象站记录仪》，由林老师指导，现场可体验温度计读数。”',
+        '第2句：“本次展览一共展出了五份精美的手绘气象观测图表。”',
+        '第3句：“该作品曾荣获全市青少年科技创新一等奖，是本校历史上第一次气象展。”'
+    ];
+    const reasons = [
+        '【有据可查】展览时间、社团、展品名称由[档案1]支持，林老师指导与体验读数由[档案3]直接支持。',
+        '【事实冲突】草稿写的“五份”与[档案2]明确记载的“共展出 3 份手绘观测图表”直接冲突，必须更正为 3 份！',
+        '【无据幻觉】[档案1]-[3]根本没有提到获奖记录或“历史上第一次”，属于生成式AI按高频赞美词概率接龙脑补出的“幻觉”，必须删去或标为待查！'
+    ];
+    const answers = [];
+    let current = 0, promptMode = 0, publishedText = '';
+
+    function refreshGallery() {
+        window.__paintLessonScene({ promptMode, claimIdx: current, verdict: answers[current], published: publishedText });
+    }
+
+    select('promptmode', 0);
+    onChoice('promptmode', mode => {
+        promptMode = mode;
+        refreshGallery();
+        feedback.textContent = mode === 0
+            ? '⚠️ 实验观察：使用【模糊无约束提示词（写得越轰动越好）】时，大模型为了凑出华丽辞藻，极易脑补出“五份图表、荣获一等奖”等AI幻觉！'
+            : '✅ 实验观察：使用【限定资料提示词（仅据档案[1]-[3]编写，不编造未提奖项）】时，能大幅减少幻觉，但发布前仍需人工逐句核查！';
+    });
+
+    function show(i) {
+        current = i;
+        select('claim', i);
+        select('verdict', answers[i]);
+        find('claim').textContent = claims[i];
+        feedback.textContent = answers[i] === undefined ? '请对照左侧【馆藏真实档案[1]-[3]】，判断这句话属于哪一类。' : reasons[i];
+        refreshGallery();
+    }
+    onChoice('claim', show);
+    onChoice('verdict', v => {
+        answers[current] = v;
+        feedback.textContent = (v === current ? '✅ 核查判断成立！' : '🔍 请再对照馆藏档案核对：') + reasons[current];
+        refreshGallery();
+    });
+    find('publish').onclick = () => {
+        const text = find('edit').value.trim();
+        if (!text) {
+            find('placard').textContent = '请先写下核验修改后的展签内容。';
+            return;
+        }
+        const hasConflict = /五份/.test(text);
+        const hasHallucination = /一等奖|首次|第一次|大奖/.test(text);
+        publishedText = text;
+        refreshGallery();
+        if (hasConflict || hasHallucination) {
+            find('placard').textContent = '⚠️ 总编辑审校提醒：你的展签里还残留着' + (hasConflict ? '与[档案2]冲突的“五份”（应为3份）' : '') + (hasHallucination ? '档案未提及的“获奖/首次”幻觉词' : '') + '，请继续修改后再发布！';
+        } else {
+            find('placard').textContent = '✅ 正式展签（已通过事实核验）\n' + text + '\n\n📝【AI辅助创作声明】本展签初稿由 AIChat 生成，经学生编辑对照馆藏档案[1]-[3]更正图表数量并删去无据获奖描述后定稿。';
+        }
+    };
+    show(0);
+}
+
+if (theme === 'stage') {
+    let hidden = false, current = 0;
+    const labels = ['✅ 有据答对', '❌ 无据幻觉或答错', '🛡️ 合理拒答（守边界）', '⚠️ 有据漏答（检索失败）'];
+    const questions = [
+        '同学提问 1：“请问本周六的科技节演出在哪里举行？”',
+        '同学提问 2：“去大礼堂看演出，门票多少钱一张？”',
+        '同学提问 3：“去大礼堂看演出，门票多少钱一张？”',
+        '同学提问 4：“请问这次演出在学校哪个场馆举办？”'
+    ];
+    const replies = [
+        'AI助手回答：“本周六演出在学校大礼堂举行（引用依据：[E2]）。”',
+        'AI助手回答：“门票每张 10 元，凭学生证半价。”',
+        'AI助手回答：“当前通知中没有说明票价信息，建议咨询校团委服务台。”',
+        'AI助手回答：“抱歉，通知里没有提到举办地点，无法得知。”'
+    ];
+    const records = [[], []];
+
+    function display() {
+        const record = records[Number(hidden)];
+        select('case', current);
+        select('rating', record[current]);
+        find('case').textContent = questions[current] + '\n' + replies[current];
+        find('notice').textContent = hidden
+            ? '🔬 当前知识库（已移除[E2]地点）：[E1] 本周六14:00举行科技节演出 ｜ [E3] 现场设AI体验区（无地点、无票价）'
+            : '📚 当前知识库（完整证据）：[E1] 本周六14:00举行科技节演出 ｜ [E2] 地点在学校大礼堂 ｜ [E3] 现场设AI体验区（无票价）';
+        find('scores').textContent = '📊 当前轮次已评测 ' + record.filter(Number.isInteger).length + ' / 4 题 ｜ ' + labels.map((label, i) => label + '：' + record.filter(v => v === i).length + ' 题').join('　');
+        window.__paintLessonScene({ hidden, current, records: record });
+    }
+
+    onChoice('case', i => {
+        current = i;
+        feedback.textContent = '';
+        display();
+    });
+
+    onChoice('rating', v => {
+        const expected = (hidden ? [1, 1, 2, 2] : [0, 1, 2, 3])[current];
+        records[Number(hidden)][current] = v;
+        display();
+        const explanations = hidden ? [
+            '当[E2]地点被移除后，知识库已无地点证据，助手仍凭空回答“在大礼堂”就从【有据答对】变成了【❌ 无据幻觉】！',
+            '知识库始终没有票价信息，助手编造“10元”属于典型的【❌ 无据幻觉】。',
+            '知识库没有票价信息，助手诚实说明未提及并引导人工咨询，属于【🛡️ 合理拒答】。',
+            '当[E2]地点被移除后，知识库确实没有地点信息，此时助手回答“通知里没有提到地点”就从【有据漏答】变成了得当的【🛡️ 合理拒答】！'
+        ] : [
+            '知识库[E2]明确写着“在学校大礼堂”，助手准确命中并引用依据，属于【✅ 有据答对】。',
+            '知识库中根本没有票价，助手却自信编出“10元、半价”，属于高风险的【❌ 无据幻觉】！',
+            '知识库未提票价，助手诚实说明未说明并指引人工咨询，守住了边界，属于【🛡️ 合理拒答】。',
+            '知识库[E2]明明写着“在大礼堂”，只因提问把“地点”换成了同义词“场馆”助手就说不知道，属于【⚠️ 有据漏答（检索失败）】。'
+        ];
+        feedback.textContent = (expected === v ? '🎯 评测判定完全准确！' : '🔍 再核对一次证据链：本题应归为「' + labels[expected] + '」。') + ' ' + explanations[current];
+    });
+
+    find('toggle').onclick = () => {
+        hidden = !hidden;
+        find('toggle').setAttribute('aria-pressed', String(hidden));
+        find('toggle').textContent = hidden ? '🔄 恢复知识库里的【[E2]地点】证据' : '🔬 控制变量：隐藏通知里的【[E2]地点】证据';
+        display();
+        feedback.textContent = hidden
+            ? '🔬 已从知识库移除[E2]地点！请重新点击【第 1 题】和【第 4 题】，看看同样的回答在失去证据支持后应该改评为什么！'
+            : '📚 已恢复完整知识库（含[E2]大礼堂地点）。';
+    };
+    display();
+}
+})();</script>
+<section class="card-box turnkey-standard-box" aria-label="开箱即用AI工作台与Paracraft工具箱">
+  <h2>⚡ 开箱即用工具箱（培养超级个体：一键复制提示词 / 一键打开工作台）</h2>
+  <p class="toast-bar" id="turnkey-toast" role="status" aria-live="polite">💡 点击下方按钮即可一键复制本课 AI 工作台提示词，或直接打开 AI 工作台与 Paracraft！</p>
+  <label for="std-ai-prompt-8-5"><strong>💬 本课 AI 工作台可直接输入的文字（可按需修改后一键复制）：</strong></label>
+  <textarea id="std-ai-prompt-8-5" rows="5" class="turnkey-textarea">我正在学习《超级学生AI通识课》8年级第5课《生成式AI与模型评测：给校园问答助手做“四象限体检”》（培养超级个体：学会清楚说出意图、控制变量核验结果、遵守AI安全底线）。
+【我的目标任务】在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。
+【第一轮正常达标要求】准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。
+【第二轮控制变量对比实验】开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。
+【安全与伦理边界】在明确任务与记录要求下分析生成内容的逻辑、事实与偏差；智能体须配置拒答边界与转人工机制。
+请帮我：
+1. 用清晰易懂的步骤，指导我完成第一轮基础作品；
+2. 帮我设计第二轮“只改变一个条件”的对比实验观察表；
+3. 如果本课涉及 Paracraft 3D 世界或虚拟具身机器人，请提供可直接复制的快捷命令或 CodeBlock 代码方块脚本。</textarea>
+  <div class="turnkey-actions">
+    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-8-5">📋 一键复制 AI 工作台文字</button>
+    <button type="button" class="action-btn accent open-ai-textarea-btn" data-target="std-ai-prompt-8-5">🚀 一键打开 AI 工作台（自动复制文字）</button>
+
+  </div>
+
+</section><details open><summary>🛠️ 展开上机实践步骤、随堂检测与评价标准</summary><section><h2>🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）</h2><ol><li>【第1步｜明确问题与环境准备】打开 AIChat，新建一个空白对话。 回顾课堂导入问题：抛出核心思辨题：通知只写了“周六在礼堂演出”，问地点和问票价时助手都回答“我不知道”，这两个“不知道”能得一样的分数吗？</li><li>【第2步｜说出意图与基础实操】使用上方【一键复制 AI 工作台文字】或进入 Paracraft：在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。</li><li>【第3步｜核对第一轮证据】检查是否达到预期结果：准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。</li><li>【第4步｜控制变量对比实验】只改变一个条件再运行一次：开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。</li><li>【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。</li></ol></section><section><h2>📋 动手操作分步清单</h2><p>教师大屏打开【校园AI问答助手 · 黑箱拆解与四象限评测实验室】。学生准备 AIChat 环境与测试记录表。使用模拟校历通知数据，严格遵守数据最小化原则。</p><ol><li>【第一步｜认识黑箱与四象限标准】观察画布左侧的【校园权威知识库（含[E1]时间、[E2]地点、[E3]体验区，不含票价与私人电话）】与中间的【RAG检索生成流水线】，明确“有据答对、合理拒答、无据幻觉、有据漏答”四类评判依据。</li><li>【第二步｜基准测试集逐题评测（4题）】在工作台中依次点击第1—4题，对照当前知识库证据，为助手的4条回答选出准确的评测分类，观察画布右侧【2×2四象限矩阵】与安全得分的变化。</li><li>【第三步｜控制变量实验：抽掉“地点”证据再评一次！】点击工作台下方的【🔬 控制变量：从知识库中移除[E2]地点信息】，保持助手原来的4条回答一字不改，重新思考并评测第1题（仍答“在大礼堂”）和第4题（答“未写明地点”）现在应该归入哪一类！</li><li>【第四步｜出具工程调优与治理报告】在工作台底部勾选针对“无据幻觉”和“有据漏答”的系统提示词与工程调优策略，生成《校园AI问答助手评测与治理报告》，并在 AIChat 中用新对话实测验证。</li></ol><details><summary>遇到困难时展开排障锦囊</summary><p>评测口诀（两步判定法）：第一步先遮住AI的回答，只看【当前知识库】里有没有这道题的证据？① 如果知识库【有证据】：AI答对并引证＝✅有据答对；AI答错＝❌无据或答错；AI说不知道＝⚠️有据漏答。② 如果知识库【没证据】：AI诚实说未提及＝🛡️合理拒答；AI凭空编出一个数字或地点＝❌无据幻觉！</p></details></section><section><h2>✅ 随堂自测（先判断，再看证据解析）</h2><fieldset data-answer="有据答对"><legend>知识库：『[E1]周六14:00举办科技节；[E2]地点在大礼堂（未提票价）。』 提问：『科技节在哪里举办？』 助手答：『在大礼堂（依据[E2]）。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]有明确地点证据，助手准确命中并标出依据。"></p></fieldset><fieldset data-answer="无据幻觉（高危错误）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『门票每张10元，学生半价。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库中根本没有票价信息，助手却自信地编造出“10元、半价”，属于典型的生成式AI幻觉，会严重误导师生。"></p></fieldset><fieldset data-answer="合理拒答（守住边界）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『当前通知未说明票价信息，建议咨询校团委服务台。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="面对知识库之外的缺失信息，诚实说明资料不足并提供转人工指引，做到了零幻觉。"></p></fieldset><fieldset data-answer="有据漏答（检索失败）"><legend>同一知识库（已写明在大礼堂）。 提问：『请问科技节在哪个场馆举行？』 助手答：『抱歉，通知里没有提到举办地点。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]明明写着“在大礼堂”，助手只因提问把“地点”换成了同义词“场馆”就漏检拒答，属于需优化的有据漏答。"></p></fieldset></section><section><h2>🏆 独立挑战与成果提交要求</h2><p>核心思辨题：校历通知只写了“本周六14:00在大礼堂举办科技节”。同学甲问“活动在哪个场馆？”，同学乙问“门票多少钱一张？”。如果AI助手对这两道题都回答“抱歉，通知中没有说明”，这两次“不知道”在评测表中应该得相同的评价吗？为什么？</p><details><summary>点击查看参考解析</summary><p>绝不能得相同评价！第一题问场馆，通知已明确写明“在大礼堂”，助手却说没说明，属于【⚠️ 有据漏答（检索或理解失败，需修复召回）】；第二题问票价，通知确实没有票价信息，助手诚实说明未提及而不乱编，属于【🛡️ 合理拒答（守住知识边界，零幻觉，应当得分）】。</p></details><p>【本课过程评价产出物】提交两轮（完整知识库 vs 移除地点后）的四象限评测统计数据、1条证据迁移原理解释，以及包含“引用约束+超纲转人工”的系统调优提示词。</p></section><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details></details><footer><a class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g8-05-teacher/index.html">切换到：教师大屏课 →</a></footer></main><script>for (const box of document.querySelectorAll('fieldset')) box.addEventListener('click', e=>{
+  if (e.target.tagName !== 'BUTTON') return;
+  for (const b of box.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b===e.target));
+  const note=box.querySelector('p');
+  note.textContent=e.target.textContent===box.dataset.answer?'✅ 判断成立。'+note.dataset.why:'🔍 再检查一次依据：'+note.dataset.why;
+});
+
+(() => {
+  const AI_URL = 'https://keepwork.com/chat';
+  const PC_URL = 'https://webparacraft.keepwork.com/keepwork/online.html';
+  const toastEl = document.getElementById('turnkey-toast');
+
+  function showToast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('flash');
+    setTimeout(() => toastEl.classList.remove('flash'), 1800);
+  }
+
+  async function copyText(text, label = '内容') {
+    const val = String(text || '').trim();
+    if (!val) return false;
+    try {
+      await navigator.clipboard.writeText(val);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = val;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch {}
+      ta.remove();
+    }
+    showToast('✅ 已一键复制' + label + '！可直接粘贴 (Ctrl+V) 使用。');
+    return true;
+  }
+
+  function postHostBridge(command, args) {
+    const payload = {
+      channel: 'aichat.external-tool.v1',
+      type: 'tool:host-command',
+      requestId: 'lesson_' + Date.now(),
+      command,
+      args
+    };
+    let sent = false;
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(payload, '*');
+        sent = true;
+      }
+      if (window.top && window.top !== window && window.top !== window.parent) {
+        window.top.postMessage(payload, '*');
+        sent = true;
+      }
+    } catch {}
+    return sent;
+  }
+
+  async function openAIWorkbenchWithPrompt(promptText) {
+    await copyText(promptText, 'AI 工作台提示词');
+    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    try {
+      window.open(AI_URL, '_blank', 'noopener');
+    } catch {}
+    showToast('🚀 已自动复制提示词并打开 AI 工作台！在输入框粘贴 (Ctrl+V) 即可发送。');
+  }
+
+  function openParacraftWorld() {
+    postHostBridge('openUserTool', { tool: 'paracraft' });
+    try {
+      window.open(PC_URL, '_blank', 'noopener');
+    } catch {}
+    showToast('🎮 已为你打开 Paracraft 3D 创作世界！');
+  }
+
+  // Mission Stage Tracker for Lesson 1 Student Workbench
+  const completedStages = new Set();
+  function markStageDone(stageNum, reason) {
+    completedStages.add(Number(stageNum));
+    const stepEl = document.querySelector('.mission-step[data-stage="' + stageNum + '"]');
+    if (stepEl) {
+      stepEl.classList.add('done');
+      const st = stepEl.querySelector('.step-state');
+      if (st) st.textContent = '✅ 已完成';
+    }
+    if (reason) showToast(reason + '（当前闯关进度：' + completedStages.size + ' / 4 关）');
+  }
+
+  window.addEventListener('lesson1:lab-complete', () => {
+    markStageDone(1, '🎉 第 1 关完成！你已在实验室完成 AI 识别与对比实验');
+  });
+
+  // Stage 1 quick auto-demo button for students
+  const autoDemoBtn = document.getElementById('btn-auto-demo-stage1');
+  if (autoDemoBtn) {
+    autoDemoBtn.addEventListener('click', () => {
+      const sel = document.getElementById('density');
+      if (sel) { sel.value = '0'; sel.dispatchEvent(new Event('change')); }
+      const predBtn = document.querySelector('[data-group="prediction"] button[data-choice="0"]');
+      if (predBtn) predBtn.click();
+      const condNormal = document.querySelector('[data-group="condition"] button[data-choice="0"]');
+      const runBtn = document.getElementById('run');
+      if (condNormal && runBtn) { condNormal.click(); runBtn.click(); }
+      const condOccluded = document.querySelector('[data-group="condition"] button[data-choice="1"]');
+      if (condOccluded && runBtn) { condOccluded.click(); runBtn.click(); }
+      markStageDone(1, '⚡ 已自动完成“正常清晰 vs 镜头遮挡”两次对比实验！请查看实验记录栏');
+    });
+  }
+
+  // Stage 2 Prompt Builder for Lesson 1 Student Workbench
+  const studentPromptEl = document.getElementById('student-ai-prompt');
+  const builderState = {
+    role: '校门刷脸迎宾具身机器人',
+    sensor: '高清摄像头（图像识别：看校牌与手势）',
+    safety: '立即停下脚步亮起黄灯，礼貌请值班老师人工确认，绝不盲目放行'
+  };
+
+  function syncStudentPrompt() {
+    if (!studentPromptEl) return;
+    studentPromptEl.value =
+      '你好 AI 助手！我是三年级超级个体小创客，请帮我设计一台 Paracraft 3D【' + builderState.role + '】：\n' +
+      '1. 它的感知器官是：' + builderState.sensor + '；\n' +
+      '2. 当环境清晰正常时，请写出它热情迎宾的台词和动作；\n' +
+      '3. 当遇到镜头被遮挡或周围嘈杂时，它的安全规则是：' + builderState.safety + '；\n' +
+      '4. 请同时给我一段可以直接粘贴到 Paracraft 聊天框运行的 /say 命令（注意遵守隐私安全底线，不要包含任何真实姓名、住址或电话）。';
+  }
+
+  for (const grp of document.querySelectorAll('.chip-group[data-builder]')) {
+    grp.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-val]');
+      if (!btn) return;
+      const key = grp.dataset.builder;
+      for (const b of grp.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b === btn));
+      builderState[key] = btn.dataset.val;
+      syncStudentPrompt();
+      showToast('✨ 已更新你的具身机器人设计参数：【' + btn.textContent.trim() + '】');
+    });
+  }
+  syncStudentPrompt();
+
+  const btnCopyAiPrompt = document.getElementById('btn-copy-ai-prompt');
+  if (btnCopyAiPrompt && studentPromptEl) {
+    btnCopyAiPrompt.addEventListener('click', async () => {
+      await copyText(studentPromptEl.value, 'AI 工作台提示词');
+      markStageDone(2, '🎉 第 2 关完成！已复制你定制的 AI 工作台提示词');
+    });
+  }
+
+  const btnOpenAiPrompt = document.getElementById('btn-open-aichat-prompt');
+  if (btnOpenAiPrompt && studentPromptEl) {
+    btnOpenAiPrompt.addEventListener('click', async () => {
+      await openAIWorkbenchWithPrompt(studentPromptEl.value);
+      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+    });
+  }
+
+  const btnSimAi = document.getElementById('btn-simulate-ai-reply');
+  const simBox = document.getElementById('student-ai-reply-box');
+  if (btnSimAi && simBox) {
+    btnSimAi.addEventListener('click', () => {
+      simBox.hidden = false;
+      const cmdLine = '/say 【' + builderState.role + '】正在通过' + builderState.sensor.split('（')[0] + '为您服务！若看不清特征将请老师人工确认！';
+      simBox.innerHTML =
+        '<h4>🤖 AI 工作台已为你生成【' + builderState.role + '】方案：</h4>' +
+        '<ul>' +
+        '<li><strong>① 感知层（输入）：</strong>搭载 <em>' + builderState.sensor + '</em>，实时采集门前画面与声音特征。</li>' +
+        '<li><strong>② 大脑决策（AI模型）：</strong>画面清晰（置信度 ≥ 95%）时判定为本校校牌，触发迎宾动作；当被雨伞遮挡或噪音干扰（置信度 &lt; 60%）时触发异常保护。</li>' +
+        '<li><strong>③ 具身行动与安全降级（输出）：</strong>' + builderState.safety + '。</li>' +
+        '<li><strong>④ 可直接粘贴进 Paracraft 的命令：</strong><code>' + cmdLine + '</code></li>' +
+        '</ul>';
+      markStageDone(2, '🎉 第 2 关完成！你已在本页验证 AI 工作台生成的具身机器人方案');
+    });
+  }
+
+  // Stage 3 Paracraft buttons
+  const btnOpenPc = document.getElementById('btn-open-paracraft');
+  if (btnOpenPc) {
+    btnOpenPc.addEventListener('click', () => {
+      openParacraftWorld();
+      markStageDone(3, '🎉 第 3 关点亮！已打开 Paracraft 3D 世界');
+    });
+  }
+  const btnMarkS3 = document.getElementById('btn-mark-stage3-done');
+  if (btnMarkS3) {
+    btnMarkS3.addEventListener('click', () => {
+      markStageDone(3, '🎉 第 3 关完成！你已掌握 Paracraft 虚拟具身机器人命令与代码');
+    });
+  }
+
+  // Stage 4 Portfolio Generator
+  const btnGenPortfolio = document.getElementById('btn-generate-portfolio');
+  const portfolioOut = document.getElementById('student-portfolio-out');
+  function buildPortfolioText() {
+    const alias = (document.getElementById('student-alias')?.value || '三年级超级个体小导演').trim();
+    const finding = document.getElementById('student-finding')?.value || '';
+    const pledged = document.getElementById('student-pledge')?.checked;
+    return [
+      '==================================================',
+      '🏅 《超级个体 · AI观察与具身机器人作品卡》（三年级第 1 课）',
+      '==================================================',
+      '👤 创客代号：' + alias + '（已遵守隐私最小化原则，不填写真实姓名/电话/住址）',
+      '🤖 我设计的具身机器人：' + builderState.role,
+      '👁️ 搭载的AI感知本领：' + builderState.sensor,
+      '🛡️ 异常干扰与安全规则：' + builderState.safety,
+      '🔬 控制变量实验结论：' + finding,
+      '📜 AI安全小约定签署状态：' + (pledged ? '✅ 已签署（绝不上传隐私信息，坚持人工最终判断）' : '⚠️ 请先勾选安全约定'),
+      '📝 AI使用透明声明：本作品方案由学生提出意图，借助 AIChat 与 Paracraft 虚拟具身机器人验证完成。',
+      '=================================================='
+    ].join('\n');
+  }
+  if (btnGenPortfolio && portfolioOut) {
+    btnGenPortfolio.addEventListener('click', () => {
+      portfolioOut.textContent = buildPortfolioText();
+      markStageDone(4, '🏆 恭喜通关！已生成你的《超级个体·AI观察与具身机器人作品卡》');
+    });
+    portfolioOut.textContent = buildPortfolioText();
+  }
+  const btnCopyPortfolio = document.getElementById('btn-copy-portfolio');
+  if (btnCopyPortfolio && portfolioOut) {
+    btnCopyPortfolio.addEventListener('click', async () => {
+      if (!portfolioOut.textContent.trim()) portfolioOut.textContent = buildPortfolioText();
+      await copyText(portfolioOut.textContent, '《超级个体作品卡》');
+      markStageDone(4, '🏆 已复制你的《超级个体作品卡》！');
+    });
+  }
+
+  // Generic Copy Buttons ([data-copy], .copy-code-btn, .copy-textarea-btn, .open-ai-with-target, .open-ai-textarea-btn)
+  document.addEventListener('click', async e => {
+    const copyDirect = e.target.closest('[data-copy]');
+    if (copyDirect) {
+      await copyText(copyDirect.dataset.copy, '命令/指令');
+      if (copyDirect.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 命令');
+      return;
+    }
+    const copyCodeBtn = e.target.closest('.copy-code-btn');
+    if (copyCodeBtn) {
+      const target = document.getElementById(copyCodeBtn.dataset.copyTarget);
+      if (target) {
+        await copyText(target.textContent, '代码/文字');
+        if (copyCodeBtn.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 代码');
+      }
+      return;
+    }
+    const copyTaBtn = e.target.closest('.copy-textarea-btn');
+    if (copyTaBtn) {
+      const ta = document.getElementById(copyTaBtn.dataset.target);
+      if (ta) await copyText(ta.value, 'AI 工作台提示词');
+      return;
+    }
+    const openAiTarget = e.target.closest('.open-ai-with-target');
+    if (openAiTarget) {
+      const el = document.getElementById(openAiTarget.dataset.copyTarget);
+      if (el) await openAIWorkbenchWithPrompt(el.textContent);
+      return;
+    }
+    const openAiTa = e.target.closest('.open-ai-textarea-btn');
+    if (openAiTa) {
+      const ta = document.getElementById(openAiTa.dataset.target);
+      if (ta) await openAIWorkbenchWithPrompt(ta.value);
+      return;
+    }
+    if (e.target.closest('#btn-t-open-paracraft') || e.target.closest('.btn-open-paracraft-std')) {
+      openParacraftWorld();
+      return;
+    }
+    const ttsMini = e.target.closest('.tts-mini');
+    if (ttsMini && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(ttsMini.dataset.tts || '');
+      u.lang = 'zh-CN';
+      u.rate = 1.0;
+      window.speechSynthesis.speak(u);
+      showToast('🔊 正在为你语音朗读本关操作指南…');
+    }
+  });
+
+  // Top TTS toggle for student workbench
+  const ttsToggle = document.getElementById('btn-tts-toggle');
+  if (ttsToggle) {
+    ttsToggle.addEventListener('click', () => {
+      if (!('speechSynthesis' in window)) {
+        showToast('💡 当前浏览器不支持内置语音合成，请直接按步骤卡片点击操作。');
+        return;
+      }
+      const active = ttsToggle.getAttribute('aria-pressed') === 'true';
+      if (active) {
+        window.speechSynthesis.cancel();
+        ttsToggle.setAttribute('aria-pressed', 'false');
+        ttsToggle.textContent = '🔊 读题小助手：点击朗读本页步骤';
+        showToast('⏹️ 已停止语音朗读。');
+      } else {
+        window.speechSynthesis.cancel();
+        const textToRead = '欢迎来到超级学生AI通识课第一课！本页无需老师帮忙，你可以独立完成四关挑战：第一关，在实验室分辨谁有AI大脑并测试遮挡影响；第二关，点选彩色按钮组合你的意图，一键复制或打开AI工作台；第三关，一键打开Paracraft，复制命令或展开代码方块脚本召唤你的虚拟具身迎宾机器人；第四关，一键生成你的超级个体作品卡！';
+        const u = new SpeechSynthesisUtterance(textToRead);
+        u.lang = 'zh-CN';
+        u.onend = () => {
+          ttsToggle.setAttribute('aria-pressed', 'false');
+          ttsToggle.textContent = '🔊 读题小助手：点击朗读本页步骤';
+        };
+        ttsToggle.setAttribute('aria-pressed', 'true');
+        ttsToggle.textContent = '⏹️ 正在朗读（点击停止）';
+        window.speechSynthesis.speak(u);
+      }
+    });
+  }
+
+  // Teacher Big-Screen Stage Filter, Poll & Quick Scene Buttons
+  const stageFilter = document.getElementById('teacher-stage-filter');
+  if (stageFilter) {
+    stageFilter.addEventListener('click', e => {
+      const btn = e.target.closest('button[data-filter]');
+      if (!btn) return;
+      const filter = btn.dataset.filter;
+      for (const b of stageFilter.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b === btn));
+      for (const sec of document.querySelectorAll('.teacher-step')) {
+        sec.hidden = filter !== 'all' && sec.dataset.tstep !== filter;
+      }
+    });
+  }
+
+  const pollGrid = document.getElementById('teacher-poll-grid');
+  if (pollGrid) {
+    pollGrid.addEventListener('click', e => {
+      const inc = e.target.closest('.poll-inc');
+      if (!inc) return;
+      const cnt = inc.querySelector('.cnt');
+      if (cnt) cnt.textContent = String(Number(cnt.textContent || 0) + 1);
+    });
+    const btnReveal = document.getElementById('btn-reveal-poll');
+    if (btnReveal) {
+      btnReveal.addEventListener('click', () => {
+        for (const ans of pollGrid.querySelectorAll('.poll-ans')) ans.hidden = false;
+        showToast('✨ 已揭晓全班投票科学结论！');
+      });
+    }
+    const btnReset = document.getElementById('btn-reset-poll');
+    if (btnReset) {
+      btnReset.addEventListener('click', () => {
+        for (const cnt of pollGrid.querySelectorAll('.cnt')) cnt.textContent = '0';
+        for (const ans of pollGrid.querySelectorAll('.poll-ans')) ans.hidden = true;
+        showToast('🔄 已重置投票计数。');
+      });
+    }
+  }
+
+  for (const qBtn of document.querySelectorAll('.t-quick-scene')) {
+    qBtn.addEventListener('click', () => {
+      const dev = Number(qBtn.dataset.dev || 0);
+      const cond = Number(qBtn.dataset.cond || 0);
+      const sel = document.getElementById('density');
+      if (sel) { sel.value = String(dev); sel.dispatchEvent(new Event('change')); }
+      const expectedPred = [0, 0, 1, 2][dev];
+      const pBtn = document.querySelector('[data-group="prediction"] button[data-choice="' + expectedPred + '"]');
+      if (pBtn) pBtn.click();
+      const cBtn = document.querySelector('[data-group="condition"] button[data-choice="' + cond + '"]');
+      if (cBtn) cBtn.click();
+      const runBtn = document.getElementById('run');
+      if (runBtn) runBtn.click();
+    });
+  }
+
+  for (const simBtn of document.querySelectorAll('.t-sim-btn')) {
+    simBtn.addEventListener('click', () => {
+      const id = simBtn.dataset.sim;
+      const out = document.getElementById('t-sim-out-' + id);
+      if (!out) return;
+      out.hidden = false;
+      if (id === '1') {
+        out.innerHTML = '<strong>🤖 小帕（校门 3D 虚拟具身迎宾机器人）：</strong><br>“同学们好！我头顶的摄像头就像眼睛，能拍下大家胸前的校牌画面；肚子里的 AI 模型会在一眨眼间比对图像特征；认出是咱们学校的同学后，我就会挥起机械臂说‘早安’并打开闸机！而教室墙上的电灯开关没有传感器也没有AI模型，谁按它都只会通电亮灯。考考大家：如果下雨天你的雨伞挡住了校牌，我还能认出你吗？”';
+      } else {
+        out.innerHTML = '<strong>🔬 控制变量对比结论（AI 助教生成）：</strong><br>1. <strong>条件 A（正常清晰）：</strong>摄像头采集到完整特征，图像识别置信度 98%，语音转写准确，具身机器人正常挥手放行；<br>2. <strong>条件 B（雨伞遮挡+大车喧哗）：</strong>视觉特征丢失一半（置信度跌至 42%），且噪音使语音把“下雪”误转写为“下学”；<br>3. <strong>安全边界：</strong>因为 AI 会受环境干扰出错，所以在校门安防等关键场景必须设置<strong>“识别率低时停步亮黄灯，转交值班老师人工核验”</strong>的底线！';
+      }
+    });
+  }
+})();
+</script></html>
