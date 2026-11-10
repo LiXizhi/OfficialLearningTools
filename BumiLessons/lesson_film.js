@@ -11,6 +11,53 @@
     try { draft = JSON.parse(localStorage.getItem(key)); } catch {}
     draft ||= history.state?.bumiFilm || {};
     let current = 0, clock;
+    const screen = film.querySelector('.film-body');
+    const zoom = document.createElement('select');
+    zoom.className = 'film-zoom';
+    zoom.setAttribute('aria-label', '授课内容缩放');
+    zoom.add(new Option('自适应', 'auto'));
+    for (const percent of [65, 75, 85, 100, 115, 125, 150]) {
+        zoom.add(new Option(percent + '%', String(percent)));
+    }
+    theater.before(zoom);
+    let fitFrame;
+    function fitPage() {
+        if (!film.classList.contains('expanded')) return;
+        const page = pages[current];
+        if (zoom.value !== 'auto') {
+            page.style.zoom = Number(zoom.value) / 100;
+            return;
+        }
+        // Measure the rendered page at each size so wrapped lines and tables count.
+        function fits(percent) {
+            page.style.zoom = percent / 100;
+            return screen.scrollHeight <= screen.clientHeight && screen.scrollWidth <= screen.clientWidth;
+        }
+        let best = 100;
+        if (!fits(best)) {
+            let low = 65, high = 99;
+            best = low;
+            while (low <= high) {
+                const mid = Math.floor((low + high) / 2);
+                if (fits(mid)) {
+                    best = mid;
+                    low = mid + 1;
+                } else {
+                    high = mid - 1;
+                }
+            }
+            page.style.zoom = best / 100;
+        }
+        zoom.options[0].textContent = '自适应 ' + best + '%';
+    }
+    function scheduleFit() {
+        cancelAnimationFrame(fitFrame);
+        fitFrame = requestAnimationFrame(fitPage);
+    }
+    zoom.onchange = scheduleFit;
+    new ResizeObserver(scheduleFit).observe(screen);
+    screen.addEventListener('load', scheduleFit, true);
+    document.fonts.ready.then(scheduleFit);
     function save() {
         draft.page = current;
         try { localStorage.setItem(key, JSON.stringify(draft)); }
@@ -30,7 +77,12 @@
         clearInterval(clock);
         film.querySelectorAll('[data-playing]').forEach(b=>{delete b.dataset.playing;b.textContent='连续演示';});
         current=index;
-        pages.forEach((page,i)=>page.hidden=i!==index);
+        pages.forEach((page,i)=>{
+            page.hidden=i!==index;
+            page.style.removeProperty('zoom');
+        });
+        screen.scrollTo(0, 0);
+        scheduleFit();
         picker.value=String(index);
         film.querySelector('.film-count').textContent=(index+1)+' / '+pages.length;
         film.style.setProperty('--progress',(index+1)/pages.length*100+'%');
@@ -44,6 +96,8 @@
         document.body.classList.toggle('projecting',on);
         theater.textContent=on?'退出大屏':'放大授课';
         theater.setAttribute('aria-pressed',String(on));
+        if (on) scheduleFit();
+        else pages[current].style.removeProperty('zoom');
         if(!on) theater.focus();
     }
     function experiment(){
@@ -91,6 +145,7 @@
             img.style.transform='translate('+dx+'%,'+dy+'%) scale('+scale+')';
             pointer.style.left=(x*scale+dx)+'%';pointer.style.top=(y*scale+dy)+'%';
             caption.textContent=line;
+            scheduleFit();
             buttons.forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
         }
         // The dots in the original plate are the same eleven samples as the worksheet table.

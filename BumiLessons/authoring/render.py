@@ -125,8 +125,12 @@ def render(source):
             links.append(f'<a href="{folder}/index.html">{role}</a>')
             target = ROOT / folder
             target.mkdir(exist_ok=True)
+            if n == 14:
+                cover_art = '<figure class="lesson-art standalone"><img src="../assets/gallery-two-hands.webp" alt="孩子双手举着风景画，抬头观察展厅中的画作"></figure>'
+            else:
+                cover_art = f'<figure class="lesson-art" style="--sx:{((n-1)%4)*-100}%;--sy:{((n-1)//4)*-100}%"><img src="../assets/lesson-openings.webp" alt="{escape(title)}的 AI 情境插画"></figure>'
             header = f'''<header class="lesson-mast"><a href="../index.html#lesson-{n}">← 课程目录</a>
-<span>{unit}　 /　 {role}</span><div class="lesson-cover"><div><small>第 {n:02} 课　·　Bumi 具身智能</small><h1>{title}</h1><p>{escape(question)}</p></div><figure class="lesson-art" style="--sx:{((n-1)%4)*-100}%;--sy:{((n-1)//4)*-100}%"><img src="../assets/lesson-openings.webp" alt="{escape(title)}的 AI 情境插画"></figure></div></header>'''
+<span>{unit}　 /　 {role}</span><div class="lesson-cover"><div><small>第 {n:02} 课　·　Bumi 具身智能</small><h1>{title}</h1><p>{escape(question)}</p></div>{cover_art}</div></header>'''
             controls = f'''<section id="classroom" data-lesson="{n}" data-role="{'teacher' if teach else 'student'}">
 <nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">{'全班预测' if teach else '做预测'}</button>
 <button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
