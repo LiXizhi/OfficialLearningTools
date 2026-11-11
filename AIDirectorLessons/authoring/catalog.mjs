@@ -29,7 +29,7 @@ function renderPillar(raw) {
   return '<span class="pillar-chip"><b>' + html(num) + '</b>' + html(name.trim()) + (detail ? ' · ' + html(detail.trim()) : '') + '</span>';
 }
 
-export function renderCatalog({course, framework, grades, gradeMeta, catalog, studios = {}}) {
+export function renderCatalog({course, framework, grades, gradeMeta, catalog, studios = {}, practicals = {}}) {
   const totalCount = catalog.length;
   const aichatCount = catalog.filter(x => x.platform === 'AIChat').length;
   const paracraftCount = catalog.filter(x => x.platform === 'Paracraft').length;
@@ -85,7 +85,7 @@ export function renderCatalog({course, framework, grades, gradeMeta, catalog, st
       + '<div class="lesson-grid">'
       + gradeLessons.map(x => {
         const id = 'g' + x.g + '-' + String(x.n).padStart(2, '0');
-        const brief = studios[id]?.brief || x.task;
+        const brief = practicals[id] ? practicals[id].product+'。'+practicals[id].goal : studios[id]?.brief || x.task;
         const topic = cleanTopic(x.chapter);
         const isParacraft = x.platform === 'Paracraft';
         const envClass = isParacraft ? 'is-paracraft' : 'is-aichat';
@@ -272,7 +272,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       student: prefix + '-student/index.html'
     };
   });
-  const home = renderCatalog({course, framework, grades, gradeMeta, catalog, studios: loadAvailableStudios()});
+  const home = renderCatalog({course, framework, grades, gradeMeta, catalog, studios: loadAvailableStudios(), practicals:(await import('./practical-page.mjs')).practicals});
   const script = home.script + `
 (() => {
     if (parent === window) return;

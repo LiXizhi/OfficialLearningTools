@@ -37,6 +37,8 @@
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');

@@ -76,91 +76,48 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-08-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>4 年级 · 第 8 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>模型初体验（二）：补充多样性样本让识别更准</h1><p><strong>本课目标　</strong>记录补样本前后的10件物品测试总分与具体错例变化，验证补充多样化样本能减少同类误判。</p></header><section class="studio" data-lesson="g4-08" data-role="student">
-  <div class="studio-head"><small>学生上机 · 我的作品 · 来找漏洞的邻桌搭档</small><h2>能复盘错例的十卡分拣赛</h2><p>让邻桌用同样的十张卡比较两代分拣员。记下具体改对了哪张，再请搭档提供一个仍会难住它的例子。</p></div>
+</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-08-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>4 年级 · 第 8 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>模型初体验（二）：补充多样性样本让识别更准</h1><p><strong>本课目标　</strong>保持十张测试卡不变，逐张找出新口令改对和改错的卡。</p></header><section class="studio" data-lesson="g4-08" data-role="student">
+  <div class="studio-head"><small>学生上机 · 我的作品 · 来找漏洞的邻桌搭档</small><h2>十卡错例记分板</h2><p>用练习袋里的白纤纸、蓝滑塑及新增的蓝纤纸、白滑塑讨论口令。做一块 V1 计分板，再打开 Paracraft 搭分拣员和错例台，逐张点十个测试角色。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>课堂图卡有两个可观察的格子：颜色（白/蓝/棕）和表面（纤维纹/光滑）。分拣员只读这些格子。 <button type="button" data-cite="0">引用到本步记录</button></li><li>练习样本：白色纤维纸、蓝色光滑塑料。可补样本：蓝色纤维纸、棕色纤维纸、白色光滑塑料。大纲中的样本在此用纸卡模拟。 <button type="button" data-cite="1">引用到本步记录</button></li><li>固定十卡，用“编号 颜色 表面 真材质”记：1白纤纸、2白纤纸、3蓝纤纸、4棕纤纸、5白滑纸、6蓝滑塑、7蓝滑塑、8白滑塑、9棕滑塑、10蓝纤塑；纤=纤维纹，滑=光滑。 <button type="button" data-cite="2">引用到本步记录</button></li><li>用样本提出两条待检验口令：V1 白猜纸，其余猜塑料；V2 纤维纹猜纸，光滑猜塑料。口令经人选择后才更新，十卡只做对照，不增进练习集。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　颜色和纹理是本关的模拟特征；遇到两格完全相同却材质不同的卡，向人求证。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>让邻桌对 V1 的 3、4、8 三个错例及 V2 新错的 5、10 逐个复跑。十卡总分应由 7 变 8。搭档补的代表卡另列作下一轮练习，保留原两轮成绩。</p><button data-jump-work>打开两版作品与重测工具</button></div></div>
+  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。</p><button data-jump-work>回制作台修改并重测</button></div></div>
   <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">在终点亮出猜测和真材质</option><option value="1">让错例角色站到复盘台排队</option></select></label>
 
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  <style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g4-08" data-role="student">
+    <small>Paracraft · 世界排练</small><h2>十卡错例记分板</h2>
+    <p>用练习袋里的白纤纸、蓝滑塑及新增的蓝纤纸、白滑塑讨论口令。做一块 V1 计分板，再打开 Paracraft 搭分拣员和错例台，逐张点十个测试角色。</p><div class="practical-controls"><label>要比较的分拣口令<select data-input="rule"><option>颜色：白猜纸，其余猜塑料</option><option>纹理：纤维纹猜纸，光滑猜塑料</option></select></label><label>测试卡，每行编号、颜色、纹理、真材质（空格分隔）<textarea data-input="cards" rows="4">1 白 纤维纹 纸
+2 白 纤维纹 纸
+3 蓝 纤维纹 纸
+4 棕 纤维纹 纸
+5 白 光滑 纸
+6 蓝 光滑 塑料
+7 蓝 光滑 塑料
+8 白 光滑 塑料
+9 棕 光滑 塑料
+10 蓝 纤维纹 塑料</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" ><h3>把作品交给下一位使用者</h3>
+    <p>请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。</p><label>同伴的原话或我观察到的卡点<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section>
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>V1 看见 3 号蓝色纤维纸，结果如何？</h3><button data-answer="0">猜纸，正确</button><button data-answer="1">猜塑料，正确</button><button data-answer="2">猜塑料，错误</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只换成纹理口令，5 号怎样？</h3><button data-answer="0">从错到对</button><button data-answer="1">从对到错</button><button data-answer="2">两版都对</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>哪两张证明“蓝色＋纤维纹”还分不清材质？</h3><button data-answer="0">3 与 10</button><button data-answer="1">1 与 2</button><button data-answer="2">6 与 7</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;V1 看见 3 号蓝色纤维纸，结果如何？&quot;, options={&quot;猜纸，正确&quot;, &quot;猜塑料，正确&quot;, &quot;猜塑料，错误&quot;}, correct=3, evidence=&quot;3 是蓝色，V1 猜塑料；底牌是纸。&quot;},
-    {q=&quot;只换成纹理口令，5 号怎样？&quot;, options={&quot;从错到对&quot;, &quot;从对到错&quot;, &quot;两版都对&quot;}, correct=2, evidence=&quot;它是白色光滑纸。按白色猜纸正确，按光滑猜塑料错误。&quot;},
-    {q=&quot;哪两张证明“蓝色＋纤维纹”还分不清材质？&quot;, options={&quot;3 与 10&quot;, &quot;1 与 2&quot;, &quot;6 与 7&quot;}, correct=1, evidence=&quot;3 和 10 两格相同，但 3 是纸、10 是塑料。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g4_08_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;V1 看见 3 号蓝色纤维纸，结果如何？&quot;, options={&quot;猜纸，正确&quot;, &quot;猜塑料，正确&quot;, &quot;猜塑料，错误&quot;}, correct=3, evidence=&quot;3 是蓝色，V1 猜塑料；底牌是纸。&quot;},
-    {q=&quot;只换成纹理口令，5 号怎样？&quot;, options={&quot;从错到对&quot;, &quot;从对到错&quot;, &quot;两版都对&quot;}, correct=2, evidence=&quot;它是白色光滑纸。按白色猜纸正确，按光滑猜塑料错误。&quot;},
-    {q=&quot;哪两张证明“蓝色＋纤维纹”还分不清材质？&quot;, options={&quot;3 与 10&quot;, &quot;1 与 2&quot;, &quot;6 与 7&quot;}, correct=1, evidence=&quot;3 和 10 两格相同，但 3 是纸、10 是塑料。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g4_08_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;V1 看见 3 号蓝色纤维纸，结果如何？\&quot;, options={\&quot;猜纸，正确\&quot;, \&quot;猜塑料，正确\&quot;, \&quot;猜塑料，错误\&quot;}, correct=3, evidence=\&quot;3 是蓝色，V1 猜塑料；底牌是纸。\&quot;},\n    {q=\&quot;只换成纹理口令，5 号怎样？\&quot;, options={\&quot;从错到对\&quot;, \&quot;从对到错\&quot;, \&quot;两版都对\&quot;}, correct=2, evidence=\&quot;它是白色光滑纸。按白色猜纸正确，按光滑猜塑料错误。\&quot;},\n    {q=\&quot;哪两张证明“蓝色＋纤维纹”还分不清材质？\&quot;, options={\&quot;3 与 10\&quot;, \&quot;1 与 2\&quot;, \&quot;6 与 7\&quot;}, correct=1, evidence=\&quot;3 和 10 两格相同，但 3 是纸、10 是塑料。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
+
 
   <section class="studio-handoff" data-experiment><h3>用同一批十张卡重跑两条口令</h3><div data-controls></div><button>运行课内实验</button><output aria-live="polite"></output></section>
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让邻桌对 V1 的 3、4、8 三个错例及 V2 新错的 5、10 逐个复跑。十卡总分应由 7 变 8。搭档补的代表卡另列作下一轮练习，保留原两轮成绩。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。</p>
   <div data-peer-review><label>第一版 · 同伴在哪一步停下？记下他的动作或原话<textarea data-peer="trial"></textarea></label><label>第二版 · 我只改这一处<textarea data-peer="change"></textarea></label><label>用相同输入重试 · 这次实际发生了什么？<textarea data-peer="retest"></textarea></label></div>
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -636,7 +593,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"能复盘错例的十卡分拣赛","reader":"来找漏洞的邻桌搭档","brief":"让邻桌用同样的十张卡比较两代分拣员。记下具体改对了哪张，再请搭档提供一个仍会难住它的例子。","materials":["课堂图卡有两个可观察的格子：颜色（白/蓝/棕）和表面（纤维纹/光滑）。分拣员只读这些格子。","练习样本：白色纤维纸、蓝色光滑塑料。可补样本：蓝色纤维纸、棕色纤维纸、白色光滑塑料。大纲中的样本在此用纸卡模拟。","固定十卡，用“编号 颜色 表面 真材质”记：1白纤纸、2白纤纸、3蓝纤纸、4棕纤纸、5白滑纸、6蓝滑塑、7蓝滑塑、8白滑塑、9棕滑塑、10蓝纤塑；纤=纤维纹，滑=光滑。","用样本提出两条待检验口令：V1 白猜纸，其余猜塑料；V2 纤维纹猜纸，光滑猜塑料。口令经人选择后才更新，十卡只做对照，不增进练习集。"],"choices":["在终点亮出猜测和真材质","让错例角色站到复盘台排队"],"teacher":["投屏练习卡，念“多抄十张白纸，增加了哪种新线索？”全班挑出更值得补的一张。","投屏颜色和纹理两种口令，问“十卡本轮能换吗？”请全班决定固定的条件。","投屏 3 与 10，念“如果只看两格，能分开它们吗？”请全班预测至少有一张会怎样。","投影分拣地图，按原序点十卡，请全班计票哪几张 V1 猜错。","投屏两版分数，问“总分提高，原来答对的有没有改错？”请大家用编号找反例。"],"student":["挑一张蓝纸图片，用自己的话问 AI 为什么只看颜色会认错。","选一套反馈方案，预测增加不同颜色样本后哪两张会改对，并记下预测。","将补样本与十卡分袋；做两格特征牌和隐藏答案牌，编号相同才能配对。","用 V1 口令建可点十卡的 Paracraft 关卡；选中显示猜测，再揭真材质。记下十个对错。","复制世界，只改用 V2 口令，同序重跑；逐张统计改对、改错、未变，再请邻桌设计一张新的同特征异材质卡。"],"prompts":["请用蓝纸和蓝塑料向我提一个问题，让我自己指出只看颜色会遗漏什么。","请把两种可验证的口令写成一行一条；列出需要固定的条件，我来预测，不要给出分数。","帮我排三张补样本和十张测试卡。卡面只写两格特征和编号，真材质印在背面。","请在 Paracraft 搭十卡游戏。可点的分拣员先按白猜纸、其余猜塑料，再揭底牌并累计正确数。","复制成 V2，只换成纤维纹猜纸、光滑猜塑料。给我一张按编号对照的空表，好让我查到原本对、现在错的卡。"],"cases":[{"question":"V1 看见 3 号蓝色纤维纸，结果如何？","options":["猜纸，正确","猜塑料，正确","猜塑料，错误"],"answer":2,"reason":"3 是蓝色，V1 猜塑料；底牌是纸。"},{"question":"只换成纹理口令，5 号怎样？","options":["从错到对","从对到错","两版都对"],"answer":1,"reason":"它是白色光滑纸。按白色猜纸正确，按光滑猜塑料错误。"},{"question":"哪两张证明“蓝色＋纤维纹”还分不清材质？","options":["3 与 10","1 与 2","6 与 7"],"answer":0,"reason":"3 和 10 两格相同，但 3 是纸、10 是塑料。"}],"revision":"让邻桌对 V1 的 3、4、8 三个错例及 V2 新错的 5、10 逐个复跑。十卡总分应由 7 变 8。搭档补的代表卡另列作下一轮练习，保留原两轮成绩。","boundary":"颜色和纹理是本关的模拟特征；遇到两格完全相同却材质不同的卡，向人求证。"}, steps=["挑一张蓝纸图片，用自己的话问 AI 为什么只看颜色会认错。","选一套反馈方案，预测增加不同颜色样本后哪两张会改对，并记下预测。","将补样本与十卡分袋；做两格特征牌和隐藏答案牌，编号相同才能配对。","用 V1 口令建可点十卡的 Paracraft 关卡；选中显示猜测，再揭真材质。记下十个对错。","复制世界，只改用 V2 口令，同序重跑；逐张统计改对、改错、未变，再请邻桌设计一张新的同特征异材质卡。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"十卡错例记分板","reader":"来找漏洞的邻桌搭档","brief":"保持十张测试卡不变，逐张找出新口令改对和改错的卡。","materials":["课堂图卡有两个可观察的格子：颜色（白/蓝/棕）和表面（纤维纹/光滑）。分拣员只读这些格子。","练习样本：白色纤维纸、蓝色光滑塑料。可补样本：蓝色纤维纸、棕色纤维纸、白色光滑塑料。大纲中的样本在此用纸卡模拟。","固定十卡，用“编号 颜色 表面 真材质”记：1白纤纸、2白纤纸、3蓝纤纸、4棕纤纸、5白滑纸、6蓝滑塑、7蓝滑塑、8白滑塑、9棕滑塑、10蓝纤塑；纤=纤维纹，滑=光滑。","用样本提出两条待检验口令：V1 白猜纸，其余猜塑料；V2 纤维纹猜纸，光滑猜塑料。口令经人选择后才更新，十卡只做对照，不增进练习集。"],"choices":["在终点亮出猜测和真材质","让错例角色站到复盘台排队"],"teacher":["投屏练习卡，念“多抄十张白纸，增加了哪种新线索？”全班挑出更值得补的一张。","投屏颜色和纹理两种口令，问“十卡本轮能换吗？”请全班决定固定的条件。","投屏 3 与 10，念“如果只看两格，能分开它们吗？”请全班预测至少有一张会怎样。","投影分拣地图，按原序点十卡，请全班计票哪几张 V1 猜错。","投屏两版分数，问“总分提高，原来答对的有没有改错？”请大家用编号找反例。"],"student":["挑一张蓝纸图片，用自己的话问 AI 为什么只看颜色会认错。","选一套反馈方案，预测增加不同颜色样本后哪两张会改对，并记下预测。","将补样本与十卡分袋；做两格特征牌和隐藏答案牌，编号相同才能配对。","用练习袋里的白纤纸、蓝滑塑及新增的蓝纤纸、白滑塑讨论口令。做一块 V1 计分板，再打开 Paracraft 搭分拣员和错例台，逐张点十个测试角色。","请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。"],"prompts":["请用蓝纸和蓝塑料向我提一个问题，让我自己指出只看颜色会遗漏什么。","请把两种可验证的口令写成一行一条；列出需要固定的条件，我来预测，不要给出分数。","帮我排三张补样本和十张测试卡。卡面只写两格特征和编号，真材质印在背面。","请在 Paracraft 搭十卡游戏。可点的分拣员先按白猜纸、其余猜塑料，再揭底牌并累计正确数。","复制成 V2，只换成纤维纹猜纸、光滑猜塑料。给我一张按编号对照的空表，好让我查到原本对、现在错的卡。"],"cases":[{"question":"V1 看见 3 号蓝色纤维纸，结果如何？","options":["猜纸，正确","猜塑料，正确","猜塑料，错误"],"answer":2,"reason":"3 是蓝色，V1 猜塑料；底牌是纸。"},{"question":"只换成纹理口令，5 号怎样？","options":["从错到对","从对到错","两版都对"],"answer":1,"reason":"它是白色光滑纸。按白色猜纸正确，按光滑猜塑料错误。"},{"question":"哪两张证明“蓝色＋纤维纹”还分不清材质？","options":["3 与 10","1 与 2","6 与 7"],"answer":0,"reason":"3 和 10 两格相同，但 3 是纸、10 是塑料。"}],"revision":"请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。","boundary":"颜色和纹理是本关的模拟特征；遇到两格完全相同却材质不同的卡，向人求证。"}, steps=["挑一张蓝纸图片，用自己的话问 AI 为什么只看颜色会认错。","选一套反馈方案，预测增加不同颜色样本后哪两张会改对，并记下预测。","将补样本与十卡分袋；做两格特征牌和隐藏答案牌，编号相同才能配对。","用练习袋里的白纤纸、蓝滑塑及新增的蓝纤纸、白滑塑讨论口令。做一块 V1 计分板，再打开 Paracraft 搭分拣员和错例台，逐张点十个测试角色。","请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -674,6 +631,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -739,6 +701,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -923,6 +886,262 @@ if (lab) {
 }
 
 })();
+(() => {const config={"id":"g4-08","title":"十卡错例记分板","goal":"保持十张测试卡不变，逐张找出新口令改对和改错的卡。","student":"用练习袋里的白纤纸、蓝滑塑及新增的蓝纤纸、白滑塑讨论口令。做一块 V1 计分板，再打开 Paracraft 搭分拣员和错例台，逐张点十个测试角色。","revision":"请邻桌用相同十卡跑两版，核对 3、4、8 和 5、10 的变化。新设计的卡另列为迁移挑战，不把固定测试卡用作训练材料。","fields":[{"key":"rule","label":"要比较的分拣口令","options":["颜色：白猜纸，其余猜塑料","纹理：纤维纹猜纸，光滑猜塑料"]},{"key":"cards","label":"测试卡，每行编号、颜色、纹理、真材质（空格分隔）","value":"1 白 纤维纹 纸\n2 白 纤维纹 纸\n3 蓝 纤维纹 纸\n4 棕 纤维纹 纸\n5 白 光滑 纸\n6 蓝 光滑 塑料\n7 蓝 光滑 塑料\n8 白 光滑 塑料\n9 棕 光滑 塑料\n10 蓝 纤维纹 塑料"}],"teacher":false,"sealed":false};
+const run=({run(v){
+      const lines=v.cards.trim().split(/\n/).filter(s=>s.trim());
+      if (!lines.length) return '请放入至少一张测试卡，再开赛。';
+      const useTexture=v.rule.startsWith('纹理');
+      const seen=new Set(), errors=[], results=[];
+      let hits=0;
+      for (const [index,line] of lines.entries()) {
+        const parts=line.trim().split(/\s+/);
+        const [id,color,texture,truth]=parts;
+        if(parts.length!==4||seen.has(id)||!['白','蓝','棕'].includes(color)||!['纤维纹','光滑'].includes(texture)||!['纸','塑料'].includes(truth)) return '第 '+(index+1)+' 行有重复编号或未知特征，请核对卡片。';
+        seen.add(id);
+        const guess=(useTexture ? texture==='纤维纹' : color==='白')?'纸':'塑料';
+        if(guess===truth) hits++; else errors.push(id);
+        results.push(id+' 号：看'+(useTexture?texture:color)+' → 猜'+guess+'；底牌'+truth+'。');
+      }
+      return [...results,'命中 '+hits+'/'+lines.length+'，错例 '+(errors.join('、')||'无')].join('\n');
+    }}).run;
+const world=({world(v){
+      const rows=v.cards.trim().split(/\n/).filter(s=>s.trim()).map(s=>s.trim().split(/\s+/));
+      if(!rows.length||rows.some(r=>r.length!==4||!['白','蓝','棕'].includes(r[1])||!['纤维纹','光滑'].includes(r[2])||!['纸','塑料'].includes(r[3]))||new Set(rows.map(r=>r[0])).size!==rows.length) return 'registerClickEvent(function() say("请核对测试卡：编号唯一，颜色、纹理和底牌齐全。",3) end)';
+      const data=rows.map(r=>'{'+r.map(s=>JSON.stringify(s.replace(/[\u0000-\u001f]/g,' '))).join(',')+'}').join(',');
+      const texture=v.rule.startsWith('纹理');
+      return `registerClickEvent(function()
+  local cards={${data}}
+  local ids={}
+  for i,card in ipairs(cards) do ids[i]=card[1].."号 "..card[2].." "..card[3] end
+  local n=ask("选择一件测试物品",ids)
+  local card=cards[n or 0]
+  if not card then say("本次未选择物品",2) return end
+  local guess="塑料"
+  if ${texture?'card[3]=="纤维纹"':'card[2]=="白"'} then guess="纸" end
+  turnTo(guess=="纸" and 90 or 270)
+  say("分拣员转向"..guess.."道",2)
+  if card[4]==guess then say("翻底牌："..card[4].."，命中",2)
+  else say("翻底牌："..card[4].."，请记录错例 "..card[1],2) end
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -942,7 +1161,7 @@ if (lab) {
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -974,6 +1193,7 @@ if (lab) {
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

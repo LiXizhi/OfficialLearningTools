@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-03-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>4 年级 · 第 3 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>给机器做标注（一）：特征提取与分类标准</h1><p><strong>本课目标　</strong>找出仅靠单一颜色特征必然认错的物品对，设计包含至少3个关键特征的分类标注标准。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。</p></div>
+</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-03-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>4 年级 · 第 3 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>给机器做标注（一）：特征提取与分类标准</h1><p><strong>本课目标　</strong>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>垃圾站收到一张只有“绿”字的观察卡，为什么两只瓶子都举了手？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">并排投出只剩颜色的A和B，问“看绿字就能放心贴玻璃吗？”全班决定是否暂缓贴签。</p>
-    <h3>投屏材料</h3><p>六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴先只看颜色，再揭一条特征并说出依据，最后尝试G。第二版只改复合物输入，用同一杯子复测能否保住两个标签。</details>
+    <h3>投屏材料</h3><p>六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。</p><details><summary>备课时看 · 本节课收什么证据</summary>请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。
 六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。
 D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。
 新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。
 特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。
 我只知道A和B都是绿的。请帮我想一个能分开它们的问题，先让我从特征条里找证据。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">投出揭盖墙和分叉路，问“哪种能让客人留下第一回的猜测？”请全班选玩法。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">只公开“透光”，候选会少一只吗？公开“能按瘪”以后呢？</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">做特征揭盖墙，每次只揭一种特征再猜　+1</button><button data-teach-vote="1">做分叉小路，访客根据三种特征逐站选标签　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不�
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。
 六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。
 D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。
 新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。
 特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。
 按我选的玩法，帮我写三步试玩计划；让客人第一次猜错以后仍能看到自己的旧答案。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">逐次投出A/B的透光、硬软、纹理，问“哪一条第一次把这对绿瓶分开？”请指出证据。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">以绿色、透光、能按瘪、光滑为观察对象。先只揭颜色，再逐次揭透光和硬软，将两次候选个数写在黑板上，检查消掉的是哪张卡。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。</li><li>D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。</li><li>新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。</li><li>特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。</li></ul>
@@ -114,27 +114,27 @@ D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不�
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。
 六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。
 D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。
 新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。
 特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。
 请把六件模拟物的透光、硬软、纹理排成可逐条揭示的字卡，只使用材料写到的属性。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏第一版，请同学各走一遍C、D。问“同样是白色，哪格让你改了主意？”</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>同伴先只看颜色，再揭一条特征并说出依据，最后尝试G。第二版只改复合物输入，用同一杯子复测能否保住两个标签。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只给A、B再揭开“能否按瘪”，能按瘪的是谁？</p><button data-predict="0">B绿塑料瓶　+1</button><button data-predict="1">A绿玻璃瓶　+1</button><button data-predict="2">二者都是　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>B的特征卡写能按瘪，A写坚硬。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。
 六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。
 D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。
 新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。
 特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。
 做能离线独立打开的分类 HTML。先只显示颜色并保存猜测，再揭示特征，允许改签和看证据。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">放入G，念“只贴一个纸签会漏掉谁？”请全班决定是否引入按部件贴两签。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">是哪一条新证据排除了玻璃瓶？零个候选说明新物一定不存在，还是提醒我们再补样本？</p>
 
 
 
@@ -142,16 +142,37 @@ D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不�
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>把G加入原来的墙，如何按本活动标准贴完整？</p><ol><li>只贴“白色”</li><li>杯身贴纸、可拆盖贴塑料</li><li>整个都贴塑料</li></ol><details><summary>听完理由，再揭示依据</summary>杯身贴纸、可拆盖贴塑料。G有两种可区分的部件；规则要求按部件材质标注。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。
 六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。
 D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。
 新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。
 特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。
 请保留第一版，在第二版仅给复合物加部件签。G的杯身和盖分别选择，并让同伴用G再试。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g4-03" data-role="teacher">
+    <small>AIChat · 可独立试玩的作品</small><h2>可改样本的特征放大镜</h2>
+    <p>以绿色、透光、能按瘪、光滑为观察对象。先只揭颜色，再逐次揭透光和硬软，将两次候选个数写在黑板上，检查消掉的是哪张卡。</p><div class="practical-controls"><label>参考物，每行 名称｜颜色｜透光性｜硬软｜纹理｜材质<textarea data-input="library" rows="4">A瓶｜绿｜透光｜坚硬｜光滑｜玻璃
+B瓶｜绿｜透光｜能按瘪｜光滑｜塑料
+C盒｜白｜不透光｜可折｜有纸纤维｜纸
+D盒｜白｜不透光｜轻软｜有细颗粒｜泡沫
+E片｜棕｜不透光｜可折｜有纸纤维｜纸
+F罐｜透明｜透光｜坚硬｜光滑｜玻璃</textarea></label><label>待查物或部件，每行 名称｜颜色｜透光性｜硬软｜纹理<textarea data-input="observations" rows="2">访客的瓶子｜绿｜透光｜能按瘪｜光滑</textarea></label><label>揭开线索<select data-input="layers"><option>只看颜色</option><option>再看透光性</option><option>再看硬软</option><option>看全部四项</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g4-03" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 第一次给练习回收物贴材质签的同学</small><h2>回收站的特征放大镜</h2><p>做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 第一次给练习回收物贴材质签的同学</small><h2>可改样本的特征放大镜</h2><p>录入六件参考物，做可改变揭示层数的放大镜；用三项可见特征核查一次，再用白盒或自己设计的观察卡测试。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。 <button type="button" data-cite="0">引用到本步记录</button></li><li>D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。 <button type="button" data-cite="1">引用到本步记录</button></li><li>新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。 <button type="button" data-cite="2">引用到本步记录</button></li><li>特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　用纸卡模拟材质判断，不敲打玻璃；这里只练辨认材料，真实垃圾投放按当地要求。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,12 +183,13 @@ D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不�
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>只看到颜色时，哪一对最能证明同色也可能不同材？</h3><button data-answer="0">A与F</button><button data-answer="1">C与E</button><button data-answer="2">A与B</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只给A、B再揭开“能否按瘪”，能按瘪的是谁？</h3><button data-answer="0">B绿塑料瓶</button><button data-answer="1">A绿玻璃瓶</button><button data-answer="2">二者都是</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>把G加入原来的墙，如何按本活动标准贴完整？</h3><button data-answer="0">只贴“白色”</button><button data-answer="1">杯身贴纸、可拆盖贴塑料</button><button data-answer="2">整个都贴塑料</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴先只看颜色，再揭一条特征并说出依据，最后尝试G。第二版只改复合物输入，用同一杯子复测能否保住两个标签。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -616,7 +638,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"回收站的特征放大镜","reader":"第一次给练习回收物贴材质签的同学","brief":"做一面能先盖住再揭开特征的分类墙。访客先只看颜色猜一次，再用三种特征找出同色不同材的物品。","materials":["六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。","D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。","新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。","特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。"],"choices":["做特征揭盖墙，每次只揭一种特征再猜","做分叉小路，访客根据三种特征逐站选标签"],"teacher":["并排投出只剩颜色的A和B，问“看绿字就能放心贴玻璃吗？”全班决定是否暂缓贴签。","投出揭盖墙和分叉路，问“哪种能让客人留下第一回的猜测？”请全班选玩法。","逐次投出A/B的透光、硬软、纹理，问“哪一条第一次把这对绿瓶分开？”请指出证据。","投屏第一版，请同学各走一遍C、D。问“同样是白色，哪格让你改了主意？”","放入G，念“只贴一个纸签会漏掉谁？”请全班决定是否引入按部件贴两签。"],"student":["看A和B的颜色，写下一个你还需要知道的问题，再问 AI 为什么先别贴标签。","选玩法，画出“颜色猜测→揭开特征→修正标签”的路线，保留第一次猜测。","抄六张卡的三条特征，试用自己的文字解释“能按瘪”和“有纸纤维”。","生成并打开第一版，分别试玩绿瓶对和白盒对；记录哪条线索让你改了标签。","请同桌给G贴签，若只能选一种材质，就只增加部件选择，重试同一只带盖纸杯。"],"prompts":["我只知道A和B都是绿的。请帮我想一个能分开它们的问题，先让我从特征条里找证据。","按我选的玩法，帮我写三步试玩计划；让客人第一次猜错以后仍能看到自己的旧答案。","请把六件模拟物的透光、硬软、纹理排成可逐条揭示的字卡，只使用材料写到的属性。","做能离线独立打开的分类 HTML。先只显示颜色并保存猜测，再揭示特征，允许改签和看证据。","请保留第一版，在第二版仅给复合物加部件签。G的杯身和盖分别选择，并让同伴用G再试。"],"cases":[{"question":"只看到颜色时，哪一对最能证明同色也可能不同材？","options":["A与F","C与E","A与B"],"answer":2,"reason":"A和B都是绿瓶，材料却分别是玻璃与塑料。"},{"question":"只给A、B再揭开“能否按瘪”，能按瘪的是谁？","options":["B绿塑料瓶","A绿玻璃瓶","二者都是"],"answer":0,"reason":"B的特征卡写能按瘪，A写坚硬。"},{"question":"把G加入原来的墙，如何按本活动标准贴完整？","options":["只贴“白色”","杯身贴纸、可拆盖贴塑料","整个都贴塑料"],"answer":1,"reason":"G有两种可区分的部件；规则要求按部件材质标注。"}],"revision":"同伴先只看颜色，再揭一条特征并说出依据，最后尝试G。第二版只改复合物输入，用同一杯子复测能否保住两个标签。","boundary":"用纸卡模拟材质判断，不敲打玻璃；这里只练辨认材料，真实垃圾投放按当地要求。"}, steps=["并排投出只剩颜色的A和B，问“看绿字就能放心贴玻璃吗？”全班决定是否暂缓贴签。","投出揭盖墙和分叉路，问“哪种能让客人留下第一回的猜测？”请全班选玩法。","逐次投出A/B的透光、硬软、纹理，问“哪一条第一次把这对绿瓶分开？”请指出证据。","投屏第一版，请同学各走一遍C、D。问“同样是白色，哪格让你改了主意？”","放入G，念“只贴一个纸签会漏掉谁？”请全班决定是否引入按部件贴两签。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"可改样本的特征放大镜","reader":"第一次给练习回收物贴材质签的同学","brief":"在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。","materials":["六件模拟物：A 绿玻璃瓶（透光、坚硬、光滑）；B 绿塑料瓶（透光、能按瘪、光滑）；C 白纸盒（不透光、可折、有纸纤维）。","D 白泡沫盒（不透光、轻软、有细颗粒）；E 棕瓦楞纸片（不透光、可折、有纸纤维）；F 透明玻璃罐（透光、坚硬、光滑）。","新到货物G：纸杯身（有纸纤维）配可拆塑料盖（光滑、能弯）。本活动约定按部件材质标注。","特征条：透光情况、硬软或能否按瘪、表面纹理。所有触感来自纸卡描述，无需敲、踩或拆真实玻璃。"],"choices":["做特征揭盖墙，每次只揭一种特征再猜","做分叉小路，访客根据三种特征逐站选标签"],"teacher":["并排投出只剩颜色的A和B，问“看绿字就能放心贴玻璃吗？”全班决定是否暂缓贴签。","投出揭盖墙和分叉路，问“哪种能让客人留下第一回的猜测？”请全班选玩法。","逐次投出A/B的透光、硬软、纹理，问“哪一条第一次把这对绿瓶分开？”请指出证据。","投屏第一版，请同学各走一遍C、D。问“同样是白色，哪格让你改了主意？”","放入G，念“只贴一个纸签会漏掉谁？”请全班决定是否引入按部件贴两签。"],"student":["看A和B的颜色，写下一个你还需要知道的问题，再问 AI 为什么先别贴标签。","选玩法，画出“颜色猜测→揭开特征→修正标签”的路线，保留第一次猜测。","抄六张卡的三条特征，试用自己的文字解释“能按瘪”和“有纸纤维”。","录入六件参考物，做可改变揭示层数的放大镜；用三项可见特征核查一次，再用白盒或自己设计的观察卡测试。","请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。"],"prompts":["我只知道A和B都是绿的。请帮我想一个能分开它们的问题，先让我从特征条里找证据。","按我选的玩法，帮我写三步试玩计划；让客人第一次猜错以后仍能看到自己的旧答案。","请把六件模拟物的透光、硬软、纹理排成可逐条揭示的字卡，只使用材料写到的属性。","做能离线独立打开的分类 HTML。先只显示颜色并保存猜测，再揭示特征，允许改签和看证据。","请保留第一版，在第二版仅给复合物加部件签。G的杯身和盖分别选择，并让同伴用G再试。"],"cases":[{"question":"只看到颜色时，哪一对最能证明同色也可能不同材？","options":["A与F","C与E","A与B"],"answer":2,"reason":"A和B都是绿瓶，材料却分别是玻璃与塑料。"},{"question":"只给A、B再揭开“能否按瘪”，能按瘪的是谁？","options":["B绿塑料瓶","A绿玻璃瓶","二者都是"],"answer":0,"reason":"B的特征卡写能按瘪，A写坚硬。"},{"question":"把G加入原来的墙，如何按本活动标准贴完整？","options":["只贴“白色”","杯身贴纸、可拆盖贴塑料","整个都贴塑料"],"answer":1,"reason":"G有两种可区分的部件；规则要求按部件材质标注。"}],"revision":"请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。","boundary":"用纸卡模拟材质判断，不敲打玻璃；这里只练辨认材料，真实垃圾投放按当地要求。"}, steps=["并排投出只剩颜色的A和B，问“看绿字就能放心贴玻璃吗？”全班决定是否暂缓贴签。","投出揭盖墙和分叉路，问“哪种能让客人留下第一回的猜测？”请全班选玩法。","逐次投出A/B的透光、硬软、纹理，问“哪一条第一次把这对绿瓶分开？”请指出证据。","投屏第一版，请同学各走一遍C、D。问“同样是白色，哪格让你改了主意？”","放入G，念“只贴一个纸签会漏掉谁？”请全班决定是否引入按部件贴两签。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -654,6 +676,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -719,6 +746,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -887,6 +915,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -898,6 +928,218 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g4-03","title":"可改样本的特征放大镜","goal":"在同一对绿瓶上逐步揭示特征，亲眼看见候选项何时缩小；复合物按部件各查一次。","student":"录入六件参考物，做可改变揭示层数的放大镜；用三项可见特征核查一次，再用白盒或自己设计的观察卡测试。","revision":"请同桌只凭绿色猜一回，保留猜测；给带盖纸杯拆成杯身和盖两条观察，分别补样本后用同两行重查。","fields":[{"key":"library","label":"参考物，每行 名称｜颜色｜透光性｜硬软｜纹理｜材质","value":"A瓶｜绿｜透光｜坚硬｜光滑｜玻璃\nB瓶｜绿｜透光｜能按瘪｜光滑｜塑料\nC盒｜白｜不透光｜可折｜有纸纤维｜纸\nD盒｜白｜不透光｜轻软｜有细颗粒｜泡沫\nE片｜棕｜不透光｜可折｜有纸纤维｜纸\nF罐｜透明｜透光｜坚硬｜光滑｜玻璃"},{"key":"observations","label":"待查物或部件，每行 名称｜颜色｜透光性｜硬软｜纹理","value":"访客的瓶子｜绿｜透光｜能按瘪｜光滑"},{"key":"layers","label":"揭开线索","options":["只看颜色","再看透光性","再看硬软","看全部四项"]}],"teacher":true,"sealed":false};
+const run=({run(v) {
+      const parse = s=>(s || '').split(/\r?\n/).filter(x=>x.trim()).map(x=>x.split(/[|｜]/).map(x=>x.trim()));
+      const references = parse(v.library).filter(row=>row.length===6 && row.every(Boolean));
+      const questions = parse(v.observations);
+      const levels = ['只看颜色','再看透光性','再看硬软','看全部四项'];
+      const count = levels.indexOf(v.layers)+1;
+      if (!references.length || !questions.length || !count) return '请补齐参考物、待查部件和揭示层数。';
+      return questions.map(([name,...features])=>{
+        const visible = features.slice(0,count);
+        if (!name || visible.length!==count || visible.some(x=>!x)) return (name || '待查物')+'：当前层缺少线索，暂不归类。';
+        const hits = references.filter(row=>visible.every((f,i)=>row[i+1]===f));
+        const labels = [...new Set(hits.map(row=>row[5]))];
+        return name+'，揭开 '+visible.join('／')+' → '+hits.length+' 张匹配卡：'+(hits.map(row=>row[0]).join('、') || '无')+'。'+(labels.length ? '可能材质：'+labels.join('、') : '现有参考物不够，请补卡或复核。');
+      }).join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -917,7 +1159,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -949,6 +1191,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

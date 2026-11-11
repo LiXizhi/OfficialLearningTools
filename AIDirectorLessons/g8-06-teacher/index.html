@@ -76,24 +76,24 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-06-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>8 年级 · 第 6 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>智能体（Agent）初步：任务拆解、角色设定、工具调用与反馈</h1><p><strong>本课目标　</strong>面对三种不同说法的同义提问（如“在哪办/地点是哪/去哪参加”）都能指向同一正确地点；面对“那个地方在哪”等指代不明提问会主动追问。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。</p></div>
+</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-06-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>8 年级 · 第 6 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>智能体（Agent）初步：任务拆解、角色设定、工具调用与反馈</h1><p><strong>本课目标　</strong>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>拿了一张绿卡，不知道社团名，向导该先读教室表还是活动名册？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏“那个地方在哪”，问“现在向导迈步有依据吗？”全班选等待或出发。</p>
-    <h3>投屏材料</h3><p>[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。</p><details><summary>备课时看 · 本节课收什么证据</summary>先给同伴三种同义按钮，再给指代不明的按钮，看首版能否三次抵同一处、一次原地追问。第二版递绿卡，核查两次查询，再重复首版四问。</details>
+    <h3>投屏材料</h3><p>[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。
 [名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。
 [教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。
 [同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。
 [含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。
 [复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。
 对照 N1 与 P1，指出“那个地方在哪”还缺什么。问我一个能缩小范围的简短问题。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">投屏两种交互设计，问“哪里能看见它查过哪张表？”请全班挑一个清楚的方案。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">同一个目的地，点名纸桥社的三种问法会查几次表？拿绿卡的同学会查几次？</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">用脚印路标显示向导每次查表与带路的顺序　+1</button><button data-teach-vote="1">让 NPC 翻起查表旗和追问旗，查全后转向东楼或西楼　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -101,14 +101,14 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。
 [名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。
 [教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。
 [同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。
 [含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。
 [复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。
 按我选的方式做四格动作计划：接问、选择查表或追问、查到结果、带路。让我确定停步条件。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏 N1、P1，问“只看 P1 能知道绿卡去哪吗？”全班把查表顺序排好。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">先排练“去哪参加纸桥社”，只换成“拿绿卡去哪”并比较调用次数。打开实际 Paracraft 的社团向导，点它选含糊询问，看它先停步追问；再给卡色，复核两次查询和朝向。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。</li><li>[教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。</li><li>[同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。</li><li>[含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。</li><li>[复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。</li></ul>
@@ -116,29 +116,29 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。
 [名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。
 [教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。
 [同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。
 [含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。
 [复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。
 根据材料准备东西楼路标、N1 名册和 P1 教室表，保持独立编号，标出三个等价的点选问句。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏首版 NPC，请同学用三种问法点名纸桥社，问“落点应该有几个？”全班核对同一终点。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>先给同伴三种同义按钮，再给指代不明的按钮，看首版能否三次抵同一处、一次原地追问。第二版递绿卡，核查两次查询，再重复首版四问。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？</p><button data-predict="0">直接走东楼　+1</button><button data-predict="1">留在原地，追问社团名或卡色　+1</button><button data-predict="2">查绿卡并去西楼　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>没有活动名或卡色，N1 和 P1 都无法唯一定位。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。
 [名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。
 [教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。
 [同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。
 [含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。
 [复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。
 在 Paracraft 中做可点击的校园向导，用模拟输入测三种问路说法与指代不明情况。让试玩者看见动作与查表记录。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">投屏加了绿卡问路后的记录，问“哪一步给出了社团名？”全班看查表轨迹，再试含糊输入是否仍停步。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">运动方向能够说明它查过两张表吗？让同伴指着记录说出哪一步拿到社团名、哪一步拿到教室。</p>
 
 
 
@@ -146,7 +146,7 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>新的访客只递绿卡，哪份轨迹能够核对？</p><ol><li>P1→绿卡→东楼 201</li><li>N1→纸桥社→东楼 201</li><li>N1→星图社→P1→西楼 202</li></ol><details><summary>听完理由，再揭示依据</summary>N1→星图社→P1→西楼 202。N1 把绿卡映射到星图社，再由 P1 查得西楼 202。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。
 [名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。
 [教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。
 [同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。
@@ -154,9 +154,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 [复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。
 保留第一版，第二版只增加卡色问路分支。绿卡先查 N1 再查 P1；缺卡色和活动名时在原地追问。提供原题重测清单。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g8-06" data-role="teacher">
+    <small>Paracraft · 世界排练</small><h2>会分解问路任务的社团导航员</h2>
+    <p>先排练“去哪参加纸桥社”，只换成“拿绿卡去哪”并比较调用次数。打开实际 Paracraft 的社团向导，点它选含糊询问，看它先停步追问；再给卡色，复核两次查询和朝向。</p><div class="practical-controls"><label>名册 N1，每行 卡色=社团<textarea data-input="roster" rows="4">黄卡=纸桥社
+绿卡=星图社</textarea></label><label>教室 P1，每行 社团=教室<textarea data-input="rooms" rows="4">纸桥社=东楼201
+星图社=西楼202</textarea></label><label>来访者原话<textarea data-input="query" rows="2">拿绿卡去哪？</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g8-06" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 刚参加社团体验日的新同学</small><h2>会追问再带路的放学社团向导</h2><p>点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 刚参加社团体验日的新同学</small><h2>会分解问路任务的社团导航员</h2><p>做两份独立的映射表。自己写同义问句和无指代问句，运行排练得到轨迹。进入实际 Paracraft 点击向导，试清楚与含糊两种请求并保留首版。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。 <button type="button" data-cite="0">引用到本步记录</button></li><li>[教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。 <button type="button" data-cite="1">引用到本步记录</button></li><li>[同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。 <button type="button" data-cite="2">引用到本步记录</button></li><li>[含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。 <button type="button" data-cite="3">引用到本步记录</button></li><li>[复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。 <button type="button" data-cite="4">引用到本步记录</button></li></ul><p><b>使用约定</b>　卡色和映射为虚构练习数据；不做身份识别，不采集学生行走轨迹或真实排课信息。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -167,79 +185,12 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>首版输入“去哪参加纸桥社”，应在哪个路标停下？</h3><button data-answer="0">东楼 201</button><button data-answer="1">西楼 202</button><button data-answer="2">在 N1 前永远等待</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？</h3><button data-answer="0">直接走东楼</button><button data-answer="1">留在原地，追问社团名或卡色</button><button data-answer="2">查绿卡并去西楼</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>新的访客只递绿卡，哪份轨迹能够核对？</h3><button data-answer="0">P1→绿卡→东楼 201</button><button data-answer="1">N1→纸桥社→东楼 201</button><button data-answer="2">N1→星图社→P1→西楼 202</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;首版输入“去哪参加纸桥社”，应在哪个路标停下？&quot;, options={&quot;东楼 201&quot;, &quot;西楼 202&quot;, &quot;在 N1 前永远等待&quot;}, correct=1, evidence=&quot;这是三种同义输入之一，P1 把纸桥社对应到东楼 201。&quot;},
-    {q=&quot;只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？&quot;, options={&quot;直接走东楼&quot;, &quot;留在原地，追问社团名或卡色&quot;, &quot;查绿卡并去西楼&quot;}, correct=2, evidence=&quot;没有活动名或卡色，N1 和 P1 都无法唯一定位。&quot;},
-    {q=&quot;新的访客只递绿卡，哪份轨迹能够核对？&quot;, options={&quot;P1→绿卡→东楼 201&quot;, &quot;N1→纸桥社→东楼 201&quot;, &quot;N1→星图社→P1→西楼 202&quot;}, correct=3, evidence=&quot;N1 把绿卡映射到星图社，再由 P1 查得西楼 202。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g8_06_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;首版输入“去哪参加纸桥社”，应在哪个路标停下？&quot;, options={&quot;东楼 201&quot;, &quot;西楼 202&quot;, &quot;在 N1 前永远等待&quot;}, correct=1, evidence=&quot;这是三种同义输入之一，P1 把纸桥社对应到东楼 201。&quot;},
-    {q=&quot;只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？&quot;, options={&quot;直接走东楼&quot;, &quot;留在原地，追问社团名或卡色&quot;, &quot;查绿卡并去西楼&quot;}, correct=2, evidence=&quot;没有活动名或卡色，N1 和 P1 都无法唯一定位。&quot;},
-    {q=&quot;新的访客只递绿卡，哪份轨迹能够核对？&quot;, options={&quot;P1→绿卡→东楼 201&quot;, &quot;N1→纸桥社→东楼 201&quot;, &quot;N1→星图社→P1→西楼 202&quot;}, correct=3, evidence=&quot;N1 把绿卡映射到星图社，再由 P1 查得西楼 202。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g8_06_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;首版输入“去哪参加纸桥社”，应在哪个路标停下？\&quot;, options={\&quot;东楼 201\&quot;, \&quot;西楼 202\&quot;, \&quot;在 N1 前永远等待\&quot;}, correct=1, evidence=\&quot;这是三种同义输入之一，P1 把纸桥社对应到东楼 201。\&quot;},\n    {q=\&quot;只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？\&quot;, options={\&quot;直接走东楼\&quot;, \&quot;留在原地，追问社团名或卡色\&quot;, \&quot;查绿卡并去西楼\&quot;}, correct=2, evidence=\&quot;没有活动名或卡色，N1 和 P1 都无法唯一定位。\&quot;},\n    {q=\&quot;新的访客只递绿卡，哪份轨迹能够核对？\&quot;, options={\&quot;P1→绿卡→东楼 201\&quot;, \&quot;N1→纸桥社→东楼 201\&quot;, \&quot;N1→星图社→P1→西楼 202\&quot;}, correct=3, evidence=\&quot;N1 把绿卡映射到星图社，再由 P1 查得西楼 202。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>先给同伴三种同义按钮，再给指代不明的按钮，看首版能否三次抵同一处、一次原地追问。第二版递绿卡，核查两次查询，再重复首版四问。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -715,7 +666,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"会追问再带路的放学社团向导","reader":"刚参加社团体验日的新同学","brief":"点虚拟向导，测试三种问路说法、一个指代不明的问题和一个要查两张表的问题。让它在拿到活动名和地点后才出发。","materials":["[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。","[教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。","[同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。","[含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。","[复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。"],"choices":["用脚印路标显示向导每次查表与带路的顺序","让 NPC 翻起查表旗和追问旗，查全后转向东楼或西楼"],"teacher":["投屏“那个地方在哪”，问“现在向导迈步有依据吗？”全班选等待或出发。","投屏两种交互设计，问“哪里能看见它查过哪张表？”请全班挑一个清楚的方案。","投屏 N1、P1，问“只看 P1 能知道绿卡去哪吗？”全班把查表顺序排好。","投屏首版 NPC，请同学用三种问法点名纸桥社，问“落点应该有几个？”全班核对同一终点。","投屏加了绿卡问路后的记录，问“哪一步给出了社团名？”全班看查表轨迹，再试含糊输入是否仍停步。"],"student":["写一句只有自己知道“那个”指什么的问路话，追问 AI 得到哪个条件才能指路。","选脚印或旗语，画出接问、选工具、追问、带路四格，并写停止条件。","把 N1 和 P1 做成独立资料牌，在两处路口标方向，保留三种同义输入的原文。","在空白 Paracraft 世界做首版，点 NPC 测三种同义输入和一句含糊话，记录其第一步动作。","另存第二版，加“绿卡去哪”入口。让同伴按 N1→P1 的顺序追踪结果，再重测旧输入。"],"prompts":["对照 N1 与 P1，指出“那个地方在哪”还缺什么。问我一个能缩小范围的简短问题。","按我选的方式做四格动作计划：接问、选择查表或追问、查到结果、带路。让我确定停步条件。","根据材料准备东西楼路标、N1 名册和 P1 教室表，保持独立编号，标出三个等价的点选问句。","在 Paracraft 中做可点击的校园向导，用模拟输入测三种问路说法与指代不明情况。让试玩者看见动作与查表记录。","保留第一版，第二版只增加卡色问路分支。绿卡先查 N1 再查 P1；缺卡色和活动名时在原地追问。提供原题重测清单。"],"cases":[{"question":"首版输入“去哪参加纸桥社”，应在哪个路标停下？","options":["东楼 201","西楼 202","在 N1 前永远等待"],"answer":0,"reason":"这是三种同义输入之一，P1 把纸桥社对应到东楼 201。"},{"question":"只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？","options":["直接走东楼","留在原地，追问社团名或卡色","查绿卡并去西楼"],"answer":1,"reason":"没有活动名或卡色，N1 和 P1 都无法唯一定位。"},{"question":"新的访客只递绿卡，哪份轨迹能够核对？","options":["P1→绿卡→东楼 201","N1→纸桥社→东楼 201","N1→星图社→P1→西楼 202"],"answer":2,"reason":"N1 把绿卡映射到星图社，再由 P1 查得西楼 202。"}],"revision":"先给同伴三种同义按钮，再给指代不明的按钮，看首版能否三次抵同一处、一次原地追问。第二版递绿卡，核查两次查询，再重复首版四问。","boundary":"卡色和映射为虚构练习数据；不做身份识别，不采集学生行走轨迹或真实排课信息。"}, steps=["投屏“那个地方在哪”，问“现在向导迈步有依据吗？”全班选等待或出发。","投屏两种交互设计，问“哪里能看见它查过哪张表？”请全班挑一个清楚的方案。","投屏 N1、P1，问“只看 P1 能知道绿卡去哪吗？”全班把查表顺序排好。","投屏首版 NPC，请同学用三种问法点名纸桥社，问“落点应该有几个？”全班核对同一终点。","投屏加了绿卡问路后的记录，问“哪一步给出了社团名？”全班看查表轨迹，再试含糊输入是否仍停步。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"会分解问路任务的社团导航员","reader":"刚参加社团体验日的新同学","brief":"导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。","materials":["[名册 N1] 黄卡对应纸桥社，绿卡对应星图社。卡片不含姓名。","[教室表 P1] 纸桥社在东楼 201；星图社在西楼 202。两处都有入口标牌。","[同义输入] “纸桥社在哪办”“纸桥社地点是哪”“去哪参加纸桥社”都在问纸桥社地点。","[含糊输入] “那个地方在哪？”没有活动名也没有卡色。先问“哪个社团或什么颜色的卡？”。","[复合输入] “拿绿卡去哪？”需先查 N1 得活动名，再查 P1 得教室。"],"choices":["用脚印路标显示向导每次查表与带路的顺序","让 NPC 翻起查表旗和追问旗，查全后转向东楼或西楼"],"teacher":["投屏“那个地方在哪”，问“现在向导迈步有依据吗？”全班选等待或出发。","投屏两种交互设计，问“哪里能看见它查过哪张表？”请全班挑一个清楚的方案。","投屏 N1、P1，问“只看 P1 能知道绿卡去哪吗？”全班把查表顺序排好。","投屏首版 NPC，请同学用三种问法点名纸桥社，问“落点应该有几个？”全班核对同一终点。","投屏加了绿卡问路后的记录，问“哪一步给出了社团名？”全班看查表轨迹，再试含糊输入是否仍停步。"],"student":["写一句只有自己知道“那个”指什么的问路话，追问 AI 得到哪个条件才能指路。","选脚印或旗语，画出接问、选工具、追问、带路四格，并写停止条件。","把 N1 和 P1 做成独立资料牌，在两处路口标方向，保留三种同义输入的原文。","做两份独立的映射表。自己写同义问句和无指代问句，运行排练得到轨迹。进入实际 Paracraft 点击向导，试清楚与含糊两种请求并保留首版。","同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。"],"prompts":["对照 N1 与 P1，指出“那个地方在哪”还缺什么。问我一个能缩小范围的简短问题。","按我选的方式做四格动作计划：接问、选择查表或追问、查到结果、带路。让我确定停步条件。","根据材料准备东西楼路标、N1 名册和 P1 教室表，保持独立编号，标出三个等价的点选问句。","在 Paracraft 中做可点击的校园向导，用模拟输入测三种问路说法与指代不明情况。让试玩者看见动作与查表记录。","保留第一版，第二版只增加卡色问路分支。绿卡先查 N1 再查 P1；缺卡色和活动名时在原地追问。提供原题重测清单。"],"cases":[{"question":"首版输入“去哪参加纸桥社”，应在哪个路标停下？","options":["东楼 201","西楼 202","在 N1 前永远等待"],"answer":0,"reason":"这是三种同义输入之一，P1 把纸桥社对应到东楼 201。"},{"question":"只把问句里的“纸桥社”换成“那个地方”，向导第一步应做什么？","options":["直接走东楼","留在原地，追问社团名或卡色","查绿卡并去西楼"],"answer":1,"reason":"没有活动名或卡色，N1 和 P1 都无法唯一定位。"},{"question":"新的访客只递绿卡，哪份轨迹能够核对？","options":["P1→绿卡→东楼 201","N1→纸桥社→东楼 201","N1→星图社→P1→西楼 202"],"answer":2,"reason":"N1 把绿卡映射到星图社，再由 P1 查得西楼 202。"}],"revision":"同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。","boundary":"卡色和映射为虚构练习数据；不做身份识别，不采集学生行走轨迹或真实排课信息。"}, steps=["投屏“那个地方在哪”，问“现在向导迈步有依据吗？”全班选等待或出发。","投屏两种交互设计，问“哪里能看见它查过哪张表？”请全班挑一个清楚的方案。","投屏 N1、P1，问“只看 P1 能知道绿卡去哪吗？”全班把查表顺序排好。","投屏首版 NPC，请同学用三种问法点名纸桥社，问“落点应该有几个？”全班核对同一终点。","投屏加了绿卡问路后的记录，问“哪一步给出了社团名？”全班看查表轨迹，再试含糊输入是否仍停步。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -753,6 +704,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -818,6 +774,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -986,6 +943,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -997,6 +956,281 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g8-06","title":"会分解问路任务的社团导航员","goal":"导览员从活动名直接查教室，从卡色连续查两张表，遇到含糊输入先澄清。","student":"做两份独立的映射表。自己写同义问句和无指代问句，运行排练得到轨迹。进入实际 Paracraft 点击向导，试清楚与含糊两种请求并保留首版。","revision":"同伴重复三种纸桥社问法和一次含糊请求，再递出绿卡。第二版只改绿卡对应的社团，复测原输入，检查绿卡路径和点名路径各自的结果。","fields":[{"key":"roster","label":"名册 N1，每行 卡色=社团","value":"黄卡=纸桥社\n绿卡=星图社"},{"key":"rooms","label":"教室 P1，每行 社团=教室","value":"纸桥社=东楼201\n星图社=西楼202"},{"key":"query","label":"来访者原话","value":"拿绿卡去哪？"}],"teacher":true,"sealed":false};
+const run=({run(v) {
+      const table=text=>text.split(/\r?\n/).map(x=>x.split(/[=＝]/).map(s=>s.trim())).filter(x=>x.length===2&&x.every(Boolean));
+      const roster=table(v.roster),rooms=table(v.rooms);
+      const q=v.query.trim(),trace=[];
+      const named=[...new Set(rooms.map(row=>row[0]).filter(n=>q.includes(n)))];
+      const cards=[...new Set(roster.map(row=>row[0]).filter(n=>q.includes(n)))];
+      let name=named[0];
+      if (named.length+cards.length!==1) return '停步追问：请说出一个社团名或一种卡色。';
+      if(cards.length) {
+        const names=[...new Set(roster.filter(row=>row[0]===cards[0]).map(row=>row[1]))];
+        if(names.length!==1)return 'N1 名册冲突，停步请老师核对。';
+        name=names[0]; trace.push('调用 N1：'+cards[0]+' → '+name);
+      }
+      const matches=[...new Set(rooms.filter(row=>row[0]===name).map(row=>row[1]))];
+      if(matches.length!==1)return [...trace,'P1 '+(matches.length?'地点冲突':'没有该社团的教室')+'，原地等候人工确认。'].join('\n');
+      trace.push('调用 P1：'+name+' → '+matches[0]);
+      return [...trace,'共 '+trace.length+' 次查表，带路到 '+matches[0]].join('\n');
+    }}).run;
+const world=({world(v) {
+      const parse=text=>text.split(/\r?\n/).map(x=>x.split(/[=＝]/).map(s=>s.trim())).filter(x=>x.length===2&&x.every(Boolean));
+      const quote=x=>JSON.stringify(String(x).replace(/[\x00-\x1f]/g,' '));
+      const lua=rows=>'{'+rows.map(row=>'{'+row.map(quote).join(',')+'}').join(',')+'}';
+      return `local roster=${lua(parse(v.roster))}
+local rooms=${lua(parse(v.rooms))}
+local function find(rows,key)
+    local result=nil
+    for _,row in ipairs(rows) do
+        if row[1]==key then
+            if result and result~=row[2] then return nil end
+            result=row[2]
+        end
+    end
+    return result
+end
+registerClickEvent(function()
+    local k=ask("向导收到哪种委托？",{"去哪参加纸桥社？","拿绿卡去哪？","那个地方在哪？","纸桥社地点是哪？","纸桥社在哪办？"})
+    if not k then return end
+    local name="纸桥社"
+    if k==3 then
+        turnTo(0)
+        say("先停步。请告诉我一个社团名或一种卡色。",4)
+        local clarified=ask("访客补充线索",{"绿卡","纸桥社","还不知道"})
+        if not clarified or clarified==3 then return end
+        if clarified==1 then k=2 end
+    end
+    if k==2 then
+        name=find(roster,"绿卡")
+        if not name then say("N1 无唯一结果，请老师核对。",4) return end
+        say("先查 N1，绿卡登记为"..name,3)
+    end
+    local room=find(rooms,name)
+    if not room then turnTo(0) say("P1 无唯一地点，原地等候。",4) return end
+    if string.find(room,"西",1,true) then turnTo(270) elseif string.find(room,"东",1,true) then turnTo(90) end
+    say("查 P1："..name.." → "..room,4)
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -1016,7 +1250,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1048,6 +1282,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

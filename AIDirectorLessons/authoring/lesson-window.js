@@ -17,7 +17,7 @@
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -49,6 +49,7 @@
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

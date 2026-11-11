@@ -35,6 +35,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -100,6 +105,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }

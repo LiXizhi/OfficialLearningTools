@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-04-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>9 年级 · 第 4 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>工程实践（一）：从零搭建智慧校园AI服务第一版原型</h1><p><strong>本课目标　</strong>开发者自己从入口出发，能完整走通“输入需求→系统处理→获得指引或反馈→确认完成”的全流程。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。</p></div>
+</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-04-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>9 年级 · 第 4 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>工程实践（一）：从零搭建智慧校园AI服务第一版原型</h1><p><strong>本课目标　</strong>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>向导说完“去北边”，服务就算完成了吗？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏四面墙的方位图，问“如果指路后就离开，哪一步还没发生？”全班选一个完成信号。</p>
-    <h3>投屏材料</h3><p>虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。</p><details><summary>备课时看 · 本节课收什么证据</summary>请同伴从朝东起点问桥模，记录敲到 A、B 或放弃；V2 只换指引文字，同一朝向、同一展品重测。再用未知展品检查黄旗台。</details>
+    <h3>投屏材料</h3><p>虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。</p><details><summary>备课时看 · 本节课收什么证据</summary>请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。
 虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。
 入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。
 计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。
 转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。
 我的导览台用什么观察能说明访客到达？先问我两句，等我确认。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">投屏两个入口草图，说“只能留下三件东西，拿掉哪个会让人走不通？”全班定入口、向导和终点牌。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">先猜朝东进入时，“正前方”和“北墙圆标 A”分别会把人带到哪面墙。</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">用可点击的展品图标叫出向导　+1</button><button data-teach-vote="1">让访客在对话菜单选展品并听取指引　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。
 虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。
 入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。
 计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。
 转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。
 按我选的入口列三个状态和每个转换的触发动作，先让我核对。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏展品映射表，读出“纸飞机”，请全班判断哪个分支要把人交给真人。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">先在浏览器排练桥模任务。把起始朝向从北改为东，比较相对指引。打开实际 Paracraft，点入口向导叫出展品，再选择自己敲的牌，观察面板最后一个状态。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。</li><li>入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。</li><li>计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。</li><li>转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。
 虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。
 入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。
 计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。
 转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。
 把两条展品映射和一个未收录问题排成三张脱敏试用卡。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏空白世界，从接单演到敲牌，问“计数板何时能写完成？”请一人指出触发操作。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>请同伴从朝东起点问桥模，记录敲到 A、B 或放弃；V2 只换指引文字，同一朝向、同一展品重测。再用未知展品检查黄旗台。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只转动初始朝向，哪句仍能找到桥模？</p><button data-predict="0">跟着正前方走　+1</button><button data-predict="1">去东墙方标 B　+1</button><button data-predict="2">去北墙圆标 A　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>北墙圆标属于场景，转身后仍对应 A。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。
 虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。
 入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。
 计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。
 转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。
 在我确认的空白 Paracraft 世界做 V1：入口 NPC 给出资料内指引，匹配的到站牌被点后更新面板，错误牌提示重找。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">把初始朝向转向东，投屏重走，问“谁能只改一条指引让两次都到 A？”全班决定地标词。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">哪一步的输入改变了“指引已发出”和“已经到达”的区别？</p>
 
 
 
@@ -142,16 +142,33 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>访客想看纸飞机，映射表没有该项，NPC 应怎样做？</p><ol><li>指向西墙黄旗人工台</li><li>把它算作纸桥</li><li>先记作已到达</li></ol><details><summary>听完理由，再揭示依据</summary>指向西墙黄旗人工台。两个已收录的展品之外使用西墙黄旗台的转接分支。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。
 虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。
 入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。
 计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。
 转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。
 保留首版，为朝东进入的访客只改一句指引，用相同展品和原到站牌列复测步骤。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g9-04" data-role="teacher">
+    <small>Paracraft · 世界排练</small><h2>会核对终点的展厅入口 NPC</h2>
+    <p>先在浏览器排练桥模任务。把起始朝向从北改为东，比较相对指引。打开实际 Paracraft，点入口向导叫出展品，再选择自己敲的牌，观察面板最后一个状态。</p><div class="practical-controls"><label>展品与展厅，每行“展品=A或B”<textarea data-input="map" rows="4">桥模=A
+风车=B</textarea></label><label>访客想找的展品<textarea data-input="item" rows="2">桥模</textarea></label><label>入场朝向<select data-input="orientation"><option>北</option><option>东</option></select></label><label>向导说法<select data-input="guide"><option>固定地标</option><option>正前方</option></select></label><label>访客实际点的牌<select data-input="touch"><option>尚未点牌</option><option>A</option><option>B</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g9-04" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 第一次进科技节沙盘的访客</small><h2>让陌生人自己走通的双展厅服务台</h2><p>给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 第一次进科技节沙盘的访客</small><h2>会核对终点的展厅入口 NPC</h2><p>编写两条展品和目的厅映射，用未收录词试一次。保留 V1，再从课件进入空白世界建景，点角色实际走通一次。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。 <button type="button" data-cite="0">引用到本步记录</button></li><li>入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。 <button type="button" data-cite="1">引用到本步记录</button></li><li>计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。 <button type="button" data-cite="2">引用到本步记录</button></li><li>转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　在虚构世界试方向和指引。真实活动的通行安排由场地负责人确认。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,79 +179,12 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？</h3><button data-answer="0">已完成</button><button data-answer="1">已给指引，待到站确认</button><button data-answer="2">已转人工</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只转动初始朝向，哪句仍能找到桥模？</h3><button data-answer="0">跟着正前方走</button><button data-answer="1">去东墙方标 B</button><button data-answer="2">去北墙圆标 A</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>访客想看纸飞机，映射表没有该项，NPC 应怎样做？</h3><button data-answer="0">指向西墙黄旗人工台</button><button data-answer="1">把它算作纸桥</button><button data-answer="2">先记作已到达</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？&quot;, options={&quot;已完成&quot;, &quot;已给指引，待到站确认&quot;, &quot;已转人工&quot;}, correct=2, evidence=&quot;完成动作是敲对到站牌，目前只完成了指引。&quot;},
-    {q=&quot;只转动初始朝向，哪句仍能找到桥模？&quot;, options={&quot;跟着正前方走&quot;, &quot;去东墙方标 B&quot;, &quot;去北墙圆标 A&quot;}, correct=3, evidence=&quot;北墙圆标属于场景，转身后仍对应 A。&quot;},
-    {q=&quot;访客想看纸飞机，映射表没有该项，NPC 应怎样做？&quot;, options={&quot;指向西墙黄旗人工台&quot;, &quot;把它算作纸桥&quot;, &quot;先记作已到达&quot;}, correct=1, evidence=&quot;两个已收录的展品之外使用西墙黄旗台的转接分支。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g9_04_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？&quot;, options={&quot;已完成&quot;, &quot;已给指引，待到站确认&quot;, &quot;已转人工&quot;}, correct=2, evidence=&quot;完成动作是敲对到站牌，目前只完成了指引。&quot;},
-    {q=&quot;只转动初始朝向，哪句仍能找到桥模？&quot;, options={&quot;跟着正前方走&quot;, &quot;去东墙方标 B&quot;, &quot;去北墙圆标 A&quot;}, correct=3, evidence=&quot;北墙圆标属于场景，转身后仍对应 A。&quot;},
-    {q=&quot;访客想看纸飞机，映射表没有该项，NPC 应怎样做？&quot;, options={&quot;指向西墙黄旗人工台&quot;, &quot;把它算作纸桥&quot;, &quot;先记作已到达&quot;}, correct=1, evidence=&quot;两个已收录的展品之外使用西墙黄旗台的转接分支。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g9_04_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？\&quot;, options={\&quot;已完成\&quot;, \&quot;已给指引，待到站确认\&quot;, \&quot;已转人工\&quot;}, correct=2, evidence=\&quot;完成动作是敲对到站牌，目前只完成了指引。\&quot;},\n    {q=\&quot;只转动初始朝向，哪句仍能找到桥模？\&quot;, options={\&quot;跟着正前方走\&quot;, \&quot;去东墙方标 B\&quot;, \&quot;去北墙圆标 A\&quot;}, correct=3, evidence=\&quot;北墙圆标属于场景，转身后仍对应 A。\&quot;},\n    {q=\&quot;访客想看纸飞机，映射表没有该项，NPC 应怎样做？\&quot;, options={\&quot;指向西墙黄旗人工台\&quot;, \&quot;把它算作纸桥\&quot;, \&quot;先记作已到达\&quot;}, correct=1, evidence=\&quot;两个已收录的展品之外使用西墙黄旗台的转接分支。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请同伴从朝东起点问桥模，记录敲到 A、B 或放弃；V2 只换指引文字，同一朝向、同一展品重测。再用未知展品检查黄旗台。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -710,7 +660,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"让陌生人自己走通的双展厅服务台","reader":"第一次进科技节沙盘的访客","brief":"给科技节做一个能在 Paracraft 里走通的入口。访客找桥模时要看到目的地，敲到站牌才算到达；问到没收录的展品时，他能找到人工台。","materials":["虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。","入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。","计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。","转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。"],"choices":["用可点击的展品图标叫出向导","让访客在对话菜单选展品并听取指引"],"teacher":["投屏四面墙的方位图，问“如果指路后就离开，哪一步还没发生？”全班选一个完成信号。","投屏两个入口草图，说“只能留下三件东西，拿掉哪个会让人走不通？”全班定入口、向导和终点牌。","投屏展品映射表，读出“纸飞机”，请全班判断哪个分支要把人交给真人。","投屏空白世界，从接单演到敲牌，问“计数板何时能写完成？”请一人指出触发操作。","把初始朝向转向东，投屏重走，问“谁能只改一条指引让两次都到 A？”全班决定地标词。"],"student":["写下“怎么知道访客真正到达”，请 AI 追问你的成功条件。","选图标或菜单，画出收到需求、给指引、敲牌三个状态。","把两个展品、两个形状以及黄旗位置核对一遍，另备一个未收录的词。","在空白 Paracraft 世界放入口、NPC、两块到站牌和人工台；从重置开始做出 V1，亲自点桥模、走到 A、敲牌。","保留 V1，调初始朝向并让同伴试一次。只改一句含糊的方位词，在相同朝向重测，记下敲到的牌。"],"prompts":["我的导览台用什么观察能说明访客到达？先问我两句，等我确认。","按我选的入口列三个状态和每个转换的触发动作，先让我核对。","把两条展品映射和一个未收录问题排成三张脱敏试用卡。","在我确认的空白 Paracraft 世界做 V1：入口 NPC 给出资料内指引，匹配的到站牌被点后更新面板，错误牌提示重找。","保留首版，为朝东进入的访客只改一句指引，用相同展品和原到站牌列复测步骤。"],"cases":[{"question":"访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？","options":["已完成","已给指引，待到站确认","已转人工"],"answer":1,"reason":"完成动作是敲对到站牌，目前只完成了指引。"},{"question":"只转动初始朝向，哪句仍能找到桥模？","options":["跟着正前方走","去东墙方标 B","去北墙圆标 A"],"answer":2,"reason":"北墙圆标属于场景，转身后仍对应 A。"},{"question":"访客想看纸飞机，映射表没有该项，NPC 应怎样做？","options":["指向西墙黄旗人工台","把它算作纸桥","先记作已到达"],"answer":0,"reason":"两个已收录的展品之外使用西墙黄旗台的转接分支。"}],"revision":"请同伴从朝东起点问桥模，记录敲到 A、B 或放弃；V2 只换指引文字，同一朝向、同一展品重测。再用未知展品检查黄旗台。","boundary":"在虚构世界试方向和指引。真实活动的通行安排由场地负责人确认。"}, steps=["投屏四面墙的方位图，问“如果指路后就离开，哪一步还没发生？”全班选一个完成信号。","投屏两个入口草图，说“只能留下三件东西，拿掉哪个会让人走不通？”全班定入口、向导和终点牌。","投屏展品映射表，读出“纸飞机”，请全班判断哪个分支要把人交给真人。","投屏空白世界，从接单演到敲牌，问“计数板何时能写完成？”请一人指出触发操作。","把初始朝向转向东，投屏重走，问“谁能只改一条指引让两次都到 A？”全班决定地标词。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"会核对终点的展厅入口 NPC","reader":"第一次进科技节沙盘的访客","brief":"同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。","materials":["虚构平面图：入口在南边。北墙是圆标 A 厅「纸桥模型」，东墙是方标 B 厅「风车」，西墙黄旗是人工咨询台。","入口 NPC 收到「桥模」就展示“找圆标 A 厅”，收到「风车」展示“找方标 B 厅”，其他输入显示“资料未收录，请到西墙黄旗台”。","计数板只记本轮状态：收到需求、给出指引、访客敲对到站牌。走向正确方向还没有完成。重置后清空本轮状态。","转身试验卡：起点不动，只把访客初始朝向从北转向东；“往前走”会指向另一面墙。"],"choices":["用可点击的展品图标叫出向导","让访客在对话菜单选展品并听取指引"],"teacher":["投屏四面墙的方位图，问“如果指路后就离开，哪一步还没发生？”全班选一个完成信号。","投屏两个入口草图，说“只能留下三件东西，拿掉哪个会让人走不通？”全班定入口、向导和终点牌。","投屏展品映射表，读出“纸飞机”，请全班判断哪个分支要把人交给真人。","投屏空白世界，从接单演到敲牌，问“计数板何时能写完成？”请一人指出触发操作。","把初始朝向转向东，投屏重走，问“谁能只改一条指引让两次都到 A？”全班决定地标词。"],"student":["写下“怎么知道访客真正到达”，请 AI 追问你的成功条件。","选图标或菜单，画出收到需求、给指引、敲牌三个状态。","把两个展品、两个形状以及黄旗位置核对一遍，另备一个未收录的词。","编写两条展品和目的厅映射，用未收录词试一次。保留 V1，再从课件进入空白世界建景，点角色实际走通一次。","请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。"],"prompts":["我的导览台用什么观察能说明访客到达？先问我两句，等我确认。","按我选的入口列三个状态和每个转换的触发动作，先让我核对。","把两条展品映射和一个未收录问题排成三张脱敏试用卡。","在我确认的空白 Paracraft 世界做 V1：入口 NPC 给出资料内指引，匹配的到站牌被点后更新面板，错误牌提示重找。","保留首版，为朝东进入的访客只改一句指引，用相同展品和原到站牌列复测步骤。"],"cases":[{"question":"访客选桥模、看见圆标 A，却没敲牌，面板该显示什么？","options":["已完成","已给指引，待到站确认","已转人工"],"answer":1,"reason":"完成动作是敲对到站牌，目前只完成了指引。"},{"question":"只转动初始朝向，哪句仍能找到桥模？","options":["跟着正前方走","去东墙方标 B","去北墙圆标 A"],"answer":2,"reason":"北墙圆标属于场景，转身后仍对应 A。"},{"question":"访客想看纸飞机，映射表没有该项，NPC 应怎样做？","options":["指向西墙黄旗人工台","把它算作纸桥","先记作已到达"],"answer":0,"reason":"两个已收录的展品之外使用西墙黄旗台的转接分支。"}],"revision":"请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。","boundary":"在虚构世界试方向和指引。真实活动的通行安排由场地负责人确认。"}, steps=["投屏四面墙的方位图，问“如果指路后就离开，哪一步还没发生？”全班选一个完成信号。","投屏两个入口草图，说“只能留下三件东西，拿掉哪个会让人走不通？”全班定入口、向导和终点牌。","投屏展品映射表，读出“纸飞机”，请全班判断哪个分支要把人交给真人。","投屏空白世界，从接单演到敲牌，问“计数板何时能写完成？”请一人指出触发操作。","把初始朝向转向东，投屏重走，问“谁能只改一条指引让两次都到 A？”全班决定地标词。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -748,6 +698,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -813,6 +768,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -981,6 +937,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -992,6 +950,251 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g9-04","title":"会核对终点的展厅入口 NPC","goal":"同伴按展品要求点到正确厅牌，遇到未知展品能转人工，面板只在点对终点时记为到达。","student":"编写两条展品和目的厅映射，用未收录词试一次。保留 V1，再从课件进入空白世界建景，点角色实际走通一次。","revision":"请陌生访客朝东找桥模，只把指引从正前方改为地标，在同一朝向重走并记下点牌结果。","fields":[{"key":"map","label":"展品与展厅，每行“展品=A或B”","value":"桥模=A\n风车=B"},{"key":"item","label":"访客想找的展品","value":"桥模"},{"key":"orientation","label":"入场朝向","options":["北","东"]},{"key":"guide","label":"向导说法","options":["固定地标","正前方"]},{"key":"touch","label":"访客实际点的牌","options":["尚未点牌","A","B"]}],"teacher":true,"sealed":false};
+const run=({run(v){
+      const rows=v.map.split(/\r?\n/).filter(x=>x.trim()).map(x=>x.split('=').map(s=>s.trim()));
+      if(!rows.length||rows.some(r=>r.length!==2||!r[0]||!['A','B'].includes(r[1]))||new Set(rows.map(r=>r[0])).size!==rows.length)return '映射表无法启用：请给每个展品唯一的 A 或 B 终点。';
+      const item=v.item.trim(), hit=rows.find(r=>r[0]===item);
+      if(!hit)return '需求：'+(item||'未填写')+'\n未收录 → 西墙黄旗人工台；本轮未记到达。';
+      const target=hit[1], directed=v.guide==='固定地标'?target:v.orientation==='北'?'A':'B';
+      return ['已接单：'+item,'实际目标：'+target,'按当前指引走向：'+directed,(directed===target?'指引与目标相符':'指引偏离目标'),v.touch==='尚未点牌'?'等待到站牌':v.touch===target?'点牌正确 → 已到达':'点错 '+v.touch+' → 返回路口'].join('\n');
+    }}).run;
+const world=({world(v){
+      const rows=v.map.split(/\r?\n/).filter(x=>x.trim()).map(x=>x.split('=').map(s=>s.trim()));
+      if(!rows.length||rows.some(r=>r.length!==2||!r[0]||!['A','B'].includes(r[1]))||new Set(rows.map(r=>r[0])).size!==rows.length) return 'registerClickEvent(function() say("请先修正展品映射表。",3) end)';
+      const q=JSON.stringify, menu=rows.map(r=>q(r[0])).concat('"未收录展品"').join(','), goals=rows.map(r=>q(r[1])).join(',');
+      return `registerClickEvent(function()
+  local i=ask("选展品",{ ${menu} })
+  local goals={${goals}}
+  local target=goals[i]
+  if not target then say("西墙黄旗人工台可以帮忙，本轮未记到达。",4) return end
+  local direction=${v.guide==='固定地标'?'target':q(v.orientation==='北'?'A':'B')}
+  turnTo(direction=="A" and 0 or 90)
+  say(direction=="A" and "请到北墙圆标 A" or "请到东墙方标 B",2)
+  local t=ask("你敲哪面终点牌？",{"北墙圆标 A","东墙方标 B","尚未到站"})
+  if t==3 or not t then say("等待到站牌",2)
+  elseif (t==1 and target=="A") or (t==2 and target=="B") then say("已到达",2)
+  else say("点错牌，请返回路口",2) end
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -1011,7 +1214,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1043,6 +1246,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

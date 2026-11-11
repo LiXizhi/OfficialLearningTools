@@ -810,6 +810,7 @@ main:has(.fieldbook){padding:0 4vw 36px;max-width:1320px;margin:auto}
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>R 还没打开。我们能播报哪句话？</h3><button data-answer="0">12点正好0℃</button><button data-answer="1">四个时点最高一定是20℃</button><button data-answer="2">已经记录的最高值是20℃</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只打开 R，四个时点里最高的是哪个？</h3><button data-answer="0">12:00 的22℃</button><button data-answer="1">14:00 的20℃</button><button data-answer="2">10:00 的18℃</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>另一天只收到一张“09:00 缺测”的纸条，播报员可以写什么？</h3><button data-answer="0">09:00 比昨日低</button><button data-answer="1">09:00 暂无读数</button><button data-answer="2">09:00 正好0℃</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
@@ -1195,6 +1196,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -1260,6 +1266,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -1408,7 +1415,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1440,6 +1447,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

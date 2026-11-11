@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-06-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 6 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>机器学习入门（三）：准确率之外还要看哪些误判代价</h1><p><strong>本课目标　</strong>区分两种不同的误判代价：把赶时间的人引去缓坡只是多走几步，而把轮椅使用者引向台阶路线则会导致无法通行甚至危险。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。</p></div>
+</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-06-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 6 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>机器学习入门（三）：准确率之外还要看哪些误判代价</h1><p><strong>本课目标　</strong>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>两位向导都答对九次。有一位向导让推车停在台阶口，你能从总分发现是哪一位吗？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏两路，问“同一个终点，谁不能走短线？”全班按纸卡试选。</p>
-    <h3>投屏材料</h3><p>虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。</p><details><summary>备课时看 · 本节课收什么证据</summary>请同伴手拿空白卡而心里设定推乐器箱。V1记录在哪儿停住；V2只改默认分支，让他自己点需要无台阶，验收能否走到图书室。</details>
+    <h3>投屏材料</h3><p>虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。
 虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。
 十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。
 策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。
 空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。
 解释两个9/10，把台阶挡住推车与多走四格分别记进一张代价表，请让我先判断再揭晓。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">投屏甲乙两个9/10，问“哪一组走不到终点？”请全班点出那张卡。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">把唯一的错误从推车卡换到赶时间卡，预测总分、受阻次数、额外格数中哪些会变。</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">在入口做一块显示台阶与格数的双路线牌　+1</button><button data-teach-vote="1">让导览角色先问一个通行问题，再指向路线牌　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。
 虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。
 十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。
 策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。
 空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。
 按选定界面，列三种输入的路线或暂停动作，用一句话写出同伴能观察到的验收条件。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">把六格和十格用两色铺开，问“只画路程够吗？”全班决定台阶标志放在哪里。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">设短路6格、坡道10格，比较甲乙的十张卡。只换策略，再点空白卡试访客追问。在真实 Paracraft 世界开拉杆，点导览角色，分别模拟赶时间和推车需求，观察何时角色停步。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。</li><li>十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。</li><li>策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。</li><li>空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。
 虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。
 十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。
 策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。
 空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。
 根据六格短线、十格缓坡和三级台阶给出场景清单。用图形标明无台阶入口，不采用真人照片。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏机器人默认选短线，点空白卡；问“此时哪些条件并不知道？”全班在台阶前叫停。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>请同伴手拿空白卡而心里设定推乐器箱。V1记录在哪儿停住；V2只改默认分支，让他自己点需要无台阶，验收能否走到图书室。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只把一张赶时间卡翻到空白面，V2第一步应做什么？</p><button data-predict="0">按多数人习惯走短线　+1</button><button data-predict="1">先问是否需要无台阶路线　+1</button><button data-predict="2">直接判定访客推车　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。
 虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。
 十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。
 策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。
 空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。
 在我的空白世界搭两路和可点击向导，用模拟卡选输入。第一版缺资料时指向短线，设停止点让推车不会下台阶；另存首版。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">投屏V2的追问，选“暂不说明”；问“应该再问身份还是给出路线信息？”请全班验收停步和人工选项。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">1次受阻和多走4格分别发生在哪张卡？空白卡需要知道的是路线要求还是个人身份？</p>
 
 
 
@@ -142,16 +142,32 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>新访客推乐器箱，选择需要无台阶。哪项算完成？</p><ol><li>追问个人病史</li><li>指向六格路线</li><li>指向十格缓坡并让访客到达</li></ol><details><summary>听完理由，再揭示依据</summary>指向十格缓坡并让访客到达。这次约束是无台阶，十格缓坡全程符合；目标与身份无关。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。
 虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。
 十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。
 策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。
 空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。
 只改空白输入分支，先问是否需要无台阶路线，拒答时停步、展示路线并请人工协助。用原三张卡重测。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g7-06" data-role="teacher">
+    <small>Paracraft · 世界排练</small><h2>看得见绕行与受阻的路线评审台</h2>
+    <p>设短路6格、坡道10格，比较甲乙的十张卡。只换策略，再点空白卡试访客追问。在真实 Paracraft 世界开拉杆，点导览角色，分别模拟赶时间和推车需求，观察何时角色停步。</p><div class="practical-controls"><label>缓坡格数（短线固定6格，请填7至30）<textarea data-input="ramp" rows="2">10</textarea></label><label>十张卡的分类策略<select data-input="policy"><option>甲：错一张推车卡</option><option>乙：错一张赶时间卡</option></select></label><label>空白卡默认分支<select data-input="empty"><option>直接选短线</option><option>先询问通行需求</option></select></label><label>模拟访客答复<select data-input="reply"><option>需要无台阶</option><option>可走台阶</option><option>暂不说明</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g7-06" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 准备在虚拟校园带路的学生志愿者</small><h2>两个九十分的路口</h2><p>做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 准备在虚拟校园带路的学生志愿者</small><h2>看得见绕行与受阻的路线评审台</h2><p>在浏览器路线评审台排练，把坡道长度改成你设计的校园格图距离。保留两种误判计数。进入实际 Paracraft 搭两条示意路线，点角色试两类卡和空白卡后导出首版。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。 <button type="button" data-cite="0">引用到本步记录</button></li><li>十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。 <button type="button" data-cite="1">引用到本步记录</button></li><li>策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。 <button type="button" data-cite="2">引用到本步记录</button></li><li>空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　课堂使用模拟角色卡；无需透露身体情况，路线偏好可跳过。虚拟路线不作为现实校园通行指南。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,79 +178,12 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>同为9/10，哪套策略曾让推车无法走通？</h3><button data-answer="0">甲</button><button data-answer="1">乙</button><button data-answer="2">两套都没有</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只把一张赶时间卡翻到空白面，V2第一步应做什么？</h3><button data-answer="0">按多数人习惯走短线</button><button data-answer="1">先问是否需要无台阶路线</button><button data-answer="2">直接判定访客推车</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>新访客推乐器箱，选择需要无台阶。哪项算完成？</h3><button data-answer="0">追问个人病史</button><button data-answer="1">指向六格路线</button><button data-answer="2">指向十格缓坡并让访客到达</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;同为9/10，哪套策略曾让推车无法走通？&quot;, options={&quot;甲&quot;, &quot;乙&quot;, &quot;两套都没有&quot;}, correct=1, evidence=&quot;甲把一张推车卡指向含三级台阶的短线；乙的错误是让赶时间者多走四格。&quot;},
-    {q=&quot;只把一张赶时间卡翻到空白面，V2第一步应做什么？&quot;, options={&quot;按多数人习惯走短线&quot;, &quot;先问是否需要无台阶路线&quot;, &quot;直接判定访客推车&quot;}, correct=2, evidence=&quot;空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。&quot;},
-    {q=&quot;新访客推乐器箱，选择需要无台阶。哪项算完成？&quot;, options={&quot;追问个人病史&quot;, &quot;指向六格路线&quot;, &quot;指向十格缓坡并让访客到达&quot;}, correct=3, evidence=&quot;这次约束是无台阶，十格缓坡全程符合；目标与身份无关。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g7_06_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;同为9/10，哪套策略曾让推车无法走通？&quot;, options={&quot;甲&quot;, &quot;乙&quot;, &quot;两套都没有&quot;}, correct=1, evidence=&quot;甲把一张推车卡指向含三级台阶的短线；乙的错误是让赶时间者多走四格。&quot;},
-    {q=&quot;只把一张赶时间卡翻到空白面，V2第一步应做什么？&quot;, options={&quot;按多数人习惯走短线&quot;, &quot;先问是否需要无台阶路线&quot;, &quot;直接判定访客推车&quot;}, correct=2, evidence=&quot;空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。&quot;},
-    {q=&quot;新访客推乐器箱，选择需要无台阶。哪项算完成？&quot;, options={&quot;追问个人病史&quot;, &quot;指向六格路线&quot;, &quot;指向十格缓坡并让访客到达&quot;}, correct=3, evidence=&quot;这次约束是无台阶，十格缓坡全程符合；目标与身份无关。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g7_06_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;同为9/10，哪套策略曾让推车无法走通？\&quot;, options={\&quot;甲\&quot;, \&quot;乙\&quot;, \&quot;两套都没有\&quot;}, correct=1, evidence=\&quot;甲把一张推车卡指向含三级台阶的短线；乙的错误是让赶时间者多走四格。\&quot;},\n    {q=\&quot;只把一张赶时间卡翻到空白面，V2第一步应做什么？\&quot;, options={\&quot;按多数人习惯走短线\&quot;, \&quot;先问是否需要无台阶路线\&quot;, \&quot;直接判定访客推车\&quot;}, correct=2, evidence=\&quot;空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。\&quot;},\n    {q=\&quot;新访客推乐器箱，选择需要无台阶。哪项算完成？\&quot;, options={\&quot;追问个人病史\&quot;, \&quot;指向六格路线\&quot;, \&quot;指向十格缓坡并让访客到达\&quot;}, correct=3, evidence=\&quot;这次约束是无台阶，十格缓坡全程符合；目标与身份无关。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请同伴手拿空白卡而心里设定推乐器箱。V1记录在哪儿停住；V2只改默认分支，让他自己点需要无台阶，验收能否走到图书室。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -710,7 +659,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"两个九十分的路口","reader":"准备在虚拟校园带路的学生志愿者","brief":"做一个可点击的岔路机器人。请访客分别拿赶时间卡和推车卡，在同一地图走一遍；最后让没交卡的访客也能安全作出选择。","materials":["虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。","十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。","策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。","空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。"],"choices":["在入口做一块显示台阶与格数的双路线牌","让导览角色先问一个通行问题，再指向路线牌"],"teacher":["投屏两路，问“同一个终点，谁不能走短线？”全班按纸卡试选。","投屏甲乙两个9/10，问“哪一组走不到终点？”请全班点出那张卡。","把六格和十格用两色铺开，问“只画路程够吗？”全班决定台阶标志放在哪里。","投屏机器人默认选短线，点空白卡；问“此时哪些条件并不知道？”全班在台阶前叫停。","投屏V2的追问，选“暂不说明”；问“应该再问身份还是给出路线信息？”请全班验收停步和人工选项。"],"student":["用两张纸卡走模型路，问“准确率相同，哪一次错误代价更大？”","选路线牌或对话入口，给两类访客写出到达条件和各自的一种失败。","搭出分岔、三级台阶、缓坡和终点牌，把卡片做成角色可选的模拟输入。","在 Paracraft 新建测试世界，开拉杆点向导，分别用赶时间、推车、空白卡，记录到达、绕行或停步。","另存世界，只把空白卡的默认选路改为追问。让同伴依次试“需要无台阶”和“暂不说明”，保留两版去向。"],"prompts":["解释两个9/10，把台阶挡住推车与多走四格分别记进一张代价表，请让我先判断再揭晓。","按选定界面，列三种输入的路线或暂停动作，用一句话写出同伴能观察到的验收条件。","根据六格短线、十格缓坡和三级台阶给出场景清单。用图形标明无台阶入口，不采用真人照片。","在我的空白世界搭两路和可点击向导，用模拟卡选输入。第一版缺资料时指向短线，设停止点让推车不会下台阶；另存首版。","只改空白输入分支，先问是否需要无台阶路线，拒答时停步、展示路线并请人工协助。用原三张卡重测。"],"cases":[{"question":"同为9/10，哪套策略曾让推车无法走通？","options":["甲","乙","两套都没有"],"answer":0,"reason":"甲把一张推车卡指向含三级台阶的短线；乙的错误是让赶时间者多走四格。"},{"question":"只把一张赶时间卡翻到空白面，V2第一步应做什么？","options":["按多数人习惯走短线","先问是否需要无台阶路线","直接判定访客推车"],"answer":1,"reason":"空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。"},{"question":"新访客推乐器箱，选择需要无台阶。哪项算完成？","options":["追问个人病史","指向六格路线","指向十格缓坡并让访客到达"],"answer":2,"reason":"这次约束是无台阶，十格缓坡全程符合；目标与身份无关。"}],"revision":"请同伴手拿空白卡而心里设定推乐器箱。V1记录在哪儿停住；V2只改默认分支，让他自己点需要无台阶，验收能否走到图书室。","boundary":"课堂使用模拟角色卡；无需透露身体情况，路线偏好可跳过。虚拟路线不作为现实校园通行指南。"}, steps=["投屏两路，问“同一个终点，谁不能走短线？”全班按纸卡试选。","投屏甲乙两个9/10，问“哪一组走不到终点？”请全班点出那张卡。","把六格和十格用两色铺开，问“只画路程够吗？”全班决定台阶标志放在哪里。","投屏机器人默认选短线，点空白卡；问“此时哪些条件并不知道？”全班在台阶前叫停。","投屏V2的追问，选“暂不说明”；问“应该再问身份还是给出路线信息？”请全班验收停步和人工选项。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"看得见绕行与受阻的路线评审台","reader":"准备在虚拟校园带路的学生志愿者","brief":"按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。","materials":["虚构地图：短线走6格，中途有三级台阶；缓坡走10格，全程无台阶。两线都通图书室。","十张角色卡：8张赶时间、可走台阶，目标为短线；2张推车、需要无台阶，目标为缓坡。用纸卡模拟需求。","策略甲仅把1张推车卡送去短线，其余9张都正确；策略乙仅把1张赶时间卡送去缓坡，其余9张都正确。","空白卡没有通行条件；访客还可以选“暂不说明”。此时显示两路的台阶信息并提供人工向导，暂停移动。"],"choices":["在入口做一块显示台阶与格数的双路线牌","让导览角色先问一个通行问题，再指向路线牌"],"teacher":["投屏两路，问“同一个终点，谁不能走短线？”全班按纸卡试选。","投屏甲乙两个9/10，问“哪一组走不到终点？”请全班点出那张卡。","把六格和十格用两色铺开，问“只画路程够吗？”全班决定台阶标志放在哪里。","投屏机器人默认选短线，点空白卡；问“此时哪些条件并不知道？”全班在台阶前叫停。","投屏V2的追问，选“暂不说明”；问“应该再问身份还是给出路线信息？”请全班验收停步和人工选项。"],"student":["用两张纸卡走模型路，问“准确率相同，哪一次错误代价更大？”","选路线牌或对话入口，给两类访客写出到达条件和各自的一种失败。","搭出分岔、三级台阶、缓坡和终点牌，把卡片做成角色可选的模拟输入。","在浏览器路线评审台排练，把坡道长度改成你设计的校园格图距离。保留两种误判计数。进入实际 Paracraft 搭两条示意路线，点角色试两类卡和空白卡后导出首版。","同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。"],"prompts":["解释两个9/10，把台阶挡住推车与多走四格分别记进一张代价表，请让我先判断再揭晓。","按选定界面，列三种输入的路线或暂停动作，用一句话写出同伴能观察到的验收条件。","根据六格短线、十格缓坡和三级台阶给出场景清单。用图形标明无台阶入口，不采用真人照片。","在我的空白世界搭两路和可点击向导，用模拟卡选输入。第一版缺资料时指向短线，设停止点让推车不会下台阶；另存首版。","只改空白输入分支，先问是否需要无台阶路线，拒答时停步、展示路线并请人工协助。用原三张卡重测。"],"cases":[{"question":"同为9/10，哪套策略曾让推车无法走通？","options":["甲","乙","两套都没有"],"answer":0,"reason":"甲把一张推车卡指向含三级台阶的短线；乙的错误是让赶时间者多走四格。"},{"question":"只把一张赶时间卡翻到空白面，V2第一步应做什么？","options":["按多数人习惯走短线","先问是否需要无台阶路线","直接判定访客推车"],"answer":1,"reason":"空白面没有通行条件。先问当前路线需要，才能安全地转入相应分支。"},{"question":"新访客推乐器箱，选择需要无台阶。哪项算完成？","options":["追问个人病史","指向六格路线","指向十格缓坡并让访客到达"],"answer":2,"reason":"这次约束是无台阶，十格缓坡全程符合；目标与身份无关。"}],"revision":"同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。","boundary":"课堂使用模拟角色卡；无需透露身体情况，路线偏好可跳过。虚拟路线不作为现实校园通行指南。"}, steps=["投屏两路，问“同一个终点，谁不能走短线？”全班按纸卡试选。","投屏甲乙两个9/10，问“哪一组走不到终点？”请全班点出那张卡。","把六格和十格用两色铺开，问“只画路程够吗？”全班决定台阶标志放在哪里。","投屏机器人默认选短线，点空白卡；问“此时哪些条件并不知道？”全班在台阶前叫停。","投屏V2的追问，选“暂不说明”；问“应该再问身份还是给出路线信息？”请全班验收停步和人工选项。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -748,6 +697,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -813,6 +767,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -981,6 +936,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -992,6 +949,263 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g7-06","title":"看得见绕行与受阻的路线评审台","goal":"按同一组访客逐卡计算通行受阻和额外格数，解释为什么相同命中数对应不同后果。","student":"在浏览器路线评审台排练，把坡道长度改成你设计的校园格图距离。保留两种误判计数。进入实际 Paracraft 搭两条示意路线，点角色试两类卡和空白卡后导出首版。","revision":"同伴先用“推车”卡，再出示空白卡并回答需要无台阶。只把默认短线换为先追问，比较两版停点；最后试拒绝回答，应留在原地。","fields":[{"key":"ramp","label":"缓坡格数（短线固定6格，请填7至30）","value":"10"},{"key":"policy","label":"十张卡的分类策略","options":["甲：错一张推车卡","乙：错一张赶时间卡"]},{"key":"empty","label":"空白卡默认分支","options":["直接选短线","先询问通行需求"]},{"key":"reply","label":"模拟访客答复","options":["需要无台阶","可走台阶","暂不说明"]}],"teacher":true,"sealed":false};
+const run=({run(v){
+      const ramp=Number(v.ramp);
+      if(!Number.isInteger(ramp)||ramp<7||ramp>30)return '缓坡地图未就绪：输入7至30的整数格。';
+      if(!['甲：错一张推车卡','乙：错一张赶时间卡'].includes(v.policy))return '未知评审策略。';
+      let hits=0,blocked=0,extra=0;const errors=[];
+      for(let i=1;i<=10;i++){
+        const needsRamp=i>8;
+        const wrong=i===(v.policy.startsWith('甲')?9:1);
+        const useRamp=wrong?!needsRamp:needsRamp;
+        if(!wrong)hits++;
+        else if(useRamp){extra+=ramp-6;errors.push(i+'号赶时间卡绕行'+(ramp-6)+'格');}
+        else{blocked++;errors.push(i+'号推车卡停在台阶前');}
+      }
+      const next=v.empty==='直接选短线'?'默认指向六格台阶线，通行条件未知':v.empty!=='先询问通行需求'?'策略未知，暂停':v.reply==='需要无台阶'?'指向'+ramp+'格缓坡':v.reply==='可走台阶'?'指向六格短线':'暂停移动，展示两路条件并请人工协助';
+      return '十张卡命中：'+hits+'/10\n受阻：'+blocked+'次；额外路程：'+extra+'格\n错卡：'+errors.join('，')+'\n空白卡：'+next;
+    }}).run;
+const world=({world(v){
+      const ramp=Number(v.ramp);
+      if(!Number.isInteger(ramp)||ramp<7||ramp>30)return 'registerClickEvent(function() say("请先标好缓坡格数。",2) end)';
+      return `registerClickEvent(function()
+  local card=ask("访客模拟卡",{"赶时间，能走台阶","推车，需无台阶","空白卡"})
+  if not card then return end
+  local useRamp=false
+  if card==3 then
+    ${v.empty==='先询问通行需求'?`local answer=ask("这次路线需要无台阶吗？",{"需要","不需要","暂不说明"})
+    if not answer or answer==3 then say("暂停：短线有台阶，缓坡无台阶，请人工协助。",3); return end
+    useRamp=answer==1`:'say("短线有三级台阶；资料不全，停在入口核实。",3); return'}
+  else
+    local miss=ask("试普通卡还是该策略的唯一错例？",{"普通","唯一错例"})
+    if not miss then return end
+    useRamp=card==2
+    if miss==2 and card==${v.policy.startsWith('甲')?2:1} then useRamp=not useRamp end
+  end
+  if card==2 and not useRamp then say("推车停在台阶前，无法通行。",3); return end
+  if useRamp then turnTo(90); say("缓坡，共${ramp}格。",2) else turnTo(0); say("短线六格。",2) end
+  walkForward(2,1); walkForward(-2,1)
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -1011,7 +1225,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1043,6 +1257,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

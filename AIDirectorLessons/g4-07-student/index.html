@@ -76,91 +76,39 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-07-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>4 年级 · 第 7 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>模型初体验（一）：把测试题藏起来再考机器</h1><p><strong>本课目标　</strong>严格把“学习用样本”和“考试用新样本”分开，如实记录盲盒测试区的命中数与误判数。</p></header><section class="studio" data-lesson="g4-07" data-role="student">
-  <div class="studio-head"><small>学生上机 · 我的作品 · 来挑战分拣机器人但没看过答案的同学</small><h2>墙后四卡盲测馆</h2><p>做一堵真正挡住答案的墙。让同伴在学习展台定好规则，逐张锁定四次猜测后再翻开答案，数出机器错在哪。</p></div>
+</style><main><nav><a href="../index.html#g4">← 课程目录</a><a href="../g4-07-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>4 年级 · 第 7 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>模型初体验（一）：把测试题藏起来再考机器</h1><p><strong>本课目标　</strong>隔着遮挡墙只凭颜色猜四张新卡，交卷后能指出两处误判。</p></header><section class="studio" data-lesson="g4-07" data-role="student">
+  <div class="studio-head"><small>学生上机 · 我的作品 · 来挑战分拣机器人但没看过答案的同学</small><h2>先交卷再翻牌的盲测馆</h2><p>从展台挑选颜色口令，独立设计第一版猜测单。排练后在 Paracraft 建公开区与挡墙，把四张底牌交给主持人，别在训练区展示。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>展台 L1 白纸、L2 白信封都归纸；L3 蓝塑料片、L4 蓝瓶盖都归塑料。课堂暂用颜色口令：白猜纸，蓝猜塑料。 <button type="button" data-cite="0">引用到本步记录</button></li><li>裁卡人准备 T1 白纸条、T2 蓝塑料盒、T3 蓝纸花、T4 白塑料勺。出题人另存材质答案，给挑战者的卡面只显示编号和色块。 <button type="button" data-cite="1">引用到本步记录</button></li><li>每猜一张，先登记编号与猜测，再翻该张看材质；四题期间不得改口令。 <button type="button" data-cite="2">引用到本步记录</button></li><li>此页含出题资料。已经读过四张底牌的同学当主持人，请未见过底牌的伙伴来挑战。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　出题人、试玩者分工；盲测只评价这组新卡的表现，禁止给同学贴能力标签。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>同伴核对固定口令在 V1 为两中两错（T3、T4 错）。在 V2 用公开后的原题重练，再打开首次记录确认仍是两中两错。另找新物品时由出题人保密。</p><button data-jump-work>打开两版作品与重测工具</button></div></div>
+  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。</p><button data-jump-work>回制作台修改并重测</button></div></div>
   <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">把答案藏在墙后的翻牌室</option><option value="1">让守门 NPC 在猜测锁定后发答案票</option></select></label>
 
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  <style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g4-07" data-role="student">
+    <small>Paracraft · 世界排练</small><h2>先交卷再翻牌的盲测馆</h2>
+    <p>从展台挑选颜色口令，独立设计第一版猜测单。排练后在 Paracraft 建公开区与挡墙，把四张底牌交给主持人，别在训练区展示。</p><div class="practical-controls"><label>给挑战者的登记提示<textarea data-input="notice" rows="2">按 T1 到 T4 的顺序填四个猜测，每行填纸或塑料。</textarea></label><label>T1 白、T2 蓝、T3 蓝、T4 白；我的猜测（每行一项）<textarea data-input="guesses" rows="2"></textarea></label><label>本轮身份<select data-input="mode"><option>首次盲测</option><option>原题再练</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" ><h3>把作品交给下一位使用者</h3>
+    <p>让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。</p><label>同伴的原话或我观察到的卡点<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section>
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>固定颜色口令遇到 T1，会猜什么？</h3><button data-answer="0">塑料</button><button data-answer="1">纸</button><button data-answer="2">无法作答</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？</h3><button data-answer="0">仍猜塑料并误判</button><button data-answer="1">会自动猜纸</button><button data-answer="2">会重新训练</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>四道原题公开后，同伴都答对。应记在哪一栏？</h3><button data-answer="0">四道新题全对</button><button data-answer="1">首次盲测全对</button><button data-answer="2">原题再练四题全对</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;固定颜色口令遇到 T1，会猜什么？&quot;, options={&quot;塑料&quot;, &quot;纸&quot;, &quot;无法作答&quot;}, correct=2, evidence=&quot;T1 白色，口令规定白猜纸，底牌也为纸。&quot;},
-    {q=&quot;同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？&quot;, options={&quot;仍猜塑料并误判&quot;, &quot;会自动猜纸&quot;, &quot;会重新训练&quot;}, correct=1, evidence=&quot;颜色输入未变，机器仍猜塑料，真材质已经改变。&quot;},
-    {q=&quot;四道原题公开后，同伴都答对。应记在哪一栏？&quot;, options={&quot;四道新题全对&quot;, &quot;首次盲测全对&quot;, &quot;原题再练四题全对&quot;}, correct=3, evidence=&quot;同伴已见过答案，重练有价值，成绩须与首次盲测分开。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g4_07_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;固定颜色口令遇到 T1，会猜什么？&quot;, options={&quot;塑料&quot;, &quot;纸&quot;, &quot;无法作答&quot;}, correct=2, evidence=&quot;T1 白色，口令规定白猜纸，底牌也为纸。&quot;},
-    {q=&quot;同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？&quot;, options={&quot;仍猜塑料并误判&quot;, &quot;会自动猜纸&quot;, &quot;会重新训练&quot;}, correct=1, evidence=&quot;颜色输入未变，机器仍猜塑料，真材质已经改变。&quot;},
-    {q=&quot;四道原题公开后，同伴都答对。应记在哪一栏？&quot;, options={&quot;四道新题全对&quot;, &quot;首次盲测全对&quot;, &quot;原题再练四题全对&quot;}, correct=3, evidence=&quot;同伴已见过答案，重练有价值，成绩须与首次盲测分开。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g4_07_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;固定颜色口令遇到 T1，会猜什么？\&quot;, options={\&quot;塑料\&quot;, \&quot;纸\&quot;, \&quot;无法作答\&quot;}, correct=2, evidence=\&quot;T1 白色，口令规定白猜纸，底牌也为纸。\&quot;},\n    {q=\&quot;同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？\&quot;, options={\&quot;仍猜塑料并误判\&quot;, \&quot;会自动猜纸\&quot;, \&quot;会重新训练\&quot;}, correct=1, evidence=\&quot;颜色输入未变，机器仍猜塑料，真材质已经改变。\&quot;},\n    {q=\&quot;四道原题公开后，同伴都答对。应记在哪一栏？\&quot;, options={\&quot;四道新题全对\&quot;, \&quot;首次盲测全对\&quot;, \&quot;原题再练四题全对\&quot;}, correct=3, evidence=\&quot;同伴已见过答案，重练有价值，成绩须与首次盲测分开。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴核对固定口令在 V1 为两中两错（T3、T4 错）。在 V2 用公开后的原题重练，再打开首次记录确认仍是两中两错。另找新物品时由出题人保密。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。</p>
   <div data-peer-review><label>第一版 · 同伴在哪一步停下？记下他的动作或原话<textarea data-peer="trial"></textarea></label><label>第二版 · 我只改这一处<textarea data-peer="change"></textarea></label><label>用相同输入重试 · 这次实际发生了什么？<textarea data-peer="retest"></textarea></label></div>
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -636,7 +584,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"墙后四卡盲测馆","reader":"来挑战分拣机器人但没看过答案的同学","brief":"做一堵真正挡住答案的墙。让同伴在学习展台定好规则，逐张锁定四次猜测后再翻开答案，数出机器错在哪。","materials":["展台 L1 白纸、L2 白信封都归纸；L3 蓝塑料片、L4 蓝瓶盖都归塑料。课堂暂用颜色口令：白猜纸，蓝猜塑料。","裁卡人准备 T1 白纸条、T2 蓝塑料盒、T3 蓝纸花、T4 白塑料勺。出题人另存材质答案，给挑战者的卡面只显示编号和色块。","每猜一张，先登记编号与猜测，再翻该张看材质；四题期间不得改口令。","此页含出题资料。已经读过四张底牌的同学当主持人，请未见过底牌的伙伴来挑战。"],"choices":["把答案藏在墙后的翻牌室","让守门 NPC 在猜测锁定后发答案票"],"teacher":["投屏 L1–L4 并遮住 T 卡，念“白色一定是纸吗？”请全班区分猜想与事实。","投屏登记表，问“在哪一格填完，主持人才翻牌？”请全班选定锁定时点。","投屏卡面预览，念“能看见‘纸花’两个字还算盲题吗？”请全班挑出必须隐藏的字段。","投屏 T1 的猜测登记，让同学操作翻牌，问“先猜还是先揭？”全班监督后三张同样操作。","把原题再放回展台，问“现在考这四张能算新题成绩吗？”全班决定给这一轮贴什么标签。"],"student":["看展台四张样本，写下一个可能被新物品推翻的猜测，问 AI 如何公平地考。","选翻牌室或答案票，画出“先猜—登记—揭晓”的路线，决定谁来持答案。","把公开训练卡与盲测卡分装；挑战者只看到编号和颜色，出题人保管真材质。","搭好展台和墙后测试区，NPC 每次只显示一张卡；同伴用固定口令连猜四次，记下命中和误判。","复制 V1，做一个标为“原题再练”的入口；让同伴知道答案后再试，对比两轮并解释哪种成绩有资格叫盲测。"],"prompts":["我只看到白纸和蓝塑料，请问我一个能检验“颜色可靠”的问题，别出示测试答案。","帮我设计两个房间的开放顺序；提醒我何时锁定猜测和何时允许翻牌。","生成训练卡正面和测试卡正反面清单。测试正面只有 T 编号和色块，答案供主持人另存。","请在 Paracraft 搭展台和遮挡墙。测试 NPC 先收纸或塑料的猜测，锁定记录后才显示材质，最后统计四次结果。","保留原来的首次成绩，加一个原题再练入口并单独计分。检查重玩不会覆盖首次成绩。"],"cases":[{"question":"固定颜色口令遇到 T1，会猜什么？","options":["塑料","纸","无法作答"],"answer":1,"reason":"T1 白色，口令规定白猜纸，底牌也为纸。"},{"question":"同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？","options":["仍猜塑料并误判","会自动猜纸","会重新训练"],"answer":0,"reason":"颜色输入未变，机器仍猜塑料，真材质已经改变。"},{"question":"四道原题公开后，同伴都答对。应记在哪一栏？","options":["四道新题全对","首次盲测全对","原题再练四题全对"],"answer":2,"reason":"同伴已见过答案，重练有价值，成绩须与首次盲测分开。"}],"revision":"同伴核对固定口令在 V1 为两中两错（T3、T4 错）。在 V2 用公开后的原题重练，再打开首次记录确认仍是两中两错。另找新物品时由出题人保密。","boundary":"出题人、试玩者分工；盲测只评价这组新卡的表现，禁止给同学贴能力标签。"}, steps=["看展台四张样本，写下一个可能被新物品推翻的猜测，问 AI 如何公平地考。","选翻牌室或答案票，画出“先猜—登记—揭晓”的路线，决定谁来持答案。","把公开训练卡与盲测卡分装；挑战者只看到编号和颜色，出题人保管真材质。","搭好展台和墙后测试区，NPC 每次只显示一张卡；同伴用固定口令连猜四次，记下命中和误判。","复制 V1，做一个标为“原题再练”的入口；让同伴知道答案后再试，对比两轮并解释哪种成绩有资格叫盲测。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"先交卷再翻牌的盲测馆","reader":"来挑战分拣机器人但没看过答案的同学","brief":"隔着遮挡墙只凭颜色猜四张新卡，交卷后能指出两处误判。","materials":["展台 L1 白纸、L2 白信封都归纸；L3 蓝塑料片、L4 蓝瓶盖都归塑料。课堂暂用颜色口令：白猜纸，蓝猜塑料。","裁卡人准备 T1 白纸条、T2 蓝塑料盒、T3 蓝纸花、T4 白塑料勺。出题人另存材质答案，给挑战者的卡面只显示编号和色块。","每猜一张，先登记编号与猜测，再翻该张看材质；四题期间不得改口令。","此页含出题资料。已经读过四张底牌的同学当主持人，请未见过底牌的伙伴来挑战。"],"choices":["把答案藏在墙后的翻牌室","让守门 NPC 在猜测锁定后发答案票"],"teacher":["投屏 L1–L4 并遮住 T 卡，念“白色一定是纸吗？”请全班区分猜想与事实。","投屏登记表，问“在哪一格填完，主持人才翻牌？”请全班选定锁定时点。","投屏卡面预览，念“能看见‘纸花’两个字还算盲题吗？”请全班挑出必须隐藏的字段。","投屏 T1 的猜测登记，让同学操作翻牌，问“先猜还是先揭？”全班监督后三张同样操作。","把原题再放回展台，问“现在考这四张能算新题成绩吗？”全班决定给这一轮贴什么标签。"],"student":["看展台四张样本，写下一个可能被新物品推翻的猜测，问 AI 如何公平地考。","选翻牌室或答案票，画出“先猜—登记—揭晓”的路线，决定谁来持答案。","把公开训练卡与盲测卡分装；挑战者只看到编号和颜色，出题人保管真材质。","从展台挑选颜色口令，独立设计第一版猜测单。排练后在 Paracraft 建公开区与挡墙，把四张底牌交给主持人，别在训练区展示。","让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。"],"prompts":["我只看到白纸和蓝塑料，请问我一个能检验“颜色可靠”的问题，别出示测试答案。","帮我设计两个房间的开放顺序；提醒我何时锁定猜测和何时允许翻牌。","生成训练卡正面和测试卡正反面清单。测试正面只有 T 编号和色块，答案供主持人另存。","请在 Paracraft 搭展台和遮挡墙。测试 NPC 先收纸或塑料的猜测，锁定记录后才显示材质，最后统计四次结果。","保留原来的首次成绩，加一个原题再练入口并单独计分。检查重玩不会覆盖首次成绩。"],"cases":[{"question":"固定颜色口令遇到 T1，会猜什么？","options":["塑料","纸","无法作答"],"answer":1,"reason":"T1 白色，口令规定白猜纸，底牌也为纸。"},{"question":"同是蓝色，仅把 T2 的材质换为蓝纸制品；原口令会怎样？","options":["仍猜塑料并误判","会自动猜纸","会重新训练"],"answer":0,"reason":"颜色输入未变，机器仍猜塑料，真材质已经改变。"},{"question":"四道原题公开后，同伴都答对。应记在哪一栏？","options":["四道新题全对","首次盲测全对","原题再练四题全对"],"answer":2,"reason":"同伴已见过答案，重练有价值，成绩须与首次盲测分开。"}],"revision":"让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。","boundary":"出题人、试玩者分工；盲测只评价这组新卡的表现，禁止给同学贴能力标签。"}, steps=["看展台四张样本，写下一个可能被新物品推翻的猜测，问 AI 如何公平地考。","选翻牌室或答案票，画出“先猜—登记—揭晓”的路线，决定谁来持答案。","把公开训练卡与盲测卡分装；挑战者只看到编号和颜色，出题人保管真材质。","从展台挑选颜色口令，独立设计第一版猜测单。排练后在 Paracraft 建公开区与挡墙，把四张底牌交给主持人，别在训练区展示。","让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -674,6 +622,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -739,6 +692,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -868,6 +822,262 @@ render();
 
 
 })();
+(() => {const config={"id":"g4-07","title":"先交卷再翻牌的盲测馆","goal":"隔着遮挡墙只凭颜色猜四张新卡，交卷后能指出两处误判。","student":"从展台挑选颜色口令，独立设计第一版猜测单。排练后在 Paracraft 建公开区与挡墙，把四张底牌交给主持人，别在训练区展示。","revision":"让新搭档漏填第三题再交卷；将给他看的登记提示改得更具体，重测同一漏答。公开后的原题仅用于复盘，另找未见过的卡做下一次盲测。","fields":[{"key":"notice","label":"给挑战者的登记提示","value":"按 T1 到 T4 的顺序填四个猜测，每行填纸或塑料。"},{"key":"guesses","label":"T1 白、T2 蓝、T3 蓝、T4 白；我的猜测（每行一项）","value":""},{"key":"mode","label":"本轮身份","options":["首次盲测","原题再练"]}],"teacher":false,"sealed":false};
+const run=({run(v) {
+      const guesses = v.guesses.trim() ? v.guesses.trim().split(/\n/).map(x=>x.trim()) : [];
+      const instructions = v.notice.trim() || '先猜四张，再统一翻牌。';
+      const start = instructions + '\n训练展台：白纸、白信封、蓝塑料片、蓝瓶盖。';
+      if (guesses.length!==4) return start+'\n已填 '+guesses.filter(Boolean).length+' 项。需要恰好四行有效猜测，四张答案继续封存。';
+      const invalid = guesses.findIndex(x=>!['纸','塑料'].includes(x));
+      if (invalid!==-1) return start+'\n请检查 T'+(invalid+1)+'，只接受纸或塑料。答案继续封存。';
+      const truth = ['纸','塑料','纸','塑料'];
+      const misses = [];
+      const rows = guesses.map((guess,i)=>{
+        if (guess!==truth[i]) misses.push('T'+(i+1));
+        return 'T'+(i+1)+'：你猜'+guess+'，翻牌是'+truth[i]+'，'+(guess===truth[i]?'命中':'误判');
+      });
+      return [start,...rows,v.mode+'：'+(4-misses.length)+'/4；错例：'+(misses.join('、')||'无')].join('\n');
+    }}).run;
+const world=({world(v){
+      const label=JSON.stringify(String(v.notice||'请依次猜四张卡。').replace(/[\u0000-\u001f]/g,' '));
+      const tag=JSON.stringify(String(v.mode).replace(/[\u0000-\u001f]/g,' '));
+      return `registerClickEvent(function()
+  local colors = {"白","蓝","蓝","白"}
+  local truth = {1,2,1,2}
+  local guesses = {}
+  local tags = {"纸","塑料"}
+  say(${label},2)
+  for i=1,4 do
+    local n=ask("T"..i.." "..colors[i].."色，请锁定猜测", tags)
+    if n~=1 and n~=2 then say("本轮未交齐，答案继续封存",2) return end
+    guesses[i]=n
+  end
+  local hits=0
+  for i=1,4 do
+    if guesses[i]==truth[i] then hits=hits+1 end
+    say("T"..i.." 你猜"..tags[guesses[i]].."，实际是"..tags[truth[i]],2)
+  end
+  say(${tag}.."命中 "..hits.."/4",2)
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -887,7 +1097,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -919,6 +1129,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

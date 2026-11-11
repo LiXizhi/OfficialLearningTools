@@ -76,24 +76,47 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-06-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>9 年级 · 第 6 课 · AIChat</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>工程实践（三）：基于测试证据的优先级排序与迭代改进</h1><p><strong>本课目标　</strong>新试用者能顺利通过原先的卡点；团队能提供V1.0与V2.0在同一测试条件下的前后对比证据，并坦诚说明仍待改进的局限。</p></header><section class="studio" data-lesson="g9-06" data-role="student">
-  <div class="studio-head"><small>学生上机 · 我的作品 · 需要在一节课内决定修什么的导览项目组</small><h2>一张写得出分母的改版决定单</h2><p>手上只有六分钟制作时间。给团队一张能查回每个证据的决定单，再做出第二版，请新访客用相同条件验收。</p></div>
+</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-06-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>9 年级 · 第 6 课 · AIChat</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>工程实践（三）：基于测试证据的优先级排序与迭代改进</h1><p><strong>本课目标　</strong>在预算内按阻断记录数挑一个修改，能独立算出首版和复测通过率。</p></header><section class="studio" data-lesson="g9-06" data-role="student">
+  <div class="studio-head"><small>学生上机 · 我的作品 · 需要在一节课内决定修什么的导览项目组</small><h2>带证据分母的改版决定板</h2><p>输入自己的两轮日志，给候选修改标上对应问题名和耗时，做出可以交给开发者的 V1 决定板。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>虚构日志 V1：四位首次访客同一起点找纸桥。T1 错到 B 未完成，T2 点对 A，T3 错到 B 未完成，T4 点对 A 但说标题颜色太浅。 <button type="button" data-cite="0">引用到本步记录</button></li><li>候选改动：把“前面”改成“北墙圆标 A”需 4 分钟；重做花边需 6 分钟。工时预算 6 分钟，首轮只选一项。 <button type="button" data-cite="1">引用到本步记录</button></li><li>另一张未知展品卡 U1：向导按既定规则转西墙人工台。保留该卡做回归；这张卡不计入找纸桥通过率。 <button type="button" data-cite="2">引用到本步记录</button></li><li>纸面复测示例：另四位首次访客同条件试 V2，T5、T6、T7 点对 A，T8 未完成。实际作品另记新的轮次。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　只用匿名轮次。AI 可提候选；团队负责选择、实施并说明有限样本能支持的结论。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>请同伴随机点决定单的一条结论，追到日志编号。再用同一张找桥卡测两版，用未知展品测人工分支，分别写实际结果。</p><button data-jump-work>打开两版作品与重测工具</button></div></div>
+  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。</p><button data-jump-work>回制作台修改并重测</button></div></div>
   <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">交付一张可点证据编号的优先级看板</option><option value="1">交付一份新旧指引并排、附分母和回归卡的版本说明</option></select></label>
 
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  <style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g9-06" data-role="student">
+    <small>AIChat · 可独立试玩的作品</small><h2>带证据分母的改版决定板</h2>
+    <p>输入自己的两轮日志，给候选修改标上对应问题名和耗时，做出可以交给开发者的 V1 决定板。</p><div class="practical-controls"><label>V1 每行“通过/失败 问题名”，通过可省略问题<textarea data-input="v1" rows="4">失败 指引不清
+通过
+失败 指引不清
+通过 标题浅</textarea></label><label>V2 同口令的另一组首次访客<textarea data-input="v2" rows="4">通过
+通过
+通过
+失败 指引不清</textarea></label><label>候选项，每行“问题名 分钟”<textarea data-input="costs" rows="4">指引不清 4
+标题浅 6</textarea></label><label>可用分钟<textarea data-input="budget" rows="2">6</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" ><h3>把作品交给下一位使用者</h3>
+    <p>请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。</p><label>同伴的原话或我观察到的卡点<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section>
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>哪项满足预算且有两条失败日志支持？</h3><button data-answer="0">增设所有展厅</button><button data-answer="1">重做花边</button><button data-answer="2">改为北墙圆标 A</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只把 T8 修订为点对 A，V2 通过率变成多少？</h3><button data-answer="0">75%</button><button data-answer="1">100%</button><button data-answer="2">80%</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>原示例两组的变化可怎样写？</h3><button data-answer="0">从 2/4 到 3/4，增加 25 个百分点</button><button data-answer="1">所有同学都能通关</button><button data-answer="2">增长 1 个百分点</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请同伴随机点决定单的一条结论，追到日志编号。再用同一张找桥卡测两版，用未知展品测人工分支，分别写实际结果。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。</p>
   <div data-peer-review><label>第一版 · 同伴在哪一步停下？记下他的动作或原话<textarea data-peer="trial"></textarea></label><label>第二版 · 我只改这一处<textarea data-peer="change"></textarea></label><label>用相同输入重试 · 这次实际发生了什么？<textarea data-peer="retest"></textarea></label></div>
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -542,7 +565,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"一张写得出分母的改版决定单","reader":"需要在一节课内决定修什么的导览项目组","brief":"手上只有六分钟制作时间。给团队一张能查回每个证据的决定单，再做出第二版，请新访客用相同条件验收。","materials":["虚构日志 V1：四位首次访客同一起点找纸桥。T1 错到 B 未完成，T2 点对 A，T3 错到 B 未完成，T4 点对 A 但说标题颜色太浅。","候选改动：把“前面”改成“北墙圆标 A”需 4 分钟；重做花边需 6 分钟。工时预算 6 分钟，首轮只选一项。","另一张未知展品卡 U1：向导按既定规则转西墙人工台。保留该卡做回归；这张卡不计入找纸桥通过率。","纸面复测示例：另四位首次访客同条件试 V2，T5、T6、T7 点对 A，T8 未完成。实际作品另记新的轮次。"],"choices":["交付一张可点证据编号的优先级看板","交付一份新旧指引并排、附分母和回归卡的版本说明"],"teacher":["投屏 V1 四行，问“哪项问题妨碍完成？”全班找出可回查的两个编号。","投屏两项预算，问“六分钟够做哪件？”全班用损失的任务而非装饰偏好投票。","投屏 U1，问“它进哪个分母？”全班决定主任务与回归分开记。","投屏 V1 与 V2，让同学指出唯一改动，问“哪些条件还要保持？”全班固定口令、入口和判定。","投屏 2/4 与 3/4，读“人人都会用”，请全班用能被八行日志支持的话改写。"],"student":["先问 AI 哪些失败能追溯到任务中断，再追问证据编号。","选交付形式，按阻断程度、出现次数和工时排候选；自己决定唯一改动。","将 T1 至 T4 放进主任务表，U1 单列回归，准备同一张验收口令。","保留 V1，让 AIChat 根据日志写出可执行的 V2 指引补丁，将新文字应用到本组作品，打开两版检查。","请新访客试用并记录分子分母，只改证据指向的一个卡点；用 U1 复查人工路径，把尚失败的情况留下。"],"prompts":["逐条指出哪些日志记录了未完成，引用编号。先等我判断修复对象。","用六分钟预算比较两个候选；为每项列支持证据、影响和工时。","给我一张空白复测表，分开记录找桥主任务和未知问题转人工。","按我选的方案生成导览台可单独预览的第二版说明或看板，保留首版和原始编号，提供一项实际可替换的指引。","按实际完成数算两版通过率与百分点变化；注明试玩人数，另列 U1 回归与还没解决的错例。"],"cases":[{"question":"哪项满足预算且有两条失败日志支持？","options":["增设所有展厅","重做花边","改为北墙圆标 A"],"answer":2,"reason":"T1、T3 走错厅且未完成，改指引需 4 分钟。"},{"question":"只把 T8 修订为点对 A，V2 通过率变成多少？","options":["75%","100%","80%"],"answer":1,"reason":"找桥的 4 人全部完成，U1 不在分母中。"},{"question":"原示例两组的变化可怎样写？","options":["从 2/4 到 3/4，增加 25 个百分点","所有同学都能通关","增长 1 个百分点"],"answer":0,"reason":"50% 至 75% 相差 25 个百分点，只描述这两组。"}],"revision":"请同伴随机点决定单的一条结论，追到日志编号。再用同一张找桥卡测两版，用未知展品测人工分支，分别写实际结果。","boundary":"只用匿名轮次。AI 可提候选；团队负责选择、实施并说明有限样本能支持的结论。"}, steps=["先问 AI 哪些失败能追溯到任务中断，再追问证据编号。","选交付形式，按阻断程度、出现次数和工时排候选；自己决定唯一改动。","将 T1 至 T4 放进主任务表，U1 单列回归，准备同一张验收口令。","保留 V1，让 AIChat 根据日志写出可执行的 V2 指引补丁，将新文字应用到本组作品，打开两版检查。","请新访客试用并记录分子分母，只改证据指向的一个卡点；用 U1 复查人工路径，把尚失败的情况留下。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"带证据分母的改版决定板","reader":"需要在一节课内决定修什么的导览项目组","brief":"在预算内按阻断记录数挑一个修改，能独立算出首版和复测通过率。","materials":["虚构日志 V1：四位首次访客同一起点找纸桥。T1 错到 B 未完成，T2 点对 A，T3 错到 B 未完成，T4 点对 A 但说标题颜色太浅。","候选改动：把“前面”改成“北墙圆标 A”需 4 分钟；重做花边需 6 分钟。工时预算 6 分钟，首轮只选一项。","另一张未知展品卡 U1：向导按既定规则转西墙人工台。保留该卡做回归；这张卡不计入找纸桥通过率。","纸面复测示例：另四位首次访客同条件试 V2，T5、T6、T7 点对 A，T8 未完成。实际作品另记新的轮次。"],"choices":["交付一张可点证据编号的优先级看板","交付一份新旧指引并排、附分母和回归卡的版本说明"],"teacher":["投屏 V1 四行，问“哪项问题妨碍完成？”全班找出可回查的两个编号。","投屏两项预算，问“六分钟够做哪件？”全班用损失的任务而非装饰偏好投票。","投屏 U1，问“它进哪个分母？”全班决定主任务与回归分开记。","投屏 V1 与 V2，让同学指出唯一改动，问“哪些条件还要保持？”全班固定口令、入口和判定。","投屏 2/4 与 3/4，读“人人都会用”，请全班用能被八行日志支持的话改写。"],"student":["先问 AI 哪些失败能追溯到任务中断，再追问证据编号。","选交付形式，按阻断程度、出现次数和工时排候选；自己决定唯一改动。","将 T1 至 T4 放进主任务表，U1 单列回归，准备同一张验收口令。","输入自己的两轮日志，给候选修改标上对应问题名和耗时，做出可以交给开发者的 V1 决定板。","请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。"],"prompts":["逐条指出哪些日志记录了未完成，引用编号。先等我判断修复对象。","用六分钟预算比较两个候选；为每项列支持证据、影响和工时。","给我一张空白复测表，分开记录找桥主任务和未知问题转人工。","按我选的方案生成导览台可单独预览的第二版说明或看板，保留首版和原始编号，提供一项实际可替换的指引。","按实际完成数算两版通过率与百分点变化；注明试玩人数，另列 U1 回归与还没解决的错例。"],"cases":[{"question":"哪项满足预算且有两条失败日志支持？","options":["增设所有展厅","重做花边","改为北墙圆标 A"],"answer":2,"reason":"T1、T3 走错厅且未完成，改指引需 4 分钟。"},{"question":"只把 T8 修订为点对 A，V2 通过率变成多少？","options":["75%","100%","80%"],"answer":1,"reason":"找桥的 4 人全部完成，U1 不在分母中。"},{"question":"原示例两组的变化可怎样写？","options":["从 2/4 到 3/4，增加 25 个百分点","所有同学都能通关","增长 1 个百分点"],"answer":0,"reason":"50% 至 75% 相差 25 个百分点，只描述这两组。"}],"revision":"请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。","boundary":"只用匿名轮次。AI 可提候选；团队负责选择、实施并说明有限样本能支持的结论。"}, steps=["先问 AI 哪些失败能追溯到任务中断，再追问证据编号。","选交付形式，按阻断程度、出现次数和工时排候选；自己决定唯一改动。","将 T1 至 T4 放进主任务表，U1 单列回归，准备同一张验收口令。","输入自己的两轮日志，给候选修改标上对应问题名和耗时，做出可以交给开发者的 V1 决定板。","请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -580,6 +603,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -645,6 +673,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -774,6 +803,212 @@ render();
 
 
 })();
+(() => {const config={"id":"g9-06","title":"带证据分母的改版决定板","goal":"在预算内按阻断记录数挑一个修改，能独立算出首版和复测通过率。","student":"输入自己的两轮日志，给候选修改标上对应问题名和耗时，做出可以交给开发者的 V1 决定板。","revision":"请同伴把预算降至三分钟，再把预算恢复；只调候选工时或标记遗漏的阻断记录，用原日志重测。","fields":[{"key":"v1","label":"V1 每行“通过/失败 问题名”，通过可省略问题","value":"失败 指引不清\n通过\n失败 指引不清\n通过 标题浅"},{"key":"v2","label":"V2 同口令的另一组首次访客","value":"通过\n通过\n通过\n失败 指引不清"},{"key":"costs","label":"候选项，每行“问题名 分钟”","value":"指引不清 4\n标题浅 6"},{"key":"budget","label":"可用分钟","value":"6"}],"teacher":false,"sealed":false};
+const run=({run(v){
+      const parse=s=>s.trim()?s.trim().split(/\r?\n/).map(r=>r.trim().match(/^(通过|失败)(?:\s+(.+))?$/)):[];const a=parse(v.v1),b=parse(v.v2);
+      if(!a.length||[...a,...b].some(r=>!r||r[1]==='失败'&&!r[2]))return '日志须有 V1 样本；失败行需要问题名。';
+      const budget=Number(v.budget);if(!v.budget.trim()||!Number.isFinite(budget)||budget<0)return '预算需要非负数字。';
+      const c=v.costs.trim().split(/\r?\n/).map(row=>row.trim().match(/^(.+?)\s+(\d+(?:\.\d+)?)$/));if(c.some(r=>!r))return '候选项需要问题名和数字工时。';
+      const choices=c.filter(r=>+r[2]<=budget).map(r=>({name:r[1],cost:+r[2],ids:a.flatMap((x,i)=>x[1]==='失败'&&x[2]===r[1]?['T'+(i+1)]:[])})).filter(x=>x.ids.length).sort((x,y)=>y.ids.length-x.ids.length||x.cost-y.cost);
+      const wins=rows=>rows.filter(r=>r[1]==='通过').length, rate=rows=>wins(rows)/rows.length*100;
+      return ['V1 通过：'+wins(a)+'/'+a.length,choices.length?'先修：'+choices[0].name+'；'+choices[0].cost+' 分钟；阻断编号 '+choices[0].ids.join('、'):'预算内没有有阻断证据的候选项。',b.length?'V2 通过：'+wins(b)+'/'+b.length+'；变化 '+Number((rate(b)-rate(a)).toFixed(1))+' 个百分点':'等待同条件的 V2 实测。'].join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -793,7 +1028,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -825,6 +1060,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

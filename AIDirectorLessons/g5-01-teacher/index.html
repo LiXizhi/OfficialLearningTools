@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g5">← 课程目录</a><a href="../g5-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>5 年级 · 第 1 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>典型AI应用（一）：图像识别与智能导览怎么工作</h1><p><strong>本课目标　</strong>参观者走近展品时，能通过展品唯一编号查看到准确的图文导览信息与原始资料出处。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。</p></div>
+</style><main><nav><a href="../index.html#g5">← 课程目录</a><a href="../g5-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>5 年级 · 第 1 课 · Paracraft</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>典型AI应用（一）：图像识别与智能导览怎么工作</h1><p><strong>本课目标　</strong>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>两座小塔从背面看一模一样，该读哪一段导览词？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏 A12 的蓝顶局部，问“这一条线索能当作名字吗？”全班先猜，暂不公布答案。</p>
-    <h3>投屏材料</h3><p>模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。</p><details><summary>备课时看 · 本节课收什么证据</summary>试玩者在 V1 用 A12 读出第 4 页，在 V2 加入同款塔后，先只报外观再报 B12，确认得到两个候选、再确定第 7 页；复查 A12 和 C12。</details>
+    <h3>投屏材料</h3><p>模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。</p><details><summary>备课时看 · 本节课收什么证据</summary>请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。
 模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。
 模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。
 外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。
 展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。
 假设拍到蓝顶三扇窗，帮我追问一条能区分两座塔的线索，先别给塔起新名字。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">把 B12 的同款轮廓叠到投影上，念“哪些信息能唯一选中一件？”全班选颜色还是编号。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">先猜“蓝顶”会命中几条，再猜编号 B12 会把你送到登记册哪一页。</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">由导览 NPC 带观众走到编号牌　+1</button><button data-teach-vote="1">设可点击的展台按钮，请观众自己选择编号　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。
 模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。
 模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。
 外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。
 展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。
 请写外观筛候选、读编号查资料、编号无记录时求助的三步路线，我会选游客怎样操作。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏两张登记卡，问“借风塔的来源写第几页？”请学生指向原行。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">先登记一件，再只添加同外观的 B12，投屏比较候选数。在 Paracraft 搭两座蓝顶三窗塔，分别点底座编号读展签，走到未登记的模型前测试求助。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。</li><li>模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。</li><li>外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。</li><li>展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。
 模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。
 模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。
 外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。
 展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。
 按原始 A12、B12 登记卡排展签文字与可朗读的短句，每张写明资料页，不添传说。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">在 3D 世界点 A12 的展签，念“看到名字以后怎样复核？”全班决定先看用途还是先查出处。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>试玩者在 V1 用 A12 读出第 4 页，在 V2 加入同款塔后，先只报外观再报 B12，确认得到两个候选、再确定第 7 页；复查 A12 和 C12。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？</p><button data-predict="0">一定是听雨塔　+1</button><button data-predict="1">一定是借风塔　+1</button><button data-predict="2">有两个候选，需进一步看编号　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>两张登记卡的外观字段相同。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。
 模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。
 模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。
 外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。
 展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。
 请从空世界建 A12 小塔和导览角色，点击底座 A12 显示听雨塔及出处。告诉我到哪儿验证。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">投屏未登记的 C12，问“此时导览员该说哪个名字？”全班决定是否转人工。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">外观能告诉我们有哪些可能，哪一格让导览员能指回确切的资料页？</p>
 
 
 
@@ -142,16 +142,33 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>读到 C12，最合适的反馈是？</p><ol><li>按尾数读 A12</li><li>报编号未收录，请值班员核对</li><li>随便介绍其中一座</li></ol><details><summary>听完理由，再揭示依据</summary>报编号未收录，请值班员核对。登记表只有 A12、B12，C12 缺少资料。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。
 模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。
 模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。
 外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。
 展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。
 保留 A12，另存世界 V2 并加 B12。两塔同是蓝顶、三扇窗，按编号查不同展签，查 C12 时请求值班员复核。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g5-01" data-role="teacher">
+    <small>Paracraft · 世界排练</small><h2>可改登记册的模型展导览台</h2>
+    <p>先登记一件，再只添加同外观的 B12，投屏比较候选数。在 Paracraft 搭两座蓝顶三窗塔，分别点底座编号读展签，走到未登记的模型前测试求助。</p><div class="practical-controls"><label>展品登记册，每行 编号｜外观｜名称｜来源｜导览词<textarea data-input="catalog" rows="4">A12｜蓝顶三窗｜听雨塔｜模型社登记册第4页｜在这里记录模拟雨声。
+B12｜蓝顶三窗｜借风塔｜模型社登记册第7页｜纸风轮展示气流方向。</textarea></label><label>底座号或外观线索<textarea data-input="query" rows="2">蓝顶</textarea></label><label>查询入口<select data-input="by"><option>按外观找候选</option><option>按编号打开展签</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g5-01" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 来参观校园模型展的新同学</small><h2>两个同款小塔的语音导览台</h2><p>展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 来参观校园模型展的新同学</small><h2>可改登记册的模型展导览台</h2><p>在排练台编写 A12 的登记行，加一段自己写的导览词，测试编号查询。在 Paracraft 从空世界建 A12 及展签，并检查底座与数字导览台资料相符。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。 <button type="button" data-cite="0">引用到本步记录</button></li><li>模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。 <button type="button" data-cite="1">引用到本步记录</button></li><li>外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。 <button type="button" data-cite="2">引用到本步记录</button></li><li>展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　图像线索在本课用道具特征模拟。登记册为虚构展品资料，无法确定时让观众确认底座号。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,79 +179,12 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>读到底座 A12，应打开哪张资料？</h3><button data-answer="0">听雨塔，第 4 页</button><button data-answer="1">借风塔，第 7 页</button><button data-answer="2">借风塔，第 4 页</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？</h3><button data-answer="0">一定是听雨塔</button><button data-answer="1">一定是借风塔</button><button data-answer="2">有两个候选，需进一步看编号</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>读到 C12，最合适的反馈是？</h3><button data-answer="0">按尾数读 A12</button><button data-answer="1">报编号未收录，请值班员核对</button><button data-answer="2">随便介绍其中一座</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;读到底座 A12，应打开哪张资料？&quot;, options={&quot;听雨塔，第 4 页&quot;, &quot;借风塔，第 7 页&quot;, &quot;借风塔，第 4 页&quot;}, correct=1, evidence=&quot;A12 登记行记载听雨塔，来源第 4 页。&quot;},
-    {q=&quot;仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？&quot;, options={&quot;一定是听雨塔&quot;, &quot;一定是借风塔&quot;, &quot;有两个候选，需进一步看编号&quot;}, correct=3, evidence=&quot;两张登记卡的外观字段相同。&quot;},
-    {q=&quot;读到 C12，最合适的反馈是？&quot;, options={&quot;按尾数读 A12&quot;, &quot;报编号未收录，请值班员核对&quot;, &quot;随便介绍其中一座&quot;}, correct=2, evidence=&quot;登记表只有 A12、B12，C12 缺少资料。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g5_01_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;读到底座 A12，应打开哪张资料？&quot;, options={&quot;听雨塔，第 4 页&quot;, &quot;借风塔，第 7 页&quot;, &quot;借风塔，第 4 页&quot;}, correct=1, evidence=&quot;A12 登记行记载听雨塔，来源第 4 页。&quot;},
-    {q=&quot;仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？&quot;, options={&quot;一定是听雨塔&quot;, &quot;一定是借风塔&quot;, &quot;有两个候选，需进一步看编号&quot;}, correct=3, evidence=&quot;两张登记卡的外观字段相同。&quot;},
-    {q=&quot;读到 C12，最合适的反馈是？&quot;, options={&quot;按尾数读 A12&quot;, &quot;报编号未收录，请值班员核对&quot;, &quot;随便介绍其中一座&quot;}, correct=2, evidence=&quot;登记表只有 A12、B12，C12 缺少资料。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g5_01_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;读到底座 A12，应打开哪张资料？\&quot;, options={\&quot;听雨塔，第 4 页\&quot;, \&quot;借风塔，第 7 页\&quot;, \&quot;借风塔，第 4 页\&quot;}, correct=1, evidence=\&quot;A12 登记行记载听雨塔，来源第 4 页。\&quot;},\n    {q=\&quot;仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？\&quot;, options={\&quot;一定是听雨塔\&quot;, \&quot;一定是借风塔\&quot;, \&quot;有两个候选，需进一步看编号\&quot;}, correct=3, evidence=\&quot;两张登记卡的外观字段相同。\&quot;},\n    {q=\&quot;读到 C12，最合适的反馈是？\&quot;, options={\&quot;按尾数读 A12\&quot;, \&quot;报编号未收录，请值班员核对\&quot;, \&quot;随便介绍其中一座\&quot;}, correct=2, evidence=\&quot;登记表只有 A12、B12，C12 缺少资料。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>试玩者在 V1 用 A12 读出第 4 页，在 V2 加入同款塔后，先只报外观再报 B12，确认得到两个候选、再确定第 7 页；复查 A12 和 C12。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -710,7 +660,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"两个同款小塔的语音导览台","reader":"来参观校园模型展的新同学","brief":"展厅有两座长得很像的蓝顶小塔。让参观者先凭外观找展签，再凭编号找一次，最后指出每段介绍来自哪张登记卡。","materials":["模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。","模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。","外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。","展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。"],"choices":["由导览 NPC 带观众走到编号牌","设可点击的展台按钮，请观众自己选择编号"],"teacher":["投屏 A12 的蓝顶局部，问“这一条线索能当作名字吗？”全班先猜，暂不公布答案。","把 B12 的同款轮廓叠到投影上，念“哪些信息能唯一选中一件？”全班选颜色还是编号。","投屏两张登记卡，问“借风塔的来源写第几页？”请学生指向原行。","在 3D 世界点 A12 的展签，念“看到名字以后怎样复核？”全班决定先看用途还是先查出处。","投屏未登记的 C12，问“此时导览员该说哪个名字？”全班决定是否转人工。"],"student":["看两座外形相同的小塔，问 AI 怎样把“可能是谁”和“查到是谁”分开。","选导览方法，画出候选两件、编号一件、编号缺失三种反馈。","照登记卡做两个蓝顶模型草图和两个底座号，逐字核对名字与来源页。","在空世界先建 A12 及可点击展签；请同伴读出展品名字并指认资料页，留存 V1。","复制世界，只加外观相同的 B12 和对应记录。保持 A12 资料不动；让同伴分别按外观和编号试，再给一次未知号。"],"prompts":["假设拍到蓝顶三扇窗，帮我追问一条能区分两座塔的线索，先别给塔起新名字。","请写外观筛候选、读编号查资料、编号无记录时求助的三步路线，我会选游客怎样操作。","按原始 A12、B12 登记卡排展签文字与可朗读的短句，每张写明资料页，不添传说。","请从空世界建 A12 小塔和导览角色，点击底座 A12 显示听雨塔及出处。告诉我到哪儿验证。","保留 A12，另存世界 V2 并加 B12。两塔同是蓝顶、三扇窗，按编号查不同展签，查 C12 时请求值班员复核。"],"cases":[{"question":"读到底座 A12，应打开哪张资料？","options":["听雨塔，第 4 页","借风塔，第 7 页","借风塔，第 4 页"],"answer":0,"reason":"A12 登记行记载听雨塔，来源第 4 页。"},{"question":"仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？","options":["一定是听雨塔","一定是借风塔","有两个候选，需进一步看编号"],"answer":2,"reason":"两张登记卡的外观字段相同。"},{"question":"读到 C12，最合适的反馈是？","options":["按尾数读 A12","报编号未收录，请值班员核对","随便介绍其中一座"],"answer":1,"reason":"登记表只有 A12、B12，C12 缺少资料。"}],"revision":"试玩者在 V1 用 A12 读出第 4 页，在 V2 加入同款塔后，先只报外观再报 B12，确认得到两个候选、再确定第 7 页；复查 A12 和 C12。","boundary":"图像线索在本课用道具特征模拟。登记册为虚构展品资料，无法确定时让观众确认底座号。"}, steps=["投屏 A12 的蓝顶局部，问“这一条线索能当作名字吗？”全班先猜，暂不公布答案。","把 B12 的同款轮廓叠到投影上，念“哪些信息能唯一选中一件？”全班选颜色还是编号。","投屏两张登记卡，问“借风塔的来源写第几页？”请学生指向原行。","在 3D 世界点 A12 的展签，念“看到名字以后怎样复核？”全班决定先看用途还是先查出处。","投屏未登记的 C12，问“此时导览员该说哪个名字？”全班决定是否转人工。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"可改登记册的模型展导览台","reader":"来参观校园模型展的新同学","brief":"只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。","materials":["模型 A12：蓝顶、三扇窗；名称“听雨塔”；出处为虚构《模型社登记册》第 4 页，作品用途是记录模拟雨声。","模型 B12：蓝顶、三扇窗；名称“借风塔”；出处为虚构《模型社登记册》第 7 页，作品用途是展示纸风轮。","外观描述能筛到候选展品；候选不唯一时，请读底座编号。输入不存在的 C12 要提示找值班员。","展签固定三栏：编号、名称、来源页；朗读文字另列。两座塔均为本课虚构道具。"],"choices":["由导览 NPC 带观众走到编号牌","设可点击的展台按钮，请观众自己选择编号"],"teacher":["投屏 A12 的蓝顶局部，问“这一条线索能当作名字吗？”全班先猜，暂不公布答案。","把 B12 的同款轮廓叠到投影上，念“哪些信息能唯一选中一件？”全班选颜色还是编号。","投屏两张登记卡，问“借风塔的来源写第几页？”请学生指向原行。","在 3D 世界点 A12 的展签，念“看到名字以后怎样复核？”全班决定先看用途还是先查出处。","投屏未登记的 C12，问“此时导览员该说哪个名字？”全班决定是否转人工。"],"student":["看两座外形相同的小塔，问 AI 怎样把“可能是谁”和“查到是谁”分开。","选导览方法，画出候选两件、编号一件、编号缺失三种反馈。","照登记卡做两个蓝顶模型草图和两个底座号，逐字核对名字与来源页。","在排练台编写 A12 的登记行，加一段自己写的导览词，测试编号查询。在 Paracraft 从空世界建 A12 及展签，并检查底座与数字导览台资料相符。","请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。"],"prompts":["假设拍到蓝顶三扇窗，帮我追问一条能区分两座塔的线索，先别给塔起新名字。","请写外观筛候选、读编号查资料、编号无记录时求助的三步路线，我会选游客怎样操作。","按原始 A12、B12 登记卡排展签文字与可朗读的短句，每张写明资料页，不添传说。","请从空世界建 A12 小塔和导览角色，点击底座 A12 显示听雨塔及出处。告诉我到哪儿验证。","保留 A12，另存世界 V2 并加 B12。两塔同是蓝顶、三扇窗，按编号查不同展签，查 C12 时请求值班员复核。"],"cases":[{"question":"读到底座 A12，应打开哪张资料？","options":["听雨塔，第 4 页","借风塔，第 7 页","借风塔，第 4 页"],"answer":0,"reason":"A12 登记行记载听雨塔，来源第 4 页。"},{"question":"仅加一座同外观的 B12 后，输入“蓝顶三窗”能确定什么？","options":["一定是听雨塔","一定是借风塔","有两个候选，需进一步看编号"],"answer":2,"reason":"两张登记卡的外观字段相同。"},{"question":"读到 C12，最合适的反馈是？","options":["按尾数读 A12","报编号未收录，请值班员核对","随便介绍其中一座"],"answer":1,"reason":"登记表只有 A12、B12，C12 缺少资料。"}],"revision":"请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。","boundary":"图像线索在本课用道具特征模拟。登记册为虚构展品资料，无法确定时让观众确认底座号。"}, steps=["投屏 A12 的蓝顶局部，问“这一条线索能当作名字吗？”全班先猜，暂不公布答案。","把 B12 的同款轮廓叠到投影上，念“哪些信息能唯一选中一件？”全班选颜色还是编号。","投屏两张登记卡，问“借风塔的来源写第几页？”请学生指向原行。","在 3D 世界点 A12 的展签，念“看到名字以后怎样复核？”全班决定先看用途还是先查出处。","投屏未登记的 C12，问“此时导览员该说哪个名字？”全班决定是否转人工。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -748,6 +698,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -813,6 +768,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -981,6 +937,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -992,6 +950,270 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g5-01","title":"可改登记册的模型展导览台","goal":"只凭蓝顶三窗找出两个候选，再按底座编号取回唯一来源。","student":"在排练台编写 A12 的登记行，加一段自己写的导览词，测试编号查询。在 Paracraft 从空世界建 A12 及展签，并检查底座与数字导览台资料相符。","revision":"请参观者只报蓝顶，再补报 B12。复制 V1，加同外观的 B12 及来源页，重放同一查询；拿 C12 检查求助分支。","fields":[{"key":"catalog","label":"展品登记册，每行 编号｜外观｜名称｜来源｜导览词","value":"A12｜蓝顶三窗｜听雨塔｜模型社登记册第4页｜在这里记录模拟雨声。\nB12｜蓝顶三窗｜借风塔｜模型社登记册第7页｜纸风轮展示气流方向。"},{"key":"query","label":"底座号或外观线索","value":"蓝顶"},{"key":"by","label":"查询入口","options":["按外观找候选","按编号打开展签"]}],"teacher":true,"sealed":false};
+const run=({run(v){
+      const rows=v.catalog.trim().split(/\n/).filter(s=>s.trim()).map(s=>s.split(/[|｜]/).map(cell=>cell.trim()));
+      const ids=new Set();
+      for(const [i,row] of rows.entries()){
+        if(row.length!==5||row.some(x=>!x)) return '登记册第 '+(i+1)+' 行缺少完整的五栏。';
+        const id=row[0].toUpperCase(); if(ids.has(id)) return '重复编号 '+id+'，请先核对底座。'; ids.add(id);
+      }
+      const q=v.query.trim();
+      if(!q) return '请先读底座编号，或输入一条看得见的外观线索。';
+      const hits=rows.filter(([id,look])=>v.by.startsWith('按编号') ? id.toUpperCase()===q.toUpperCase():look.includes(q));
+      if(!hits.length) return '没有找到“'+q+'”，请值班员核对登记册。';
+      if(hits.length>1) return '候选 '+hits.length+' 件：'+hits.map(([id,,name])=>id+' '+name).join('、')+'。请看底座编号。';
+      const [id,,name,source,line]=hits[0];
+      return '展签 '+id+' · '+name+'\n'+line+'\n资料来自'+source;
+    }}).run;
+const world=({world(v){
+      const rows=v.catalog.trim().split(/\n/).filter(s=>s.trim()).map(s=>s.split(/[|｜]/).map(x=>x.trim()));
+      if(!rows.length||rows.some(r=>r.length!==5||r.some(x=>!x))||new Set(rows.map(r=>r[0].toUpperCase())).size!==rows.length) return 'registerClickEvent(function() say("先核对登记册完整性和底座编号。",3) end)';
+      const lua = s=>JSON.stringify(String(s).replace(/[\u0000-\u001f]/g,' '));
+      const data=rows.map(r=>'{'+r.map(lua).join(',')+'}').join(',');
+      return `registerClickEvent(function()
+  local items={${data}}
+  local mode=ask("你看到了什么？",{"外观线索","底座编号"})
+  if mode==1 then
+    local clue=${lua(v.query.trim())}
+    local count=0
+    for _,r in ipairs(items) do
+      if clue~="" and string.find(r[2],clue,1,true) then
+        count=count+1
+        say("候选 "..r[1].." "..r[3],2)
+      end
+    end
+    if count==0 then say("未找到该线索，请读底座号",2)
+    elseif count>1 then say("同外观有多件，请核对底座号",2) end
+  elseif mode==2 then
+    local ids={}
+    for i,r in ipairs(items) do ids[i]=r[1] end
+    ids[#ids+1]="未登记编号"
+    local n=ask("选择读到的编号",ids)
+    local r=items[n or 0]
+    if r then say(r[3].."："..r[5].." 来源："..r[4],4)
+    else say("请值班员核对登记册",2) end
+  end
+end)`;
+    }}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -1011,7 +1233,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1043,6 +1265,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

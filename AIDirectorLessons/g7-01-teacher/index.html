@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 1 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>AI系统认知：拆解“数据—算法—模型—交互—场景”五要素</h1><p><strong>本课目标　</strong>清楚说明每个要素在系统中扮演的角色，以及当某一环节（如传感器输入或模型推理）失效时系统的表现。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。</p></div>
+</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 1 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>AI系统认知：拆解“数据—算法—模型—交互—场景”五要素</h1><p><strong>本课目标　</strong>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>访客明明说“礼堂”，屏幕却报“地点未知”。我们应该先改按钮，还是先找哪一步听错了？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">“看得见的按钮后面还有什么？”投屏A，大家给五张卡归类。</p>
-    <h3>投屏材料</h3><p>模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴在V1按B走到文字入口，再用C寻找可读地图。V2只改显示，重新检查C能否读清、B能否仍以文字导航。</details>
+    <h3>投屏材料</h3><p>模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。</p><details><summary>备课时看 · 本节课收什么证据</summary>请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。
 模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。
 日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。
 系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。
 日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。
 用A问我算法与模型的区别，等我指出对应证据后再追问。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">“训练方法和训练出的东西是一张卡吗？”交换两张标签，让全班决定怎样修回。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">如果风声只改动了转写文字，意图能否匹配？恢复同一句的文字输入后，路线会怎样？</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">按访客动作横排五张卡　+1</button><button data-teach-vote="1">从故障日志倒查五层　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。
 模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。
 日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。
 系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。
 日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。
 为我选的排法设计五个可点击卡片，保留模型与交互的不同职责。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">“B里最早在哪步跑偏？”只显输入与转写，投票选加文字框还是先重画地图。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏安静室内的完整轨迹，再只选风声场景，看哪一行先变。保持风声并切换文字入口重试。最后改强光，比较正确路线与看不清显示的区别。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。</li><li>日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。</li><li>系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。</li><li>日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。
 模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。
 日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。
 系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。
 日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。
 将日志按输入、转写、意图、显示逐列整理，未知处留空。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">“关掉声音还能完成问路吗？”投屏网页请人只打字，全班确认地图还在。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>同伴在V1按B走到文字入口，再用C寻找可读地图。V2只改显示，重新检查C能否读清、B能否仍以文字导航。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>A改成B，最先能在日志中看到的偏差在哪里？</p><button data-predict="0">地图输出色彩　+1</button><button data-predict="1">意图标签名称　+1</button><button data-predict="2">由声音转出的文字　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>同一问句的转写已经从“礼堂”变成“李糖”。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。
 模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。
 日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。
 系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。
 日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。
 制作一个五层剖面单页，含三条模拟日志、故障切换和文字查询入口。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">“C和B能用同一诊断吗？”并排日志，请全班选C最先需要调整的层。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">最早偏差发生在转写、意图匹配还是显示？你能指给同伴看哪一行是证据吗？</p>
 
 
 
@@ -142,16 +142,33 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>C的系统日志都正确，优先试什么？</p><ol><li>高对比显示并检查可读性</li><li>重训分类器</li><li>删掉地点数据</li></ol><details><summary>听完理由，再揭示依据</summary>高对比显示并检查可读性。证据定位到强光下阅读困难，先查交互显示。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。
 模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。
 日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。
 系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。
 日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。
 观察者在C看不清显示；只加入高对比切换，给我一条C和一条B的复测路线。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g7-01" data-role="teacher">
+    <small>AIChat · 可独立试玩的作品</small><h2>校园问路台的五层诊断台</h2>
+    <p>投屏安静室内的完整轨迹，再只选风声场景，看哪一行先变。保持风声并切换文字入口重试。最后改强光，比较正确路线与看不清显示的区别。</p><div class="practical-controls"><label>地点资料，每行：地名｜路线<textarea data-input="routes" rows="4">礼堂｜向东经过蓝门
+图书角｜沿走廊到第二间</textarea></label><label>访客实际想问的话<textarea data-input="query" rows="2">礼堂在哪</textarea></label><label>有风时的模拟转写<textarea data-input="noisy" rows="2">李糖在哪</textarea></label><label>场景<select data-input="scene"><option>安静室内</option><option>户外风声</option><option>户外强光</option></select></label><label>入口<select data-input="entry"><option>按麦克风</option><option>打字</option></select></label><label>显示<select data-input="screen"><option>普通显示</option><option>高对比显示</option></select></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g7-01" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 科技节负责室内外两处问路台的同学</small><h2>听不见也能用的导览系统剖面图</h2><p>做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 科技节负责室内外两处问路台的同学</small><h2>校园问路台的五层诊断台</h2><p>写两个校园地名和各自路线，加入一个让外班同学容易听错的地名；制作两个输入入口，在三种模拟场景测试。为自己的地名建立可复查的五层记录。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。 <button type="button" data-cite="0">引用到本步记录</button></li><li>日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。 <button type="button" data-cite="1">引用到本步记录</button></li><li>系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。 <button type="button" data-cite="2">引用到本步记录</button></li><li>日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　只用虚构日志和示意地图，训练数据、模型输出与人工归因分别标明。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,12 +179,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>A中的“训练好、能判问地点的分类器”是哪一项？</h3><button data-answer="0">应用场景</button><button data-answer="1">模型</button><button data-answer="2">训练算法</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>A改成B，最先能在日志中看到的偏差在哪里？</h3><button data-answer="0">地图输出色彩</button><button data-answer="1">意图标签名称</button><button data-answer="2">由声音转出的文字</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>C的系统日志都正确，优先试什么？</h3><button data-answer="0">高对比显示并检查可读性</button><button data-answer="1">重训分类器</button><button data-answer="2">删掉地点数据</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴在V1按B走到文字入口，再用C寻找可读地图。V2只改显示，重新检查C能否读清、B能否仍以文字导航。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -616,7 +634,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"听不见也能用的导览系统剖面图","reader":"科技节负责室内外两处问路台的同学","brief":"做一张可点击的五层剖面图。参观者按“输入失真”能循线找到哪一层先出问题，并试到一个仍能使用的文字入口。","materials":["模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。","日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。","系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。","日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。"],"choices":["按访客动作横排五张卡","从故障日志倒查五层"],"teacher":["“看得见的按钮后面还有什么？”投屏A，大家给五张卡归类。","“训练方法和训练出的东西是一张卡吗？”交换两张标签，让全班决定怎样修回。","“B里最早在哪步跑偏？”只显输入与转写，投票选加文字框还是先重画地图。","“关掉声音还能完成问路吗？”投屏网页请人只打字，全班确认地图还在。","“C和B能用同一诊断吗？”并排日志，请全班选C最先需要调整的层。"],"student":["逐行看A，问“分类器是什么时候得到的”，再问它和训练算法有什么不同。","从两种排法中选一版，规定每张卡点开能看到一个输入、一个作用或一个失败信号。","把三条日志抄成文字证据，为每条画一条箭头通向首个可查环节。","在AIChat制作可独立打开的网页。点五层、切B、改用打字查礼堂并验证地图提示。","请同伴用C试一次。V2只加一项高对比显示入口，重查C和B并保留反馈。"],"prompts":["用A问我算法与模型的区别，等我指出对应证据后再追问。","为我选的排法设计五个可点击卡片，保留模型与交互的不同职责。","将日志按输入、转写、意图、显示逐列整理，未知处留空。","制作一个五层剖面单页，含三条模拟日志、故障切换和文字查询入口。","观察者在C看不清显示；只加入高对比切换，给我一条C和一条B的复测路线。"],"cases":[{"question":"A中的“训练好、能判问地点的分类器”是哪一项？","options":["应用场景","模型","训练算法"],"answer":1,"reason":"分工表把拟合出的分类器列为模型。"},{"question":"A改成B，最先能在日志中看到的偏差在哪里？","options":["地图输出色彩","意图标签名称","由声音转出的文字"],"answer":2,"reason":"同一问句的转写已经从“礼堂”变成“李糖”。"},{"question":"C的系统日志都正确，优先试什么？","options":["高对比显示并检查可读性","重训分类器","删掉地点数据"],"answer":0,"reason":"证据定位到强光下阅读困难，先查交互显示。"}],"revision":"同伴在V1按B走到文字入口，再用C寻找可读地图。V2只改显示，重新检查C能否读清、B能否仍以文字导航。","boundary":"只用虚构日志和示意地图，训练数据、模型输出与人工归因分别标明。"}, steps=["“看得见的按钮后面还有什么？”投屏A，大家给五张卡归类。","“训练方法和训练出的东西是一张卡吗？”交换两张标签，让全班决定怎样修回。","“B里最早在哪步跑偏？”只显输入与转写，投票选加文字框还是先重画地图。","“关掉声音还能完成问路吗？”投屏网页请人只打字，全班确认地图还在。","“C和B能用同一诊断吗？”并排日志，请全班选C最先需要调整的层。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"校园问路台的五层诊断台","reader":"科技节负责室内外两处问路台的同学","brief":"追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。","materials":["模拟日志A：安静室内，“礼堂在哪”转写正确，意图模型给出“问地点”，屏幕返回地图。","日志B：设备与模型相同，仅加入风声，转写成“李糖在哪”；日志中保存的是虚构文本。","系统分工：输入数据是声音或文字；算法规定把样本用于拟合分类器的过程；模型是拟合出的意图分类器；交互为麦克风按钮和文字框；场景为室内或露天。","日志C：强光下屏幕看不清，但系统日志中的文字、意图与地图都正确。"],"choices":["按访客动作横排五张卡","从故障日志倒查五层"],"teacher":["“看得见的按钮后面还有什么？”投屏A，大家给五张卡归类。","“训练方法和训练出的东西是一张卡吗？”交换两张标签，让全班决定怎样修回。","“B里最早在哪步跑偏？”只显输入与转写，投票选加文字框还是先重画地图。","“关掉声音还能完成问路吗？”投屏网页请人只打字，全班确认地图还在。","“C和B能用同一诊断吗？”并排日志，请全班选C最先需要调整的层。"],"student":["逐行看A，问“分类器是什么时候得到的”，再问它和训练算法有什么不同。","从两种排法中选一版，规定每张卡点开能看到一个输入、一个作用或一个失败信号。","把三条日志抄成文字证据，为每条画一条箭头通向首个可查环节。","写两个校园地名和各自路线，加入一个让外班同学容易听错的地名；制作两个输入入口，在三种模拟场景测试。为自己的地名建立可复查的五层记录。","请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。"],"prompts":["用A问我算法与模型的区别，等我指出对应证据后再追问。","为我选的排法设计五个可点击卡片，保留模型与交互的不同职责。","将日志按输入、转写、意图、显示逐列整理，未知处留空。","制作一个五层剖面单页，含三条模拟日志、故障切换和文字查询入口。","观察者在C看不清显示；只加入高对比切换，给我一条C和一条B的复测路线。"],"cases":[{"question":"A中的“训练好、能判问地点的分类器”是哪一项？","options":["应用场景","模型","训练算法"],"answer":1,"reason":"分工表把拟合出的分类器列为模型。"},{"question":"A改成B，最先能在日志中看到的偏差在哪里？","options":["地图输出色彩","意图标签名称","由声音转出的文字"],"answer":2,"reason":"同一问句的转写已经从“礼堂”变成“李糖”。"},{"question":"C的系统日志都正确，优先试什么？","options":["高对比显示并检查可读性","重训分类器","删掉地点数据"],"answer":0,"reason":"证据定位到强光下阅读困难，先查交互显示。"}],"revision":"请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。","boundary":"只用虚构日志和示意地图，训练数据、模型输出与人工归因分别标明。"}, steps=["“看得见的按钮后面还有什么？”投屏A，大家给五张卡归类。","“训练方法和训练出的东西是一张卡吗？”交换两张标签，让全班决定怎样修回。","“B里最早在哪步跑偏？”只显输入与转写，投票选加文字框还是先重画地图。","“关掉声音还能完成问路吗？”投屏网页请人只打字，全班确认地图还在。","“C和B能用同一诊断吗？”并排日志，请全班选C最先需要调整的层。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -654,6 +672,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -719,6 +742,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -887,6 +911,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -898,6 +924,222 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g7-01","title":"校园问路台的五层诊断台","goal":"追踪同一问路请求经过五个环节的记录，定位最早的偏差，并做出可恢复的交互入口。","student":"写两个校园地名和各自路线，加入一个让外班同学容易听错的地名；制作两个输入入口，在三种模拟场景测试。为自己的地名建立可复查的五层记录。","revision":"请展台值日生用同一句话在风声和强光下找路；只改入口或显示，再用原句复测，保存成功的路线和仍然受阻的一步。","fields":[{"key":"routes","label":"地点资料，每行：地名｜路线","value":"礼堂｜向东经过蓝门\n图书角｜沿走廊到第二间"},{"key":"query","label":"访客实际想问的话","value":"礼堂在哪"},{"key":"noisy","label":"有风时的模拟转写","value":"李糖在哪"},{"key":"scene","label":"场景","options":["安静室内","户外风声","户外强光"]},{"key":"entry","label":"入口","options":["按麦克风","打字"]},{"key":"screen","label":"显示","options":["普通显示","高对比显示"]}],"teacher":true,"sealed":false};
+const run=({run(v){
+      if (!v.query.trim()) return '先写访客的问题，才有一条可追踪的输入。';
+      const routes = [];
+      for (const line of v.routes.split(/\r?\n/).filter(x=>x.trim())) {
+        const pair=line.split(/[|｜]/).map(x=>x.trim());
+        if (pair.length!==2||pair.some(s=>!s)) return '资料行缺少地名或路线：'+line;
+        routes.push(pair);
+      }
+      if (!routes.length) return '请填写至少一条可检索的地点资料。';
+      const received=(v.scene==='户外风声'&&v.entry==='按麦克风'?v.noisy:v.query).trim();
+      const hits=routes.filter(([place])=>received.includes(place));
+      const route = hits.length===1 ? hits[0][1] : hits.length>1 ? '请确认具体地名' : '未定位，转人工问路';
+      const readability=v.scene==='户外强光'&&v.screen==='普通显示'?'屏幕可读性待改善':'路线反馈可读';
+      return ['① 场景：'+v.scene,'② 数据：访客原句“'+v.query+'”；接收到“'+received+'”。',
+        '③ 算法：逐一匹配资料地名，命中 '+hits.length+' 条。',
+        '④ 模型演示：用词表模拟地点意图；结果：'+(hits.map(r=>r[0]).join('、')||'未知')+'。',
+        '⑤ 交互：'+v.entry+' → '+route+'；'+readability+'。',
+        '最早可查的偏差：'+(received!==v.query.trim()?'转写文字变化':hits.length!==1?'地点资料匹配':readability==='屏幕可读性待改善'?'显示环节':'本次轨迹完整')+'。'].join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -917,7 +1159,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -949,6 +1191,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

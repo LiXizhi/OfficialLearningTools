@@ -1,3 +1,4 @@
+import {practicals, practicalPanel, practicalScript} from './practical-page.mjs';
 import {teachingDesk} from './teaching-desk.mjs';
 import fs from 'node:fs';
 
@@ -86,25 +87,29 @@ return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}`;
 }
 
 export function studioPage(id, teacher, platform, extra) {
-  const l = studios[id];
+  const practical = practicals[id];
+  const original = studios[id];
+  const l = practical ? {...original,artifact:practical.product,brief:practical.goal,revision:practical.revision,student:[...original.student.slice(0,3),practical.student,practical.revision]} : original;
+  const handsOn = practical ? practicalPanel(id,teacher,platform) : '';
   const steps = teacher ? l.teacher : l.student;
   const training = l.revealAt == null ? l.materials : l.materials.filter((_,i) => !l.sealedMaterials.includes(i));
   const materials = training.map(m => '<li>'+escape(m)+' <button type="button" data-cite="'+l.materials.indexOf(m)+'">引用到本步记录</button></li>').join('');
   const options = l.choices.map((c,i) => '<option value="'+i+'">'+escape(c)+'</option>').join('');
   const panel = `<section class="studio" data-lesson="${id}" data-role="${teacher?'teacher':'student'}">
-  <div class="studio-head"><small>${extra?'样板课拓展':teacher?'教师演示材料':'学生上机 · 我的作品'} · ${escape(l.reader)}</small><h2>${escape(l.artifact)}</h2><p>${escape(l.brief)}</p></div>
+  <div class="studio-head"><small>${extra?'样板课拓展':teacher?'教师演示材料':'学生上机 · 我的作品'} · ${escape(l.reader)}</small><h2>${escape(practical?.product || l.artifact)}</h2><p>${escape(practical?.student || l.brief)}</p></div>
   ${id === 'g4-01' && !teacher ? read('leaf-lab.html') : ''}
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials>${materials}</ul>${l.revealAt == null ? '' : '<label>封存首版规则<textarea data-rule rows="2"></textarea></label><button data-reveal>锁定规则，打开测试夹</button><p data-seal-status role="status"></p>'}<p><b>使用约定</b>　${escape(l.boundary)}</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤">${phases.map((p,i)=>'<button data-phase="'+i+'">'+p+'</button>').join('')}</nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  ${!teacher && !extra ? '<div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>'+escape(l.revision)+'</p><button data-jump-work>打开两版作品与重测工具</button></div></div>' : ''}
+  ${!teacher && !extra ? '<div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>'+escape(l.revision)+'</p><button data-jump-work>回制作台修改并重测</button></div></div>' : ''}
   <button data-read>朗读这一步</button><label>制作方案<select data-choice>${options}</select></label>
   ${teacher?'<button data-vote>为当前方案加一票</button> <output data-tally></output>':''}
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  ${!teacher && practical ? (l.sealedMaterials ? '<div data-practical-seal data-exam-private hidden>'+handsOn+'</div>' : handsOn) : ''}
   ${l.revealAt == null ? '' : '<template data-sealed>'}<details class="studio-cases" ${l.revealAt == null ? '' : 'data-exam-private'} open><summary>用三道题检验作品</summary>${l.cases.map((c,i)=>`<div class="studio-case" data-case="${i}"><h3>${escape(c.question)}</h3>${c.options.map((v,j)=>'<button data-answer="'+j+'">'+escape(v)+'</button>').join('')}<p role="status"></p></div>`).join('')}</details>${l.revealAt == null ? '' : '</template>'}
-  ${platform==='P' ? robotKit(id,l):''}
+  ${platform==='P' && !practical ? robotKit(id,l):''}
   ${platform==='A' ? `<details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   ${[1,2].map(v=>'<label>我的第 '+v+' 版网页<input type="file" accept=".html,.htm,text/html" data-return="'+v+'"></label><button data-preview="'+v+'">试玩第 '+v+' 版</button>').join('')}<p role="status" data-preview-status></p><div data-player></div></details>`:''}
   ${experiments[id] ? '<section class="studio-handoff" data-experiment><h3>'+experiments[id]+'</h3><div data-controls></div><button>运行课内实验</button><output aria-live="polite"></output></section>' : ''}
@@ -114,6 +119,6 @@ export function studioPage(id, teacher, platform, extra) {
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
   <button data-card="1">保存第一版验收卡</button><button data-card="2">保存第二版验收卡</button>
   <button data-studio-record>导出制作记录</button><p role="status" data-status></p></div></section>`;
-  return {body:extra?'<details class="studio-extra" id="studio-extension"><summary>拓展挑战 · '+escape(l.artifact)+'</summary>'+panel+'</details>':teacher ? teachingDesk(id,l)+'<details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary>'+panel+'</details>' : panel,
-    script:'(() => {const lesson='+JSON.stringify(l).replaceAll('<','\\u003c')+', steps='+JSON.stringify(steps).replaceAll('<','\\u003c')+', phases='+JSON.stringify(phases)+', minutes='+JSON.stringify(minutes)+';\n'+runtime+'\n'+(id === 'g4-01' ? read('leaf-lab.js') : experiments[id] ? experimentRuntime : '')+'\n})();'+(teacher && !extra ? '\n'+read('teaching-desk.js') : '')};
+  return {body:extra?'<details class="studio-extra" id="studio-extension"><summary>拓展挑战 · '+escape(l.artifact)+'</summary>'+panel+'</details>':teacher ? teachingDesk(id,l,practical,handsOn)+'<details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary>'+panel+'</details>' : panel,
+    script:'(() => {const lesson='+JSON.stringify(l).replaceAll('<','\\u003c')+', steps='+JSON.stringify(steps).replaceAll('<','\\u003c')+', phases='+JSON.stringify(phases)+', minutes='+JSON.stringify(minutes)+';\n'+runtime+'\n'+(id === 'g4-01' ? read('leaf-lab.js') : experiments[id] ? experimentRuntime : '')+'\n})();'+(teacher && !extra ? '\n'+read('teaching-desk.js') : '')+(practical ? practicalScript(id,teacher,platform):'')};
 }

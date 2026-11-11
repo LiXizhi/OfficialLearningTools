@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import {classroomActivity} from './activity.mjs';
 import {catalogStyle, renderCatalog} from './catalog.mjs';
 import {projectLesson} from './project-lessons.mjs';
+import {practicals} from './practical-page.mjs';
 import {studioPage, studios} from './studio.mjs';
 import {weatherPage} from './weather/page.mjs';
 import {
@@ -118,7 +119,7 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
     let b = '<nav><a href="../index.html#g'+g+'">← 课程目录</a><a href="'+counterpart+'">'+(teacher?'看学生上机页':'看教师大屏页')+' →</a></nav>';
     b += '<header class="lesson-entry '+mode+'"><small>'+g+' 年级 · 第 '+n+' 课 · '+(p==='P'?'Paracraft':'AIChat')+'</small>';
     b += '<div class="entry-role">'+(teacher?'教师大屏 · 全班共用一块屏':'学生上机 · 我的制作手账')+'</div>';
-    b += '<h1>'+html(title)+'</h1><p><strong>本课目标　</strong>'+html(studios[lessonId].objective || normal)+'</p></header>';
+    b += '<h1>'+html(title)+'</h1><p><strong>本课目标　</strong>'+html(practicals[lessonId]?.goal || studios[lessonId].objective || normal)+'</p></header>';
 
     const materialStart = b.length;
     if (i === 0 && sample) {
@@ -207,5 +208,5 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
   catalog.push({idx: i, g, n, chapter, title, platform: p === 'P' ? 'Paracraft' : 'AIChat', sample: Boolean(sample), task, ...paths});
 }
 
-const home = renderCatalog({course, framework, grades, gradeMeta, catalog, studios});
+const home = renderCatalog({course, framework, grades, gradeMeta, catalog, studios, practicals});
 save('index.html', course, home.body, home.script);

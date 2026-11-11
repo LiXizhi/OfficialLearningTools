@@ -76,91 +76,43 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-05-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>9 年级 · 第 5 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>工程实践（二）：真实用户可用性测试与客观行为观察</h1><p><strong>本课目标　</strong>测试记录表能严格区分“亲眼观察到的用户客观行为（如在路口停顿12秒）”与“开发者的主观归因推测”。</p></header><section class="studio" data-lesson="g9-05" data-role="student">
-  <div class="studio-head"><small>学生上机 · 我的作品 · 要复盘科技节导览台的下一组开发者</small><h2>静音观察席的首次试玩单</h2><p>让一位没见过原型的同学独立找纸桥。请把你亲眼看到的动作与猜测分栏，让接班人能复算停顿，并知道下一次该观察什么。</p></div>
+</style><main><nav><a href="../index.html#g9">← 课程目录</a><a href="../g9-05-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>9 年级 · 第 5 课 · Paracraft</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>工程实践（二）：真实用户可用性测试与客观行为观察</h1><p><strong>本课目标　</strong>由秒数和动作重建一次试玩，算出岔口停留、错点和完成时刻，并识别有干预的测试。</p></header><section class="studio" data-lesson="g9-05" data-role="student">
+  <div class="studio-head"><small>学生上机 · 我的作品 · 要复盘科技节导览台的下一组开发者</small><h2>静音观察员事件计时单</h2><p>建立秒数与动作的记录单，要求访客同意。自己在实际世界点角色试走，另请一名首次访客从同一起点走，观察员用外部秒表写下事件。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>独立开课用图：南入口向北，北墙圆标 A 是纸桥，东墙方标 B 是风车，西墙是黄旗人工台。可在空白沙盘放四块标牌和一个可点向导。 <button type="button" data-cite="0">引用到本步记录</button></li><li>示例甲（V1）：0 秒按开始，4 秒到岔口，16 秒离开岔口，18 秒点 B，29 秒点 A；旁观者全程没说话。 <button type="button" data-cite="1">引用到本步记录</button></li><li>示例乙（V2）：换一名首次访客，同任务、起点、朝向，5 秒到岔口，9 秒离开，17 秒点 A；这一版只将“前面”改为“北墙圆标 A”。 <button type="button" data-cite="2">引用到本步记录</button></li><li>观察表分四栏：时间点、实际动作、试玩后本人原话、待核实的解释。主持人若开口指路，另标本轮有干预。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　取得同伴同意，只记轮次、时间、动作及同意引用的原话。小样本用于发现卡点。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>同伴读单复算甲和乙的停顿、错点与完成时间；遇到主持人指路就标干预，再请新访客独立重测。分开记示例与自己的实测。</p><button data-jump-work>打开两版作品与重测工具</button></div></div>
+  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。</p><button data-jump-work>回制作台修改并重测</button></div></div>
   <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">做连续时间轴，标出两次点牌和岔口停顿</option><option value="1">做事件表，让观察员分别勾选停顿、错点和求助</option></select></label>
 
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  <style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g9-05" data-role="student">
+    <small>Paracraft · 世界排练</small><h2>静音观察员事件计时单</h2>
+    <p>建立秒数与动作的记录单，要求访客同意。自己在实际世界点角色试走，另请一名首次访客从同一起点走，观察员用外部秒表写下事件。</p><div class="practical-controls"><label>实测日志，每行“秒数 动作”，动作选开始、入岔、离岔、点B、点A、提示<textarea data-input="log" rows="4">0 开始
+4 入岔
+16 离岔
+18 点B
+29 点A</textarea></label><label>岔口牌给访客看的原话<textarea data-input="sign" rows="2">请到前面展厅</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><div data-graphic></div><output data-result aria-live="polite"></output>
+    <details data-world-panel><summary>带入 Paracraft 运行这一版</summary><p>打开本课空白世界，把当前设置生成的建景委托复制到主对话。建好后拉动拉杆、点角色，再用同一输入复测。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><button data-world-copy data-chat-copy>和 AI 聊 · 用这些设置建景</button><details><summary>查看行为脚本与完整建景 Lua</summary><pre data-world-code></pre><pre data-scene-code></pre></details><button data-world-file>下载当前建景 Lua</button></details>
+    <div class="practical-editions" ><h3>把作品交给下一位使用者</h3>
+    <p>用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。</p><label>同伴的原话或我观察到的卡点<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section>
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>甲在岔口停了多久？</h3><button data-answer="0">12 秒</button><button data-answer="1">16 秒</button><button data-answer="2">14 秒</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？</h3><button data-answer="0">11 秒</button><button data-answer="1">4 秒</button><button data-answer="2">6 秒</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？</h3><button data-answer="0">客观动作</button><button data-answer="1">待核实的解释</button><button data-answer="2">试玩者原话</button><p role="status"></p></div></details>
-  <details class="studio-kit"><summary>在 Paracraft 搭一个本课复核站</summary><p>先开空白世界，把建景委托带入主对话。建好后打开拉杆，点向导选两种条件，核对它的台词和朝向。</p><button class="btn-open-paracraft-std">打开 Paracraft</button><details><summary>行为脚本</summary><button class="copy-code-btn" data-copy-target="studio-code-0">复制行为脚本</button><pre id="studio-code-0">local tests = {
-    {q=&quot;甲在岔口停了多久？&quot;, options={&quot;12 秒&quot;, &quot;16 秒&quot;, &quot;14 秒&quot;}, correct=1, evidence=&quot;到岔口是第 4 秒，离开是第 16 秒，相差 12 秒。&quot;},
-    {q=&quot;如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？&quot;, options={&quot;11 秒&quot;, &quot;4 秒&quot;, &quot;6 秒&quot;}, correct=3, evidence=&quot;到岔口仍是第 5 秒，11−5=6。&quot;},
-    {q=&quot;另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？&quot;, options={&quot;客观动作&quot;, &quot;待核实的解释&quot;, &quot;试玩者原话&quot;}, correct=2, evidence=&quot;观察记录能证明停顿，无法独立证明字体造成停顿。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)</pre></details><details><summary>建景 Lua</summary><button class="copy-code-btn" data-copy-target="studio-code-1">复制建景 Lua</button><pre id="studio-code-1">local s = createScene({name=&quot;g9_05_review&quot;, dimensions={12,6,10}})
-s:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})
-s:group(&quot;guide&quot;)
-s:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=&quot;#00786e&quot;})
-s:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=&quot;#ffc45b&quot;})
-local model=&quot;blocktemplates/&quot;..s.name..&quot;_guide.x&quot;
-s:exportVoxelX(model,&quot;guide&quot;)
-s:requireModels({model})
-local movie=s:movie({name=&quot;review&quot;,position={5,1,5},duration=2})
-s:actor(movie,{name=s.name..&quot;_guide&quot;,filename=model,position={7,1,5},scale=1,animId=0})
-s:block({position={5,1,4},blockId=219})
-s:editEntity(s:position({5,1,4}),function(entity)
-    entity:SetDisplayName(s.name)
-    entity:SetNPLCode([==[
-local tests = {
-    {q=&quot;甲在岔口停了多久？&quot;, options={&quot;12 秒&quot;, &quot;16 秒&quot;, &quot;14 秒&quot;}, correct=1, evidence=&quot;到岔口是第 4 秒，离开是第 16 秒，相差 12 秒。&quot;},
-    {q=&quot;如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？&quot;, options={&quot;11 秒&quot;, &quot;4 秒&quot;, &quot;6 秒&quot;}, correct=3, evidence=&quot;到岔口仍是第 5 秒，11−5=6。&quot;},
-    {q=&quot;另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？&quot;, options={&quot;客观动作&quot;, &quot;待核实的解释&quot;, &quot;试玩者原话&quot;}, correct=2, evidence=&quot;观察记录能证明停顿，无法独立证明字体造成停顿。&quot;}
-}
-setActorValue(&quot;sentientRadius&quot;, 0)
-registerClickEvent(function()
-    local index = ask(&quot;想复核哪一次测试？&quot;, {&quot;基准&quot;, &quot;改变条件&quot;, &quot;换个场景&quot;})
-    local test = tests[index]
-    if not test then return end
-    local answer = ask(test.q, test.options)
-    if not answer then return end
-    if answer == test.correct then
-        say(&quot;判断成立。&quot; .. test.evidence, 6)
-        turnTo(90)
-    else
-        say(&quot;停下核对材料。&quot; .. test.evidence, 6)
-        turnTo(0)
-    end
-end)
-]==])
-end)
-s:block({position={5,1,3},blockId=190,data=5})
-return {lever=s:position({5,1,3}),movie=s:position({5,1,5})}</pre></details><details><summary>MCP 调用参数</summary><button class="copy-code-btn" data-copy-target="studio-code-2">复制MCP 调用参数</button><pre id="studio-code-2">{
-  &quot;action&quot;: &quot;run_code&quot;,
-  &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-  &quot;params&quot;: {
-    &quot;expectedIdentity&quot;: {
-      &quot;clientId&quot;: &quot;&lt;当前客户端&gt;&quot;,
-      &quot;worldPath&quot;: &quot;&lt;当前世界&gt;&quot;,
-      &quot;sessionId&quot;: &quot;&lt;当前会话&gt;&quot;
-    },
-    &quot;requestId&quot;: &quot;&lt;本次建景唯一编号&gt;&quot;,
-    &quot;code&quot;: &quot;local s = createScene({name=\&quot;g9_05_review\&quot;, dimensions={12,6,10}})\ns:box({position={0,0,0}, dimensions={12,1,10}, blockId=62})\ns:group(\&quot;guide\&quot;)\ns:box({position={10,1,8}, dimensions={1,1,0.5}, size=0.25, color=\&quot;#00786e\&quot;})\ns:box({position={10,2,8}, dimensions={0.75,0.5,0.5}, size=0.25, color=\&quot;#ffc45b\&quot;})\nlocal model=\&quot;blocktemplates/\&quot;..s.name..\&quot;_guide.x\&quot;\ns:exportVoxelX(model,\&quot;guide\&quot;)\ns:requireModels({model})\nlocal movie=s:movie({name=\&quot;review\&quot;,position={5,1,5},duration=2})\ns:actor(movie,{name=s.name..\&quot;_guide\&quot;,filename=model,position={7,1,5},scale=1,animId=0})\ns:block({position={5,1,4},blockId=219})\ns:editEntity(s:position({5,1,4}),function(entity)\n    entity:SetDisplayName(s.name)\n    entity:SetNPLCode([==[\nlocal tests = {\n    {q=\&quot;甲在岔口停了多久？\&quot;, options={\&quot;12 秒\&quot;, \&quot;16 秒\&quot;, \&quot;14 秒\&quot;}, correct=1, evidence=\&quot;到岔口是第 4 秒，离开是第 16 秒，相差 12 秒。\&quot;},\n    {q=\&quot;如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？\&quot;, options={\&quot;11 秒\&quot;, \&quot;4 秒\&quot;, \&quot;6 秒\&quot;}, correct=3, evidence=\&quot;到岔口仍是第 5 秒，11−5=6。\&quot;},\n    {q=\&quot;另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？\&quot;, options={\&quot;客观动作\&quot;, \&quot;待核实的解释\&quot;, \&quot;试玩者原话\&quot;}, correct=2, evidence=\&quot;观察记录能证明停顿，无法独立证明字体造成停顿。\&quot;}\n}\nsetActorValue(\&quot;sentientRadius\&quot;, 0)\nregisterClickEvent(function()\n    local index = ask(\&quot;想复核哪一次测试？\&quot;, {\&quot;基准\&quot;, \&quot;改变条件\&quot;, \&quot;换个场景\&quot;})\n    local test = tests[index]\n    if not test then return end\n    local answer = ask(test.q, test.options)\n    if not answer then return end\n    if answer == test.correct then\n        say(\&quot;判断成立。\&quot; .. test.evidence, 6)\n        turnTo(90)\n    else\n        say(\&quot;停下核对材料。\&quot; .. test.evidence, 6)\n        turnTo(0)\n    end\nend)\n]==])\nend)\ns:block({position={5,1,3},blockId=190,data=5})\nreturn {lever=s:position({5,1,3}),movie=s:position({5,1,5})}&quot;
-  }
-}</pre></details><button data-studio-scene data-chat-copy>和 AI 聊 · 建景委托</button></details>
 
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴读单复算甲和乙的停顿、错点与完成时间；遇到主持人指路就标干预，再请新访客独立重测。分开记示例与自己的实测。</p>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。</p>
   <div data-peer-review><label>第一版 · 同伴在哪一步停下？记下他的动作或原话<textarea data-peer="trial"></textarea></label><label>第二版 · 我只改这一处<textarea data-peer="change"></textarea></label><label>用相同输入重试 · 这次实际发生了什么？<textarea data-peer="retest"></textarea></label></div>
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -636,7 +588,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"静音观察席的首次试玩单","reader":"要复盘科技节导览台的下一组开发者","brief":"让一位没见过原型的同学独立找纸桥。请把你亲眼看到的动作与猜测分栏，让接班人能复算停顿，并知道下一次该观察什么。","materials":["独立开课用图：南入口向北，北墙圆标 A 是纸桥，东墙方标 B 是风车，西墙是黄旗人工台。可在空白沙盘放四块标牌和一个可点向导。","示例甲（V1）：0 秒按开始，4 秒到岔口，16 秒离开岔口，18 秒点 B，29 秒点 A；旁观者全程没说话。","示例乙（V2）：换一名首次访客，同任务、起点、朝向，5 秒到岔口，9 秒离开，17 秒点 A；这一版只将“前面”改为“北墙圆标 A”。","观察表分四栏：时间点、实际动作、试玩后本人原话、待核实的解释。主持人若开口指路，另标本轮有干预。"],"choices":["做连续时间轴，标出两次点牌和岔口停顿","做事件表，让观察员分别勾选停顿、错点和求助"],"teacher":["投屏空表，问“你能拍到‘不认真’，还是只能记下错点？”请全班选能观察的记录。","投屏世界入口，说“请找纸桥，找到后点牌”，让全班定统一起表和停表动作。","投屏甲的四个时间点，问“停了多久？”请全班在表里圈出用于相减的两格。","投屏新访客独立操作，提醒“我们先保持安静”；全班决定刚才应记一次求助还是错点。","并排投屏两张单，问“这能替所有新生下结论吗？”全班写一句只覆盖这两次的观察。"],"student":["问 AI 怎样把“迷路”改写成可复查的动作记录，再追问何时算求助。","选观察表版式，约定从按开始到点对 A 计时，旁观者静音。","准备虚构地图和一张相同任务卡，两位首次访客分开等候，不让后者看演示。","在 Paracraft 打开 V1；交给第一位访客，只记秒数与动作。结束后再问他刚才在找哪块牌。","另存世界，只改岔口一条指引，交给第二位新访客，从同一入口重测；分别写观察和可能解释。"],"prompts":["把“他看不懂”改写成两种可以观察的事件，再问我准备怎样计时。","根据我的选择设计静音观察表，预留试玩原话和独立的猜测栏。","把纸桥任务写成一句统一口令，另给观察员一份不含答案的记录清单。","请保持 V1 展厅指引原样，帮我整理两次停顿的开始与结束时间；缺原话就留空。","用同一口令比较两名新访客的记录，分别报告停顿、错点和总耗时，说明样本范围。"],"cases":[{"question":"甲在岔口停了多久？","options":["12 秒","16 秒","14 秒"],"answer":0,"reason":"到岔口是第 4 秒，离开是第 16 秒，相差 12 秒。"},{"question":"如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？","options":["11 秒","4 秒","6 秒"],"answer":2,"reason":"到岔口仍是第 5 秒，11−5=6。"},{"question":"另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？","options":["客观动作","待核实的解释","试玩者原话"],"answer":1,"reason":"观察记录能证明停顿，无法独立证明字体造成停顿。"}],"revision":"同伴读单复算甲和乙的停顿、错点与完成时间；遇到主持人指路就标干预，再请新访客独立重测。分开记示例与自己的实测。","boundary":"取得同伴同意，只记轮次、时间、动作及同意引用的原话。小样本用于发现卡点。"}, steps=["问 AI 怎样把“迷路”改写成可复查的动作记录，再追问何时算求助。","选观察表版式，约定从按开始到点对 A 计时，旁观者静音。","准备虚构地图和一张相同任务卡，两位首次访客分开等候，不让后者看演示。","在 Paracraft 打开 V1；交给第一位访客，只记秒数与动作。结束后再问他刚才在找哪块牌。","另存世界，只改岔口一条指引，交给第二位新访客，从同一入口重测；分别写观察和可能解释。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"静音观察员事件计时单","reader":"要复盘科技节导览台的下一组开发者","brief":"由秒数和动作重建一次试玩，算出岔口停留、错点和完成时刻，并识别有干预的测试。","materials":["独立开课用图：南入口向北，北墙圆标 A 是纸桥，东墙方标 B 是风车，西墙是黄旗人工台。可在空白沙盘放四块标牌和一个可点向导。","示例甲（V1）：0 秒按开始，4 秒到岔口，16 秒离开岔口，18 秒点 B，29 秒点 A；旁观者全程没说话。","示例乙（V2）：换一名首次访客，同任务、起点、朝向，5 秒到岔口，9 秒离开，17 秒点 A；这一版只将“前面”改为“北墙圆标 A”。","观察表分四栏：时间点、实际动作、试玩后本人原话、待核实的解释。主持人若开口指路，另标本轮有干预。"],"choices":["做连续时间轴，标出两次点牌和岔口停顿","做事件表，让观察员分别勾选停顿、错点和求助"],"teacher":["投屏空表，问“你能拍到‘不认真’，还是只能记下错点？”请全班选能观察的记录。","投屏世界入口，说“请找纸桥，找到后点牌”，让全班定统一起表和停表动作。","投屏甲的四个时间点，问“停了多久？”请全班在表里圈出用于相减的两格。","投屏新访客独立操作，提醒“我们先保持安静”；全班决定刚才应记一次求助还是错点。","并排投屏两张单，问“这能替所有新生下结论吗？”全班写一句只覆盖这两次的观察。"],"student":["问 AI 怎样把“迷路”改写成可复查的动作记录，再追问何时算求助。","选观察表版式，约定从按开始到点对 A 计时，旁观者静音。","准备虚构地图和一张相同任务卡，两位首次访客分开等候，不让后者看演示。","建立秒数与动作的记录单，要求访客同意。自己在实际世界点角色试走，另请一名首次访客从同一起点走，观察员用外部秒表写下事件。","用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。"],"prompts":["把“他看不懂”改写成两种可以观察的事件，再问我准备怎样计时。","根据我的选择设计静音观察表，预留试玩原话和独立的猜测栏。","把纸桥任务写成一句统一口令，另给观察员一份不含答案的记录清单。","请保持 V1 展厅指引原样，帮我整理两次停顿的开始与结束时间；缺原话就留空。","用同一口令比较两名新访客的记录，分别报告停顿、错点和总耗时，说明样本范围。"],"cases":[{"question":"甲在岔口停了多久？","options":["12 秒","16 秒","14 秒"],"answer":0,"reason":"到岔口是第 4 秒，离开是第 16 秒，相差 12 秒。"},{"question":"如果仅把乙的离开岔口改记为 11 秒，停顿变为多少？","options":["11 秒","4 秒","6 秒"],"answer":2,"reason":"到岔口仍是第 5 秒，11−5=6。"},{"question":"另一组说“他犹豫是因为字体太小”，没有访客原话，应放哪栏？","options":["客观动作","待核实的解释","试玩者原话"],"answer":1,"reason":"观察记录能证明停顿，无法独立证明字体造成停顿。"}],"revision":"用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。","boundary":"取得同伴同意，只记轮次、时间、动作及同意引用的原话。小样本用于发现卡点。"}, steps=["问 AI 怎样把“迷路”改写成可复查的动作记录，再追问何时算求助。","选观察表版式，约定从按开始到点对 A 计时，旁观者静音。","准备虚构地图和一张相同任务卡，两位首次访客分开等候，不让后者看演示。","建立秒数与动作的记录单，要求访客同意。自己在实际世界点角色试走，另请一名首次访客从同一起点走，观察员用外部秒表写下事件。","用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -674,6 +626,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -739,6 +696,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -868,6 +826,255 @@ render();
 
 
 })();
+(() => {const config={"id":"g9-05","title":"静音观察员事件计时单","goal":"由秒数和动作重建一次试玩，算出岔口停留、错点和完成时刻，并识别有干预的测试。","student":"建立秒数与动作的记录单，要求访客同意。自己在实际世界点角色试走，另请一名首次访客从同一起点走，观察员用外部秒表写下事件。","revision":"用另一位首次访客试只换一处岔口牌的版本。重算两版日志，遇到有人提示的轮次，另列说明。","fields":[{"key":"log","label":"实测日志，每行“秒数 动作”，动作选开始、入岔、离岔、点B、点A、提示","value":"0 开始\n4 入岔\n16 离岔\n18 点B\n29 点A"},{"key":"sign","label":"岔口牌给访客看的原话","value":"请到前面展厅"}],"teacher":false,"sealed":false};
+const run=({run(v){
+      if(!v.log.trim())return '尚无观测，请按开始并记时。';
+      const seen=[], rows=v.log.trim().split(/\r?\n/);let last=-1,entry=null,dwell=0,wrong=0,end=null,start=null,help=0;
+      for(const [i,line] of rows.entries()){
+        const m=line.trim().match(/^(\d+)\s+(开始|入岔|离岔|点B|点A|提示)$/);
+        if(!m||+m[1]<last||end!==null)return '第 '+(i+1)+' 行需要核对动作、时间顺序或结束位置。';
+        const time=+m[1],act=m[2];last=time;
+        if(i===0&&act!=='开始'||i>0&&act==='开始')return '首行须为唯一的开始事件。';
+        if(act==='开始')start=time;
+        if(act==='入岔'){if(entry!==null)return '重复入岔，缺少离岔记录。';entry=time;}
+        if(act==='离岔'){if(entry===null)return '没有对应入岔记录。';dwell+=time-entry;entry=null;}
+        if(act==='点B')wrong++;
+        if(act==='点A')end=time;
+        if(act==='提示')help++;
+        seen.push(time+' 秒 '+act);
+      }
+      return ['展示指引：'+(v.sign.trim()||'空牌'),seen.join(' → '),'已配对的停顿：'+dwell+' 秒'+(entry!==null?'（另有未配对入岔）':''),'错点 B：'+wrong+' 次',end===null?'尚未完成':'完成耗时：'+(end-start)+' 秒',help?'有干预：'+help+' 次':'本轮未记提示'].join('\n');
+    }}).run;
+const world=({world(v){return `registerClickEvent(function()
+  say(${JSON.stringify(v.sign.trim()||'空牌')} ,2)
+  local wrong=0
+  for i=1,5 do
+    local t=ask("请选择你要走的路线。观察员只记录时间和动作。",{"北墙圆标 A","东墙方标 B","请求提示","退出本轮"})
+    if t==1 then turnTo(0) say("点 A，完成。此前错点 "..wrong.." 次。",3) return end
+    if t==2 then turnTo(90) wrong=wrong+1 say("点 B，回到岔口。",2)
+    elseif t==3 then say("观察员记下提示：目标是北墙圆标 A。",2)
+    else say("本轮未完成。",2) return end
+  end
+  say("五次操作已记录，本轮未完成。",2)
+end)`;}}).world;
+function buildScene(behavior) {
+    let fence='=';
+    while(behavior.includes(']'+fence+']')) fence+='=';
+    return `local s=createScene({name="${config.id.replace('-','_')}_workshop",dimensions={12,6,10}})
+s:box({position={0,0,0},dimensions={12,1,10},blockId=62})
+s:group("guide")
+s:box({position={10,1,8},dimensions={1,1,0.5},size=0.25,color="#13756a"})
+s:box({position={10,2,8},dimensions={0.75,0.5,0.5},size=0.25,color="#ffc45b"})
+local model="blocktemplates/"..s.name.."_guide.x"
+s:exportVoxelX(model,"guide")
+s:requireModels({model})
+local movie=s:movie({name="workshop",position={5,1,5},duration=2})
+s:actor(movie,{name=s.name.."_guide",filename=model,position={7,1,5},scale=1,animId=0})
+s:block({position={5,1,4},blockId=219})
+s:editEntity(s:position({5,1,4}),function(e)
+    e:SetDisplayName(s.name)
+    e:SetNPLCode([${fence}[
+${behavior}
+]${fence}])
+end)
+s:block({position={5,1,3},blockId=190,data=5})
+return {lever=s:position({5,1,3}),actor=s:position({7,1,5})}`;
+}
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -887,7 +1094,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -919,6 +1126,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

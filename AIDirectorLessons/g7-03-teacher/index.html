@@ -76,22 +76,22 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-03-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 3 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>数据基础（二）：特征选择与样本偏差是怎么产生的</h1><p><strong>本课目标　</strong>准确指出原始数据集的样本代表性缺陷（Sample Bias），设计覆盖不同光照、角度与人群的均衡采集表。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。</p></div>
+</style><main><nav><a href="../index.html#g7">← 课程目录</a><a href="../g7-03-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>7 年级 · 第 3 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>数据基础（二）：特征选择与样本偏差是怎么产生的</h1><p><strong>本课目标　</strong>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>八张路标照都来自晴天。再拍四张晴天正面，数量够多了，能回答阴天斜面的表现吗？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">“翻倍拍晴天能覆盖阴天吗？”投屏空格，全班数已有几格。</p>
-    <h3>投屏材料</h3><p>模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴切甲和乙，分别报出覆盖格数，再问新模型表现。V2重复乙后，请他同时指出覆盖率4/4和性能待测，并说明训练与测试卡分开使用。</details>
+    <h3>投屏材料</h3><p>模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。</p><details><summary>备课时看 · 本节课收什么证据</summary>请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。
 模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。
 新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。
 独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。
 请用四格数据问我哪些场景没被代表，等我指出格子再追问特征。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">“手里只有四张名额。”投屏甲乙，让大家决定怎样花预算。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">把同样四张预算从晴正面移到阴正面和阴斜面，覆盖几格？测试结果会跟着自动提高吗？</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">画四格带计数灯的展板　+1</button><button data-teach-vote="1">做能逐张拖入分格的卡册　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -99,12 +99,12 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。
 模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。
 新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。
 独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。
 按4张预算比较甲乙，列出补样前后计数与可观察的验收条件。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">“什么才是一个有用特征？”投屏路牌箭头和背景颜色，全班选换天气仍指方向的线索。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">先把预算4、0、0、0加入6、2、0、0，再只把预算分配改成0、0、2、2。投屏各格变化，另列每格两张旧测试卡的正确数；让大家分别指出已经测到的事实与待测项。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。</li><li>新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。</li><li>独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。</li></ul>
@@ -112,25 +112,25 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。
 模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。
 新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。
 独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。
 整理训练计数和独立测试数为两张表，不能填入新模型的猜测准确率。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">“我们量到的是覆盖率还是准确率？”投屏新增卡前后，全班选择可根据表格宣告的结果。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>同伴切甲和乙，分别报出覆盖格数，再问新模型表现。V2重复乙后，请他同时指出覆盖率4/4和性能待测，并说明训练与测试卡分开使用。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只加入包乙，覆盖格数怎么变？</p><button data-predict="0">2变4　+1</button><button data-predict="1">2变3　+1</button><button data-predict="2">一直是2　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>两个阴天格各加2张，四格都非空。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。
 模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。
 新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。
 独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。
 生成可打开的网页，点甲或乙更新四格计数；把训练覆盖和独立测试分别展示。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">“能说所有人都适用了吗？”投屏独立测试卡，全班决定下一次要测哪些格。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">从2/4到4/4是在数什么？哪一格旧模型测试全错？要检验新模型，需要谁在另一批卡上做什么？</p>
 
 
 
@@ -138,15 +138,31 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>同伴说新模型的阴斜面正确数一定从0变2，怎样核查？</p><ol><li>相信样本越多必对</li><li>用固定的阴斜面两张测试新模型</li><li>把训练数当正确数</li></ol><details><summary>听完理由，再揭示依据</summary>用固定的阴斜面两张测试新模型。只知道旧模型该格为0/2，新模型尚未测试。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。
 模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。
 新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。
 独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。
 给新模型测试结果留待测位，并根据试玩者原话改一个标签，重测同一个包乙。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g7-03" data-role="teacher">
+    <small>AIChat · 可独立试玩的作品</small><h2>路标训练样本补拍预算板</h2>
+    <p>先把预算4、0、0、0加入6、2、0、0，再只把预算分配改成0、0、2、2。投屏各格变化，另列每格两张旧测试卡的正确数；让大家分别指出已经测到的事实与待测项。</p><div class="practical-controls"><label>原训练数量：晴正、晴斜、阴正、阴斜<textarea data-input="base" rows="2">6，2，0，0</textarea></label><label>补拍分配：四格合计最多4张<textarea data-input="add" rows="2">4，0，0，0</textarea></label><label>旧模型独立测试正确数：每格共2张<textarea data-input="correct" rows="2">2，1，1，0</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g7-03" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 为校园导览模型准备测试卡的组员</small><h2>路标样本缺口盘点板</h2><p>让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 为校园导览模型准备测试卡的组员</small><h2>路标训练样本补拍预算板</h2><p>给虚构路标设计晴天/阴天、正面/斜面四格材料。填写原始计数，给四张补拍卡分配格子。独立测试卡始终留出；导出作品给下一组安排拍摄。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。 <button type="button" data-cite="0">引用到本步记录</button></li><li>新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。 <button type="button" data-cite="1">引用到本步记录</button></li><li>独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。 <button type="button" data-cite="2">引用到本步记录</button></li></ul><p><b>使用约定</b>　不采集人脸或个人特征；四格覆盖只反映这两种条件，不能据此承诺模型公平或可靠。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -157,12 +173,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>原有八张训练卡覆盖几个格？</h3><button data-answer="0">4格</button><button data-answer="1">1格</button><button data-answer="2">2格</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只加入包乙，覆盖格数怎么变？</h3><button data-answer="0">2变4</button><button data-answer="1">2变3</button><button data-answer="2">一直是2</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>同伴说新模型的阴斜面正确数一定从0变2，怎样核查？</h3><button data-answer="0">相信样本越多必对</button><button data-answer="1">用固定的阴斜面两张测试新模型</button><button data-answer="2">把训练数当正确数</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴切甲和乙，分别报出覆盖格数，再问新模型表现。V2重复乙后，请他同时指出覆盖率4/4和性能待测，并说明训练与测试卡分开使用。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -611,7 +628,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"路标样本缺口盘点板","reader":"为校园导览模型准备测试卡的组员","brief":"让下一组按光照和角度给路标卡分格，找出训练材料从未覆盖的角落，并能用四张新卡验证补齐了哪些格。","materials":["模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。","新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。","独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。"],"choices":["画四格带计数灯的展板","做能逐张拖入分格的卡册"],"teacher":["“翻倍拍晴天能覆盖阴天吗？”投屏空格，全班数已有几格。","“手里只有四张名额。”投屏甲乙，让大家决定怎样花预算。","“什么才是一个有用特征？”投屏路牌箭头和背景颜色，全班选换天气仍指方向的线索。","“我们量到的是覆盖率还是准确率？”投屏新增卡前后，全班选择可根据表格宣告的结果。","“能说所有人都适用了吗？”投屏独立测试卡，全班决定下一次要测哪些格。"],"student":["自己先数四个格子，问AI哪里可能代表不足，再追问如何验证。","选展板或卡册，决定每格展示训练数量、测试数量和正确数哪个指标。","画12张示意路牌，按标签贴入旧集合和补充包，另列固定测试卡。","制作并打开V1，切换包甲、包乙，核对数量总和与非空格数，保留旧模型测试栏。","同伴尝试把覆盖变好说成准确率变好。V2只改指标说明，重试相同包乙并请他指出尚缺哪组证据。"],"prompts":["请用四格数据问我哪些场景没被代表，等我指出格子再追问特征。","按4张预算比较甲乙，列出补样前后计数与可观察的验收条件。","整理训练计数和独立测试数为两张表，不能填入新模型的猜测准确率。","生成可打开的网页，点甲或乙更新四格计数；把训练覆盖和独立测试分别展示。","给新模型测试结果留待测位，并根据试玩者原话改一个标签，重测同一个包乙。"],"cases":[{"question":"原有八张训练卡覆盖几个格？","options":["4格","1格","2格"],"answer":2,"reason":"只有晴正面和晴斜面有卡。"},{"question":"只加入包乙，覆盖格数怎么变？","options":["2变4","2变3","一直是2"],"answer":0,"reason":"两个阴天格各加2张，四格都非空。"},{"question":"同伴说新模型的阴斜面正确数一定从0变2，怎样核查？","options":["相信样本越多必对","用固定的阴斜面两张测试新模型","把训练数当正确数"],"answer":1,"reason":"只知道旧模型该格为0/2，新模型尚未测试。"}],"revision":"同伴切甲和乙，分别报出覆盖格数，再问新模型表现。V2重复乙后，请他同时指出覆盖率4/4和性能待测，并说明训练与测试卡分开使用。","boundary":"不采集人脸或个人特征；四格覆盖只反映这两种条件，不能据此承诺模型公平或可靠。"}, steps=["“翻倍拍晴天能覆盖阴天吗？”投屏空格，全班数已有几格。","“手里只有四张名额。”投屏甲乙，让大家决定怎样花预算。","“什么才是一个有用特征？”投屏路牌箭头和背景颜色，全班选换天气仍指方向的线索。","“我们量到的是覆盖率还是准确率？”投屏新增卡前后，全班选择可根据表格宣告的结果。","“能说所有人都适用了吗？”投屏独立测试卡，全班决定下一次要测哪些格。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"路标训练样本补拍预算板","reader":"为校园导览模型准备测试卡的组员","brief":"在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。","materials":["模拟训练卡：晴正面6张、晴斜面2张、阴正面0张、阴斜面0张。图上都是虚构的东门或西门方向牌。","新增预算4张；候选包甲：晴正面4张；包乙：阴正面2张、阴斜面2张。覆盖格数按非空格算，四格共用同一标准。","独立测试卡固定为每格2张；旧模型正确数依次2、1、1、0。补样后尚无新模型测试结果。"],"choices":["画四格带计数灯的展板","做能逐张拖入分格的卡册"],"teacher":["“翻倍拍晴天能覆盖阴天吗？”投屏空格，全班数已有几格。","“手里只有四张名额。”投屏甲乙，让大家决定怎样花预算。","“什么才是一个有用特征？”投屏路牌箭头和背景颜色，全班选换天气仍指方向的线索。","“我们量到的是覆盖率还是准确率？”投屏新增卡前后，全班选择可根据表格宣告的结果。","“能说所有人都适用了吗？”投屏独立测试卡，全班决定下一次要测哪些格。"],"student":["自己先数四个格子，问AI哪里可能代表不足，再追问如何验证。","选展板或卡册，决定每格展示训练数量、测试数量和正确数哪个指标。","画12张示意路牌，按标签贴入旧集合和补充包，另列固定测试卡。","给虚构路标设计晴天/阴天、正面/斜面四格材料。填写原始计数，给四张补拍卡分配格子。独立测试卡始终留出；导出作品给下一组安排拍摄。","请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。"],"prompts":["请用四格数据问我哪些场景没被代表，等我指出格子再追问特征。","按4张预算比较甲乙，列出补样前后计数与可观察的验收条件。","整理训练计数和独立测试数为两张表，不能填入新模型的猜测准确率。","生成可打开的网页，点甲或乙更新四格计数；把训练覆盖和独立测试分别展示。","给新模型测试结果留待测位，并根据试玩者原话改一个标签，重测同一个包乙。"],"cases":[{"question":"原有八张训练卡覆盖几个格？","options":["4格","1格","2格"],"answer":2,"reason":"只有晴正面和晴斜面有卡。"},{"question":"只加入包乙，覆盖格数怎么变？","options":["2变4","2变3","一直是2"],"answer":0,"reason":"两个阴天格各加2张，四格都非空。"},{"question":"同伴说新模型的阴斜面正确数一定从0变2，怎样核查？","options":["相信样本越多必对","用固定的阴斜面两张测试新模型","把训练数当正确数"],"answer":1,"reason":"只知道旧模型该格为0/2，新模型尚未测试。"}],"revision":"请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。","boundary":"不采集人脸或个人特征；四格覆盖只反映这两种条件，不能据此承诺模型公平或可靠。"}, steps=["“翻倍拍晴天能覆盖阴天吗？”投屏空格，全班数已有几格。","“手里只有四张名额。”投屏甲乙，让大家决定怎样花预算。","“什么才是一个有用特征？”投屏路牌箭头和背景颜色，全班选换天气仍指方向的线索。","“我们量到的是覆盖率还是准确率？”投屏新增卡前后，全班选择可根据表格宣告的结果。","“能说所有人都适用了吗？”投屏独立测试卡，全班决定下一次要测哪些格。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -649,6 +666,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -714,6 +736,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -882,6 +905,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -893,6 +918,219 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g7-03","title":"路标训练样本补拍预算板","goal":"在四张补样预算内给两种天气、两个角度分配路标卡，计算覆盖变化并和独立测试的证据分开。","student":"给虚构路标设计晴天/阴天、正面/斜面四格材料。填写原始计数，给四张补拍卡分配格子。独立测试卡始终留出；导出作品给下一组安排拍摄。","revision":"请组员用全投一格的方案试一次。只重新分配补拍预算，保持旧数据和测试卡不变，请他重算覆盖，并指出新模型尚未测试的指标。","fields":[{"key":"base","label":"原训练数量：晴正、晴斜、阴正、阴斜","value":"6，2，0，0"},{"key":"add","label":"补拍分配：四格合计最多4张","value":"4，0，0，0"},{"key":"correct","label":"旧模型独立测试正确数：每格共2张","value":"2，1，1，0"}],"teacher":true,"sealed":false};
+const run=({run(v){
+      const parse=s=>{
+        const tokens=s.trim().split(/[,，、\s]+/u);
+        return tokens.length===4 && tokens.every(t=>/^\d+$/.test(t) && Number.isSafeInteger(Number(t)))?tokens.map(Number):null;
+      };
+      const base=parse(v.base),add=parse(v.add),correct=parse(v.correct);
+      if (!base||!add||!correct) return '请输入四个非负整数，依次对应晴正、晴斜、阴正、阴斜。';
+      const spent=add.reduce((a,b)=>a+b,0);
+      if (spent>4) return '预算超出 '+(spent-4)+' 张；请重新分配。';
+      if (correct.some(n=>n>2)) return '每格只有2张独立测试卡，正确数不能超过2。';
+      const labels=['晴正','晴斜','阴正','阴斜'],after=base.map((n,i)=>n+add[i]),coverage=a=>a.filter(n=>n>0).length;
+      return ['已安排 '+spent+' 张，剩余 '+(4-spent)+' 张。',
+        ...labels.map((s,i)=>s+'：训练 '+base[i]+' → '+after[i]+' 张；旧模型独立测试 '+correct[i]+'/2。'),
+        '训练覆盖：'+coverage(base)+'/4 → '+coverage(after)+'/4；仍空的格：'+(labels.filter((_,i)=>after[i]===0).join('、')||'无')+'。',
+        '旧模型测试：'+correct.reduce((a,b)=>a+b,0)+'/8；补拍后新模型：尚未测试。'].join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -912,7 +1150,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -944,6 +1182,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

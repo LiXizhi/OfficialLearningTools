@@ -2,15 +2,15 @@ import {readFileSync} from 'node:fs';
 const read = name => readFileSync(new URL(name, import.meta.url),'utf8');
 const esc = s => s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 
-export function teachingDesk(id,lesson) {
+export function teachingDesk(id,lesson,practical, handsOn='') {
     const phases = ['提出问题','全班定计划','准备与演示','交给试玩者','改版与离堂'];
     const times = ['0–5','5–13','13–20','20–32','32–40'];
     const leaf = id==='g4-01';
     const evidence = lesson.materials.filter((_,i)=>!lesson.sealedMaterials?.includes(i));
-    const intro = leaf ? '先让全班预测：拿走训练照片，已经学好的助手会立刻忘记吗？第三轮再用实测结果回到这个问题。' : lesson.brief;
+    const intro = leaf ? '先让全班预测：拿走训练照片，已经学好的助手会立刻忘记吗？第三轮再用实测结果回到这个问题。' : practical?.opening || lesson.brief;
     return `<section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>${esc(intro)}</p></div>
     <nav aria-label="课堂环节">${phases.map((s,i)=>'<button data-teach-phase="'+i+'">'+s+' · '+times[i]+' 分</button>').join('')}</nav>
-    ${phases.map((name,i)=>`<section class="studio-handoff" data-teach-slide="${i}" ${i?'hidden':''}><small>${times[i]} 分钟</small><h2>${name}</h2><p style="font-size:1.2em">${esc(lesson.teacher[i])}</p>
+    ${phases.map((name,i)=>`<section class="studio-handoff" data-teach-slide="${i}" ${i?'hidden':''}><small>${times[i]} 分钟</small><h2>${name}</h2><p style="font-size:1.2em">${esc(practical ? [lesson.teacher[0],practical.prediction,practical.demonstration,practical.revision,practical.debrief][i] : lesson.teacher[i])}</p>
     ${i===0?'<h3>投屏材料</h3><p>'+esc(evidence[0])+'</p><details><summary>备课时看 · 本节课收什么证据</summary>'+esc(lesson.revision)+'</details>':''}
     ${i===1?'<h3>举手选一种做法</h3>'+lesson.choices.map((v,j)=>'<button data-teach-vote="'+j+'">'+esc(v)+'　+1</button>').join('')+'<p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>':''}
     ${i===2?'<h3>投屏材料与操作</h3><ul>'+evidence.map(m=>'<li>'+esc(m)+'</li>').join('')+'</ul>':''}
@@ -20,6 +20,7 @@ export function teachingDesk(id,lesson) {
     ${i===3 ? '<button data-project-demo>打开本课作品或世界演示工具</button>' : ''}
     <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>${esc([lesson.brief,...evidence,lesson.prompts[i]].join('\n'))}</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>`).join('')}
+    ${practical?'<div data-demo-stage '+(lesson.sealedMaterials?'data-exam-private ':'')+'hidden>'+handsOn+'</div>':''}
     ${leaf?'<div data-demo-stage hidden>'+read('leaf-lab.html')+'</div>':''}
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section>`;
 }

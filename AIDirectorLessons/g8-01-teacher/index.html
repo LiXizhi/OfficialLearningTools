@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>8 年级 · 第 1 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>生成式AI原理：大模型是怎么“逐词预测”生成回答的</h1><p><strong>本课目标　</strong>用自己的话讲清大语言模型“基于统计概率预测下一个词（Next-Token Prediction）”的原理，解释为什么“语句通顺≠事实真实”。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。</p></div>
+</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-01-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>8 年级 · 第 1 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>生成式AI原理：大模型是怎么“逐词预测”生成回答的</h1><p><strong>本课目标　</strong>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>六张字条里有两张一模一样，我们都把它们放进抽签筒吗？这样会改变哪一项分数？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏六句并遮住尾词，问“午后后面有几张铃声票？”全班按语料编号计票。</p>
-    <h3>投屏材料</h3><p>玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。</p><details><summary>备课时看 · 本节课收什么证据</summary>让编辑盲读首版，把可刊出的事实圈出并标依据。第二版只改体裁或来源提示，用原材料原问句重读，检查2018是否仍被误抄，并记下实际判断。</details>
+    <h3>投屏材料</h3><p>玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。</p><details><summary>备课时看 · 本节课收什么证据</summary>让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。
 玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。
 虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。
 固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。
 两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。
 用六条语料做按上文计数的演示，先让我算“午后”后的两个候选词有几票。说明这种计数是教学模型。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">改投“清晨”，问“沿用午后的分母行吗？”请全班对照⑤⑥重算。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">先猜“午后”后铃声有几张票，再猜上文增加“铃声”后响起有几张票。</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">做一个纸条抽词器，按计数给候选词分配纸条　+1</button><button data-teach-vote="1">做逐格翻开的网页，把词频表与校刊证据栏并排　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。
 玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。
 虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。
 固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。
 两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。
 按我选的纸条或网页方案设计逐步揭晓、体裁选择和证据栏。列出一个读者能操作的验收条件，等我确认。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏K1和K2，问“哪行提到月光桥奖？”全班决定证据栏能填什么。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏基准语料，输入“午后”，拨动票号看每张票对应哪个词。只把上文换成“午后 铃声”再运行。最后在同一主对话问虚构奖项的年份，分别要求创作和据实回答，小编辑到 K1、K2 找依据。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。</li><li>虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。</li><li>固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。</li><li>两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。
 玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。
 虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。
 固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。
 两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。
 把六张词条和两张校刊资料排成可复制文字，保留每条编号和重复项；所有新写故事都带虚构标签。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">在同一上文旁投屏两种委托，问“故事中的2018能抄入校史吗？”全班给回条贴体裁标签。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>让编辑盲读首版，把可刊出的事实圈出并标依据。第二版只改体裁或来源提示，用原材料原问句重读，检查2018是否仍被误抄，并记下实际判断。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>仅把上文换成“清晨”，候选分布怎样？</p><button data-predict="0">铃声仍占3/4　+1</button><button data-predict="1">只有微风　+1</button><button data-predict="2">铃声与微风各占1/2　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>符合的是⑤清晨微风和⑥清晨铃声，各出现一次，共两条。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。
 玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。
 虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。
 固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。
 两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。
 生成能独立打开的演示页，切换午后/清晨，点选后揭晓候选计数；并排呈现同一奖项问题的两种委托及证据位置，允许我填入真实回复。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">投屏一句流畅的未标注续写，问“要改哪一处让编辑能决定是否刊出？”全班选来源提示或虚构标记并复查。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">哪三行给“铃声”投了票？如果训练纸条里能顺接一个年份，校刊哪条记录允许把它写进事实栏？</p>
 
 
 
@@ -142,16 +142,37 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>新稿说“纸桥展在2024年春举办，月光桥奖始于2018年”。事实栏可保留哪部分？</p><ol><li>两项都可以</li><li>仅纸桥展的时间</li><li>仅月光桥奖的年份</li></ol><details><summary>听完理由，再揭示依据</summary>仅纸桥展的时间。K2支持纸桥展的季节与年份，K1、K2都没有奖项记录；故事给的2018无法当证据。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。
 玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。
 虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。
 固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。
 两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。
 只修正同伴指出的误读位置，给虚构年份补清楚的来源状态。保留原回复，对照同一问句重测，输出首版、改版的审稿结果。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g8-01" data-role="teacher">
+    <small>AIChat · 可独立试玩的作品</small><h2>校刊的逐词排印台</h2>
+    <p>投屏基准语料，输入“午后”，拨动票号看每张票对应哪个词。只把上文换成“午后 铃声”再运行。最后在同一主对话问虚构奖项的年份，分别要求创作和据实回答，小编辑到 K1、K2 找依据。</p><div class="practical-controls"><label>语料，一行一句，词之间用空格<textarea data-input="corpus" rows="4">午后 铃声 响起
+午后 铃声 停了
+午后 微风 吹过
+午后 铃声 响起
+清晨 微风 吹过
+清晨 铃声 响起</textarea></label><label>目前已排的词<textarea data-input="prefix" rows="2">午后</textarea></label><label>抽第几张票（从 1 开始）<textarea data-input="ticket" rows="2">1</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g8-01" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 要审稿的校刊小编辑</small><h2>一句话怎样长出来的校刊演示台</h2><p>做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 要审稿的校刊小编辑</small><h2>校刊的逐词排印台</h2><p>自己排一盒用空格分词的小语料，先给同伴猜，再交给排印台数票。把选出的词接到上文末尾，继续运行，保存首版。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。 <button type="button" data-cite="0">引用到本步记录</button></li><li>虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。 <button type="button" data-cite="1">引用到本步记录</button></li><li>固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。 <button type="button" data-cite="2">引用到本步记录</button></li><li>两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　六条短句仅用于解释逐步选词，真实模型使用token和学习到的概率分布。查不到记录应说明资料不足，不由此断言事件一定没有发生。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,12 +183,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>按六条短句计数，“午后”的下一词为“铃声”的比例是多少？</h3><button data-answer="0">3/4</button><button data-answer="1">3/6</button><button data-answer="2">1/2</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>仅把上文换成“清晨”，候选分布怎样？</h3><button data-answer="0">铃声仍占3/4</button><button data-answer="1">只有微风</button><button data-answer="2">铃声与微风各占1/2</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>新稿说“纸桥展在2024年春举办，月光桥奖始于2018年”。事实栏可保留哪部分？</h3><button data-answer="0">两项都可以</button><button data-answer="1">仅纸桥展的时间</button><button data-answer="2">仅月光桥奖的年份</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让编辑盲读首版，把可刊出的事实圈出并标依据。第二版只改体裁或来源提示，用原材料原问句重读，检查2018是否仍被误抄，并记下实际判断。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -616,7 +638,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"一句话怎样长出来的校刊演示台","reader":"要审稿的校刊小编辑","brief":"做一个能逐格揭晓候选词的演示台。给小编辑同一页资料，让他区分可署为事实的句子、可以作故事的续写、以及应当留白的年份。","materials":["玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。","虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。","固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。","两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。"],"choices":["做一个纸条抽词器，按计数给候选词分配纸条","做逐格翻开的网页，把词频表与校刊证据栏并排"],"teacher":["投屏六句并遮住尾词，问“午后后面有几张铃声票？”全班按语料编号计票。","改投“清晨”，问“沿用午后的分母行吗？”请全班对照⑤⑥重算。","投屏K1和K2，问“哪行提到月光桥奖？”全班决定证据栏能填什么。","在同一上文旁投屏两种委托，问“故事中的2018能抄入校史吗？”全班给回条贴体裁标签。","投屏一句流畅的未标注续写，问“要改哪一处让编辑能决定是否刊出？”全班选来源提示或虚构标记并复查。"],"student":["从“午后”开始圈出同上文的四条，先猜下一个词，再问“猜中常见词就能证实一件事吗？”","选纸条或网页；先确定每一步怎样点开，再约定“查不到依据”时显示什么。","按编号制六张语料条，保留重复项。另做K1、K2证据栏，把两类材料分开放。","做出首版并实际打开，在“午后”和“清晨”各走一次；用同一个奖项问题分别试创作与查证委托，保留两份原回复。","根据编辑的误读改一处标注，另存第二版。让同伴重读同一段虚构文字，指出哪项年份能依据K1或K2刊出。"],"prompts":["用六条语料做按上文计数的演示，先让我算“午后”后的两个候选词有几票。说明这种计数是教学模型。","按我选的纸条或网页方案设计逐步揭晓、体裁选择和证据栏。列出一个读者能操作的验收条件，等我确认。","把六张词条和两张校刊资料排成可复制文字，保留每条编号和重复项；所有新写故事都带虚构标签。","生成能独立打开的演示页，切换午后/清晨，点选后揭晓候选计数；并排呈现同一奖项问题的两种委托及证据位置，允许我填入真实回复。","只修正同伴指出的误读位置，给虚构年份补清楚的来源状态。保留原回复，对照同一问句重测，输出首版、改版的审稿结果。"],"cases":[{"question":"按六条短句计数，“午后”的下一词为“铃声”的比例是多少？","options":["3/4","3/6","1/2"],"answer":0,"reason":"只取①②③④，三条续铃声，一条续微风。⑤⑥的上文是清晨。"},{"question":"仅把上文换成“清晨”，候选分布怎样？","options":["铃声仍占3/4","只有微风","铃声与微风各占1/2"],"answer":2,"reason":"符合的是⑤清晨微风和⑥清晨铃声，各出现一次，共两条。"},{"question":"新稿说“纸桥展在2024年春举办，月光桥奖始于2018年”。事实栏可保留哪部分？","options":["两项都可以","仅纸桥展的时间","仅月光桥奖的年份"],"answer":1,"reason":"K2支持纸桥展的季节与年份，K1、K2都没有奖项记录；故事给的2018无法当证据。"}],"revision":"让编辑盲读首版，把可刊出的事实圈出并标依据。第二版只改体裁或来源提示，用原材料原问句重读，检查2018是否仍被误抄，并记下实际判断。","boundary":"六条短句仅用于解释逐步选词，真实模型使用token和学习到的概率分布。查不到记录应说明资料不足，不由此断言事件一定没有发生。"}, steps=["投屏六句并遮住尾词，问“午后后面有几张铃声票？”全班按语料编号计票。","改投“清晨”，问“沿用午后的分母行吗？”请全班对照⑤⑥重算。","投屏K1和K2，问“哪行提到月光桥奖？”全班决定证据栏能填什么。","在同一上文旁投屏两种委托，问“故事中的2018能抄入校史吗？”全班给回条贴体裁标签。","投屏一句流畅的未标注续写，问“要改哪一处让编辑能决定是否刊出？”全班选来源提示或虚构标记并复查。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"校刊的逐词排印台","reader":"要审稿的校刊小编辑","brief":"用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。","materials":["玩具语料，共六条等权短句：①午后 铃声 响起；②午后 铃声 停了；③午后 微风 吹过；④午后 铃声 响起；⑤清晨 微风 吹过；⑥清晨 铃声 响起。重复的一条也要计数。","虚构校刊资料K1：纸船社始于2022年。K2：2024年春办过纸桥展。校刊没有记载“月光桥奖”及其首届年份。","固定问题：“月光桥奖首届是哪年？”模式甲：请自由发挥，写虚构故事并标明虚构；模式乙：只依据K1、K2写事实，资料不足请回答不知道。","两张演示回条：甲“【虚构故事】2018年，第一只纸船在月下出发。”乙“依据现有资料不知道首届年份。”课堂真实模型的措辞可能不同。"],"choices":["做一个纸条抽词器，按计数给候选词分配纸条","做逐格翻开的网页，把词频表与校刊证据栏并排"],"teacher":["投屏六句并遮住尾词，问“午后后面有几张铃声票？”全班按语料编号计票。","改投“清晨”，问“沿用午后的分母行吗？”请全班对照⑤⑥重算。","投屏K1和K2，问“哪行提到月光桥奖？”全班决定证据栏能填什么。","在同一上文旁投屏两种委托，问“故事中的2018能抄入校史吗？”全班给回条贴体裁标签。","投屏一句流畅的未标注续写，问“要改哪一处让编辑能决定是否刊出？”全班选来源提示或虚构标记并复查。"],"student":["从“午后”开始圈出同上文的四条，先猜下一个词，再问“猜中常见词就能证实一件事吗？”","选纸条或网页；先确定每一步怎样点开，再约定“查不到依据”时显示什么。","按编号制六张语料条，保留重复项。另做K1、K2证据栏，把两类材料分开放。","自己排一盒用空格分词的小语料，先给同伴猜，再交给排印台数票。把选出的词接到上文末尾，继续运行，保存首版。","让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。"],"prompts":["用六条语料做按上文计数的演示，先让我算“午后”后的两个候选词有几票。说明这种计数是教学模型。","按我选的纸条或网页方案设计逐步揭晓、体裁选择和证据栏。列出一个读者能操作的验收条件，等我确认。","把六张词条和两张校刊资料排成可复制文字，保留每条编号和重复项；所有新写故事都带虚构标签。","生成能独立打开的演示页，切换午后/清晨，点选后揭晓候选计数；并排呈现同一奖项问题的两种委托及证据位置，允许我填入真实回复。","只修正同伴指出的误读位置，给虚构年份补清楚的来源状态。保留原回复，对照同一问句重测，输出首版、改版的审稿结果。"],"cases":[{"question":"按六条短句计数，“午后”的下一词为“铃声”的比例是多少？","options":["3/4","3/6","1/2"],"answer":0,"reason":"只取①②③④，三条续铃声，一条续微风。⑤⑥的上文是清晨。"},{"question":"仅把上文换成“清晨”，候选分布怎样？","options":["铃声仍占3/4","只有微风","铃声与微风各占1/2"],"answer":2,"reason":"符合的是⑤清晨微风和⑥清晨铃声，各出现一次，共两条。"},{"question":"新稿说“纸桥展在2024年春举办，月光桥奖始于2018年”。事实栏可保留哪部分？","options":["两项都可以","仅纸桥展的时间","仅月光桥奖的年份"],"answer":1,"reason":"K2支持纸桥展的季节与年份，K1、K2都没有奖项记录；故事给的2018无法当证据。"}],"revision":"让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。","boundary":"六条短句仅用于解释逐步选词，真实模型使用token和学习到的概率分布。查不到记录应说明资料不足，不由此断言事件一定没有发生。"}, steps=["投屏六句并遮住尾词，问“午后后面有几张铃声票？”全班按语料编号计票。","改投“清晨”，问“沿用午后的分母行吗？”请全班对照⑤⑥重算。","投屏K1和K2，问“哪行提到月光桥奖？”全班决定证据栏能填什么。","在同一上文旁投屏两种委托，问“故事中的2018能抄入校史吗？”全班给回条贴体裁标签。","投屏一句流畅的未标注续写，问“要改哪一处让编辑能决定是否刊出？”全班选来源提示或虚构标记并复查。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -654,6 +676,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -719,6 +746,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -887,6 +915,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -898,6 +928,222 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g8-01","title":"校刊的逐词排印台","goal":"用六句语料手算下一词分布，再区分“有机会接出来”和“有校刊资料支持”。","student":"自己排一盒用空格分词的小语料，先给同伴猜，再交给排印台数票。把选出的词接到上文末尾，继续运行，保存首版。","revision":"让校刊编辑用相同上文和票号跑首版。第二版只增一条“午后 微风 吹过”，重算两个词的分母与票数；将模型真实回复和依据另外写入记录。","fields":[{"key":"corpus","label":"语料，一行一句，词之间用空格","value":"午后 铃声 响起\n午后 铃声 停了\n午后 微风 吹过\n午后 铃声 响起\n清晨 微风 吹过\n清晨 铃声 响起"},{"key":"prefix","label":"目前已排的词","value":"午后"},{"key":"ticket","label":"抽第几张票（从 1 开始）","value":"1"}],"teacher":true,"sealed":false};
+const run=({run(v) {
+      const words = v.prefix.trim().split(/\s+/).filter(Boolean);
+      if (!words.length) return '先放一个起始词。';
+      const hits = [];
+      const counts = new Map();
+      for (const [i,line] of v.corpus.split(/\r?\n/).entries()) {
+        const row = line.trim().split(/\s+/);
+        if (row.length <= words.length || !words.every((w,n)=>row[n]===w)) continue;
+        const next = row[words.length];
+        hits.push({next,line:i+1});
+        counts.set(next,(counts.get(next)||0)+1);
+      }
+      if (!hits.length) return '没有能继续这个上文的语料；请补充完整短句或退回一个词。';
+      const distribution = [...counts].map(([w,n])=>w+'：'+n+'/'+hits.length).join('；');
+      const index=Number(v.ticket.trim());
+      if (!Number.isSafeInteger(index) || index<1 || index>hits.length) return distribution+'\n票号范围 1 至 '+hits.length+'，请重新选。';
+      const pick=hits[index-1];
+      return distribution+'\n第 '+index+' 张票来自第 '+pick.line+' 句。\n本次续写：'+[...words,pick.next].join(' ')+'\n这是按小语料统计的续词。校史年份仍须查校刊原文。';
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -917,7 +1163,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -949,6 +1195,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

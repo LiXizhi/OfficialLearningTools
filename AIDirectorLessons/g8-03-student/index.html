@@ -76,24 +76,44 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-03-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>8 年级 · 第 3 课 · AIChat</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>动手造一个微型分类器：基于词频统计的问题分流实验</h1><p><strong>本课目标　</strong>分类器能根据训练样本词频为新问句打出“时间类得分”与“地点类得分”，并在平分时自动输出“待人工确认”。</p></header><section class="studio" data-lesson="g8-03" data-role="student">
-  <div class="studio-head"><small>学生上机 · 我的作品 · 想亲手验算分类结果的广播站值班员</small><h2>校园问句分流算盘</h2><p>做一页能看到词频加法的分流台。让同伴先算两条封存问句，再给模型补一条样本，观察哪一题发生变化。</p></div>
+</style><main><nav><a href="../index.html#g8">← 课程目录</a><a href="../g8-03-teacher/index.html">看教师大屏页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry student"><small>8 年级 · 第 3 课 · AIChat</small><div class="entry-role">学生上机 · 我的制作手账</div><h1>动手造一个微型分类器：基于词频统计的问题分流实验</h1><p><strong>本课目标　</strong>独立算出两类逐词得分，追加一条不同于测试题的训练句后重训，并验证同分转人工。</p></header><section class="studio" data-lesson="g8-03" data-role="student">
+  <div class="studio-head"><small>学生上机 · 我的作品 · 想亲手验算分类结果的广播站值班员</small><h2>会打印计分小票的校园问句分流台</h2><p>分别给时间、地点两栏录入训练句，每行一个样本，以空格分词。先隐藏测试标签，用问句生成逐词小票并另存首版。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>训练时间 T1「几时 开门」、T2「几时 排练」、T3「几点 集合」。 <button type="button" data-cite="0">引用到本步记录</button></li><li>训练地点 L1「哪里 排练」、L2「哪里 集合」、L3「何处 开门」。 <button type="button" data-cite="1">引用到本步记录</button></li><li>只按空格切词；同一词在本类训练问句中每出现一次记一分。问句逐词累加，同分交人工。 <button type="button" data-cite="2">引用到本步记录</button></li><li>重训补充一条独立地点样本 L4「哪儿 看展」。两道封存题和切词规则保持原样。 <button type="button" data-cite="4">引用到本步记录</button></li></ul><label>封存首版规则<textarea data-rule rows="2"></textarea></label><button data-reveal>锁定规则，打开测试夹</button><p data-seal-status role="status"></p><p><b>使用约定</b>　使用课堂模拟词表；两题的结果仅适用于这次小测，无法证实它懂得所有校园问法。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
   <h3 data-phase-title></h3><p data-lead></p>
-  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开作品试玩工具</button></div><div data-at="4"><p>同伴用原两题验算，基准正确数由 1/2 变为 2/2，再用“排练”检查平分分支。把小测结果和手算证据留在作品旁。</p><button data-jump-work>打开两版作品与重测工具</button></div></div>
+  <div data-student-tools><div data-at="0"><label>我看完回复还想追问什么？<textarea data-followup rows="2"></textarea></label><button data-send-followup data-chat-copy>和 AI 聊 · 追问</button></div><div data-at="1"><p>先比较两个方案，再把选择理由记下来。</p></div><div data-at="2"><p>从材料区挑一条能支持你作品的依据，用“引用到本步记录”保存它，并写下你为什么选它。</p></div><div data-at="3"><p>做出首版后请同伴试一次。先记他做了什么，再问他原本想做什么。</p><button data-jump-work>打开本课制作台</button></div><div data-at="4"><p>请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。</p><button data-jump-work>回制作台修改并重测</button></div></div>
   <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">做两列计数珠，点一个词就累加两类得分</option><option value="1">做词频小票，提交问句后逐行打印每个词的时间分和地点分</option></select></label>
 
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+  <div data-practical-seal data-exam-private hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g8-03" data-role="student">
+    <small>AIChat · 可独立试玩的作品</small><h2>会打印计分小票的校园问句分流台</h2>
+    <p>分别给时间、地点两栏录入训练句，每行一个样本，以空格分词。先隐藏测试标签，用问句生成逐词小票并另存首版。</p><div class="practical-controls"><label>时间训练样本，每行一句，以空格分词<textarea data-input="time" rows="4">几时 开门
+几时 排练
+几点 集合</textarea></label><label>地点训练样本，每行一句，以空格分词<textarea data-input="place" rows="4">哪里 排练
+哪里 集合
+何处 开门</textarea></label><label>要分流的问句（以空格分词）<textarea data-input="query" rows="2">几时 领票</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" ><h3>把作品交给下一位使用者</h3>
+    <p>请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。</p><label>同伴的原话或我观察到的卡点<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
   <template data-sealed><details class="studio-cases" data-exam-private open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>首版输入 Q1「几时 领票」，时间分、地点分是多少？</h3><button data-answer="0">2、0</button><button data-answer="1">1、0</button><button data-answer="2">2、1</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只加 L4，Q2 的两项分数如何改变？</h3><button data-answer="0">0、0 变为 2、0</button><button data-answer="1">0、0 变为 0、1</button><button data-answer="2">0、0 保持不变</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>只输入“排练”，这个新例应如何分流？</h3><button data-answer="0">时间类</button><button data-answer="1">地点类</button><button data-answer="2">两类各 1 分，交人工</button><p role="status"></p></div></details></template>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
   <section class="studio-handoff" data-experiment><h3>手算后，运行词频分类器</h3><div data-controls></div><button>运行课内实验</button><output aria-live="polite"></output></section>
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴用原两题验算，基准正确数由 1/2 变为 2/2，再用“排练”检查平分分支。把小测结果和手算证据留在作品旁。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。</p>
   <div data-peer-review><label>第一版 · 同伴在哪一步停下？记下他的动作或原话<textarea data-peer="trial"></textarea></label><label>第二版 · 我只改这一处<textarea data-peer="change"></textarea></label><label>用相同输入重试 · 这次实际发生了什么？<textarea data-peer="retest"></textarea></label></div>
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -542,7 +562,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"sealedMaterials":[3],"revealAt":3,"artifact":"校园问句分流算盘","reader":"想亲手验算分类结果的广播站值班员","brief":"做一页能看到词频加法的分流台。让同伴先算两条封存问句，再给模型补一条样本，观察哪一题发生变化。","materials":["训练时间 T1「几时 开门」、T2「几时 排练」、T3「几点 集合」。","训练地点 L1「哪里 排练」、L2「哪里 集合」、L3「何处 开门」。","只按空格切词；同一词在本类训练问句中每出现一次记一分。问句逐词累加，同分交人工。","封存测试 Q1「几时 领票」标时间；Q2「哪儿 领票」标地点。测试前不把它们加入训练。","重训补充一条独立地点样本 L4「哪儿 看展」。两道封存题和切词规则保持原样。"],"choices":["做两列计数珠，点一个词就累加两类得分","做词频小票，提交问句后逐行打印每个词的时间分和地点分"],"teacher":["投屏 Q1、遮住标签，问“哪个词能出分？”请全班投票选词并说明理由。","投屏两种计数界面，问“别人怎样验算一个词算了几分？”请全班选展示方案。","投屏六条训练句，问“排练应该只给一类加分吗？”请全班各圈一次两类出处。","投屏首版，先让两人分别手算 Q1 和 Q2，问“同分该进哪个队列？”全班先判再运行。","投屏补上的 L4，问“重训后哪张小票应该一笔也不变？”全班核对两题的分数。"],"student":["先问为什么没有见过的“哪儿”不会自动等于“哪里”，请 AI 再出一组陌生词让我预测。","选一种能验算的界面，约定输出两个分数，同分时显示待人工确认。","抄六条训练句到训练栏，保留原空格。两道测试题另存，在预测前遮住标签。","生成并打开单文件 HTML，手算后分别输入 Q1、Q2，记下两列分数和首版判断。","另存第二版，只追加 L4 重训；同伴重输原题，再试一次两边都有的“排练”。"],"prompts":["根据六个训练样本，用一个词举例说明“机器眼熟”和“意思相近”的区别，再问我一个预测问题。","请按我的方案设计两列可核对的加法，约定空格切词、未知词计零、同分转人工；先让我确认。","整理训练表与封存测验表，把标签和问题分列，检查相同词有没有错别字。","做单文件 HTML：对训练表计算词频，显示查询中每个词的两项贡献和总分，并允许重训。保留首版供试玩。","另存第二版，只增加 L4 并重训，保留原测试题和计分方式。让同伴提交预测后再看到结果。"],"cases":[{"question":"首版输入 Q1「几时 领票」，时间分、地点分是多少？","options":["2、0","1、0","2、1"],"answer":0,"reason":"“几时”在 T1、T2 各一次，地点表没有；“领票”两边均未出现。"},{"question":"只加 L4，Q2 的两项分数如何改变？","options":["0、0 变为 2、0","0、0 变为 0、1","0、0 保持不变"],"answer":1,"reason":"L4 给“哪儿”新增一个地点词频，“领票”仍是零。"},{"question":"只输入“排练”，这个新例应如何分流？","options":["时间类","地点类","两类各 1 分，交人工"],"answer":2,"reason":"T2 与 L1 各含一次“排练”，L4 未改变这个词的权重。"}],"revision":"同伴用原两题验算，基准正确数由 1/2 变为 2/2，再用“排练”检查平分分支。把小测结果和手算证据留在作品旁。","boundary":"使用课堂模拟词表；两题的结果仅适用于这次小测，无法证实它懂得所有校园问法。"}, steps=["先问为什么没有见过的“哪儿”不会自动等于“哪里”，请 AI 再出一组陌生词让我预测。","选一种能验算的界面，约定输出两个分数，同分时显示待人工确认。","抄六条训练句到训练栏，保留原空格。两道测试题另存，在预测前遮住标签。","生成并打开单文件 HTML，手算后分别输入 Q1、Q2，记下两列分数和首版判断。","另存第二版，只追加 L4 重训；同伴重输原题，再试一次两边都有的“排练”。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"sealedMaterials":[3],"revealAt":3,"artifact":"会打印计分小票的校园问句分流台","reader":"想亲手验算分类结果的广播站值班员","brief":"独立算出两类逐词得分，追加一条不同于测试题的训练句后重训，并验证同分转人工。","materials":["训练时间 T1「几时 开门」、T2「几时 排练」、T3「几点 集合」。","训练地点 L1「哪里 排练」、L2「哪里 集合」、L3「何处 开门」。","只按空格切词；同一词在本类训练问句中每出现一次记一分。问句逐词累加，同分交人工。","封存测试 Q1「几时 领票」标时间；Q2「哪儿 领票」标地点。测试前不把它们加入训练。","重训补充一条独立地点样本 L4「哪儿 看展」。两道封存题和切词规则保持原样。"],"choices":["做两列计数珠，点一个词就累加两类得分","做词频小票，提交问句后逐行打印每个词的时间分和地点分"],"teacher":["投屏 Q1、遮住标签，问“哪个词能出分？”请全班投票选词并说明理由。","投屏两种计数界面，问“别人怎样验算一个词算了几分？”请全班选展示方案。","投屏六条训练句，问“排练应该只给一类加分吗？”请全班各圈一次两类出处。","投屏首版，先让两人分别手算 Q1 和 Q2，问“同分该进哪个队列？”全班先判再运行。","投屏补上的 L4，问“重训后哪张小票应该一笔也不变？”全班核对两题的分数。"],"student":["先问为什么没有见过的“哪儿”不会自动等于“哪里”，请 AI 再出一组陌生词让我预测。","选一种能验算的界面，约定输出两个分数，同分时显示待人工确认。","抄六条训练句到训练栏，保留原空格。两道测试题另存，在预测前遮住标签。","分别给时间、地点两栏录入训练句，每行一个样本，以空格分词。先隐藏测试标签，用问句生成逐词小票并另存首版。","请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。"],"prompts":["根据六个训练样本，用一个词举例说明“机器眼熟”和“意思相近”的区别，再问我一个预测问题。","请按我的方案设计两列可核对的加法，约定空格切词、未知词计零、同分转人工；先让我确认。","整理训练表与封存测验表，把标签和问题分列，检查相同词有没有错别字。","做单文件 HTML：对训练表计算词频，显示查询中每个词的两项贡献和总分，并允许重训。保留首版供试玩。","另存第二版，只增加 L4 并重训，保留原测试题和计分方式。让同伴提交预测后再看到结果。"],"cases":[{"question":"首版输入 Q1「几时 领票」，时间分、地点分是多少？","options":["2、0","1、0","2、1"],"answer":0,"reason":"“几时”在 T1、T2 各一次，地点表没有；“领票”两边均未出现。"},{"question":"只加 L4，Q2 的两项分数如何改变？","options":["0、0 变为 2、0","0、0 变为 0、1","0、0 保持不变"],"answer":1,"reason":"L4 给“哪儿”新增一个地点词频，“领票”仍是零。"},{"question":"只输入“排练”，这个新例应如何分流？","options":["时间类","地点类","两类各 1 分，交人工"],"answer":2,"reason":"T2 与 L1 各含一次“排练”，L4 未改变这个词的权重。"}],"revision":"请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。","boundary":"使用课堂模拟词表；两题的结果仅适用于这次小测，无法证实它懂得所有校园问法。"}, steps=["先问为什么没有见过的“哪儿”不会自动等于“哪里”，请 AI 再出一组陌生词让我预测。","选一种能验算的界面，约定输出两个分数，同分时显示待人工确认。","抄六条训练句到训练栏，保留原空格。两道测试题另存，在预测前遮住标签。","分别给时间、地点两栏录入训练句，每行一个样本，以空格分词。先隐藏测试标签，用问句生成逐词小票并另存首版。","请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -580,6 +600,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -645,6 +670,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -829,6 +855,220 @@ if (lab) {
 }
 
 })();
+(() => {const config={"id":"g8-03","title":"会打印计分小票的校园问句分流台","goal":"独立算出两类逐词得分，追加一条不同于测试题的训练句后重训，并验证同分转人工。","student":"分别给时间、地点两栏录入训练句，每行一个样本，以空格分词。先隐藏测试标签，用问句生成逐词小票并另存首版。","revision":"请值班员拿原来两道测试对比分数。给地点训练追加独立的新句，另存第二版，用“排练”再查平分处理；用未参与调优的新句另记盲测成绩。","fields":[{"key":"time","label":"时间训练样本，每行一句，以空格分词","value":"几时 开门\n几时 排练\n几点 集合"},{"key":"place","label":"地点训练样本，每行一句，以空格分词","value":"哪里 排练\n哪里 集合\n何处 开门"},{"key":"query","label":"要分流的问句（以空格分词）","value":"几时 领票"}],"teacher":false,"sealed":true};
+const run=({run(v) {
+      function frequencies(text) {
+        const map=new Map();
+        for (const w of text.trim().split(/\s+/).filter(Boolean)) map.set(w,(map.get(w)||0)+1);
+        return map;
+      }
+      if (!v.query.trim()) return '请给值班台一条问句。';
+      const time=frequencies(v.time),place=frequencies(v.place);
+      if (!time.size || !place.size) return '两类都要有训练样本，暂不分流。';
+      let t=0,p=0;
+      const rows=v.query.trim().split(/\s+/).map(w=>{
+        const a=time.get(w)||0,b=place.get(w)||0;
+        t+=a;p+=b;
+        return w+'：时间 +'+a+'，地点 +'+b;
+      });
+      return [...rows,'合计：时间 '+t+'，地点 '+p,'分流：'+(t===p?'待人工确认':t>p?'时间查询':'地点查询')].join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -848,7 +1088,7 @@ if (lab) {
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -880,6 +1120,7 @@ if (lab) {
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

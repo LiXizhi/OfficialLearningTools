@@ -76,23 +76,23 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 .lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
 [data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
-</style><main><nav><a href="../index.html#g6">← 课程目录</a><a href="../g6-05-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>6 年级 · 第 5 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>异常数据排查：借AI整理实验表格与核查异常值</h1><p><strong>本课目标　</strong>准确区分“录入错误/缺单位的脏数据”与“真实测量出的相同耗时数据”，不盲目删除真实实验值。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。</p></div>
+</style><main><nav><a href="../index.html#g6">← 课程目录</a><a href="../g6-05-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>6 年级 · 第 5 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>异常数据排查：借AI整理实验表格与核查异常值</h1><p><strong>本课目标　</strong>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>两个 12 秒可以是真跑了两次，也可以是同一张纸抄了两遍。你凭什么决定留下哪条？</p></div>
     <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
     <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏 A 和 B，念“两个 12 就一定有一个多余吗？”全班先看编号再投票。</p>
-    <h3>投屏材料</h3><p>虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。</p><details><summary>备课时看 · 本节课收什么证据</summary>让同伴先故意把两个 12 都当重复。只改提示为“先核对编号”，再用同一张表修订，检查 R1、R2 是否都留下及均值是否为 13 秒。</details>
+    <h3>投屏材料</h3><p>虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。</p><details><summary>备课时看 · 本节课收什么证据</summary>搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。</details>
 
 
 
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。
 虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。
 第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。
 补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。
 修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。
 只看记录卡，问我如何证明两条 12 秒是否来自同一次运行。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">圈出 B、C 共同的 R2，问“复印纸条算又跑一遍吗？”全班决定保留哪一行并写理由。</p>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">把侧门 9 秒加进原表，先猜蓝线均值会不会变；接着试试只换掉一条记录的编号。</p>
 
     <h3>举手选一种做法</h3><button data-teach-vote="0">做“原纸条—录入行—处理决定”对照单　+1</button><button data-teach-vote="1">做可点编号查看原始值的双组交接网页　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
 
@@ -100,13 +100,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。
 虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。
 第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。
 补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。
 修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。
 给两种交接表草案，必须能追到每一行与原纸条；等我决定版式。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏 D 和 R3 原纸条，念“什么证据能让我补上秒？”全班指出带单位的原文。</p>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">先运行默认表，投屏 R2 的两行出处与 R1 的相同秒数。只给缺单位的 R3 加“秒”，看日志变化；再加侧门 R4，复核分组均值。</p>
 
 
     <h3>投屏材料与操作</h3><ul><li>虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。</li><li>第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。</li><li>补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。</li><li>修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。</li></ul>
@@ -114,27 +114,27 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。
 虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。
 第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。
 补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。
 修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。
 把提供的数据原样排出来，保留 D 的空单位，原始数据保持可见。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏蓝线汇总，让同学手算后问“为什么分母是三？”全班逐张勾掉纸条。</p>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。</p>
 
 
 
-    <h3>把操作交给一位同学</h3><p>让同伴先故意把两个 12 都当重复。只改提示为“先核对编号”，再用同一张表修订，检查 R1、R2 是否都留下及均值是否为 13 秒。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+    <h3>把操作交给一位同学</h3><p>搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
 
     <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>对照 R3 只补单位后，蓝线三次均值是多少？</p><button data-predict="0">13 秒　+1</button><button data-predict="1">12 秒　+1</button><button data-predict="2">15 秒　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>三张原纸条为 12、12、15 秒，总和 39，除以 3 得 13。</details></div>
     <button data-project-demo>打开本课作品或世界演示工具</button>
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。
 虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。
 第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。
 补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。
 修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。
 做第一版修订单，让同伴标保留、合并、补单位或另组；给出可复算的蓝线均值。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
-    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">加入 R4，问“表上出现 9 秒，原组平均数会变吗？”全班按起点归组。</p>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">哪里能看到没有丢掉第二次 12 秒？一行和纸条冲突时，你凭什么决定能不能入组？</p>
 
 
 
@@ -142,16 +142,38 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
     <div data-exam-private><h3>离堂前，先独立判断</h3><p>加入侧门起点的 R4 后，蓝线组怎样处理？</p><ol><li>把 9 加入三次平均</li><li>另建侧门组，蓝线均值仍 13 秒</li><li>删掉最慢的 R3</li></ol><details><summary>听完理由，再揭示依据</summary>另建侧门组，蓝线均值仍 13 秒。R4 起点已变，和蓝线组的起点条件不同。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
 
 
-    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。
 虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。
 第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。
 补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。
 修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。
 保留首版，增加侧门分组提示。用 R4 重测，并指出蓝线平均数是否因这次加入而改变。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+    <div data-demo-stage hidden><style>.practical{margin:1.2rem 0;padding:clamp(1rem,3vw,2rem);border:2px solid #7db2a3;background:#f5faf6}
+.practical-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));gap:.65rem 1.25rem;margin:.8rem 0}
+.practical-controls label{margin:0}.practical [data-result]:not(:empty){display:block;padding:1rem;border-left:4px solid #196158;background:white;white-space:pre-wrap;overflow-wrap:anywhere}
+.practical-editions{margin-top:1.5rem}.practical pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.practical figure img{display:block;max-width:100%;max-height:22rem;object-fit:contain}.practical figure{margin:1em 0}
+</style><section class="studio-handoff practical" data-practical="g6-05" data-role="teacher">
+    <small>AIChat · 可独立试玩的作品</small><h2>计时纸条核对器</h2>
+    <p>先运行默认表，投屏 R2 的两行出处与 R1 的相同秒数。只给缺单位的 R3 加“秒”，看日志变化；再加侧门 R4，复核分组均值。</p><div class="practical-controls"><label>原纸条：编号,起点,带“秒”的原读数（每张一行）<textarea data-input="source" rows="4">R1,蓝线,12秒
+R2,蓝线,12秒
+R3,蓝线,15秒
+R4,侧门,9秒</textarea></label><label>交接表：编号,起点,读数（每行一条）<textarea data-input="entries" rows="4">R1,蓝线,12秒
+R2,蓝线,12秒
+R2,蓝线,12秒
+R3,蓝线,15</textarea></label></div>
+
+    <details><summary>把这一步带到 AIChat 主对话</summary><label>我的制作委托<textarea data-maker-prompt rows="5"></textarea></label><button data-compose>按当前设置重组</button> <button data-maker-copy data-chat-copy>和 AI 聊</button></details>
+    <button data-run>运行当前作品</button><button data-keep-demo>把这次结果留在大屏上</button><div data-class-before hidden><h3>全班刚才看到的结果</h3><pre></pre></div><div data-graphic></div><output data-result aria-live="polite"></output>
+
+    <div class="practical-editions" hidden><h3>请一位同学试玩</h3>
+    <p>搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。</p><label>试玩者刚才做了什么？<textarea data-observation rows="2"></textarea></label>
+    <button data-edition="1">留存并下载第一版</button><button data-edition="2">留存并下载修改版</button>
+    <p data-edition-status role="status"></p><details><summary>两版记录与重测</summary><div data-history></div><label>用相同条件重试，结果怎样？<textarea data-retest rows="2"></textarea></label><button data-journal>下载制作记录</button><button data-new-project>开始另一份作品</button></details></div></section></div>
 
     <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g6-05" data-role="teacher">
-  <div class="studio-head"><small>教师演示材料 · 负责交接实验表的科学社记录员</small><h2>能追到原纸条的计时修订单</h2><p>收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。</p></div>
+  <div class="studio-head"><small>教师演示材料 · 负责交接实验表的科学社记录员</small><h2>计时纸条核对器</h2><p>根据材料录入原纸条和手抄表，自编一处漏填或重复，让接班人运行并根据日志找回原行。</p></div>
 
   <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。 <button type="button" data-cite="0">引用到本步记录</button></li><li>第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。 <button type="button" data-cite="1">引用到本步记录</button></li><li>补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。 <button type="button" data-cite="2">引用到本步记录</button></li><li>修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。 <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　只处理虚构实验编号。未经原纸条证实的缺失值标待查，保留原始副本。</p></aside>
   <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
@@ -162,12 +184,13 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>哪两行能确认是同一条记录？</h3><button data-answer="0">A 与 B</button><button data-answer="1">A 与 D</button><button data-answer="2">B 与 C</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>对照 R3 只补单位后，蓝线三次均值是多少？</h3><button data-answer="0">13 秒</button><button data-answer="1">12 秒</button><button data-answer="2">15 秒</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>加入侧门起点的 R4 后，蓝线组怎样处理？</h3><button data-answer="0">把 9 加入三次平均</button><button data-answer="1">另建侧门组，蓝线均值仍 13 秒</button><button data-answer="2">删掉最慢的 R3</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
   <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
 
-  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让同伴先故意把两个 12 都当重复。只改提示为“先核对编号”，再用同一张表修订，检查 R1、R2 是否都留下及均值是否为 13 秒。</p>
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。</p>
 
   <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
   <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
@@ -616,7 +639,7 @@ const copyLessonChatText = (() => {
   }
 })();
 
-(() => {const lesson={"artifact":"能追到原纸条的计时修订单","reader":"负责交接实验表的科学社记录员","brief":"收拾一张有错的计时表。接班人要能从每个修改找到对应纸条，也要能说明两个相同的 12 秒为何都留下。","materials":["虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。","第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。","补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。","修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。"],"choices":["做“原纸条—录入行—处理决定”对照单","做可点编号查看原始值的双组交接网页"],"teacher":["投屏 A 和 B，念“两个 12 就一定有一个多余吗？”全班先看编号再投票。","圈出 B、C 共同的 R2，问“复印纸条算又跑一遍吗？”全班决定保留哪一行并写理由。","投屏 D 和 R3 原纸条，念“什么证据能让我补上秒？”全班指出带单位的原文。","投屏蓝线汇总，让同学手算后问“为什么分母是三？”全班逐张勾掉纸条。","加入 R4，问“表上出现 9 秒，原组平均数会变吗？”全班按起点归组。"],"student":["向 AI 提问“相同秒数和重复记录怎样分辨”，再问它需要哪项证据。","挑对照单或网页，规定每一次删除或修正都写回原行和纸条编号。","抄录 A–D，把原纸条做成可查材料，给 R4 留另一组，不填猜出的单位。","制作首版，交给同伴修订并计算蓝线均值，把保留的三个编号记下来。","加入侧门纸条，只改分组提示。请同伴再次找 R2 的重复项并报蓝线均值。"],"prompts":["只看记录卡，问我如何证明两条 12 秒是否来自同一次运行。","给两种交接表草案，必须能追到每一行与原纸条；等我决定版式。","把提供的数据原样排出来，保留 D 的空单位，原始数据保持可见。","做第一版修订单，让同伴标保留、合并、补单位或另组；给出可复算的蓝线均值。","保留首版，增加侧门分组提示。用 R4 重测，并指出蓝线平均数是否因这次加入而改变。"],"cases":[{"question":"哪两行能确认是同一条记录？","options":["A 与 B","A 与 D","B 与 C"],"answer":2,"reason":"B、C 都指向一次运行 R2；A 是另一张 R1。"},{"question":"对照 R3 只补单位后，蓝线三次均值是多少？","options":["13 秒","12 秒","15 秒"],"answer":0,"reason":"三张原纸条为 12、12、15 秒，总和 39，除以 3 得 13。"},{"question":"加入侧门起点的 R4 后，蓝线组怎样处理？","options":["把 9 加入三次平均","另建侧门组，蓝线均值仍 13 秒","删掉最慢的 R3"],"answer":1,"reason":"R4 起点已变，和蓝线组的起点条件不同。"}],"revision":"让同伴先故意把两个 12 都当重复。只改提示为“先核对编号”，再用同一张表修订，检查 R1、R2 是否都留下及均值是否为 13 秒。","boundary":"只处理虚构实验编号。未经原纸条证实的缺失值标待查，保留原始副本。"}, steps=["投屏 A 和 B，念“两个 12 就一定有一个多余吗？”全班先看编号再投票。","圈出 B、C 共同的 R2，问“复印纸条算又跑一遍吗？”全班决定保留哪一行并写理由。","投屏 D 和 R3 原纸条，念“什么证据能让我补上秒？”全班指出带单位的原文。","投屏蓝线汇总，让同学手算后问“为什么分母是三？”全班逐张勾掉纸条。","加入 R4，问“表上出现 9 秒，原组平均数会变吗？”全班按起点归组。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+(() => {const lesson={"artifact":"计时纸条核对器","reader":"负责交接实验表的科学社记录员","brief":"交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。","materials":["虚构原纸条：R1 蓝线起点 12 秒；R2 蓝线起点 12 秒；R3 蓝线起点 15 秒。编号对应三次独立启动。","第一次录入：行 A=R1/蓝线/12秒；B=R2/蓝线/12秒；C=R2/蓝线/12秒；D=R3/蓝线/15（单位空）。B 与 C 对应同一张 R2 纸条。","补交纸条 R4：侧门起点 9 秒。侧门比蓝线靠近终点；新起点单独列。","修订日志要保留原行、依据纸条、处理动作；平均数用秒计算，保留每张实际运行纸条一次。"],"choices":["做“原纸条—录入行—处理决定”对照单","做可点编号查看原始值的双组交接网页"],"teacher":["投屏 A 和 B，念“两个 12 就一定有一个多余吗？”全班先看编号再投票。","圈出 B、C 共同的 R2，问“复印纸条算又跑一遍吗？”全班决定保留哪一行并写理由。","投屏 D 和 R3 原纸条，念“什么证据能让我补上秒？”全班指出带单位的原文。","投屏蓝线汇总，让同学手算后问“为什么分母是三？”全班逐张勾掉纸条。","加入 R4，问“表上出现 9 秒，原组平均数会变吗？”全班按起点归组。"],"student":["向 AI 提问“相同秒数和重复记录怎样分辨”，再问它需要哪项证据。","挑对照单或网页，规定每一次删除或修正都写回原行和纸条编号。","抄录 A–D，把原纸条做成可查材料，给 R4 留另一组，不填猜出的单位。","根据材料录入原纸条和手抄表，自编一处漏填或重复，让接班人运行并根据日志找回原行。","搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。"],"prompts":["只看记录卡，问我如何证明两条 12 秒是否来自同一次运行。","给两种交接表草案，必须能追到每一行与原纸条；等我决定版式。","把提供的数据原样排出来，保留 D 的空单位，原始数据保持可见。","做第一版修订单，让同伴标保留、合并、补单位或另组；给出可复算的蓝线均值。","保留首版，增加侧门分组提示。用 R4 重测，并指出蓝线平均数是否因这次加入而改变。"],"cases":[{"question":"哪两行能确认是同一条记录？","options":["A 与 B","A 与 D","B 与 C"],"answer":2,"reason":"B、C 都指向一次运行 R2；A 是另一张 R1。"},{"question":"对照 R3 只补单位后，蓝线三次均值是多少？","options":["13 秒","12 秒","15 秒"],"answer":0,"reason":"三张原纸条为 12、12、15 秒，总和 39，除以 3 得 13。"},{"question":"加入侧门起点的 R4 后，蓝线组怎样处理？","options":["把 9 加入三次平均","另建侧门组，蓝线均值仍 13 秒","删掉最慢的 R3"],"answer":1,"reason":"R4 起点已变，和蓝线组的起点条件不同。"}],"revision":"搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。","boundary":"只处理虚构实验编号。未经原纸条证实的缺失值标待查，保留原始副本。"}, steps=["投屏 A 和 B，念“两个 12 就一定有一个多余吗？”全班先看编号再投票。","圈出 B、C 共同的 R2，问“复印纸条算又跑一遍吗？”全班决定保留哪一行并写理由。","投屏 D 和 R3 原纸条，念“什么证据能让我补上秒？”全班指出带单位的原文。","投屏蓝线汇总，让同学手算后问“为什么分母是三？”全班逐张勾掉纸条。","加入 R4，问“表上出现 9 秒，原组平均数会变吗？”全班按起点归组。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
 // Included in the standalone lesson with its own content and role.
 const root = document.querySelector('.studio[data-lesson]');
 const get = selector => root.querySelector(selector);
@@ -654,6 +677,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -719,6 +747,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -887,6 +916,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -898,6 +929,225 @@ render();
     show(phase);
 })();
 
+(() => {const config={"id":"g6-05","title":"计时纸条核对器","goal":"交接员能追到每一张原纸条，找回缺失单位，将重复粘贴和两次同值区分开，并按起点独立求均值。","student":"根据材料录入原纸条和手抄表，自编一处漏填或重复，让接班人运行并根据日志找回原行。","revision":"搭档先加入侧门，再故意改错一个秒数。只修正该行，重测相同纸条，核实蓝线均值和侧门组分别怎样变。","fields":[{"key":"source","label":"原纸条：编号,起点,带“秒”的原读数（每张一行）","value":"R1,蓝线,12秒\nR2,蓝线,12秒\nR3,蓝线,15秒\nR4,侧门,9秒"},{"key":"entries","label":"交接表：编号,起点,读数（每行一条）","value":"R1,蓝线,12秒\nR2,蓝线,12秒\nR2,蓝线,12秒\nR3,蓝线,15"}],"teacher":true,"sealed":false};
+const run=({run(v){
+      const parse=text=>text.trim().split(/\n/).map(l=>l.trim().split(/[,，]/).map(s=>s.trim()));
+      const originals=new Map(), used=new Set(), groups=new Map(), log=[];
+      for(const [i,row] of parse(v.source).entries()){
+        const [id,gate,val]=row, match=/^(\d+(?:\.\d+)?)\s*秒$/.exec(val || '');
+        if(row.length!==3 || !id || !gate || !match || !Number.isFinite(+match[1]) || +match[1]<=0 || originals.has(id)) return '原纸条第 '+(i+1)+' 行需有唯一编号、起点、正数和秒单位。';
+        originals.set(id,{gate,seconds:+match[1]});
+      }
+      if(!v.entries.trim()) return '交接表为空，请逐行录入。';
+      for(const [i,row] of parse(v.entries).entries()){
+        const [id,gate,val]=row, ref=originals.get(id), match=/^(\d+(?:\.\d+)?)\s*(秒)?$/.exec(val || '');
+        const prefix='行 '+(i+1)+'（'+(id || '无编号')+'）：';
+        if(row.length!==3 || !ref || ref.gate!==gate || !match || +match[1]!==ref.seconds){log.push(prefix+'待查原纸条，本行暂不计入。');continue;}
+        if(used.has(id)){log.push(prefix+'重复粘贴，不再计入。');continue;}
+        used.add(id);
+        if(!groups.has(gate)) groups.set(gate,[]);
+        groups.get(gate).push(ref.seconds);
+        log.push(prefix+(match[2]?'保留':'按原纸条补“秒”')+'，'+ref.seconds+' 秒。');
+      }
+      for(const [name,values] of groups) log.push(name+'组：'+values.length+' 次，均值 '+Number((values.reduce((a,b)=>a+b,0)/values.length).toFixed(2))+' 秒。');
+      return log.join('\n');
+    }}).run;
+const world=null;
+
+// The graphic is redrawn from the result of the same run, also in a downloaded edition.
+function drawLessonVisual(host,id,input,text){
+    host.replaceChildren();
+    const doc=host.ownerDocument, node=(tag,str)=>{const n=doc.createElement(tag);n.textContent=str;return n;};
+    const lines=text.split('\n');
+    if(id==='g6-03'){
+        const points=[...lines[0].matchAll(/\((\d+),(\d+)\)/g)].map(m=>m[1]+','+m[2]);
+        if(!points.length)return;
+        const board=node('table','');board.append(node('caption','路线沙盘 · 数字为经过的步数，0 是起点'));
+        for(let y=5;y>=1;y--){const row=board.insertRow();for(let x=1;x<=7;x++){
+            const cell=row.insertCell(),coord=x+','+y,steps=points.flatMap((p,i)=>p===coord?[i]:[]);
+            const blocked=input.closed==='施工' && coord===String(input.site).replace(/\s/g,'').replace('，',',');
+            cell.textContent=blocked?'施工':steps.length?steps.join('/'):'·';cell.title='('+coord+')';
+            cell.style.cssText='min-width:1.8em;text-align:center;border:1px solid #aec4bd;background:'+(blocked?'#f8d3aa':steps.length?'#b8e2ce':'#fff');
+        }}host.append(board);
+    }else if(id==='g4-02'){
+        const bars=lines.map(s=>s.match(/^\d+．(.+?) ([\d.]+)厘米/)).filter(Boolean);
+        if(!bars.length)return;
+        const max=Math.max(1,...bars.map(m=>Number(m[2])));host.append(node('strong','把文具放在同一把尺上'));
+        for(const m of bars){const line=node('div',m[1]+' · '+m[2]+' 厘米　'),meter=doc.createElement('meter');
+            meter.max=max;meter.value=+m[2];meter.style.width='50%';meter.setAttribute('aria-label',m[1]);line.append(meter);host.append(line);}
+    }else if(id==='g3-05'||id==='g5-06'){
+        const frames=id==='g3-05'?text.split('\n\n').filter(s=>/^镜头 \d/.test(s)):lines.filter(s=>/^镜\d/.test(s));
+        for(const frame of frames){const card=node('article',frame.replaceAll('｜','\n'));card.style.cssText='display:inline-block;vertical-align:top;white-space:pre-line;margin:4px;padding:.6em;max-width:15em;background:#fff8db;border:1px solid #c4b47a';host.append(card);}
+    }
+}
+
+const panel=document.querySelector('[data-practical]');
+const find=s=>panel.querySelector(s);
+if(config.id==='g9-01')window.directorPrivateBrief=()=>[config.title,config.goal,config.student,'访谈原话与草稿留在本组，本次上下文只提供公开任务。'].join('\n');
+const controls=[...panel.querySelectorAll('[data-input]')];
+const storageKey='director-practical-v1/'+config.id+'/'+panel.dataset.role;
+let state={};
+try {state=JSON.parse(localStorage.getItem(storageKey)) || {};} catch {}
+const values=()=>Object.fromEntries(controls.map(el=>[el.dataset.input,el.value]));
+const status=text=>{find('[data-edition-status]').textContent=text;};
+function persist(){
+    try {if(config.id==='g9-01' && values().permit!=='使用虚构演练记录'){localStorage.removeItem(storageKey);return;}localStorage.setItem(storageKey,JSON.stringify(state));}
+    catch {status('当前窗口不能保存草稿，离开前请下载作品和制作记录。');}
+}
+function saveFile(filename,content,mime){
+    const link=document.createElement('a');
+    const url=URL.createObjectURL(new Blob([content],{type:mime}));
+    link.href=url;link.download=filename;document.body.append(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),30000);
+}
+function defaults(){
+    return Object.fromEntries(config.fields.map(f=>[f.key,f.options?.[0] ?? f.value]));
+}
+function fill(input){
+    for(const el of controls) el.value=input[el.dataset.input] ?? defaults()[el.dataset.input];
+}
+function compose(){
+    const text=[config.goal,config.student];
+    if(!config.sealed && config.id!=='g9-01') for(const f of config.fields) text.push(f.label+'：'+values()[f.key]);
+    text.push(config.sealed?'只讨论制作与验证方法，封存题留给独立评测员。':'请根据这些材料提出制作方案。我确认后再制作，保留首版供同伴试玩。');
+    return text.join('\n');
+}
+const prompt=find('[data-maker-prompt]');
+prompt.oninput=()=>{state.prompt=prompt.value;persist();};
+find('[data-compose]').onclick=()=>{delete state.prompt;prompt.value=compose();persist();};
+find('[data-maker-copy]').onclick=()=>copyLessonChatText(prompt.value);
+function showWorld(){
+    if(!world) return;
+    const code=world(values());
+    find('[data-world-code]').textContent=code;
+    find('[data-scene-code]').textContent=buildScene(code);
+}
+function observe(){
+    const input=values();
+    const output=run(input);
+    find('[data-result]').textContent=output;
+    drawLessonVisual(find('[data-graphic]'),config.id,input,output);
+    state.input=input;state.last={input,output};
+    persist();
+}
+find('[data-run]').onclick=observe;
+if(config.teacher){
+    const before=find('[data-class-before]');
+    find('[data-keep-demo]').onclick=()=>{
+        if(!state.last) observe();
+        state.baseline=state.last.output;before.querySelector('pre').textContent=state.baseline;before.hidden=false;persist();
+    };
+    if(state.baseline){before.hidden=false;before.querySelector('pre').textContent=state.baseline;}
+}
+for(const el of controls) el.oninput=()=>{
+    state.input=values();delete state.last;find('[data-graphic]').replaceChildren();if(state.prompt==null) prompt.value=compose();
+    find('[data-result]').textContent='设置已改变，请运行这一版。';showWorld();persist();
+};
+for(const key of ['observation','retest']){
+    const field=find('[data-'+key+']');
+    field.value=state[key] || '';
+    field.oninput=()=>{state[key]=field.value;persist();};
+}
+function renderHistory(){
+    const holder=find('[data-history]');holder.replaceChildren();
+    for(const [version,s] of Object.entries(state.editions || {})){
+        const details=document.createElement('details');
+        const summary=document.createElement('summary');summary.textContent='第 '+version+' 版 · 查看当时的设置和结果';
+        const output=document.createElement('pre');output.textContent=config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n\n'+s.output;
+        const button=document.createElement('button');button.textContent='再次下载第 '+version+' 版';
+        button.onclick=()=>exportEdition(version,s);
+        details.append(summary,output,button);holder.append(details);
+    }
+}
+// A downloaded copy contains the same lesson mechanism and the author's choices.
+// Students' text reaches DOM text/value properties, never executable source.
+function openProduct(config,input,run,art,draw){
+    document.title=config.title;
+    const main=document.querySelector('main');
+    const heading=document.createElement('h1');heading.textContent=config.title;
+    const task=document.createElement('p');task.textContent=config.student;main.append(heading,task);
+    if(art?.url){
+        const figure=document.createElement('figure'),image=document.createElement('img'),caption=document.createElement('figcaption');
+        image.src=art.url;image.alt=art.caption || '作者选用的课堂图片';image.style.maxWidth='100%';caption.textContent=art.caption;
+        figure.append(image,caption);main.append(figure);
+    }
+    const controls={};
+    for(const f of config.fields){
+        const label=document.createElement('label');label.textContent=f.label;
+        const el=document.createElement(f.options?'select':'textarea');
+        if(f.options) for(const o of f.options) el.add(new Option(o,o));
+        el.value=input[f.key];el.dataset.input=f.key;controls[f.key]=el;label.append(el);main.append(label);
+    }
+    const button=document.createElement('button');button.textContent='运行作品';button.dataset.run='';
+    const output=document.createElement('output');output.dataset.result='';output.setAttribute('aria-live','polite');
+    const graphic=document.createElement('div');
+    button.onclick=()=>{const v=Object.fromEntries(Object.entries(controls).map(([k,el])=>[k,el.value]));output.textContent=run(v);draw(graphic,config.id,v,output.textContent);};
+    main.append(button,graphic,output);button.click();
+}
+function exportEdition(v,snapshot){
+    const serial=x=>JSON.stringify(x).replaceAll('<','\\u003c');
+    const raw=run.toString();
+    const source=/^\s*(?:function\b|\(|[\w$]+\s*=>)/.test(raw)?'('+raw+')':'({'+raw+'}).run';
+    const js='('+openProduct.toString()+')('+serial(config)+','+serial(snapshot.input)+','+source+','+serial(snapshot.art || null)+',('+drawLessonVisual.toString()+'))';
+    const html='<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>我的作品</title><style>body{background:#f6f5ee;color:#163c37;font:18px/1.65 system-ui}main{max-width:50rem;margin:auto;padding:1rem}label,output{display:block;margin:1rem 0;white-space:pre-wrap;overflow-wrap:anywhere}textarea,select{display:block;box-sizing:border-box;width:100%;padding:.6em;font:inherit}textarea{min-height:4em}button{font:inherit;padding:.5em 1em;background:#164f49;color:white;border:0;border-radius:.4em}output{padding:1rem;background:white}</style><main></main><script>'+js.replace(/<\/script/gi,'<\\/script')+'<'+ '/script></html>';
+    saveFile(config.id+'-'+config.title+'-V'+v+'.html',html,'text/html;charset=utf-8');
+}
+for(const b of panel.querySelectorAll('[data-edition]')) b.onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出访谈作品。');return;}
+    const v=b.dataset.edition;
+    state.editions ||= {};
+    if(v==='1' && state.editions[1]){exportEdition(1,state.editions[1]);status('已下载保留的第一版。');return;}
+    if(!state.last){status('请先运行当前设置，看到结果后再保存。');return;}
+    if(v==='2' && (!state.editions[1] || !state.observation?.trim())){status('请先留存首版，并记录一次真实试玩观察。');return;}
+    if(v==='2' && JSON.stringify(state.last.input)===JSON.stringify(state.editions[1].input) && JSON.stringify(state.art || null)===JSON.stringify(state.editions[1].art || null)){status('请根据观察改变一个设置，再运行并保存。');return;}
+    state.editions[v]={input:{...state.last.input},output:state.last.output,art:state.art?{...state.art}:null};persist();renderHistory();
+    exportEdition(v,state.editions[v]);status('第 '+v+' 版已下载，可在独立窗口交给同伴试玩。');
+};
+find('[data-journal]').onclick=()=>{
+    if(config.id==='g9-01' && values().permit==='未获得摘录许可'){status('没有摘录许可，不能导出制作记录。');return;}
+    const entries=Object.entries(state.editions || {}).map(([v,s])=>'V'+v+'\n'+config.fields.map(f=>f.label+'：'+s.input[f.key]).join('\n')+'\n实际课内输出：\n'+s.output);
+    saveFile(config.id+'-制作记录.txt',[config.title,config.goal,...entries,'试玩观察：'+(state.observation || '尚未记录'),'重测：'+(state.retest || '尚未记录')].join('\n\n'),'text/plain;charset=utf-8');
+};
+find('[data-new-project]').onclick=()=>{
+    if(!confirm('开始另一份作品？此页草稿将清空，请先下载需要保留的版本。')) return;
+    state={};fill(defaults());find('[data-result]').textContent='';find('[data-graphic]').replaceChildren();
+    for(const k of ['observation','retest']) find('[data-'+k+']').value='';
+    renderHistory();showWorld();showArt();prompt.value=compose();persist();status('新作品已就绪。');
+};
+if(world){
+    find('[data-world-copy]').onclick=()=>copyLessonChatText('先确认当前客户端、空白世界和可用能力。支持 run_code 时执行下方完整建景 Lua，检查作业结果并告诉我演员和拉杆的位置。如果只支持 create_scripted_actor，先查世界路径和可用空地，以 human 模型和下面的角色行为原文创建并启动角色；告诉我角色的位置以及还需自己搭哪些标志。没有创建能力时，指导我在电影方块旁的代码方块粘贴行为，不要声称已建景。\n角色行为：\n'+find('[data-world-code]').textContent+'\n完整建景 Lua：\n'+find('[data-scene-code]').textContent);
+    find('[data-world-file]').onclick=()=>saveFile(config.id+'-建景.lua',find('[data-scene-code]').textContent,'text/plain;charset=utf-8');
+}
+function showArt(){
+    const area=find('[data-art]');if(!area)return;
+    area.querySelector('figure').hidden=!state.art?.url;
+    if(state.art?.url) area.querySelector('img').src=state.art.url;
+    else area.querySelector('img').removeAttribute('src');
+    area.querySelector('figcaption').textContent=state.art?.caption || '';
+    area.querySelector('[data-art-caption]').value=state.art?.caption || '';
+}
+if(find('[data-art]')){
+    const caption=find('[data-art-caption]'),fileInput=find('[data-art-file]');
+    caption.oninput=()=>{state.art ||= {};state.art.caption=caption.value;showArt();persist();};
+    find('[data-art-remove]').onclick=()=>{fileInput.value='';delete state.art;showArt();persist();};
+    fileInput.onchange=async()=>{
+        const file=fileInput.files[0];if(!file)return;
+        const notice=find('[data-art-status]');
+        if(file.size>8*1024*1024){notice.textContent='请选择小于 8 MB 的课堂图片。';return;}
+        try{
+            const bitmap=await createImageBitmap(file);
+            const scale=Math.min(1,720/Math.max(bitmap.width,bitmap.height)),canvas=document.createElement('canvas');
+            canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));
+            canvas.getContext('2d').drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();
+            if(fileInput.files[0]!==file)return;
+            state.art={caption:caption.value,url:canvas.toDataURL('image/webp',0.72)};showArt();persist();notice.textContent='已放入作品，下载时会一起保存。';
+        }catch{notice.textContent='图片读取失败，请选择 PNG、JPEG 或 WebP。';}
+    };
+}
+fill(state.input || defaults());prompt.value=state.prompt ?? compose();renderHistory();showWorld();showArt();
+if(state.last){find('[data-result]').textContent=state.last.output;drawLessonVisual(find('[data-graphic]'),config.id,state.last.input,state.last.output);}
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
@@ -917,7 +1167,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -949,6 +1199,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,

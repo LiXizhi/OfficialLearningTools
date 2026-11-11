@@ -149,6 +149,7 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
 三次都测 T1、T2、T3。先测原模型，再拿走绿萝卡沿用原模型，最后重新训练后再测。
 用我实测的数据做三张关系卡，各配一个例子。请同伴用这三张卡解释第三轮为什么改变。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
     </section>
+
     <div data-demo-stage hidden><section class="studio-handoff" data-leaf-lab>
   <h3>先试一次纸卡识叶实验</h3>
   <p>每次测试前先预测。第一次用全套卡训练；第二次只拿走绿萝卡，继续用旧模型；第三次重新训练。每次测的都是同三张新卡。</p>
@@ -181,6 +182,7 @@ button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;b
   <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
   <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
   <button data-next>下一步</button></div></div>
+
   <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>哪张是这个活动里的算法卡？</h3><button data-answer="0">六张带标签的照片</button><button data-answer="1">把训练卡的叶形和叶缘组合与名称配成表</button><button data-answer="2">学出后用来判断的组合法</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>拿走绿萝训练卡，还没重新训练。为什么原助手仍能认出先前那两张？</h3><button data-answer="0">测试卡变成了训练卡</button><button data-answer="1">它仍在查第一次学出的表</button><button data-answer="2">它已经重新训练</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>换成教识鸟助手，哪样对应“模型”？</h3><button data-answer="0">根据训练学出的识鸟本领</button><button data-answer="1">还没整理的鸟图</button><button data-answer="2">规定怎样比较鸟喙的学习步骤</button><p role="status"></p></div></details>
 
   <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
@@ -673,6 +675,11 @@ if (followup) {
     followup.oninput=()=>{state.followup=followup.value;persist();};
     get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
     all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const bench=get('[data-practical]');
+        if(bench){
+            if(bench.closest('[hidden]')){get('[data-rule]').focus();return;}
+            bench.scrollIntoView({block:'start'});return;
+        }
         const tools=get('.studio-returns') || get('.studio-kit');
         tools.open=true;tools.scrollIntoView({block:'start'});
     });
@@ -738,6 +745,7 @@ function bindCases() { all('[data-case]').forEach((box,i) => {
 });
 }
 function revealCases() {
+    const bench=get('[data-practical-seal]'); if(bench) bench.hidden=false;
     const sealed = get('[data-sealed]');
     if (sealed) sealed.replaceWith(sealed.content);
 }
@@ -967,6 +975,8 @@ render();
     });
     showPredictions();
     get('[data-project-demo]').onclick=()=>{
+        const practical=desk.querySelector('[data-practical]');
+        if(practical){practical.scrollIntoView({block:'start'});return;}
         const kit=document.querySelector('[data-teacher-kit]');
         kit.open=true;
         const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
@@ -997,7 +1007,7 @@ render();
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private],[data-world-code],[data-scene-code]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1029,6 +1039,7 @@ render();
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
         } else if (pinned && data.type === 'host:get-tool-context') {
+            if(window.directorPrivateBrief){reply('tool:tool-context',{requestId:data.requestId,context:window.directorPrivateBrief()});return;}
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
