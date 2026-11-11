@@ -1,0 +1,117 @@
+{
+ "close-elbow": {
+  "file": "close-elbow.webp",
+  "width": 700,
+  "height": 700
+ },
+ "close-hand": {
+  "file": "close-hand.webp",
+  "width": 700,
+  "height": 700
+ },
+ "close-head": {
+  "file": "close-head.webp",
+  "width": 700,
+  "height": 700
+ },
+ "dance-40": {
+  "file": "dance-40.webp",
+  "width": 525,
+  "height": 697
+ },
+ "dance-490": {
+  "file": "dance-490.webp",
+  "width": 360,
+  "height": 766
+ },
+ "dance-493": {
+  "file": "dance-493.webp",
+  "width": 302,
+  "height": 734
+ },
+ "dance-496": {
+  "file": "dance-496.webp",
+  "width": 469,
+  "height": 716
+ },
+ "dance-500": {
+  "file": "dance-500.webp",
+  "width": 447,
+  "height": 706
+ },
+ "dance-70": {
+  "file": "dance-70.webp",
+  "width": 507,
+  "height": 674
+ },
+ "fall-17": {
+  "file": "fall-17.webp",
+  "width": 455,
+  "height": 345
+ },
+ "fall-74": {
+  "file": "fall-74.webp",
+  "width": 506,
+  "height": 286
+ },
+ "jump-100": {
+  "file": "jump-100.webp",
+  "width": 427,
+  "height": 757
+ },
+ "stand-34": {
+  "file": "stand-34.webp",
+  "width": 410,
+  "height": 786
+ },
+ "stand-34-blackGold": {
+  "file": "stand-34-blackGold.webp",
+  "width": 254,
+  "height": 480
+ },
+ "stand-34-redWhite": {
+  "file": "stand-34-redWhite.webp",
+  "width": 254,
+  "height": 480
+ },
+ "stand-34-whiteBlue": {
+  "file": "stand-34-whiteBlue.webp",
+  "width": 254,
+  "height": 480
+ },
+ "stand-back": {
+  "file": "stand-back.webp",
+  "width": 454,
+  "height": 769
+ },
+ "stand-front": {
+  "file": "stand-front.webp",
+  "width": 454,
+  "height": 778
+ },
+ "stand-side": {
+  "file": "stand-side.webp",
+  "width": 191,
+  "height": 783
+ },
+ "walk-1": {
+  "file": "walk-1.webp",
+  "width": 274,
+  "height": 757
+ },
+ "walk-2": {
+  "file": "walk-2.webp",
+  "width": 281,
+  "height": 777
+ },
+ "walk-3": {
+  "file": "walk-3.webp",
+  "width": 269,
+  "height": 784
+ },
+ "walk-4": {
+  "file": "walk-4.webp",
+  "width": 316,
+  "height": 768
+ }
+}
