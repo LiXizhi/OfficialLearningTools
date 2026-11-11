@@ -135,12 +135,14 @@ td>.sketch{min-height:120px;height:120px}
 .tools button:hover{border-color:var(--accent);color:var(--accent)}
 
 /* ---------- 首页 ---------- */
-.hero{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:end;background:linear-gradient(135deg,#fff 0%,#e9edf2 55%,#cdd6e0 100%);border:1px solid var(--line);border-radius:24px;padding:34px 36px 0;overflow:hidden}
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;aspect-ratio:1942/809;min-height:340px;background:#f8fcf8;border:1px solid var(--line);border-radius:24px;padding:34px 36px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.85) 38%,rgba(255,255,255,.18) 64%,transparent 76%);pointer-events:none}
+.hero>div{position:relative;z-index:2;width:64%}
+.hero .hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
 .hero h1{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.01em}
 .hero .sub{font-size:1.05em;color:var(--steel);margin:12px 0 18px;max-width:30em}
-.hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px}
+.hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0}
 .hero .acts .tbtn{height:42px;font-size:15px}
-.hero .rb{height:300px;width:auto;display:block;filter:drop-shadow(0 14px 14px rgba(40,60,80,.22))}
 .hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
 .hcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
 .hcard h3{font-size:1.02em;margin-bottom:6px;display:flex;gap:8px;align-items:center}
@@ -268,7 +270,9 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
   :root{--fs:16px}.role-teacher{--fs:15px}
   .lhead{grid-template-columns:auto 1fr;padding:16px 18px}.lhead .rb{display:none}.lhead .lnum{font-size:40px}
   .sec{padding:16px 14px}
-  .hero{grid-template-columns:1fr;padding:22px 20px 0}.hero .rb{height:200px;margin:0 auto}
+  .hero{aspect-ratio:auto;min-height:0;padding:24px 20px 240px}.hero>div{width:100%}
+  .hero .hero-backdrop{top:auto;height:220px;object-position:67% center}
+  .hero::before{top:auto;bottom:160px;height:60px;background:linear-gradient(#f8fcf8,transparent)}
   .hgrid,.lcards{grid-template-columns:1fr}
   .fg3,.fg4,.fg5,.fg6{grid-template-columns:repeat(2,minmax(0,1fr))}
   .fg2.stack,.fg3.stack{grid-template-columns:1fr}
@@ -313,7 +317,7 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
   <h1>和小布米一起理解具身智能</h1>
   <p class="sub">16 节课，一个网页世界，一台小布米。<br>我们要弄明白：<b>小布米为什么会动？看到它做出一个动作，能说明它有多聪明吗？</b></p>
   <div class="acts"><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><a class="tbtn" href="#l01">从第 01 课开始</a></div>
-</div><img class="rb" src="assets/robot/stand-34.webp" width="410" height="786" style="--h:300px" alt="" loading="lazy"></div>
+</div><img class="hero-backdrop" src="assets/bumi-meadow.webp" width="1942" height="809" alt="" aria-hidden="true" fetchpriority="high"></div>
 <div class="hgrid">
   <div class="hcard"><h3><svg class="ico ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/></svg>观察员三问</h3><p>1. 这一次动作，是由什么产生的？<br>2. 我的依据是什么？（亲眼看到的，还是资料告诉我的？）<br>3. 凭这些，我还不能证明什么？</p></div>
   <div class="hcard"><h3><svg class="ico ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.3 2.7-6 6-6s6 2.7 6 6M14.5 14.2A5 5 0 0 1 22 18.5"/></svg>小组三个角色</h3><p><b>操作员</b>只按约定点按钮；<b>观察员</b>盯着小布米和状态文字；<b>记录员</b>写表格。每节课至少换一次角色。</p></div>
