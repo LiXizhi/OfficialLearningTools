@@ -496,5 +496,18 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
 </script>
 <script src="world-launcher.js"></script>
 <script src="embedded-preview.js"></script>
+<script>
+if (window === window.top && new URLSearchParams(location.search).get('download') === '1') {
+  const lesson = document.querySelector('.view.lesson.on');
+  if (lesson && /^l\d{2}$/.test(lesson.id)) {
+    const link = document.createElement('a');
+    link.href = 'teacher-plans/' + lesson.id + '.pdf';
+    link.download = '小布米-第' + lesson.id.slice(1) + '课-教案.pdf';
+    link.textContent = '下载教案（PDF）';
+    lesson.querySelector('.tools').prepend(link);
+    link.click();
+  }
+}
+</script>
 </body>
 </html>

@@ -53,7 +53,40 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g8">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>初中二年级（8年级 · 8课时） / 第 5 课（第5章 问答助手四象限评测） · 学生上机课 · 🌟 示范互动样课</small><h1>生成式AI与模型评测：给校园问答助手做“四象限体检”</h1><div class="tag-row"><span class="pill dark">第5章 问答助手四象限评测</span><span class="pill">打开人工智能黑箱（下）：生成式AI判断、模型评测与智能体初步</span><span class="pill">工具环境：AIChat 智能助手工作台</span><span class="pill">🦸 学生机房独立闯关</span></div><p>为什么一个敢于对未知问题说“通知里没有写，我不知道”的校园AI助手，比一个“什么问题都敢流利编出答案”的助手得分更高？今天我们化身【AI系统评测工程师】，打开检索增强（RAG）问答系统的黑箱，用科学的“四象限评测矩阵”和“控制变量实验”给校园问答助手做一次全面体检！</p></header><style>body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+
+/* The speech bubble marks text intended for the AIChat composer. */
+button[data-chat-copy],.fieldbook button[data-chat-copy]{display:inline-flex;gap:.5em;align-items:center;background:#15594d;color:white;border:1px solid #15594d;border-radius:8px;padding:9px 14px;min-height:44px;font-weight:650}
+button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' stroke-linejoin='round' d='M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 4V5a2 2 0 0 1 2-2Z'/%3E%3Cpath d='M6 9h2v2H6zm5 0h2v2h-2zm5 0h2v2h-2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.lesson-chat-toast{position:fixed;z-index:10000;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);box-sizing:border-box;padding:12px 18px;background:#153b34;color:white;border-radius:10px;box-shadow:0 3px 15px #0003;font:600 16px/1.5 system-ui}
+.lesson-chat-toast textarea{display:block;width:100%;box-sizing:border-box;margin:8px 0}
+.lesson-chat-toast[hidden],.lesson-chat-toast [hidden]{display:none}
+
+.studio{margin:20px 0 28px;color:#183f3d;overflow-wrap:anywhere}
+.studio-head{padding:clamp(18px,3vw,34px);background:#123e3c;color:#fff;border-radius:12px 12px 0 0}
+.studio-head small{color:#c7e8de}.studio-head h2{color:white;font-size:clamp(25px,3.6vw,39px);line-height:1.25;margin:8px 0}
+.studio-layout{display:grid;grid-template-columns:minmax(210px,0.9fr) minmax(0,1.6fr);border:1px solid #b8c9bf;background:white}
+.studio-layout aside{padding:clamp(16px,2.7vw,28px);background:#f5f0dc;border-right:1px solid #cfcbb5}
+.studio-layout aside ul{padding-left:1.25em}.studio-bench,.studio-handoff{padding:clamp(16px,2.7vw,28px)}
+.studio nav{justify-content:flex-start;gap:2px;margin-bottom:12px}.studio nav button{margin:2px;font-size:.88em}.studio nav [aria-current=step]{color:#fff;background:#135d56}
+.studio label{display:block;font-weight:650;margin:14px 0 4px}.studio textarea,.studio select{display:block;width:100%;min-width:0;max-width:100%;font:inherit;padding:8px;border:1px solid #899e90;border-radius:5px;color:#163d39;background:white}.studio-case{padding:12px 0;border-bottom:1px solid #d5dfd8}.studio-case:last-child{border:0}.studio-case p{margin:8px 0 0}.studio-handoff{background:#e8f2eb;border-radius:8px}.studio [data-example-output]{white-space:pre-line}.studio pre{white-space:pre-wrap}.studio-extra{scroll-margin:12px}
+@media(max-width:720px){.studio-layout{grid-template-columns:1fr}.studio-layout aside{border-right:none;border-bottom:1px solid #cfcbb5}.studio button{max-width:100%;white-space:normal}}
+.studio-returns input{display:block;max-width:100%;margin:.4em 0}.studio-returns iframe{width:100%;height:360px;border:1px solid #acc4b9;background:white}
+.studio [data-cite]{font-size:.78em;padding:2px 8px;background:#fffaf0;color:#365950;border-color:#bcb49a}
+.studio [data-experiment] output{display:block;white-space:pre-line}.studio [data-experiment] input{display:block;width:100%;padding:.5em;font:inherit}
+
+.lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
+[data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
+</style><main><div class="fieldbook" data-role="student"><div class="mast"><a href="../index.html#g8">← 课程目录</a><b>科技节咨询台</b><span>八年级 · 学生动手</span><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></div>
+    <div class="hero"><div class="hero-copy"><small>科技节咨询台 / 学生动手</small><h1>给校园问答助手做一次体检</h1><p>科技节咨询台请你验收问答助手。做一张可以交给同伴独立使用的体检卡：每个判断都要能回到公告，公告改了还要重新判。</p><button class="primary" id="begin">开始我的作品</button></div><aside class="project-prop"><small>科技节 · 练习公告</small><strong>周六 14:00</strong><span>E2　学校大礼堂<br>E3　现场设 AI 体验区</span></aside></div>
+    <nav class="strip" aria-label="制作步骤"><button data-step="0">提问</button><button data-step="1">定标准</button><button data-step="2">画说明</button><button data-step="3">做首版</button><button data-step="4">撤证重测</button></nav>
+    <div id="desk" tabindex="-1"><div class="workhead"><div><small id="phase"></small><h2 id="heading"></h2></div><button id="speak">朗读引导</button></div><p id="lead"></p>
+    <div class="panels"><div class="sheet"><h3>手边的材料</h3><p>练习公告：[E1] 本周六 14:00 举行科技节演出。[E2] 地点在学校大礼堂。[E3] 现场设 AI 体验区。公告未说明票价。</p><label for="plan">第一道测试题</label><select id="plan"><option>先查地点</option><option>先查票价</option></select>
+
+    <button id="open-materials" class="quiet">打开本课实验材料</button><label for="note" id="note-label"></label><textarea id="note" rows="3"></textarea></div>
+    <div class="sheet prompt"><h3>我的 AI 委托</h3><label for="request">改成自己的话</label><textarea id="request" rows="5"></textarea><button id="recompose" class="quiet" hidden>按现在的选择重新组合委托</button><div class="actions"><button id="copy" data-chat-copy>和 AI 聊</button></div><p>复制后在 AIChat 主对话粘贴、确认并发送，后续步骤沿用同一对话。</p><details><summary>看到实际回复，再追问一句</summary><label for="follow">我的追问或决定</label><textarea id="follow" rows="2"></textarea><button id="copy-follow" data-chat-copy>和 AI 聊</button></details><button id="example">在本页用示例练习</button><p id="sample-output" hidden></p></div></div>
+    <section id="prototype" hidden><h3>可试玩的课内示例</h3><label for="hint">第二版的核查提示</label><input id="hint" type="text" maxlength="160"><iframe title="课内示例试玩" sandbox="allow-scripts" class="returned"></iframe><button id="export"></button></section>
+    <div class="stepfoot"><span id="status" role="status"></span><button id="next" class="primary"></button></div></div>
+    <details class="extra" id="materials"><summary>打开四象限实验台与评测材料</summary><style>body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
 main:has(.activity){max-width:1360px;padding:20px clamp(16px,4vw,60px) 60px}
 main:has(.activity)>nav{padding:0 0 12px;border-bottom:1px solid #bdc9c4;font-size:.85em}
 main:has(.activity)>header{padding:18px 0 8px;border:0}
@@ -720,12 +753,127 @@ if (theme === 'stage') {
 2. 帮我设计第二轮“只改变一个条件”的对比实验观察表；
 3. 如果本课涉及 Paracraft 3D 世界或虚拟具身机器人，请提供可直接复制的快捷命令或 CodeBlock 代码方块脚本。</textarea>
   <div class="turnkey-actions">
-    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-8-5">📋 一键复制 AI 工作台文字</button>
+    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-8-5" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
     <button type="button" class="action-btn accent open-ai-textarea-btn" data-target="std-ai-prompt-8-5">🚀 一键打开 AI 工作台（自动复制文字）</button>
 
   </div>
 
-</section><details open><summary>🛠️ 展开上机实践步骤、随堂检测与评价标准</summary><section><h2>🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）</h2><ol><li>【第1步｜明确问题与环境准备】在 AIChat 主对话中说出你的任务。 回顾课堂导入问题：抛出核心思辨题：通知只写了“周六在礼堂演出”，问地点和问票价时助手都回答“我不知道”，这两个“不知道”能得一样的分数吗？</li><li>【第2步｜说出意图与基础实操】使用上方【一键复制 AI 工作台文字】或进入 Paracraft：在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。</li><li>【第3步｜核对第一轮证据】检查是否达到预期结果：准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。</li><li>【第4步｜控制变量对比实验】只改变一个条件再运行一次：开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。</li><li>【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。</li></ol></section><section><h2>📋 动手操作分步清单</h2><p>教师大屏打开【校园AI问答助手 · 黑箱拆解与四象限评测实验室】。学生准备 AIChat 环境与测试记录表。使用模拟校历通知数据，严格遵守数据最小化原则。</p><ol><li>【第一步｜认识黑箱与四象限标准】观察画布左侧的【校园权威知识库（含[E1]时间、[E2]地点、[E3]体验区，不含票价与私人电话）】与中间的【RAG检索生成流水线】，明确“有据答对、合理拒答、无据幻觉、有据漏答”四类评判依据。</li><li>【第二步｜基准测试集逐题评测（4题）】在工作台中依次点击第1—4题，对照当前知识库证据，为助手的4条回答选出准确的评测分类，观察画布右侧【2×2四象限矩阵】与安全得分的变化。</li><li>【第三步｜控制变量实验：抽掉“地点”证据再评一次！】点击工作台下方的【🔬 控制变量：从知识库中移除[E2]地点信息】，保持助手原来的4条回答一字不改，重新思考并评测第1题（仍答“在大礼堂”）和第4题（答“未写明地点”）现在应该归入哪一类！</li><li>【第四步｜出具工程调优与治理报告】在工作台底部勾选针对“无据幻觉”和“有据漏答”的系统提示词与工程调优策略，生成《校园AI问答助手评测与治理报告》，并在 AIChat 中用新对话实测验证。</li></ol><details><summary>遇到困难时展开排障锦囊</summary><p>评测口诀（两步判定法）：第一步先遮住AI的回答，只看【当前知识库】里有没有这道题的证据？① 如果知识库【有证据】：AI答对并引证＝✅有据答对；AI答错＝❌无据或答错；AI说不知道＝⚠️有据漏答。② 如果知识库【没证据】：AI诚实说未提及＝🛡️合理拒答；AI凭空编出一个数字或地点＝❌无据幻觉！</p></details></section><section><h2>✅ 随堂自测（先判断，再看证据解析）</h2><fieldset data-answer="有据答对"><legend>知识库：『[E1]周六14:00举办科技节；[E2]地点在大礼堂（未提票价）。』 提问：『科技节在哪里举办？』 助手答：『在大礼堂（依据[E2]）。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]有明确地点证据，助手准确命中并标出依据。"></p></fieldset><fieldset data-answer="无据幻觉（高危错误）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『门票每张10元，学生半价。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库中根本没有票价信息，助手却自信地编造出“10元、半价”，属于典型的生成式AI幻觉，会严重误导师生。"></p></fieldset><fieldset data-answer="合理拒答（守住边界）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『当前通知未说明票价信息，建议咨询校团委服务台。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="面对知识库之外的缺失信息，诚实说明资料不足并提供转人工指引，做到了零幻觉。"></p></fieldset><fieldset data-answer="有据漏答（检索失败）"><legend>同一知识库（已写明在大礼堂）。 提问：『请问科技节在哪个场馆举行？』 助手答：『抱歉，通知里没有提到举办地点。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]明明写着“在大礼堂”，助手只因提问把“地点”换成了同义词“场馆”就漏检拒答，属于需优化的有据漏答。"></p></fieldset></section><section><h2>🏆 独立挑战与成果提交要求</h2><p>核心思辨题：校历通知只写了“本周六14:00在大礼堂举办科技节”。同学甲问“活动在哪个场馆？”，同学乙问“门票多少钱一张？”。如果AI助手对这两道题都回答“抱歉，通知中没有说明”，这两次“不知道”在评测表中应该得相同的评价吗？为什么？</p><details><summary>点击查看参考解析</summary><p>绝不能得相同评价！第一题问场馆，通知已明确写明“在大礼堂”，助手却说没说明，属于【⚠️ 有据漏答（检索或理解失败，需修复召回）】；第二题问票价，通知确实没有票价信息，助手诚实说明未提及而不乱编，属于【🛡️ 合理拒答（守住知识边界，零幻觉，应当得分）】。</p></details><p>【本课过程评价产出物】提交两轮（完整知识库 vs 移除地点后）的四象限评测统计数据、1条证据迁移原理解释，以及包含“引用约束+超纲转人工”的系统调优提示词。</p></section><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details></details><footer><a data-chat-link class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g8-05-teacher/index.html">切换到：教师大屏课 →</a></footer></main><script>for (const box of document.querySelectorAll('fieldset')) box.addEventListener('click', e=>{
+</section><details open><summary>🛠️ 展开上机实践步骤、随堂检测与评价标准</summary><section><h2>🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）</h2><ol><li>【第1步｜明确问题与环境准备】在 AIChat 主对话中说出你的任务。 回顾课堂导入问题：抛出核心思辨题：通知只写了“周六在礼堂演出”，问地点和问票价时助手都回答“我不知道”，这两个“不知道”能得一样的分数吗？</li><li>【第2步｜说出意图与基础实操】使用上方【和 AI 聊】或进入 Paracraft：在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。</li><li>【第3步｜核对第一轮证据】检查是否达到预期结果：准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。</li><li>【第4步｜控制变量对比实验】只改变一个条件再运行一次：开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。</li><li>【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。</li></ol></section><section><h2>📋 动手操作分步清单</h2><p>教师大屏打开【校园AI问答助手 · 黑箱拆解与四象限评测实验室】。学生准备 AIChat 环境与测试记录表。使用模拟校历通知数据，严格遵守数据最小化原则。</p><ol><li>【第一步｜认识黑箱与四象限标准】观察画布左侧的【校园权威知识库（含[E1]时间、[E2]地点、[E3]体验区，不含票价与私人电话）】与中间的【RAG检索生成流水线】，明确“有据答对、合理拒答、无据幻觉、有据漏答”四类评判依据。</li><li>【第二步｜基准测试集逐题评测（4题）】在工作台中依次点击第1—4题，对照当前知识库证据，为助手的4条回答选出准确的评测分类，观察画布右侧【2×2四象限矩阵】与安全得分的变化。</li><li>【第三步｜控制变量实验：抽掉“地点”证据再评一次！】点击工作台下方的【🔬 控制变量：从知识库中移除[E2]地点信息】，保持助手原来的4条回答一字不改，重新思考并评测第1题（仍答“在大礼堂”）和第4题（答“未写明地点”）现在应该归入哪一类！</li><li>【第四步｜出具工程调优与治理报告】在工作台底部勾选针对“无据幻觉”和“有据漏答”的系统提示词与工程调优策略，生成《校园AI问答助手评测与治理报告》，并在 AIChat 中用新对话实测验证。</li></ol><details><summary>遇到困难时展开排障锦囊</summary><p>评测口诀（两步判定法）：第一步先遮住AI的回答，只看【当前知识库】里有没有这道题的证据？① 如果知识库【有证据】：AI答对并引证＝✅有据答对；AI答错＝❌无据或答错；AI说不知道＝⚠️有据漏答。② 如果知识库【没证据】：AI诚实说未提及＝🛡️合理拒答；AI凭空编出一个数字或地点＝❌无据幻觉！</p></details></section><section><h2>✅ 随堂自测（先判断，再看证据解析）</h2><fieldset data-answer="有据答对"><legend>知识库：『[E1]周六14:00举办科技节；[E2]地点在大礼堂（未提票价）。』 提问：『科技节在哪里举办？』 助手答：『在大礼堂（依据[E2]）。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]有明确地点证据，助手准确命中并标出依据。"></p></fieldset><fieldset data-answer="无据幻觉（高危错误）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『门票每张10元，学生半价。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库中根本没有票价信息，助手却自信地编造出“10元、半价”，属于典型的生成式AI幻觉，会严重误导师生。"></p></fieldset><fieldset data-answer="合理拒答（守住边界）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『当前通知未说明票价信息，建议咨询校团委服务台。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="面对知识库之外的缺失信息，诚实说明资料不足并提供转人工指引，做到了零幻觉。"></p></fieldset><fieldset data-answer="有据漏答（检索失败）"><legend>同一知识库（已写明在大礼堂）。 提问：『请问科技节在哪个场馆举行？』 助手答：『抱歉，通知里没有提到举办地点。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]明明写着“在大礼堂”，助手只因提问把“地点”换成了同义词“场馆”就漏检拒答，属于需优化的有据漏答。"></p></fieldset></section><section><h2>🏆 独立挑战与成果提交要求</h2><p>核心思辨题：校历通知只写了“本周六14:00在大礼堂举办科技节”。同学甲问“活动在哪个场馆？”，同学乙问“门票多少钱一张？”。如果AI助手对这两道题都回答“抱歉，通知中没有说明”，这两次“不知道”在评测表中应该得相同的评价吗？为什么？</p><details><summary>点击查看参考解析</summary><p>绝不能得相同评价！第一题问场馆，通知已明确写明“在大礼堂”，助手却说没说明，属于【⚠️ 有据漏答（检索或理解失败，需修复召回）】；第二题问票价，通知确实没有票价信息，助手诚实说明未提及而不乱编，属于【🛡️ 合理拒答（守住知识边界，零幻觉，应当得分）】。</p></details><p>【本课过程评价产出物】提交两轮（完整知识库 vs 移除地点后）的四象限评测统计数据、1条证据迁移原理解释，以及包含“引用约束+超纲转人工”的系统调优提示词。</p></section><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details></details><footer><a data-chat-link class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g8-05-teacher/index.html">切换到：教师大屏课 →</a></footer></details>
+    <details class="extra"><summary>整课路线与我的制作记录</summary><ol><li><b>十元的依据在哪一行？</b><p>逐行读公告。试着给“地点在大礼堂”和“票价十元”各标一条依据。哪句标不出来？</p><p data-record="0"></p></li><li><b>把四种结果分清楚</b><p>选择先查地点还是票价。拟四种答复，分别覆盖有据答对、无据编造、合理拒答、有据漏答。</p><p data-record="1"></p></li><li><b>让证据跟得上答复</b><p>给卡片设计封面。对照原公告手动排 E1–E3，缩小画面，确认图不会遮住依据。</p><p data-record="2"></p></li><li><b>做出同学能独立使用的体检卡</b><p>请 AI 生成 index.html，在文件面板点开预览。逐题判断再看依据，保留第一版和一次误判。</p><p data-record="3"></p></li><li><b>同一句话还算答对吗？</b><p>保留第一版，在第二版加入撤掉 E2 的开关。先预测哪两题会变，再让同伴试；票价两题也要复测。</p><p data-record="4"></p></li></ol></details><div class="endlinks"><a href="#studio-extension">拓展挑战</a><a href="../g8-05-teacher/index.html">切换到教师大屏 →</a></div></div>
+    <style>html:has(.fieldbook){scroll-behavior:auto}
+body:has(.fieldbook){background:#f5f1e5;color:#202c27;font:17px/1.6 "Microsoft YaHei","Segoe UI",sans-serif}
+main:has(.fieldbook){padding:0 4vw 36px;max-width:1320px;margin:auto}
+.fieldbook{--ink:#173c36;--green:#11594d;--rule:#c9c7b6;--paper:#fffdf6}
+.fieldbook [hidden]{display:none!important}
+.fieldbook .mast,.fieldbook .endlinks,.fieldbook .stepfoot,.fieldbook .workhead{display:flex;gap:14px;align-items:center;justify-content:space-between}
+.fieldbook .mast{border-bottom:1px solid var(--ink);min-height:64px;color:var(--ink);font-size:.86rem}
+.mast b{letter-spacing:.12em;font-size:1.05rem}.mast i{font-style:normal;color:#bc621c;font-size:1.5rem;vertical-align:middle}
+.fieldbook .hero{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr);align-items:stretch;margin:26px 0 21px;border-block:1px solid var(--rule);background:#f9f5e8}
+.hero-copy{padding:clamp(20px,3vw,46px) clamp(16px,3vw,42px) clamp(20px,3vw,46px) 0;align-self:center}
+.fieldbook small{color:#536a5b;letter-spacing:.07em;font-weight:650}
+.fieldbook h1,.fieldbook h2,.fieldbook h3{color:var(--ink);line-height:1.25}
+.fieldbook h1{font:750 clamp(36px,4.3vw,64px)/1.16 "STZhongsong","Songti SC","SimSun",serif;letter-spacing:-.04em;margin:.22em 0}
+.fieldbook h2{font-size:clamp(26px,3.3vw,40px);margin:.18em 0}.fieldbook h3{font-size:1.15em;margin:0 0 .5em}
+.hero-copy p{max-width:32em;margin:12px 0 18px}
+.fieldbook .hero figure{margin:0;position:relative;min-height:240px;overflow:hidden}
+.hero figure img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero figcaption{position:absolute;bottom:9px;right:10px;background:#fff9e6e8;padding:2px 8px;font:12px/1.6 sans-serif;color:#344b3e}
+.fieldbook button{font-family:inherit;font-size:.94em;font-weight:600;line-height:1.4;color:var(--ink);padding:9px 15px;margin:0;border:1px solid #a2ac9d;background:#fffdf6;border-radius:6px;cursor:pointer;min-height:40px}
+.fieldbook button:hover{border-color:var(--green);box-shadow:0 1px 0 var(--green)}.fieldbook :focus-visible{outline:3px solid #b26314;outline-offset:3px}
+.fieldbook button.primary,.fieldbook button[aria-pressed=true]{background:var(--green);color:white;border-color:var(--green)}
+.fieldbook .strip{display:flex;justify-content:stretch;align-items:stretch;gap:0;flex-wrap:nowrap;border-block:1px solid var(--ink)}
+.strip button{flex:1;text-align:left;border:0;border-radius:0;background:none;padding:12px 10px}.strip button+button{border-left:1px solid var(--rule)}
+.strip button[aria-current=step]{background:#f6d36c;color:#23352a;box-shadow:inset 0 -3px #253f32}
+#desk{scroll-margin-top:8px;outline:none}.workhead{margin-top:26px}.workhead button{white-space:nowrap}
+.fieldbook #lead{margin:7px 0 15px}.fieldbook .panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px}
+.sheet{padding:clamp(16px,2.4vw,30px);background:var(--paper);border:1px solid var(--rule);border-radius:9px;min-width:0}
+.sheet.prompt{background:#eaf2e9;border-top:4px solid #285e50}.sheet p{margin:0 0 12px}
+.fieldbook textarea,.fieldbook select,.fieldbook input[type=text]{width:100%;box-sizing:border-box;padding:10px;color:#243d33;border:1px solid #a5b4a6;background:white;border-radius:5px;font:inherit;line-height:1.55}
+.fieldbook textarea{resize:vertical}.fieldbook label{display:block;font-weight:650;margin:12px 0 5px}.fieldbook .actions,.fieldbook .choices{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.fieldbook .quiet{background:transparent;border-color:transparent;text-decoration:underline;text-underline-offset:3px}
+.fieldbook #status{color:var(--ink);min-height:1.5em;margin:8px 0}.fieldbook #sample-output,.fieldbook .callout{padding:12px;margin:12px 0;background:#fff7d7;border-left:3px solid #d29b37}
+.fieldbook .stepfoot,.fieldbook .endlinks{border-top:1px solid var(--rule);padding:14px 0;flex-wrap:wrap}
+.fieldbook .extra{margin:12px 0}.fieldbook #receipt{background:#fffdf6;border:1px solid var(--rule);padding:20px;margin:12px 0}
+.fieldbook pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit}
+.fieldbook .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}
+.fieldbook .practice{border:1px solid var(--rule);border-radius:6px;background:white;padding:12px}.practice img{width:100%;height:82px;object-fit:cover}.practice svg{width:100%;height:125px;display:block}
+.fieldbook .compact{font-size:.88em;color:#40584b}.fieldbook .kit{display:block;max-width:200px;max-height:100px;object-fit:contain;margin:8px 0}
+.fieldbook .prompt details{padding:6px 0;background:transparent;border:0;border-radius:0;margin:6px 0}
+.fieldbook .prompt summary{font-size:.88em}.fieldbook input[type=file]{display:block;width:100%;font:inherit;font-size:.85em}
+.fieldbook .returned{width:100%;height:300px;border:1px solid var(--rule);background:white}
+.fieldbook[data-role=teacher] #lead{font-size:1.12em}
+@media(max-width:730px){main:has(.fieldbook){padding:0 14px 32px}.fieldbook .mast{min-height:50px;gap:5px}.fieldbook .hero{grid-template-columns:1fr;margin:15px 0}.hero-copy{padding:16px 4px}.fieldbook .hero figure{min-height:135px;max-height:160px}.fieldbook .panels{grid-template-columns:1fr}.strip button{font-size:.8rem;padding:9px 3px;text-align:center}.workhead{margin-top:18px}.fieldbook .mast b{font-size:.88rem}}
+
+    #materials{overflow-wrap:anywhere}#materials .intro small{white-space:normal}#materials input,#materials select{max-width:100%}#materials code{white-space:pre-wrap}.project-prop{align-self:center;justify-self:center;display:grid;gap:8px;box-sizing:border-box;width:min(85%,380px);margin:20px;padding:24px;background:#e2eeef;border:2px solid var(--ink);border-radius:12px;box-shadow:5px 5px 0 var(--ink);transform:rotate(-2deg)}.project-prop strong{font-size:clamp(30px,4vw,56px);line-height:1.15;color:#194c50}#prototype iframe{display:block;width:100%;height:320px;margin:12px 0;border:1px solid var(--rule)}.fieldbook .strip{position:static}
+    </style><details class="studio-extra" id="studio-extension"><summary>拓展挑战 · 给接班评测员的证据翻转账本</summary><section class="studio" data-lesson="g8-05" data-role="student">
+  <div class="studio-head"><small>样板课拓展 · 明天接手问答台、需要复核评分的评测员</small><h2>给接班评测员的证据翻转账本</h2><p>接在问答体检样课后做一份可交接的账本。让接班同学先盲判四张答复，再撤一条证据，复核四个计数究竟有没有反映变化。</p></div>
+
+  <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>[E1] 周六举办纸偶演出。[E2] 场地在大礼堂。练习公告没有票价。 <button type="button" data-cite="0">引用到本步记录</button></li><li>固定问答 A：演出在哪？答“大礼堂”。B：换个说法，场馆在哪？答“资料未说明”。 <button type="button" data-cite="1">引用到本步记录</button></li><li>固定问答 C：票价多少？答“资料未说明”。D：要几元门票？答“十元”。 <button type="button" data-cite="2">引用到本步记录</button></li><li>每条用一种标签：有据答对、合理拒答、无据幻觉、有据漏答。撤证时保留四句答复。 <button type="button" data-cite="3">引用到本步记录</button></li><li>交接单只撤 E2，保留 E1。统计时同时展示答复编号与每类计数。 <button type="button" data-cite="4">引用到本步记录</button></li></ul><p><b>使用约定</b>　固定答复是评测样本；“无据”描述公告支持程度，真实票价必须由活动方确认。</p></aside>
+  <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
+  <h3 data-phase-title></h3><p data-lead></p>
+
+  <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">把四条答复做成可翻面的评审卡，背面写依据和标签</option><option value="1">做前后对照账本，撤证前后每条答复占一行并标出改变原因</option></select></label>
+
+  <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
+  <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
+  <button data-next>下一步</button></div></div>
+  <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>首轮哪一对同样回答“资料未说明”却须给不同标签？</h3><button data-answer="0">A 和 D</button><button data-answer="1">B 和 C</button><button data-answer="2">C 和 D</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只撤 E2 后，按“有据答对、合理拒答、无据幻觉、有据漏答”计数是多少？</h3><button data-answer="0">1、1、1、1</button><button data-answer="1">0、1、2、1</button><button data-answer="2">0、2、2、0</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>另一位评测员针对首版交来同样的四类计数，但把 B 与 C 的标签互换。应如何验收？</h3><button data-answer="0">退回对应两行，让他分别引用 E2 和缺少票价证据</button><button data-answer="1">总数一致就签字</button><button data-answer="2">把两题都改为合理拒答</button><p role="status"></p></div></details>
+
+  <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
+  <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>让接班者先看首版计数，再交给他故意对调 B、C 的账本。看他能否用证据指出错误。撤 E2 后重测原四句，核对变化的两条与稳定的两条。</p>
+
+  <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
+  <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
+  <button data-card="1">保存第一版验收卡</button><button data-card="2">保存第二版验收卡</button>
+  <button data-studio-record>导出制作记录</button><p role="status" data-status></p></div></section></details></main><script>// Shared by the standalone teacher and student worksheets.
+const copyLessonChatText = (() => {
+    const toast = document.createElement('div');
+    toast.className = 'lesson-chat-toast';
+    toast.hidden = true;
+    const status = document.createElement('span');
+    status.setAttribute('role', 'status');
+    const manual = document.createElement('textarea');
+    manual.readOnly = true;
+    manual.setAttribute('aria-label', '手动复制给 AI 的文字');
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.textContent = '关闭';
+    close.onclick = () => { toast.hidden = true; };
+    toast.append(status, manual, close);
+    document.body.append(toast);
+    let timer;
+    return async function copyLessonChatText(value) {
+        clearTimeout(timer);
+        toast.hidden = false;
+        manual.hidden = close.hidden = true;
+        if (!value.trim()) {
+            status.textContent = '先写下想和 AI 说的话。';
+            timer = setTimeout(() => { toast.hidden = true; }, 3500);
+            return false;
+        }
+        let copied = false;
+        try {
+            await navigator.clipboard.writeText(value);
+            copied = true;
+        } catch {
+            const previous = document.activeElement;
+            manual.value = value;
+            manual.hidden = false;
+            manual.focus();
+            manual.select();
+            try { copied = document.execCommand('copy'); } catch {}
+            if (copied) previous?.focus({preventScroll:true});
+        }
+        manual.hidden = close.hidden = copied;
+        status.textContent = copied ? '复制完毕了，可以去聊天框粘贴了。' : '请长按或按 Ctrl/Cmd+C 复制选中的文字，再到聊天框粘贴。';
+        if (copied) timer = setTimeout(() => { toast.hidden = true; }, 3500);
+        return copied;
+    };
+})();
+
+for (const box of document.querySelectorAll('fieldset')) box.addEventListener('click', e=>{
   if (e.target.tagName !== 'BUTTON') return;
   for (const b of box.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b===e.target));
   const note=box.querySelector('p');
@@ -786,15 +934,15 @@ if (theme === 'stage') {
   }
 
   async function openAIWorkbenchWithPrompt(promptText) {
-    await copyText(promptText, 'AI 工作台提示词');
+    if (!await copyLessonChatText(promptText)) return false;
     if (window.parent !== window) {
-      showToast('请在底部主对话粘贴提示词并发送。');
-      return;
+      return true;
     }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
     showToast('🚀 已自动复制提示词并打开 AI 工作台！在输入框粘贴 (Ctrl+V) 即可发送。');
+    return true;
   }
 
   function openParacraftWorld() {
@@ -873,7 +1021,7 @@ if (theme === 'stage') {
   const btnCopyAiPrompt = document.getElementById('btn-copy-ai-prompt');
   if (btnCopyAiPrompt && studentPromptEl) {
     btnCopyAiPrompt.addEventListener('click', async () => {
-      await copyText(studentPromptEl.value, 'AI 工作台提示词');
+      if (!await copyLessonChatText(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！已复制你定制的 AI 工作台提示词');
     });
   }
@@ -881,7 +1029,7 @@ if (theme === 'stage') {
   const btnOpenAiPrompt = document.getElementById('btn-open-aichat-prompt');
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
-      await openAIWorkbenchWithPrompt(studentPromptEl.value);
+      if (!await openAIWorkbenchWithPrompt(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
@@ -960,7 +1108,9 @@ if (theme === 'stage') {
   document.addEventListener('click', async e => {
     const copyDirect = e.target.closest('[data-copy]');
     if (copyDirect) {
-      await copyText(copyDirect.dataset.copy, '命令/指令');
+      if (copyDirect.hasAttribute('data-chat-copy')) {
+        if (!await copyLessonChatText(copyDirect.dataset.copy)) return;
+      } else await copyText(copyDirect.dataset.copy, '命令/指令');
       if (copyDirect.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 命令');
       return;
     }
@@ -968,7 +1118,8 @@ if (theme === 'stage') {
     if (copyCodeBtn) {
       const target = document.getElementById(copyCodeBtn.dataset.copyTarget);
       if (target) {
-        await copyText(target.textContent, '代码/文字');
+        if (copyCodeBtn.hasAttribute('data-chat-copy')) await copyLessonChatText(target.textContent);
+        else await copyText(target.textContent, '代码/文字');
         if (copyCodeBtn.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 代码');
       }
       return;
@@ -976,7 +1127,7 @@ if (theme === 'stage') {
     const copyTaBtn = e.target.closest('.copy-textarea-btn');
     if (copyTaBtn) {
       const ta = document.getElementById(copyTaBtn.dataset.target);
-      if (ta) await copyText(ta.value, 'AI 工作台提示词');
+      if (ta) await copyLessonChatText(ta.value);
       return;
     }
     const openAiTarget = e.target.closest('.open-ai-with-target');
@@ -1106,31 +1257,403 @@ if (theme === 'stage') {
   }
 })();
 
+(() => {const lesson={"grade":"八年级","id":"g8-05","place":"科技节咨询台","artifact":"校园问答体检卡","titles":["从零做校园问答体检卡","给校园问答助手做一次体检"],"briefs":["投屏一则三行公告。请全班当评测员：助手说“票价十元”，你能指出它的依据吗？一起做张体检卡，让下一班能复查你的结论。","科技节咨询台请你验收问答助手。做一张可以交给同伴独立使用的体检卡：每个判断都要能回到公告，公告改了还要重新判。"],"choices":["先查地点","先查票价"],"material":"练习公告：[E1] 本周六 14:00 举行科技节演出。[E2] 地点在学校大礼堂。[E3] 现场设 AI 体验区。公告未说明票价。","sampleHint":"先核对 E2 是否还在，再判断答复能否引用地点。","steps":[["提问","十元的依据在哪一行？","投屏练习公告和“门票十元”的答复。先请一位同学找到证据，再请另一位说出助手应该怎样回答。","逐行读公告。试着给“地点在大礼堂”和“票价十元”各标一条依据。哪句标不出来？","公告没写票价，是否能回答“免费”？请解释原因，再用一个新问法考我。","免费和十元都需要票价证据。稳妥的答复是“公告未说明票价”。","我的问题和一次追问"],["定标准","把四种结果分清楚","让全班先投票选第一道测试题。把“资料有没有依据”和“助手怎样回答”写在黑板上。","选择先查地点还是票价。拟四种答复，分别覆盖有据答对、无据编造、合理拒答、有据漏答。","给我四条测试用例，列问题、固定答复、资料依据和预期判断。先给计划，等我核对。","地点答礼堂为有据答对；票价答十元为无据编造；票价答未说明为合理拒答；地点答未知为有据漏答。","首题与判定依据"],["画说明","让证据跟得上答复","请 AI 画咨询台封面。让全班找出哪些元素可以画，哪些文字和证据编号必须另外排版。","给卡片设计封面。对照原公告手动排 E1–E3，缩小画面，确认图不会遮住依据。","画科技节咨询台的封面插图，右侧留白；不要在图里画公告文字、价格或答案。","离线排版草案：左边画咨询台，右边放可选中的公告文本；删去会暗示票价的票券数字。","我用的素材，以及证据怎样保持可读"],["做首版","做出同学能独立使用的体检卡","投屏制作单文件网页。打开第一版，请同学先判后看解析，故意选错一次，观察反馈。","请 AI 生成 index.html，在文件面板点开预览。逐题判断再看依据，保留第一版和一次误判。","做一个独立打开的 HTML 体检卡：含公告、四条固定答复、可点选四种结论，选后显示对应依据。保存第一版。","离线卡保留四条固定答复。请逐题选择结论，对照原公告检查解析。","第一版中的一条具体观察"],["撤证重测","同一句话还算答对吗？","仅撤掉 E2，保持四句答复不变。让同一位同学再判地点两题，给出前后标签及理由。","保留第一版，在第二版加入撤掉 E2 的开关。先预测哪两题会变，再让同伴试；票价两题也要复测。","另存第二版，加入隐藏或恢复 E2 的开关。四句回答保持原样，评判随证据更新。按同伴反馈补一句核查提示。","撤掉 E2 后，“大礼堂”变为无据作答，“公告未说明地点”变为合理拒答；两道票价题的判定保持原样。","同伴的反馈、两道地点题的前后判断和票价复测结果"]]}, gate=false, teacher=false;
+// Inlined with the lesson's data in each standalone worksheet.
+const el = id => document.getElementById(id);
+const storeKey = 'director-workshop-v1/' + lesson.id + '/' + (teacher ? 'teacher' : 'student');
+const state = {step:0, plan:lesson.choices[0], hint:lesson.sampleHint, notes:[], drafts:[], follows:[], votes:[0,0]};
+try { Object.assign(state, JSON.parse(localStorage.getItem(storeKey))); } catch {}
+const save = () => {
+  document.querySelectorAll('[data-record]').forEach(line => {
+    const i = +line.dataset.record;
+    line.textContent = lesson.steps[i][6]+'：'+(state.notes[i] || '未记录');
+  });
+  try { localStorage.setItem(storeKey, JSON.stringify(state)); }
+  catch { el('status').textContent = '浏览器无法保留草稿，离开前请保存制作记录。'; }
+};
+const escape = text => String(text).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+function download(name, content, type) {
+  const url = URL.createObjectURL(new Blob([content], {type}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = name;
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function makeCard() {
+  const revised = state.step === 4;
+  const name = lesson.artifact + (revised ? ' · 第二版' : ' · 第一版');
+  const shell = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + name + '</title><style>body{max-width:48rem;margin:auto;padding:16px;background:#fffdf4;color:#173e37;font:17px/1.55 system-ui}h1{font-size:1.35em}details,fieldset{margin:10px 0;padding:10px;border:1px solid #899e90}summary,button{cursor:pointer}button{font:inherit;margin:4px;padding:5px}output{display:block}</style><h1>' + name + '</h1>';
+  if (gate) {
+    return shell + '<p>校门纸卡模拟 · 你是新生。先出示星星卡，再试着遮住它。</p><details><summary>★ 出示清晰校牌</summary>' +
+      (state.plan === lesson.choices[0] ? '机器人说：“早上好，欢迎来到星星班！”' : '机器人向前一步，挥手迎接你。') +
+      '</details><details><summary>▧ 遮住校牌</summary>机器人停在原地，对你说：“' + escape(revised ? state.hint : '我看不清，请稍等。') + '”</details></html>';
+  }
+  const cases = [
+    ['演出在哪？','在学校大礼堂。',0,1], ['门票多少钱？','十元。',1,1],
+    ['门票多少钱？','公告未说明票价。',2,2], ['演出场馆在哪？','公告未说明地点。',3,2]
+  ];
+  if (state.plan === lesson.choices[1]) cases.unshift(cases.splice(1,1)[0]);
+  const labels = ['有据答对','无据编造','合理拒答','有据漏答'];
+  const quiz = cases.map(([q,a,on,off]) => '<fieldset data-on="'+on+'" data-off="'+off+'"><legend>'+q+'</legend><p>固定答复：'+a+'</p>'+labels.map((l,i)=>'<button data-index="'+i+'">'+l+'</button>').join('')+'<output aria-live="polite"></output></fieldset>').join('');
+  const behavior = () => {
+    const toggle = document.querySelector('input');
+    if (toggle) toggle.onchange = () => {
+      document.querySelector('#e2').hidden = toggle.checked;
+      document.querySelectorAll('output').forEach(out => { out.textContent = ''; });
+    };
+    document.querySelectorAll('fieldset').forEach(box => {
+      box.onclick = e => {
+        if (!e.target.matches('button')) return;
+        const expected = toggle?.checked ? box.dataset.off : box.dataset.on;
+        const locationCase = box.dataset.on === '0' || box.dataset.on === '3';
+        const evidence = locationCase ? (toggle?.checked ? '当前公告没有地点依据。' : 'E2 明确写了学校大礼堂。') : '三条公告都没有说明票价。';
+        box.querySelector('output').textContent = (e.target.dataset.index === expected ? '判断成立。' : '再核对一次。') + evidence;
+      };
+    });
+  };
+  return shell + '<p>E1　本周六 14:00 举行科技节演出。<br><span id="e2">E2　地点在学校大礼堂。<br></span>E3　现场设 AI 体验区。</p>' +
+    (revised ? '<label><input type="checkbox">撤掉地点证据 E2</label><p>'+escape(state.hint)+'</p>' : '') +
+    quiz + '<script>('+behavior.toString()+')()<'+ '/script></html>';
+}
+function prompt() {
+  const earlier = state.notes.slice(0,state.step).filter(Boolean).join('；');
+  return [lesson.material, '我的选择：'+state.plan, earlier && '之前的制作记录：'+earlier, lesson.steps[state.step][4],
+    state.step === 4 && '第二版的文字：'+state.hint].filter(Boolean).join('\n');
+}
+function showStep(index, focus = false) {
+  state.step = index;
+  const row = lesson.steps[index];
+  document.querySelectorAll('[data-step]').forEach(btn => {
+    if (+btn.dataset.step === index) btn.setAttribute('aria-current','step');
+    else btn.removeAttribute('aria-current');
+  });
+  el('phase').textContent = teacher ? ['0–5 分钟','5–13 分钟','13–20 分钟','20–32 分钟','32–40 分钟'][index] : '我的制作进度 · ' + (index + 1) + ' / 5';
+  el('heading').textContent = row[1];
+  el('lead').textContent = row[teacher ? 2 : 3];
+  el('note-label').textContent = row[6];
+  el('note').value = state.notes[index] || '';
+  el('plan').value = state.plan;
+  el('hint').value = state.hint;
+  el('request').value = state.drafts[index] ?? prompt();
+  el('recompose').hidden = state.drafts[index] == null;
+  el('follow').value = state.follows[index] ?? [
+    '请换一个例子，让我先猜，再解释。',
+    '我选“'+state.plan+'”。请把这项选择写进验收步骤。',
+    '这幅图缩小后，哪个地方最容易看不清？',
+    '我试了一次，观察到：'+(state.notes[index] || '（补上实际现象）'),
+    '请对照第一版，帮我核查这次只改了哪一个条件。'
+  ][index];
+  el('next').textContent = index < 4 ? '下一步 · '+lesson.steps[index+1][0] : '保存制作记录';
+  el('sample-output').textContent = row[5];
+  el('sample-output').hidden = el('prototype').hidden = true;
+  el('hint').hidden = el('hint').labels[0].hidden = index !== 4;
+  el('status').textContent = '';
+  if (teacher) el('votes').textContent = lesson.choices.map((s,i)=>s+' '+state.votes[i]+' 票').join(' / ');
+  save();
+  if (focus) el('desk').focus();
+}
+el('begin').onclick = () => showStep(state.step,true);
+document.querySelectorAll('[data-step]').forEach(btn => { btn.onclick = () => showStep(+btn.dataset.step,true); });
+el('note').oninput = e => { state.notes[state.step] = e.target.value; save(); };
+el('request').oninput = e => { state.drafts[state.step] = e.target.value; el('recompose').hidden = false; save(); };
+el('plan').onchange = e => {
+  state.plan = e.target.value;
+  showStep(state.step);
+};
+el('hint').oninput = e => {
+  state.hint = e.target.value;
+  if (state.drafts[state.step] == null) el('request').value = prompt();
+  document.querySelector('#prototype iframe').srcdoc = makeCard();
+  save();
+};
+if (teacher) el('vote').onclick = () => {
+  state.votes[lesson.choices.indexOf(state.plan)]++;
+  showStep(state.step);
+};
+el('recompose').onclick = () => { delete state.drafts[state.step]; showStep(state.step); };
+el('follow').oninput = e => { state.follows[state.step] = e.target.value; save(); };
+el('copy-follow').onclick = () => copyLessonChatText(el('follow').value);
+el('open-materials').onclick = () => {
+  el('materials').open = true;
+  el('materials').scrollIntoView();
+};
+el('copy').onclick = () => copyLessonChatText(el('request').value);
+el('example').onclick = () => {
+  el('sample-output').hidden = false;
+  if (state.step < 3) return;
+  el('prototype').hidden = false;
+  document.querySelector('#prototype iframe').srcdoc = makeCard();
+  el('export').textContent = '保存'+(state.step === 3 ? '第一' : '第二')+'版示例 HTML';
+};
+el('export').onclick = () => download(lesson.id+'-v'+(state.step-2)+'.html', makeCard(), 'text/html');
+el('speak').onclick = () => {
+  if (!window.speechSynthesis) { el('status').textContent = '此浏览器无法朗读，请阅读上方引导。'; return; }
+  speechSynthesis.cancel();
+  const speech = new SpeechSynthesisUtterance(el('lead').textContent);
+  speech.lang = 'zh-CN';
+  speechSynthesis.speak(speech);
+};
+el('next').onclick = () => {
+  if (state.step < 4) return showStep(state.step+1,true);
+  const record = lesson.steps.map((row,i)=>row[6]+'：'+(state.notes[i]?.trim() || '未记录')).join('\n');
+  download(lesson.id+'-制作记录.txt', [lesson.artifact, '选择：'+state.plan, record].join('\n'), 'text/plain;charset=utf-8');
+};
+showStep(state.step);
+
+})();
+(() => {const lesson={"artifact":"给接班评测员的证据翻转账本","reader":"明天接手问答台、需要复核评分的评测员","brief":"接在问答体检样课后做一份可交接的账本。让接班同学先盲判四张答复，再撤一条证据，复核四个计数究竟有没有反映变化。","materials":["[E1] 周六举办纸偶演出。[E2] 场地在大礼堂。练习公告没有票价。","固定问答 A：演出在哪？答“大礼堂”。B：换个说法，场馆在哪？答“资料未说明”。","固定问答 C：票价多少？答“资料未说明”。D：要几元门票？答“十元”。","每条用一种标签：有据答对、合理拒答、无据幻觉、有据漏答。撤证时保留四句答复。","交接单只撤 E2，保留 E1。统计时同时展示答复编号与每类计数。"],"choices":["把四条答复做成可翻面的评审卡，背面写依据和标签","做前后对照账本，撤证前后每条答复占一行并标出改变原因"],"teacher":["投屏 A–D，遮住预设标签，问“同一句资料未说明能不能拿同一类分？”全班先分别看 B、C。","投屏矩阵的两轴，问“先看公告有没有答案，还是先看回复多长？”全班决定核对依据的顺序。","投屏 E1、E2，问“哪句话是判 A 和 B 的共同支点？”全班把对应编号贴到账本。","投屏首版，请一位新评测员盲判 A–D，问“每类一张能否说明每题都对？”全班逐行核对。","投屏撤 E2 后的空计数栏，问“哪两张卡必须换格？”先全班预测，再填总数。"],"student":["先问 AI 为什么 B 和 C 都说“未说明”却要区别评价，请它给你一个反问。","选翻面卡或对照账本，约定先判再揭晓，成品既能看计数也能追到单题。","抄下 E1、E2 及 A–D 原话。把编号放在题旁，用文字排版以便复核。","做首版 HTML，打开页面，请不同桌的人盲判并说出两张拒答卡的区别。","仅关闭 E2，复判四句并保存第二版记录；再恢复 E2，验证标签可还原。"],"prompts":["给我两个追问，帮我区分“知识库没有”和“助手没有找出”。问题只用 E1、E2 和 A–D。","请按我选的形式列方案，包含答复编号、依据存在性、选择标签和班级计数，等待确认。","帮我排证据卡和四条固定答复，保持答复原字不动，给 E2 单独的可撤回位置。","生成可独立打开的 HTML 盲评账本：先选标签再看依据，四条完成后给各类计数和逐项结果。","另存第二版，加入 E2 撤回与恢复；冻结答复内容，每次切换都要求重新判题。显示两轮逐条变化。"],"cases":[{"question":"首轮哪一对同样回答“资料未说明”却须给不同标签？","options":["A 和 D","B 和 C","C 和 D"],"answer":1,"reason":"B 的场地在 E2 有据，属于漏答；C 没有票价依据，属于合理拒答。"},{"question":"只撤 E2 后，按“有据答对、合理拒答、无据幻觉、有据漏答”计数是多少？","options":["1、1、1、1","0、1、2、1","0、2、2、0"],"answer":2,"reason":"A、D 均为无据作答，B、C 均为合理拒答，当前四个问题都没有答案依据。"},{"question":"另一位评测员针对首版交来同样的四类计数，但把 B 与 C 的标签互换。应如何验收？","options":["退回对应两行，让他分别引用 E2 和缺少票价证据","总数一致就签字","把两题都改为合理拒答"],"answer":0,"reason":"互换标签仍可保持每类一条，B 与 C 的证据状态不同，需要逐条复查。"}],"revision":"让接班者先看首版计数，再交给他故意对调 B、C 的账本。看他能否用证据指出错误。撤 E2 后重测原四句，核对变化的两条与稳定的两条。","boundary":"固定答复是评测样本；“无据”描述公告支持程度，真实票价必须由活动方确认。"}, steps=["先问 AI 为什么 B 和 C 都说“未说明”却要区别评价，请它给你一个反问。","选翻面卡或对照账本，约定先判再揭晓，成品既能看计数也能追到单题。","抄下 E1、E2 及 A–D 原话。把编号放在题旁，用文字排版以便复核。","做首版 HTML，打开页面，请不同桌的人盲判并说出两张拒答卡的区别。","仅关闭 E2，复判四句并保存第二版记录；再恢复 E2，验证标签可还原。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+// Included in the standalone lesson with its own content and role.
+const root = document.querySelector('.studio[data-lesson]');
+const get = selector => root.querySelector(selector);
+const all = selector => [...root.querySelectorAll(selector)];
+const storageKey = 'director-studio-v1/' + root.dataset.lesson + '/' + root.dataset.role;
+let draft = {};
+try { draft = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch {}
+const state = Object.assign({ownTask:'', ownResult:'', phase:0, choice:0, votes:[0,0], prompts:{}, notes:{}, answers:{}, hint:'', versions:{}}, draft);
+const status = message => { get('[data-status]').textContent = message; };
+function persist() {
+    try { localStorage.setItem(storageKey, JSON.stringify(state)); }
+    catch { status('此窗口无法保存草稿。离开前请导出制作记录。'); }
+}
+if (window !== parent) get('[data-studio-chat]').hidden = true;
+for (const [selector, field] of [['[data-own-task]','ownTask'],['[data-own-result]','ownResult']]) {
+    const input = get(selector);
+    input.value = state[field];
+    input.oninput = () => { state[field] = input.value; persist(); };
+}
+const noteLabels = ['我问了什么？看完回答后还想追问什么？','我选了哪个方案？为什么？','我实际使用的材料、来源和取舍','第一版的位置与实际试玩结果','同伴的原话、改动和同一条件下的重测结果'];
+function prompt() {
+    const material = lesson.revealAt != null ? lesson.materials.filter((_,i) => !lesson.sealedMaterials.includes(i)) : lesson.materials;
+    const prefix = [lesson.brief, '我选的方案：' + lesson.choices[state.choice], ...material];
+    if (state.phase && state.notes[state.phase-1]) prefix.push('上一步记录：' + state.notes[state.phase-1]);
+    return [...prefix,lesson.prompts[state.phase]].join('\n');
+}
+window.directorStudioContext = () => {
+    if (root.closest('details:not([open])')) return '';
+    return ['当前作品：'+lesson.artifact, '当前步骤：'+phases[state.phase], '我的方案：'+lesson.choices[state.choice],
+        ...phases.map((name,i)=>[name,steps[i],state.prompts[i+'/'+state.choice] ?? lesson.prompts[i],state.notes[i]].filter(Boolean).join('｜'))].join('\n');
+};
+const followup = get('[data-followup]');
+if (followup) {
+    followup.value=state.followup || '';
+    followup.oninput=()=>{state.followup=followup.value;persist();};
+    get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
+    all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const tools=get('.studio-returns') || get('.studio-kit');
+        tools.open=true;tools.scrollIntoView({block:'start'});
+    });
+}
+function render() {
+    all('[data-at]').forEach(el=>el.hidden=Number(el.dataset.at)!==state.phase);
+    all('[data-phase]').forEach((b,i) => b.setAttribute('aria-current', i === state.phase ? 'step' : 'false'));
+    get('[data-choice]').value = state.choice;
+    get('[data-phase-title]').textContent = (state.phase+1) + '/5　' + phases[state.phase] + (root.dataset.role === 'teacher' ? ' · ' + minutes[state.phase] + ' 分钟' : '');
+    get('[data-lead]').textContent = steps[state.phase];
+    get('[data-prompt]').value = state.prompts[state.phase + '/' + state.choice] ?? prompt();
+    get('[data-note-label]').textContent = noteLabels[state.phase];
+    get('[data-note]').value = state.notes[state.phase] || '';
+    get('[data-next]').textContent = state.phase === 4 ? '到同伴试玩区' : '下一步';
+    get('[data-example-output]').hidden = true;
+    if (get('[data-tally]')) get('[data-tally]').textContent = state.votes.map((v,i) => lesson.choices[i] + ' ' + v + '票').join(' / ');
+}
+function choosePhase(i) {
+    if (lesson.revealAt != null && i >= lesson.revealAt && !state.sealedRule) {
+        get('[data-seal-status]').textContent = '请先记录并锁定首版规则，才打开测试夹。';
+        get('[data-rule]').focus(); return;
+    }
+    state.phase = i; persist(); render(); }
+all('[data-phase]').forEach((b,i) => b.onclick = () => choosePhase(i));
+get('[data-next]').onclick = () => state.phase < 4 ? choosePhase(state.phase+1) : get('[data-hint]').focus();
+get('[data-materials]').onclick = e => {
+    const button = e.target.closest('[data-cite]');
+    if (!button) return;
+    const note = get('[data-note]');
+    note.value = [note.value, '依据：'+lesson.materials[Number(button.dataset.cite)]].filter(Boolean).join('\n');
+    state.notes[state.phase] = note.value; persist(); note.focus();
+};
+get('[data-note]').oninput = e => { state.notes[state.phase] = e.target.value; persist(); };
+get('[data-choice]').onchange = e => { state.choice = Number(e.target.value); persist(); render(); };
+get('[data-prompt]').oninput = e => { state.prompts[state.phase + '/' + state.choice] = e.target.value; persist(); };
+get('[data-copy-prompt]').onclick = () => copyLessonChatText(get('[data-prompt]').value);
+if (get('[data-studio-scene]')) get('[data-studio-scene]').onclick = () => copyLessonChatText('请在我确认的空白世界中搭建《' + lesson.artifact + '》配套复核站，先读世界状态和创建能力，按实际客户端、世界和会话身份填写调用模板，生成本次请求编号。运行后检查任务结果，告诉我如何开拉杆试玩。\n' + get('#studio-code-2').textContent);
+get('[data-read]').onclick = () => {
+    if (!window.speechSynthesis) { status('设备未提供朗读，请读当前步骤的文字。'); return; }
+    speechSynthesis.cancel();
+    const voice = new SpeechSynthesisUtterance(steps[state.phase]);
+    voice.lang = 'zh-CN'; speechSynthesis.speak(voice);
+};
+if (get('[data-vote]')) get('[data-vote]').onclick = () => { state.votes[state.choice]++; persist(); render(); };
+get('[data-example]').onclick = () => {
+    if (get('[data-sealed]')) {
+        const output = get('[data-example-output]'); output.hidden = false;
+        output.textContent = '课内示例 · ' + lesson.materials.find((_,i) => !lesson.sealedMaterials.includes(i)); return;
+    }
+    const examples = [lesson.cases[0].question, '可先试「'+lesson.choices[state.choice]+'」。验收时这样做：'+lesson.revision,
+        lesson.materials.join('\n'), lesson.cases[0].reason, lesson.cases[1].reason];
+    const output = get('[data-example-output]');
+    output.textContent = '课内示例 · ' + examples[state.phase]; output.hidden = false;
+};
+function answer(box, index) {
+    const c = lesson.cases[Number(box.dataset.case)];
+    box.querySelectorAll('button').forEach((button,j) => button.setAttribute('aria-pressed',String(j === index)));
+    box.querySelector('p').textContent = (index === c.answer ? '判断成立。' : '再核对一次。') + c.reason;
+}
+function bindCases() { all('[data-case]').forEach((box,i) => {
+    if (Number.isInteger(state.answers[i])) answer(box,state.answers[i]);
+    box.querySelectorAll('button').forEach((b,j) => b.onclick = () => { state.answers[i] = j; answer(box,j); persist(); });
+});
+}
+function revealCases() {
+    const sealed = get('[data-sealed]');
+    if (sealed) sealed.replaceWith(sealed.content);
+}
+function unseal() {
+    const sealed = get('[data-sealed]');
+    if (!sealed) return;
+    const twoLocks = root.dataset.lesson === 'g7-05';
+    if (!twoLocks || state.predictions) revealCases();
+    for (const text of lesson.materials.filter((_,i) => lesson.sealedMaterials.includes(i))) {
+        if (twoLocks && text.startsWith('封签答案') && !state.predictions) {
+            const panel = document.createElement('div'); panel.dataset.examPrivate='';
+            const fields = ['09','10','11','12'].map(number => {
+                const label = document.createElement('label'); label.textContent=number+' 号预测';
+                const input = document.createElement('select');
+                for (const value of ['请选择','报修','预约']) input.add(new Option(value,value));
+                label.append(input); panel.append(label); return input;
+            });
+            const lock = document.createElement('button'); lock.textContent='锁定四个预测，揭晓真值';
+            panel.append(lock); get('[data-seal-status]').after(panel);
+            lock.onclick = () => {
+                if (fields.some(f=>f.selectedIndex===0)) {get('[data-seal-status]').textContent='请先预测四题。';return;}
+                state.predictions=fields.map(f=>f.value);persist();panel.remove();revealCases();bindCases();
+                const answer=document.createElement('li');answer.dataset.examPrivate='';answer.textContent=text;get('[data-materials]').append(answer);
+                get('[data-seal-status]').textContent='已锁定四次预测：'+state.predictions.join(' / ');
+            };
+            continue;
+        }
+        const li = document.createElement('li'); li.dataset.examPrivate = ''; li.textContent = text+' ';
+        const cite = document.createElement('button'); cite.dataset.cite=lesson.materials.indexOf(text); cite.textContent='引用到本步记录';
+        li.append(cite); get('[data-materials]').append(li);
+    }
+    get('[data-rule]').readOnly = true;
+    get('[data-rule]').value = state.sealedRule;
+    get('[data-reveal]').disabled = true;
+    get('[data-seal-status]').textContent = state.predictions ? '已锁定四次预测：'+state.predictions.join(' / ') : '首版规则已锁定，保留这次结果供重测对照。';
+}
+if (get('[data-reveal]')) {
+    if (state.sealedRule) unseal();
+    else {
+        get('[data-rule]').value = state.ruleDraft || '';
+        get('[data-rule]').oninput = e => { state.ruleDraft = e.target.value; persist(); };
+        get('[data-reveal]').onclick = () => {
+            const rule = get('[data-rule]').value.trim();
+            if (!rule) { get('[data-seal-status]').textContent = '先写下首版规则。'; return; }
+            state.sealedRule = rule; unseal(); bindCases(); choosePhase(lesson.revealAt);
+        };
+    }
+}
+bindCases();
+const returned = new Map();
+all('[data-return]').forEach(input => {
+    input.onchange = async () => {
+        const file = input.files[0];
+        const version = input.dataset.return;
+        returned.delete(version);
+        if (!file) return;
+        const notice = get('[data-preview-status]');
+        if (file.size > 5 * 1024 * 1024) { notice.textContent = '请选择 5 MB 以内的单文件网页。'; return; }
+        try {
+            const source = await file.text();
+            if (input.files[0] !== file) return;
+            returned.set(version,source);
+            notice.textContent = '第 '+version+' 版已就绪，点击试玩。离开时请保留原文件。';
+        } catch { notice.textContent = '读取失败，请重新选取文件。'; }
+    };
+});
+all('[data-preview]').forEach(button => {
+    button.onclick = () => {
+        const version = button.dataset.preview;
+        const source = returned.get(version);
+        const notice = get('[data-preview-status]');
+        if (!source) { notice.textContent = '请先选择第 '+version+' 版网页。'; return; }
+        const frame = document.createElement('iframe');
+        frame.title = '我的第 '+version+' 版作品';
+        frame.setAttribute('sandbox','allow-scripts');
+        frame.referrerPolicy = 'no-referrer';
+        frame.srcdoc = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">` + source;
+        get('[data-player]').replaceChildren(frame);
+        notice.textContent = '正在试玩第 '+version+' 版。';
+    };
+});
+const peerNotes = state.peerNotes || (state.peerNotes = {});
+all('[data-peer]').forEach(field=>{
+    const key=field.dataset.peer;
+    field.value=peerNotes[key] || '';
+    field.oninput=()=>{peerNotes[key]=field.value;persist();};
+});
+const hint = get('[data-hint]');
+hint.value = state.hint;
+hint.oninput = () => { state.hint = hint.value; persist(); };
+function download(name, content, mime) {
+    const url = URL.createObjectURL(new Blob([content], {type:mime}));
+    const a = document.createElement('a'); a.href = url; a.download = root.dataset.lesson + '-' + name;
+    document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url),30000);
+}
+const escape = v => String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+function makeCard(version) {
+    const snapshot = state.versions[version];
+    const title = lesson.artifact + ' · 同伴验收卡 V' + version;
+    const personal = snapshot.task ? '<h2>作者出的试玩任务</h2><p>'+escape(snapshot.task)+'</p><details><summary>试过后核对预期</summary>'+escape(snapshot.result)+'</details>' : '';
+    const questions = lesson.cases.map(c => '<fieldset><legend>'+escape(c.question)+'</legend>'+c.options.map((o,i) =>
+        '<button data-answer="'+String(i === c.answer)+'">'+escape(o)+'</button>').join('')+'<output data-reason="'+escape(c.reason)+'"></output></fieldset>').join('');
+    const script = "document.addEventListener('click',e=>{const b=e.target.closest('[data-answer]');if(!b)return;const o=b.parentNode.querySelector('output');o.textContent=(b.dataset.answer==='true'?'判断成立。':'再试一次。')+o.dataset.reason})";
+    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+'</title><style>body{margin:2rem auto;padding:0 1rem;max-width:48rem;font:18px/1.7 system-ui;color:#163e3c}fieldset{margin:1rem 0}button{font:inherit;margin:.3rem;padding:.4rem}output{display:block}</style><h1>'+escape(title)+'</h1><p>'+escape(lesson.brief)+'</p><p>'+escape(snapshot.choice)+'</p><p>'+escape(snapshot.hint)+'</p><ul>'+lesson.materials.map(m=>'<li>'+escape(m)+'</li>').join('')+'</ul>'+personal+questions+'<script>'+script+'<'+ '/script></html>';
+}
+all('[data-card]').forEach(b => b.onclick = () => {
+    const version = Number(b.dataset.card);
+    if (get('[data-sealed]')) { status('请先完成封存测试再保存验收卡。'); return; }
+    if (version === 2 || !state.versions[version]) {
+        if (!state.hint.trim()) { status('先写下给试玩者的指引。'); hint.focus(); return; }
+        if (version === 2 && !state.versions[1]) { status('先保存第一版，再修改指引并重测。'); return; }
+        if (Boolean(state.ownTask.trim()) !== Boolean(state.ownResult.trim())) { status('自编任务请同时写操作和预期结果。'); return; }
+        if (version === 2 && state.versions[1].hint === state.hint.trim() && state.versions[1].task === state.ownTask.trim() && state.versions[1].result === state.ownResult.trim()) { status('请根据同伴的反馈修改指引或试玩任务，再保存第二版。'); return; }
+        state.versions[version] = {hint:state.hint.trim(),task:state.ownTask.trim(),result:state.ownResult.trim(),choice:lesson.choices[state.choice]}; persist();
+    }
+    download('同伴验收卡-V'+version+'.html',makeCard(version),'text/html;charset=utf-8');
+    status('已导出第'+version+'版验收卡。请单独打开文件，交给同伴试玩。');
+});
+get('[data-studio-record]').onclick = () => {
+    const lines = [lesson.artifact,lesson.brief,...(state.followup ? ['我的追问：'+state.followup] : []),'我选的方案：'+lesson.choices[state.choice],...(state.sealedRule ? ['冻结的首版规则：'+state.sealedRule] : []),...(state.predictions ? ['首次预测：'+state.predictions.join(' / ')] : []),...phases.map((p,i)=>p+'：'+(state.notes[i] || '尚未记录')),
+        ...(get('[data-sealed]') ? [] : lesson.cases).map((c,i)=>c.question+'　我的选择：'+(c.options[state.answers[i]] ?? '尚未作答')),
+        ...Object.entries({trial:'首版试玩',change:'单项修改',retest:'同条件重测'}).filter(([k])=>peerNotes[k]).map(([k,title])=>title+'：'+peerNotes[k]),
+        ...Object.entries(state.versions).map(([v,s])=>'V'+v+' 验收卡指引：'+s.hint+(s.task?'　自编任务：'+s.task+'　预期：'+s.result:'')),'使用约定：'+lesson.boundary];
+    download('制作记录.txt',lines.join('\n\n'),'text/plain;charset=utf-8'); status('已导出当前制作记录。');
+};
+render();
+
+
+})();
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
-    const update = () => {
-        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
-        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
-    };
-    button.onclick = async () => {
-        try {
-            if (document.fullscreenElement) await document.exitFullscreen();
-            else await document.documentElement.requestFullscreen();
-        } catch { button.textContent = '当前浏览器不支持全屏'; }
-    };
-    document.addEventListener('fullscreenchange', update);
+    let presenting = false;
+    function showPresentation(active) {
+        presenting = active;
+        button.textContent = active ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(active));
+    }
     if (parent === window) return;
     document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
     document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
-        el.textContent = '复制提示词到主对话使用';
+        el.remove();
     });
     // Include folded materials and live worksheet values without reading markup,
     // image data, file names or the contents of embedded student projects.
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -1142,11 +1665,22 @@ if (theme === 'stage') {
     }
     const channel = 'aichat.external-tool.v1';
     let pinned = false, wrapperOrigin;
+    button.onclick = () => {
+        if (button.hidden || !wrapperOrigin) return;
+        showPresentation(!presenting);
+        parent.postMessage({channel, type:'tool:presentation', active:presenting}, wrapperOrigin);
+    };
     window.addEventListener('message', ({source, origin, data}) => {
         if (source !== parent || data?.channel !== channel ||
             !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
         const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
-        if (data.type === 'host:always-on-top-support') {
+        if (data.type === 'host:presentation-support') {
+            wrapperOrigin = origin;
+            button.hidden = data.supported !== true;
+            if (button.hidden) showPresentation(false);
+        } else if (data.type === 'host:presentation-ended') {
+            showPresentation(false);
+        } else if (data.type === 'host:always-on-top-support') {
             wrapperOrigin = origin;
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
@@ -1154,13 +1688,25 @@ if (theme === 'stage') {
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
-                window.weatherLessonContext?.(), lesson
+                window.weatherLessonContext?.(), window.directorTeachingContext?.(), window.directorStudioContext?.(), lesson
             ].filter(Boolean).join('\n')});
         }
     });
     parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
     window.addEventListener('pagehide', () => {
+        if (presenting) parent.postMessage({channel, type:'tool:presentation', active:false}, wrapperOrigin);
         if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
     });
 })();
-</script></html>
+
+(() => {
+    if (parent === window) return;
+    function reportPage() {
+      const grade = /^#g[3-9]$/.test(location.hash) ? location.hash : '';
+      const page = "g8-05-student/index.html" + '';
+      parent.postMessage({channel:'aichat.external-tool.v1', type:'tool:director-page', page}, '*');
+    }
+    addEventListener('pageshow', reportPage);
+    addEventListener('hashchange', reportPage);
+    reportPage();
+  })();</script></html>

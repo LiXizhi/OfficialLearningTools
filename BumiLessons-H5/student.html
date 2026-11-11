@@ -505,5 +505,18 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
 </script>
 <script src="world-launcher.js"></script>
 <script src="embedded-preview.js"></script>
+<script>
+if (window === window.top && new URLSearchParams(location.search).get('print') === '1') {
+  const lesson = document.querySelector('.view.lesson.on');
+  if (lesson) window.addEventListener('load', async () => {
+    await Promise.allSettled(Array.from(lesson.querySelectorAll('img'), img => {
+      img.loading = 'eager';
+      return img.decode();
+    }));
+    await document.fonts.ready;
+    if (lesson.classList.contains('on')) lesson.querySelector('[data-act="print"]').click();
+  }, {once:true});
+}
+</script>
 </body>
 </html>

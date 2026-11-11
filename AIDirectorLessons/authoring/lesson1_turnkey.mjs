@@ -197,7 +197,7 @@ export function renderLesson1Student(sample, labHtml, quizHtml) {
   <div class="stage-header">
     <span class="stage-badge">第 2 关 · 8 分钟 AI 工作台开箱即用</span>
     <h2>💬 超级个体第 1 招：说出你的意图，一键呼叫 AI 工作台设计具身机器人</h2>
-    <button type="button" class="tts-mini" data-tts="第二关：超级个体第一招！你不用自己辛苦打字。先点选下面的三个彩色积木，组合出你的机器人设计要求，然后点击一键复制提示词，或者点击一键打开AI工作台，也可以直接点击本页立即体验AI回复！">🔊 听本关说明</button>
+    <button type="button" class="tts-mini" data-tts="第二关：超级个体第一招！你不用自己辛苦打字。先点选下面的三个彩色积木，组合出你的机器人设计要求，然后点击带对话气泡的“和 AI 聊”，到聊天框粘贴，也可以直接点击本页立即体验AI回复！">🔊 听本关说明</button>
   </div>
   <p class="stage-lead"><strong>🌟 为什么要这样做？</strong> 超级个体不是帮机器打工打字的人，而是<strong>清楚说出目标、条件和安全边界的“小导演”</strong>。点选下方积木，立即生成你的专属 AI 工作台指令：</p>
 
@@ -231,7 +231,7 @@ export function renderLesson1Student(sample, labHtml, quizHtml) {
     <label for="student-ai-prompt"><strong>📝 已为你自动拼好的 AI 工作台输入文字（可直接修改，或直接点下方按钮）：</strong></label>
     <textarea id="student-ai-prompt" rows="4" class="turnkey-textarea"></textarea>
     <div class="turnkey-actions">
-      <button type="button" class="action-btn primary" id="btn-copy-ai-prompt">📋 一键复制 AI 工作台文字</button>
+      <button type="button" class="action-btn primary" id="btn-copy-ai-prompt" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
       <button type="button" class="action-btn accent" id="btn-open-aichat-prompt">🚀 一键打开 AI 工作台（自动复制文字）</button>
       <button type="button" class="action-btn secondary" id="btn-simulate-ai-reply">⚡ 不切窗口：在本页直接体验 AI 工作台回复</button>
     </div>
@@ -250,7 +250,7 @@ export function renderLesson1Student(sample, labHtml, quizHtml) {
 
   <div class="turnkey-actions">
     <button type="button" class="action-btn accent" id="btn-open-paracraft">🎮 一键打开 Paracraft 3D 世界</button>
-    <button type="button" class="action-btn primary" id="btn-copy-autobuild-prompt" data-copy="${html(LESSON1_AI_AUTOBUILD_PROMPT)}">🤖 一键复制“让 AI 自动帮我建好 3D 校门机器人”指令</button>
+    <button type="button" class="action-btn primary" id="btn-copy-autobuild-prompt" data-copy="${html(LESSON1_AI_AUTOBUILD_PROMPT)}" data-chat-copy title="复制自动建景委托到聊天框">和 AI 聊 · 搭建校门机器人</button>
     <button type="button" class="action-btn secondary" id="btn-mark-stage3-done">✅ 我已完成 Paracraft 体验（点亮第 3 关）</button>
   </div>
 
@@ -442,7 +442,7 @@ export function renderLesson1Teacher(sample, labHtml, quizHtml) {
       <h3>📌 课堂演示 1：让 AI 扮演“校门虚拟具身迎宾机器人”自我介绍</h3>
       <pre class="prompt-pre" id="t-prompt-1">${html(teacherPrompt1)}</pre>
       <div class="turnkey-actions">
-        <button type="button" class="action-btn primary copy-code-btn" data-copy-target="t-prompt-1">📋 一键复制文字</button>
+        <button type="button" class="action-btn primary copy-code-btn" data-copy-target="t-prompt-1" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
         <button type="button" class="action-btn accent open-ai-with-target" data-copy-target="t-prompt-1">🚀 一键在 AI 工作台打开</button>
         <button type="button" class="action-btn secondary t-sim-btn" data-sim="1">⚡ 大屏直接展示 AI 回复</button>
       </div>
@@ -453,7 +453,7 @@ export function renderLesson1Teacher(sample, labHtml, quizHtml) {
       <h3>📌 课堂演示 2：控制变量提问——为什么遮挡与嘈杂时必须“人工复核”？</h3>
       <pre class="prompt-pre" id="t-prompt-2">${html(teacherPrompt2)}</pre>
       <div class="turnkey-actions">
-        <button type="button" class="action-btn primary copy-code-btn" data-copy-target="t-prompt-2">📋 一键复制文字</button>
+        <button type="button" class="action-btn primary copy-code-btn" data-copy-target="t-prompt-2" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
         <button type="button" class="action-btn accent open-ai-with-target" data-copy-target="t-prompt-2">🚀 一键在 AI 工作台打开</button>
         <button type="button" class="action-btn secondary t-sim-btn" data-sim="2">⚡ 大屏直接展示 AI 回复</button>
       </div>
@@ -469,7 +469,7 @@ export function renderLesson1Teacher(sample, labHtml, quizHtml) {
   </div>
   <div class="turnkey-actions">
     <button type="button" class="action-btn accent" id="btn-t-open-paracraft">🎮 一键打开 Paracraft 3D 世界</button>
-    <button type="button" class="action-btn primary" data-copy="${html(LESSON1_AI_AUTOBUILD_PROMPT)}">🤖 一键复制“让 AI 自动搭建校门具身机器人场景”提示词</button>
+    <button type="button" class="action-btn primary" data-copy="${html(LESSON1_AI_AUTOBUILD_PROMPT)}" data-chat-copy title="复制自动建景委托到聊天框">和 AI 聊 · 搭建校门机器人</button>
     <button type="button" class="copy-chip" data-copy="/worldenv -weather=sun">📋 复制晴天命令 <code>/worldenv -weather=sun</code></button>
     <button type="button" class="copy-chip" data-copy="/snow 8">📋 复制风雪干扰命令 <code>/snow 8</code></button>
   </div>
@@ -550,7 +550,7 @@ end)</code></pre>
   <label for="std-ai-prompt-${g}-${n}"><strong>💬 本课 AI 工作台可直接输入的文字（可按需修改后一键复制）：</strong></label>
   <textarea id="std-ai-prompt-${g}-${n}" rows="5" class="turnkey-textarea">${html(aiPrompt)}</textarea>
   <div class="turnkey-actions">
-    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-${g}-${n}">📋 一键复制 AI 工作台文字</button>
+    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-${g}-${n}" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
     <button type="button" class="action-btn accent open-ai-textarea-btn" data-target="std-ai-prompt-${g}-${n}">🚀 一键打开 AI 工作台（自动复制文字）</button>
     ${p === 'P' ? '<button type="button" class="action-btn secondary btn-open-paracraft-std">🎮 一键打开 Paracraft 3D 世界</button>' : ''}
   </div>
@@ -613,15 +613,15 @@ export const TURNKEY_RUNTIME_JS = `
   }
 
   async function openAIWorkbenchWithPrompt(promptText) {
-    await copyText(promptText, 'AI 工作台提示词');
+    if (!await copyLessonChatText(promptText)) return false;
     if (window.parent !== window) {
-      showToast('请在底部主对话粘贴提示词并发送。');
-      return;
+      return true;
     }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
     showToast('🚀 已自动复制提示词并打开 AI 工作台！在输入框粘贴 (Ctrl+V) 即可发送。');
+    return true;
   }
 
   function openParacraftWorld() {
@@ -700,7 +700,7 @@ export const TURNKEY_RUNTIME_JS = `
   const btnCopyAiPrompt = document.getElementById('btn-copy-ai-prompt');
   if (btnCopyAiPrompt && studentPromptEl) {
     btnCopyAiPrompt.addEventListener('click', async () => {
-      await copyText(studentPromptEl.value, 'AI 工作台提示词');
+      if (!await copyLessonChatText(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！已复制你定制的 AI 工作台提示词');
     });
   }
@@ -708,7 +708,7 @@ export const TURNKEY_RUNTIME_JS = `
   const btnOpenAiPrompt = document.getElementById('btn-open-aichat-prompt');
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
-      await openAIWorkbenchWithPrompt(studentPromptEl.value);
+      if (!await openAIWorkbenchWithPrompt(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
@@ -787,7 +787,9 @@ export const TURNKEY_RUNTIME_JS = `
   document.addEventListener('click', async e => {
     const copyDirect = e.target.closest('[data-copy]');
     if (copyDirect) {
-      await copyText(copyDirect.dataset.copy, '命令/指令');
+      if (copyDirect.hasAttribute('data-chat-copy')) {
+        if (!await copyLessonChatText(copyDirect.dataset.copy)) return;
+      } else await copyText(copyDirect.dataset.copy, '命令/指令');
       if (copyDirect.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 命令');
       return;
     }
@@ -795,7 +797,8 @@ export const TURNKEY_RUNTIME_JS = `
     if (copyCodeBtn) {
       const target = document.getElementById(copyCodeBtn.dataset.copyTarget);
       if (target) {
-        await copyText(target.textContent, '代码/文字');
+        if (copyCodeBtn.hasAttribute('data-chat-copy')) await copyLessonChatText(target.textContent);
+        else await copyText(target.textContent, '代码/文字');
         if (copyCodeBtn.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 代码');
       }
       return;
@@ -803,7 +806,7 @@ export const TURNKEY_RUNTIME_JS = `
     const copyTaBtn = e.target.closest('.copy-textarea-btn');
     if (copyTaBtn) {
       const ta = document.getElementById(copyTaBtn.dataset.target);
-      if (ta) await copyText(ta.value, 'AI 工作台提示词');
+      if (ta) await copyLessonChatText(ta.value);
       return;
     }
     const openAiTarget = e.target.closest('.open-ai-with-target');

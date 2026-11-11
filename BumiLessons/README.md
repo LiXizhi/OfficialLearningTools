@@ -21,3 +21,5 @@ py -X utf8 authoring/render.py <bumi-robot-assets>/bumi-edu-docs-v2
 逐幕编排在 authoring/lesson_film.py，镜头与解说在 figure_shots.js，播放控制在 lesson_film.js。逐课实验任务在 missions.js，课堂活动在 classroom.js，展题制作与离线交付在 workshop.js，样式在 course.css。教学图以 WebP 交付。39 张原 SVG 图使用对应课次的 AI 情境插画重新排版，数据图的几何关系与文字取自上游源图。当前 CDN 图片版为 e5770abee64a32，单张上限 200,000 字节。在源码目录直接打开课件会使用本地图片；从 HTTP 进入时优先加载 CDN 图片，加载失败回退本地。
 
 需要从上游重新制图时，运行 `node authoring/render_images.mjs <bumi-robot-assets>/bumi-edu-docs-v2/assets`，使用现有浏览器测试环境的 Playwright 与 Edge。更新后的 WebP 应先按新目录上传并核对，再更新 render.py 中的 IMAGE_CDN 并生成课件。
+
+每课的「打印学生卡」会打开同课 H5 学习单并调用浏览器打印。教师大屏另有「下载教案（PDF）」，打开同课 H5 教师页并下载 A4 教案。两个课程目录应保持相邻。H5 教案更新后，用 `node authoring/render_teacher_plans.mjs` 重新生成 16 份 PDF。

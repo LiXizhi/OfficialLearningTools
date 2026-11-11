@@ -22,7 +22,6 @@ main:has(.fieldbook){padding:0 4vw 36px;max-width:1320px;margin:auto}
 .fieldbook .strip{display:flex;justify-content:stretch;align-items:stretch;gap:0;flex-wrap:nowrap;border-block:1px solid var(--ink)}
 .strip button{flex:1;text-align:left;border:0;border-radius:0;background:none;padding:12px 10px}.strip button+button{border-left:1px solid var(--rule)}
 .strip button[aria-current=step]{background:#f6d36c;color:#23352a;box-shadow:inset 0 -3px #253f32}
-.strip button small{display:block;font:600 .72em/1.6 Consolas,monospace;letter-spacing:.04em}
 #desk{scroll-margin-top:8px;outline:none}.workhead{margin-top:26px}.workhead button{white-space:nowrap}
 .fieldbook #lead{margin:7px 0 15px}.fieldbook .panels{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px}
 .sheet{padding:clamp(16px,2.4vw,30px);background:var(--paper);border:1px solid var(--rule);border-radius:9px;min-width:0}
@@ -37,9 +36,8 @@ main:has(.fieldbook){padding:0 4vw 36px;max-width:1320px;margin:auto}
 .fieldbook .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(100%)}
 .fieldbook .practice{border:1px solid var(--rule);border-radius:6px;background:white;padding:12px}.practice img{width:100%;height:82px;object-fit:cover}.practice svg{width:100%;height:125px;display:block}
 .fieldbook .compact{font-size:.88em;color:#40584b}.fieldbook .kit{display:block;max-width:200px;max-height:100px;object-fit:contain;margin:8px 0}
-.fieldbook .mode-photo img{display:block;max-width:100%;margin:10px auto}
 .fieldbook .prompt details{padding:6px 0;background:transparent;border:0;border-radius:0;margin:6px 0}
 .fieldbook .prompt summary{font-size:.88em}.fieldbook input[type=file]{display:block;width:100%;font:inherit;font-size:.85em}
 .fieldbook .returned{width:100%;height:300px;border:1px solid var(--rule);background:white}
 .fieldbook[data-role=teacher] #lead{font-size:1.12em}
-@media(max-width:730px){main:has(.fieldbook){padding:0 14px 32px}.fieldbook .mast{min-height:50px;gap:5px}.fieldbook .hero{grid-template-columns:1fr;margin:15px 0}.hero-copy{padding:16px 4px}.fieldbook .hero figure{min-height:135px;max-height:160px}.fieldbook .panels{grid-template-columns:1fr}.strip button{font-size:.8rem;padding:9px 3px;text-align:center}.strip button small{font-size:.66rem}.workhead{margin-top:18px}.fieldbook .mast b{font-size:.88rem}}
+@media(max-width:730px){main:has(.fieldbook){padding:0 14px 32px}.fieldbook .mast{min-height:50px;gap:5px}.fieldbook .hero{grid-template-columns:1fr;margin:15px 0}.hero-copy{padding:16px 4px}.fieldbook .hero figure{min-height:135px;max-height:160px}.fieldbook .panels{grid-template-columns:1fr}.strip button{font-size:.8rem;padding:9px 3px;text-align:center}.workhead{margin-top:18px}.fieldbook .mast b{font-size:.88rem}}

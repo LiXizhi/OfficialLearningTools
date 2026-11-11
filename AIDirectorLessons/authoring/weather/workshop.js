@@ -5,7 +5,6 @@
     const $ = id => document.getElementById(id);
     const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[char]);
     const phases = ['提问', '做计划', '生图', '做第一版', '试玩改版'];
-    const modes = ['Ask', 'Plan', 'Image', 'Implement', 'Iterate'];
     const times = ['0–5', '5–10', '10–17', '17–27', '27–40'];
     const titles = ['先问一个会影响作品的问题', '把玩法说清楚，再动手', '给挑战卡画一张封面', '让第一版真的跑起来', '带着一次试玩回来改稿'];
     const sources = ['本周五科学社展出校园气象站记录仪。','展台有三份手绘气温图，参观者可以体验读数。'];
@@ -32,22 +31,28 @@
         catch { message('浏览器限制保存。离开前请复制制作记录。'); }
     }
     const lectureGuide = [
-        '对全班说：“路过展台的三年级同学只有一分钟，他愿意试什么？”请大家举手，记录票数，选择一个方向。再当众改一句委托。',
-        '把 AI 的方案读给大家。问：“今天只做一道题，哪一步可以删掉？”在下方写下全班选定的玩法和一个验收条件。',
-        '投屏念出生图描述，请一位同学决定主角和留白位置。把第一张图放进封面看一眼，再决定采用还是重新描述。',
-        '让大家看清空工作区、选中的封面和生成的文件。点开 index.html，请一位同学站到电脑前，自己完成第一次试玩。',
-        '请试玩者说：“我点了……我看到……我希望……” 带着他的原话回主对话。只改一处，再请他用同一动作试一次。'
+        '“展台前来了一个三年级同学。我们给他出什么题？”投票选题后，在底部聊天框说出想给谁做什么。停在 AI 的回复上，请全班挑一个问题来回答。',
+        '“哪种玩法能让他一分钟内玩完？”在同一个聊天框说：“先帮我们制定计划，给两个玩法，等我们选。”投屏指给大家看 AI 提议玩家先做什么，请同学选一种玩法，说出要留下的动作。',
+        '“这幅图要放在封面上，标题放哪里？”把全班选好的主体和留白位置告诉 AI，请它画一张封面，再打开图片。请学生指出标题的位置，再决定采用还是重画。',
+        '“现在把计划交给 AI 做成能玩的网页。”告诉 AI：“就按刚才选的玩法，做出第一版。”等文件出现，打开 index.html，把鼠标交给一位同学。让他故意选错，再自己试一次，老师先不提示。',
+        '“刚才哪一步需要我开口帮忙？”记下玩家做了什么、屏幕显示了什么。把这个发现带回刚才的对话，让全班选一处修改。打开 index-v2.html，请同一位玩家重复原操作。'
+    ];
+    const responseCues = [
+        '请一位同学读出 AI 刚问的问题。把下面这句改成全班的回答；如果 AI 直接给了方案，指出想保留的部分，再告诉它读者是谁。',
+        '指着回复里选中的玩法，让学生补全“我怎么知道他玩懂了”。如果方案还太大，把第一版缩到一个能当场试的动作。',
+        '让学生指一指图上的主体和标题留白。看清楚再说用哪张；如果只收到画面描述，先请 AI 生成并展示图片。',
+        '先把题图和左边的数据核对，再读出玩家选错后看到的原话。如果回复里只有代码，先请 AI 把它写成工作区里的 index.html，再打开试。',
+        '指着 AI 根据试玩提出的改法选一个。新版出来后，把两版中同一个按钮各点一次。请玩家说说哪条提示帮他找到了线索。'
     ];
     const studentGuide = [
         '先选一个你想给三年级同学做的挑战。读材料，挑一件你还没弄懂的事问 AI。看到回复后，再追问一句。',
         '请 AI 给两个简单玩法。选一个，删去眼下用不到的部分。写下玩家打开后看见什么、点什么、怎样检查。',
-        '挑画风和留白位置，用 Craft 请 AI 生图。看主角够不够醒目、标题会不会挡住它。可以再说一句让 AI 重画。',
+        '挑画风和留白位置，告诉 AI 你想让它画什么。看主角够不够醒目、标题会不会挡住它。可以再说一句让 AI 重画。',
         '把计划、选中的图片和资料交给 AI。打开工作区中的 index.html，从头玩一次，再故意选错一次，看看会发生什么。',
         '记下一个具体发现。先让 AI 给两个改法，选一个，再让它动手。打开新版重复刚才的动作，比较前后变化。'
     ];
-    const notes = ['我还想追问的一句话','我选的玩法和验收条件','我选哪张图，为什么','第一版试玩时，我看到了什么','第二版重测的结果'];
+    const notes = [teacher ? '我怎样回答 AI 的问题' : '我还想追问的一句话','我选的玩法和验收条件','我选哪张图，为什么','第一版试玩时，我看到了什么','第二版重测的结果'];
     const placeholders = ['例如：为什么从 20 开始数？换一张图我还会读吗？','例如：一题三选一；同学不用听我解释就能选答案。','例如：我选主角靠左的图，右边放标题还能看清温度计。','例如：我故意选错，页面只说“再试试”。','例如：这次选错后有读图提示，我能独立再答一次。'];
-    const modeGuides = ['在 Ask 中对话。把不懂的地方换成你自己的话。','在输入框旁选择 Plan，看过方案后自己做决定。','从 Plan 切到 Craft，让 AI 调用生图工具。','使用 Craft 执行计划，确认文件写入本课工作空间。','在同一个主对话追问，再用 Craft 修改。'];
     function basePrompt(step = state.step) {
         const p = project(), t = track();
         const goal = '我想为第一次来校园气象站的三年级同学做《' + title() + '》，主题是' + t.name + '。';
@@ -55,18 +60,28 @@
         const own = p.notes;
         return [
             goal + (teacher ? '我还没想清玩法，请先问我两个会影响设计的问题，等我回答。全班可用的材料是：' : '我想先弄懂：'+(state.track==='graph'?'折线最高的一天，一定也是升温最快的一天吗？':'读温度计时，我应该从哪个刻度开始数？')+'请用一个小例子解释，然后出一道题让我试，等我回答再揭晓。材料是：') + facts,
-            goal + '先做 Plan。' + (own[0] ? '我追问的是：“' + own[0] + '”。' : '') + '请给我两个简单玩法，每个只写玩家看什么、点哪里、怎样知道答得对不对。只用一道题，等我选择再开始制作。' + facts,
+            goal + '请先帮我制定计划。' + (own[0] ? (teacher ? '刚才全班给出的回答是：“' : '我追问的是：“') + own[0] + '”。' : '') + '请给我两个简单玩法，每个只写玩家看什么、点哪里、怎样知道答得对不对。只用一道题，等我选择再开始制作。' + facts,
             '请用生图工具为《' + title() + '》生成一张横向封面。主体是' + t.subject + '，' + p.style + '风格，' + p.side + '留出放标题的空白。画面干净，无文字和数字。图用于封面，答题刻度和数据另画。把图片保存在本课工作区并告诉我文件名。',
-            goal + '请在本课工作区创建第一版 index.html。采用我的计划：' + (own[1] || '一道题，选择答案后显示反馈，允许再试。') + '封面用刚才选中的图片。选图说明：' + (own[2] || '使用本会话中我选的封面。') + '用代码按以下数据绘制题图：' + facts + '首次打开隐藏答案。请把封面内嵌进 HTML，使文件离线也能单独打开。做完告诉我打开哪里试玩。',
-            '请根据这次真实试玩，和我一起改进《' + title() + '》。我观察到：' + (own[3] || '〔先在左边记录实际现象〕') + '。我希望：' + (p.feedback || '〔写入一个想改的地方〕') + '。请先给两个改法，等我选定。实施时保留 index.html，把新版另存为 index-v2.html，告诉我怎样用相同操作重测。'
+            goal + '请在本课工作区创建第一版 index.html。采用我的计划：' + (own[1] || '一道题，选择答案后显示反馈，允许再试。') + '封面用刚才选中的图片。选图说明：' + (own[2] || '使用本会话中我选的封面。') + '请用代码画出准确的题图，并标注为模拟练习数据：' + t.data + '首次打开隐藏答案。请把封面内嵌进 HTML，使文件离线也能单独打开。做完告诉我打开哪里试玩。',
+            '请根据这次真实试玩，和我一起改进《' + title() + '》。我观察到：' + (own[3] || '〔先在左边记录实际现象〕') + '。我希望：' + (p.feedback || '〔写入一个想改的地方〕') + '。请给两个只改这一处的办法，各用一句话说玩家会看到什么。等我选定再改文件。'
         ][step];
     }
     function currentPrompt() { return project().edits[state.step] ?? basePrompt(); }
     function followUp() {
         const p=project();
         const fallback=['能不能换个例子让我自己试试？先别告诉我答案。','采用一道题、三选一的玩法。','主角再大一些，留白处不要放仪器。','我想弄清这个操作为什么得到这样的反馈。','我选给新手一个读图提示。'];
+        if (teacher) {
+            const decision = p.notes[state.step]?.trim();
+            switch (state.step) {
+            case 0: return decision || '他第一次来展台，只有一分钟。我们希望他选错后能看一条线索，再自己试一次。';
+            case 1: return (decision || '我们选看图后答一道题，答错可以再试。') + ' 请把玩法和试玩时要检查的动作写进计划，等我们确认。';
+            case 2: return (decision || '〔看图后写下采用哪张，或指出想重画的地方〕') + ' 请按我的决定处理：采用就记住文件名，要求重画就保留原图，再给我看新图。';
+            case 3: return '刚才试玩时，' + (decision || '〔填上同学点了什么、页面显示了什么〕') + ' 请用一句话记下这次操作和看到的结果，等我们决定想改哪里。';
+            case 4: return '我们选这个改法：〔从刚才的回复里填入全班选中的办法〕。请只改这一处，保留 index.html，把新版另存为 index-v2.html。完成后告诉我怎样重复刚才的操作。';
+            }
+        }
         const choiceText=p.notes[state.step]?.trim() || fallback[state.step];
-        return [choiceText,choiceText+' 请把这个选择整理成三步计划和一个可以实际检验的条件。',choiceText+' 请按我的这个决定修改封面描述，保留上一张图以便比较。',choiceText+' 请解释可能的原因，再问我想改哪里。',(p.feedback || fallback[4])+'。请按这个选择改出 index-v2.html，保留第一版；提醒我用同一个动作复测。'][state.step];
+        return [choiceText,choiceText+' 请把这个选择整理成三步计划和一个可以实际检验的条件。',choiceText+' 请按我的决定处理：采用就记住文件名，要求重画就保留原图，再给我看新图。',choiceText+' 请解释可能的原因，再问我想改哪里。','我选〔填入刚才回复中的一个办法〕。请按这个选择改出 index-v2.html，保留第一版；提醒我用同一个动作复测。'][state.step];
     }
     function refreshHandoffs() {
         const p=project(), s=state.step;
@@ -75,7 +90,7 @@
     window.weatherLessonContext = () => {
         const p = project();
         return ['当前步骤：' + phases[state.step] + ' · ' + title(), ...phases.map((phase,i) =>
-            [phase, titles[i], (teacher ? lectureGuide : studentGuide)[i], modeGuides[i],
+            [phase, titles[i], (teacher ? lectureGuide : studentGuide)[i], teacher && responseCues[i],
              p.edits[i] ?? basePrompt(i), notes[i], p.notes[i], p.followEdits?.[i]].filter(Boolean).join('｜'))].join('\n');
     };
     const returned = new Map();
@@ -150,15 +165,15 @@
     function render() {
         const s=state.step, p=project();
         $('start').textContent=(Object.values(p.done).some(Boolean)?'继续':'开始')+(teacher?'现场制作':'我的挑战')+' ↓';
-        book.querySelector('.strip').innerHTML=phases.map((name,i)=>'<button data-action="step" data-value="'+i+'" '+(s===i?'aria-current="step"':'')+'><small>'+modes[i]+'</small>'+name+(p.done[i]?' ✓':'')+'</button>').join('');
+        book.querySelector('.strip').innerHTML=phases.map((name,i)=>'<button data-action="step" data-value="'+i+'" '+(s===i?'aria-current="step"':'')+'>'+name+(p.done[i]?' ✓':'')+'</button>').join('');
         $('phase').textContent=teacher?'全班制作 · '+times[s]+' 分钟':'我的手账 · 第 '+(s+1)+' / 5 步';
         $('heading').textContent=titles[s]; $('lead').textContent=(teacher?lectureGuide:studentGuide)[s];
         $('brief-title').textContent=(teacher?['全班选题','全班定计划','投屏挑一张图','请一位同学试玩','听听玩家怎么说']:['选我的题目','设计玩家的三个动作','做出我的封面','我当第一位玩家','我的修改委托'])[s];
         $('guide').textContent=['想好一个读者，用练习材料问一个具体问题。','先在右边发出委托。读过 AI 的两个方案，把你的决定记在这里。','布局和画风将写进右侧委托。图片回到本页后可以放进练习卡试排。','在 AIChat 文件面板打开自己的网页。离线时也可以试右边的示例。','保留第一版，在第二版重做刚才的操作。把自己的发现写下来。'][s];
         $('tools').innerHTML=toolsPanel()+(s>=3?previewControls():'');
+        if(teacher) $('response-cue').textContent=responseCues[s];
         if(s===2){$('style').value=p.style;$('side').value=p.side;}
-        $('mode-guide').textContent=modeGuides[s];
-        $('request').value=currentPrompt(); $('note-label').textContent=notes[s]; $('note').placeholder=s===0 && state.track==='graph'?'例如：最高的一天和升温最快的一天有什么区别？':placeholders[s]; $('note').value=p.notes[s] || '';
+        $('request').value=currentPrompt(); $('note-label').textContent=notes[s]; $('note').placeholder=teacher && s===0?'例如：他第一次读这种图。选错时给他一条线索，让他自己再试。':s===0 && state.track==='graph'?'例如：最高的一天和升温最快的一天有什么区别？':placeholders[s]; $('note').value=p.notes[s] || '';
         $('sample-output').hidden=true; $('sample-output').replaceChildren();
         $('rebuild').hidden=p.edits[s]===undefined;
         refreshHandoffs();
@@ -243,8 +258,8 @@
             catch{message('文件没有读成功，请重新选择。');}
         }
     };
-    $('copy').onclick=async()=>{if(await copy($('request').value,$('request')))message('已复制。切到你的主对话，粘贴后可以继续改。');};
-    $('follow-copy').onclick=async()=>{if(await copy($('follow-text').value,$('follow-text')))message('追问已复制，可在原会话继续。');};
+    $('copy').onclick=()=>copyLessonChatText($('request').value);
+    $('follow-copy').onclick=()=>copyLessonChatText($('follow-text').value);
     $('follow-text').oninput=()=>{(project().followEdits ||= {})[state.step]=$('follow-text').value;save();};
     $('example').onclick=showExample;
     $('speak').onclick=()=>{if(!window.speechSynthesis){message('此浏览器没有朗读功能，可直接阅读上方引导。');return;}

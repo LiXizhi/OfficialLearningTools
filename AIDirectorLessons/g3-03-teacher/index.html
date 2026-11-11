@@ -53,7 +53,126 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g3">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>小学低年级（3年级 · 8课时） / 第 3 课（第3章 机器会听和说吗） · 教师大屏课 · ⚡ 通识标准课</small><h1>机器会听和说吗：体验语音识别与语音合成</h1><div class="tag-row"><span class="pill dark">第3章 机器会听和说吗</span><span class="pill">我身边的人工智能</span><span class="pill">工具环境：AIChat 智能助手工作台</span><span class="pill">🖥️ 普通教室大屏直授</span></div><p>【学段重点】看见AI、体验图像与语音感知、理解简单规则、知道AI也会出错、形成隐私安全习惯</p></header><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>使用 AIChat 语音输入说出一句完整的校园广播通知，观察“语音识别（语音转文字）”的转写文本，再体验“语音合成（文字转语音）”播报效果。</p><p><strong>基础达标证据：</strong>对比自己说的原话与屏幕转写出的文字是否完全一致，理解“听懂声音”包含先转文字再理解意思两步。</p><p><strong>控制变量/进阶探究：</strong>换用包含同音字（如“下雪/下学”“期中/集中”）的句子或加快语速重测，记录AI听错的字词并分析原因。</p><p><strong>学段安全与伦理边界：</strong>小学低段以教师主导演示和课堂互动体验为主，不要求学生独自使用开放式生成功能；严禁录入个人隐私。</p></section>
+
+/* The speech bubble marks text intended for the AIChat composer. */
+button[data-chat-copy],.fieldbook button[data-chat-copy]{display:inline-flex;gap:.5em;align-items:center;background:#15594d;color:white;border:1px solid #15594d;border-radius:8px;padding:9px 14px;min-height:44px;font-weight:650}
+button[data-chat-copy]::before{content:"";width:1.45em;height:1.45em;flex:none;background:currentColor;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' stroke='black' stroke-width='2' stroke-linejoin='round' d='M5 3h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H9l-6 4V5a2 2 0 0 1 2-2Z'/%3E%3Cpath d='M6 9h2v2H6zm5 0h2v2h-2zm5 0h2v2h-2z'/%3E%3C/svg%3E") center/contain no-repeat}
+.lesson-chat-toast{position:fixed;z-index:10000;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);box-sizing:border-box;padding:12px 18px;background:#153b34;color:white;border-radius:10px;box-shadow:0 3px 15px #0003;font:600 16px/1.5 system-ui}
+.lesson-chat-toast textarea{display:block;width:100%;box-sizing:border-box;margin:8px 0}
+.lesson-chat-toast[hidden],.lesson-chat-toast [hidden]{display:none}
+
+.studio{margin:20px 0 28px;color:#183f3d;overflow-wrap:anywhere}
+.studio-head{padding:clamp(18px,3vw,34px);background:#123e3c;color:#fff;border-radius:12px 12px 0 0}
+.studio-head small{color:#c7e8de}.studio-head h2{color:white;font-size:clamp(25px,3.6vw,39px);line-height:1.25;margin:8px 0}
+.studio-layout{display:grid;grid-template-columns:minmax(210px,0.9fr) minmax(0,1.6fr);border:1px solid #b8c9bf;background:white}
+.studio-layout aside{padding:clamp(16px,2.7vw,28px);background:#f5f0dc;border-right:1px solid #cfcbb5}
+.studio-layout aside ul{padding-left:1.25em}.studio-bench,.studio-handoff{padding:clamp(16px,2.7vw,28px)}
+.studio nav{justify-content:flex-start;gap:2px;margin-bottom:12px}.studio nav button{margin:2px;font-size:.88em}.studio nav [aria-current=step]{color:#fff;background:#135d56}
+.studio label{display:block;font-weight:650;margin:14px 0 4px}.studio textarea,.studio select{display:block;width:100%;min-width:0;max-width:100%;font:inherit;padding:8px;border:1px solid #899e90;border-radius:5px;color:#163d39;background:white}.studio-case{padding:12px 0;border-bottom:1px solid #d5dfd8}.studio-case:last-child{border:0}.studio-case p{margin:8px 0 0}.studio-handoff{background:#e8f2eb;border-radius:8px}.studio [data-example-output]{white-space:pre-line}.studio pre{white-space:pre-wrap}.studio-extra{scroll-margin:12px}
+@media(max-width:720px){.studio-layout{grid-template-columns:1fr}.studio-layout aside{border-right:none;border-bottom:1px solid #cfcbb5}.studio button{max-width:100%;white-space:normal}}
+.studio-returns input{display:block;max-width:100%;margin:.4em 0}.studio-returns iframe{width:100%;height:360px;border:1px solid #acc4b9;background:white}
+.studio [data-cite]{font-size:.78em;padding:2px 8px;background:#fffaf0;color:#365950;border-color:#bcb49a}
+.studio [data-experiment] output{display:block;white-space:pre-line}.studio [data-experiment] input{display:block;width:100%;padding:.5em;font:inherit}
+
+.lesson-entry .entry-role{font-size:1.12em;font-weight:750;color:#135d56}.lesson-entry.teacher{border-bottom-color:#24466c}.lesson-entry.teacher .entry-role{color:#24466c}
+[data-teaching-desk] .studio-head{background:#24466c}[data-teaching-desk] nav{padding:12px 0;border-bottom:1px solid #b9c8cf}[data-teaching-desk] [data-class-prediction]{padding:12px 0}[data-teaching-desk] [data-predictions]{display:block}
+</style><main><nav><a href="../index.html#g3">← 课程目录</a><a href="../g3-03-student/index.html">看学生上机页 →</a><button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button></nav><header class="lesson-entry teacher"><small>3 年级 · 第 3 课 · AIChat</small><div class="entry-role">教师大屏 · 全班共用一块屏</div><h1>机器会听和说吗：体验语音识别与语音合成</h1><p><strong>本课目标　</strong>对比自己说的原话与屏幕转写出的文字是否完全一致，理解“听懂声音”包含先转文字再理解意思两步。</p></header><section data-teaching-desk class="studio"><div class="studio-head"><small>教师大屏 · 40 分钟</small><h2>今天带全班解决什么问题？</h2><p>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。</p></div>
+    <nav aria-label="课堂环节"><button data-teach-phase="0">提出问题 · 0–5 分</button><button data-teach-phase="1">全班定计划 · 5–13 分</button><button data-teach-phase="2">准备与演示 · 13–20 分</button><button data-teach-phase="3">交给试玩者 · 20–32 分</button><button data-teach-phase="4">改版与离堂 · 32–40 分</button></nav>
+    <section class="studio-handoff" data-teach-slide="0" ><small>0–5 分钟</small><h2>提出问题</h2><p style="font-size:1.2em">投屏原稿，读给全班听，问“该拿哪件道具？”全班指向颜色卡。</p>
+    <h3>投屏材料</h3><p>原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。</p><details><summary>备课时看 · 本节课收什么证据</summary>同伴听两版时分别选道具并复述地点，记录转写词和最终选择；若两次都正确，保留这个结果。</details>
+
+
+
+
+
+
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。
+原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。
+练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。
+核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。
+另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”
+给三年级小播音员解释语音转文字和文字转语音，各用这则集合通知举个例。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
+    </section><section class="studio-handoff" data-teach-slide="1" hidden><small>5–13 分钟</small><h2>全班定计划</h2><p style="font-size:1.2em">并排投屏原稿与练习转写，问“改动在哪个词？”全班圈出两字并选校对玩法。</p>
+
+    <h3>举手选一种做法</h3><button data-teach-vote="0">做先听再看字的校对卡　+1</button><button data-teach-vote="1">做先对字再试听的播报卡　+1</button><p data-teach-tally aria-live="polite"></p><button data-clear-votes>重新计票</button>
+
+
+
+
+
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。
+原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。
+练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。
+核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。
+另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”
+请给我两种广播核对页方案，目标是听者拿对纸、说对地点；先等我选。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
+    </section><section class="studio-handoff" data-teach-slide="2" hidden><small>13–20 分钟</small><h2>准备与演示</h2><p style="font-size:1.2em">投屏蓝纸和绿纸，读核准稿，问“加哪个词更容易选？”全班决定保留哪个描述。</p>
+
+
+    <h3>投屏材料与操作</h3><ul><li>原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。</li><li>练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。</li><li>核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。</li><li>另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”</li></ul>
+
+
+
+
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。
+原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。
+练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。
+核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。
+另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”
+按练习材料帮我排一张稿纸，给原稿、实际转写和核准稿各留一行。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
+    </section><section class="studio-handoff" data-teach-slide="3" hidden><small>20–32 分钟</small><h2>交给试玩者</h2><p style="font-size:1.2em">投屏转写框，读一次原稿，再朗读核准文字，问“是哪一步声音变成字？”全班用箭头指出。</p>
+
+
+
+    <h3>把操作交给一位同学</h3><p>同伴听两版时分别选道具并复述地点，记录转写词和最终选择；若两次都正确，保留这个结果。</p><label>试玩者做了什么，在哪一步停住？<textarea data-teach-note="trial" rows="2"></textarea></label>
+
+    <div data-class-prediction><h3>先投票预测，再揭示结果</h3><p>只把“蓝纸”换成“蓝色的纸”再读，怎样检查有没有改善？</p><button data-predict="0">将两次实际转写各与对应原稿核对　+1</button><button data-predict="1">先把第二次改成正确字再计数　+1</button><button data-predict="2">只要机器发出声音就算成功　+1</button><output data-predictions aria-live="polite"></output><details><summary>公布结果，一起找依据</summary>测试的是语音转文字，因此要检查实际转写，核对后再播报。</details></div>
+    <button data-project-demo>打开本课作品或世界演示工具</button>
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。
+原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。
+练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。
+核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。
+另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”
+做独立 HTML 校对卡，能填原稿与实际转写，核准后可选择朗读；语音不可用时显示可供人工朗读的文字。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
+    </section><section class="studio-handoff" data-teach-slide="4" hidden><small>32–40 分钟</small><h2>改版与离堂</h2><p style="font-size:1.2em">投屏两版实录，问“机器这次真的听错了吗？”全班用原稿逐字判断并登记。</p>
+
+
+
+
+    <div data-exam-private><h3>离堂前，先独立判断</h3><p>新通知转写成“泥”，应该先做哪一步？</p><ol><li>让机器人播报“泥”</li><li>查原稿是梨还是泥</li><li>随便挑一种</li></ol><details><summary>听完理由，再揭示依据</summary>查原稿是梨还是泥。另一则原稿清楚写了梨，校对后再交给朗读工具。</details><label>只改了什么？同一个人重试后有什么变化？<textarea data-teach-note="retest" rows="2"></textarea></label></div>
+
+
+    <details><summary>在主对话中做这一环节</summary><label>投屏委托，可先改写<textarea rows="4" data-teach-prompt>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。
+原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。
+练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。
+核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。
+另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”
+只改“蓝纸”的说法，我会同速再读。给我两格填实际转写，若一样正确也如实保留。</textarea></label><button data-teach-copy data-chat-copy>和 AI 聊</button></details>
+    </section>
+
+    <button data-teach-next>下一环节</button><p data-teach-status role="status"></p></section><details data-teacher-kit><summary>打开教师演示工具与原有制作记录</summary><section class="studio" data-lesson="g3-03" data-role="teacher">
+  <div class="studio-head"><small>教师演示材料 · 负责播报虚构活动的同桌</small><h2>小小广播校对台</h2><p>帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。</p></div>
+
+  <div class="studio-layout"><aside><h3>桌上的材料</h3><ul data-materials><li>原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。 <button type="button" data-cite="0">引用到本步记录</button></li><li>练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。 <button type="button" data-cite="1">引用到本步记录</button></li><li>核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。 <button type="button" data-cite="2">引用到本步记录</button></li><li>另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。” <button type="button" data-cite="3">引用到本步记录</button></li></ul><p><b>使用约定</b>　用模拟通知，不报姓名、班级行程，不上传同学录音；设备缺少语音时只记录人工朗读。</p></aside>
+  <div class="studio-bench"><nav aria-label="作品制作步骤"><button data-phase="0">提问</button><button data-phase="1">选方案</button><button data-phase="2">备材料</button><button data-phase="3">做首版</button><button data-phase="4">试玩改版</button></nav>
+  <h3 data-phase-title></h3><p data-lead></p>
+
+  <button data-read>朗读这一步</button><label>制作方案<select data-choice><option value="0">做先听再看字的校对卡</option><option value="1">做先对字再试听的播报卡</option></select></label>
+  <button data-vote>为当前方案加一票</button> <output data-tally></output>
+  <label>本步委托，可改写<textarea data-prompt rows="5"></textarea></label><button data-chat-copy data-copy-prompt>和 AI 聊</button> <a data-studio-chat href="https://keepwork.com/chat" target="_blank" rel="noopener">打开 AIChat</a><p>复制后到 AIChat 主对话粘贴、确认并发送。</p>
+  <button data-example>在本页模拟 AI 回复</button><p data-example-output hidden></p><label data-note-label for="studio-note"></label><textarea id="studio-note" aria-label="本步制作记录" data-note rows="2"></textarea>
+  <button data-next>下一步</button></div></div>
+  <details class="studio-cases"  open><summary>用三道题检验作品</summary><div class="studio-case" data-case="0"><h3>根据原稿纸，听到通知该拿什么？</h3><button data-answer="0">篮子</button><button data-answer="1">绿纸</button><button data-answer="2">蓝纸</button><p role="status"></p></div><div class="studio-case" data-case="1"><h3>只把“蓝纸”换成“蓝色的纸”再读，怎样检查有没有改善？</h3><button data-answer="0">将两次实际转写各与对应原稿核对</button><button data-answer="1">先把第二次改成正确字再计数</button><button data-answer="2">只要机器发出声音就算成功</button><p role="status"></p></div><div class="studio-case" data-case="2"><h3>新通知转写成“泥”，应该先做哪一步？</h3><button data-answer="0">让机器人播报“泥”</button><button data-answer="1">查原稿是梨还是泥</button><button data-answer="2">随便挑一种</button><p role="status"></p></div></details>
+
+  <details class="studio-returns"><summary>带回自己做的网页，比较两个版本</summary><p>从 AIChat 文件面板保存单文件 HTML，依次选取两版，用同一道题试玩。其他格式的作品请在原工具中打开，在第五步记下结果。</p>
+  <label>我的第 1 版网页<input type="file" accept=".html,.htm,text/html" data-return="1"></label><button data-preview="1">试玩第 1 版</button><label>我的第 2 版网页<input type="file" accept=".html,.htm,text/html" data-return="2"></label><button data-preview="2">试玩第 2 版</button><p role="status" data-preview-status></p><div data-player></div></details>
+
+  <div class="studio-handoff"><h3>请同伴试玩</h3><p>同伴听两版时分别选道具并复述地点，记录转写词和最终选择；若两次都正确，保留这个结果。</p>
+
+  <label>留给试玩者的一句操作指引<textarea data-hint rows="2"></textarea></label>
+  <details><summary>给验收卡加一道自己的试玩任务</summary><label>让同伴做哪个动作？<textarea data-own-task rows="2"></textarea></label><label>做完应该看到什么？<textarea data-own-result rows="2"></textarea></label></details>
+  <button data-card="1">保存第一版验收卡</button><button data-card="2">保存第二版验收卡</button>
+  <button data-studio-record>导出制作记录</button><p role="status" data-status></p></div></section></details><details><summary>打开原课实验、工具箱与教案</summary><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>使用 AIChat 语音输入说出一句完整的校园广播通知，观察“语音识别（语音转文字）”的转写文本，再体验“语音合成（文字转语音）”播报效果。</p><p><strong>基础达标证据：</strong>对比自己说的原话与屏幕转写出的文字是否完全一致，理解“听懂声音”包含先转文字再理解意思两步。</p><p><strong>控制变量/进阶探究：</strong>换用包含同音字（如“下雪/下学”“期中/集中”）的句子或加快语速重测，记录AI听错的字词并分析原因。</p><p><strong>学段安全与伦理边界：</strong>小学低段以教师主导演示和课堂互动体验为主，不要求学生独自使用开放式生成功能；严禁录入个人隐私。</p></section>
 <section class="card-box turnkey-standard-box" aria-label="开箱即用AI工作台与Paracraft工具箱">
   <h2>⚡ 开箱即用工具箱（培养超级个体：一键复制提示词 / 一键打开工作台）</h2>
   <p class="toast-bar" id="turnkey-toast" role="status" aria-live="polite">💡 点击下方按钮即可一键复制本课 AI 工作台提示词，或直接打开 AI 工作台与 Paracraft！</p>
@@ -68,12 +187,58 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 2. 帮我设计第二轮“只改变一个条件”的对比实验观察表；
 3. 如果本课涉及 Paracraft 3D 世界或虚拟具身机器人，请提供可直接复制的快捷命令或 CodeBlock 代码方块脚本。</textarea>
   <div class="turnkey-actions">
-    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-3-3">📋 一键复制 AI 工作台文字</button>
+    <button type="button" class="action-btn primary copy-textarea-btn" data-target="std-ai-prompt-3-3" data-chat-copy title="复制这段文字到聊天框">和 AI 聊</button>
     <button type="button" class="action-btn accent open-ai-textarea-btn" data-target="std-ai-prompt-3-3">🚀 一键打开 AI 工作台（自动复制文字）</button>
 
   </div>
 
-</section><section><h2>🧭 五步教学法 · 40 分钟课堂流程（教师大屏主导）</h2><ol><li>【第1步｜情境导入 · 0—5 分钟】真实问题切入：请一位同学说绕口令或同音词句子，全班同步观察屏幕上的实时语音转文字结果，讨论机器为什么会“听岔”。</li><li>【第2步｜概念理解 · 5—13 分钟】原理拆解与预测：结合本课主题（第3章 机器会听和说吗），请学生先写出或说出自己的判断与理由，同桌互查依据。</li><li>【第3步｜工具体验 · 13—25 分钟】白名单工具实操：在 AIChat 主对话中说出你的任务。使用 AIChat 语音输入说出一句完整的校园广播通知，观察“语音识别（语音转文字）”的转写文本，再体验“语音合成（文字转语音）”播报效果。 核对基础达标证据：对比自己说的原话与屏幕转写出的文字是否完全一致，理解“听懂声音”包含先转文字再理解意思两步。</li><li>【第4步｜项目实践 · 25—35 分钟】控制变量与对比实验：只改变一个条件——换用包含同音字（如“下雪/下学”“期中/集中”）的句子或加快语速重测，记录AI听错的字词并分析原因。 请学生对比前后变化并记录过程证据。</li><li>【第5步｜伦理反思 · 35—40 分钟】安全边界与过程评价：围绕“小学低段以教师主导演示和课堂互动体验为主，不要求学生独自使用开放式生成功能；严禁录入个人隐私。”开展反思；离堂思考：如果换一个真实校园场景，你会先核查哪项数据或边界条件？</li></ol></section><details><summary>💡 课堂常见卡点与排障锦囊</summary><p>将“参考资料/已知条件”与“具体任务要求”分段输入，每次只改一个提示词条件；对比前后变化时开启新对话以免旧上下文干扰。</p></details><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details><footer><a data-chat-link class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g3-03-student/index.html">切换到：学生上机课 →</a></footer></main><script>
+</section><section><h2>🧭 五步教学法 · 40 分钟课堂流程（教师大屏主导）</h2><ol><li>【第1步｜情境导入 · 0—5 分钟】真实问题切入：请一位同学说绕口令或同音词句子，全班同步观察屏幕上的实时语音转文字结果，讨论机器为什么会“听岔”。</li><li>【第2步｜概念理解 · 5—13 分钟】原理拆解与预测：结合本课主题（第3章 机器会听和说吗），请学生先写出或说出自己的判断与理由，同桌互查依据。</li><li>【第3步｜工具体验 · 13—25 分钟】白名单工具实操：在 AIChat 主对话中说出你的任务。使用 AIChat 语音输入说出一句完整的校园广播通知，观察“语音识别（语音转文字）”的转写文本，再体验“语音合成（文字转语音）”播报效果。 核对基础达标证据：对比自己说的原话与屏幕转写出的文字是否完全一致，理解“听懂声音”包含先转文字再理解意思两步。</li><li>【第4步｜项目实践 · 25—35 分钟】控制变量与对比实验：只改变一个条件——换用包含同音字（如“下雪/下学”“期中/集中”）的句子或加快语速重测，记录AI听错的字词并分析原因。 请学生对比前后变化并记录过程证据。</li><li>【第5步｜伦理反思 · 35—40 分钟】安全边界与过程评价：围绕“小学低段以教师主导演示和课堂互动体验为主，不要求学生独自使用开放式生成功能；严禁录入个人隐私。”开展反思；离堂思考：如果换一个真实校园场景，你会先核查哪项数据或边界条件？</li></ol></section><details><summary>💡 课堂常见卡点与排障锦囊</summary><p>将“参考资料/已知条件”与“具体任务要求”分段输入，每次只改一个提示词条件；对比前后变化时开启新对话以免旧上下文干扰。</p></details><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details><footer><a data-chat-link class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g3-03-student/index.html">切换到：学生上机课 →</a></footer></details></main><script>// Shared by the standalone teacher and student worksheets.
+const copyLessonChatText = (() => {
+    const toast = document.createElement('div');
+    toast.className = 'lesson-chat-toast';
+    toast.hidden = true;
+    const status = document.createElement('span');
+    status.setAttribute('role', 'status');
+    const manual = document.createElement('textarea');
+    manual.readOnly = true;
+    manual.setAttribute('aria-label', '手动复制给 AI 的文字');
+    const close = document.createElement('button');
+    close.type = 'button';
+    close.textContent = '关闭';
+    close.onclick = () => { toast.hidden = true; };
+    toast.append(status, manual, close);
+    document.body.append(toast);
+    let timer;
+    return async function copyLessonChatText(value) {
+        clearTimeout(timer);
+        toast.hidden = false;
+        manual.hidden = close.hidden = true;
+        if (!value.trim()) {
+            status.textContent = '先写下想和 AI 说的话。';
+            timer = setTimeout(() => { toast.hidden = true; }, 3500);
+            return false;
+        }
+        let copied = false;
+        try {
+            await navigator.clipboard.writeText(value);
+            copied = true;
+        } catch {
+            const previous = document.activeElement;
+            manual.value = value;
+            manual.hidden = false;
+            manual.focus();
+            manual.select();
+            try { copied = document.execCommand('copy'); } catch {}
+            if (copied) previous?.focus({preventScroll:true});
+        }
+        manual.hidden = close.hidden = copied;
+        status.textContent = copied ? '复制完毕了，可以去聊天框粘贴了。' : '请长按或按 Ctrl/Cmd+C 复制选中的文字，再到聊天框粘贴。';
+        if (copied) timer = setTimeout(() => { toast.hidden = true; }, 3500);
+        return copied;
+    };
+})();
+
+
 (() => {
   const AI_URL = 'https://keepwork.com/chat';
   const PC_URL = 'https://webparacraft.keepwork.com/keepwork/online.html';
@@ -128,15 +293,15 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
   }
 
   async function openAIWorkbenchWithPrompt(promptText) {
-    await copyText(promptText, 'AI 工作台提示词');
+    if (!await copyLessonChatText(promptText)) return false;
     if (window.parent !== window) {
-      showToast('请在底部主对话粘贴提示词并发送。');
-      return;
+      return true;
     }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
     showToast('🚀 已自动复制提示词并打开 AI 工作台！在输入框粘贴 (Ctrl+V) 即可发送。');
+    return true;
   }
 
   function openParacraftWorld() {
@@ -215,7 +380,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
   const btnCopyAiPrompt = document.getElementById('btn-copy-ai-prompt');
   if (btnCopyAiPrompt && studentPromptEl) {
     btnCopyAiPrompt.addEventListener('click', async () => {
-      await copyText(studentPromptEl.value, 'AI 工作台提示词');
+      if (!await copyLessonChatText(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！已复制你定制的 AI 工作台提示词');
     });
   }
@@ -223,7 +388,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
   const btnOpenAiPrompt = document.getElementById('btn-open-aichat-prompt');
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
-      await openAIWorkbenchWithPrompt(studentPromptEl.value);
+      if (!await openAIWorkbenchWithPrompt(studentPromptEl.value)) return;
       markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
@@ -302,7 +467,9 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
   document.addEventListener('click', async e => {
     const copyDirect = e.target.closest('[data-copy]');
     if (copyDirect) {
-      await copyText(copyDirect.dataset.copy, '命令/指令');
+      if (copyDirect.hasAttribute('data-chat-copy')) {
+        if (!await copyLessonChatText(copyDirect.dataset.copy)) return;
+      } else await copyText(copyDirect.dataset.copy, '命令/指令');
       if (copyDirect.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 命令');
       return;
     }
@@ -310,7 +477,8 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
     if (copyCodeBtn) {
       const target = document.getElementById(copyCodeBtn.dataset.copyTarget);
       if (target) {
-        await copyText(target.textContent, '代码/文字');
+        if (copyCodeBtn.hasAttribute('data-chat-copy')) await copyLessonChatText(target.textContent);
+        else await copyText(target.textContent, '代码/文字');
         if (copyCodeBtn.closest('#stage-3')) markStageDone(3, '🎉 第 3 关点亮！已复制 Paracraft 代码');
       }
       return;
@@ -318,7 +486,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
     const copyTaBtn = e.target.closest('.copy-textarea-btn');
     if (copyTaBtn) {
       const ta = document.getElementById(copyTaBtn.dataset.target);
-      if (ta) await copyText(ta.value, 'AI 工作台提示词');
+      if (ta) await copyLessonChatText(ta.value);
       return;
     }
     const openAiTarget = e.target.closest('.open-ai-with-target');
@@ -448,31 +616,308 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
   }
 })();
 
+(() => {const lesson={"artifact":"小小广播校对台","reader":"负责播报虚构活动的同桌","brief":"帮同桌把一则练习通知从口述变成文字，再从核准文字变成播报；让他听完能选对道具。","materials":["原稿纸写着“请拿蓝纸，到星星台集合”。作者手绘的道具只有蓝纸、绿纸两种。","练习转写甲：“请拿篮子，到星星台集合。”这是模拟听错的例子。","核准稿乙：“请拿蓝色的纸，到星星台集合。”星星台为虚构地点。","另一则原稿：“请把梨放进盒子。”练习转写为“请把泥放进盒子。”"],"choices":["做先听再看字的校对卡","做先对字再试听的播报卡"],"teacher":["投屏原稿，读给全班听，问“该拿哪件道具？”全班指向颜色卡。","并排投屏原稿与练习转写，问“改动在哪个词？”全班圈出两字并选校对玩法。","投屏蓝纸和绿纸，读核准稿，问“加哪个词更容易选？”全班决定保留哪个描述。","投屏转写框，读一次原稿，再朗读核准文字，问“是哪一步声音变成字？”全班用箭头指出。","投屏两版实录，问“机器这次真的听错了吗？”全班用原稿逐字判断并登记。"],"student":["问 AI 为什么“篮子”会混进通知；追问把字读出来与把声音写下来有什么不同。","选校对卡或播报卡，约定同伴听完要拿对纸，还要说出集合地。","剪两张色纸；把原稿抄进文字格，标出易听错的两个字。","在允许语音时读原稿，保存实际转写；核对再让工具读出核准稿。没有语音时用材料甲练习并标为模拟。","只把“蓝纸”换为“蓝色的纸”，保持说话速度，再读给同伴；把两版实际结果并排记下。"],"prompts":["给三年级小播音员解释语音转文字和文字转语音，各用这则集合通知举个例。","请给我两种广播核对页方案，目标是听者拿对纸、说对地点；先等我选。","按练习材料帮我排一张稿纸，给原稿、实际转写和核准稿各留一行。","做独立 HTML 校对卡，能填原稿与实际转写，核准后可选择朗读；语音不可用时显示可供人工朗读的文字。","只改“蓝纸”的说法，我会同速再读。给我两格填实际转写，若一样正确也如实保留。"],"cases":[{"question":"根据原稿纸，听到通知该拿什么？","options":["篮子","绿纸","蓝纸"],"answer":2,"reason":"原稿写着“蓝纸”；材料甲里的“篮子”是模拟转写。"},{"question":"只把“蓝纸”换成“蓝色的纸”再读，怎样检查有没有改善？","options":["将两次实际转写各与对应原稿核对","先把第二次改成正确字再计数","只要机器发出声音就算成功"],"answer":0,"reason":"测试的是语音转文字，因此要检查实际转写，核对后再播报。"},{"question":"新通知转写成“泥”，应该先做哪一步？","options":["让机器人播报“泥”","查原稿是梨还是泥","随便挑一种"],"answer":1,"reason":"另一则原稿清楚写了梨，校对后再交给朗读工具。"}],"revision":"同伴听两版时分别选道具并复述地点，记录转写词和最终选择；若两次都正确，保留这个结果。","boundary":"用模拟通知，不报姓名、班级行程，不上传同学录音；设备缺少语音时只记录人工朗读。"}, steps=["投屏原稿，读给全班听，问“该拿哪件道具？”全班指向颜色卡。","并排投屏原稿与练习转写，问“改动在哪个词？”全班圈出两字并选校对玩法。","投屏蓝纸和绿纸，读核准稿，问“加哪个词更容易选？”全班决定保留哪个描述。","投屏转写框，读一次原稿，再朗读核准文字，问“是哪一步声音变成字？”全班用箭头指出。","投屏两版实录，问“机器这次真的听错了吗？”全班用原稿逐字判断并登记。"], phases=["提问","选方案","备材料","做首版","试玩改版"], minutes=["0–5","5–13","13–20","20–32","32–40"];
+// Included in the standalone lesson with its own content and role.
+const root = document.querySelector('.studio[data-lesson]');
+const get = selector => root.querySelector(selector);
+const all = selector => [...root.querySelectorAll(selector)];
+const storageKey = 'director-studio-v1/' + root.dataset.lesson + '/' + root.dataset.role;
+let draft = {};
+try { draft = JSON.parse(localStorage.getItem(storageKey)) || {}; } catch {}
+const state = Object.assign({ownTask:'', ownResult:'', phase:0, choice:0, votes:[0,0], prompts:{}, notes:{}, answers:{}, hint:'', versions:{}}, draft);
+const status = message => { get('[data-status]').textContent = message; };
+function persist() {
+    try { localStorage.setItem(storageKey, JSON.stringify(state)); }
+    catch { status('此窗口无法保存草稿。离开前请导出制作记录。'); }
+}
+if (window !== parent) get('[data-studio-chat]').hidden = true;
+for (const [selector, field] of [['[data-own-task]','ownTask'],['[data-own-result]','ownResult']]) {
+    const input = get(selector);
+    input.value = state[field];
+    input.oninput = () => { state[field] = input.value; persist(); };
+}
+const noteLabels = ['我问了什么？看完回答后还想追问什么？','我选了哪个方案？为什么？','我实际使用的材料、来源和取舍','第一版的位置与实际试玩结果','同伴的原话、改动和同一条件下的重测结果'];
+function prompt() {
+    const material = lesson.revealAt != null ? lesson.materials.filter((_,i) => !lesson.sealedMaterials.includes(i)) : lesson.materials;
+    const prefix = [lesson.brief, '我选的方案：' + lesson.choices[state.choice], ...material];
+    if (state.phase && state.notes[state.phase-1]) prefix.push('上一步记录：' + state.notes[state.phase-1]);
+    return [...prefix,lesson.prompts[state.phase]].join('\n');
+}
+window.directorStudioContext = () => {
+    if (root.closest('details:not([open])')) return '';
+    return ['当前作品：'+lesson.artifact, '当前步骤：'+phases[state.phase], '我的方案：'+lesson.choices[state.choice],
+        ...phases.map((name,i)=>[name,steps[i],state.prompts[i+'/'+state.choice] ?? lesson.prompts[i],state.notes[i]].filter(Boolean).join('｜'))].join('\n');
+};
+const followup = get('[data-followup]');
+if (followup) {
+    followup.value=state.followup || '';
+    followup.oninput=()=>{state.followup=followup.value;persist();};
+    get('[data-send-followup]').onclick=()=>copyLessonChatText(followup.value);
+    all('[data-jump-work]').forEach(b=>b.onclick=()=>{
+        const tools=get('.studio-returns') || get('.studio-kit');
+        tools.open=true;tools.scrollIntoView({block:'start'});
+    });
+}
+function render() {
+    all('[data-at]').forEach(el=>el.hidden=Number(el.dataset.at)!==state.phase);
+    all('[data-phase]').forEach((b,i) => b.setAttribute('aria-current', i === state.phase ? 'step' : 'false'));
+    get('[data-choice]').value = state.choice;
+    get('[data-phase-title]').textContent = (state.phase+1) + '/5　' + phases[state.phase] + (root.dataset.role === 'teacher' ? ' · ' + minutes[state.phase] + ' 分钟' : '');
+    get('[data-lead]').textContent = steps[state.phase];
+    get('[data-prompt]').value = state.prompts[state.phase + '/' + state.choice] ?? prompt();
+    get('[data-note-label]').textContent = noteLabels[state.phase];
+    get('[data-note]').value = state.notes[state.phase] || '';
+    get('[data-next]').textContent = state.phase === 4 ? '到同伴试玩区' : '下一步';
+    get('[data-example-output]').hidden = true;
+    if (get('[data-tally]')) get('[data-tally]').textContent = state.votes.map((v,i) => lesson.choices[i] + ' ' + v + '票').join(' / ');
+}
+function choosePhase(i) {
+    if (lesson.revealAt != null && i >= lesson.revealAt && !state.sealedRule) {
+        get('[data-seal-status]').textContent = '请先记录并锁定首版规则，才打开测试夹。';
+        get('[data-rule]').focus(); return;
+    }
+    state.phase = i; persist(); render(); }
+all('[data-phase]').forEach((b,i) => b.onclick = () => choosePhase(i));
+get('[data-next]').onclick = () => state.phase < 4 ? choosePhase(state.phase+1) : get('[data-hint]').focus();
+get('[data-materials]').onclick = e => {
+    const button = e.target.closest('[data-cite]');
+    if (!button) return;
+    const note = get('[data-note]');
+    note.value = [note.value, '依据：'+lesson.materials[Number(button.dataset.cite)]].filter(Boolean).join('\n');
+    state.notes[state.phase] = note.value; persist(); note.focus();
+};
+get('[data-note]').oninput = e => { state.notes[state.phase] = e.target.value; persist(); };
+get('[data-choice]').onchange = e => { state.choice = Number(e.target.value); persist(); render(); };
+get('[data-prompt]').oninput = e => { state.prompts[state.phase + '/' + state.choice] = e.target.value; persist(); };
+get('[data-copy-prompt]').onclick = () => copyLessonChatText(get('[data-prompt]').value);
+if (get('[data-studio-scene]')) get('[data-studio-scene]').onclick = () => copyLessonChatText('请在我确认的空白世界中搭建《' + lesson.artifact + '》配套复核站，先读世界状态和创建能力，按实际客户端、世界和会话身份填写调用模板，生成本次请求编号。运行后检查任务结果，告诉我如何开拉杆试玩。\n' + get('#studio-code-2').textContent);
+get('[data-read]').onclick = () => {
+    if (!window.speechSynthesis) { status('设备未提供朗读，请读当前步骤的文字。'); return; }
+    speechSynthesis.cancel();
+    const voice = new SpeechSynthesisUtterance(steps[state.phase]);
+    voice.lang = 'zh-CN'; speechSynthesis.speak(voice);
+};
+if (get('[data-vote]')) get('[data-vote]').onclick = () => { state.votes[state.choice]++; persist(); render(); };
+get('[data-example]').onclick = () => {
+    if (get('[data-sealed]')) {
+        const output = get('[data-example-output]'); output.hidden = false;
+        output.textContent = '课内示例 · ' + lesson.materials.find((_,i) => !lesson.sealedMaterials.includes(i)); return;
+    }
+    const examples = [lesson.cases[0].question, '可先试「'+lesson.choices[state.choice]+'」。验收时这样做：'+lesson.revision,
+        lesson.materials.join('\n'), lesson.cases[0].reason, lesson.cases[1].reason];
+    const output = get('[data-example-output]');
+    output.textContent = '课内示例 · ' + examples[state.phase]; output.hidden = false;
+};
+function answer(box, index) {
+    const c = lesson.cases[Number(box.dataset.case)];
+    box.querySelectorAll('button').forEach((button,j) => button.setAttribute('aria-pressed',String(j === index)));
+    box.querySelector('p').textContent = (index === c.answer ? '判断成立。' : '再核对一次。') + c.reason;
+}
+function bindCases() { all('[data-case]').forEach((box,i) => {
+    if (Number.isInteger(state.answers[i])) answer(box,state.answers[i]);
+    box.querySelectorAll('button').forEach((b,j) => b.onclick = () => { state.answers[i] = j; answer(box,j); persist(); });
+});
+}
+function revealCases() {
+    const sealed = get('[data-sealed]');
+    if (sealed) sealed.replaceWith(sealed.content);
+}
+function unseal() {
+    const sealed = get('[data-sealed]');
+    if (!sealed) return;
+    const twoLocks = root.dataset.lesson === 'g7-05';
+    if (!twoLocks || state.predictions) revealCases();
+    for (const text of lesson.materials.filter((_,i) => lesson.sealedMaterials.includes(i))) {
+        if (twoLocks && text.startsWith('封签答案') && !state.predictions) {
+            const panel = document.createElement('div'); panel.dataset.examPrivate='';
+            const fields = ['09','10','11','12'].map(number => {
+                const label = document.createElement('label'); label.textContent=number+' 号预测';
+                const input = document.createElement('select');
+                for (const value of ['请选择','报修','预约']) input.add(new Option(value,value));
+                label.append(input); panel.append(label); return input;
+            });
+            const lock = document.createElement('button'); lock.textContent='锁定四个预测，揭晓真值';
+            panel.append(lock); get('[data-seal-status]').after(panel);
+            lock.onclick = () => {
+                if (fields.some(f=>f.selectedIndex===0)) {get('[data-seal-status]').textContent='请先预测四题。';return;}
+                state.predictions=fields.map(f=>f.value);persist();panel.remove();revealCases();bindCases();
+                const answer=document.createElement('li');answer.dataset.examPrivate='';answer.textContent=text;get('[data-materials]').append(answer);
+                get('[data-seal-status]').textContent='已锁定四次预测：'+state.predictions.join(' / ');
+            };
+            continue;
+        }
+        const li = document.createElement('li'); li.dataset.examPrivate = ''; li.textContent = text+' ';
+        const cite = document.createElement('button'); cite.dataset.cite=lesson.materials.indexOf(text); cite.textContent='引用到本步记录';
+        li.append(cite); get('[data-materials]').append(li);
+    }
+    get('[data-rule]').readOnly = true;
+    get('[data-rule]').value = state.sealedRule;
+    get('[data-reveal]').disabled = true;
+    get('[data-seal-status]').textContent = state.predictions ? '已锁定四次预测：'+state.predictions.join(' / ') : '首版规则已锁定，保留这次结果供重测对照。';
+}
+if (get('[data-reveal]')) {
+    if (state.sealedRule) unseal();
+    else {
+        get('[data-rule]').value = state.ruleDraft || '';
+        get('[data-rule]').oninput = e => { state.ruleDraft = e.target.value; persist(); };
+        get('[data-reveal]').onclick = () => {
+            const rule = get('[data-rule]').value.trim();
+            if (!rule) { get('[data-seal-status]').textContent = '先写下首版规则。'; return; }
+            state.sealedRule = rule; unseal(); bindCases(); choosePhase(lesson.revealAt);
+        };
+    }
+}
+bindCases();
+const returned = new Map();
+all('[data-return]').forEach(input => {
+    input.onchange = async () => {
+        const file = input.files[0];
+        const version = input.dataset.return;
+        returned.delete(version);
+        if (!file) return;
+        const notice = get('[data-preview-status]');
+        if (file.size > 5 * 1024 * 1024) { notice.textContent = '请选择 5 MB 以内的单文件网页。'; return; }
+        try {
+            const source = await file.text();
+            if (input.files[0] !== file) return;
+            returned.set(version,source);
+            notice.textContent = '第 '+version+' 版已就绪，点击试玩。离开时请保留原文件。';
+        } catch { notice.textContent = '读取失败，请重新选取文件。'; }
+    };
+});
+all('[data-preview]').forEach(button => {
+    button.onclick = () => {
+        const version = button.dataset.preview;
+        const source = returned.get(version);
+        const notice = get('[data-preview-status]');
+        if (!source) { notice.textContent = '请先选择第 '+version+' 版网页。'; return; }
+        const frame = document.createElement('iframe');
+        frame.title = '我的第 '+version+' 版作品';
+        frame.setAttribute('sandbox','allow-scripts');
+        frame.referrerPolicy = 'no-referrer';
+        frame.srcdoc = `<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data: blob:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'">` + source;
+        get('[data-player]').replaceChildren(frame);
+        notice.textContent = '正在试玩第 '+version+' 版。';
+    };
+});
+const peerNotes = state.peerNotes || (state.peerNotes = {});
+all('[data-peer]').forEach(field=>{
+    const key=field.dataset.peer;
+    field.value=peerNotes[key] || '';
+    field.oninput=()=>{peerNotes[key]=field.value;persist();};
+});
+const hint = get('[data-hint]');
+hint.value = state.hint;
+hint.oninput = () => { state.hint = hint.value; persist(); };
+function download(name, content, mime) {
+    const url = URL.createObjectURL(new Blob([content], {type:mime}));
+    const a = document.createElement('a'); a.href = url; a.download = root.dataset.lesson + '-' + name;
+    document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url),30000);
+}
+const escape = v => String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+function makeCard(version) {
+    const snapshot = state.versions[version];
+    const title = lesson.artifact + ' · 同伴验收卡 V' + version;
+    const personal = snapshot.task ? '<h2>作者出的试玩任务</h2><p>'+escape(snapshot.task)+'</p><details><summary>试过后核对预期</summary>'+escape(snapshot.result)+'</details>' : '';
+    const questions = lesson.cases.map(c => '<fieldset><legend>'+escape(c.question)+'</legend>'+c.options.map((o,i) =>
+        '<button data-answer="'+String(i === c.answer)+'">'+escape(o)+'</button>').join('')+'<output data-reason="'+escape(c.reason)+'"></output></fieldset>').join('');
+    const script = "document.addEventListener('click',e=>{const b=e.target.closest('[data-answer]');if(!b)return;const o=b.parentNode.querySelector('output');o.textContent=(b.dataset.answer==='true'?'判断成立。':'再试一次。')+o.dataset.reason})";
+    return '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escape(title)+'</title><style>body{margin:2rem auto;padding:0 1rem;max-width:48rem;font:18px/1.7 system-ui;color:#163e3c}fieldset{margin:1rem 0}button{font:inherit;margin:.3rem;padding:.4rem}output{display:block}</style><h1>'+escape(title)+'</h1><p>'+escape(lesson.brief)+'</p><p>'+escape(snapshot.choice)+'</p><p>'+escape(snapshot.hint)+'</p><ul>'+lesson.materials.map(m=>'<li>'+escape(m)+'</li>').join('')+'</ul>'+personal+questions+'<script>'+script+'<'+ '/script></html>';
+}
+all('[data-card]').forEach(b => b.onclick = () => {
+    const version = Number(b.dataset.card);
+    if (get('[data-sealed]')) { status('请先完成封存测试再保存验收卡。'); return; }
+    if (version === 2 || !state.versions[version]) {
+        if (!state.hint.trim()) { status('先写下给试玩者的指引。'); hint.focus(); return; }
+        if (version === 2 && !state.versions[1]) { status('先保存第一版，再修改指引并重测。'); return; }
+        if (Boolean(state.ownTask.trim()) !== Boolean(state.ownResult.trim())) { status('自编任务请同时写操作和预期结果。'); return; }
+        if (version === 2 && state.versions[1].hint === state.hint.trim() && state.versions[1].task === state.ownTask.trim() && state.versions[1].result === state.ownResult.trim()) { status('请根据同伴的反馈修改指引或试玩任务，再保存第二版。'); return; }
+        state.versions[version] = {hint:state.hint.trim(),task:state.ownTask.trim(),result:state.ownResult.trim(),choice:lesson.choices[state.choice]}; persist();
+    }
+    download('同伴验收卡-V'+version+'.html',makeCard(version),'text/html;charset=utf-8');
+    status('已导出第'+version+'版验收卡。请单独打开文件，交给同伴试玩。');
+});
+get('[data-studio-record]').onclick = () => {
+    const lines = [lesson.artifact,lesson.brief,...(state.followup ? ['我的追问：'+state.followup] : []),'我选的方案：'+lesson.choices[state.choice],...(state.sealedRule ? ['冻结的首版规则：'+state.sealedRule] : []),...(state.predictions ? ['首次预测：'+state.predictions.join(' / ')] : []),...phases.map((p,i)=>p+'：'+(state.notes[i] || '尚未记录')),
+        ...(get('[data-sealed]') ? [] : lesson.cases).map((c,i)=>c.question+'　我的选择：'+(c.options[state.answers[i]] ?? '尚未作答')),
+        ...Object.entries({trial:'首版试玩',change:'单项修改',retest:'同条件重测'}).filter(([k])=>peerNotes[k]).map(([k,title])=>title+'：'+peerNotes[k]),
+        ...Object.entries(state.versions).map(([v,s])=>'V'+v+' 验收卡指引：'+s.hint+(s.task?'　自编任务：'+s.task+'　预期：'+s.result:'')),'使用约定：'+lesson.boundary];
+    download('制作记录.txt',lines.join('\n\n'),'text/plain;charset=utf-8'); status('已导出当前制作记录。');
+};
+render();
+
+
+})();
+(() => {
+    const desk = document.querySelector('[data-teaching-desk]');
+    const get = s => desk.querySelector(s);
+    const key = 'director-teaching/'+document.title;
+    let saved = {};
+    try {saved = JSON.parse(localStorage.getItem(key)) || {};} catch {}
+    const votes = saved.votes || [0,0];
+    let phase = Number.isInteger(saved.phase) ? saved.phase : 0;
+    function save() {
+        try {localStorage.setItem(key,JSON.stringify({...saved,phase,votes}));}
+        catch {get('[data-teach-status]').textContent='本次课堂记录保留在当前窗口。';}
+    }
+    function show(i) {
+        phase=i;
+        desk.querySelectorAll('[data-teach-slide]').forEach(s=>s.hidden=Number(s.dataset.teachSlide)!==i);
+        desk.querySelectorAll('[data-teach-phase]').forEach(b=>b.setAttribute('aria-current',Number(b.dataset.teachPhase)===i?'step':'false'));
+        const demo=get('[data-demo-stage]');
+        if(demo) demo.hidden=!(i===2 || i===3);
+        get('[data-teach-next]').textContent=i===4?'回到课堂问题':'下一环节';
+        get('[data-teach-tally]').textContent='方案一 '+votes[0]+' 票　方案二 '+votes[1]+' 票';
+    }
+    desk.querySelectorAll('[data-teach-phase]').forEach(b=>b.onclick=()=>{show(Number(b.dataset.teachPhase));save();});
+    get('[data-teach-next]').onclick=()=>{show((phase+1)%5);save();};
+    desk.querySelectorAll('[data-teach-vote]').forEach(b=>b.onclick=()=>{votes[Number(b.dataset.teachVote)]++;show(phase);save();});
+    get('[data-clear-votes]').onclick=()=>{votes.fill(0);show(phase);save();};
+    desk.querySelectorAll('[data-teach-note],[data-teach-prompt]').forEach((el,i)=>{
+        if(saved[i]!=null) el.value=saved[i];
+        el.oninput=()=>{saved[i]=el.value;save();};
+    });
+    desk.querySelectorAll('[data-teach-copy]').forEach(b=>b.onclick=()=>copyLessonChatText(b.parentElement.querySelector('textarea').value));
+    const predictionVotes=saved.predictionVotes || (saved.predictionVotes=[0,0,0]);
+    function showPredictions() {
+        if(get('[data-predictions]')) get('[data-predictions]').textContent=predictionVotes.map((n,i)=>'第 '+(i+1)+' 项 '+n+' 票').join('　');
+    }
+    desk.querySelectorAll('[data-predict]').forEach(b=>b.onclick=()=>{
+        predictionVotes[Number(b.dataset.predict)]++;showPredictions();save();
+    });
+    showPredictions();
+    get('[data-project-demo]').onclick=()=>{
+        const kit=document.querySelector('[data-teacher-kit]');
+        kit.open=true;
+        const target=kit.querySelector('[data-experiment]') || kit.querySelector('.studio-returns,.studio-kit');
+        if(target.tagName==='DETAILS') target.open=true;target.scrollIntoView({block:'start'});
+    };
+    window.directorTeachingContext=()=>['当前授课环节：'+get('[data-teach-phase][aria-current=step]').textContent,
+        get('[data-teach-slide]:not([hidden])').innerText,
+        ...Array.from(desk.querySelectorAll('[data-teach-note]'),e=>e.value)].join('\n');
+    show(phase);
+})();
+
 // Inlined in each standalone lesson; the catalog deliberately does not pin itself.
 (() => {
     const button = document.getElementById('lesson-fullscreen');
-    const update = () => {
-        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
-        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
-    };
-    button.onclick = async () => {
-        try {
-            if (document.fullscreenElement) await document.exitFullscreen();
-            else await document.documentElement.requestFullscreen();
-        } catch { button.textContent = '当前浏览器不支持全屏'; }
-    };
-    document.addEventListener('fullscreenchange', update);
+    let presenting = false;
+    function showPresentation(active) {
+        presenting = active;
+        button.textContent = active ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(active));
+    }
     if (parent === window) return;
     document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
     document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
-        el.textContent = '复制提示词到主对话使用';
+        el.remove();
     });
     // Include folded materials and live worksheet values without reading markup,
     // image data, file names or the contents of embedded student projects.
     function readLesson(node) {
         if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
         if (node.nodeType !== Node.ELEMENT_NODE) return '';
-        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('style,script,iframe,canvas,template,[data-exam-private]')) return '';
         if (node.matches('img')) return node.alt;
         if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
         if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
@@ -484,11 +929,22 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
     }
     const channel = 'aichat.external-tool.v1';
     let pinned = false, wrapperOrigin;
+    button.onclick = () => {
+        if (button.hidden || !wrapperOrigin) return;
+        showPresentation(!presenting);
+        parent.postMessage({channel, type:'tool:presentation', active:presenting}, wrapperOrigin);
+    };
     window.addEventListener('message', ({source, origin, data}) => {
         if (source !== parent || data?.channel !== channel ||
             !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
         const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
-        if (data.type === 'host:always-on-top-support') {
+        if (data.type === 'host:presentation-support') {
+            wrapperOrigin = origin;
+            button.hidden = data.supported !== true;
+            if (button.hidden) showPresentation(false);
+        } else if (data.type === 'host:presentation-ended') {
+            showPresentation(false);
+        } else if (data.type === 'host:always-on-top-support') {
             wrapperOrigin = origin;
             pinned = data.supported === true;
             if (pinned) reply('tool:always-on-top', {enabled:true});
@@ -496,13 +952,25 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
             const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
             reply('tool:tool-context', {requestId:data.requestId, context:[
                 `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
-                window.weatherLessonContext?.(), lesson
+                window.weatherLessonContext?.(), window.directorTeachingContext?.(), window.directorStudioContext?.(), lesson
             ].filter(Boolean).join('\n')});
         }
     });
     parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
     window.addEventListener('pagehide', () => {
+        if (presenting) parent.postMessage({channel, type:'tool:presentation', active:false}, wrapperOrigin);
         if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
     });
 })();
-</script></html>
+
+(() => {
+    if (parent === window) return;
+    function reportPage() {
+      const grade = /^#g[3-9]$/.test(location.hash) ? location.hash : '';
+      const page = "g3-03-teacher/index.html" + '';
+      parent.postMessage({channel:'aichat.external-tool.v1', type:'tool:director-page', page}, '*');
+    }
+    addEventListener('pageshow', reportPage);
+    addEventListener('hashchange', reportPage);
+    reportPage();
+  })();</script></html>

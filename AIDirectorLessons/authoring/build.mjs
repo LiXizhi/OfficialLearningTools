@@ -1,7 +1,10 @@
 // Generate standalone course pages aligned with the K-12 AI General Education Curriculum Design PPT
 // and Second Brain (c:/lxzsrc/LiXizhiDocs) Super-Individual turnkey authoring standards.
 import fs from 'node:fs';
-import {classroomActivity, featuredActivities} from './activity.mjs';
+import {classroomActivity} from './activity.mjs';
+import {catalogStyle, renderCatalog} from './catalog.mjs';
+import {projectLesson} from './project-lessons.mjs';
+import {studioPage, studios} from './studio.mjs';
 import {weatherPage} from './weather/page.mjs';
 import {
   renderLesson1Student,
@@ -23,12 +26,41 @@ function save(path, title, body, script = '') {
   const dest = new URL('../' + path, import.meta.url);
   fs.mkdirSync(fileURLToPath(new URL('./', dest)), {recursive: true});
   if (path !== 'index.html') {
-    const control = '<button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button>';
+    const [grade, number, mode] = path.split('/')[0].split('-');
+    const id = grade + '-' + number;
+    const index = (Number(grade.slice(1)) - 3) * 8 + Number(number) - 1;
+    const special = [0,19,44].includes(index);
+    const studio = studioPage(id, mode === 'teacher', lessons[index][0], special);
+    if (special) {
+      body += studio.body;
+      body = body.replace('class="endlinks">', 'class="endlinks"><a href="#studio-extension">拓展挑战</a>');
+    } else {
+      const headerEnd = body.indexOf('</header>') + '</header>'.length;
+      body = body.slice(0,headerEnd) + studio.body + '<details><summary>打开原课实验、工具箱与教案</summary>' + body.slice(headerEnd) + '</details>';
+    }
+    script += '\n' + studio.script;
+    const control = '<button type="button" id="lesson-fullscreen" hidden aria-pressed="false">全屏</button>';
     if (body.includes('class="mast"')) body = body.replace('</span></div>', '</span>' + control + '</div>');
     else body = body.replace('</nav>', control + '</nav>');
-    script += '\n' + read('lesson-window.js');
+    script = read('chat-copy.js') + '\n' + script + '\n' + read('lesson-window.js');
   }
-  const out = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + html(title) + ' · ' + course + '</title><style>' + style + '</style><main>' + body + '</main>' + (script ? '<script>' + script + '</script>' : '') + '</html>';
+  // Announce the generated page identity, including back/forward and grade anchors.
+  script += `
+(() => {
+    if (parent === window) return;
+    function reportPage() {
+      const grade = /^#g[3-9]$/.test(location.hash) ? location.hash : '';
+      const page = ${JSON.stringify(path)} + ${path === 'index.html' ? 'grade' : "''"};
+      parent.postMessage({channel:'aichat.external-tool.v1', type:'tool:director-page', page}, '*');
+    }
+    addEventListener('pageshow', reportPage);
+    addEventListener('hashchange', reportPage);
+    reportPage();
+  })();`;
+  const isIndex = path === 'index.html';
+  const pageTitle = isIndex ? html(course) : html(title) + ' · ' + course;
+  const pageStyle = isIndex ? catalogStyle : style;
+  const out = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + pageTitle + '</title><style>' + pageStyle + '</style><main>' + body + '</main>' + (script ? '<script>' + script + '</script>' : '') + '</html>';
   fs.writeFileSync(dest, out.replace(/[ \t]+$/gm, ''));
 }
 
@@ -81,12 +113,14 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
     }
     const start = p === 'P' ? '在 Paracraft 的创作入口新建一个空白世界。' : '在 AIChat 主对话中说出你的任务。';
 
-    let b = '<nav><a href="../index.html#g' + g + '">← 课程目录</a><span>' + course + ' · 培养超级个体（碳基真人+硅基分身）</span></nav>';
-    b += '<header><small>' + html(meta.stage) + ' / 第 ' + n + ' 课（' + html(chapter) + '） · ' + role + ' · ' + (i === 0 ? '🚀 开箱即用旗舰样课' : sample ? '🌟 示范互动样课' : '⚡ 通识标准课') + '</small>';
-    b += '<h1>' + html(title) + '</h1>';
-    b += '<div class="tag-row"><span class="pill dark">' + html(chapter) + '</span><span class="pill">' + html(meta.theme) + '</span><span class="pill">工具环境：' + html(platform) + '</span><span class="pill">' + (teacher ? '🖥️ 普通教室大屏直授' : '🦸 学生机房独立闯关') + '</span></div>';
-    b += '<p>' + html(sample?.intro || ('【学段重点】' + meta.focus)) + '</p></header>';
+    const lessonId = 'g'+g+'-'+String(n).padStart(2,'0');
+    const counterpart = '../'+lessonId+'-'+(teacher?'student':'teacher')+'/index.html';
+    let b = '<nav><a href="../index.html#g'+g+'">← 课程目录</a><a href="'+counterpart+'">'+(teacher?'看学生上机页':'看教师大屏页')+' →</a></nav>';
+    b += '<header class="lesson-entry '+mode+'"><small>'+g+' 年级 · 第 '+n+' 课 · '+(p==='P'?'Paracraft':'AIChat')+'</small>';
+    b += '<div class="entry-role">'+(teacher?'教师大屏 · 全班共用一块屏':'学生上机 · 我的制作手账')+'</div>';
+    b += '<h1>'+html(title)+'</h1><p><strong>本课目标　</strong>'+html(studios[lessonId].objective || normal)+'</p></header>';
 
+    const materialStart = b.length;
     if (i === 0 && sample) {
       // Flagship Turnkey Lesson 1 (g3-01-teacher & g3-01-student)
       const labHtml = classroomActivity(0, sample);
@@ -130,7 +164,7 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
       } else {
         b += section('🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）', list([
           '【第1步｜明确问题与环境准备】' + start + ' 回顾课堂导入问题：' + classroom,
-          '【第2步｜说出意图与基础实操】使用上方【一键复制 AI 工作台文字】或进入 Paracraft：' + task,
+          '【第2步｜说出意图与基础实操】使用上方【和 AI 聊】或进入 Paracraft：' + task,
           '【第3步｜核对第一轮证据】检查是否达到预期结果：' + normal,
           '【第4步｜控制变量对比实验】只改变一个条件再运行一次：' + change,
           '【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。'
@@ -162,33 +196,16 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
     }
 
     b += '<footer><a '+(p === 'A' ? 'data-chat-link ' : '')+'class="action" target="_blank" rel="noopener" href="' + (p === 'P' ? pc : ai) + '">打开 ' + (p === 'P' ? 'Paracraft' : 'AIChat') + ' 实操环境 ↗</a> <a href="../g' + g + '-' + String(n).padStart(2, '0') + '-' + (teacher ? 'student' : 'teacher') + '/index.html">切换到：' + (teacher ? '学生上机课' : '教师大屏课') + ' →</a></footer>';
+    if (i === 0 || i === 44) {
+      const archive = b.slice(materialStart);
+      const page = projectLesson(i === 0, teacher, archive);
+      save(path, title + ' · ' + role, page.body, quizJs + '\n' + TURNKEY_RUNTIME_JS + '\n' + page.script);
+      continue;
+    }
     save(path, title + ' · ' + role, b, (sample ? quizJs + '\n' : '') + TURNKEY_RUNTIME_JS);
   }
   catalog.push({idx: i, g, n, chapter, title, platform: p === 'P' ? 'Paracraft' : 'AIChat', sample: Boolean(sample), task, ...paths});
 }
 
-let index = '<header><small>面向全体学生的中小学人工智能通识教育课程体系 · 三至九年级 56 课（每学年 4 节 AIChat + 4 节 Paracraft）</small><h1>' + course + '</h1><p>' + html(framework.subtitle) + '。以培养<strong>“超级个体（碳基真人 + 硅基第二大脑与具身智能分身）”</strong>为目标，坚持<strong>“一半普通教室大屏课（老师 1 台电脑带全班发现问题、投票预测与实验验证）+ 一半机房自助动手课（学生打开直接用、不用老师帮忙，独立做出可验证作品）”</strong>，内置一键打开/复制的 AI 工作台提示词与折叠的 <code>paracraft-cli</code> / <code>CodeBlock</code> 代码。</p>'
-  + '<div class="tag-row">' + framework.mainline.map(m => '<span class="pill dark">' + html(m) + '</span>').join('') + '</div></header>';
-
-index += featuredActivities(catalog, samples);
-
-index += '<details class="card-box"><summary>📐 查看课程体系总纲：超级个体培养目标 · 四维八能 · 六大模块 · 五步教学法 · 治理底线（点击展开）</summary>'
-  + '<h3>一、“四维八能”人工智能核心素养框架</h3><div class="grid-2">'
-  + framework.competencies.map(([name, dim, desc]) => '<div class="card-box"><small>' + html(dim) + '</small><h3>' + html(name) + '</h3><p>' + html(desc) + '</p></div>').join('')
-  + '</div><h3>二、六大课程模块</h3><div class="grid-3">'
-  + framework.modules.map(([m, c, l]) => '<div class="card-box"><h3>' + html(m) + '</h3><p>' + html(c) + '</p><small>支撑素养：' + html(l) + '</small></div>').join('')
-  + '</div><h3>三、课堂实施“五步教学法”与AI使用治理四条底线</h3><div class="grid-2">'
-  + '<div class="card-box">' + list(framework.fiveSteps.map(([s, t, d]) => s + '（' + t + '）：' + d)) + '</div>'
-  + '<div class="card-box">' + list(framework.governance.map(([g, d]) => '【' + g + '】' + d)) + '</div>'
-  + '</div></details>';
-
-index += '<nav class="grades">' + grades.map((_, i) => '<a href="#g' + (i + 3) + '">' + (i + 3) + ' 年级</a>').join('') + '</nav>';
-
-for (const [gi, project] of grades.entries()) {
-  const g = gi + 3;
-  const meta = gradeMeta[gi];
-  index += '<section id="g' + g + '"><small>' + html(meta.stage) + ' · 4 节 AIChat / 4 节 Paracraft（含虚拟具身机器人） · 学习重点：' + html(meta.focus) + '</small><h2>' + g + ' 年级｜' + html(project) + '</h2><p><small>🛡️ 学段治理边界：' + html(meta.boundary) + '</small></p>'
-    + catalog.filter(x => x.g === g).map(x => '<article' + (x.sample ? ' class="sample-card"' : '') + '><div><small>第 ' + x.n + ' 课 · ' + html(x.chapter) + ' · ' + x.platform + ' · ' + (x.idx === 0 ? '🚀 开箱即用标杆样课' : x.sample ? '🌟 示范互动课件' : '⚡ 标准课时课件') + '</small><h3>' + html(x.title) + '</h3><p class="sample-desc">' + html(x.task) + '</p></div><div><a href="' + x.teacher + '">教师大屏</a>　<a href="' + x.student + '">学生上机</a></div></article>').join('') + '</section>';
-}
-
-save('index.html', course, index);
+const home = renderCatalog({course, framework, grades, gradeMeta, catalog, studios});
+save('index.html', course, home.body, home.script);
