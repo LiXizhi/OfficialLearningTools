@@ -13,7 +13,8 @@ from bs4 import BeautifulSoup
 
 ROOT = Path(__file__).resolve().parents[1]
 IMAGE_CDN = 'https://cdn.keepwork.com/keepwork/cdn/bumi-lessons/e5770abee64a32/assets/'
-WORLD = 'https://emscripten.keepwork.com/?pid=5316902'
+WORLD_TOOL = 'https://keepwork.com/api/raw/official/apps/tools/AIChat/tools/Paracraft/ParacraftTool.html'
+WORLD = WORLD_TOOL + '?pid=5316902'
 UNITS = ['身体与虚拟世界', '指令与人的判断', '已有模型与行走', '动作数据',
          '执行方式与状态', '像研究者一样验证', '从人的需要出发', '作品与分享']
 
@@ -24,8 +25,12 @@ def page(title, body, prefix=''):
         attr, local, name = match.groups()
         return f'data-local="{local}" {attr}="{IMAGE_CDN}{name}"'
     body = re.sub(r'(src|href)="((?:\.\./)?assets/([^"]+\.webp))"', image_url, body)
+    def world_link(match):
+        tag = match.group(0).replace(' target="_blank"', '')
+        return tag.replace('<a ', f'<a data-world-link="{match.group(1)}" ', 1)
+    body = re.sub(r'<a [^>]*href="' + re.escape(WORLD_TOOL) + r'\?pid=(\d+)"[^>]*>', world_link, body)
     return f'''<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="{IMAGE_CDN}"><script src="{prefix}course_images.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="bumi-images" content="{IMAGE_CDN}"><script src="{prefix}course_images.js"></script><script defer src="{prefix}world_link.js"></script><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer"><title>{escape(title)}</title><link rel="stylesheet" href="{prefix}course.css"></head>
 <body><main>{body}</main></body></html>
 '''
@@ -40,6 +45,8 @@ def local_webp(name):
 
 def worksheet(file, entries):
     raw = file.read_text(encoding='utf-8-sig').replace('姓名：', '组内代号：')
+    raw = raw.replace('https://emscripten.keepwork.com/?pid=', WORLD_TOOL + '?pid=')
+    raw = raw.replace('小布米单例世界', '小布米仿真世界').replace('（研发环境）', '')
     # Protect print-form blanks from Markdown emphasis parsing.
     raw = re.sub(r'_{3,}', 'BUMIBLANK', raw)
     doc = BeautifulSoup(markdown.markdown(raw, extensions=['tables', 'fenced_code', 'sane_lists']), 'html.parser')
@@ -137,7 +144,7 @@ def render(source):
 <div class="lesson-desk"><small id="lesson-guide"></small><h2 id="lesson-heading" tabindex="-1"></h2>
 <div id="lesson-stage"></div><section id="trial-panel" hidden><h3>本次实验记录</h3><ol id="trial-record" aria-live="polite"></ol>
 <button id="to-studio">带上记录做挑战卡 →</button></section></div>
-<a class="world-link" href="{WORLD}" target="_blank" rel="noopener noreferrer">另开 Bumi 仿真世界，对照观察 ↗</a></section>'''
+<a class="world-link" href="{WORLD}" target="_blank" rel="noopener noreferrer">打开 Bumi 仿真世界，对照观察</a></section>'''
             archive = '<details class="lesson-archive"><summary>' + ('备课材料与完整教案' if teach else '打开实验材料袋') + '</summary>' + worksheet(file, entries) + '</details>'
             # Keep worksheet and studio fields in their original order for existing saved drafts.
             if n in (1, 2, 4):
@@ -158,7 +165,7 @@ def render(source):
 <div class="hero-copy"><p class="hero-meta">小学五至六年级起点　·　8 单元 / 16 课时</p>
 <h1>和小布米一起<br>理解具身智能</h1>
 <p>走一步，停一次，换个视角。观察小布米怎样行动，再用自己的发现给同学做一张挑战卡。</p>
-<a href="{WORLD}" target="_blank" rel="noopener noreferrer">打开研发仿真世界 ↗</a></div></header>'''
+<a href="{WORLD}" target="_blank" rel="noopener noreferrer">打开小布米仿真世界</a></div></header>'''
     (ROOT/'index.html').write_text(page('Bumi 具身智能通识课', hero+'<div class="catalog">'+''.join(cards)+'</div>'),encoding='utf8')
 
 

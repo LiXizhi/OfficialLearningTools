@@ -103,8 +103,8 @@
         title.textContent = document.title;
         body.append(title);
         const world = document.createElement('a');
-        world.href = 'https://emscripten.keepwork.com/?pid=5316902';
-        world.target = '_blank';
+        world.href = document.querySelector('.world-link').href;
+        world.target = '_self';
         world.rel = 'noopener noreferrer';
         world.textContent = '打开小布米仿真世界';
         body.append(world);

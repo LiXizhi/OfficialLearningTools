@@ -91,7 +91,28 @@
         save();
         if(focus){pages[index].tabIndex=-1;pages[index].focus({preventScroll:true});film.scrollIntoView({block:'start'});}
     }
-    function expand(on){
+    const bridgeChannel = 'aichat.external-tool.v1';
+    const wrapperOrigin = new URL(location.href).origin;
+    let pinSupported = false;
+    // Capture the authored workshop before the learner creates any exhibits.
+    const workshopInstructions = [...document.querySelectorAll('#studio h2, #studio p, #studio label')]
+        .filter(node => !node.closest('.exhibit, output'))
+        .map(node => node.textContent.trim()).join('\n');
+    function lessonContext() {
+        const text = node => (node?.textContent || '').replace(/\s+/g, ' ').trim();
+        const lesson = document.querySelector('.lesson-mast');
+        return [
+            text(lesson), `当前幕：${current + 1}/${pages.length}　${pages[current].dataset.title}`,
+            '当前互动实验：' + text(document.querySelector('#classroom')),
+            ...pages.map((page, i) => {
+                const figures = [...page.querySelectorAll('img[alt]')].map(image => image.alt).filter(Boolean);
+                return `第 ${i + 1} 幕　${text(page)}` + (figures.length ? '\n图示：' + figures.join('；') : '');
+            }),
+            '教学原文：' + text(document.querySelector('.lesson-archive')),
+            '制作与试玩：' + workshopInstructions,
+        ].join('\n');
+    }
+    function expand(on, notifyHost = true){
         film.classList.toggle('expanded',on);
         document.body.classList.toggle('projecting',on);
         theater.textContent=on?'退出大屏':'放大授课';
@@ -99,7 +120,28 @@
         if (on) scheduleFit();
         else pages[current].style.removeProperty('zoom');
         if(!on) theater.focus();
+        if (notifyHost && parent !== window) {
+            parent.postMessage({channel:bridgeChannel, type:'tool:presentation', active:on}, '*');
+        }
     }
+    window.addEventListener('message', event => {
+        if (parent !== window && event.source === parent && event.origin === wrapperOrigin && event.data?.channel === bridgeChannel) {
+            if (event.data.type === 'host:always-on-top-support') {
+                pinSupported = event.data.supported === true;
+                if (pinSupported) parent.postMessage({channel:bridgeChannel, type:'tool:always-on-top', enabled:true}, wrapperOrigin);
+            } else if (event.data.type === 'host:get-tool-context' && pinSupported) {
+                parent.postMessage({channel:bridgeChannel, type:'tool:tool-context',
+                    requestId:event.data.requestId, context:lessonContext()}, wrapperOrigin);
+            }
+        }
+        if (event.source === parent && event.data?.channel === bridgeChannel &&
+            event.data.type === 'host:presentation-ended' && film.classList.contains('expanded')) {
+            expand(false, false);
+        }
+    });
+    window.addEventListener('pagehide', () => {
+        if (film.classList.contains('expanded')) expand(false);
+    });
     function experiment(){
         if(film.classList.contains('expanded'))expand(false);
         document.querySelector('#classroom').scrollIntoView({block:'start'});
