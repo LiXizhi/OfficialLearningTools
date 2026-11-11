@@ -53,7 +53,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g8">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span></nav><header><small>初中二年级（8年级 · 8课时） / 第 5 课（第5章 问答助手四象限评测） · 学生上机课 · 🌟 示范互动样课</small><h1>生成式AI与模型评测：给校园问答助手做“四象限体检”</h1><div class="tag-row"><span class="pill dark">第5章 问答助手四象限评测</span><span class="pill">打开人工智能黑箱（下）：生成式AI判断、模型评测与智能体初步</span><span class="pill">工具环境：AIChat 智能助手工作台</span><span class="pill">🦸 学生机房独立闯关</span></div><p>为什么一个敢于对未知问题说“通知里没有写，我不知道”的校园AI助手，比一个“什么问题都敢流利编出答案”的助手得分更高？今天我们化身【AI系统评测工程师】，打开检索增强（RAG）问答系统的黑箱，用科学的“四象限评测矩阵”和“控制变量实验”给校园问答助手做一次全面体检！</p></header><style>body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
+</style><main><nav><a href="../index.html#g8">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>初中二年级（8年级 · 8课时） / 第 5 课（第5章 问答助手四象限评测） · 学生上机课 · 🌟 示范互动样课</small><h1>生成式AI与模型评测：给校园问答助手做“四象限体检”</h1><div class="tag-row"><span class="pill dark">第5章 问答助手四象限评测</span><span class="pill">打开人工智能黑箱（下）：生成式AI判断、模型评测与智能体初步</span><span class="pill">工具环境：AIChat 智能助手工作台</span><span class="pill">🦸 学生机房独立闯关</span></div><p>为什么一个敢于对未知问题说“通知里没有写，我不知道”的校园AI助手，比一个“什么问题都敢流利编出答案”的助手得分更高？今天我们化身【AI系统评测工程师】，打开检索增强（RAG）问答系统的黑箱，用科学的“四象限评测矩阵”和“控制变量实验”给校园问答助手做一次全面体检！</p></header><style>body:has(.activity){background:#f4f3eb;color:#142f37;font-family:"Segoe UI","Microsoft YaHei",sans-serif}
 main:has(.activity){max-width:1360px;padding:20px clamp(16px,4vw,60px) 60px}
 main:has(.activity)>nav{padding:0 0 12px;border-bottom:1px solid #bdc9c4;font-size:.85em}
 main:has(.activity)>header{padding:18px 0 8px;border:0}
@@ -725,7 +725,7 @@ if (theme === 'stage') {
 
   </div>
 
-</section><details open><summary>🛠️ 展开上机实践步骤、随堂检测与评价标准</summary><section><h2>🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）</h2><ol><li>【第1步｜明确问题与环境准备】打开 AIChat，新建一个空白对话。 回顾课堂导入问题：抛出核心思辨题：通知只写了“周六在礼堂演出”，问地点和问票价时助手都回答“我不知道”，这两个“不知道”能得一样的分数吗？</li><li>【第2步｜说出意图与基础实操】使用上方【一键复制 AI 工作台文字】或进入 Paracraft：在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。</li><li>【第3步｜核对第一轮证据】检查是否达到预期结果：准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。</li><li>【第4步｜控制变量对比实验】只改变一个条件再运行一次：开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。</li><li>【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。</li></ol></section><section><h2>📋 动手操作分步清单</h2><p>教师大屏打开【校园AI问答助手 · 黑箱拆解与四象限评测实验室】。学生准备 AIChat 环境与测试记录表。使用模拟校历通知数据，严格遵守数据最小化原则。</p><ol><li>【第一步｜认识黑箱与四象限标准】观察画布左侧的【校园权威知识库（含[E1]时间、[E2]地点、[E3]体验区，不含票价与私人电话）】与中间的【RAG检索生成流水线】，明确“有据答对、合理拒答、无据幻觉、有据漏答”四类评判依据。</li><li>【第二步｜基准测试集逐题评测（4题）】在工作台中依次点击第1—4题，对照当前知识库证据，为助手的4条回答选出准确的评测分类，观察画布右侧【2×2四象限矩阵】与安全得分的变化。</li><li>【第三步｜控制变量实验：抽掉“地点”证据再评一次！】点击工作台下方的【🔬 控制变量：从知识库中移除[E2]地点信息】，保持助手原来的4条回答一字不改，重新思考并评测第1题（仍答“在大礼堂”）和第4题（答“未写明地点”）现在应该归入哪一类！</li><li>【第四步｜出具工程调优与治理报告】在工作台底部勾选针对“无据幻觉”和“有据漏答”的系统提示词与工程调优策略，生成《校园AI问答助手评测与治理报告》，并在 AIChat 中用新对话实测验证。</li></ol><details><summary>遇到困难时展开排障锦囊</summary><p>评测口诀（两步判定法）：第一步先遮住AI的回答，只看【当前知识库】里有没有这道题的证据？① 如果知识库【有证据】：AI答对并引证＝✅有据答对；AI答错＝❌无据或答错；AI说不知道＝⚠️有据漏答。② 如果知识库【没证据】：AI诚实说未提及＝🛡️合理拒答；AI凭空编出一个数字或地点＝❌无据幻觉！</p></details></section><section><h2>✅ 随堂自测（先判断，再看证据解析）</h2><fieldset data-answer="有据答对"><legend>知识库：『[E1]周六14:00举办科技节；[E2]地点在大礼堂（未提票价）。』 提问：『科技节在哪里举办？』 助手答：『在大礼堂（依据[E2]）。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]有明确地点证据，助手准确命中并标出依据。"></p></fieldset><fieldset data-answer="无据幻觉（高危错误）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『门票每张10元，学生半价。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库中根本没有票价信息，助手却自信地编造出“10元、半价”，属于典型的生成式AI幻觉，会严重误导师生。"></p></fieldset><fieldset data-answer="合理拒答（守住边界）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『当前通知未说明票价信息，建议咨询校团委服务台。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="面对知识库之外的缺失信息，诚实说明资料不足并提供转人工指引，做到了零幻觉。"></p></fieldset><fieldset data-answer="有据漏答（检索失败）"><legend>同一知识库（已写明在大礼堂）。 提问：『请问科技节在哪个场馆举行？』 助手答：『抱歉，通知里没有提到举办地点。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]明明写着“在大礼堂”，助手只因提问把“地点”换成了同义词“场馆”就漏检拒答，属于需优化的有据漏答。"></p></fieldset></section><section><h2>🏆 独立挑战与成果提交要求</h2><p>核心思辨题：校历通知只写了“本周六14:00在大礼堂举办科技节”。同学甲问“活动在哪个场馆？”，同学乙问“门票多少钱一张？”。如果AI助手对这两道题都回答“抱歉，通知中没有说明”，这两次“不知道”在评测表中应该得相同的评价吗？为什么？</p><details><summary>点击查看参考解析</summary><p>绝不能得相同评价！第一题问场馆，通知已明确写明“在大礼堂”，助手却说没说明，属于【⚠️ 有据漏答（检索或理解失败，需修复召回）】；第二题问票价，通知确实没有票价信息，助手诚实说明未提及而不乱编，属于【🛡️ 合理拒答（守住知识边界，零幻觉，应当得分）】。</p></details><p>【本课过程评价产出物】提交两轮（完整知识库 vs 移除地点后）的四象限评测统计数据、1条证据迁移原理解释，以及包含“引用约束+超纲转人工”的系统调优提示词。</p></section><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details></details><footer><a class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g8-05-teacher/index.html">切换到：教师大屏课 →</a></footer></main><script>for (const box of document.querySelectorAll('fieldset')) box.addEventListener('click', e=>{
+</section><details open><summary>🛠️ 展开上机实践步骤、随堂检测与评价标准</summary><section><h2>🛠️ 五步上机实践指南（学生独立闯关 · 约 25—40 分钟）</h2><ol><li>【第1步｜明确问题与环境准备】在 AIChat 主对话中说出你的任务。 回顾课堂导入问题：抛出核心思辨题：通知只写了“周六在礼堂演出”，问地点和问票价时助手都回答“我不知道”，这两个“不知道”能得一样的分数吗？</li><li>【第2步｜说出意图与基础实操】使用上方【一键复制 AI 工作台文字】或进入 Paracraft：在课堂互动评测实验室或 AIChat 中，使用覆盖“有据可答、同义提问、资料缺失、漏检测试”的标准测试集，按【有据答对、合理拒答、无据幻觉、有据漏答】四象限矩阵对助手进行量化评测。</li><li>【第3步｜核对第一轮证据】检查是否达到预期结果：准确完成4道典型测试题的四象限归类计数，理解为什么“合理拒答（诚实说不知道）”应当得分，而“无据幻觉（瞎编票价）”必须扣分。</li><li>【第4步｜控制变量对比实验】只改变一个条件再运行一次：开展控制变量实验：隐藏/删去知识库中的“礼堂地点”字段，观察原本“答在大礼堂”为何从“有据答对”变成“无据幻觉”，而“答未说明地点”变为“合理拒答”。</li><li>【第5步｜伦理自查与成果提交】对照安全规范（不录入个人隐私、如实标注AI辅助过程），整理两次实验对比记录并存入个人第二大脑。</li></ol></section><section><h2>📋 动手操作分步清单</h2><p>教师大屏打开【校园AI问答助手 · 黑箱拆解与四象限评测实验室】。学生准备 AIChat 环境与测试记录表。使用模拟校历通知数据，严格遵守数据最小化原则。</p><ol><li>【第一步｜认识黑箱与四象限标准】观察画布左侧的【校园权威知识库（含[E1]时间、[E2]地点、[E3]体验区，不含票价与私人电话）】与中间的【RAG检索生成流水线】，明确“有据答对、合理拒答、无据幻觉、有据漏答”四类评判依据。</li><li>【第二步｜基准测试集逐题评测（4题）】在工作台中依次点击第1—4题，对照当前知识库证据，为助手的4条回答选出准确的评测分类，观察画布右侧【2×2四象限矩阵】与安全得分的变化。</li><li>【第三步｜控制变量实验：抽掉“地点”证据再评一次！】点击工作台下方的【🔬 控制变量：从知识库中移除[E2]地点信息】，保持助手原来的4条回答一字不改，重新思考并评测第1题（仍答“在大礼堂”）和第4题（答“未写明地点”）现在应该归入哪一类！</li><li>【第四步｜出具工程调优与治理报告】在工作台底部勾选针对“无据幻觉”和“有据漏答”的系统提示词与工程调优策略，生成《校园AI问答助手评测与治理报告》，并在 AIChat 中用新对话实测验证。</li></ol><details><summary>遇到困难时展开排障锦囊</summary><p>评测口诀（两步判定法）：第一步先遮住AI的回答，只看【当前知识库】里有没有这道题的证据？① 如果知识库【有证据】：AI答对并引证＝✅有据答对；AI答错＝❌无据或答错；AI说不知道＝⚠️有据漏答。② 如果知识库【没证据】：AI诚实说未提及＝🛡️合理拒答；AI凭空编出一个数字或地点＝❌无据幻觉！</p></details></section><section><h2>✅ 随堂自测（先判断，再看证据解析）</h2><fieldset data-answer="有据答对"><legend>知识库：『[E1]周六14:00举办科技节；[E2]地点在大礼堂（未提票价）。』 提问：『科技节在哪里举办？』 助手答：『在大礼堂（依据[E2]）。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]有明确地点证据，助手准确命中并标出依据。"></p></fieldset><fieldset data-answer="无据幻觉（高危错误）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『门票每张10元，学生半价。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库中根本没有票价信息，助手却自信地编造出“10元、半价”，属于典型的生成式AI幻觉，会严重误导师生。"></p></fieldset><fieldset data-answer="合理拒答（守住边界）"><legend>同一知识库（未提票价）。 提问：『入场门票多少钱一张？』 助手答：『当前通知未说明票价信息，建议咨询校团委服务台。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="面对知识库之外的缺失信息，诚实说明资料不足并提供转人工指引，做到了零幻觉。"></p></fieldset><fieldset data-answer="有据漏答（检索失败）"><legend>同一知识库（已写明在大礼堂）。 提问：『请问科技节在哪个场馆举行？』 助手答：『抱歉，通知里没有提到举办地点。』</legend><button type="button" aria-pressed="false">有据答对</button><button type="button" aria-pressed="false">无据幻觉（高危错误）</button><button type="button" aria-pressed="false">合理拒答（守住边界）</button><button type="button" aria-pressed="false">有据漏答（检索失败）</button><p role="status" data-why="知识库[E2]明明写着“在大礼堂”，助手只因提问把“地点”换成了同义词“场馆”就漏检拒答，属于需优化的有据漏答。"></p></fieldset></section><section><h2>🏆 独立挑战与成果提交要求</h2><p>核心思辨题：校历通知只写了“本周六14:00在大礼堂举办科技节”。同学甲问“活动在哪个场馆？”，同学乙问“门票多少钱一张？”。如果AI助手对这两道题都回答“抱歉，通知中没有说明”，这两次“不知道”在评测表中应该得相同的评价吗？为什么？</p><details><summary>点击查看参考解析</summary><p>绝不能得相同评价！第一题问场馆，通知已明确写明“在大礼堂”，助手却说没说明，属于【⚠️ 有据漏答（检索或理解失败，需修复召回）】；第二题问票价，通知确实没有票价信息，助手诚实说明未提及而不乱编，属于【🛡️ 合理拒答（守住知识边界，零幻觉，应当得分）】。</p></details><p>【本课过程评价产出物】提交两轮（完整知识库 vs 移除地点后）的四象限评测统计数据、1条证据迁移原理解释，以及包含“引用约束+超纲转人工”的系统调优提示词。</p></section><details><summary>📦 面向教师的“六件套”课程支持与五维评价量表</summary><div class="grid-2"><div class="card-box"><h3>1. 资源与材料清单</h3><p><strong>基础包：</strong>本页互动课件/大纲、课堂学习单、公开/模拟脱敏数据。</p><p><strong>提升包：</strong>AIChat 智能助手工作台 实操环境。</p><p><strong>治理包：</strong>工具白名单、数据最小化检查单、《AI辅助创作声明》模板。</p></div><div class="card-box"><h3>2. 五维过程评价量表</h3><p>① <strong>认知理解：</strong>能否说清本课AI原理与技术边界；<br>② <strong>实践过程：</strong>是否完整保留两次对比实验记录；<br>③ <strong>项目成果：</strong>作品或结论是否有证据支撑；<br>④ <strong>反思责任：</strong>是否遵守隐私保护与AI标注规范；<br>⑤ <strong>表达交流：</strong>能否清楚汇报方案与改进方向。</p></div></div></details></details><footer><a data-chat-link class="action" target="_blank" rel="noopener" href="https://keepwork.com/chat">打开 AIChat 实操环境 ↗</a> <a href="../g8-05-teacher/index.html">切换到：教师大屏课 →</a></footer></main><script>for (const box of document.querySelectorAll('fieldset')) box.addEventListener('click', e=>{
   if (e.target.tagName !== 'BUTTON') return;
   for (const b of box.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b===e.target));
   const note=box.querySelector('p');
@@ -787,7 +787,10 @@ if (theme === 'stage') {
 
   async function openAIWorkbenchWithPrompt(promptText) {
     await copyText(promptText, 'AI 工作台提示词');
-    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    if (window.parent !== window) {
+      showToast('请在底部主对话粘贴提示词并发送。');
+      return;
+    }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
@@ -879,7 +882,7 @@ if (theme === 'stage') {
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
       await openAIWorkbenchWithPrompt(studentPromptEl.value);
-      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+      markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
 
@@ -1101,5 +1104,63 @@ if (theme === 'stage') {
       }
     });
   }
+})();
+
+// Inlined in each standalone lesson; the catalog deliberately does not pin itself.
+(() => {
+    const button = document.getElementById('lesson-fullscreen');
+    const update = () => {
+        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
+    };
+    button.onclick = async () => {
+        try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+        } catch { button.textContent = '当前浏览器不支持全屏'; }
+    };
+    document.addEventListener('fullscreenchange', update);
+    if (parent === window) return;
+    document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
+    document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
+        el.textContent = '复制提示词到主对话使用';
+    });
+    // Include folded materials and live worksheet values without reading markup,
+    // image data, file names or the contents of embedded student projects.
+    function readLesson(node) {
+        if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('img')) return node.alt;
+        if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
+        if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
+        if (node.matches('input[type=checkbox],input[type=radio]')) return node.checked ? '☑' : '☐';
+        if (node.matches('input,textarea,select')) return node.value + '\n';
+        const selected = node.matches('[aria-pressed=true],[aria-current=step]') ? '（已选）' : '';
+        const newline = node.matches('p,li,div,section,summary,button,label,h1,h2,h3,pre,br,td') ? '\n' : '';
+        return Array.from(node.childNodes, readLesson).join('') + selected + newline;
+    }
+    const channel = 'aichat.external-tool.v1';
+    let pinned = false, wrapperOrigin;
+    window.addEventListener('message', ({source, origin, data}) => {
+        if (source !== parent || data?.channel !== channel ||
+            !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
+        const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
+        if (data.type === 'host:always-on-top-support') {
+            wrapperOrigin = origin;
+            pinned = data.supported === true;
+            if (pinned) reply('tool:always-on-top', {enabled:true});
+        } else if (pinned && data.type === 'host:get-tool-context') {
+            const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
+            reply('tool:tool-context', {requestId:data.requestId, context:[
+                `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
+                window.weatherLessonContext?.(), lesson
+            ].filter(Boolean).join('\n')});
+        }
+    });
+    parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
+    window.addEventListener('pagehide', () => {
+        if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
+    });
 })();
 </script></html>

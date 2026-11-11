@@ -53,7 +53,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g3">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span></nav><header><small>小学低年级（3年级 · 8课时） / 第 1 课（第1章 AI在哪里） · 学生上机课 · 🚀 开箱即用旗舰样课</small><h1>AI在哪里：寻找身边的智能助手</h1><div class="tag-row"><span class="pill dark">第1章 AI在哪里</span><span class="pill">我身边的人工智能</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🦸 学生机房独立闯关</span></div><p>Paracraft 3D 校门口的迎宾具身机器人与刷脸门禁、科学角的拍照识花、客厅里的智能语音音箱，还有教室墙上的普通电灯开关——它们都会做出反应，到底谁才是真正的人工智能（AI）？让我们走进【校园与虚拟具身机器人 AI 探索实验室】，亲手揭开AI“会看、会听、会判断、会行动”的秘密！</p></header>
+</style><main><nav><a href="../index.html#g3">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>小学低年级（3年级 · 8课时） / 第 1 课（第1章 AI在哪里） · 学生上机课 · 🚀 开箱即用旗舰样课</small><h1>AI在哪里：寻找身边的智能助手</h1><div class="tag-row"><span class="pill dark">第1章 AI在哪里</span><span class="pill">我身边的人工智能</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🦸 学生机房独立闯关</span></div><p>Paracraft 3D 校门口的迎宾具身机器人与刷脸门禁、科学角的拍照识花、客厅里的智能语音音箱，还有教室墙上的普通电灯开关——它们都会做出反应，到底谁才是真正的人工智能（AI）？让我们走进【校园与虚拟具身机器人 AI 探索实验室】，亲手揭开AI“会看、会听、会判断、会行动”的秘密！</p></header>
 <section class="turnkey-banner student-banner" aria-label="超级个体自助闯关进度条">
   <div class="banner-top">
     <div>
@@ -1092,7 +1092,10 @@ return {
 
   async function openAIWorkbenchWithPrompt(promptText) {
     await copyText(promptText, 'AI 工作台提示词');
-    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    if (window.parent !== window) {
+      showToast('请在底部主对话粘贴提示词并发送。');
+      return;
+    }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
@@ -1184,7 +1187,7 @@ return {
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
       await openAIWorkbenchWithPrompt(studentPromptEl.value);
-      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+      markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
 
@@ -1406,5 +1409,63 @@ return {
       }
     });
   }
+})();
+
+// Inlined in each standalone lesson; the catalog deliberately does not pin itself.
+(() => {
+    const button = document.getElementById('lesson-fullscreen');
+    const update = () => {
+        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
+    };
+    button.onclick = async () => {
+        try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+        } catch { button.textContent = '当前浏览器不支持全屏'; }
+    };
+    document.addEventListener('fullscreenchange', update);
+    if (parent === window) return;
+    document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
+    document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
+        el.textContent = '复制提示词到主对话使用';
+    });
+    // Include folded materials and live worksheet values without reading markup,
+    // image data, file names or the contents of embedded student projects.
+    function readLesson(node) {
+        if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('img')) return node.alt;
+        if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
+        if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
+        if (node.matches('input[type=checkbox],input[type=radio]')) return node.checked ? '☑' : '☐';
+        if (node.matches('input,textarea,select')) return node.value + '\n';
+        const selected = node.matches('[aria-pressed=true],[aria-current=step]') ? '（已选）' : '';
+        const newline = node.matches('p,li,div,section,summary,button,label,h1,h2,h3,pre,br,td') ? '\n' : '';
+        return Array.from(node.childNodes, readLesson).join('') + selected + newline;
+    }
+    const channel = 'aichat.external-tool.v1';
+    let pinned = false, wrapperOrigin;
+    window.addEventListener('message', ({source, origin, data}) => {
+        if (source !== parent || data?.channel !== channel ||
+            !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
+        const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
+        if (data.type === 'host:always-on-top-support') {
+            wrapperOrigin = origin;
+            pinned = data.supported === true;
+            if (pinned) reply('tool:always-on-top', {enabled:true});
+        } else if (pinned && data.type === 'host:get-tool-context') {
+            const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
+            reply('tool:tool-context', {requestId:data.requestId, context:[
+                `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
+                window.weatherLessonContext?.(), lesson
+            ].filter(Boolean).join('\n')});
+        }
+    });
+    parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
+    window.addEventListener('pagehide', () => {
+        if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
+    });
 })();
 </script></html>

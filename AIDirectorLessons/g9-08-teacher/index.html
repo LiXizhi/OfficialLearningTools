@@ -53,7 +53,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g9">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span></nav><header><small>初中三年级（9年级 · 8课时） / 第 8 课（第8章 项目路演与伦理治理答辩） · 教师大屏课 · ⚡ 通识标准课</small><h1>AI伦理与安全（二）：智慧校园项目成果展示与伦理治理答辩</h1><div class="tag-row"><span class="pill dark">第8章 项目路演与伦理治理答辩</span><span class="pill">AI+校园综合项目与伦理安全治理</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🖥️ 普通教室大屏直授</span></div><p>【学段重点】面向真实校园用户完成需求访谈、MVP规划、原型开发、可用性测试、数据脱敏治理与公开伦理答辩</p></header><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>围绕“认知理解、实践过程、项目成果、反思责任、表达交流”五个评价维度进行结题展演；现场接受评委提出的1项需求变更或伦理追问，演示小步修改并说明技术边界。</p><p><strong>基础达标证据：</strong>完整展示从问题定义、数据模型、工具协作到两轮测试迭代的过程证据链，清楚说明哪些判断由团队亲自做出、AI的适用边界在哪里。</p><p><strong>控制变量/进阶探究：</strong>针对现场提出的新需求或极端异常情况，用实验数据辩护应该“立即采纳修改、缩小范围实现还是因伦理风险拒绝采纳”。</p><p><strong>学段安全与伦理边界：</strong>结合技术原理开展跨学科项目实践，完整保留提示词、数据来源、测试证据、AI使用声明与安全审查记录。</p></section>
+</style><main><nav><a href="../index.html#g9">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>初中三年级（9年级 · 8课时） / 第 8 课（第8章 项目路演与伦理治理答辩） · 教师大屏课 · ⚡ 通识标准课</small><h1>AI伦理与安全（二）：智慧校园项目成果展示与伦理治理答辩</h1><div class="tag-row"><span class="pill dark">第8章 项目路演与伦理治理答辩</span><span class="pill">AI+校园综合项目与伦理安全治理</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🖥️ 普通教室大屏直授</span></div><p>【学段重点】面向真实校园用户完成需求访谈、MVP规划、原型开发、可用性测试、数据脱敏治理与公开伦理答辩</p></header><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>围绕“认知理解、实践过程、项目成果、反思责任、表达交流”五个评价维度进行结题展演；现场接受评委提出的1项需求变更或伦理追问，演示小步修改并说明技术边界。</p><p><strong>基础达标证据：</strong>完整展示从问题定义、数据模型、工具协作到两轮测试迭代的过程证据链，清楚说明哪些判断由团队亲自做出、AI的适用边界在哪里。</p><p><strong>控制变量/进阶探究：</strong>针对现场提出的新需求或极端异常情况，用实验数据辩护应该“立即采纳修改、缩小范围实现还是因伦理风险拒绝采纳”。</p><p><strong>学段安全与伦理边界：</strong>结合技术原理开展跨学科项目实践，完整保留提示词、数据来源、测试证据、AI使用声明与安全审查记录。</p></section>
 <section class="card-box turnkey-standard-box" aria-label="开箱即用AI工作台与Paracraft工具箱">
   <h2>⚡ 开箱即用工具箱（培养超级个体：一键复制提示词 / 一键打开工作台）</h2>
   <p class="toast-bar" id="turnkey-toast" role="status" aria-live="polite">💡 点击下方按钮即可一键复制本课 AI 工作台提示词，或直接打开 AI 工作台与 Paracraft！</p>
@@ -156,7 +156,10 @@ end)</code></pre>
 
   async function openAIWorkbenchWithPrompt(promptText) {
     await copyText(promptText, 'AI 工作台提示词');
-    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    if (window.parent !== window) {
+      showToast('请在底部主对话粘贴提示词并发送。');
+      return;
+    }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
@@ -248,7 +251,7 @@ end)</code></pre>
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
       await openAIWorkbenchWithPrompt(studentPromptEl.value);
-      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+      markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
 
@@ -470,5 +473,63 @@ end)</code></pre>
       }
     });
   }
+})();
+
+// Inlined in each standalone lesson; the catalog deliberately does not pin itself.
+(() => {
+    const button = document.getElementById('lesson-fullscreen');
+    const update = () => {
+        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
+    };
+    button.onclick = async () => {
+        try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+        } catch { button.textContent = '当前浏览器不支持全屏'; }
+    };
+    document.addEventListener('fullscreenchange', update);
+    if (parent === window) return;
+    document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
+    document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
+        el.textContent = '复制提示词到主对话使用';
+    });
+    // Include folded materials and live worksheet values without reading markup,
+    // image data, file names or the contents of embedded student projects.
+    function readLesson(node) {
+        if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('img')) return node.alt;
+        if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
+        if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
+        if (node.matches('input[type=checkbox],input[type=radio]')) return node.checked ? '☑' : '☐';
+        if (node.matches('input,textarea,select')) return node.value + '\n';
+        const selected = node.matches('[aria-pressed=true],[aria-current=step]') ? '（已选）' : '';
+        const newline = node.matches('p,li,div,section,summary,button,label,h1,h2,h3,pre,br,td') ? '\n' : '';
+        return Array.from(node.childNodes, readLesson).join('') + selected + newline;
+    }
+    const channel = 'aichat.external-tool.v1';
+    let pinned = false, wrapperOrigin;
+    window.addEventListener('message', ({source, origin, data}) => {
+        if (source !== parent || data?.channel !== channel ||
+            !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
+        const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
+        if (data.type === 'host:always-on-top-support') {
+            wrapperOrigin = origin;
+            pinned = data.supported === true;
+            if (pinned) reply('tool:always-on-top', {enabled:true});
+        } else if (pinned && data.type === 'host:get-tool-context') {
+            const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
+            reply('tool:tool-context', {requestId:data.requestId, context:[
+                `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
+                window.weatherLessonContext?.(), lesson
+            ].filter(Boolean).join('\n')});
+        }
+    });
+    parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
+    window.addEventListener('pagehide', () => {
+        if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
+    });
 })();
 </script></html>

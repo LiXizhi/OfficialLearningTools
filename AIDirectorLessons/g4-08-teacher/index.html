@@ -53,7 +53,7 @@ pre{background:#122326;color:#e6f4f1;padding:14px 16px;border-radius:10px;overfl
 .portfolio-out{background:#142b29;color:#a8ffdb;font-size:.86em}
 @media(max-width:860px){.mission-track{grid-template-columns:1fr 1fr}.turnkey-banner{position:static}}
 @media(min-width:1100px){body:has(nav span){font-size:19px}}
-</style><main><nav><a href="../index.html#g4">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span></nav><header><small>小学中年级（4年级 · 8课时） / 第 8 课（第5章 模型初体验（样本优化）） · 教师大屏课 · ⚡ 通识标准课</small><h1>模型初体验（二）：补充多样性样本让识别更准</h1><div class="tag-row"><span class="pill dark">第5章 模型初体验（样本优化）</span><span class="pill">数据让机器变聪明（上）：数据、标注与规则算法</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🖥️ 普通教室大屏直授</span></div><p>【学段重点】认识数据、算法、模型三要素，体验数据采集、分类标注、流程图条件判断与简单模型测试</p></header><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>针对上一课盲盒测试中认错的物品（如把彩色卡纸认成塑料），补充多样化正反例样本更新识别经验，在 Paracraft 中完成《智能分拣闯关小游戏》。</p><p><strong>基础达标证据：</strong>记录补样本前后的10件物品测试总分与具体错例变化，验证补充多样化样本能减少同类误判。</p><p><strong>控制变量/进阶探究：</strong>邀请邻桌同学试玩自己设计的分拣闯关游戏，根据对方找出的漏洞再补充1条代表性样本。</p><p><strong>学段安全与伦理边界：</strong>在教师提供的模拟数据集与3D场景中开展标注和规则实验，使用公开或虚拟物品数据。</p></section>
+</style><main><nav><a href="../index.html#g4">← 课程目录</a><span>超级学生AI通识课 · 培养超级个体（碳基真人+硅基分身）</span><button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button></nav><header><small>小学中年级（4年级 · 8课时） / 第 8 课（第5章 模型初体验（样本优化）） · 教师大屏课 · ⚡ 通识标准课</small><h1>模型初体验（二）：补充多样性样本让识别更准</h1><div class="tag-row"><span class="pill dark">第5章 模型初体验（样本优化）</span><span class="pill">数据让机器变聪明（上）：数据、标注与规则算法</span><span class="pill">工具环境：Paracraft 3D虚拟仿真（含虚拟具身机器人）</span><span class="pill">🖥️ 普通教室大屏直授</span></div><p>【学段重点】认识数据、算法、模型三要素，体验数据采集、分类标注、流程图条件判断与简单模型测试</p></header><section class="card-box"><h2>🎯 本课教什么（核心教学目标与评价证据）</h2><p><strong>核心任务：</strong>针对上一课盲盒测试中认错的物品（如把彩色卡纸认成塑料），补充多样化正反例样本更新识别经验，在 Paracraft 中完成《智能分拣闯关小游戏》。</p><p><strong>基础达标证据：</strong>记录补样本前后的10件物品测试总分与具体错例变化，验证补充多样化样本能减少同类误判。</p><p><strong>控制变量/进阶探究：</strong>邀请邻桌同学试玩自己设计的分拣闯关游戏，根据对方找出的漏洞再补充1条代表性样本。</p><p><strong>学段安全与伦理边界：</strong>在教师提供的模拟数据集与3D场景中开展标注和规则实验，使用公开或虚拟物品数据。</p></section>
 <section class="card-box turnkey-standard-box" aria-label="开箱即用AI工作台与Paracraft工具箱">
   <h2>⚡ 开箱即用工具箱（培养超级个体：一键复制提示词 / 一键打开工作台）</h2>
   <p class="toast-bar" id="turnkey-toast" role="status" aria-live="polite">💡 点击下方按钮即可一键复制本课 AI 工作台提示词，或直接打开 AI 工作台与 Paracraft！</p>
@@ -156,7 +156,10 @@ end)</code></pre>
 
   async function openAIWorkbenchWithPrompt(promptText) {
     await copyText(promptText, 'AI 工作台提示词');
-    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    if (window.parent !== window) {
+      showToast('请在底部主对话粘贴提示词并发送。');
+      return;
+    }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
@@ -248,7 +251,7 @@ end)</code></pre>
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
       await openAIWorkbenchWithPrompt(studentPromptEl.value);
-      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+      markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
 
@@ -470,5 +473,63 @@ end)</code></pre>
       }
     });
   }
+})();
+
+// Inlined in each standalone lesson; the catalog deliberately does not pin itself.
+(() => {
+    const button = document.getElementById('lesson-fullscreen');
+    const update = () => {
+        button.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
+        button.setAttribute('aria-pressed', String(!!document.fullscreenElement));
+    };
+    button.onclick = async () => {
+        try {
+            if (document.fullscreenElement) await document.exitFullscreen();
+            else await document.documentElement.requestFullscreen();
+        } catch { button.textContent = '当前浏览器不支持全屏'; }
+    };
+    document.addEventListener('fullscreenchange', update);
+    if (parent === window) return;
+    document.querySelector('[data-chat-link]')?.replaceWith('在底部主对话继续练习');
+    document.querySelectorAll('#btn-open-aichat-prompt,.open-ai-with-target,.open-ai-textarea-btn').forEach(el => {
+        el.textContent = '复制提示词到主对话使用';
+    });
+    // Include folded materials and live worksheet values without reading markup,
+    // image data, file names or the contents of embedded student projects.
+    function readLesson(node) {
+        if (node.nodeType === Node.TEXT_NODE) return node.nodeValue;
+        if (node.nodeType !== Node.ELEMENT_NODE) return '';
+        if (node.matches('style,script,iframe,canvas,template')) return '';
+        if (node.matches('img')) return node.alt;
+        if (node.matches('svg')) return node.getAttribute('aria-label') || node.textContent;
+        if (node.matches('input[type=password],input[type=file],input[type=hidden]')) return '';
+        if (node.matches('input[type=checkbox],input[type=radio]')) return node.checked ? '☑' : '☐';
+        if (node.matches('input,textarea,select')) return node.value + '\n';
+        const selected = node.matches('[aria-pressed=true],[aria-current=step]') ? '（已选）' : '';
+        const newline = node.matches('p,li,div,section,summary,button,label,h1,h2,h3,pre,br,td') ? '\n' : '';
+        return Array.from(node.childNodes, readLesson).join('') + selected + newline;
+    }
+    const channel = 'aichat.external-tool.v1';
+    let pinned = false, wrapperOrigin;
+    window.addEventListener('message', ({source, origin, data}) => {
+        if (source !== parent || data?.channel !== channel ||
+            !(origin === location.origin || ['https://keepwork.com','https://cdn.keepwork.com'].includes(origin))) return;
+        const reply = (type, fields) => parent.postMessage({channel, type, ...fields}, origin);
+        if (data.type === 'host:always-on-top-support') {
+            wrapperOrigin = origin;
+            pinned = data.supported === true;
+            if (pinned) reply('tool:always-on-top', {enabled:true});
+        } else if (pinned && data.type === 'host:get-tool-context') {
+            const lesson = readLesson(document.querySelector('main')).replace(/[ \t]+/g,' ').replace(/\n\s*\n/g,'\n').trim();
+            reply('tool:tool-context', {requestId:data.requestId, context:[
+                `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
+                window.weatherLessonContext?.(), lesson
+            ].filter(Boolean).join('\n')});
+        }
+    });
+    parent.postMessage({channel, type:'tool:ready', capabilities:['tool-context']}, '*');
+    window.addEventListener('pagehide', () => {
+        if (pinned) parent.postMessage({channel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
+    });
 })();
 </script></html>

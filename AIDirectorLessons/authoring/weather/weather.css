@@ -41,7 +41,5 @@ main:has(.fieldbook){padding:0 4vw 36px;max-width:1320px;margin:auto}
 .fieldbook .prompt details{padding:6px 0;background:transparent;border:0;border-radius:0;margin:6px 0}
 .fieldbook .prompt summary{font-size:.88em}.fieldbook input[type=file]{display:block;width:100%;font:inherit;font-size:.85em}
 .fieldbook .returned{width:100%;height:300px;border:1px solid var(--rule);background:white}
-.fieldbook .sessionbar{position:sticky;top:0;z-index:4;background:#f5f1e5f5;border-bottom:1px solid var(--rule);display:flex;justify-content:flex-start;gap:8px;padding:7px 0}.sessionbar b,.sessionbar small{font-size:.8em}.fieldbook[data-role=teacher] #desk{scroll-margin-top:65px}
-@media(max-width:580px){.sessionbar small{display:none}.fieldbook .sessionbar button{font-size:.83em;padding:7px 10px}}
 .fieldbook[data-role=teacher] #lead{font-size:1.12em}
 @media(max-width:730px){main:has(.fieldbook){padding:0 14px 32px}.fieldbook .mast{min-height:50px;gap:5px}.fieldbook .hero{grid-template-columns:1fr;margin:15px 0}.hero-copy{padding:16px 4px}.fieldbook .hero figure{min-height:135px;max-height:160px}.fieldbook .panels{grid-template-columns:1fr}.strip button{font-size:.8rem;padding:9px 3px;text-align:center}.strip button small{font-size:.66rem}.workhead{margin-top:18px}.fieldbook .mast b{font-size:.88rem}}

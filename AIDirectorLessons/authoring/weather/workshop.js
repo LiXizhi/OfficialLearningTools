@@ -36,7 +36,7 @@
         '把 AI 的方案读给大家。问：“今天只做一道题，哪一步可以删掉？”在下方写下全班选定的玩法和一个验收条件。',
         '投屏念出生图描述，请一位同学决定主角和留白位置。把第一张图放进封面看一眼，再决定采用还是重新描述。',
         '让大家看清空工作区、选中的封面和生成的文件。点开 index.html，请一位同学站到电脑前，自己完成第一次试玩。',
-        '请试玩者说：“我点了……我看到……我希望……” 带着他的原话回制作会话。只改一处，再请他用同一动作试一次。'
+        '请试玩者说：“我点了……我看到……我希望……” 带着他的原话回主对话。只改一处，再请他用同一动作试一次。'
     ];
     const studentGuide = [
         '先选一个你想给三年级同学做的挑战。读材料，挑一件你还没弄懂的事问 AI。看到回复后，再追问一句。',
@@ -47,8 +47,8 @@
     ];
     const notes = ['我还想追问的一句话','我选的玩法和验收条件','我选哪张图，为什么','第一版试玩时，我看到了什么','第二版重测的结果'];
     const placeholders = ['例如：为什么从 20 开始数？换一张图我还会读吗？','例如：一题三选一；同学不用听我解释就能选答案。','例如：我选主角靠左的图，右边放标题还能看清温度计。','例如：我故意选错，页面只说“再试试”。','例如：这次选错后有读图提示，我能独立再答一次。'];
-    const modeGuides = ['在 Ask 中对话。把不懂的地方换成你自己的话。','在输入框旁选择 Plan，看过方案后自己做决定。','从 Plan 切到 Craft，让 AI 调用生图工具。','使用 Craft 执行计划，确认文件写入本课工作空间。','在同一个制作会话追问，再用 Craft 修改。'];
-    function basePrompt() {
+    const modeGuides = ['在 Ask 中对话。把不懂的地方换成你自己的话。','在输入框旁选择 Plan，看过方案后自己做决定。','从 Plan 切到 Craft，让 AI 调用生图工具。','使用 Craft 执行计划，确认文件写入本课工作空间。','在同一个主对话追问，再用 Craft 修改。'];
+    function basePrompt(step = state.step) {
         const p = project(), t = track();
         const goal = '我想为第一次来校园气象站的三年级同学做《' + title() + '》，主题是' + t.name + '。';
         const facts = sources.join('') + '本题使用模拟练习数据。' + t.data;
@@ -59,7 +59,7 @@
             '请用生图工具为《' + title() + '》生成一张横向封面。主体是' + t.subject + '，' + p.style + '风格，' + p.side + '留出放标题的空白。画面干净，无文字和数字。图用于封面，答题刻度和数据另画。把图片保存在本课工作区并告诉我文件名。',
             goal + '请在本课工作区创建第一版 index.html。采用我的计划：' + (own[1] || '一道题，选择答案后显示反馈，允许再试。') + '封面用刚才选中的图片。选图说明：' + (own[2] || '使用本会话中我选的封面。') + '用代码按以下数据绘制题图：' + facts + '首次打开隐藏答案。请把封面内嵌进 HTML，使文件离线也能单独打开。做完告诉我打开哪里试玩。',
             '请根据这次真实试玩，和我一起改进《' + title() + '》。我观察到：' + (own[3] || '〔先在左边记录实际现象〕') + '。我希望：' + (p.feedback || '〔写入一个想改的地方〕') + '。请先给两个改法，等我选定。实施时保留 index.html，把新版另存为 index-v2.html，告诉我怎样用相同操作重测。'
-        ][state.step];
+        ][step];
     }
     function currentPrompt() { return project().edits[state.step] ?? basePrompt(); }
     function followUp() {
@@ -68,14 +68,16 @@
         const choiceText=p.notes[state.step]?.trim() || fallback[state.step];
         return [choiceText,choiceText+' 请把这个选择整理成三步计划和一个可以实际检验的条件。',choiceText+' 请按我的这个决定修改封面描述，保留上一张图以便比较。',choiceText+' 请解释可能的原因，再问我想改哪里。',(p.feedback || fallback[4])+'。请按这个选择改出 index-v2.html，保留第一版；提醒我用同一个动作复测。'][state.step];
     }
-    function handoffText() {
-        return '我是五年级老师，正在投屏做《'+title()+'》。现在到“'+phases[state.step]+'”。'+lectureGuide[state.step]+'\n班上的意见：'+(project().notes[state.step]||'还在征集')+'。请只给一句能让大家观察或试用作品的问题。';
-    }
     function refreshHandoffs() {
         const p=project(), s=state.step;
         $('follow-text').value=p.followEdits?.[s] ?? followUp();
-        if(teacher)$('lecture-text').value=p.lectureEdits?.[s] ?? handoffText();
     }
+    window.weatherLessonContext = () => {
+        const p = project();
+        return ['当前步骤：' + phases[state.step] + ' · ' + title(), ...phases.map((phase,i) =>
+            [phase, titles[i], (teacher ? lectureGuide : studentGuide)[i], modeGuides[i],
+             p.edits[i] ?? basePrompt(i), notes[i], p.notes[i], p.followEdits?.[i]].filter(Boolean).join('｜'))].join('\n');
+    };
     const returned = new Map();
     function fileKey(version) { return state.track+'-'+version; }
     function previewControls() {
@@ -208,30 +210,6 @@
         const script='const replies='+JSON.stringify(feedback).replaceAll('<','\\u003c')+';document.querySelectorAll("button").forEach(b=>b.onclick=()=>document.querySelector("output").textContent=replies[Number(b.dataset.value)]);';
         download('气象挑战-课内示例.html','<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(title())+'</title><style>body{max-width:560px;margin:24px auto;padding:12px;background:#faf5e8;color:#183e33;font:19px/1.6 system-ui}img{width:100%;max-height:180px;object-fit:cover}svg{width:100%;height:200px}button{padding:12px;margin:4px;font:inherit}output{display:block}</style>'+contents+'<small>课内模拟作品 · 示意封面 · 模拟练习数据</small><script>'+script+'<\/script></html>','text/html;charset=utf-8');
     }
-    const windows = {};
-    async function openChat(fieldId='request') {
-        const lecture=fieldId==='lecture-text';
-        const url=new URL(location.protocol.startsWith('http') && /^(localhost|127\.0\.0\.1)$/.test(location.hostname) && /\/tools\/OfficialLearningTools\//.test(location.pathname) ? '../../../../AIChat.html' : 'https://keepwork.com/chat',location.href);
-        const space='Weather-'+book.dataset.role+'-'+state.run+'-'+(lecture?'class':state.track);
-        url.searchParams.set('workspace',space);
-        url.searchParams.set('chat',state.opened?.[space] ? 'workspace' : 'new');
-        const name=space;
-        const field=$(fieldId);
-        const copying=copy(field.value,field);
-        // Open in the click gesture. Focusing a live session must not reload it or send a prompt.
-        let popup=windows[name];
-        if (!popup || popup.closed) { popup=window.open(url.href,name); windows[name]=popup; }
-        else popup.focus();
-        if(!popup){
-            const copied=await copying;
-            message('窗口被拦截。允许本页打开弹窗后再点一次。'+(copied?'委托已复制。':'可先按 Ctrl/Cmd+C 或长按复制选中的文字。'));
-            return;
-        }
-        (state.opened ||= {})[space]=true;save();
-        const p=project();
-        if(fieldId==='request'){(p.sent ||= {})[state.step]=field.value;save();}
-        if(await copying) message('已复制'+(lecture?'讲课':'制作')+'委托。在工作台底部粘贴并发送；之后回到本页记下决定。');
-    }
     async function importCover(file) {
         if(!file)return;
         const p=project();
@@ -265,18 +243,9 @@
             catch{message('文件没有读成功，请重新选择。');}
         }
     };
-    $('copy').onclick=async()=>{if(await copy($('request').value,$('request')))message('已复制。切到你的制作会话，粘贴后可以继续改。');};
-    $('make').onclick=()=>openChat();
-    $('follow-open').onclick=()=>openChat('follow-text');
+    $('copy').onclick=async()=>{if(await copy($('request').value,$('request')))message('已复制。切到你的主对话，粘贴后可以继续改。');};
     $('follow-copy').onclick=async()=>{if(await copy($('follow-text').value,$('follow-text')))message('追问已复制，可在原会话继续。');};
     $('follow-text').oninput=()=>{(project().followEdits ||= {})[state.step]=$('follow-text').value;save();};
-    if(teacher){
-        $('lecture-tab').onclick=()=>{ $('lecture-card').open=true;openChat('lecture-text'); };
-        $('make-tab').onclick=()=>openChat();
-        $('lecture').onclick=()=>openChat('lecture-text');
-        $('lecture-copy').onclick=async()=>{if(await copy($('lecture-text').value,$('lecture-text')))message('讲课文字已复制。');};
-        $('lecture-text').oninput=()=>{(project().lectureEdits ||= {})[state.step]=$('lecture-text').value;save();};
-    }
     $('example').onclick=showExample;
     $('speak').onclick=()=>{if(!window.speechSynthesis){message('此浏览器没有朗读功能，可直接阅读上方引导。');return;}
         speechSynthesis.cancel();const speech=new SpeechSynthesisUtterance(titles[state.step]+'。'+$('lead').textContent);speech.lang='zh-CN';speechSynthesis.speak(speech);};

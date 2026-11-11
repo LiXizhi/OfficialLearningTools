@@ -94,21 +94,25 @@
     const bridgeChannel = 'aichat.external-tool.v1';
     const wrapperOrigin = new URL(location.href).origin;
     let pinSupported = false;
-    // Capture the authored workshop before the learner creates any exhibits.
-    const workshopInstructions = [...document.querySelectorAll('#studio h2, #studio p, #studio label')]
-        .filter(node => !node.closest('.exhibit, output'))
-        .map(node => node.textContent.trim()).join('\n');
+    // Read the authored material, including folded sections and image captions.
+    // Free-text answers, exported exhibits and file contents stay in the worksheet.
+    function teachingText(node) {
+        if (!node) return '';
+        if (node.nodeType === Node.TEXT_NODE) return node.textContent;
+        if (node.nodeType !== Node.ELEMENT_NODE ||
+            node.matches('script,style,template,iframe,canvas,input,textarea,.exhibit,#preview1,#preview2')) return '';
+        if (node.matches('img')) return node.alt;
+        return Array.from(node.childNodes, teachingText).join(' ').replace(/\s+/g, ' ').trim();
+    }
+    const workshopInstructions = teachingText(document.querySelector('#studio'));
     function lessonContext() {
-        const text = node => (node?.textContent || '').replace(/\s+/g, ' ').trim();
-        const lesson = document.querySelector('.lesson-mast');
         return [
-            text(lesson), `当前幕：${current + 1}/${pages.length}　${pages[current].dataset.title}`,
-            '当前互动实验：' + text(document.querySelector('#classroom')),
-            ...pages.map((page, i) => {
-                const figures = [...page.querySelectorAll('img[alt]')].map(image => image.alt).filter(Boolean);
-                return `第 ${i + 1} 幕　${text(page)}` + (figures.length ? '\n图示：' + figures.join('；') : '');
-            }),
-            '教学原文：' + text(document.querySelector('.lesson-archive')),
+            `当前课件是《${document.title}》。以下是用户围绕这门课的对话。`,
+            teachingText(document.querySelector('.lesson-mast')),
+            `当前幕：${current + 1}/${pages.length}　${pages[current].dataset.title}`,
+            '当前互动实验：' + teachingText(document.querySelector('#classroom')),
+            ...pages.map((page, i) => `第 ${i + 1} 幕　${teachingText(page)}`),
+            '教学原文：' + teachingText(document.querySelector('.lesson-archive')),
             '制作与试玩：' + workshopInstructions,
         ].join('\n');
     }
@@ -139,7 +143,11 @@
             expand(false, false);
         }
     });
+    if (parent !== window) {
+        parent.postMessage({channel:bridgeChannel, type:'tool:ready', capabilities:['tool-context']}, wrapperOrigin);
+    }
     window.addEventListener('pagehide', () => {
+        if (pinSupported) parent.postMessage({channel:bridgeChannel, type:'tool:always-on-top', enabled:false}, wrapperOrigin);
         if (film.classList.contains('expanded')) expand(false);
     });
     function experiment(){

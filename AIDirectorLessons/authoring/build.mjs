@@ -22,6 +22,12 @@ const course = '超级学生AI通识课';
 function save(path, title, body, script = '') {
   const dest = new URL('../' + path, import.meta.url);
   fs.mkdirSync(fileURLToPath(new URL('./', dest)), {recursive: true});
+  if (path !== 'index.html') {
+    const control = '<button type="button" id="lesson-fullscreen" aria-pressed="false">全屏</button>';
+    if (body.includes('class="mast"')) body = body.replace('</span></div>', '</span>' + control + '</div>');
+    else body = body.replace('</nav>', control + '</nav>');
+    script += '\n' + read('lesson-window.js');
+  }
   const out = '<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>' + html(title) + ' · ' + course + '</title><style>' + style + '</style><main>' + body + '</main>' + (script ? '<script>' + script + '</script>' : '') + '</html>';
   fs.writeFileSync(dest, out.replace(/[ \t]+$/gm, ''));
 }
@@ -73,7 +79,7 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
       save(path, title + ' · ' + role, page.body, page.script);
       continue;
     }
-    const start = p === 'P' ? '在 Paracraft 的创作入口新建一个空白世界。' : '打开 AIChat，新建一个空白对话。';
+    const start = p === 'P' ? '在 Paracraft 的创作入口新建一个空白世界。' : '在 AIChat 主对话中说出你的任务。';
 
     let b = '<nav><a href="../index.html#g' + g + '">← 课程目录</a><span>' + course + ' · 培养超级个体（碳基真人+硅基分身）</span></nav>';
     b += '<header><small>' + html(meta.stage) + ' / 第 ' + n + ' 课（' + html(chapter) + '） · ' + role + ' · ' + (i === 0 ? '🚀 开箱即用旗舰样课' : sample ? '🌟 示范互动样课' : '⚡ 通识标准课') + '</small>';
@@ -155,7 +161,7 @@ for (const [i, [p, title, task, normal, change, classroom]] of lessons.entries()
       if (sample) b += '</details>';
     }
 
-    b += '<footer><a class="action" target="_blank" rel="noopener" href="' + (p === 'P' ? pc : ai) + '">打开 ' + (p === 'P' ? 'Paracraft' : 'AIChat') + ' 实操环境 ↗</a> <a href="../g' + g + '-' + String(n).padStart(2, '0') + '-' + (teacher ? 'student' : 'teacher') + '/index.html">切换到：' + (teacher ? '学生上机课' : '教师大屏课') + ' →</a></footer>';
+    b += '<footer><a '+(p === 'A' ? 'data-chat-link ' : '')+'class="action" target="_blank" rel="noopener" href="' + (p === 'P' ? pc : ai) + '">打开 ' + (p === 'P' ? 'Paracraft' : 'AIChat') + ' 实操环境 ↗</a> <a href="../g' + g + '-' + String(n).padStart(2, '0') + '-' + (teacher ? 'student' : 'teacher') + '/index.html">切换到：' + (teacher ? '学生上机课' : '教师大屏课') + ' →</a></footer>';
     save(path, title + ' · ' + role, b, (sample ? quizJs + '\n' : '') + TURNKEY_RUNTIME_JS);
   }
   catalog.push({idx: i, g, n, chapter, title, platform: p === 'P' ? 'Paracraft' : 'AIChat', sample: Boolean(sample), task, ...paths});

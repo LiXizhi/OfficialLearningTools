@@ -614,7 +614,10 @@ export const TURNKEY_RUNTIME_JS = `
 
   async function openAIWorkbenchWithPrompt(promptText) {
     await copyText(promptText, 'AI 工作台提示词');
-    postHostBridge('openUserTool', { tool: 'chat', prompt: promptText });
+    if (window.parent !== window) {
+      showToast('请在底部主对话粘贴提示词并发送。');
+      return;
+    }
     try {
       window.open(AI_URL, '_blank', 'noopener');
     } catch {}
@@ -706,7 +709,7 @@ export const TURNKEY_RUNTIME_JS = `
   if (btnOpenAiPrompt && studentPromptEl) {
     btnOpenAiPrompt.addEventListener('click', async () => {
       await openAIWorkbenchWithPrompt(studentPromptEl.value);
-      markStageDone(2, '🎉 第 2 关完成！已复制提示词并打开 AI 工作台');
+      markStageDone(2, '🎉 第 2 关完成！请在主对话粘贴提示词');
     });
   }
 
