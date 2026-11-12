@@ -32,7 +32,12 @@ input[type=text],input:not([type]),textarea{font:inherit;border:1px solid #70938
 /* Lesson workspace */
 main:has(#classroom){max-width:1070px}
 .lesson-mast{padding:8px 0 18px;background:transparent;border:0;border-radius:0}
-.lesson-mast span{float:right;color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
+
+.lesson-topline{display:flex;align-items:baseline;flex-wrap:wrap;gap:.25rem 1rem}
+.lesson-topline nav{align-items:baseline;gap:.25rem 1rem;margin:0}
+.lesson-topline nav a{background:none;color:#135e57;border-radius:0;padding:.25em 0;font-size:.88rem;text-decoration:underline}
+.lesson-topline span{margin-inline-start:auto}
+.lesson-mast span{color:#52675a}.lesson-mast h1{font-size:clamp(1.7rem,4vw,2.8rem);margin:.55em 0 0}
 .phase-strip{margin:0;gap:6px}.phase-strip button{background:#e4ece1;color:#365542;font-weight:600}
 .phase-strip button[aria-current=step]{color:white;background:#205c49}
 #classroom button:disabled,#studio button:disabled{cursor:default;opacity:.52}

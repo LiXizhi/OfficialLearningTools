@@ -137,8 +137,7 @@ def render(source):
             else:
                 cover_art = f'<figure class="lesson-art" style="--sx:{((n-1)%4)*-100}%;--sy:{((n-1)//4)*-100}%"><img src="../assets/lesson-openings.webp" alt="{escape(title)}的 AI 情境插画"></figure>'
             plan_link = f' <a href="../../BumiLessons-H5/teacher.html?download=1#l{n:02}" target="_blank" rel="noopener">下载教案（PDF）</a>' if teach else ''
-            header = f'''<header class="lesson-mast"><a href="../index.html#lesson-{n}">← 课程目录</a>
-<span>{unit}　 /　 {role}</span><div class="lesson-cover"><div><small>第 {n:02} 课　·　Bumi 具身智能</small><h1>{title}</h1><p>{escape(question)}</p></div>{cover_art}</div><nav aria-label="本课纸质材料"><a href="../../BumiLessons-H5/student.html?print=1#l{n:02}" target="_blank" rel="noopener">打印学生卡</a>{plan_link}</nav></header>'''
+            header = f'''<header class="lesson-mast"><div class="lesson-topline"><a href="../index.html#lesson-{n}">← 课程目录</a><nav aria-label="本课纸质材料"><a href="../../BumiLessons-H5/student.html?print=1#l{n:02}" target="_blank" rel="noopener">打印学生卡</a>{plan_link}</nav><span>{unit}　 /　 {role}</span></div><div class="lesson-cover"><div><small>第 {n:02} 课　·　Bumi 具身智能</small><h1>{title}</h1><p>{escape(question)}</p></div>{cover_art}</div></header>'''
             controls = f'''<section id="classroom" data-lesson="{n}" data-role="{'teacher' if teach else 'student'}">
 <nav class="phase-strip" aria-label="课堂进度"><button data-phase="0">{'全班预测' if teach else '做预测'}</button>
 <button data-phase="1">动手实验</button><button data-phase="2">做第一版</button><button data-phase="3">试玩改版</button></nav>
