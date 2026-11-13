@@ -1,0 +1,115 @@
+/* 理念篇：什么是超级个体 / 第二大脑 / 怎么工作 / 成长阶段。
+   沿用课程的纸感编辑风（paper + deep green + lime），命名全部以 idea- 前缀隔离。 */
+.idea { padding: clamp(20px, 4vw, 48px) 0 8px; }
+.idea-lead { max-width: 720px; margin: 0 0 8px; color: #43503f; font-size: 1.02rem; }
+.idea-block { margin: clamp(26px, 4vw, 46px) 0; }
+.idea-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: .78rem; letter-spacing: .14em; font-weight: 700; color: #566253; margin: 0 0 8px; }
+.idea-kicker b { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 6px; background: #23382b; color: #d3f77c; font-size: .8rem; letter-spacing: 0; }
+.idea-block h2 { font: 700 clamp(24px, 3.6vw, 40px)/1.16 "Noto Serif SC", "STSong", "SimSun", serif; letter-spacing: -.03em; margin: 0 0 6px; }
+.idea-block h2 em { font-style: normal; color: #4c7a3f; }
+.idea-sub { margin: 0 0 18px; color: #505a52; max-width: 680px; }
+.idea-card { background: #fff; border: 1px solid #d5d7cd; border-radius: 14px; padding: clamp(16px, 2.6vw, 26px); box-shadow: 0 8px 24px #232c2210; }
+.idea-note { font-size: .82rem; color: #6a7266; margin: 10px 0 0; }
+.idea-note b { color: #3d483d; }
+
+/* 碳基 + 硅基 融合图 */
+.fusion { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: stretch; }
+.fusion-side { border-radius: 12px; padding: 16px; border: 1px solid; position: relative; overflow: hidden; }
+.fusion-carbon { background: #f3f6ec; border-color: #cfd9b8; }
+.fusion-silicon { background: #eef0fb; border-color: #c9cdf0; }
+.fusion-tag { font-size: .74rem; font-weight: 700; letter-spacing: .1em; margin: 0 0 6px; }
+.fusion-carbon .fusion-tag { color: #5c7a35; }
+.fusion-silicon .fusion-tag { color: #4f46e5; }
+.fusion-side h3 { font-size: 1.15rem; margin: 0 0 8px; }
+.fusion-side ul { margin: 0; padding-left: 18px; font-size: .9rem; color: #43503f; display: grid; gap: 4px; }
+.fusion-plus { align-self: center; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #23382b; color: #d3f77c; font-size: 1.5rem; font-weight: 700; box-shadow: 0 6px 16px #232c2233; }
+.fusion-result { margin-top: 14px; border-radius: 12px; background: linear-gradient(120deg, #23382b, #2f4d33); color: #f2f6ea; padding: 16px 18px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.fusion-result strong { font: 700 1.25rem/1.2 "Noto Serif SC", "STSong", serif; color: #d3f77c; }
+.fusion-result span { font-size: .92rem; color: #dfe7d3; }
+.fusion-avatars { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.fusion-avatar { display: inline-flex; align-items: center; gap: 7px; background: #ffffff14; border: 1px solid #ffffff2e; border-radius: 99px; padding: 5px 12px 5px 6px; font-size: .82rem; color: #eef3e4; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.fusion-avatar i { font-style: normal; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #d3f77c; color: #23382b; font-size: .72rem; font-weight: 700; }
+.fusion.open .fusion-avatar { opacity: 1; transform: none; }
+.fusion.open .fusion-avatar:nth-child(2) { transition-delay: .08s; }
+.fusion.open .fusion-avatar:nth-child(3) { transition-delay: .16s; }
+.fusion.open .fusion-avatar:nth-child(4) { transition-delay: .24s; }
+.idea-toggle { margin-top: 14px; }
+
+/* 第二大脑三层 */
+.brain-layers { display: grid; gap: 10px; }
+.brain-layer { display: grid; grid-template-columns: 44px 1fr auto; gap: 14px; align-items: center; text-align: left; width: 100%; border: 1px solid #d5d7cd; border-radius: 12px; background: #fbfbf6; padding: 14px 16px; transition: border-color .2s, background .2s, transform .2s; }
+.brain-layer:hover { transform: translateX(3px); }
+.brain-layer[aria-expanded="true"] { border-color: #4c7a3f; background: #f3f6ec; }
+.brain-layer .bl-ico { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 10px; font-size: 1.3rem; background: #eef0fb; }
+.brain-layer:nth-child(1) .bl-ico { background: #f6efe2; }
+.brain-layer:nth-child(2) .bl-ico { background: #eef0fb; }
+.brain-layer:nth-child(3) .bl-ico { background: #e9f3e2; }
+.brain-layer h3 { font-size: 1.02rem; margin: 0; }
+.brain-layer p { margin: 2px 0 0; font-size: .85rem; color: #5a6355; }
+.brain-layer .bl-caret { color: #4c7a3f; font-size: 1.1rem; transition: transform .2s; }
+.brain-layer[aria-expanded="true"] .bl-caret { transform: rotate(90deg); }
+.brain-detail { grid-column: 1 / -1; overflow: hidden; max-height: 0; transition: max-height .3s ease; }
+.brain-layer[aria-expanded="true"] .brain-detail { max-height: 320px; }
+.brain-detail-inner { padding: 12px 4px 4px; font-size: .9rem; color: #43503f; display: grid; gap: 8px; }
+.brain-chip { display: inline-flex; align-items: center; gap: 6px; background: #fff; border: 1px solid #d5d7cd; border-radius: 8px; padding: 6px 10px; font-size: .82rem; }
+.brain-chip b { color: #4f46e5; font-weight: 600; }
+.brain-vs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.brain-vs > div { border-radius: 12px; padding: 14px 16px; font-size: .9rem; }
+.brain-vs .vs-old { background: #f7ece7; border: 1px solid #e5c9bd; color: #7a4a38; }
+.brain-vs .vs-new { background: #e9f3e2; border: 1px solid #bcd6a8; color: #2f4d2a; }
+.brain-vs h4 { margin: 0 0 6px; font-size: .95rem; }
+.brain-vs ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; }
+
+/* 四模块工作循环 */
+.loop-wrap { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; align-items: center; }
+.loop-svg { width: 100%; height: auto; display: block; }
+.loop-node { cursor: pointer; }
+.loop-node circle { transition: fill .2s, stroke .2s; }
+.loop-node text { font: 600 13px "Microsoft YaHei", sans-serif; fill: #2c352b; pointer-events: none; }
+.loop-node .loop-sub { font-size: 10px; fill: #6a7266; font-weight: 400; }
+.loop-node.active circle { fill: #23382b; stroke: #d3f77c; }
+.loop-node.active text { fill: #d3f77c; }
+.loop-node.active .loop-sub { fill: #cfd9b8; }
+.loop-info { border-left: 3px solid #4c7a3f; padding: 4px 0 4px 16px; }
+.loop-info h3 { margin: 0 0 6px; font-size: 1.15rem; }
+.loop-info p { margin: 0 0 8px; color: #43503f; font-size: .94rem; }
+.loop-info .loop-who { font-size: .8rem; color: #6a7266; }
+.loop-hint { font-size: .8rem; color: #6a7266; margin: 10px 0 0; }
+
+/* 成长四阶段 */
+.stages { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.stage-card { text-align: left; border: 1px solid #d5d7cd; border-radius: 12px; background: #fbfbf6; padding: 14px; display: grid; gap: 8px; align-content: start; transition: border-color .2s, background .2s, transform .2s; position: relative; }
+.stage-card:hover { transform: translateY(-3px); }
+.stage-card[aria-pressed="true"] { border-color: #4c7a3f; background: #f3f6ec; }
+.stage-num { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: #eef0fb; color: #4f46e5; font-weight: 700; font-size: .9rem; }
+.stage-card[aria-pressed="true"] .stage-num { background: #23382b; color: #d3f77c; }
+.stage-card h3 { font-size: .98rem; margin: 0; line-height: 1.3; }
+.stage-card p { margin: 0; font-size: .82rem; color: #5a6355; }
+.stage-pain { font-size: .76rem; color: #a4552f; background: #f7ece7; border-radius: 6px; padding: 3px 8px; justify-self: start; }
+.stage-gain { font-size: .76rem; color: #2f4d2a; background: #e9f3e2; border-radius: 6px; padding: 3px 8px; justify-self: start; }
+.stage-detail { margin-top: 14px; border-radius: 12px; background: #23382b; color: #eef3e4; padding: 16px 18px; font-size: .94rem; min-height: 64px; }
+.stage-detail b { color: #d3f77c; }
+
+.idea-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 22px 0 8px; }
+.idea-cta a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; border-radius: 8px; padding: 10px 18px; }
+.idea-cta .cta-primary { background: #23382b; color: #d3f77c; }
+.idea-cta .cta-ghost { border: 1px solid #97aaa3; color: #2c352b; background: #fff; }
+
+@media (max-width: 860px) {
+  .loop-wrap { grid-template-columns: 1fr; }
+  .stages { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .fusion { grid-template-columns: 1fr; }
+  .fusion-plus { justify-self: center; transform: rotate(90deg); }
+  .brain-vs { grid-template-columns: 1fr; }
+  .brain-layer { grid-template-columns: 38px 1fr auto; gap: 10px; padding: 12px; }
+  .brain-layer .bl-ico { width: 38px; height: 38px; font-size: 1.1rem; }
+}
+@media (max-width: 420px) {
+  .stages { grid-template-columns: 1fr; }
+  .fusion-result { flex-direction: column; align-items: flex-start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fusion-avatar, .brain-detail, .stage-card, .brain-layer { transition: none; }
+}

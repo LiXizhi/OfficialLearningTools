@@ -1,0 +1,190 @@
+/* 真实 AIChat 演示：复刻 KeepWork 第二大脑工作台的浅色界面。
+   配色取自 AIChat css/base.css 的 body.light 令牌，保证“像真的”。 */
+.sim-section { padding: clamp(20px, 4vw, 44px) 0; }
+.sim-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+.sim-head h2 { font: 700 clamp(24px, 3.6vw, 40px)/1.16 "Noto Serif SC", "STSong", "SimSun", serif; letter-spacing: -.03em; margin: 0; }
+.sim-head h2 em { font-style: normal; color: #4c7a3f; }
+.sim-head p { margin: 6px 0 0; color: #505a52; max-width: 620px; }
+
+/* 场景选择 + 传输控制（常驻控制区） */
+.sim-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: #fff; border: 1px solid #d5d7cd; border-radius: 12px; padding: 10px 12px; margin-bottom: 14px; }
+.sim-scenarios { display: flex; gap: 6px; flex-wrap: wrap; }
+.sim-scenario { display: inline-flex; align-items: center; gap: 7px; border: 1px solid #d5d7cd; background: #fbfbf6; border-radius: 99px; padding: 6px 13px; font-size: .85rem; font-weight: 650; color: #3d483d; }
+.sim-scenario img { width: 24px; height: 24px; border-radius: 50%; object-fit: cover; }
+.sim-scenario[aria-pressed="true"] { background: #23382b; border-color: #23382b; color: #fff; }
+.sim-transport { display: flex; gap: 6px; align-items: center; margin-left: auto; flex-wrap: wrap; }
+.sim-transport button, .sim-transport select { border: 1px solid #c9cdc0; background: #fff; border-radius: 8px; padding: 6px 11px; font-size: .85rem; color: #2c352b; }
+.sim-transport button:hover { background: #f3f6ec; }
+.sim-transport .sim-play { background: #23382b; color: #d3f77c; border-color: #23382b; font-weight: 700; min-width: 84px; }
+.sim-transport button[aria-pressed="true"] { background: #e9f3e2; border-color: #4c7a3f; color: #2f4d2a; }
+.sim-transport button:disabled { opacity: .4; cursor: default; }
+.sim-progress { display: flex; gap: 5px; align-items: center; width: 100%; padding: 2px 2px 0; }
+.sim-progress button { flex: 1; height: 6px; border-radius: 3px; border: 0; background: #dfe3d6; padding: 0; position: relative; }
+.sim-progress button.done { background: #9db98a; }
+.sim-progress button.current { background: #4c7a3f; }
+.sim-progress button span { position: absolute; top: 9px; left: 0; font-size: .62rem; color: #8a927f; white-space: nowrap; }
+
+/* ===== 设备外壳 ===== */
+.sim-device { border-radius: 16px; overflow: hidden; border: 1px solid #c9cdc0; box-shadow: 0 18px 48px #232c2226; background: #fff; }
+.sim-titlebar { display: flex; align-items: center; gap: 8px; background: #eef0f6; border-bottom: 1px solid #e0e3ec; padding: 8px 14px; }
+.sim-dots { display: flex; gap: 6px; }
+.sim-dots i { width: 11px; height: 11px; border-radius: 50%; display: block; }
+.sim-dots i:nth-child(1) { background: #ff5f57; } .sim-dots i:nth-child(2) { background: #febc2e; } .sim-dots i:nth-child(3) { background: #28c840; }
+.sim-titlebar strong { font-size: .8rem; color: #4a4a5a; font-weight: 600; margin-left: 6px; }
+.sim-titlebar .sim-url { margin-left: auto; font-size: .72rem; color: #9aa; background: #fff; border: 1px solid #e0e3ec; border-radius: 6px; padding: 3px 10px; }
+
+.sim-shell { display: grid; grid-template-columns: 46px 218px minmax(0, 1fr); grid-template-rows: minmax(0, 1fr); height: 560px; background: #fff; color: #1a1a2e; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Microsoft YaHei", sans-serif; font-size: 14px; }
+.sim-shell > * { min-height: 0; }
+.sim-shell.sim-brain-open { grid-template-columns: 46px 218px minmax(0, 1fr) 250px; }
+
+/* 左侧图标栏 */
+.sim-rail { background: #f2f3f7; border-right: 1px solid #e0e3ec; display: flex; flex-direction: column; align-items: center; padding: 10px 0; gap: 4px; }
+.sim-rail button { width: 34px; height: 34px; border: 0; background: transparent; border-radius: 9px; display: grid; place-items: center; font-size: 16px; color: #777; cursor: pointer; position: relative; }
+.sim-rail button.active { background: #e2e6ef; color: #4f46e5; }
+.sim-rail button.active::before { content: ""; position: absolute; left: -6px; top: 8px; bottom: 8px; width: 3px; border-radius: 2px; background: #6366f1; }
+.sim-rail .sim-rail-spacer { flex: 1; }
+.sim-rail .sim-rail-avatar { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 2px solid #fff; box-shadow: 0 1px 4px #0002; }
+
+/* 会话侧栏 */
+.sim-side { background: #f2f3f7; border-right: 1px solid #e0e3ec; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.sim-side-head { padding: 12px 12px 8px; display: flex; align-items: center; gap: 8px; }
+.sim-side-head img { width: 34px; height: 34px; border-radius: 10px; object-fit: cover; }
+.sim-side-head div { min-width: 0; }
+.sim-side-head strong { display: block; font-size: .86rem; color: #1a1a2e; }
+.sim-side-head small { display: block; font-size: .68rem; color: #777; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sim-newchat { margin: 0 12px 8px; border: 1px dashed #c3c8d8; background: #fff; border-radius: 9px; padding: 7px; font-size: .8rem; color: #4f46e5; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.sim-sessions { flex: 1; min-height: 0; overflow-y: auto; padding: 0 8px; display: flex; flex-direction: column; gap: 2px; }
+.sim-session { text-align: left; border: 0; background: transparent; border-radius: 8px; padding: 7px 9px; font-size: .78rem; color: #4a4a5a; display: flex; gap: 8px; align-items: flex-start; }
+.sim-session .ss-ico { flex-shrink: 0; width: 20px; text-align: center; }
+.sim-session div { min-width: 0; }
+.sim-session strong { display: block; font-weight: 600; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .78rem; }
+.sim-session small { display: block; color: #999; font-size: .66rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sim-session.active { background: #e2e6ef; }
+.sim-side-foot { border-top: 1px solid #e0e3ec; padding: 8px 12px; font-size: .7rem; color: #777; display: flex; align-items: center; gap: 6px; }
+
+/* 主聊天区 */
+.sim-main { display: flex; flex-direction: column; min-width: 0; min-height: 0; background: #fff; }
+.sim-topbar { display: flex; align-items: center; gap: 10px; padding: 9px 16px; border-bottom: 1px solid #e0e3ec; }
+.sim-topbar img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.sim-topbar .sim-persona { min-width: 0; }
+.sim-topbar .sim-persona strong { display: block; font-size: .9rem; }
+.sim-topbar .sim-persona small { display: flex; align-items: center; gap: 5px; font-size: .68rem; color: #777; }
+.sim-brain-chip { display: inline-flex; align-items: center; gap: 4px; background: #eef0f6; border-radius: 5px; padding: 1px 7px; color: #4f46e5; font-weight: 600; }
+.sim-topbar .sim-top-actions { margin-left: auto; display: flex; gap: 6px; }
+.sim-top-actions span { font-size: .7rem; border: 1px solid #d6f0dd; background: #f0faf3; color: #2f9e57; border-radius: 6px; padding: 3px 9px; display: inline-flex; align-items: center; gap: 4px; }
+.sim-top-actions span::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #2f9e57; }
+
+.sim-chat { flex: 1; min-height: 0; overflow-y: auto; padding: 18px 18px 8px; display: flex; flex-direction: column; gap: 14px; }
+.sim-msg { display: flex; gap: 10px; max-width: 100%; animation: simIn .3s ease-out; }
+.sim-msg.user { flex-direction: row-reverse; }
+.sim-msg .sim-avatar { width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0; object-fit: cover; }
+.sim-msg .sim-avatar.ai { background: linear-gradient(135deg, #6366f1, #a855f7); display: grid; place-items: center; color: #fff; font-size: 14px; }
+.sim-bubble { max-width: 78%; border-radius: 14px; padding: 10px 14px; font-size: .88rem; line-height: 1.6; }
+.sim-msg.user .sim-bubble { background: #6366f1; color: #fff; border-bottom-right-radius: 4px; }
+.sim-msg.ai .sim-bubble { background: #eef0f6; color: #1a1a2e; border-bottom-left-radius: 4px; }
+.sim-bubble .sim-cursor { display: inline-block; width: 7px; height: 14px; background: #6366f1; vertical-align: -2px; animation: simBlink .8s steps(1) infinite; }
+.sim-msg.user .sim-bubble .sim-cursor { background: #fff; }
+.sim-bubble strong { color: #4f46e5; }
+.sim-msg.user .sim-bubble strong { color: #fff; }
+.sim-bubble .sim-src { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; background: #fff; border: 1px solid #dde0ea; color: #4f46e5; border-radius: 6px; padding: 1px 8px; margin: 3px 4px 0 0; }
+
+/* 工具调用卡 */
+.sim-tool { border: 1px solid #dde0ea; border-radius: 10px; background: #fff; margin: 6px 0; overflow: hidden; font-size: .8rem; }
+.sim-tool-head { display: flex; align-items: center; gap: 8px; padding: 7px 11px; background: #f8f9fc; }
+.sim-tool-head .sim-tool-ico { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: 12px; background: #eef0f6; }
+.sim-tool-head strong { font-weight: 600; color: #1a1a2e; }
+.sim-tool-head .sim-tool-status { margin-left: auto; font-size: .68rem; color: #2f9e57; display: inline-flex; align-items: center; gap: 4px; }
+.sim-tool-head .sim-tool-status.running { color: #b8860b; }
+.sim-tool-body { padding: 7px 11px; color: #4a4a5a; border-top: 1px solid #eef0f6; font-size: .76rem; }
+.sim-tool-body code { background: #f2f3f7; border-radius: 4px; padding: 1px 5px; font-size: .72rem; color: #4f46e5; }
+.sim-spinner { width: 12px; height: 12px; border: 2px solid #e0e3ec; border-top-color: #b8860b; border-radius: 50%; display: inline-block; animation: simSpin .7s linear infinite; }
+
+/* 并行分身 */
+.sim-agents { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0; }
+.sim-agent-card { border: 1px solid #dde0ea; border-radius: 10px; background: #fff; padding: 9px 11px; font-size: .76rem; }
+.sim-agent-card strong { display: flex; align-items: center; gap: 6px; font-size: .8rem; color: #4f46e5; margin-bottom: 4px; }
+.sim-agent-card p { margin: 0; color: #4a4a5a; line-height: 1.5; }
+
+/* 判断交互 */
+.sim-choice { border: 1px solid #f0d9b5; background: #fdf8ef; border-radius: 12px; padding: 12px 14px; margin: 4px 0; }
+.sim-choice h4 { margin: 0 0 8px; font-size: .85rem; color: #8a5a1a; display: flex; align-items: center; gap: 6px; }
+.sim-choice button { display: block; width: 100%; text-align: left; border: 1px solid #e5d3b3; background: #fff; border-radius: 8px; padding: 8px 11px; margin: 6px 0; font-size: .82rem; color: #1a1a2e; }
+.sim-choice button:hover { border-color: #b8860b; background: #fffdf7; }
+.sim-choice button.correct { border-color: #2f9e57; background: #f0faf3; }
+.sim-choice button.wrong { border-color: #d9534f; background: #fdf1f0; }
+.sim-choice .sim-choice-fb { font-size: .78rem; margin: 6px 0 0; line-height: 1.5; }
+.sim-choice .sim-choice-fb.ok { color: #2f7a45; }
+.sim-choice .sim-choice-fb.no { color: #b0433f; }
+
+/* 输入框：发送后清空回 placeholder，保持单行紧凑，不挤压聊天区 */
+.sim-composer { border-top: 1px solid #e0e3ec; padding: 10px 16px; flex-shrink: 0; }
+.sim-composer-box { border: 1px solid #dde0ea; border-radius: 12px; background: #f8f9fc; padding: 8px 12px; display: flex; flex-direction: column; gap: 6px; }
+.sim-composer-input { min-height: 22px; font-size: .86rem; color: #1a1a2e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sim-composer-input.placeholder { color: #aaa; }
+.sim-composer-bar { display: flex; align-items: center; gap: 8px; }
+.sim-composer-bar .sim-model { margin-left: auto; font-size: .7rem; background: #eef0f6; border-radius: 99px; padding: 3px 10px; color: #4a4a5a; display: inline-flex; align-items: center; gap: 5px; }
+.sim-composer-bar .sim-model::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #a855f7; }
+.sim-send { width: 30px; height: 30px; border-radius: 8px; border: 0; background: #6366f1; color: #fff; display: grid; place-items: center; font-size: 14px; }
+.sim-send:disabled { background: #c3c8d8; }
+
+/* 第二大脑面板 */
+.sim-brain { background: #f8f9fc; border-left: 1px solid #e0e3ec; display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.sim-brain-head { padding: 11px 13px; border-bottom: 1px solid #e0e3ec; display: flex; align-items: center; gap: 7px; }
+.sim-brain-head strong { font-size: .82rem; }
+.sim-brain-head .sim-brain-tag { font-size: .62rem; background: #eef0f6; color: #4f46e5; border-radius: 5px; padding: 1px 6px; }
+.sim-brain-close { display: none; margin-left: auto; width: 24px; height: 24px; border: 1px solid #dde0ea; background: #fff; border-radius: 6px; color: #777; font-size: .72rem; line-height: 1; }
+.sim-brain-graph { padding: 8px; border-bottom: 1px solid #e0e3ec; }
+.sim-brain-graph svg { width: 100%; height: auto; display: block; }
+.sim-bg-node circle { transition: fill .25s, r .25s; }
+.sim-bg-node text { font: 600 8.5px "Microsoft YaHei", sans-serif; fill: #4a4a5a; pointer-events: none; }
+.sim-bg-node.lit circle { fill: #6366f1; }
+.sim-bg-node.lit text { fill: #fff; }
+.sim-brain-files { flex: 1; min-height: 0; overflow-y: auto; padding: 8px 10px; display: flex; flex-direction: column; gap: 5px; }
+.sim-brain-file { border: 1px solid #e0e3ec; background: #fff; border-radius: 8px; padding: 7px 9px; font-size: .72rem; transition: border-color .25s, background .25s; }
+.sim-brain-file strong { display: flex; align-items: center; gap: 5px; font-size: .74rem; color: #1a1a2e; }
+.sim-brain-file small { display: block; color: #999; font-size: .64rem; margin-top: 2px; }
+.sim-brain-file.lit { border-color: #6366f1; background: #f3f4ff; }
+.sim-brain-file.new { border-color: #2f9e57; background: #f0faf3; animation: simIn .4s ease-out; }
+.sim-brain-file.new strong { color: #2f7a45; }
+
+/* 讲解条 */
+.sim-narration { display: flex; gap: 12px; align-items: flex-start; background: #23382b; color: #eef3e4; border-radius: 0 0 16px 16px; padding: 13px 18px; }
+.sim-narration .sim-narr-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #d3f77c; color: #23382b; display: grid; place-items: center; font-weight: 700; font-size: .85rem; }
+.sim-narration div { min-width: 0; }
+.sim-narration strong { display: block; color: #d3f77c; font-size: .9rem; margin-bottom: 2px; }
+.sim-narration p { margin: 0; font-size: .84rem; line-height: 1.55; color: #dfe7d3; }
+.sim-narration .sim-stage-tag { display: inline-block; font-size: .66rem; background: #ffffff1f; border: 1px solid #ffffff33; border-radius: 99px; padding: 1px 9px; margin-left: 8px; color: #cfd9b8; vertical-align: 1px; }
+.sim-narration.hidden { display: none; }
+
+@keyframes simIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes simBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+@keyframes simSpin { to { transform: rotate(360deg); } }
+
+/* 滚动条用课程自己的语言 */
+.sim-chat::-webkit-scrollbar, .sim-sessions::-webkit-scrollbar, .sim-brain-files::-webkit-scrollbar { width: 6px; }
+.sim-chat::-webkit-scrollbar-thumb, .sim-sessions::-webkit-scrollbar-thumb, .sim-brain-files::-webkit-scrollbar-thumb { background: #c3c8d8; border-radius: 3px; }
+.sim-chat::-webkit-scrollbar-thumb:hover { background: #a9b0c4; }
+
+@media (max-width: 900px) {
+  .sim-shell, .sim-shell.sim-brain-open { grid-template-columns: 46px minmax(0, 1fr); height: 520px; }
+  .sim-side { display: none; }
+  .sim-brain { display: none; }
+  .sim-shell.sim-brain-open .sim-brain { display: flex; position: absolute; right: 0; top: 0; bottom: 0; width: min(280px, 84%); z-index: 5; box-shadow: -8px 0 24px #0003; }
+  .sim-brain-close { display: grid; place-items: center; }
+  .sim-device { position: relative; }
+}
+@media (max-width: 620px) {
+  .sim-shell, .sim-shell.sim-brain-open { grid-template-columns: minmax(0, 1fr); height: 480px; }
+  .sim-rail { display: none; }
+  .sim-topbar .sim-top-actions { display: none; }
+  .sim-bubble { max-width: 88%; }
+  .sim-agents { grid-template-columns: 1fr; }
+  .sim-transport { margin-left: 0; }
+  .sim-progress button span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sim-msg, .sim-brain-file.new { animation: none; }
+  .sim-bubble .sim-cursor { animation: none; }
+  .sim-spinner { animation: none; }
+  .sim-chat { scroll-behavior: auto; }
+}

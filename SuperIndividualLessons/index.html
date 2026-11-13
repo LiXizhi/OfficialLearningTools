@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2323382b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23d3f77c'/%3E%3C/svg%3E">
+<title>超级个体培训课 · 四节课</title>
+<link rel="stylesheet" href="course.css">
+<link rel="stylesheet" href="cinema.css">
+<link rel="stylesheet" href="hero.css">
+<link rel="stylesheet" href="idea.css">
+<link rel="stylesheet" href="sim.css">
+<link rel="stylesheet" href="lessons.css">
+<script defer src="roles.js"></script>
+<script defer src="day.js"></script>
+<script defer src="practice.js"></script>
+<script defer src="idea.js"></script>
+<script defer src="sim.js"></script>
+<script defer src="org.js"></script>
+<script defer src="lessons.js"></script>
+<script>
+// 放映室契约：测试/直链在默认第 1 课打开时自动切到第 3 课，保证 #screen/#timeline 可达。
+document.addEventListener('click', function (e) {
+  var t = e.target;
+  if (t && t.closest && t.closest('#day, #roles, #theater')) {
+    var l3 = document.getElementById('lesson-3');
+    if (l3 && l3.hidden) {
+      var link = document.querySelector('[data-lesson-link="3"]');
+      if (link) link.click();
+    }
+  }
+}, true);
+</script>
+</head>
+<body>
+<header><div class="bar"><strong>超级个体培训课</strong><nav class="lesson-nav" aria-label="课时导航">
+<a href="#lesson-1" data-lesson-link="1"><i>1</i>超级个体</a>
+<a href="#lesson-2" data-lesson-link="2"><i>2</i>第二大脑</a>
+<a href="#lesson-3" data-lesson-link="3"><i>3</i>上手工作</a>
+<a href="#lesson-4" data-lesson-link="4"><i>4</i>超级组织</a>
+</nav></div></header>
+<main>
+<section class="hero" aria-label="课程开场">
+<div class="hero-bg"></div><div class="hero-grain"></div>
+<div class="hero-inner">
+<div>
+<p class="hero-eyebrow hero-enter e1">KEEPWORK 第二大脑 · 工作方式实训</p>
+<h1 class="hero-enter e2">一个人，<br>活成<span class="hero-accent">一支队伍</span>。</h1>
+<p class="hero-lead hero-enter e3">碳基的你，加上硅基的<b>第二大脑</b>与众多<b>分身</b>，共同构成一个<b>超级个体</b>。四节课：先懂理念，再建大脑，然后进真实 AIChat 上手干活，最后看超级个体如何连成<b>超级组织</b>。</p>
+<div class="hero-cta hero-enter e4">
+<a class="hero-primary" href="#lesson-1" data-goto-lesson="1">▶ 开始第 1 课</a>
+<a class="hero-ghost" href="#course-map">看课程目录 →</a>
+</div>
+<div class="hero-stats hero-enter e5">
+<div class="hero-stat"><b>4<i>节课</i></b><span>理念 · 建脑 · 上手 · 组织</span></div>
+<div class="hero-stat"><b>4<i>身份</i></b><span>学生 · 老师 · 领导 · 创业者</span></div>
+<div class="hero-stat"><b>1<i>套方法</i></b><span>第二大脑 + 分身 + RSI</span></div>
+</div>
+</div>
+<div class="hero-art hero-enter e3">
+<svg viewBox="0 0 400 400" role="img" aria-label="碳基的本人加上硅基的第二大脑与分身，融合为超级个体">
+<defs>
+<radialGradient id="heroCore" cx="50%" cy="42%" r="60%">
+<stop offset="0%" stop-color="#3a5a40"/><stop offset="100%" stop-color="#23382b"/>
+</radialGradient>
+<linearGradient id="heroRing" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0%" stop-color="#6366f1"/><stop offset="100%" stop-color="#a855f7"/>
+</linearGradient>
+</defs>
+<circle cx="200" cy="200" r="158" fill="none" stroke="#c9cdc0" stroke-width="1.5" stroke-dasharray="3 7"/>
+<circle cx="200" cy="200" r="116" fill="none" stroke="#d5d7cd" stroke-width="1.5" stroke-dasharray="2 6"/>
+<g class="hero-float"><circle cx="200" cy="42" r="30" fill="#eef0fb" stroke="#6366f1" stroke-width="2"/><text x="200" y="42" text-anchor="middle" font-size="20">🤖</text><text x="200" y="90" text-anchor="middle" font-size="12" fill="#4f46e5" font-weight="700">工作分身</text></g>
+<g class="hero-float d1"><circle cx="358" cy="200" r="30" fill="#e9f3e2" stroke="#4c7a3f" stroke-width="2"/><text x="358" y="207" text-anchor="middle" font-size="20">🏠</text><text x="358" y="248" text-anchor="middle" font-size="12" fill="#2f4d2a" font-weight="700">家庭分身</text></g>
+<g class="hero-float d2"><circle cx="200" cy="316" r="30" fill="#f6efe2" stroke="#b8860b" stroke-width="2"/><text x="200" y="323" text-anchor="middle" font-size="20">🎓</text><text x="200" y="364" text-anchor="middle" font-size="12" fill="#8a5a1a" font-weight="700">助教分身</text></g>
+<g class="hero-float d3"><circle cx="84" cy="200" r="30" fill="#eef0fb" stroke="#a855f7" stroke-width="2"/><text x="84" y="207" text-anchor="middle" font-size="20">👥</text><text x="84" y="248" text-anchor="middle" font-size="12" fill="#7c3aed" font-weight="700">协作分身</text></g>
+<g class="hero-pulse">
+<circle cx="200" cy="200" r="74" fill="url(#heroCore)"/>
+<circle cx="200" cy="200" r="74" fill="none" stroke="url(#heroRing)" stroke-width="3"/>
+<text x="200" y="182" text-anchor="middle" font-size="28">🧠</text>
+<text x="200" y="212" text-anchor="middle" font-size="19" fill="#d3f77c" font-weight="800" font-family="'Noto Serif SC',serif">超级个体</text>
+<text x="200" y="233" text-anchor="middle" font-size="10.5" fill="#cfd9b8">碳基 + 硅基 · 个人超脑</text>
+</g>
+</svg>
+<p class="hero-caption">一个<b>个人超脑</b>，众多分身进入不同圈子，经验持续回流。</p>
+</div>
+</div>
+</section>
+
+<section id="course-map" class="course-map" aria-label="课程目录">
+<div class="course-map-head"><h2>四节课，一条成长线</h2><p>每节 15–40 分钟，可分次学完。进度自动保存在本浏览器。</p></div>
+<div class="course-cards" id="course-cards"></div>
+</section>
+
+<section id="lesson-1" class="lesson" data-lesson="1" aria-label="第 1 课：超级个体">
+<div class="lesson-banner"><span class="lb-num">1</span><div><strong>超级个体：一个人，活成一支队伍</strong><small>碳基 + 硅基的融合 · 一人多分身 · 成长四阶段</small></div><span class="lb-time">约 15 分钟</span></div>
+<div id="idea-individual" class="idea" aria-label="什么是超级个体"></div>
+<div class="lesson-pager"><button type="button" data-pager="prev" disabled>← 上一课</button><span class="lp-progress">第 <b>1</b> / 4 课</span><button type="button" class="next" data-pager="next">下一课：第二大脑 →</button></div>
+</section>
+
+<section id="lesson-2" class="lesson" data-lesson="2" aria-label="第 2 课：第二大脑" hidden>
+<div class="lesson-banner"><span class="lb-num">2</span><div><strong>第二大脑：会长大的经验体系</strong><small>三层结构 · 四模块工作循环 · RSI 递归自我改进</small></div><span class="lb-time">约 15 分钟</span></div>
+<div id="idea-brain" class="idea" aria-label="什么是第二大脑与怎么工作"></div>
+<div class="lesson-pager"><button type="button" data-pager="prev">← 上一课：超级个体</button><span class="lp-progress">第 <b>2</b> / 4 课</span><button type="button" class="next" data-pager="next">下一课：上手工作 →</button></div>
+</section>
+
+<section id="lesson-3" class="lesson" data-lesson="3" aria-label="第 3 课：上手工作" hidden>
+<div class="lesson-banner"><span class="lb-num">3</span><div><strong>上手工作：在真实 AIChat 里跑一遍</strong><small>工作台演示 · 角色放映室 · 训练自己的分身</small></div><span class="lb-time">约 40 分钟</span></div>
+<section id="sim" class="sim-section" aria-label="真实 AIChat 工作台演示"></section>
+<section id="day" aria-label="互动工作日短片">
+<div class="mast"><div><p class="eyebrow">互动短片　 /　工作方式实训</p><h1>超级个体的一天<span>。</span></h1></div><p>选一个身份，进入工作现场。<br>当画面停下，由你决定下一步。</p></div>
+<div id="roles" class="roles" role="group" aria-label="选择角色短片"></div>
+<div class="theater" id="theater">
+<div id="screen" class="movie-screen">
+<img id="location-still" alt=""><div class="shade"></div>
+<div class="slate"><span id="clock"></span><span id="location"></span></div>
+<div id="opening"><p id="role-label"></p><h2 id="story-title"></h2><p id="opening-line"></p><button id="start-film" class="watch">▶　进入现场</button></div>
+<div id="shot-content" hidden></div>
+<div id="subtitle" hidden></div>
+</div>
+<div class="deck"><button id="play" class="watch">▶ 播放</button><button id="previous" aria-label="上一镜">‹</button><button id="next" aria-label="下一镜">›</button><div id="timeline" aria-label="短片分镜"></div><button id="restart" title="从头重播">重播</button><button id="sound" aria-pressed="false" hidden>旁白</button></div></div>
+<div id="choice" class="exercise" hidden><h3>轮到你判断</h3><div id="answers"></div><p id="feedback" role="status"></p></div>
+<div class="under"><span id="story-status" role="status"></span><a href="#practice">用自己的任务试一次 ↓</a></div>
+</section>
+<section id="practice" aria-labelledby="practice-title"><p class="eyebrow">动手练习　/　约 40 分钟</p>
+<h2 id="practice-title">今天，我想让 AI 帮我完成什么？</h2>
+<p>领取当前身份的任务，或从自己的事情开始。可以用任意 AI 对话和普通文件夹完成。</p>
+<div class="toolbar"><button id="example" class="primary">领取角色任务</button><button id="new">新建自己的任务</button><label>继续任务 <select id="tasks" aria-label="继续任务"></select></label></div>
+<form id="sheet" hidden><h3 id="sheet-title"></h3>
+<fieldset><legend>1 · 口述委托</legend><label>任务名称<input name="title" maxlength="120" placeholder="例如：为明天的例会准备决策单"></label><label>给谁用？怎样算完成？<textarea name="brief" placeholder="写下使用者、目标和可检查的成果。"></textarea></label><label>可用材料<textarea name="materials" placeholder="粘贴材料摘要或填写文件位置，保留来源。"></textarea></label><button type="button" data-copy="brief">复制任务委托</button></fieldset>
+<fieldset><legend>2 · 分头做，由你判断</legend><p>开两个普通 AI 对话。一位整理事实，另一位独立检查。把出现分歧的地方带回原始材料。</p><label>两位分身分别做什么？<textarea name="roles"></textarea></label><label>我的判断与依据<textarea name="decision" placeholder="我采纳或暂缓哪条结论？哪份材料支持它？"></textarea></label></fieldset>
+<fieldset><legend>3 · 建立第二大脑，教会分身</legend><p>在文件夹或笔记本里建三页：原始材料、带出处的知识、分身说明。把新材料交给分身试跑，将发现的遗漏写成一条可执行的规则，再跑一次。这一次改进就是 RSI（递归自我改进）。</p><label>知识页与来源<textarea name="knowledge" placeholder="写出已确认事实、出处和待确认项。"></textarea></label><label>分身说明<textarea name="agent" placeholder="职责、可用材料、输出格式、什么时候必须问人。"></textarea></label><label>新材料与复跑结果<textarea name="change" placeholder="新资料改变了什么？哪条检查规则需要留下？"></textarea></label><button type="button" data-copy="agent">复制分身交接说明</button></fieldset>
+<details id="update-material"><summary>打开角色案例的新材料，再试跑一次</summary><p id="update-source"></p></details>
+<fieldset><legend>4 · 换个人接手</legend><p>把说明交给同伴，或交给一个全新对话。请对方完成下一次任务、指出出处，并标出需要你决定的地方。</p><label>交接结果与下一次改进<textarea name="review"></textarea></label><details><summary>把做法做成服务 · 填一张试点卡</summary><p>FDE（前线部署工程师）陪使用者跑通第一个现场任务并交接。CAIO（首席人工智能官）和业务负责人判断是否推广、由谁维护、如何验证真实使用。</p><label>试点卡<textarea name="pilot" placeholder="谁会用？原来耗时多少？谁验收和维护？一次交付成本和试用价格是多少？哪项假设需要真实用户验证？"></textarea></label></details></fieldset>
+<div class="toolbar"><button type="button" id="done" class="primary"></button><button type="button" id="download">下载任务卡与分身说明</button></div></form>
+<p id="task-status" role="status"></p>
+<textarea id="copy-text" aria-label="可手动复制的内容" readonly hidden></textarea>
+</section>
+<div class="lesson-pager"><button type="button" data-pager="prev">← 上一课：第二大脑</button><span class="lp-progress">第 <b>3</b> / 4 课</span><button type="button" class="next" data-pager="next">下一课：超级组织 →</button></div>
+</section>
+
+<section id="lesson-4" class="lesson" data-lesson="4" aria-label="第 4 课：超级组织" hidden>
+<div class="lesson-banner"><span class="lb-num">4</span><div><strong>超级组织：从一个人到一支军团</strong><small>超级团队 · 超级公司 · 圈子组织 · 信任网络 · CAIO</small></div><span class="lb-time">约 15 分钟</span></div>
+<div id="org" class="idea" aria-label="超级组织与 CAIO"></div>
+<div class="lesson-pager"><button type="button" data-pager="prev">← 上一课：上手工作</button><span class="lp-progress">第 <b>4</b> / 4 课</span><button type="button" class="next" data-pager="finish">回到第 3 课，训练我的分身 ↗</button></div>
+</section>
+</main>
+<footer>课程依据：李西峙《成为超级个体》成长笔记、第二大脑 FDE 培训、2026.10.28 日记《碳基与硅基的融合》与 CAIO 案例。场景数据为教学模拟；组织形态与商业判断为理念推演，非已交付承诺。</footer>
+<dialog id="viewer"><button id="close">关闭大图</button><img alt="" id="large"></dialog>
+</body></html>
