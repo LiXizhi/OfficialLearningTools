@@ -1,0 +1,62 @@
+[
+  {
+    "id": "first",
+    "label": "01 顺序执行",
+    "code": "bumi.camera(\"robot\")\nbumi.forward(2)\nwait(1)\nprint(\"我完成啦！\")\n"
+  },
+  {
+    "id": "turn",
+    "label": "02 转向",
+    "code": "bumi.forward(1)\nbumi.turnLeft(2)\nbumi.forward(1)\nbumi.stand()\nprint(\"换个方向探索\")\n"
+  },
+  {
+    "id": "loop",
+    "label": "03 循环",
+    "code": "for i = 1, 3 do\n    print(\"第\", i, \"次\")\n    bumi.forward(1)\n    wait(0.5)\n    bumi.backward(1)\nend\nbumi.stand()\n"
+  },
+  {
+    "id": "speed",
+    "label": "04 变量",
+    "code": "local speed = 0.45\nbumi.forward(2, speed)\nwait(1)\nspeed = 0.5\nbumi.forward(2, speed)\nbumi.stand()\nprint(\"哪一段走得更远？\")\n"
+  },
+  {
+    "id": "state",
+    "label": "05 条件判断",
+    "code": "bumi.forward(1)\nlocal state = bumi.status()\nif state.healthy then\n    print(\"行走策略正常\")\nelse\n    print(\"行走策略尚未就绪\")\nend\nbumi.stand()\n"
+  },
+  {
+    "id": "arc",
+    "label": "06 自己设计",
+    "code": "-- 前进 0.5 m/s，左转 0.3 rad/s\nbumi.move(0.5, 0.3, 3)\nwait(1)\nbumi.stand()\nprint(\"完成弧线探索\")\n"
+  },
+  {
+    "id": "color",
+    "label": "07 配色",
+    "code": "bumi.setColorPreset(\"whiteBlue\")\nbumi.setColor(\"head\", \"#FF8800\")\nbumi.setColor(\"leftArm\", \"#52BF90\")\nprint(\"头部颜色\", bumi.getColors().head)\nwait(3)\nbumi.resetColors()\n"
+  },
+  {
+    "id": "replay",
+    "label": "08 回放控制",
+    "code": "bumi.camera(\"robot\")\n-- 舞蹈：dance1_subject1\n-- 跳跃：jumps1_subject1\n-- 倒地与起身：fallAndGetUp3_subject1\n-- 格斗：fight1_subject2\nfor _, clip in ipairs(bumi.getClips()) do\n    print(clip.label, clip.id, clip.duration)\nend\nlocal clipId = \"dance1_subject1\" -- 换成上面的其他 ID 试试\nbumi.startReplay(clipId)\nwait(10) -- 先越过准备动作，观察抬臂和迈步\nbumi.pauseReplay()\nwait(1)\nbumi.setReplayRate(0.5)\nbumi.resumeReplay()\nwait(20) -- 半速播放 20 秒，动作时间前进约 10 秒\nbumi.stopReplay()\nprint(\"回放练习结束\")\n"
+  },
+  {
+    "id": "welcome",
+    "label": "09 迎宾小助手",
+    "code": "bumi.reset()\nbumi.camera(\"robot\")\nbumi.setColorPreset(\"whiteBlue\")\nbumi.setColor(\"head\", \"#FF8800\")\nprint(\"欢迎来到小布米课堂！\")\nbumi.forward(2, 0.5)\nwait(0.5)\nbumi.turnLeft(1, 0.4)\nbumi.stand()\nif bumi.status().healthy then\n    print(\"我已准备好，开始探索吧！\")\nend\nwait(1)\nbumi.camera(\"player\")\n"
+  },
+  {
+    "id": "patrol",
+    "label": "10 彩色巡逻队",
+    "code": "bumi.reset()\nbumi.camera(\"robot\")\nbumi.setColorPreset(\"classic\")\nlocal colors = {\"#EA5555\", \"#FFE066\", \"#52BF90\"}\nfor station, color in ipairs(colors) do\n    bumi.setColor(\"head\", color)\n    bumi.setColor(\"torso\", color)\n    print(\"巡逻站点\", station, bumi.getColors().head)\n    bumi.forward(1, 0.5)\n    wait(0.5)\n    bumi.backward(1, 0.5)\n    bumi.stand()\nend\nbumi.resetColors()\nprint(\"巡逻完成，恢复默认配色\")\n"
+  },
+  {
+    "id": "stage",
+    "label": "11 小小舞台导演",
+    "code": "bumi.reset()\nbumi.camera(\"robot\")\nbumi.setColorPreset(\"blackGold\")\nbumi.forward(1, 0.5)\nbumi.stand()\nlocal clips = bumi.getClips()\nlocal selected = nil\nfor _, clip in ipairs(clips) do\n    if clip.id == \"dance1_subject1\" then\n        selected = clip\n    end\nend\nif selected then\n    print(\"现在表演：\", selected.label)\n    bumi.startReplay(selected.id)\n    wait(10) -- 开头约 3.5 秒是准备动作，先看一段舞蹈再暂停\n    bumi.pauseReplay()\n    bumi.setColor(\"head\", \"#FFE066\")\n    wait(0.5)\n    bumi.setReplayRate(0.5)\n    bumi.resumeReplay()\n    wait(20) -- 半速观看接下来的约 10 秒动作\n    local replay = bumi.replayStatus()\n    print(\"回放状态\", replay.state, \"动作时间\", replay.time)\n    bumi.stopReplay()\n    bumi.backward(1, 0.5)\n    bumi.stand()\nelse\n    print(\"当前目录没有这个舞蹈，换个片段再试试\")\nend\nbumi.resetColors()\n"
+  },
+  {
+    "id": "experiment",
+    "label": "12 速度观察员",
+    "code": "bumi.camera(\"robot\")\nlocal trials = {\n    {speed = 0.45, color = \"#318CDB\"},\n    {speed = 0.5, color = \"#FF982E\"}\n}\nfor i, trial in ipairs(trials) do\n    bumi.reset()\n    bumi.setColor(\"head\", trial.color)\n    print(\"第\", i, \"组，目标速度\", trial.speed)\n    wait(1)\n    bumi.forward(3, trial.speed)\n    print(\"行走策略正常：\", bumi.status().healthy)\n    wait(1)\nend\nbumi.stand()\nbumi.resetColors()\nprint(\"观察：哪一组在三秒内走得更远？\")\n"
+  }
+]

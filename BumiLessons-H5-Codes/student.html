@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="zh-CN" class="role-student" data-page="student" data-site="和小布米一起学 NPL 代码编程 · 学生版"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="小布米 NPL 代码编程课程：12 个示例、学生学习单与教师教案"><title>和小布米一起学 NPL 代码编程 · 学生版</title><style>
+
+:root{
+  --ink:#1c2937;--muted:#5c6b7a;--faint:#8793a0;--line:#dce2e9;--bg:#f2f4f7;--card:#fff;
+  --silver:#eaeef3;--silver2:#d3dae3;--steel:#566473;
+  --teal:#13828a;--teal-bg:#e2f2f2;--purple:#5f55b0;--purple-bg:#eeecf9;
+  --amber:#a8650a;--amber-bg:#fff2dc;--amber-line:#e9b25a;--green:#27784d;--green-bg:#e4f3ea;
+  --blue:#1f5fc4;--blue-bg:#e5eefb;--red:#b23b3b;
+  --accent:var(--teal);--accent-bg:var(--teal-bg);
+  --side:276px;--top:56px;--r:14px;--fs:17px;
+  --font:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif;
+}
+.role-teacher{--accent:#35588f;--accent-bg:#e7edf7;--fs:15.5px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:var(--fs)/1.75 var(--font)}
+a{color:var(--accent);text-underline-offset:3px}
+img{max-width:100%}
+h1,h2,h3,h4{line-height:1.35;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+code{font:.92em/1.4 ui-monospace,Consolas,monospace;background:var(--silver);padding:.1em .4em;border-radius:5px}
+
+/* ---------- 顶栏与侧栏 ---------- */
+.top{position:fixed;inset:0 0 auto 0;height:var(--top);z-index:30;display:flex;align-items:center;gap:12px;padding:0 16px;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);text-decoration:none;font-size:16px;min-width:0}
+.top .brand img{width:30px;height:30px;border-radius:50%;background:linear-gradient(#eef2f6,#cfd8e2);object-fit:cover;object-position:50% 20%}
+.top .brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.role-tag{flex:none;font-size:12px;font-weight:700;color:#fff;background:var(--accent);border-radius:99px;padding:2px 10px}
+.top .sp{flex:1}
+.tbtn{flex:none;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:10px;border:1px solid var(--line);
+  background:#fff;font-size:14px;text-decoration:none;color:var(--ink)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+.tbtn.go{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.tbtn.go:hover{filter:brightness(1.08);color:#fff}
+#menu{display:none;width:38px;padding:0;justify-content:center;font-size:18px}
+.side{position:fixed;top:var(--top);bottom:0;left:0;width:var(--side);overflow:auto;background:#fff;border-right:1px solid var(--line);padding:14px 10px 40px;z-index:20}
+.side a{display:flex;gap:9px;align-items:baseline;padding:7px 10px;border-radius:9px;color:var(--ink);text-decoration:none;font-size:14.5px;line-height:1.45}
+.side a:hover{background:var(--silver)}
+.side a.on{background:var(--accent-bg);color:var(--accent);font-weight:700}
+.side a .n{flex:none;font:700 12px/1 ui-monospace,Consolas,monospace;color:var(--faint);width:18px}
+.side a.on .n{color:var(--accent)}
+.side a .dot{flex:none;margin-left:auto;align-self:center;width:7px;height:7px;border-radius:50%;background:transparent}
+.side a.has .dot{background:var(--accent)}
+.side h6{margin:14px 10px 4px;font-size:12px;color:var(--faint);font-weight:700;letter-spacing:.04em}
+.side .tip{margin:18px 10px 0;font-size:12.5px;color:var(--muted);line-height:1.6;border-top:1px dashed var(--line);padding-top:12px}
+main{margin-left:var(--side);padding:calc(var(--top) + 26px) 28px 80px}
+.view{max-width:900px;margin:0 auto}
+.role-teacher .view{max-width:1010px}
+.js .view{display:none}.js .view.on{display:block}
+.js .pane{display:none}.js .pane.on{display:block}
+
+/* ---------- 课头 ---------- */
+.lhead{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;background:linear-gradient(135deg,#fff 0%,#eef1f5 60%,#dfe5ec 100%);
+  border:1px solid var(--line);border-radius:20px;padding:22px 26px;position:relative;overflow:hidden}
+.lhead .lnum{font:800 54px/1 "DIN Alternate","Bahnschrift",ui-sans-serif,sans-serif;color:var(--accent);letter-spacing:-.02em}
+.lhead .lnum small{display:block;font:700 12px/1.6 var(--font);color:var(--muted);letter-spacing:.2em}
+.lhead h1{font-size:clamp(22px,2.6vw,30px)}
+.lhead .lmeta{margin:0 0 6px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;border-radius:99px;padding:1px 10px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--steel);white-space:nowrap}
+.chip.k{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+.lhead .rb{height:128px;width:auto;margin:-10px 0 -22px;filter:drop-shadow(0 8px 10px rgba(40,60,80,.18))}
+.tabs{display:flex;gap:6px;margin:16px 0 0}
+.tabs a{padding:8px 18px;border-radius:11px 11px 0 0;background:var(--silver);color:var(--muted);text-decoration:none;font-weight:700;font-size:14.5px;border:1px solid var(--line);border-bottom:0}
+.tabs a.on{background:#fff;color:var(--accent)}
+.tabs + .panes{border-top:1px solid var(--line)}
+
+/* ---------- 正文 ---------- */
+.doc{margin-top:18px}
+.doc .tblw,.doc figure.fig,.doc .callout,.doc .fillflow,.doc pre,.doc .sketch,.doc blockquote{margin:14px 0}
+.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px;margin:18px 0}
+.sec>*:last-child{margin-bottom:0}
+.sec>h2{font-size:1.24em;display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sec>h2::before{content:"";flex:none;width:6px;height:1.15em;border-radius:3px;background:var(--accent)}
+.doc h3{font-size:1.1em;margin:26px 0 10px;display:flex;align-items:center;gap:10px}
+.doc h4{font-size:1em;margin:18px 0 8px;color:var(--steel)}
+.doc h3 .tk{flex:none;display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;color:#fff;font:800 17px/1 ui-sans-serif,sans-serif;background:var(--teal)}
+.doc h3 .tk.B{background:var(--purple)}.doc h3 .tk.C{background:#c47a12}.doc h3 .tk.D{background:#2f7d57}
+.doc h3 .tkl{font-size:.8em;color:var(--muted);font-weight:700;margin-right:-4px}
+.doc p{margin:12px 0}
+.doc ul,.doc ol{margin:12px 0;padding-left:1.5em}
+.doc li{margin:5px 0}
+.doc li>ul,.doc li>ol{margin:4px 0}
+.doc hr{border:0;border-top:1px dashed var(--silver2);margin:22px 0}
+.doc blockquote{margin:14px 0;padding:14px 18px;border-radius:12px;background:var(--silver);border-left:5px solid var(--silver2)}
+.doc blockquote p{margin:4px 0}
+.question{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(120deg,var(--accent-bg),#fff);border:1px solid var(--accent);border-radius:16px;padding:16px 20px;margin:18px 0;font-size:1.08em}
+.question .qi{flex:none;width:40px;height:40px;border-radius:50%;background:var(--accent);color:#fff;display:grid;place-items:center;font:800 22px/1 ui-sans-serif}
+.question p{margin:0}
+.callout{border-radius:12px;padding:12px 16px;background:var(--amber-bg);border:1px solid var(--amber-line);color:#5a3a06}
+.callout p{margin:0}
+.callout.info{background:var(--blue-bg);border-color:#a9c4ee;color:#173d7a}
+.namebar{display:flex;flex-wrap:wrap;gap:8px 26px;align-items:center;background:#fff;border:1px dashed var(--silver2);border-radius:12px;padding:10px 16px;margin:16px 0;font-size:.95em}
+.lede{color:var(--muted);font-size:.96em}
+pre{background:#f7f9fb;border:1px solid var(--line);border-radius:10px;padding:12px 14px;overflow:auto;font:13.5px/1.6 ui-monospace,Consolas,monospace}
+
+/* 表格 */
+.tblw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:.95em}
+th,td{padding:9px 12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);text-align:left;vertical-align:top}
+th:last-child,td:last-child{border-right:0}tr:last-child td{border-bottom:0}
+thead th{background:var(--silver);font-weight:700;white-space:nowrap;color:var(--steel)}
+tbody tr:nth-child(even) td{background:#fafbfc}
+td:first-child{font-weight:600}
+
+/* 填写控件 */
+input.blank{font:inherit;color:#0c4f9e;border:0;border-bottom:1.6px solid var(--steel);background:rgba(31,95,196,.045);padding:1px 6px;margin:0 3px;border-radius:4px 4px 0 0;min-width:3.5em;max-width:100%;height:1.75em;vertical-align:baseline}
+input.blank:focus,textarea.cell:focus{outline:2px solid var(--accent);outline-offset:1px;background:#fff}
+input.blank.long{display:block;width:100%;margin:6px 0 0}
+label.ck{display:inline-flex;align-items:center;gap:6px;margin:1px 12px 1px 0;padding:2px 10px 2px 6px;border-radius:9px;border:1px solid var(--line);background:#fff;cursor:pointer;line-height:1.5;white-space:nowrap}
+label.ck:has(input:checked){border-color:var(--accent);background:var(--accent-bg)}
+label.ck.solo{border:0;background:none;padding:0;margin:0}
+label.ck input{width:1.15em;height:1.15em;accent-color:var(--accent);margin:0}
+textarea.cell{font:inherit;color:#0c4f9e;width:100%;min-height:2.6em;border:0;background:rgba(31,95,196,.045);border-radius:6px;padding:4px 8px;resize:vertical;display:block}
+.sketch{position:relative;border:1.5px dashed var(--silver2);border-radius:10px;background:#fff;min-width:120px}
+.sketch canvas{display:block;width:100%;height:100%;touch-action:none;cursor:crosshair;border-radius:10px}
+.sketch button{position:absolute;right:4px;top:4px;font-size:11px;border:1px solid var(--line);background:#fff;border-radius:6px;padding:0 6px;color:var(--muted)}
+td>.sketch{min-height:120px;height:120px}
+.doc>.sketch,.sec>.sketch{height:240px}
+
+/* 课尾导航与工具 */
+.lnav{display:flex;gap:12px;align-items:stretch;margin:26px 0 0}
+.lnav a{flex:1;display:block;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;text-decoration:none;color:var(--ink)}
+.lnav a:hover{border-color:var(--accent)}
+.lnav a small{display:block;color:var(--muted);font-size:12.5px}
+.lnav a.nx{text-align:right}
+.tools{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end;margin:18px 0 0;font-size:13px;color:var(--muted);align-items:center}
+.tools button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:4px 12px;font-size:13px}
+.tools button:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- 首页 ---------- */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;aspect-ratio:1942/809;min-height:340px;background:#f8fcf8;border:1px solid var(--line);border-radius:24px;padding:34px 36px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.85) 38%,rgba(255,255,255,.18) 64%,transparent 76%);pointer-events:none}
+.hero>div{position:relative;z-index:2;width:64%}
+.hero .hero-backdrop{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none}
+.hero h1{font-size:clamp(26px,3.6vw,40px);letter-spacing:-.01em}
+.hero .sub{font-size:1.05em;color:var(--steel);margin:12px 0 18px;max-width:30em}
+.hero .acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:0}
+.hero .acts .tbtn{height:42px;font-size:15px}
+.hgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+.hcard h3{font-size:1.02em;margin-bottom:6px;display:flex;gap:8px;align-items:center}
+.hcard p{margin:0;color:var(--muted);font-size:.93em}
+.hcard .ic{color:var(--accent)}
+.unit{margin:26px 0 0}
+.unit>h2{font-size:1.05em;color:var(--steel);display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.unit>h2 b{font:800 12px/1 ui-sans-serif;color:#fff;background:var(--steel);border-radius:6px;padding:5px 8px;letter-spacing:.06em}
+.lcards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.lcard{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:.15s}
+.lcard:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 18px rgba(40,60,80,.08)}
+.lcard .n{grid-row:span 2;font:800 30px/1 "DIN Alternate","Bahnschrift",ui-sans-serif;color:var(--silver2)}
+.lcard:hover .n{color:var(--accent)}
+.lcard b{font-size:1.02em;line-height:1.4}
+.lcard span{color:var(--muted);font-size:.9em;line-height:1.55}
+.lcard .links{grid-column:2;display:flex;gap:14px;font-size:.88em;margin-top:4px}
+
+/* ---------- 图解 ---------- */
+figure.fig{margin:18px 0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;break-inside:avoid}
+.fig-h{display:flex;align-items:center;gap:10px;padding:11px 16px;background:linear-gradient(90deg,var(--silver),#f7f9fb);border-bottom:1px solid var(--line)}
+.fig-h b{font-size:15.5px;line-height:1.4}
+.fig-h .sub{font-size:13px;color:var(--muted);font-weight:400;display:block}
+.fig-h .zoom{margin-left:auto;flex:none;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:12px;padding:2px 9px;color:var(--muted)}
+.fig-h .zoom:hover{color:var(--accent);border-color:var(--accent)}
+.fig-b{padding:16px;font-size:14.5px;line-height:1.6;overflow-x:auto}
+.fig-b>*:first-child{margin-top:0}.fig-b>*:last-child{margin-bottom:0}
+figcaption{padding:10px 16px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted);background:#fbfcfd}
+figcaption .kind{display:inline-block;margin-right:8px;font-size:11.5px;font-weight:700;color:var(--steel);background:var(--silver);border-radius:5px;padding:0 7px}
+figure.photo .fig-b{padding:0;background:#eef1f5}figure.photo img{display:block;width:100%;max-width:var(--pw,100%);height:auto;margin:0 auto}
+.fg{display:grid;gap:12px;margin:12px 0}
+.fg2{grid-template-columns:repeat(2,minmax(0,1fr))}.fg3{grid-template-columns:repeat(3,minmax(0,1fr))}.fg4{grid-template-columns:repeat(4,minmax(0,1fr))}.fg5{grid-template-columns:repeat(5,minmax(0,1fr))}.fg6{grid-template-columns:repeat(6,minmax(0,1fr))}
+.fc{border:1px solid var(--line);border-radius:12px;background:#fff;padding:12px 14px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.fc>h5{margin:0;font-size:14.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fc p{margin:0}
+.fc .art{display:grid;place-items:center;min-height:96px;margin:4px 0}
+.fc .art svg{max-width:100%;height:auto}
+.fc small,.dim{color:var(--muted);font-size:12.5px}
+.t-teal{--c:var(--teal);--cb:var(--teal-bg)}.t-purple{--c:var(--purple);--cb:var(--purple-bg)}.t-amber{--c:var(--amber);--cb:var(--amber-bg)}
+.t-green{--c:var(--green);--cb:var(--green-bg)}.t-blue{--c:var(--blue);--cb:var(--blue-bg)}.t-steel{--c:var(--steel);--cb:var(--silver)}
+.fc[class*="t-"]{border-color:color-mix(in srgb,var(--c) 45%,#fff);border-top:4px solid var(--c)}
+.fc.soft{background:var(--cb);border-top-width:1px}
+.pill{display:inline-flex;align-items:center;gap:5px;border-radius:99px;padding:1px 11px;font-size:12.5px;font-weight:700;color:#fff;background:var(--c,var(--steel));white-space:nowrap}
+.pill.o{color:var(--c);background:var(--cb)}
+.num{flex:none;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--c,var(--steel));color:#fff;font:800 13px/1 ui-sans-serif}
+.pbtn{display:inline-flex;align-items:center;justify-content:center;border-radius:7px;padding:3px 12px;background:#2466d3;color:#fff;font-weight:700;font-size:13px;white-space:nowrap;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.pbtn.g{background:#2b8a3e}.pbtn.d{background:#4a5563}.pbtn.p{background:var(--purple)}
+.pstat{display:inline-flex;border-radius:6px;padding:2px 10px;background:#22303e;color:#e8f0f8;font-size:12.5px;white-space:nowrap}
+.ptab{display:inline-flex;border-radius:7px;padding:3px 12px;border:1.5px solid var(--c,var(--steel));color:var(--c,var(--steel));font-weight:700;font-size:13px;background:#fff}
+.arr{flex:none;color:var(--c,var(--steel));font-weight:800;font-size:18px;line-height:1;align-self:center}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.flow.st{align-items:stretch}.flow.st>.fc{flex:1 1 150px}
+.flow.sp{justify-content:space-around}
+.flow.tight{gap:4px}.flow.tight>.fc{flex:1 1 112px;padding:10px 11px}.flow.tight>.arr{font-size:14px}
+.fnote{margin:12px 0 0;padding:9px 14px;border-radius:10px;background:var(--cb,var(--silver));color:var(--ink);font-size:13.5px;border:1px solid color-mix(in srgb,var(--c,var(--steel)) 30%,#fff)}
+.fnote b{color:var(--c,var(--ink))}
+.ln{display:inline-block;width:var(--w,7em);border-bottom:1.5px dashed var(--faint);height:1.2em;vertical-align:baseline;margin:0 3px}
+.ln.blk{display:block;width:100%;margin:8px 0 0}
+.ico{width:1.25em;height:1.25em;flex:none;vertical-align:-.22em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico.xl{width:44px;height:44px;stroke-width:1.5;color:var(--c,var(--steel))}
+.who{display:inline-flex;flex-direction:column;align-items:center;gap:2px;font-size:12.5px;font-weight:700;color:var(--c,var(--steel));text-align:center;line-height:1.3}
+.who .av{width:46px;height:46px;border-radius:50%;background:var(--cb,var(--silver));display:grid;place-items:center;border:2px solid var(--c,var(--steel))}
+.who .av .ico{width:26px;height:26px}
+.say{position:relative;display:inline-block;background:#fff;border:1.5px solid var(--c,var(--amber-line));border-radius:12px;padding:4px 12px;font-weight:700;font-size:13.5px}
+.stage{position:relative;display:grid;place-items:end center;border-radius:12px;background:radial-gradient(ellipse at 50% 100%,#cfd7e1 0%,#e6ebf1 45%,#f5f7fa 100%);padding:10px 10px 12px;min-width:0;overflow:hidden}
+.stage::after{content:"";position:absolute;left:22%;right:22%;bottom:7px;height:10px;border-radius:50%;background:rgba(30,45,60,.22);filter:blur(5px)}
+.stage img.rb{position:relative;z-index:1}
+img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:contain}
+.screen{display:inline-block;border:5px solid #2a3644;border-radius:12px;background:linear-gradient(#f4f7fa,#dfe6ee);position:relative;padding:6px 20px;margin-bottom:16px}
+.screen::after{content:"";position:absolute;left:50%;bottom:-17px;width:64px;height:12px;transform:translateX(-50%);background:linear-gradient(#2a3644 0 6px,transparent 6px),linear-gradient(90deg,transparent 26px,#2a3644 26px 38px,transparent 38px);border-bottom:4px solid #2a3644;border-radius:0 0 3px 3px}
+.screen .cap{display:block;text-align:center;font-size:11.5px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.grow{flex:1;min-width:0}
+.dgm{display:block;width:100%;height:auto;min-width:var(--mw,620px);font-family:var(--font)}
+.dgm text{fill:var(--ink)}
+.dgm .t{font-size:15px;font-weight:700}.dgm .s{font-size:13px}.dgm .n{font-size:12px;fill:var(--muted)}
+.dgm .bx{stroke-width:1.6;rx:10}
+.dgm .ar{fill:none;stroke:var(--steel);stroke-width:2.2}
+.loopbar{position:relative;margin:2px 8% 0;height:26px;border:2.4px solid var(--c,var(--teal));border-top:0;border-radius:0 0 14px 14px}
+.loopbar::before{content:"";position:absolute;left:-7px;top:-4px;border:6px solid transparent;border-bottom:10px solid var(--c,var(--teal));border-top:0}
+.loopbar.tall{height:58px}
+.loopbar.tall>span{top:auto;bottom:-22px;transform:translateX(-50%);border:1.5px solid var(--line);border-radius:10px;padding:5px 12px;font-weight:400;color:var(--ink);font-size:inherit}
+.fillflow{padding-bottom:26px}
+.loopbar span{position:absolute;left:50%;top:50%;transform:translate(-50%,-15%);background:#fff;padding:0 10px;font-size:13px;font-weight:700;color:var(--c,var(--teal));white-space:nowrap}
+.bars{display:grid;grid-template-columns:auto 1fr;gap:10px 12px;align-items:center}
+.bars .bar{height:34px;border-radius:9px;background:var(--c);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:flex-end;padding:0 12px;font-size:13.5px;white-space:nowrap}
+.axis{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);grid-column:2;border-top:1.5px solid var(--silver2);padding-top:2px}
+.slots{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;width:100%;max-width:220px}
+.slots i{height:18px;border-radius:3px;background:var(--teal)}.slots i:nth-child(3n){background:#86c4c8}
+.tracks{display:grid;grid-template-columns:150px repeat(6,minmax(84px,1fr));gap:6px;min-width:720px;align-items:stretch}
+.tracks>div{border-radius:9px;padding:6px 8px;background:#fff;border:1px solid var(--line);font-size:13px;display:flex;flex-direction:column;justify-content:center;min-height:54px}
+.tracks .hd{background:var(--silver);font-weight:700;align-items:center;flex-direction:row;gap:6px;justify-content:flex-start}
+.tracks .rl{border-left:5px solid var(--c);font-weight:700;color:var(--c)}
+.tracks .rl small{font-weight:400;color:var(--muted)}
+.bodymap{position:relative;max-width:640px;margin:0 auto}
+.bodymap svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.bodymap img{display:block;height:auto;width:42%;margin:0 auto}
+.bodymap .lb{position:absolute;transform:translateY(-50%);display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--silver2);border-radius:10px;padding:5px 10px;font-weight:700;font-size:14.5px;white-space:nowrap}
+.bodymap .lb{width:24%}.bodymap .lb .ln{flex:1;width:auto}
+.bodymap .lb.l{left:0}.bodymap .lb.r{right:0}
+.views3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.views3 .stage{padding-top:14px}
+.views3 figcaption,.cap2{border:0;background:none;padding:6px 0 0;text-align:center;font-size:12.5px;color:var(--muted)}
+
+/* 弹层 */
+.modal{position:fixed;inset:0;z-index:60;background:rgba(20,30,42,.62);display:none;overflow:auto;padding:4vh 3vw}
+.modal.on{display:block}
+.modal .box{max-width:1100px;margin:0 auto;position:relative}
+.modal figure.fig{margin:0;box-shadow:0 30px 80px rgba(0,0,0,.4)}
+.modal .fig-b{font-size:16px}
+.modal .x{position:sticky;top:0;float:right;z-index:2;margin:-6px -6px 0 0;width:38px;height:38px;border-radius:50%;border:0;background:#fff;font-size:20px;box-shadow:0 4px 14px rgba(0,0,0,.3)}
+#fig-store{display:none}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#22303e;color:#fff;border-radius:10px;padding:8px 16px;font-size:13.5px;opacity:0;pointer-events:none;transition:.25s;z-index:70}
+.toast.on{opacity:1}
+
+/* ---------- 窄屏 ---------- */
+@media(max-width:1000px){
+  #menu{display:inline-flex}
+  .side{transform:translateX(-102%);transition:transform .2s;box-shadow:12px 0 30px rgba(0,0,0,.12)}
+  .nav-open .side{transform:none}
+  main{margin-left:0;padding:calc(var(--top) + 16px) 14px 60px}
+  .top .hide-s{display:none}
+}
+@media(max-width:720px){
+  :root{--fs:16px}.role-teacher{--fs:15px}
+  .lhead{grid-template-columns:auto 1fr;padding:16px 18px}.lhead .rb{display:none}.lhead .lnum{font-size:40px}
+  .sec{padding:16px 14px}
+  .hero{aspect-ratio:auto;min-height:0;padding:24px 20px 240px}.hero>div{width:100%}
+  .hero .hero-backdrop{top:auto;height:220px;object-position:67% center}
+  .hero::before{top:auto;bottom:160px;height:60px;background:linear-gradient(#f8fcf8,transparent)}
+  .hgrid,.lcards{grid-template-columns:1fr}
+  .fg3,.fg4,.fg5,.fg6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fg2.stack,.fg3.stack{grid-template-columns:1fr}
+  .top .brand span{max-width:44vw}
+  label.ck{white-space:normal}
+}
+
+/* ---------- 打印 ---------- */
+@media print{
+  @page{size:A4;margin:14mm 13mm}
+  :root{--fs:11.5pt}.role-teacher{--fs:10.5pt}
+  body{background:#fff}
+  .top,.side,.lnav,.tools,.tabs,.zoom,.modal,.toast,.sketch button,.noprint{display:none!important}
+  main{margin:0;padding:0}.view{max-width:none}
+  .sec{border:0;padding:0;margin:14pt 0}
+  .lhead{border-radius:10px;padding:12px 16px}.lhead .lnum{font-size:34pt}.lhead .rb{height:86px;margin:-6px 0 -12px}
+  input.blank{background:none;border-radius:0;color:#000}
+  textarea.cell{background:none;color:#000}
+  label.ck{border:0;padding:0;margin-right:10px;background:none!important}
+  figure.fig,.tblw,.question,.callout{break-inside:avoid}
+  h2,h3{break-after:avoid}
+  .tblw{overflow:visible}.fig-b{overflow:visible}
+  a{color:inherit;text-decoration:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.namebar>span{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px}
+
+/* 编程课程扩展，沿用 BumiLessons-H5 的银灰、青绿和卡片版式。 */
+.view{scroll-margin-top:calc(var(--top) + 20px)}
+.code-caption{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 14px;background:#213444;color:#e7eff7;border-radius:12px 12px 0 0;font-size:13px}
+.code-caption button{flex:none;border:1px solid #6d869b;background:#304b61;color:#fff;border-radius:7px;padding:3px 12px;font-size:13px}
+.code-caption button:hover{background:#46677d}
+.doc .code-card{margin:16px 0}
+.code-card pre{margin:0!important;background:#142635;color:#e8eef6;border:0;border-radius:0 0 12px 12px;padding:14px 18px;tab-size:4;font:14px/1.85 Consolas,"SFMono-Regular",ui-monospace,monospace;white-space:pre;overflow:auto}
+.code-card pre code{background:none;padding:0;font:inherit;color:inherit;border-radius:0}
+.code-card .comment{color:#8eb5a1}.code-card .string{color:#f4d48d}.code-card .keyword{color:#a8bfff}.code-card .number{color:#7fdcce}.code-card .function{color:#88caff}
+.code-notes{display:grid;grid-template-columns:minmax(150px,.8fr) minmax(0,1.6fr);gap:10px 20px;margin:16px 0}
+.code-notes dt{margin:0;align-self:start;overflow-wrap:anywhere}.code-notes dd{margin:0;color:var(--muted);font-size:.95em}
+.code-notes code{white-space:pre-wrap;overflow-wrap:anywhere}
+.code-flow{list-style:none!important;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;padding:0!important;margin:0!important;counter-reset:flow}
+.code-flow li{margin:0!important;padding:12px 10px;border:1px solid var(--line);border-radius:10px;background:var(--accent-bg);font-size:14px;line-height:1.5}
+.code-flow li::before{counter-increment:flow;content:counter(flow,decimal-leading-zero) " →";display:block;font:700 12px/1.5 ui-monospace,Consolas,monospace;color:var(--accent);margin-bottom:5px}
+.task-heading{display:flex;gap:10px;align-items:center}.task-heading b{display:grid;place-items:center;width:30px;height:30px;background:var(--accent);color:#fff;border-radius:9px;font-size:16px;flex:none}
+.doc textarea.code-draft{min-height:210px;font:14px/1.7 Consolas,"SFMono-Regular",ui-monospace,monospace;background:#f3f7fa;border:1px solid var(--line);padding:12px;tab-size:4;color:#173b57;white-space:pre;overflow:auto;resize:vertical}
+.field-label{display:block;font-size:.92em;color:var(--steel);font-weight:600;margin:12px 0 5px}
+.lesson-goals{margin:8px 0 0!important}
+.lesson-goals li::marker{color:var(--accent)}
+.world-route{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--steel)}
+.world-route span{background:var(--silver);border-radius:7px;padding:3px 9px}.world-route i{font-style:normal;color:var(--faint)}
+.concept-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.concept{padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#f8fafb;min-width:0}
+.concept b{color:var(--accent)}.concept p{font-size:.92em;line-height:1.65;margin:5px 0 0}
+.course-label{font:700 12px/1.5 ui-monospace,Consolas,monospace;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
+.entry-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
+.entry-card{display:block;border:1px solid var(--line);background:#fff;border-radius:18px;padding:24px;color:var(--ink);text-decoration:none}
+.entry-card:hover{border-color:var(--accent);box-shadow:0 8px 24px #22334410}.entry-card b{font-size:22px;display:block;margin:5px 0}.entry-card p{color:var(--muted);margin:8px 0}.entry-card .link{color:var(--accent);font-weight:700}
+.overview-table td:first-child{white-space:nowrap}
+.storage-hint{font-size:12px;color:var(--muted);margin:4px 0 0;min-height:1.5em}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media(max-width:720px){.concept-grid,.entry-grid{grid-template-columns:1fr}.code-notes{grid-template-columns:1fr;gap:4px}.code-notes dd{margin-bottom:12px}.code-card pre{font-size:13px;padding:12px}.top .brand span{max-width:38vw}.world-route{font-size:13px}.code-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media print{.code-card{break-inside:auto}.code-card pre{background:#f5f7f9;color:#102737;border:1px solid #dce2e9;white-space:pre-wrap;overflow:visible;font-size:9.5pt}.code-caption{background:#eaeef3;color:#1c2937}.code-card .comment{color:#39744a}.code-card .string{color:#945b12}.code-card .keyword{color:#5247a0}.code-card .number,.code-card .function{color:#21698d}.concept-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.doc textarea.code-draft{height:auto;min-height:130px;white-space:pre-wrap}.storage-hint{display:none}}
+
+</style></head><body><header class="top"><button class="tbtn" id="menu" type="button" data-act="menu" aria-label="打开课程目录">☰</button><a class="brand" href="#home"><img src="assets/robot/stand-front.webp" alt=""><span>NPL 代码编程 · 小布米</span></a><span class="role-tag">学生版</span><span class="sp"></span><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">小布米世界 ↗</a></header><nav class="side" aria-label="课程目录"><a href="#home" data-view="home">课程目录</a><h6>单元一 · 把动作写成程序</h6><a href="#l01" data-view="l01"><span class="n">01</span>顺序执行<span class="dot" title="本机有填写记录"></span></a><a href="#l02" data-view="l02"><span class="n">02</span>转向<span class="dot" title="本机有填写记录"></span></a><a href="#l03" data-view="l03"><span class="n">03</span>循环<span class="dot" title="本机有填写记录"></span></a><h6>单元二 · 用数据和判断控制</h6><a href="#l04" data-view="l04"><span class="n">04</span>变量<span class="dot" title="本机有填写记录"></span></a><a href="#l05" data-view="l05"><span class="n">05</span>条件判断<span class="dot" title="本机有填写记录"></span></a><a href="#l06" data-view="l06"><span class="n">06</span>自己设计<span class="dot" title="本机有填写记录"></span></a><h6>单元三 · 颜色与动作数据</h6><a href="#l07" data-view="l07"><span class="n">07</span>配色<span class="dot" title="本机有填写记录"></span></a><a href="#l08" data-view="l08"><span class="n">08</span>回放控制<span class="dot" title="本机有填写记录"></span></a><h6>单元四 · 综合创作与观察</h6><a href="#l09" data-view="l09"><span class="n">09</span>迎宾小助手<span class="dot" title="本机有填写记录"></span></a><a href="#l10" data-view="l10"><span class="n">10</span>彩色巡逻队<span class="dot" title="本机有填写记录"></span></a><a href="#l11" data-view="l11"><span class="n">11</span>小小舞台导演<span class="dot" title="本机有填写记录"></span></a><a href="#l12" data-view="l12"><span class="n">12</span>速度观察员<span class="dot" title="本机有填写记录"></span></a><p class="tip">小圆点表示本机有填写记录。<br>本页学习和记录；代码在小布米世界中运行。</p></nav><main><section class="view" id="home" data-title="课程目录"><div class="hero"><div><p class="course-label">BUMI / NPL CODE LAB</p><h1>和小布米一起<br>学 NPL 代码编程</h1><p class="sub">12 个示例，12 次动手探索。<br>把想法写成程序，用观察说明结果。</p><div class="acts"><a class="tbtn go" href="#l01">从第 01 课开始</a><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a></div></div><img class="hero-backdrop" src="assets/bumi-meadow.webp" alt="" aria-hidden="true" width="1942" height="809" fetchpriority="high"></div><div class="hgrid"><div class="hcard"><h3>读 · 改 · 跑 · 讲</h3><p>先预测、读代码，再到同一个小布米世界运行。每课改一处，用自己的记录解释变化。</p></div><div class="hcard"><h3>一台小布米，小组轮换</h3><p>操作员写代码，观察员看动作与输出，记录员留下证据。也可以一起观察教师投影。</p></div><div class="hcard"><h3>把学习留在这里</h3><p>任务单和代码草稿可直接填写，自动保存在当前浏览器；支持打印本课，不上传填写内容。</p></div></div><div class="callout info"><p>适用基线：小学 5–6 年级，每课 40 分钟。前 8 课学习基础，后 4 课综合应用。编程控制使用已有行走策略与动作数据；本课程不训练新模型。</p></div><section class="unit"><h2><b>单元一</b>把动作写成程序</h2><div class="lcards"><a class="lcard" href="#l01"><span class="n">01</span><b>顺序执行</b><span>把一件事拆成按次序完成的指令</span></a><a class="lcard" href="#l02"><span class="n">02</span><b>转向</b><span>先改变朝向，再决定往哪里走</span></a><a class="lcard" href="#l03"><span class="n">03</span><b>循环</b><span>把重复的一组动作写进循环</span></a></div></section><section class="unit"><h2><b>单元二</b>用数据和判断控制</h2><div class="lcards"><a class="lcard" href="#l04"><span class="n">04</span><b>变量</b><span>让一个名字保存会改变的数值</span></a><a class="lcard" href="#l05"><span class="n">05</span><b>条件判断</b><span>读取一次状态，让程序选择一条路</span></a><a class="lcard" href="#l06"><span class="n">06</span><b>自己设计</b><span>把前进与转向放进同一条指令</span></a></div></section><section class="unit"><h2><b>单元三</b>颜色与动作数据</h2><div class="lcards"><a class="lcard" href="#l07"><span class="n">07</span><b>配色</b><span>先换整机方案，再给部件指定颜色</span></a><a class="lcard" href="#l08"><span class="n">08</span><b>回放控制</b><span>用暂停和倍速，安排一段动作的观看节奏</span></a></div></section><section class="unit"><h2><b>单元四</b>综合创作与观察</h2><div class="lcards"><a class="lcard" href="#l09"><span class="n">09</span><b>迎宾小助手</b><span>把配色、文字和动作排成一段有开头与结尾的程序</span></a><a class="lcard" href="#l10"><span class="n">10</span><b>彩色巡逻队</b><span>让同一台小布米依次使用列表中的颜色</span></a><a class="lcard" href="#l11"><span class="n">11</span><b>小小舞台导演</b><span>编排行走、片段选择、暂停与慢放之间的衔接</span></a><a class="lcard" href="#l12"><span class="n">12</span><b>速度观察员</b><span>用相同时长、可比起点和重复观察检验自己的猜想</span></a></div></section><section class="sec"><h2>三件事，始终分清</h2><p><strong>运动指令：</strong>给已有行走策略目标，不等于精确位移；<strong>轨迹回放：</strong>播放已有动作数据，不计算实时物理平衡；<strong>状态与输出：</strong>只说明程序读取或打印的内容，不代表自主识别人、障碍物或意图。</p><p class="lede">机器人配图沿用原 H5 的真实模型离线渲染；流程图是程序示意，都不是本次网页运行截图。学习结果请以课堂观察和记录说明。</p></section></section><section class="view lesson" id="l01" data-title="第 01 课 顺序执行"><header class="lhead"><div class="lnum"><small>LESSON</small>01</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元一 · 把动作写成程序</span><span class="chip">40 分钟</span></p><h1>顺序执行</h1><p class="lede">把一件事拆成按次序完成的指令</p></div><img class="rb" src="assets/robot/stand-34.webp" alt="" loading="lazy"></header><div class="doc" data-save="l01"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>同样四行代码，为什么小布米要先做完前面的事，再显示最后一句话？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>按代码顺序说出视角、前进、等待和输出四个步骤。</li><li>把运动持续的时间与程序等待的时间分开记录。</li><li>只修改等待时间，用两次记录说明哪里变了。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“01 顺序执行”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>01 顺序执行</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>先不点 run：你认为“我完成啦！”会在前进开始时出现，还是在后面出现？等待的那一段，小布米会怎样？写下理由。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l01-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>切到机器人视角</li><li>前进 2 个仿真运动秒</li><li>现实等待 1 秒</li><li>输出完成文字</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 01 顺序执行</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 1 课完整 NPL 示例"><code><span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="function">bumi.forward</span>(<span class="number">2</span>)
+<span class="function">wait</span>(<span class="number">1</span>)
+<span class="function">print</span>(<span class="string">&quot;我完成啦！&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>顺序执行</b><p>程序从上往下执行。前进指令要等指定的运动时间完成，才会进入下一行。</p></div><div class="concept"><b>参数</b><p>括号里的内容告诉指令怎样做。例如 forward(2) 中的 2 是运动秒数，不是步数或米数。</p></div><div class="concept"><b>输出</b><p>print 把文字写在面板下方的输出区，方便我们检查程序走到了哪里；它不会让机器人开口说话。</p></div></div><dl class="code-notes"><dt><code>bumi.camera(&quot;robot&quot;)</code></dt><dd>把观察镜头对准小布米。这个视角便于看动作，不表示我们正在读取机器人眼睛里的画面。</dd><dt><code>bumi.forward(2)</code></dt><dd>向前运动 2 个仿真秒，结束后运动指令自动清零。这里省略的目标速度采用默认值 0.5 m/s；实际路程要观察，不能直接把 2 当成 2 米。</dd><dt><code>wait(1)</code></dt><dd>让程序按现实时间等待约 1 秒再往下走。它本身不发送停止指令；此例进入等待前，forward 已经完成并清零。</dd><dt><code>print(&quot;我完成啦！&quot;)</code></dt><dd>在输出区显示引号里的文字。英文引号和括号需要成对保留，文字内容可以按任务修改。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>在小布米世界中确认机器人已加载，打开“NPL代码编程”，选择“01 顺序执行”。先按 reset，让本次观察从重置后的姿态开始。</li><li>一人读代码，一人看机器人，一人看输出区。点一次 run，观察前进、等待和文字出现的先后；不要在程序运行中反复点 run。</li><li>等面板显示“运行完成”，把看到的现象记到“原示例”一行。用地面的固定参照物判断是否仍在移动，不能只凭腿部小幅摆动判断。</li><li>完成任务 C 后，按 reset，再运行修改版；最后点 Stop，确认程序已停止。若没有观察到现象，就如实写“未观察到”，不要补写结果。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行版本</th><th scope="col">动作与文字的先后</th><th scope="col">等待时看到的状态</th><th scope="col">与预测相同或不同之处</th></tr></thead><tbody><tr><th scope="row">原示例</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 动作与文字的先后"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 等待时看到的状态"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 与预测相同或不同之处"></textarea></td></tr><tr><th scope="row">修改等待时间后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改等待时间后 · 动作与文字的先后"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改等待时间后 · 等待时看到的状态"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改等待时间后 · 与预测相同或不同之处"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 wait(1) 改为 wait(2)，其余代码保持原样。运行前先预测：哪两个事件之间的间隔会改变？运行后用表格核对。</p><div class="callout info"><p>只改等待时间；保留 forward(2) 和输出文字，才能看清这一次修改的作用。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>不增加运动指令，只在前进之前增加一行 print(&quot;准备出发&quot;)。先在纸上标出两句输出各处在流程的哪里，再决定怎样检查。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">我用什么现象判断程序已经执行到最后一行，而不是只看见机器人不动？<textarea class="cell" aria-label="我用什么现象判断程序已经执行到最后一行，而不是只看见机器人不动？" rows="2" spellcheck="false"></textarea></label><label class="field-label">如果有人说“wait 会让小布米停下”，我会怎样结合本例的前进指令解释？<textarea class="cell" aria-label="如果有人说“wait 会让小布米停下”，我会怎样结合本例的前进指令解释？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能按顺序指读四行代码。">我能按顺序指读四行代码。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能分清前进秒数和等待秒数。">我能分清前进秒数和等待秒数。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能用两次记录说明只改了什么、观察到了什么。">我能用两次记录说明只改了什么、观察到了什么。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#home"><small>←</small>课程目录</a><a class="nx" href="#l02"><small>下一课 · 第 02 课 →</small>转向</a></nav></section><section class="view lesson" id="l02" data-title="第 02 课 转向"><header class="lhead"><div class="lnum"><small>LESSON</small>02</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元一 · 把动作写成程序</span><span class="chip">40 分钟</span></p><h1>转向</h1><p class="lede">先改变朝向，再决定往哪里走</p></div><img class="rb" src="assets/robot/walk-2.webp" alt="" loading="lazy"></header><div class="doc" data-save="l02"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>两次都是“前进”，为什么转向之后，小布米走向了不同的方向？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>区分向前移动与原地改变朝向。</li><li>用路线草图记录“前进—左转—再前进”的先后。</li><li>只替换转向指令，对照记录左右转的区别。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“02 转向”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>02 转向</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>把纸上的箭头当作小布米：先向前，再向左转，最后再向前。请先画出你预测的路线，并标明哪个位置发生了转向。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l02-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>向前运动 1 秒</li><li>原地左转 2 秒</li><li>沿新朝向前进 1 秒</li><li>归零站立</li><li>输出探索文字</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 02 转向</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 2 课完整 NPL 示例"><code><span class="function">bumi.forward</span>(<span class="number">1</span>)
+<span class="function">bumi.turnLeft</span>(<span class="number">2</span>)
+<span class="function">bumi.forward</span>(<span class="number">1</span>)
+<span class="function">bumi.stand</span>()
+<span class="function">print</span>(<span class="string">&quot;换个方向探索&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>相对方向</b><p>前进是沿小布米当时面朝的方向移动。转过身之后，同一个“前进”会沿新的朝向执行。</p></div><div class="concept"><b>原地转向</b><p>代码中的 turnLeft 或 turnRight 将前后目标速度设为零，再执行转向。它和同时前进、同时转弯的弧线动作不同。</p></div><div class="concept"><b>时间与角度</b><p>turnLeft(2) 指转向持续 2 个仿真秒，不是转 2 度，也不是保证转 90 度；最终朝向需要观察。</p></div></div><dl class="code-notes"><dt><code>bumi.forward(1)</code></dt><dd>沿当时的朝向前进 1 个仿真秒，完成后运动指令清零。示例里这行出现两次，但执行时的朝向可能不同。</dd><dt><code>bumi.turnLeft(2)</code></dt><dd>以前后目标速度为零的方式向左转 2 个仿真秒，省略的目标转速默认为 0.5 rad/s。先看转向方向，本课不要求计算弧度。</dd><dt><code>bumi.stand()</code></dt><dd>恢复归零站立，便于结束观察。它不是把机器人沿路线送回出发点。</dd><dt><code>print(&quot;换个方向探索&quot;)</code></dt><dd>这句文字是执行到程序末尾的检查点。要把它与第二段前进的方向一起记录。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>选择“02 转向”，检查代码与示例一致。按 reset 归位，选地面的固定参照物，并保持同一观察视角。</li><li>点 run：观察员依次喊出“第一段前进、原地转向、第二段前进”，记录员在草图旁补上实际看到的方向。不要把镜头里的左右直接当作机器人的左右。</li><li>运行完成后，在表格中分别记录第一段和第二段的移动方向，以及转向阶段是否有明显前后位移；找不到参照物时写明难以判断。</li><li>任务 C 前再次 reset，使用同一视角运行修改版。对照两版路线，再点 Stop 收尾；图中的转角只是观察草图，不标成精确测量。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行版本</th><th scope="col">转向时看到什么</th><th scope="col">两段前进的方向关系</th><th scope="col">与预测路线的差异</th></tr></thead><tbody><tr><th scope="row">原来的左转版</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的左转版 · 转向时看到什么"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的左转版 · 两段前进的方向关系"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的左转版 · 与预测路线的差异"></textarea></td></tr><tr><th scope="row">改成右转后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 改成右转后 · 转向时看到什么"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 改成右转后 · 两段前进的方向关系"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 改成右转后 · 与预测路线的差异"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 bumi.turnLeft(2) 换成 bumi.turnRight(2)，保留数字 2、两行 forward(1) 和其他代码。先画预测路线，再重置运行并比较。</p><div class="callout info"><p>只改变转向方向，先保持持续时间与前进指令相同。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>给同伴设计一条由“前进—转向—前进”组成的短路线，只用本课已有指令。先用箭头说明路线，再交换检查：每个参数表示什么，哪里还需要实跑确认？</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">两次 forward(1) 的代码相同，哪一个状态的改变让它们沿不同方向执行？<textarea class="cell" aria-label="两次 forward(1) 的代码相同，哪一个状态的改变让它们沿不同方向执行？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的路线图里，哪些是直接观察到的，哪些还不能说成精确的角度或距离？<textarea class="cell" aria-label="我的路线图里，哪些是直接观察到的，哪些还不能说成精确的角度或距离？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能指出移动和转向发生在哪一段。">我能指出移动和转向发生在哪一段。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能从机器人朝向说明前进方向。">我能从机器人朝向说明前进方向。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能解释为什么 turnLeft(2) 不等于转 90 度。">我能解释为什么 turnLeft(2) 不等于转 90 度。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l01"><small>← 上一课 · 第 01 课</small>顺序执行</a><a class="nx" href="#l03"><small>下一课 · 第 03 课 →</small>循环</a></nav></section><section class="view lesson" id="l03" data-title="第 03 课 循环"><header class="lhead"><div class="lnum"><small>LESSON</small>03</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元一 · 把动作写成程序</span><span class="chip">40 分钟</span></p><h1>循环</h1><p class="lede">把重复的一组动作写进循环</p></div><img class="rb" src="assets/robot/walk-2.webp" alt="" loading="lazy"></header><div class="doc" data-save="l03"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>想让小布米重复三次相同任务，需要把整段代码复制三遍吗？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>找出循环的开始、结束和每轮重复的内容。</li><li>把输出中的轮次与实际动作对应起来。</li><li>只改变循环次数，核对动作轮数和输出是否一致。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“03 循环”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>03 循环</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>把 for 到 end 之间的部分圈起来。先预测输出会出现哪些轮次，以及前进和后退各会执行几次；再指出 stand 是每轮执行还是循环结束后执行。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l03-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>进入新一轮，输出 i</li><li>前进 1 秒</li><li>现实等待 0.5 秒</li><li>后退 1 秒</li><li>未到第 3 轮就重复</li><li>循环后归零站立</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 03 循环</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 3 课完整 NPL 示例"><code><span class="keyword">for</span> i = <span class="number">1</span>, <span class="number">3</span> <span class="keyword">do</span>
+    <span class="function">print</span>(<span class="string">&quot;第&quot;</span>, i, <span class="string">&quot;次&quot;</span>)
+    <span class="function">bumi.forward</span>(<span class="number">1</span>)
+    <span class="function">wait</span>(<span class="number">0.5</span>)
+    <span class="function">bumi.backward</span>(<span class="number">1</span>)
+<span class="keyword">end</span>
+<span class="function">bumi.stand</span>()
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>循环体</b><p>for 和 end 之间的代码是一轮要执行的内容。本例每轮都包含输出、前进、等待和后退。</p></div><div class="concept"><b>轮次变量 i</b><p>for i = 1, 3 do 让 i 依次取 1、2、3。print 中使用 i，就能把当前轮次显示出来。</p></div><div class="concept"><b>重复与结果</b><p>重复执行同一组指令，不保证每轮经过的实际位置完全相同。代码规定动作，路线结果仍要观察。</p></div></div><dl class="code-notes"><dt><code>for i = 1, 3 do</code></dt><dd>从第 1 轮开始，到第 3 轮结束。默认每轮加 1，所以这段循环会执行三轮。逗号前后表示起始值和终止值。</dd><dt><code>print(&quot;第&quot;, i, &quot;次&quot;)</code></dt><dd>每轮先在输出区显示轮次。这里的 i 不加引号，程序才会取出它当时的数值；带引号的“i”只是文字。</dd><dt><code>bumi.forward(1)
+    wait(0.5)
+    bumi.backward(1)</code></dt><dd>一轮里先前进、等待，再后退。带时长的运动完成后会清零，wait 是两段运动之间的现实等候。</dd><dt><code>end
+bumi.stand()</code></dt><dd>end 结束循环范围。示例中的 stand 写在 end 后面，只有整个循环结束后才执行。缩进帮助人看清范围，程序仍需要正确的 for、do 和 end。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>选择“03 循环”，检查 for、do、end 与缩进。先按 reset，确认输出区位置和地面参照物。</li><li>点 run，一人看输出轮次，一人观察一整轮动作，记录员每完成一轮就在记录表中登记；不要只看到一次前进就算完成一轮。</li><li>程序完成后核对输出顺序与实际轮数。记录前进后退后的大致位置是否相近，若有偏移就保留这一现象。</li><li>任务 C 只改循环次数，reset 后再运行，比较输出轮次与动作组数；点 Stop 收尾。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行版本</th><th scope="col">输出出现的轮次</th><th scope="col">实际完成的动作组数</th><th scope="col">结束位置与观察备注</th></tr></thead><tbody><tr><th scope="row">原来的三轮</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的三轮 · 输出出现的轮次"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的三轮 · 实际完成的动作组数"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原来的三轮 · 结束位置与观察备注"></textarea></td></tr><tr><th scope="row">修改为两轮</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改为两轮 · 输出出现的轮次"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改为两轮 · 实际完成的动作组数"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改为两轮 · 结束位置与观察备注"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 for i = 1, 3 do 改成 for i = 1, 2 do。保留循环体、起始值 1 和循环后的 stand；预测后再运行，核对输出和动作组数。</p><div class="callout info"><p>改的是循环终止值，前进、等待、后退的每轮内容都不变。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>设计一句每轮都要显示的提醒文字和一句全部结束才显示的文字。先在代码旁用箭头标出各该放在循环内还是循环外，再向同伴解释，不必增加运动次数。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">输出中的 i 怎样帮助我发现漏看或多算了一轮？只看输出又不能证明什么？<textarea class="cell" aria-label="输出中的 i 怎样帮助我发现漏看或多算了一轮？只看输出又不能证明什么？" rows="2" spellcheck="false"></textarea></label><label class="field-label">如果前进 1 秒、后退 1 秒后没有回到完全相同的位置，这是否就说明循环次数错了？我会怎样检查？<textarea class="cell" aria-label="如果前进 1 秒、后退 1 秒后没有回到完全相同的位置，这是否就说明循环次数错了？我会怎样检查？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能圈出一轮完整的循环体。">我能圈出一轮完整的循环体。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能解释 i 在三轮中分别是多少。">我能解释 i 在三轮中分别是多少。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能分开记录执行轮数和实际位置。">我能分开记录执行轮数和实际位置。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l02"><small>← 上一课 · 第 02 课</small>转向</a><a class="nx" href="#l04"><small>下一课 · 第 04 课 →</small>变量</a></nav></section><section class="view lesson" id="l04" data-title="第 04 课 变量"><header class="lhead"><div class="lnum"><small>LESSON</small>04</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元二 · 用数据和判断控制</span><span class="chip">40 分钟</span></p><h1>变量</h1><p class="lede">让一个名字保存会改变的数值</p></div><img class="rb" src="assets/robot/walk-2.webp" alt="" loading="lazy"></header><div class="doc" data-save="l04"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>同样写着 forward(2, speed)，为什么两段前进可以使用不同的目标速度？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>跟踪 speed 在第一段和第二段前进前保存的数值。</li><li>区分变量名、赋值和取用变量的时机。</li><li>只改一个初始值，记录目标速度与实际观察，避免把指令当测量结果。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“04 变量”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>04 变量</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>在两行 forward(2, speed) 旁边，分别写出你认为当时 speed 的值。哪一行改变了它？如果只改最开始的 0.45，后面那一段会一起改变吗？</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l04-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>speed 先保存 0.45</li><li>取当前 speed 前进 2 秒</li><li>现实等待 1 秒</li><li>speed 改存 0.5</li><li>再取当前 speed 前进 2 秒</li><li>归零站立并输出问题</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 04 变量</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 4 课完整 NPL 示例"><code><span class="keyword">local</span> speed = <span class="number">0.45</span>
+<span class="function">bumi.forward</span>(<span class="number">2</span>, speed)
+<span class="function">wait</span>(<span class="number">1</span>)
+speed = <span class="number">0.5</span>
+<span class="function">bumi.forward</span>(<span class="number">2</span>, speed)
+<span class="function">bumi.stand</span>()
+<span class="function">print</span>(<span class="string">&quot;哪一段走得更远？&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>变量名</b><p>speed 是程序里给一个数值起的名字。后面的指令使用这个名字时，会取出它当时保存的值。</p></div><div class="concept"><b>赋值</b><p>local speed = 0.45 先建立变量并放入 0.45；后面的 speed = 0.5 再换成新值。新赋值不倒回去改变已经执行完的动作。</p></div><div class="concept"><b>目标与观察</b><p>forward 的第二个参数是目标速度，单位 m/s。机器人实际走多远还与仿真运动有关，需要记录现象，不能直接当作测出的速度或距离。</p></div></div><dl class="code-notes"><dt><code>local speed = 0.45</code></dt><dd>建立名为 speed 的变量，并把数值 0.45 放进去。小数使用英文句点，变量名两边不加引号。</dd><dt><code>bumi.forward(2, speed)</code></dt><dd>前进持续 2 个仿真秒，并在调用这一行时读取 speed 的当前值。两个参数的顺序是“时长、目标速度”，不要对调。</dd><dt><code>wait(1)</code></dt><dd>在两段运动之间按现实时间等待约 1 秒。这给观察员一个分段的提示，但它不是给两段路程做自动测量。</dd><dt><code>speed = 0.5</code></dt><dd>把同一个变量里的数值换成 0.5。下一行再读取 speed 时用新值；第一段已经完成，不会被这次赋值重写。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>选择“04 变量”，在学习单上先跟踪 speed 的两个值。按 reset，选定同一地面参照物和观察视角。</li><li>点 run，区分第一段前进、等待和第二段前进。记录员把代码给出的目标速度与自己的实际现象分栏填写。</li><li>等运行完成，讨论“哪一段走得更远”是否看得清。0.45 与 0.5 的差别较小，允许写“难以分辨”；不要把目标速度乘 2 当作已测路程。</li><li>按任务 C 改一个数，reset 后重新运行并记录。两段连续运行的起点和身体状态不同，本课先学习取值；若要研究速度与路程，需要另设计相同起点的重复观察。最后点 Stop。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行版本</th><th scope="col">第一段使用的目标速度</th><th scope="col">第二段使用的目标速度</th><th scope="col">实际现象或难以判断之处</th></tr></thead><tbody><tr><th scope="row">原示例</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 第一段使用的目标速度"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 第二段使用的目标速度"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 实际现象或难以判断之处"></textarea></td></tr><tr><th scope="row">只改初始值后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改初始值后 · 第一段使用的目标速度"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改初始值后 · 第二段使用的目标速度"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改初始值后 · 实际现象或难以判断之处"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把第一行 local speed = 0.45 改成 local speed = 0.4，保留后面的 speed = 0.5、两次运动时长和等待时间。先写下两次调用会取到什么值，再运行核对。</p><div class="callout info"><p>只改变量的初始值。不要同时改后面的重新赋值，否则难以判断哪一处修改影响了哪一段。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>先只在纸上把变量名 speed 改成 moveSpeed，圈出所有需要一起改名的位置。请同伴检查：哪些是同一个名字的使用，哪些数值不需要跟着改？</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">后面的 speed = 0.5 为什么不会改变已经完成的第一段前进？<textarea class="cell" aria-label="后面的 speed = 0.5 为什么不会改变已经完成的第一段前进？" rows="2" spellcheck="false"></textarea></label><label class="field-label">关于两段速度和路程，我能从代码确定什么，还需要怎样的观察才能确定什么？<textarea class="cell" aria-label="关于两段速度和路程，我能从代码确定什么，还需要怎样的观察才能确定什么？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能写出每次调用前 speed 的当前值。">我能写出每次调用前 speed 的当前值。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分变量名、数值与重新赋值。">我能区分变量名、数值与重新赋值。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能把目标速度和实际测量或观察分开说。">我能把目标速度和实际测量或观察分开说。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l03"><small>← 上一课 · 第 03 课</small>循环</a><a class="nx" href="#l05"><small>下一课 · 第 05 课 →</small>条件判断</a></nav></section><section class="view lesson" id="l05" data-title="第 05 课 条件判断"><header class="lhead"><div class="lnum"><small>LESSON</small>05</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元二 · 用数据和判断控制</span><span class="chip">40 分钟</span></p><h1>条件判断</h1><p class="lede">读取一次状态，让程序选择一条路</p></div><img class="rb" src="assets/robot/stand-34.webp" alt="" loading="lazy"></header><div class="doc" data-save="l05"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>同一段程序里的两句话，会不会都显示出来？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>指出读取状态、判断条件和显示结果三步。</li><li>根据本次状态与输出，说明程序选择了哪个分支。</li><li>区分“程序读到的状态”与“我从画面作出的猜测”。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“05 条件判断”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>05 条件判断</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>先不运行。圈出两个 print，预测本次会出现哪一句，并写下你的依据；如果现在还不知道状态，也可以写“需要先查询”。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l05-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>先前进 1 个仿真秒，运动结束后指令清零。</li><li>查询一次状态，把结果存到 state。</li><li>检查 state.healthy 的值。</li><li>只执行对应分支中的 print。</li><li>执行 bumi.stand()，结束这次练习。</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 05 条件判断</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 5 课完整 NPL 示例"><code><span class="function">bumi.forward</span>(<span class="number">1</span>)
+<span class="keyword">local</span> state = <span class="function">bumi.status</span>()
+<span class="keyword">if</span> state.healthy <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">&quot;行走策略正常&quot;</span>)
+<span class="keyword">else</span>
+    <span class="function">print</span>(<span class="string">&quot;行走策略尚未就绪&quot;</span>)
+<span class="keyword">end</span>
+<span class="function">bumi.stand</span>()
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>状态表</b><p>bumi.status() 返回本次查询时的状态。把它存进 state，就能在后面的语句中读取。</p></div><div class="concept"><b>真与假</b><p>state.healthy 是一个真或假值，表示行走策略是否正常；它不表示小布米能看见前方障碍。</p></div><div class="concept"><b>条件分支</b><p>if 后的条件为真时执行 then 后的部分，为假时执行 else 后的部分；这次判断只选择其中一条路。</p></div></div><dl class="code-notes"><dt><code>bumi.forward(1)</code></dt><dd>先完成这一段运动，再查询状态。1 是仿真运动秒数，不是行走距离。</dd><dt><code>local state = bumi.status()</code></dt><dd>读取一次状态并保存。后面的 state 是这次查询的记录，不会自动持续更新。</dd><dt><code>if state.healthy then</code></dt><dd>检查行走策略是否正常。条件是一个值，不是根据画面自动作出的人类式判断。</dd><dt><code>else
+    print(&quot;行走策略尚未就绪&quot;)</code></dt><dd>条件为假时进入这个分支。若运行直接报错，应先记录错误，不能假装程序进入了 else。</dd><dt><code>bumi.stand()</code></dt><dd>两个分支都结束后，会继续执行这条恢复地面站姿的指令。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>进入小布米世界，确认机器人已经加载。打开“NPL代码编程”，选择“05 条件判断”。</li><li>完成任务 A 的预测，再点 run；观察前进结束后，输出区实际显示的句子。</li><li>在记录表中区分“输出里看见的”和“根据语句推断的”。若出现错误，记录原文并请教师协助。</li><li>完成任务 C 的单处修改后，用 reset 重置机器人，再点 run，比较两次结果。</li><li>保留自己的观察记录。运行中需要中止时点 Stop；不要把停止后的状态当作分支执行结果。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行</th><th scope="col">输出区实际出现的话</th><th scope="col">我认为进入的分支与依据</th><th scope="col">异常或未看清之处</th></tr></thead><tbody><tr><th scope="row">原程序</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序 · 输出区实际出现的话"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序 · 我认为进入的分支与依据"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序 · 异常或未看清之处"></textarea></td></tr><tr><th scope="row">只修改一句输出后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 只修改一句输出后 · 输出区实际出现的话"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只修改一句输出后 · 我认为进入的分支与依据"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只修改一句输出后 · 异常或未看清之处"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把真分支中的“行走策略正常”改成“我进入了真分支”，其他语句保持不变。再次运行，记录新句子有没有出现。</p><div class="callout info"><p>只改输出文字，保留 state.healthy 条件。没有出现新句子时，先查实际输出和错误，不急着认定修改失败。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>在纸上画出这段程序的两条分支，并各写一条“如果条件为真／为假”的运行路线。用不同线型标出本次实际执行的一条。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">只看到小布米在动，能不能确定 state.healthy 的值？你还需要什么证据？<textarea class="cell" aria-label="只看到小布米在动，能不能确定 state.healthy 的值？你还需要什么证据？" rows="2" spellcheck="false"></textarea></label><label class="field-label">这段程序会一直监视状态变化吗？指出它在哪一行读取了几次状态。<textarea class="cell" aria-label="这段程序会一直监视状态变化吗？指出它在哪一行读取了几次状态。" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能按读取、判断、输出的顺序解释程序。">我能按读取、判断、输出的顺序解释程序。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我用实际输出说明了本次进入的分支。">我用实际输出说明了本次进入的分支。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我没有把 healthy 解释成识别人、障碍或自动避险。">我没有把 healthy 解释成识别人、障碍或自动避险。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l04"><small>← 上一课 · 第 04 课</small>变量</a><a class="nx" href="#l06"><small>下一课 · 第 06 课 →</small>自己设计</a></nav></section><section class="view lesson" id="l06" data-title="第 06 课 自己设计"><header class="lhead"><div class="lnum"><small>LESSON</small>06</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元二 · 用数据和判断控制</span><span class="chip">40 分钟</span></p><h1>自己设计</h1><p class="lede">把前进与转向放进同一条指令</p></div><img class="rb" src="assets/robot/walk-2.webp" alt="" loading="lazy"></header><div class="doc" data-save="l06"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>小布米同时前进和转向，会走出什么样的路线？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>用自己的话说明 move 中三个参数分别控制什么。</li><li>记录组合运动的路线趋势，区分预测图与实际观察。</li><li>每次只改转速的正负号，比较转向方向。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“06 自己设计”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>06 自己设计</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>画两条草图：一条表示你预测的原程序路线，一条表示把转速改为负数后的路线。用箭头标明机器人开始时面向哪里。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l06-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>读注释，认清前进速度 0.5 和左转速度 0.3。</li><li>同时给出前进与转向指令，持续 3 个仿真秒。</li><li>这段运动完成后清零运动指令。</li><li>等待 1 个现实秒，随后恢复地面站姿。</li><li>输出“完成弧线探索”。</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 06 自己设计</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 6 课完整 NPL 示例"><code><span class="comment">-- 前进 0.5 m/s，左转 0.3 rad/s</span>
+<span class="function">bumi.move</span>(<span class="number">0.5</span>, <span class="number">0.3</span>, <span class="number">3</span>)
+<span class="function">wait</span>(<span class="number">1</span>)
+<span class="function">bumi.stand</span>()
+<span class="function">print</span>(<span class="string">&quot;完成弧线探索&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>组合运动</b><p>bumi.move 把前进速度和转向速度放在同一段运动里，不是先走完再转。</p></div><div class="concept"><b>参数与单位</b><p>move 的顺序是前进速度、转向速度、仿真秒数。速度用 m/s，转速用 rad/s；转速不是总共转过的角度。</p></div><div class="concept"><b>正负号</b><p>本例转速为正表示向左，为负表示向右。比较时以机器人自己的朝向为准。</p></div></div><dl class="code-notes"><dt><code>-- 前进 0.5 m/s，左转 0.3 rad/s</code></dt><dd>双短横线后的内容是给人看的注释。改变注释不会改变运动，真正的参数在下一行。</dd><dt><code>bumi.move(0.5, 0.3, 3)</code></dt><dd>前进与左转同时发生。3 表示仿真运动时间，不能据此保证精确的弧长或转角。</dd><dt><code>wait(1)</code></dt><dd>前面的运动已结束并清零，这里只是等待 1 个现实秒，不会再沿弧线走 1 秒。</dd><dt><code>bumi.stand()</code></dt><dd>归零并恢复地面站姿。实际姿态和位置可能受地面支撑影响。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>在平坦开阔处观察小布米的初始朝向，打开“NPL代码编程”并选择“06 自己设计”。</li><li>完成任务 A 的路线预测。点 run，先看机器人自己的前方，再记录路线向哪侧弯。</li><li>把预测与实际画在不同位置；如果被面板遮住，可折叠面板继续观察，程序会继续执行。</li><li>完成任务 C 的单参数修改，用 reset 重置后再运行。两次尽量保持相同起点、视角和地面。</li><li>记录两次路线趋势及看不清的部分；需要中止时点 Stop。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">比较条件</th><th scope="col">实际向哪一侧弯</th><th scope="col">路线草图或口述</th><th scope="col">预测与观察的差别</th></tr></thead><tbody><tr><th scope="row">原程序：转速 0.3</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：转速 0.3 · 实际向哪一侧弯"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：转速 0.3 · 路线草图或口述"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：转速 0.3 · 预测与观察的差别"></textarea></td></tr><tr><th scope="row">修改后：转速 −0.3</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：转速 −0.3 · 实际向哪一侧弯"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：转速 −0.3 · 路线草图或口述"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：转速 −0.3 · 预测与观察的差别"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 bumi.move(0.5, 0.3, 3) 的第二个参数改成 -0.3，保留速度 0.5、时长 3 和其他语句，再比较两次路线。</p><div class="callout info"><p>只改转向速度的正负号。以机器人自身的左右为参照，不用屏幕的左右代替。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>写一张三参数说明卡，交给同伴，让同伴先预测一条新的组合路线。每次只改一个参数，并把它与原程序的变化说清楚。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">这段程序与“前进结束后再左转”的路线有什么区别？<textarea class="cell" aria-label="这段程序与“前进结束后再左转”的路线有什么区别？" rows="2" spellcheck="false"></textarea></label><label class="field-label">如果预测图与实际路线不完全一致，除了代码参数，还有什么观察或环境条件需要核对？<textarea class="cell" aria-label="如果预测图与实际路线不完全一致，除了代码参数，还有什么观察或环境条件需要核对？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我没有把 move 的三个参数顺序弄混。">我没有把 move 的三个参数顺序弄混。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我的图区分了预测和实际观察。">我的图区分了预测和实际观察。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我只改了一个参数，并能说出比较时保持的条件。">我只改了一个参数，并能说出比较时保持的条件。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l05"><small>← 上一课 · 第 05 课</small>条件判断</a><a class="nx" href="#l07"><small>下一课 · 第 07 课 →</small>配色</a></nav></section><section class="view lesson" id="l07" data-title="第 07 课 配色"><header class="lhead"><div class="lnum"><small>LESSON</small>07</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元三 · 颜色与动作数据</span><span class="chip">40 分钟</span></p><h1>配色</h1><p class="lede">先换整机方案，再给部件指定颜色</p></div><img class="rb" src="assets/robot/stand-34-whiteBlue.webp" alt="" loading="lazy"></header><div class="doc" data-save="l07"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>同一台小布米换了颜色，会不会也换了能力？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>区分整机配色方案和单个部件配色。</li><li>把配色指令、画面变化和输出中的色值对应起来。</li><li>用一次单色值修改说明外观变化与动作能力的区别。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“07 配色”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>07 配色</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>按语句顺序，在纸上标记头部和左臂可能经历的颜色变化。最后一行执行后，你预测会保留哪一种配色？</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l07-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>应用 whiteBlue 蓝白整机方案。</li><li>把头部指定为橙色，再把左臂指定为绿色。</li><li>查询已应用的头部颜色并显示到输出区。</li><li>等待 3 个现实秒，观察当前配色。</li><li>恢复原厂银灰配色。</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 07 配色</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 7 课完整 NPL 示例"><code><span class="function">bumi.setColorPreset</span>(<span class="string">&quot;whiteBlue&quot;</span>)
+<span class="function">bumi.setColor</span>(<span class="string">&quot;head&quot;</span>, <span class="string">&quot;#FF8800&quot;</span>)
+<span class="function">bumi.setColor</span>(<span class="string">&quot;leftArm&quot;</span>, <span class="string">&quot;#52BF90&quot;</span>)
+<span class="function">print</span>(<span class="string">&quot;头部颜色&quot;</span>, <span class="function">bumi.getColors</span>().head)
+<span class="function">wait</span>(<span class="number">3</span>)
+<span class="function">bumi.resetColors</span>()
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>整机方案</b><p>setColorPreset 使用方案 ID，一次给整机应用一组颜色；whiteBlue 是蓝白方案。</p></div><div class="concept"><b>部件与色值</b><p>setColor 用部件 ID 和六位色值指定颜色，例如 head 表示头部。修改一个部件不会凭空增加新部件。</p></div><div class="concept"><b>先后覆盖</b><p>后执行的部件配色会覆盖该部件先前的方案颜色；resetColors 则恢复原厂银灰方案。</p></div></div><dl class="code-notes"><dt><code>bumi.setColorPreset(&quot;whiteBlue&quot;)</code></dt><dd>先给整机应用蓝白方案。方案 ID 要使用英文引号并区分大小写。</dd><dt><code>bumi.setColor(&quot;head&quot;, &quot;#FF8800&quot;)</code></dt><dd>再给头部指定六位橙色色值。它覆盖蓝白方案中的头部颜色，其他部件不由这一行改变。</dd><dt><code>bumi.setColor(&quot;leftArm&quot;, &quot;#52BF90&quot;)</code></dt><dd>leftArm 表示机器人自己的左臂。画面正面看它时，左右可能与观察者相反。</dd><dt><code>print(&quot;头部颜色&quot;, bumi.getColors().head)</code></dt><dd>查询并显示已经应用的头部配色，用输出核对指令。getColors 返回颜色表的副本。</dd><dt><code>wait(3)
+bumi.resetColors()</code></dt><dd>保持当前配色供观察 3 个现实秒，随后恢复默认配色。恢复动作来自 resetColors，不是等待自动把颜色变回。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>确认项目 5316902 中的小布米已加载，打开“NPL代码编程”并选择“07 配色”。先完成任务 A 的顺序预测。</li><li>点 run，观察头部和机器人左臂；程序等待 3 秒时记录颜色，结束后再看一次。没有看清可以再次运行。</li><li>核对输出区的“头部颜色”及其后色值，区分它与自己用语言描述的颜色。</li><li>按任务 C 只更换一个色值，再运行并记录；用语句顺序解释哪一处变了、哪一处没有改。</li><li>若中途点了 Stop，记录停止发生的位置。需要恢复外观时重新运行完整示例，不把中途状态当作正常结尾。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">观察时刻</th><th scope="col">头部与左臂的实际颜色</th><th scope="col">输出中的头部色值</th><th scope="col">我用哪条语句解释</th></tr></thead><tbody><tr><th scope="row">原程序：等待 3 秒时</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：等待 3 秒时 · 头部与左臂的实际颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：等待 3 秒时 · 输出中的头部色值"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：等待 3 秒时 · 我用哪条语句解释"></textarea></td></tr><tr><th scope="row">原程序：正常结束后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：正常结束后 · 头部与左臂的实际颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：正常结束后 · 输出中的头部色值"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原程序：正常结束后 · 我用哪条语句解释"></textarea></td></tr><tr><th scope="row">修改后：等待 3 秒时</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：等待 3 秒时 · 头部与左臂的实际颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：等待 3 秒时 · 输出中的头部色值"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 修改后：等待 3 秒时 · 我用哪条语句解释"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 head 那一行的 #FF8800 改为 #318CDB，其他部件、方案和等待时间保持不变，再运行一次。</p><div class="callout info"><p>只改头部的一个六位色值。比较时同时观察头部、左臂和输出，记录变化而不预填答案。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>为班级展示设计一张“部件—色值—展示理由”配色卡，选择两个现有部件。说明如何恢复默认配色，以及为什么换色不能证明学会了新动作。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">为什么程序结束后看不到刚才指定的颜色？从哪一行能找到原因？<textarea class="cell" aria-label="为什么程序结束后看不到刚才指定的颜色？从哪一行能找到原因？" rows="2" spellcheck="false"></textarea></label><label class="field-label">只改变头部颜色，能不能证明它的速度、识别或平衡能力变了？需要怎样的证据？<textarea class="cell" aria-label="只改变头部颜色，能不能证明它的速度、识别或平衡能力变了？需要怎样的证据？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分方案 ID、部件 ID 和色值。">我能区分方案 ID、部件 ID 和色值。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我记录了等待时与正常结束后的不同状态。">我记录了等待时与正常结束后的不同状态。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我把配色解释为外观变化，没有把它说成能力升级。">我把配色解释为外观变化，没有把它说成能力升级。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l06"><small>← 上一课 · 第 06 课</small>自己设计</a><a class="nx" href="#l08"><small>下一课 · 第 08 课 →</small>回放控制</a></nav></section><section class="view lesson" id="l08" data-title="第 08 课 回放控制"><header class="lhead"><div class="lnum"><small>LESSON</small>08</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元三 · 颜色与动作数据</span><span class="chip">40 分钟</span></p><h1>回放控制</h1><p class="lede">用暂停和倍速，安排一段动作的观看节奏</p></div><img class="rb" src="assets/robot/dance-490.webp" alt="" loading="lazy"></header><div class="doc" data-save="l08"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>暂停 1 秒和半速播放 20 秒，动作时间会怎样变化？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>从当前动作目录区分显示名称与片段 ID。</li><li>按开始、暂停、变速、继续、停止的顺序解释回放控制。</li><li>区分现实等待时间、片段动作时间和物理行走仿真。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“08 回放控制”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>08 回放控制</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>在“播放 10 秒—暂停 1 秒—半速继续 20 秒”的时间线上，标出哪些段落的姿态会变化。先预测后段动作时间大约前进多少，不把预测当作实测。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l08-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>切换机器人视角，并输出当前动作片段的名称、ID 和原速时长。</li><li>选择舞蹈 ID，等待片段加载后开始播放。</li><li>先观看约 10 个现实秒，再暂停约 1 秒。</li><li>设置 0.5 倍速，继续观看约 20 个现实秒。</li><li>停止回放并归位，输出练习结束。</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 08 回放控制</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 8 课完整 NPL 示例"><code><span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="comment">-- 舞蹈：dance1_subject1</span>
+<span class="comment">-- 跳跃：jumps1_subject1</span>
+<span class="comment">-- 倒地与起身：fallAndGetUp3_subject1</span>
+<span class="comment">-- 格斗：fight1_subject2</span>
+<span class="keyword">for</span> _, clip <span class="keyword">in</span> <span class="function">ipairs</span>(<span class="function">bumi.getClips</span>()) <span class="keyword">do</span>
+    <span class="function">print</span>(clip.label, clip.id, clip.duration)
+<span class="keyword">end</span>
+<span class="keyword">local</span> clipId = <span class="string">&quot;dance1_subject1&quot;</span> <span class="comment">-- 换成上面的其他 ID 试试</span>
+<span class="function">bumi.startReplay</span>(clipId)
+<span class="function">wait</span>(<span class="number">10</span>) <span class="comment">-- 先越过准备动作，观察抬臂和迈步</span>
+<span class="function">bumi.pauseReplay</span>()
+<span class="function">wait</span>(<span class="number">1</span>)
+<span class="function">bumi.setReplayRate</span>(<span class="number">0.5</span>)
+<span class="function">bumi.resumeReplay</span>()
+<span class="function">wait</span>(<span class="number">20</span>) <span class="comment">-- 半速播放 20 秒，动作时间前进约 10 秒</span>
+<span class="function">bumi.stopReplay</span>()
+<span class="function">print</span>(<span class="string">&quot;回放练习结束&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>片段目录</b><p>getClips 返回当前世界的动作片段列表。播放时填写片段 ID，不能直接把中文显示名当作 ID。</p></div><div class="concept"><b>后台回放</b><p>startReplay 等待目录和片段加载好后返回，动作仍在播放；后面的等待、暂停和换速语句可以继续控制它。</p></div><div class="concept"><b>两种时间</b><p>wait 使用现实时间，回放的动作时间按倍速前进。半速观看 20 个现实秒，动作时间约前进 10 秒；暂停时动作时间不前进。</p></div></div><dl class="code-notes"><dt><code>for _, clip in ipairs(bumi.getClips()) do
+    print(clip.label, clip.id, clip.duration)
+end</code></dt><dd>依次显示当前目录中的片段资料。label 是显示名称，id 是代码使用的标识，duration 是原速动作时长。</dd><dt><code>local clipId = &quot;dance1_subject1&quot;</code></dt><dd>把舞蹈的片段 ID 保存到变量。当前舞蹈开头有准备动作，刚开始不一定立刻出现明显舞步。</dd><dt><code>bumi.startReplay(clipId)</code></dt><dd>加载好后在后台播放；它不会像 bumi.play 那样一直等到整段播放结束。</dd><dt><code>bumi.pauseReplay()
+wait(1)</code></dt><dd>先暂停动作，再等待 1 个现实秒。等待本身不会自动恢复播放。</dd><dt><code>bumi.setReplayRate(0.5)
+bumi.resumeReplay()</code></dt><dd>设置半速，再从暂停处继续。之后的 wait(20) 限定观看等待，最后 stopReplay 结束并归位。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>进入项目 5316902，确认机器人已加载。打开“NPL代码编程”，选择“08 回放控制”，先完成任务 A 的时间线预测。</li><li>点 run，在输出区确认当前片段目录中有舞蹈 ID；观察约 10 秒后的短暂停顿与接下来的慢放。需要看全身时可折叠面板。</li><li>按记录表写下三个阶段看见的姿态变化；没有看清 1 秒暂停可以完整重试，不补写未经观察的数据。</li><li>完成任务 C 的单参数修改，使用 reset 重置后再次运行，比较后段观看节奏。</li><li>等到练习结束，确认回放停止归位。运行中需要中止时点 Stop；不要在回放仍活动时插入行走指令。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">原程序阶段</th><th scope="col">我实际看到的姿态或变化</th><th scope="col">预测与观察的对应</th><th scope="col">未看清或异常</th></tr></thead><tbody><tr><th scope="row">约 1 倍速观看 10 秒</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 1 倍速观看 10 秒 · 我实际看到的姿态或变化"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 1 倍速观看 10 秒 · 预测与观察的对应"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 1 倍速观看 10 秒 · 未看清或异常"></textarea></td></tr><tr><th scope="row">暂停并等待约 1 秒</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停并等待约 1 秒 · 我实际看到的姿态或变化"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停并等待约 1 秒 · 预测与观察的对应"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停并等待约 1 秒 · 未看清或异常"></textarea></td></tr><tr><th scope="row">约 0.5 倍速继续观看 20 秒</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 0.5 倍速继续观看 20 秒 · 我实际看到的姿态或变化"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 0.5 倍速继续观看 20 秒 · 预测与观察的对应"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 约 0.5 倍速继续观看 20 秒 · 未看清或异常"></textarea></td></tr><tr><th scope="row">停止回放后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止回放后 · 我实际看到的姿态或变化"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止回放后 · 预测与观察的对应"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止回放后 · 未看清或异常"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 bumi.setReplayRate(0.5) 中的 0.5 改成 1，保留两个观看等待时间和其他语句，再运行比较后半段节奏。</p><div class="callout info"><p>只改后段回放倍速。记录实际看到的变化；约前进多少动作时间是根据倍速与时间的推算，不冒充本次精确测量。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>为同伴写一张回放观看卡，说明片段 ID、什么时候暂停、继续时的倍速和如何收尾。把“看见的动作”与“不能证明的平衡能力”分别写一句。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">为什么暂停时的 wait(1) 不会让动作片段前进 1 秒？<textarea class="cell" aria-label="为什么暂停时的 wait(1) 不会让动作片段前进 1 秒？" rows="2" spellcheck="false"></textarea></label><label class="field-label">看见舞蹈、跳跃或起身的回放，能不能证明行走策略已经学会这些动作？为什么？<textarea class="cell" aria-label="看见舞蹈、跳跃或起身的回放，能不能证明行走策略已经学会这些动作？为什么？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我从实际目录中核对了片段 ID。">我从实际目录中核对了片段 ID。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分现实观看时间与片段动作时间。">我能区分现实观看时间与片段动作时间。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我知道轨迹回放不计算物理平衡，并会先停止回放再行走。">我知道轨迹回放不计算物理平衡，并会先停止回放再行走。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l07"><small>← 上一课 · 第 07 课</small>配色</a><a class="nx" href="#l09"><small>下一课 · 第 09 课 →</small>迎宾小助手</a></nav></section><section class="view lesson" id="l09" data-title="第 09 课 迎宾小助手"><header class="lhead"><div class="lnum"><small>LESSON</small>09</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元四 · 综合创作与观察</span><span class="chip">40 分钟</span></p><h1>迎宾小助手</h1><p class="lede">把配色、文字和动作排成一段有开头与结尾的程序</p></div><img class="rb" src="assets/robot/stand-34-whiteBlue.webp" alt="" loading="lazy"></header><div class="doc" data-save="l09"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>怎样把学过的指令组合成一次清楚的迎宾演示？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>按顺序说明迎宾程序的准备、演示与收尾。</li><li>用动作、颜色和输出文字记录同一段程序。</li><li>只改一个参数，再用记录解释发生的变化。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“09 迎宾小助手”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>09 迎宾小助手</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>先读代码：欢迎文字、前进、左转和切换视角，谁先谁后？哪一句文字需要条件成立才会出现？请写下你的预测顺序。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l09-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>重置姿态并选择机器人视角</li><li>设置整机和头部颜色</li><li>输出欢迎文字</li><li>前进、等待、原地左转</li><li>读取策略状态并决定是否输出提示</li><li>等待后切回主角视角</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 09 迎宾小助手</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 9 课完整 NPL 示例"><code><span class="function">bumi.reset</span>()
+<span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="function">bumi.setColorPreset</span>(<span class="string">&quot;whiteBlue&quot;</span>)
+<span class="function">bumi.setColor</span>(<span class="string">&quot;head&quot;</span>, <span class="string">&quot;#FF8800&quot;</span>)
+<span class="function">print</span>(<span class="string">&quot;欢迎来到小布米课堂！&quot;</span>)
+<span class="function">bumi.forward</span>(<span class="number">2</span>, <span class="number">0.5</span>)
+<span class="function">wait</span>(<span class="number">0.5</span>)
+<span class="function">bumi.turnLeft</span>(<span class="number">1</span>, <span class="number">0.4</span>)
+<span class="function">bumi.stand</span>()
+<span class="keyword">if</span> <span class="function">bumi.status</span>().healthy <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">&quot;我已准备好，开始探索吧！&quot;</span>)
+<span class="keyword">end</span>
+<span class="function">wait</span>(<span class="number">1</span>)
+<span class="function">bumi.camera</span>(<span class="string">&quot;player&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>组合程序</b><p>把已学的指令按任务需要排在一起。先准备，再行动，最后收尾；顺序也是设计的一部分。</p></div><div class="concept"><b>条件输出</b><p>if 后的条件成立时，才执行里面的 print。本课读取的是行走策略是否正常，不是在判断有没有客人。</p></div><div class="concept"><b>面向观众</b><p>颜色、屏幕文字、动作与镜头可以帮助观众理解演示。print 把文字放在输出区，不会让小布米开口说话。</p></div></div><dl class="code-notes"><dt><code>bumi.reset()
+bumi.camera(&quot;robot&quot;)</code></dt><dd>先把机器人恢复到初始姿态，再把镜头对准机器人。reset 不会替你恢复默认配色；紧接着的配色指令负责本次外观。</dd><dt><code>bumi.setColorPreset(&quot;whiteBlue&quot;)
+bumi.setColor(&quot;head&quot;, &quot;#FF8800&quot;)
+print(&quot;欢迎来到小布米课堂！&quot;)</code></dt><dd>先应用蓝白整机方案，再单独给头部换色，最后把欢迎语写到输出区。后面的部件配色会覆盖该部件原来的颜色。</dd><dt><code>bumi.forward(2, 0.5)
+wait(0.5)
+bumi.turnLeft(1, 0.4)</code></dt><dd>依次给出前进指令、等待，再原地左转。前进与左转的第一个参数是运动时长，第二个分别是前后目标速度与转向速度；两次限时运动各自结束后都会清零指令。wait 使用现实等待时间。</dd><dt><code>if bumi.status().healthy then
+    print(&quot;我已准备好，开始探索吧！&quot;)
+end</code></dt><dd>读取这一刻的策略状态。healthy 为 true 时，输出这句提示；这段代码没有 else 分支。它不检查来访者、位置或声音。</dd><dt><code>wait(1)
+bumi.camera(&quot;player&quot;)</code></dt><dd>再等待一会儿，镜头切回玩家主角。切镜头改变观察角度，不等于让机器人转身。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>打开小布米世界，确认机器人已加载。点“NPL代码编程”，选择“09 迎宾小助手”。</li><li>把输出区与机器人同时作为观察对象，先用手指沿代码读出顺序，再点 run。</li><li>观察颜色、动作、两处文字和最后的视角，把真正看到的填入记录表；条件文字没出现时如实记录。</li><li>需要中断时点 Stop。再次运行前点 reset，并确认仍选择本课示例。</li><li>完成下面的单项修改后再运行一次，对比两次记录。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行版本</th><th scope="col">颜色与文字的先后</th><th scope="col">前进和转向的观察</th><th scope="col">最后的视角与输出</th></tr></thead><tbody><tr><th scope="row">原示例</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 颜色与文字的先后"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 前进和转向的观察"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 原示例 · 最后的视角与输出"></textarea></td></tr><tr><th scope="row">只改一处后</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改一处后 · 颜色与文字的先后"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改一处后 · 前进和转向的观察"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 只改一处后 · 最后的视角与输出"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 bumi.forward(2, 0.5) 中的第一个数字 2 改成 1，其余保持不变。先预测，再运行并比较。</p><div class="callout info"><p>前进时长变了，欢迎语、转向参数和切换视角的代码有没有改变？用你看到的结果作说明。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>给迎宾演示换一句自己的欢迎语，先在纸上标明它应该出现在哪一步。轮到你演示时，向观众说明这是一段预先编写的文字和动作程序。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">这次迎宾中，哪一部分是按顺序执行，哪一部分要先判断条件？<textarea class="cell" aria-label="这次迎宾中，哪一部分是按顺序执行，哪一部分要先判断条件？" rows="2" spellcheck="false"></textarea></label><label class="field-label">如果有人说“小布米听见了我，所以欢迎我”，你能用代码中的哪一处解释？<textarea class="cell" aria-label="如果有人说“小布米听见了我，所以欢迎我”，你能用代码中的哪一处解释？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能按顺序讲清准备、演示和收尾。">我能按顺序讲清准备、演示和收尾。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能用两次记录说明只改前进时长后的现象。">我能用两次记录说明只改前进时长后的现象。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分输出文字、条件判断和识别人。">我能区分输出文字、条件判断和识别人。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l08"><small>← 上一课 · 第 08 课</small>回放控制</a><a class="nx" href="#l10"><small>下一课 · 第 10 课 →</small>彩色巡逻队</a></nav></section><section class="view lesson" id="l10" data-title="第 10 课 彩色巡逻队"><header class="lhead"><div class="lnum"><small>LESSON</small>10</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元四 · 综合创作与观察</span><span class="chip">40 分钟</span></p><h1>彩色巡逻队</h1><p class="lede">让同一台小布米依次使用列表中的颜色</p></div><img class="rb" src="assets/robot/stand-34-whiteBlue.webp" alt="" loading="lazy"></header><div class="doc" data-save="l10"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>怎样用一份颜色列表，让同一段动作有次序地重复？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>找到列表、轮次编号和每轮使用的颜色。</li><li>把输出中的站点号与颜色、动作对应起来。</li><li>修改列表中的一个值，观察它影响哪一次重复。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“10 彩色巡逻队”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>10 彩色巡逻队</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>不运行先预测：这份颜色列表会让循环执行几轮？请为每轮画一个小色块，并写出你预测的站点号。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l10-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>重置并恢复原厂银灰方案</li><li>准备有顺序的颜色列表</li><li>取出当前编号和颜色</li><li>头部与躯干换色并输出编号</li><li>前进、等待、后退、站立后进入下一轮</li><li>结束循环并恢复默认配色</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 10 彩色巡逻队</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 10 课完整 NPL 示例"><code><span class="function">bumi.reset</span>()
+<span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="function">bumi.setColorPreset</span>(<span class="string">&quot;classic&quot;</span>)
+<span class="keyword">local</span> colors = {<span class="string">&quot;#EA5555&quot;</span>, <span class="string">&quot;#FFE066&quot;</span>, <span class="string">&quot;#52BF90&quot;</span>}
+<span class="keyword">for</span> station, color <span class="keyword">in</span> <span class="function">ipairs</span>(colors) <span class="keyword">do</span>
+    <span class="function">bumi.setColor</span>(<span class="string">&quot;head&quot;</span>, color)
+    <span class="function">bumi.setColor</span>(<span class="string">&quot;torso&quot;</span>, color)
+    <span class="function">print</span>(<span class="string">&quot;巡逻站点&quot;</span>, station, <span class="function">bumi.getColors</span>().head)
+    <span class="function">bumi.forward</span>(<span class="number">1</span>, <span class="number">0.5</span>)
+    <span class="function">wait</span>(<span class="number">0.5</span>)
+    <span class="function">bumi.backward</span>(<span class="number">1</span>, <span class="number">0.5</span>)
+    <span class="function">bumi.stand</span>()
+<span class="keyword">end</span>
+<span class="function">bumi.resetColors</span>()
+<span class="function">print</span>(<span class="string">&quot;巡逻完成，恢复默认配色&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>列表</b><p>用一对花括号把一组颜色放在一起。本课的 colors 保存有顺序的颜色值，供后面的循环逐个取用。</p></div><div class="concept"><b>ipairs 遍历</b><p>for station, color in ipairs(colors) do 会依次取出列表中的编号和值。每轮用到的是当前的 station 和 color。</p></div><div class="concept"><b>一台机器人的重复任务</b><p>“巡逻队”是作品名称。这个世界中仍只有一台小布米；站点号是循环输出的编号，不是地图坐标或自动识别的地点。</p></div></div><dl class="code-notes"><dt><code>local colors = {&quot;#EA5555&quot;, &quot;#FFE066&quot;, &quot;#52BF90&quot;}</code></dt><dd>把三个六位颜色值按顺序放入列表。引号表示这里是文字形式的色值，逗号用来分隔各项。</dd><dt><code>for station, color in ipairs(colors) do</code></dt><dd>每进入一轮，station 接收当前位置的编号，color 接收对应色值；接下来的循环体使用这一对值。</dd><dt><code>bumi.setColor(&quot;head&quot;, color)
+bumi.setColor(&quot;torso&quot;, color)
+print(&quot;巡逻站点&quot;, station, bumi.getColors().head)</code></dt><dd>把同一个 color 用到头部和躯干，并在输出区打印本轮编号与头部色值。文字编号帮助我们核对顺序，不表示机器人检测到了站点。</dd><dt><code>bumi.forward(1, 0.5)
+wait(0.5)
+bumi.backward(1, 0.5)
+bumi.stand()</code></dt><dd>每轮重复同一组前进、等待、后退与站立指令。限时运动结束会自动清零指令；前后使用相同时长与速度，也不保证精确回到同一个位置。</dd><dt><code>bumi.resetColors()
+print(&quot;巡逻完成，恢复默认配色&quot;)</code></dt><dd>循环结束后，恢复原厂银灰方案并打印结束提示。它改变外观，不是把机器人导航到某个地点。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>打开小布米世界，确认已加载，进入“NPL代码编程”，选择“10 彩色巡逻队”。</li><li>先读 colors 列表，完成 A 的轮次与颜色预测。</li><li>点 run。每次看到“巡逻站点”输出时，对照当前颜色和动作完成一行记录。</li><li>结束后核对最后的配色与结束提示；需要提前结束时点 Stop。</li><li>按 C 只改列表中的一个色值，reset 后重跑，再给受影响的记录行加注。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">轮次</th><th scope="col">头部与躯干颜色</th><th scope="col">输出中的站点号</th><th scope="col">运动与停顿观察</th></tr></thead><tbody><tr><th scope="row">第 1 轮</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 轮 · 头部与躯干颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 轮 · 输出中的站点号"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 轮 · 运动与停顿观察"></textarea></td></tr><tr><th scope="row">第 2 轮</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 轮 · 头部与躯干颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 轮 · 输出中的站点号"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 轮 · 运动与停顿观察"></textarea></td></tr><tr><th scope="row">第 3 轮</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 轮 · 头部与躯干颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 轮 · 输出中的站点号"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 轮 · 运动与停顿观察"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 colors 列表的第二项改为 &quot;#318CDB&quot;，不改列表长度和运动代码。先说出预测，再运行。</p><div class="callout info"><p>哪一轮发生变化？请在记录表中用“原来 → 这次”补写这一轮的颜色，同时核对轮数和动作。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>设计一份自己的颜色顺序表，先让同伴照着读出每轮会发生什么。再选择是否在列表末尾加一项；如果运行，先写下你预测的轮数。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">为什么只改一个色值，就能让同一轮的头部和躯干一起换色？<textarea class="cell" aria-label="为什么只改一个色值，就能让同一轮的头部和躯干一起换色？" rows="2" spellcheck="false"></textarea></label><label class="field-label">“巡逻站点 2”这句输出，能不能证明小布米知道自己在地图的哪里？依据是什么？<textarea class="cell" aria-label="“巡逻站点 2”这句输出，能不能证明小布米知道自己在地图的哪里？依据是什么？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能把列表中的一项对应到一次循环。">我能把列表中的一项对应到一次循环。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能用站点号、色值和观察记录核对顺序。">我能用站点号、色值和观察记录核对顺序。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能说明这是一台机器人的重复演示，没有自动识路。">我能说明这是一台机器人的重复演示，没有自动识路。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l09"><small>← 上一课 · 第 09 课</small>迎宾小助手</a><a class="nx" href="#l11"><small>下一课 · 第 11 课 →</small>小小舞台导演</a></nav></section><section class="view lesson" id="l11" data-title="第 11 课 小小舞台导演"><header class="lhead"><div class="lnum"><small>LESSON</small>11</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元四 · 综合创作与观察</span><span class="chip">40 分钟</span></p><h1>小小舞台导演</h1><p class="lede">编排行走、片段选择、暂停与慢放之间的衔接</p></div><img class="rb" src="assets/robot/stand-34-blackGold.webp" alt="" loading="lazy"></header><div class="doc" data-save="l11"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>怎样让一段舞台程序按安排切换行走和动作回放？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>用目录查询与条件判断说明为什么能播放所选片段。</li><li>区分现实等待时间、动作时间和回放状态。</li><li>为行走与回放的衔接写出有依据的舞台说明。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“11 小小舞台导演”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>11 小小舞台导演</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>先给代码分段：哪些语句属于行走，哪些属于回放？再猜一猜，暂停时的 wait(0.5) 会不会让动作时间继续前进？把理由留到运行后核对。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l11-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>归位、配色并前进 1 个仿真秒</li><li>读取目录并寻找舞蹈 ID</li><li>找到后开始回放</li><li>暂停换色，再以半速继续</li><li>读取并输出回放状态和动作时间</li><li>停止回放归位，再后退并恢复默认配色</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 11 小小舞台导演</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 11 课完整 NPL 示例"><code><span class="function">bumi.reset</span>()
+<span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="function">bumi.setColorPreset</span>(<span class="string">&quot;blackGold&quot;</span>)
+<span class="function">bumi.forward</span>(<span class="number">1</span>, <span class="number">0.5</span>)
+<span class="function">bumi.stand</span>()
+<span class="keyword">local</span> clips = <span class="function">bumi.getClips</span>()
+<span class="keyword">local</span> selected = <span class="keyword">nil</span>
+<span class="keyword">for</span> _, clip <span class="keyword">in</span> <span class="function">ipairs</span>(clips) <span class="keyword">do</span>
+    <span class="keyword">if</span> clip.id == <span class="string">&quot;dance1_subject1&quot;</span> <span class="keyword">then</span>
+        selected = clip
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+<span class="keyword">if</span> selected <span class="keyword">then</span>
+    <span class="function">print</span>(<span class="string">&quot;现在表演：&quot;</span>, selected.label)
+    <span class="function">bumi.startReplay</span>(selected.id)
+    <span class="function">wait</span>(<span class="number">10</span>) <span class="comment">-- 开头约 3.5 秒是准备动作，先看一段舞蹈再暂停</span>
+    <span class="function">bumi.pauseReplay</span>()
+    <span class="function">bumi.setColor</span>(<span class="string">&quot;head&quot;</span>, <span class="string">&quot;#FFE066&quot;</span>)
+    <span class="function">wait</span>(<span class="number">0.5</span>)
+    <span class="function">bumi.setReplayRate</span>(<span class="number">0.5</span>)
+    <span class="function">bumi.resumeReplay</span>()
+    <span class="function">wait</span>(<span class="number">20</span>) <span class="comment">-- 半速观看接下来的约 10 秒动作</span>
+    <span class="keyword">local</span> replay = <span class="function">bumi.replayStatus</span>()
+    <span class="function">print</span>(<span class="string">&quot;回放状态&quot;</span>, replay.state, <span class="string">&quot;动作时间&quot;</span>, replay.time)
+    <span class="function">bumi.stopReplay</span>()
+    <span class="function">bumi.backward</span>(<span class="number">1</span>, <span class="number">0.5</span>)
+    <span class="function">bumi.stand</span>()
+<span class="keyword">else</span>
+    <span class="function">print</span>(<span class="string">&quot;当前目录没有这个舞蹈，换个片段再试试&quot;</span>)
+<span class="keyword">end</span>
+<span class="function">bumi.resetColors</span>()
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>查找与判断</b><p>先读取已有片段目录，再逐项比较 id。找到目标后 selected 保存这条目录信息，if selected 决定能否进入表演分支。</p></div><div class="concept"><b>暂停与慢放</b><p>暂停使动作时间停住；继续后按所设倍速推进。wait 等待的是现实时间，replayStatus().time 是片段内的动作时间。</p></div><div class="concept"><b>两种动作来源</b><p>前进和后退使用行走仿真；舞蹈使用已有轨迹回放。回放时不计算物理平衡，不能据此证明学会了舞蹈控制。</p></div></div><dl class="code-notes"><dt><code>local selected = nil
+for _, clip in ipairs(clips) do
+    if clip.id == &quot;dance1_subject1&quot; then
+        selected = clip
+    end
+end</code></dt><dd>先表示还没有选中，再遍历已有目录，用精确 ID 查找目标片段。这里没有生成新舞蹈，也没有让机器人自主选择表演内容。</dd><dt><code>if selected then
+    print(&quot;现在表演：&quot;, selected.label)
+    bumi.startReplay(selected.id)</code></dt><dd>确实找到目录项，才输出名称并开始播放；没有找到时执行代码后面的 else 提示。startReplay 等待资源准备就绪后继续执行后续语句。</dd><dt><code>wait(10)
+bumi.pauseReplay()
+bumi.setColor(&quot;head&quot;, &quot;#FFE066&quot;)
+wait(0.5)</code></dt><dd>先观看一段，再暂停并改变头部颜色。暂停后的现实等待不推进动作时间；配色变化也不等于动作姿态变化。</dd><dt><code>bumi.setReplayRate(0.5)
+bumi.resumeReplay()
+wait(20)
+local replay = bumi.replayStatus()</code></dt><dd>设置半速并继续，现实等待 20 秒时，片段动作时间通常前进约 10 秒。读取的状态和时间应以实际输出为准，不能把等待值当作精确实测。</dd><dt><code>bumi.stopReplay()
+bumi.backward(1, 0.5)
+bumi.stand()</code></dt><dd>停止回放会先归位并保持暂停，随后 backward 重新启动行走仿真。这不是从舞蹈结束姿态自然接着后退，也不保证沿舞台入场路线原路返回。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>在小布米世界中加载机器人，打开“NPL代码编程”，选择“11 小小舞台导演”。</li><li>完成 A 的分段和预测后点 run，观察输出“现在表演”的名称，以及行走切换到回放的过程。</li><li>观察暂停换色、半速继续、输出回放状态与动作时间、停止归位再后退的顺序，填记录表。等待期间不再反复点 run。</li><li>按 C 只改继续后的播放倍速，reset 后再运行一次，并记录实际输出；需要中断时点 Stop。</li><li>完成后向同伴说明行走与回放分别从哪里来，核对恢复默认配色的收尾。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">观察环节</th><th scope="col">看到的动作与颜色</th><th scope="col">输出中的状态或时间</th><th scope="col">我的说明</th></tr></thead><tbody><tr><th scope="row">入场与找到片段</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 入场与找到片段 · 看到的动作与颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 入场与找到片段 · 输出中的状态或时间"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 入场与找到片段 · 我的说明"></textarea></td></tr><tr><th scope="row">暂停、换色与继续</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停、换色与继续 · 看到的动作与颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停、换色与继续 · 输出中的状态或时间"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 暂停、换色与继续 · 我的说明"></textarea></td></tr><tr><th scope="row">停止归位与后退</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止归位与后退 · 看到的动作与颜色"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止归位与后退 · 输出中的状态或时间"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 停止归位与后退 · 我的说明"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把 bumi.setReplayRate(0.5) 中的 0.5 改为 1，保留后面的 wait(20) 及其他代码。运行前预测，再比较两次输出的动作时间。</p><div class="callout info"><p>现实等待时间相同，动作时间的推进有什么不同？这项修改是否改变了动作数据本身？</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>画一张“入场—回放—暂停—继续—归位—退场”舞台提示卡，每个环节写一条对应代码。给观众加一句准确的来源说明，避免把轨迹回放介绍成自主舞蹈。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">为什么要先停止回放，再执行后退？停止时机器人从哪里重新开始？<textarea class="cell" aria-label="为什么要先停止回放，再执行后退？停止时机器人从哪里重新开始？" rows="2" spellcheck="false"></textarea></label><label class="field-label">如果目标 ID 不在目录里，程序会怎样处理？这种写法对演示有什么帮助？<textarea class="cell" aria-label="如果目标 ID 不在目录里，程序会怎样处理？这种写法对演示有什么帮助？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能把目录查找、if 判断和播放语句连接起来说明。">我能把目录查找、if 判断和播放语句连接起来说明。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分现实等待时间与动作时间。">我能区分现实等待时间与动作时间。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能准确介绍回放来源，并说明停止后归位再行走的顺序。">我能准确介绍回放来源，并说明停止后归位再行走的顺序。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l10"><small>← 上一课 · 第 10 课</small>彩色巡逻队</a><a class="nx" href="#l12"><small>下一课 · 第 12 课 →</small>速度观察员</a></nav></section><section class="view lesson" id="l12" data-title="第 12 课 速度观察员"><header class="lhead"><div class="lnum"><small>LESSON</small>12</div><div><p class="lmeta"><span class="chip k">学生学习单</span><span class="chip">单元四 · 综合创作与观察</span><span class="chip">40 分钟</span></p><h1>速度观察员</h1><p class="lede">用相同时长、可比起点和重复观察检验自己的猜想</p></div><img class="rb" src="assets/robot/walk-2.webp" alt="" loading="lazy"></header><div class="doc" data-save="l12"><p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p><div class="question"><span class="qi">?</span><p>目标速度不同、运动时长相同，小布米看起来会走得一样远吗？怎样比较才有依据？</p></div><section class="sec"><h2>今天要做到</h2><ul class="lesson-goals"><li>从试验列表找出变化的速度与保持相同的运动时长。</li><li>用一致的起点、地面参照与视角作重复观察。</li><li>区分目标指令、策略状态和真正观察到的移动现象。</li></ul></section><section class="sec"><h2>先进入同一个世界</h2><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a><p>等待世界加载；需要时点击“加载小布米机器人”，再打开“NPL代码编程”。在“选择示例”中选“12 速度观察员”，也可复制下方代码到输入框。</p><div class="world-route"><span>小布米世界</span><i>→</i><span>NPL代码编程</span><i>→</i><span>12 速度观察员</span><i>→</i><span>run</span></div><p>指令库中的图块可拖入或点击插入；需要调整参数时，可编辑图块参数或代码。先读程序，再点 run。需要中止时点 Stop；重新从起点比较时，可先点 reset。运行结果看小布米、面板状态和下方输出。</p><p class="lede">本页用来学习、复制和记录，程序在小布米世界中运行。若当前世界没有“NPL代码编程”入口，请告诉老师，并记录本次未完成网页实操。</p></section><section class="sec"><h2 class="task-heading"><b>A</b>先预测，再读代码</h2><p>先看两组 trial：你预测三秒运动中哪一组看起来移动更多，还是可能难以分辨？写下理由，并列出比较时需要保持相同的两个条件。</p><label class="field-label">我的预测与理由<textarea class="cell" aria-label="我的预测与理由" rows="2" spellcheck="false"></textarea></label><figure class="fig" id="l12-s-flow"><div class="fig-h"><b>把程序读成步骤</b><button class="zoom" type="button">放大</button></div><div class="fig-b"><ol class="code-flow"><li>选择机器人视角并准备两组试验设置</li><li>每轮先重置姿态</li><li>换头部标记色并打印组号和目标速度</li><li>等待后按相同仿真时长前进</li><li>打印策略状态并留出观察时间</li><li>结束后站立并恢复默认配色</li></ol></div><figcaption><span class="kind">程序示意</span>帮助理解执行顺序；实际现象请到小布米世界观察并记录。</figcaption></figure><div class="code-card"><div class="code-caption"><span>面板示例 12 速度观察员</span><button type="button" class="noprint" data-copy-code>复制代码</button></div><pre tabindex="0" aria-label="第 12 课完整 NPL 示例"><code><span class="function">bumi.camera</span>(<span class="string">&quot;robot&quot;</span>)
+<span class="keyword">local</span> trials = {
+    {speed = <span class="number">0.45</span>, color = <span class="string">&quot;#318CDB&quot;</span>},
+    {speed = <span class="number">0.5</span>, color = <span class="string">&quot;#FF982E&quot;</span>}
+}
+<span class="keyword">for</span> i, trial <span class="keyword">in</span> <span class="function">ipairs</span>(trials) <span class="keyword">do</span>
+    <span class="function">bumi.reset</span>()
+    <span class="function">bumi.setColor</span>(<span class="string">&quot;head&quot;</span>, trial.color)
+    <span class="function">print</span>(<span class="string">&quot;第&quot;</span>, i, <span class="string">&quot;组，目标速度&quot;</span>, trial.speed)
+    <span class="function">wait</span>(<span class="number">1</span>)
+    <span class="function">bumi.forward</span>(<span class="number">3</span>, trial.speed)
+    <span class="function">print</span>(<span class="string">&quot;行走策略正常：&quot;</span>, <span class="function">bumi.status</span>().healthy)
+    <span class="function">wait</span>(<span class="number">1</span>)
+<span class="keyword">end</span>
+<span class="function">bumi.stand</span>()
+<span class="function">bumi.resetColors</span>()
+<span class="function">print</span>(<span class="string">&quot;观察：哪一组在三秒内走得更远？&quot;</span>)
+</code></pre></div></section><section class="sec"><h2>读懂这几个地方</h2><div class="concept-grid"><div class="concept"><b>试验列表</b><p>trials 中每一项把一个目标速度和一种标记颜色放在一起。循环取出 trial 后，通过 trial.speed 和 trial.color 访问本轮设置。</p></div><div class="concept"><b>比较条件</b><p>比较速度参数时，尽量保持运动时长、reset 后的起点、地面参照和观察角度一致。颜色只帮助分组，记录仍要写组号与参数。</p></div><div class="concept"><b>指令与观察</b><p>目标速度是程序发出的指令，healthy 是行走策略是否正常。它们都不是实际路程；本课没有自动测距接口，不能凭打印结果编出米数。</p></div></div><dl class="code-notes"><dt><code>local trials = {
+    {speed = 0.45, color = &quot;#318CDB&quot;},
+    {speed = 0.5, color = &quot;#FF982E&quot;}
+}</code></dt><dd>两项试验设置分别包含 speed 和 color。速度是比较对象，颜色是区分两轮的标记，不表示哪组一定更好。</dd><dt><code>for i, trial in ipairs(trials) do
+    bumi.reset()
+    bumi.setColor(&quot;head&quot;, trial.color)</code></dt><dd>依次取出组号与本轮设置，每轮先归位并暂停，再使用该轮标记色。归位帮助比较起点，但观察角度和参照仍需小组核对。</dd><dt><code>print(&quot;第&quot;, i, &quot;组，目标速度&quot;, trial.speed)
+wait(1)
+bumi.forward(3, trial.speed)</code></dt><dd>输出的是本轮目标速度。先留出现实观察时间，再让两轮都运动三秒仿真时间；运动到时会清零指令。较慢设备的现实等待总时长可能不同。</dd><dt><code>print(&quot;行走策略正常：&quot;, bumi.status().healthy)
+wait(1)</code></dt><dd>记录此刻策略是否正常，再留出观察时间。healthy 不是测距结果，也不表示实际速度等于目标速度。</dd><dt><code>bumi.stand()
+bumi.resetColors()</code></dt><dd>结束试验后站立并恢复默认配色。用观察表保存比较结论，不把屏幕中颜色的醒目程度当成速度证据。</dd></dl></section><section class="sec"><h2 class="task-heading"><b>B</b>运行一次，留下证据</h2><ol class=""><li>进入小布米世界，加载机器人，打开“NPL代码编程”，选择“12 速度观察员”。完成 A 的预测和条件清单。</li><li>找一块容易认出的地面参照，约定相同的观察角度。点 run，依次记录两组目标参数、策略输出和你看到的移动现象。</li><li>同一示例再运行两次；每次核对 reset 后的起点与视角，记录第二组相对第一组“较多、相近、较少或看不清”，不填写未测量的米数。</li><li>按 C 只修改一个时长数字，再重复观察；每次改动前先点 Stop，修改后重新运行。</li><li>把三次记录放在一起讨论，最后检查程序已结束；需要随时中断可点 Stop。</li></ol><p>我的观察方式：<label class="ck"><input type="checkbox" aria-label="观察方式：小组网页操作">小组网页操作</label><label class="ck"><input type="checkbox" aria-label="观察方式：教师投影">教师投影</label><label class="ck"><input type="checkbox" aria-label="观察方式：本次未完成网页实操">本次未完成网页实操</label></p><div class="tblw"><table><thead><tr><th scope="col">运行次数</th><th scope="col">两组参数与策略输出</th><th scope="col">第二组相对第一组的移动观察</th><th scope="col">起点、视角和不确定处</th></tr></thead><tbody><tr><th scope="row">第 1 次</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 次 · 两组参数与策略输出"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 次 · 第二组相对第一组的移动观察"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 1 次 · 起点、视角和不确定处"></textarea></td></tr><tr><th scope="row">第 2 次</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 次 · 两组参数与策略输出"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 次 · 第二组相对第一组的移动观察"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 2 次 · 起点、视角和不确定处"></textarea></td></tr><tr><th scope="row">第 3 次</th><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 次 · 两组参数与策略输出"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 次 · 第二组相对第一组的移动观察"></textarea></td><td><textarea class="cell" rows="2" aria-label="观察记录 · 第 3 次 · 起点、视角和不确定处"></textarea></td></tr></tbody></table></div><label class="field-label">我看到的状态、输出或现象<textarea class="cell" aria-label="我看到的状态、输出或现象" rows="2" spellcheck="false"></textarea></label></section><section class="sec"><h2 class="task-heading"><b>C</b>改一处，再试一次</h2><p>只把循环里的 bumi.forward(3, trial.speed) 的数字 3 改为 2，两组都会用新的运动时长；保留两组目标速度和其余代码。先预测，再重做观察。</p><div class="callout info"><p>时长改变后，两组的现象是否仍容易区分？用修改前后的记录说明，不把预期写成实测。</p></div><label class="field-label">我改了哪一处？预测什么会变化？<textarea class="cell" aria-label="我改了哪一处？预测什么会变化？" rows="2" spellcheck="false"></textarea></label><label class="field-label">我的改进代码（记录草稿，请复制到世界中运行）<textarea class="cell code-draft" aria-label="我的改进代码（记录草稿，请复制到世界中运行）" rows="7" spellcheck="false"></textarea></label><label class="field-label">再次运行后，实际变化与我的预测<textarea class="cell" aria-label="再次运行后，实际变化与我的预测" rows="2" spellcheck="false"></textarea></label><h3>还有时间，试试</h3><p>设计一张让下一组也能照做的试验卡：写出唯一改动、保持相同的条件、重复次数和记录方式。若现象看不清，提出一次更容易比较的观察安排，并先交给同伴检查。</p></section><section class="sec"><h2 class="task-heading"><b>D</b>用记录解释</h2><label class="field-label">为什么输出“目标速度 0.5”和“行走策略正常 true”，还不能直接写“实测速度是 0.5 米/秒”？<textarea class="cell" aria-label="为什么输出“目标速度 0.5”和“行走策略正常 true”，还不能直接写“实测速度是 0.5 米/秒”？" rows="2" spellcheck="false"></textarea></label><label class="field-label">三次观察如果不一致或看不清，我们可以诚实地给出什么结论？下一步怎样改进？<textarea class="cell" aria-label="三次观察如果不一致或看不清，我们可以诚实地给出什么结论？下一步怎样改进？" rows="2" spellcheck="false"></textarea></label><h3>自我检查</h3><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能说出比较对象以及需要保持相同的条件。">我能说出比较对象以及需要保持相同的条件。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我记录了重复观察，也保留了看不清或不一致的情况。">我记录了重复观察，也保留了看不清或不一致的情况。</label></p><p><label class="ck"><input type="checkbox" aria-label="自我检查：我能区分目标速度、healthy 和实际移动现象，不编造测距数据。">我能区分目标速度、healthy 和实际移动现象，不编造测距数据。</label></p></section><div class="callout"><p>收尾：点 Stop，确认程序已停止。回放课确认片段已停止并归位。需要恢复外观时，先保留代码，再点“返回主面板”→“配色”→“恢复默认配色”。重要作品请先复制另存。保留本次记录，不补编没观察到的结果。</p></div></div><div class="tools noprint"><span>填写仅保存在本机当前浏览器。</span><button type="button" data-act="print">打印本课</button><button type="button" data-act="clear">清空本课填写</button></div><p class="storage-hint noprint" role="status">请在关闭页面前稍候，让填写自动保存；共用设备时课前清空本课填写。</p><nav class="lnav noprint" aria-label="课次导航"><a href="#l11"><small>← 上一课 · 第 11 课</small>小小舞台导演</a><a class="nx" href="#home"><small>→</small>回到课程目录</a></nav></section></main><div id="fig-store"></div><div class="modal" role="dialog" aria-label="放大查看"><div class="box"></div></div><div class="toast" role="status" aria-live="polite"></div><script>
+
+(function () {
+  'use strict';
+  var root = document.documentElement;
+  var PAGE = root.getAttribute('data-page') || 'page';
+  var $ = function (s, el) { return (el || document).querySelector(s); };
+  var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
+  root.classList.add('js');
+
+  /* ---------- 本机保存（只存在这台电脑的浏览器里） ---------- */
+  var store = {
+    get: function (k) { try { return JSON.parse(localStorage.getItem('bumi-npl-h5:v1:' + PAGE + ':' + k) || 'null'); } catch (e) { return null; } },
+    set: function (k, v) { try { v == null ? localStorage.removeItem('bumi-npl-h5:v1:' + PAGE + ':' + k) : localStorage.setItem('bumi-npl-h5:v1:' + PAGE + ':' + k, JSON.stringify(v)); } catch (e) {} }
+  };
+  var toastEl = $('.toast'), toastTimer;
+  function toast(text) {
+    if (!toastEl) return;
+    toastEl.textContent = text; toastEl.classList.add('on');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { toastEl.classList.remove('on'); }, 1800);
+  }
+
+  /* ---------- 画图格 ---------- */
+  function setupSketch(box) {
+    var canvas = document.createElement('canvas'), ctx = canvas.getContext('2d'), drawing = false, dirty = false;
+    var clear = document.createElement('button');
+    clear.type = 'button'; clear.textContent = '擦掉'; clear.title = '清空这一格';
+    box.appendChild(canvas); box.appendChild(clear);
+    function fit(keep) {
+      var r = box.getBoundingClientRect();
+      if (r.width < 10 || r.height < 10) return;
+      var data = keep && dirty ? canvas.toDataURL() : null;
+      canvas.width = Math.round(r.width * 2); canvas.height = Math.round(r.height * 2);
+      ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.strokeStyle = '#1c2937';
+      if (data) box.load(data);
+    }
+    function pos(e) { var r = canvas.getBoundingClientRect(); return [(e.clientX - r.left) * canvas.width / r.width, (e.clientY - r.top) * canvas.height / r.height]; }
+    canvas.addEventListener('pointerdown', function (e) { drawing = true; canvas.setPointerCapture(e.pointerId); var p = pos(e); ctx.beginPath(); ctx.moveTo(p[0], p[1]); e.preventDefault(); });
+    canvas.addEventListener('pointermove', function (e) { if (!drawing) return; var p = pos(e); ctx.lineTo(p[0], p[1]); ctx.stroke(); dirty = true; });
+    function end() { if (!drawing) return; drawing = false; box.dispatchEvent(new Event('input', { bubbles: true })); }
+    canvas.addEventListener('pointerup', end); canvas.addEventListener('pointercancel', end);
+    clear.addEventListener('click', function () { ctx.clearRect(0, 0, canvas.width, canvas.height); dirty = false; box.dispatchEvent(new Event('input', { bubbles: true })); });
+    box.value = function () { return dirty ? canvas.toDataURL('image/png') : ''; };
+    box.load = function (data) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height); dirty = !!data;
+      if (!data) return;
+      var img = new Image(); img.onload = function () { ctx.drawImage(img, 0, 0, canvas.width, canvas.height); }; img.src = data;
+    };
+    box.fit = fit;
+    fit(false);
+  }
+
+  /* ---------- 填写内容的保存与恢复 ---------- */
+  function fields(scope) { return $$('input.blank, label.ck input, textarea.cell, .sketch', scope); }
+  function valueOf(f) { return f.classList.contains('sketch') ? (f.value ? f.value() : (f.pending || '')) : f.type === 'checkbox' ? (f.checked ? 1 : 0) : f.value; }
+  function scopes() { return $$('[data-save]'); }
+  function save(scope) {
+    var values = fields(scope).map(valueOf);
+    var any = values.some(function (v) { return v !== '' && v !== 0; });
+    store.set(scope.getAttribute('data-save'), any ? values : null);
+    markNav();
+  }
+  function load(scope) {
+    var values = store.get(scope.getAttribute('data-save'));
+    if (!values) return;
+    fields(scope).forEach(function (f, i) {
+      var v = values[i];
+      if (v == null) return;
+      if (f.classList.contains('sketch')) { f.pending = v; if (f.load) f.load(v); }
+      else if (f.type === 'checkbox') f.checked = !!v;
+      else f.value = v;
+    });
+  }
+  function markNav() {
+    $$('.side a[data-view]').forEach(function (a) {
+      var id = a.getAttribute('data-view');
+      var has = scopes().some(function (s) { return s.getAttribute('data-save').indexOf(id) === 0 && store.get(s.getAttribute('data-save')); });
+      a.classList.toggle('has', has);
+    });
+  }
+  var timers = {};
+  document.addEventListener('input', function (e) {
+    var scope = e.target.closest && e.target.closest('[data-save]');
+    if (!scope) return;
+    var key = scope.getAttribute('data-save');
+    clearTimeout(timers[key]); timers[key] = setTimeout(function () { save(scope); }, 300);
+  });
+  document.addEventListener('change', function (e) {
+    var scope = e.target.closest && e.target.closest('[data-save]');
+    if (scope) save(scope);
+  });
+  scopes().forEach(load);
+
+  /* ---------- 视图切换 ---------- */
+  var views = $$('.view');
+  function show() {
+    var hash = decodeURIComponent(location.hash.replace(/^#/, '')) || 'home';
+    var parts = hash.split('-'), id = parts[0], pane = parts[1] || '';
+    var view = document.getElementById(id);
+    if (!view || !view.classList.contains('view')) {
+      var target = document.getElementById(hash);
+      view = target && target.closest ? target.closest('.view') : null;
+      if (!view) { view = document.getElementById('home'); id = 'home'; }
+      else { id = view.id; setTimeout(function () { target.scrollIntoView(); }, 30); }
+      pane = '';
+    } else window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    views.forEach(function (v) { v.classList.toggle('on', v === view); });
+    var panes = $$('.pane', view);
+    if (panes.length) {
+      var want = pane === 's' ? 's' : 't';
+      panes.forEach(function (p) { p.classList.toggle('on', p.getAttribute('data-pane') === want); });
+      $$('.tabs a', view).forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-pane') === want); });
+    }
+    $$('.side a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-view') === id); });
+    var on = $('.side a.on'); if (on && on.scrollIntoView) on.scrollIntoView({ block: 'nearest' });
+    document.title = (view.getAttribute('data-title') || '') + (view.getAttribute('data-title') ? ' · ' : '') + root.getAttribute('data-site');
+    root.classList.remove('nav-open');
+    $$('.sketch', view).forEach(function (box) {
+      if (!box.fit && box.offsetParent !== null) { setupSketch(box); if (box.pending) box.load(box.pending); }
+    });
+  }
+  window.addEventListener('hashchange', show);
+  show(); markNav();
+  // 初次打开课次深链时，在浏览器完成片段定位后露出完整课头。
+  window.addEventListener('load', function () {
+    if (/^#l\d{2}(?:-[st])?$/.test(location.hash)) {
+      requestAnimationFrame(function () { window.scrollTo({top: 0, left: 0, behavior: 'instant'}); });
+    }
+  });
+
+  /* ---------- 按钮 ---------- */
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest ? e.target.closest('[data-act], [data-fig], .fig .zoom, .modal') : null;
+    if (!t) return;
+    if (t.matches('[data-act="menu"]')) { root.classList.toggle('nav-open'); return; }
+    if (t.matches('[data-act="print"]')) { window.print(); return; }
+    if (t.matches('[data-act="clear"]')) {
+      var scope = t.closest('.view').querySelector('.pane.on[data-save], [data-save]');
+      var pane = t.closest('.view').querySelector('.pane.on');
+      if (pane && pane.hasAttribute('data-save')) scope = pane;
+      if (!scope || !window.confirm('清空这一课在本机填写的全部内容？清空后不能恢复。')) return;
+      fields(scope).forEach(function (f) { if (f.classList.contains('sketch')) { if (f.load) f.load(''); f.pending = ''; } else if (f.type === 'checkbox') f.checked = false; else f.value = ''; });
+      save(scope); toast('已清空本课填写');
+      return;
+    }
+    if (t.matches('.modal')) { if (e.target === t || e.target.closest('.x')) closeModal(); return; }
+    var figure = t.matches('[data-fig]') ? document.getElementById(t.getAttribute('data-fig')) : t.closest('figure.fig');
+    if (figure) { e.preventDefault(); openModal(figure); }
+  });
+  var modal = $('.modal');
+  function openModal(figure) {
+    var box = $('.box', modal), copy = figure.cloneNode(true);
+    copy.removeAttribute('id');
+    $$('[id]', copy).forEach(function (n) { n.removeAttribute('id'); });
+    $$('.zoom', copy).forEach(function (n) { n.remove(); });
+    $$('img[loading]', copy).forEach(function (n) { n.removeAttribute('loading'); });
+    box.innerHTML = '<button class="x" type="button" aria-label="关闭">×</button>';
+    box.appendChild(copy);
+    modal.classList.add('on'); modal.scrollTop = 0;
+  }
+  function closeModal() { modal.classList.remove('on'); $('.box', modal).innerHTML = ''; }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeModal(); root.classList.remove('nav-open'); } });
+  window.addEventListener('resize', function () { $$('.view.on .sketch').forEach(function (b) { if (b.fit) b.fit(true); }); });
+})();
+
+</script><script>
+(function () {
+  'use strict';
+  function announce(text) {
+    var el = document.querySelector('.toast');
+    el.textContent = text;
+    el.classList.add('on');
+    window.setTimeout(function () { el.classList.remove('on'); }, 2400);
+  }
+  document.addEventListener('click', async function (event) {
+    var button = event.target.closest('[data-copy-code]');
+    if (!button) return;
+    var code = button.closest('.code-card').querySelector('pre code');
+    try {
+      if (!navigator.clipboard || !window.isSecureContext) throw new Error('manual copy');
+      await navigator.clipboard.writeText(code.textContent);
+      announce('代码已复制，请粘贴到小布米世界的代码输入框。');
+    } catch (_) {
+      var range = document.createRange();
+      range.selectNodeContents(code);
+      var selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      announce('代码已选中，请按 Ctrl+C（Mac：⌘C）复制。');
+    }
+  });
+  // 保存不可用时明确提示；表单仍可填写和打印。
+  try {
+    var key = 'bumi-npl-h5:storage-check';
+    localStorage.setItem(key, '1');
+    localStorage.removeItem(key);
+  } catch (_) {
+    document.querySelectorAll('.storage-hint').forEach(function (el) {
+      el.textContent = '当前浏览器不允许本机保存，请保留页面或打印记录。';
+    });
+  }
+  var printFields = [];
+  window.addEventListener('beforeprint', function () {
+    printFields = [];
+    document.querySelectorAll('.view.on textarea.cell').forEach(function (field) {
+      if (field.offsetParent === null) return;
+      printFields.push([field, field.style.height]);
+      field.style.height = 'auto';
+      field.style.height = Math.max(field.scrollHeight + 4, 48) + 'px';
+    });
+  });
+  window.addEventListener('afterprint', function () {
+    printFields.forEach(function (entry) { entry[0].style.height = entry[1]; });
+    printFields = [];
+  });
+})();
+
+</script><script src="world-launcher.js"></script><script src="embedded-preview.js"></script></body></html>
