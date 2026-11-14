@@ -93,6 +93,41 @@ def world_link(label='打开小布米世界 ↗'):
     return f'<a class="tbtn go" href="{WORLD}" target="_blank" rel="noopener">{e(label)}</a>'
 
 
+def card_link(role, number, label):
+    return f'<a href="{role}.html?view=card#l{number:02d}" target="_blank" rel="noopener noreferrer">{label}</a>'
+
+
+def classroom(lessons):
+    directory = '<section id="home" class="view">' + hero('classroom')
+    for unit, title, numbers in UNITS:
+        directory += f'<section class="unit"><h2><b>{unit}</b>{title}</h2><div class="lcards">'
+        for n in numbers:
+            lesson = lessons[n-1]
+            directory += f'<a class="lcard" href="#l{n:02d}"><span class="n">{n:02d}</span><b>{e(lesson["title"])}</b><span>{e(lesson["subtitle"])}</span></a>'
+        directory += '</div></section>'
+    views = [directory + '</section>']
+    for lesson in lessons:
+        n = lesson['number']
+        unit, title = unit_for(n)
+        controls = card_link('teacher', n, '教师卡') + card_link('student', n, '学生卡')
+        head = (f'<header class="lhead"><div class="lnum"><small>LESSON</small>{n:02d}</div>'
+                f'<p class="lmeta">{unit} · {title}　/　40 分钟</p>'
+                f'<nav class="lesson-cards" aria-label="本课材料">{controls}</nav>'
+                f'<div class="lesson-title"><h1>{e(lesson["title"])}</h1><p>{e(lesson["subtitle"])}</p></div>'
+                '<img class="coding-illustration" src="assets/bumi-code-console.webp" width="600" height="343" alt=""></header>')
+        steps = [
+            ('预测', f'<div class="question"><p>{e(lesson["predict"])}</p></div>{figure(lesson,"class")}'),
+            ('读代码', code_card(lesson) + ul([r['text'] for r in lesson['read']])),
+            ('运行观察', world_link() + ul(lesson['steps'], True)),
+            ('改一处', f'<p>{e(lesson["modify"]["instruction"])}</p><div class="callout"><p>{e(lesson["modify"]["focus"])}</p></div>'),
+            ('解释结果', ul(lesson['reflection']) + f'<a class="tbtn go" href="student.html?classroom=l{n:02d}#l{n:02d}">填写本课 H5 学习单</a>'),
+        ]
+        stages = ''.join(f'<article class="lesson-step" id="l{n:02d}-step{i}" {"" if i == 1 else "hidden"}><h2>{label}</h2>{text}</article>' for i,(label,text) in enumerate(steps,1))
+        tabs = ''.join(f'<button class="tbtn" type="button" data-step="{i}" aria-controls="l{n:02d}-step{i}" aria-pressed="{str(i == 1).lower()}">{label}</button>' for i,(label,_) in enumerate(steps,1))
+        views.append(f'<section class="view lesson" id="l{n:02d}" data-title="第 {n:02d} 课 {e(lesson["title"])}">{head}<div class="sec"><nav class="lesson-steps" aria-label="课堂环节">{tabs}</nav>{stages}</div>{navigation(lesson,lessons)}</section>')
+    return document('classroom', ''.join(views), side(lessons,'classroom'))
+
+
 def student(lesson, suffix='s'):
     number = lesson['number']
     content = '<p class="lede">学生学习单 · 小学 5–6 年级 · 40 分钟 · 可小组共用设备，也可观察教师投影。</p>'
@@ -150,6 +185,11 @@ def lesson_view(lesson, lessons, role):
         body = f'<div class="tabs noprint"><a href="#l{n:02d}" data-pane="t">教师教案</a><a href="#l{n:02d}-s" data-pane="s">学生学习单</a></div><div class="panes"><div class="pane doc" data-pane="t" data-save="l{n:02d}-t">{teacher(lesson)}</div><div class="pane doc" data-pane="s" data-save="l{n:02d}-s">{student(lesson)}</div></div>'
     else:
         body = f'<div class="doc" data-save="l{n:02d}">{student(lesson)}</div>'
+    if role == 'student':
+        prompts = [('A · 预测', lesson['predict']), ('B · 观察', lesson['observation']['columns'][-1]),
+                   ('C · 改一处', lesson['modify']['instruction']), ('D · 解释', lesson['reflection'][0])]
+        body += '<div class="paper-card"><p>班级 __________　姓名 __________　日期 __________</p>'
+        body += ''.join(f'<section><h2>{label}</h2><p>{e(prompt)}</p><div class="answer-lines"></div></section>' for label,prompt in prompts) + '</div>'
     return head + body + tools_bar() + navigation(lesson, lessons) + '</section>'
 
 
@@ -193,11 +233,16 @@ def side(lessons, role):
 
 def document(role, body, nav=''):
     css = (TOOLS/'reference.css').read_text(encoding='utf-8') + '\n' + (TOOLS/'course.css').read_text(encoding='utf-8')
-    title = f'{TITLE} · {"学生版" if role == "student" else "教师版" if role == "teacher" else "课程入口"}'
+    role_name = {'student':'学生版','teacher':'教师版','classroom':'课堂版','entry':'课程入口'}[role]
+    title = f'{TITLE} · {role_name}'
     top = '<button class="tbtn" id="menu" type="button" data-act="menu" aria-label="打开课程目录">☰</button>' if nav else ''
-    top += f'<a class="brand" href="#home"><img src="assets/robot/stand-front.webp" alt=""><span>NPL 代码编程 · 小布米</span></a><span class="role-tag">{"学生版" if role=="student" else "教师版" if role=="teacher" else "12 课"}</span><span class="sp"></span>'
+    if role == 'student':
+        top += '<a class="tbtn classroom-return" href="classroom.html" hidden><span aria-hidden="true">←</span> 返回课堂</a>'
+    top += f'<a class="brand" href="#home"><img src="assets/bumi-code-icon.webp" width="54" height="54" alt=""><span>NPL 代码编程 · 小布米</span></a><span class="role-tag">{"学生版" if role=="student" else "教师版" if role=="teacher" else "12 课"}</span><span class="sp"></span>'
     if role == 'teacher':
         top += '<a class="tbtn hide-s" href="student.html" target="_blank" rel="noopener">学生页面 ↗</a><a class="tbtn hide-s" href="#overview">使用说明</a>'
+    if role == 'classroom':
+        top = top.replace('>12 课<','>课堂版<')
     top += world_link('小布米世界 ↗')
     scripts = ''.join('<script>\n'+(TOOLS/name).read_text(encoding='utf-8')+'\n</script>' for name in ['reference.js','course.js']) if nav else ''
     scripts += '<script src="world-launcher.js"></script>'
@@ -235,7 +280,7 @@ class PageAudit(HTMLParser):
 
 def validate_pages(examples):
     pages = {}
-    for name in ['index.html', 'student.html', 'teacher.html']:
+    for name in ['index.html', 'student.html', 'teacher.html', 'classroom.html']:
         parser = PageAudit()
         parser.feed((ROOT/name).read_text(encoding='utf-8'))
         assert len(parser.ids) == len(set(parser.ids)), f'{name}: 重复 ID'
@@ -298,6 +343,7 @@ def main():
     entry = entry.replace('href="#l01"', 'href="student.html#l01"')
     entry += '<div class="entry-grid"><a class="entry-card" href="student.html"><span class="course-label">STUDENT</span><b>我是学生</b><p>从预测开始，读懂代码，运行观察，再完成一次修改。</p><span class="link">打开 12 课学习单 →</span></a><a class="entry-card" href="teacher.html"><span class="course-label">TEACHER</span><b>我是教师</b><p>查看课程路径、40 分钟教案、参考回答与课堂评价。</p><span class="link">打开教师教案 →</span></a></div><p class="lede">小学 5–6 年级，40 分钟／课的设计基线。可直接打开，支持填写保存与打印；课程尚待课堂试教。</p></section>'
     (ROOT/'index.html').write_text(document('entry', entry), encoding='utf-8')
+    (ROOT/'classroom.html').write_text(classroom(lessons), encoding='utf-8')
     validate_pages(examples)
     print('已生成 index.html、student.html、teacher.html。')
 

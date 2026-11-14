@@ -296,6 +296,14 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
 .namebar>span{display:inline-flex;align-items:center;flex-wrap:wrap;gap:4px}
 
 /* 编程课程扩展，沿用 BumiLessons-H5 的银灰、青绿和卡片版式。 */
+:root{--top:68px}
+.top .brand img{width:54px;height:54px;flex:none;border-radius:13px;background:none}
+.top .classroom-return{color:var(--accent);font-weight:700;background:var(--accent-bg);border-color:#bfdedc}
+.top .classroom-return[hidden]{display:none}
+@media(max-width:720px){
+  .top .classroom-return:not([hidden])~.role-tag{display:none}
+  .top .classroom-return{padding-inline:8px}
+}
 .view{scroll-margin-top:calc(var(--top) + 20px)}
 .code-caption{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:10px 14px;background:#213444;color:#e7eff7;border-radius:12px 12px 0 0;font-size:13px}
 .code-caption button{flex:none;border:1px solid #6d869b;background:#304b61;color:#fff;border-radius:7px;padding:3px 12px;font-size:13px}
@@ -314,6 +322,51 @@ img.rb{display:block;width:auto;height:var(--h,180px);max-width:100%;object-fit:
 .doc textarea.code-draft{min-height:210px;font:14px/1.7 Consolas,"SFMono-Regular",ui-monospace,monospace;background:#f3f7fa;border:1px solid var(--line);padding:12px;tab-size:4;color:#173b57;white-space:pre;overflow:auto;resize:vertical}
 .field-label{display:block;font-size:.92em;color:var(--steel);font-weight:600;margin:12px 0 5px}
 .lesson-goals{margin:8px 0 0!important}
+.role-classroom .lhead{
+  grid-template-areas:"number meta cards" "number title robot";
+  grid-template-columns:auto minmax(0,1fr) auto;gap:4px 22px;
+  background:linear-gradient(110deg,#fff 28%,#f0f8f7 66%,#d2eae7);
+}
+.role-classroom .lnum{grid-area:number}
+.role-classroom .lhead .lmeta{grid-area:meta;align-self:center;margin:0}
+.role-classroom .lesson-title{grid-area:title;align-self:start}
+.role-classroom .lesson-title p{margin:6px 0 0;color:var(--steel)}
+.coding-illustration{grid-area:robot;justify-self:end;align-self:end;width:clamp(160px,24vw,220px);height:auto;margin:4px -6px -23px 0}
+.lesson-cards{grid-area:cards;display:flex;gap:6px;justify-self:end}
+.lesson-cards a{padding:4px 10px;border:1px solid #c9dada;border-radius:8px;
+  color:#345c60;background:#fff;font-size:13px;line-height:1.5;text-decoration:none;white-space:nowrap}
+.lesson-cards a:hover{color:var(--accent);border-color:var(--accent)}
+.lesson-steps{display:flex;flex-wrap:wrap;gap:10px 12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.lesson-steps .tbtn{height:38px;padding:0 16px;font-weight:600}
+.lesson-steps [aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+@media(max-width:720px){
+  .role-classroom .lhead{gap:6px 10px}
+  .coding-illustration{width:clamp(112px,23vw,160px);margin-bottom:-17px}
+  .role-classroom .lhead .lmeta{font-size:12px}
+  .lesson-cards{gap:4px}.lesson-cards a{padding:4px 7px}
+  .lesson-steps{gap:8px;padding-bottom:12px}.lesson-steps .tbtn{padding:0 12px}
+}
+@media(max-width:520px){
+  :root{--top:60px}
+  .top{gap:6px;padding-inline:8px}
+  .top .brand{gap:6px}
+  .top .brand img{width:44px;height:44px;border-radius:10px}
+  .top .tbtn.go{padding-inline:8px}
+  .top .role-tag{padding-inline:6px}
+  .role-classroom .lhead{grid-template-areas:"number meta cards" "title title robot";padding-inline:14px}
+  .role-classroom .lesson-title{align-self:center}
+}
+.role-classroom .lesson-step{margin-top:22px}
+.role-classroom .lesson-step h2{font-size:1.5em}
+.paper-card{display:none}
+@media print{
+  .role-student.print-material .lesson>.doc{display:none}
+  .role-student.print-material .paper-card{display:block}
+  .paper-card section{margin:5mm 0;break-inside:avoid}
+  .paper-card h2{font-size:14pt;margin:0}
+  .paper-card p{margin:2mm 0}
+  .paper-card .answer-lines{height:17mm;background:repeating-linear-gradient(transparent 0 8mm,#bbc5cb 8mm 8.3mm)}
+}
 .lesson-goals li::marker{color:var(--accent)}
 .world-route{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--steel)}
 .world-route span{background:var(--silver);border-radius:7px;padding:3px 9px}.world-route i{font-style:normal;color:var(--faint)}
@@ -330,4 +383,4 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-off
 @media(max-width:720px){.concept-grid,.entry-grid{grid-template-columns:1fr}.code-notes{grid-template-columns:1fr;gap:4px}.code-notes dd{margin-bottom:12px}.code-card pre{font-size:13px;padding:12px}.top .brand span{max-width:38vw}.world-route{font-size:13px}.code-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media print{.code-card{break-inside:auto}.code-card pre{background:#f5f7f9;color:#102737;border:1px solid #dce2e9;white-space:pre-wrap;overflow:visible;font-size:9.5pt}.code-caption{background:#eaeef3;color:#1c2937}.code-card .comment{color:#39744a}.code-card .string{color:#945b12}.code-card .keyword{color:#5247a0}.code-card .number,.code-card .function{color:#21698d}.concept-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.doc textarea.code-draft{height:auto;min-height:130px;white-space:pre-wrap}.storage-hint{display:none}}
 
-</style></head><body><header class="top"><a class="brand" href="#home"><img src="assets/robot/stand-front.webp" alt=""><span>NPL 代码编程 · 小布米</span></a><span class="role-tag">12 课</span><span class="sp"></span><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">小布米世界 ↗</a></header><main style="margin-left:0"><section class="view" id="home" style="max-width:1050px"><div class="hero"><div><p class="course-label">BUMI / NPL CODE LAB</p><h1>和小布米一起<br>学 NPL 代码编程</h1><p class="sub">12 个示例，12 次动手探索。<br>把想法写成程序，用观察说明结果。</p><div class="acts"><a class="tbtn go" href="student.html#l01">从第 01 课开始</a><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a></div></div><img class="hero-backdrop" src="assets/bumi-meadow.webp" alt="" aria-hidden="true" width="1942" height="809" fetchpriority="high"></div><div class="entry-grid"><a class="entry-card" href="student.html"><span class="course-label">STUDENT</span><b>我是学生</b><p>从预测开始，读懂代码，运行观察，再完成一次修改。</p><span class="link">打开 12 课学习单 →</span></a><a class="entry-card" href="teacher.html"><span class="course-label">TEACHER</span><b>我是教师</b><p>查看课程路径、40 分钟教案、参考回答与课堂评价。</p><span class="link">打开教师教案 →</span></a></div><p class="lede">小学 5–6 年级，40 分钟／课的设计基线。可直接打开，支持填写保存与打印；课程尚待课堂试教。</p></section></main><div id="fig-store"></div><div class="modal" role="dialog" aria-label="放大查看"><div class="box"></div></div><div class="toast" role="status" aria-live="polite"></div><script src="world-launcher.js"></script></body></html>
+</style></head><body><header class="top"><a class="brand" href="#home"><img src="assets/bumi-code-icon.webp" width="54" height="54" alt=""><span>NPL 代码编程 · 小布米</span></a><span class="role-tag">12 课</span><span class="sp"></span><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">小布米世界 ↗</a></header><main style="margin-left:0"><section class="view" id="home" style="max-width:1050px"><div class="hero"><div><p class="course-label">BUMI / NPL CODE LAB</p><h1>和小布米一起<br>学 NPL 代码编程</h1><p class="sub">12 个示例，12 次动手探索。<br>把想法写成程序，用观察说明结果。</p><div class="acts"><a class="tbtn go" href="student.html#l01">从第 01 课开始</a><a class="tbtn go" href="https://webparacraft.keepwork.com/?pid=5316902" target="_blank" rel="noopener">打开小布米世界 ↗</a></div></div><img class="hero-backdrop" src="assets/bumi-meadow.webp" alt="" aria-hidden="true" width="1942" height="809" fetchpriority="high"></div><div class="entry-grid"><a class="entry-card" href="student.html"><span class="course-label">STUDENT</span><b>我是学生</b><p>从预测开始，读懂代码，运行观察，再完成一次修改。</p><span class="link">打开 12 课学习单 →</span></a><a class="entry-card" href="teacher.html"><span class="course-label">TEACHER</span><b>我是教师</b><p>查看课程路径、40 分钟教案、参考回答与课堂评价。</p><span class="link">打开教师教案 →</span></a></div><p class="lede">小学 5–6 年级，40 分钟／课的设计基线。可直接打开，支持填写保存与打印；课程尚待课堂试教。</p></section></main><div id="fig-store"></div><div class="modal" role="dialog" aria-label="放大查看"><div class="box"></div></div><div class="toast" role="status" aria-live="polite"></div><script src="world-launcher.js"></script></body></html>

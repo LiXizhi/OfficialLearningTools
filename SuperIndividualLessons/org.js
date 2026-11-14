@@ -1,160 +1,293 @@
-'use strict';
-// 第 4 课：超级组织。来源：_wiki/concepts/ai-native-company.md、second-brain.md、
-// notes/Xizhi's Diary/2026.10.28 碳基与硅基的融合、docs/2026/xiaoetong-trust-sharing。
-// 组织形态与商业判断标注为理念推演；CAIO 定价等为口述口径，非合同承诺。
-(function () {
-  const root = document.getElementById('org');
-  if (!root) return;
-  const el = (tag, cls, text) => {
-    const n = document.createElement(tag);
-    if (cls) n.className = cls;
-    if (text !== undefined) n.textContent = text;
-    return n;
-  };
-  function block(kickerNum, kickerText, title, sub, content) {
-    const sec = el('div', 'idea-block');
-    const k = el('p', 'idea-kicker');
-    k.append(el('b', '', kickerNum), document.createTextNode(kickerText));
-    const h = el('h2');
-    h.innerHTML = title;
-    sec.append(k, h);
-    if (sub) sec.append(el('p', 'idea-sub', sub));
-    sec.append(content);
-    return sec;
-  }
+/* 第 4 课：超级个体 → 超级团队 → 超级公司、AI 原生原则、WorkBuddy 对照、CAIO/FDE 与首次诊断六问 */
+(() => {
+  const { el, bindCopyButton, createCheckpointCard } = window.CourseUI || {};
+  const mount = document.getElementById('org');
+  if (!mount || !el || typeof dayRoles === 'undefined') return;
 
-  /* ---------- 1. 超级个体 → 超级团队 → 超级公司 ---------- */
-  const evoCard = el('div', 'idea-card');
-  const evo = el('div', 'org-evolution');
-  const evoData = [
+  const evoStages = [
     {
-      ico: '🧍', title: '超级个体', sub: '形成能力',
-      brief: '碳基真人 + 硅基分身，共享一个个人超脑。',
-      detail: '一个人带着第二大脑与多个分身工作：分身进入不同圈子承担角色，经验经核验回流个人超脑。能力不再受“一个人一天 24 小时”限制。',
-      note: '第 1–3 课讲的就是这一层。'
+      ico: '🧑💻',
+      title: '超级个体',
+      short: '一人多分身 · 管住个人第二大脑',
+      detail: '<b>起点：</b>一个人通过 Git + Markdown 第二大脑和双分身压测，把口头想法变成可核验的知识页、任务卡与自动化检查规则。'
     },
     {
-      ico: '👥', title: '超级团队', sub: '共同交付',
-      brief: '真人与分身围绕项目组成圈子，共同交付。',
-      detail: '一个项目或一项长期业务形成一个圈子。参与者既有人，也有人的分身；一个超级个体可以同时在多个圈子里贡献能力。圈子有直接负责人——可以是真人，也可以是真人的分身——统一协调分工、冲突与衔接。',
-      note: '来源：2026.10.28 日记“从岗位组织，到圈子组织”。'
+      ico: '🤝',
+      title: '超级团队',
+      short: '多个人脑交汇 · 组织脑单源事实',
+      detail: '<b>跃迁：</b>团队公共规程、项目材料和 CRM 记录留在组织脑（单源真相），成员个人工作记忆各自独立、按圈子授权按需回流（brain-sync）。'
     },
     {
-      ico: '🏢', title: '超级公司', sub: '连接经营',
-      brief: '连接团队、复用共同知识与经营资源。',
-      detail: '公司成为一群超级个体连接、协作和共享经验的全新组织形态：组织内部共享组织脑，分身把个人带进组织，也把协作经验带回个人。足够强大的分身还可以被外部组织雇佣——同一个私人大脑可以容纳多家公司的公共大脑。',
-      note: '跨组织雇佣为组织形态推论，尚不等于雇佣市场已交付。'
+      ico: '🏢',
+      title: '超级公司 / 网络',
+      short: '小核心 + 可复用分身节点协同',
+      detail: '<b>演进方向（试点与推演并存）：</b>核心人数保持精简，把大量重复调研、核查、客服与交付前哨拆成可跨圈层协作的数字分身服务。'
     }
   ];
-  const evoDetail = el('div', 'org-detail');
-  const evoBtns = [];
-  function selectEvo(i) {
-    const d = evoData[i];
-    evoBtns.forEach((x, j) => x.setAttribute('aria-pressed', String(j === i)));
-    evoDetail.replaceChildren();
-    evoDetail.append(el('b', '', d.ico + ' ' + d.title + ' · ' + d.sub + ' '), document.createTextNode(d.detail), el('small', '', d.note));
+
+  const diagnosticLabels = [
+    ['action', '1. 高频核心动作：哪一件每周重复做的事最值得先做试点？'],
+    ['sources', '2. 可控事实源：原始材料从哪来？（raw/ 放哪些文档或记录）'],
+    ['risk', '3. 最大失误红线：哪一步绝不允许 AI 替人拍板或瞎编？'],
+    ['baseline', '4. 验收人与旧耗时：谁来验收？原来人工做一次要多久？'],
+    ['owner', '5. 责任边界：谁维护组织知识页，谁在个人分支试跑？'],
+    ['validation', '6. 通过标准：怎样算这第一张一页试点跑通了？']
+  ];
+
+  let roleKey = (window.getCourseRole && window.getCourseRole()) || 'student';
+
+  function buildDiagnosticText(values, d) {
+    return `# 首个第二大脑试点 · 一页诊断卡（${d.label}视角）
+- 高频动作：${values.action || '（待补充）'}
+- 可控来源：${values.sources || '（待补充）'}
+- 红线边界：${values.risk || '（待补充）'}
+- 验收基准：${values.baseline || '（待补充）'}
+- 维护分工：${values.owner || '（待补充）'}
+- 通过标准：${values.validation || '（待补充）'}`;
   }
-  evoData.forEach((d, i) => {
-    if (i > 0) evo.append(el('span', 'org-arrow', '→'));
-    const b = el('button', 'org-stage');
-    b.type = 'button';
-    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
-    b.append(el('span', 'os-ico', d.ico), el('h3', '', d.title + ' · ' + d.sub), el('p', '', d.brief));
-    b.addEventListener('click', () => selectEvo(i));
-    evo.append(b);
-    evoBtns.push(b);
+
+  mount.innerHTML = `
+    <section class="idea" aria-label="超级组织、信任网络与组织交付">
+      <div class="idea-block">
+        <p class="idea-kicker"><b>4.1</b> 组织跃迁 · PRINCIPLES &amp; CIRCLES</p>
+        <h2>从<em>超级个体</em>到<em>超级公司</em>：岗位组织 vs 圈子组织</h2>
+        <p class="idea-sub">当工具从“帮你写一段话”变成“记住整个项目的依据并并行核查”，组织协作的最小单元也会跟着变化。</p>
+        <div class="idea-card">
+          <div class="org-evolution" id="org-evo" role="group" aria-label="组织演进三阶段"></div>
+          <div class="org-detail" id="org-evo-detail"></div>
+
+          <div class="org-vs" style="margin-top:14px">
+            <div class="ov-old">
+              <h4>传统岗位制组织（易卡点）</h4>
+              <ul>
+                <li>经验锁在个人聊天记录与微信零碎文件里，人走知识断层。</li>
+                <li>每次接力靠口头对齐，下家分不清“已验证事实”与“临时猜测”。</li>
+                <li>每扩张业务就要线性招更多手写协调的人。</li>
+              </ul>
+            </div>
+            <div class="ov-new">
+              <h4>AI 原生圈子组织（方向与原则）</h4>
+              <ul>
+                <li>知识留在版本化目录：项目共有进组织脑，个人草稿留个人脑。</li>
+                <li>跨圈子合作只交接带出处、带红线的可执行任务卡。</li>
+                <li>个人核心靠多路分身把单点深度拉高，而非靠堆人头传话。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ops-principles">
+            <div class="principle-card">
+              <h4>主分身 vs 子分身（.agents/ &amp; &amp; /协作） <span class="ep-badge shipped">已实现</span></h4>
+              <p>你只管面向单一主分身入口委托目标；需要起草、挑刺或专门工具时，由主分身按 <code>.agents/</code> 规范触发子分身并通过 <code>&amp;</code> 昵称或 <code>/协作</code> 协同完成。</p>
+            </div>
+            <div class="principle-card">
+              <h4>朋友圈 ≠ 工作台 <span class="ep-badge shipped">已实现</span></h4>
+              <p>个人第二大脑默认只对本人透明可控；外部群聊或跨成员协作只通过圈子授权视图暴露必要卡片，避免私密试错和敏感材料外泄。</p>
+            </div>
+            <div class="principle-card">
+              <h4>智能密度 &amp; 3–10 篇 CLI + Skills <span class="ep-badge shipped">已实现</span></h4>
+              <p>不要写一万字大而无当的系统提示。把高频操作浓缩进 3–10 个经测试的 CLI 工具与简洁 Skill 说明书，让模型把算力花在真核查上。</p>
+            </div>
+            <div class="principle-card">
+              <h4>Stress Test Agent（对抗压测分身） <span class="ep-badge pilot">试点方法</span></h4>
+              <p>对外输出重大报价、合同建议、教案或实验结论前，固定跑一轮只负责找反例与算术漏洞的压测分身，问题摆到人前再发。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="idea-block">
+        <p class="idea-kicker"><b>4.2</b> 信任网络 · CREDIBILITY</p>
+        <h2>跨组织分身与可审计信任网络 <span class="ep-badge pilot">当前状态混合：已实现 + 试点推演</span></h2>
+        <p class="idea-sub">未来和陌生同行合作，不只是互加微信问一句“靠谱吗”，而是按权限先校验对方留痕过的功能卡、案例出处与边界声明。</p>
+        <div class="trust-grid">
+          <div class="trust-item">
+            <strong>目录与权限隔离（Git + KeepWork 圈子） <span class="ep-badge shipped">已实现</span></strong>
+            <span>第二大脑放在可控仓与权限圈子里：谁改了哪一页、引用哪份 <code>raw/</code> 文档，全部可回溯不靠口说。</span>
+          </div>
+          <div class="trust-item">
+            <strong>keepwork-crm 组织客情与项目脑 <span class="ep-badge pilot">试点实践</span></strong>
+            <span>把线索沟通记录、需求约束、试跑指标统合进结构化客户档案页，交接给下一位 FDE 或交付同学时不再从零问起。</span>
+          </div>
+          <div class="trust-item">
+            <strong>分身先核对契约再邀约人工 <span class="ep-badge pilot">试点方法</span></strong>
+            <span>双方对接分身先互查预算红线、输入材料齐备度与盲测验收指标，把无谓来回沟通降到正式拍板前。</span>
+          </div>
+          <div class="trust-item">
+            <strong>“招募可信分身节点”组织形态（2027–2036） <span class="ep-badge vision">远期推演</span></strong>
+            <span>从聘请全职传话岗位，逐步演化到按任务契约接入经过长期检验的外部个人/机构分身节点。</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="idea-block">
+        <p class="idea-kicker"><b>4.3</b> 工具边界与服务路径 · WORKBUDDY &amp; CAIO / FDE</p>
+        <h2>WorkBuddy 桌面助手 vs KeepWork 组织脑，及两种落地角色</h2>
+        <div class="delivery-duo">
+          <div class="wb-box">
+            <h4>WorkBuddy 桌面工作台 <span class="ep-badge shipped">个人桌边效率</span></h4>
+            <p>适合个人日常快速调起文档、邮件、即时灵感处理，是贴身的个人生产力桌面侧翼，重在“随手快”。</p>
+          </div>
+          <div class="wb-box kw">
+            <h4>KeepWork 组织脑 &amp; AIChat <span class="ep-badge shipped">组织复利底座</span></h4>
+            <p>承担 <code>raw/ + _wiki/ + .agents/</code> 团队单源事实库、成员 <code>fork brain / brain-sync</code> 与圈子权限边界，重在“跨人交接不断档”。</p>
+          </div>
+        </div>
+
+        <div class="caio-card">
+          <div class="caio-left">
+            <span class="cl-badge">ROLE · 首席 AI 官（CAIO）伴跑构想</span>
+            <h3>首席 AI 官 + 驻场工程师</h3>
+            <p>很多中小团队并不缺“工具软件”，而是缺一位能用 6 周帮助团队建立组织第二大脑、培训首批内部骨干并守住红线的人。</p>
+            <p class="cl-quote">重要披露：下方价格仅作课程中的口述业务假设示范（非官网标准报价），请按实际试点工时谈契约。</p>
+          </div>
+          <div class="caio-right">
+            <h4>CAIO 服务形态拆解 <span class="ep-badge vision">定价假设·口述口径</span></h4>
+            <div class="caio-steps">
+              <div class="caio-step">
+                <b>1</b>
+                <div><strong>轻顾问 / 诊断陪跑（假设参考约 1,000 元/月档）</strong><span>每月固定复盘核心工作卡、Lint 检查组织脑漏洞，帮负责人挑首个可试点环节。</span></div>
+              </div>
+              <div class="caio-step">
+                <b>2</b>
+                <div><strong>专职辅助建脑（假设参考 5,000–20,000 元/月档）</strong><span>代梳理高频 SOP 成 <code>_wiki/</code> 与测试分身，建立周度 RSI 更新节奏并带出内部接班人。</span></div>
+              </div>
+            </div>
+            <p class="caio-note">判断标准：不要为“概念”付费，要盯住一个月后团队成员是否真的能脱离顾问自己维护和盲测卡片。</p>
+          </div>
+        </div>
+
+        <div class="fde-steps">
+          <div class="fde-step">
+            <h4>FDE 第 1 步：摸底入脑 <span class="ep-badge pilot">现场工程试点</span></h4>
+            <p>用下方“首次诊断六问”锁定单一高痛点动作，收集 5–10 份真材料进 <code>raw/</code> 并确定人工验收基准。</p>
+          </div>
+          <div class="fde-step">
+            <h4>FDE 第 2 步：双分身跑通</h4>
+            <p>做出可复用的任务卡与压测校验规则，让团队原本从零干的 45 分钟环节先稳定缩成可控复审。</p>
+          </div>
+          <div class="fde-step">
+            <h4>FDE 第 3 步：fork 交接撤出</h4>
+            <p>把组织脑与 <code>brain-sync</code> 交回给内部负责同学，用陌生同事盲测过关作为结项标准。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="idea-block">
+        <p class="idea-kicker"><b>4.4</b> 交互式工具 · SIX-QUESTION DIAGNOSTIC</p>
+        <h2>首次诊断六问 · 一页试点卡生成器</h2>
+        <p class="idea-sub">带学生社团、教研组、部门或客户启动首个试点前，先填清这 6 个问题；填完可直接复制，或一键同步回第 3 课任务卡第 ④ 步。</p>
+        <div class="idea-card">
+          <div class="toolbar" style="margin-top:0">
+            <button type="button" id="diag-fill-role">按当前视角填入模板</button>
+            <span class="wiki-role-chip" id="diag-role-chip">当前视角：学生</span>
+          </div>
+          <div class="diag-grid" id="diag-grid">
+            ${diagnosticLabels.map(([name, label]) => `
+              <label>${label}
+                <input type="text" name="diag_${name}" id="diag-${name}" placeholder="点击填写或上方一键预填示例">
+              </label>`).join('')}
+          </div>
+          <pre id="diag-output" class="diag-output" aria-label="生成的一页试点诊断卡预览"></pre>
+          <div class="copy-row">
+            <button type="button" id="diag-copy" class="copy-btn">复制一页试点诊断卡</button>
+            <button type="button" id="diag-to-practice" class="primary">写入第 3 课任务卡第 ④ 步 →</button>
+            <span id="diag-copy-fb" class="status-inline" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+      </div>
+
+      <div id="l4-checkpoint"></div>
+
+      <p class="idea-boundary">
+        <strong>认识论边界声明：</strong>
+        本课程刻意区分三类信息——
+        ① <b>已实现（shipped）</b>：单人/小团队离线用 Git + Markdown 第二大脑、第 3 课工作台任务卡与 <code>.md</code> 导出、<code>.agents/</code> 与 <code>/协作</code> 分身规则；
+        ② <b>试点方法（pilot）</b>：<code>keepwork-crm</code> 组织跟进、跨团队 <code>fork brain / brain-sync</code> 与 FDE 三步介入；
+        ③ <b>远期推演/假设（vision）</b>：CAIO 月费区间、2027–2036 跨组织分身招募网络推演。请根据你自己的真实环境取舍落地。
+      </p>
+    </section>`;
+
+  const evoWrap = mount.querySelector('#org-evo');
+  const evoDetail = mount.querySelector('#org-evo-detail');
+  function selectEvo(idx) {
+    const s = evoStages[idx] || evoStages[0];
+    evoWrap.querySelectorAll('.org-stage').forEach((b, bi) => b.setAttribute('aria-pressed', bi === idx ? 'true' : 'false'));
+    evoDetail.innerHTML = `${s.detail}<small>点击上方不同规模节点，查看组织记忆与分身边界怎么变化。</small>`;
+  }
+  evoStages.forEach((s, i) => {
+    if (i > 0) evoWrap.appendChild(el('span', { className: 'org-arrow', 'aria-hidden': 'true', textContent: '→' }));
+    const btn = el('button', { type: 'button', className: 'org-stage', 'aria-pressed': i === 0 ? 'true' : 'false' });
+    btn.innerHTML = `<span class="os-ico">${s.ico}</span><h3>${s.title}</h3><p>${s.short}</p>`;
+    btn.addEventListener('click', () => selectEvo(i));
+    evoWrap.appendChild(btn);
   });
   selectEvo(0);
-  evoCard.append(evo, evoDetail,
-    el('p', 'idea-note', '演进链：超级个体形成能力 → 超级团队共同交付 → 超级公司连接团队并持续经营。点每一级看它的组织方式。'));
 
-  /* ---------- 2. 岗位组织 vs 圈子组织 ---------- */
-  const vsCard = el('div', 'idea-card');
-  const vs = el('div', 'org-vs');
-  const oldOrg = el('div', 'ov-old');
-  oldOrg.append(el('h4', '', '过去：岗位组织'));
-  const oldList = el('ul');
-  ['一个人占一个位置，承担一组职责', '角色靠同一个肉身切换', '经验散落在个人脑子里，人走经验走', '跨部门协作靠层层汇报'].forEach(t => oldList.append(el('li', '', t)));
-  oldOrg.append(oldList);
-  const newOrg = el('div', 'ov-new');
-  newOrg.append(el('h4', '', '未来：圈子组织'));
-  const newList = el('ul');
-  ['围绕项目 / 业务形成圈子，角色灵活变化', '不同分身进入不同圈子，同时贡献能力', '共同知识进组织脑，经验持续积累', '直接负责人（真人或分身）协调冲突与衔接'].forEach(t => newList.append(el('li', '', t)));
-  newOrg.append(newList);
-  vs.append(oldOrg, newOrg);
-  vsCard.append(vs, el('p', 'idea-note', '家庭是圈子，学校是圈子，公司和项目也是圈子。一个人的分身可以同时参与许多圈子，而它们最终连接的是同一个个人超脑。'));
+  const diagInputs = Object.fromEntries(diagnosticLabels.map(([k]) => [k, mount.querySelector(`#diag-${k}`)]));
+  const diagOutput = mount.querySelector('#diag-output');
+  const diagRoleChip = mount.querySelector('#diag-role-chip');
+  const diagFillBtn = mount.querySelector('#diag-fill-role');
+  const diagCopyBtn = mount.querySelector('#diag-copy');
+  const diagCopyFb = mount.querySelector('#diag-copy-fb');
+  const diagToPracticeBtn = mount.querySelector('#diag-to-practice');
 
-  /* ---------- 3. 信任网络 ---------- */
-  const trustCard = el('div', 'idea-card');
-  const trust = el('div', 'trust-grid');
-  [
-    ['🪪', '它是谁的分身', '每个分身背后连接一个超级个体的数字大脑，身份可追溯。'],
-    ['🔑', '被授权做什么', '分身按角色和授权使用内容；共同记忆与圈子边界同时存在。'],
-    ['📦', '完成过什么', '交付、验收、付费、复购与再次委托，用实际行动和钱投票。'],
-    ['🧭', '遇到问题找谁', '圈子的直接负责人组织解决；履约记录让信任继续积累。']
-  ].forEach(([ico, title, body]) => {
-    const item = el('div', 'trust-item');
-    const s = el('strong'); s.append(document.createTextNode(ico + ' ' + title));
-    item.append(s, el('span', '', body));
-    trust.append(item);
+  function currentDiagValues() {
+    const out = {};
+    for (const [k, inp] of Object.entries(diagInputs)) out[k] = inp?.value?.trim() || '';
+    return out;
+  }
+
+  function refreshDiagnosticPreview() {
+    const d = dayRoles[roleKey] || dayRoles.student;
+    if (diagRoleChip) diagRoleChip.textContent = `当前视角：${d.label}`;
+    if (diagOutput) diagOutput.textContent = buildDiagnosticText(currentDiagValues(), d);
+  }
+
+  function fillDiagnosticFromRole(targetRole) {
+    const r = Object.hasOwn(dayRoles, targetRole) ? targetRole : 'student';
+    roleKey = r;
+    const sample = dayRoles[r].diagnosticSample || {};
+    for (const [k, inp] of Object.entries(diagInputs)) {
+      if (inp) inp.value = sample[k] || '';
+    }
+    refreshDiagnosticPreview();
+  }
+
+  Object.values(diagInputs).forEach((inp) => {
+    inp?.addEventListener('input', refreshDiagnosticPreview);
   });
-  trustCard.append(trust,
-    el('p', 'idea-note', '当分身与分身相遇，凭什么把任务交给它？信任落到具体事情上：认识、共同做过事、积累了经验，才形成可以继续合作的关系。'),
-    el('p', 'idea-boundary', '两个相连的方向：帮每个人持续积累第二大脑；帮这些人的分身建立可信的社交网络。跨组织信任网络与分身雇佣市场为发展方向判断，非已交付能力。'));
 
-  /* ---------- 4. CAIO ---------- */
-  const caioCard = el('div', 'caio-card');
-  const caioLeft = el('div', 'caio-left');
-  caioLeft.append(
-    el('span', 'cl-badge', 'NEW ROLE · 新岗位'),
-    el('h3', '', 'CAIO'),
-    el('p', '', 'Chief AI Officer · 首席人工智能官。不是又一个 SaaS，而是把“第二大脑 + 方法论”包装成企业里的一个新岗位，与 CEO 一起做 AI 化转型。'),
-    el('p', 'cl-quote', '“CIO 管信息，CAIO 与 CEO 一起做企业 AI 化转型。”'),
-    el('p', '', '交付形态：我方分身（第二大脑）+ 一名真人助理，驻场解决一两个真实问题，按月签约。')
+  diagFillBtn?.addEventListener('click', () => fillDiagnosticFromRole(roleKey));
+
+  if (bindCopyButton && diagCopyBtn) {
+    bindCopyButton(diagCopyBtn, () => diagOutput?.textContent || '', diagCopyFb, '复制一页试点诊断卡');
+  }
+
+  diagToPracticeBtn?.addEventListener('click', () => {
+    const txt = diagOutput?.textContent || '';
+    window.syncPilotDiagnostic?.(txt, roleKey);
+  });
+
+  mount.querySelector('#l4-checkpoint').appendChild(
+    createCheckpointCard({
+      title: '4.5 第 4 课自检：给团队或客户启动首个 AI 分身试点，第一步先定什么？',
+      prompt: '对照本课介绍的 FDE 工程方法与首次诊断六问，哪种开局方式最稳？',
+      options: [
+        'A. 用诊断六问锁定一件高频痛点，备好 5–10 份真材料进 raw/、标出禁编红线与旧耗时基准，让盲测同事独立跑通一遍。',
+        'B. 先不看原有材料和验收标准，一次性把公司全部流程全换成自由对话机器人。',
+        'C. 只追求做一份看起来很炫的 PPT 报价，不需要组织知识页和人工核验。'
+      ],
+      correct: 0,
+      explain: '先把单点场景的材料、红线、验收人和耗时基准框死，跑通第一个可复用的卡片，才能稳定复制。'
+    })
   );
-  const caioRight = el('div', 'caio-right');
-  caioRight.append(el('h4', '', 'CAIO 的四件事交付'));
-  const steps = el('div', 'caio-steps');
-  [
-    ['①', '建工作台', '让企业从“提目标”开始工作，而不是在菜单里点完全部操作。'],
-    ['②', '建知识图谱', '整理企业第二大脑：原始信源 → 约 200 节点知识地图 → 维护规则。'],
-    ['③', '搭 AI 工具集', 'CLI + Skill 封装高频操作，旧后台退为结果呈现 + 人审确认。'],
-    ['④', '建圈子', '按超级公司方式重搭组织：真人 + 分身围绕业务承担角色。']
-  ].forEach(([num, title, body]) => {
-    const s = el('div', 'caio-step');
-    s.append(el('b', '', num));
-    const d = el('div');
-    d.append(el('strong', '', title), el('span', '', body));
-    s.append(d);
-    steps.append(s);
-  });
-  caioRight.append(steps,
-    el('p', 'caio-note', '口径说明：分身 token 费与助理月薪为创始人口述定价（月签），尚无合同模板与已交付案例背书；面向中小企业，“一单 1 万、可做量”是商业设想，非承诺。'));
-  caioCard.append(caioLeft, caioRight);
 
-  /* ---------- 5. FDE 三步交付 ---------- */
-  const fdeCard = el('div', 'idea-card');
-  const fde = el('div', 'fde-steps');
-  [
-    ['做成一个真实任务', 'FDE（前线部署工程师）陪使用者跑通第一个现场任务：真实材料、真实验收，不是演示样例。'],
-    ['改变条件再做一次', '换一份新材料、换一个约束，验证方法能迁移；把发现的遗漏写成规则，让分身复跑。'],
-    ['让客户独立更新与完成', '使用者自己更新资料、完成任务、指出出处。买的是“实际用起来、能持续维护”的工作方式。']
-  ].forEach(([title, body]) => {
-    const s = el('div', 'fde-step');
-    s.append(el('h4', '', title), el('p', '', body));
-    fde.append(s);
-  });
-  fdeCard.append(fde,
-    el('p', 'idea-note', 'FDE 按项目交付，CAIO 持续协助组织采用与维护。服务以业务结果和员工采用为验收依据——你在第 3 课任务卡里填的“试点卡”，就是这套交付的起点。'));
+  fillDiagnosticFromRole(roleKey);
 
-  /* ---------- 组装 ---------- */
-  root.append(
-    el('p', 'idea-lead', '第 4 课把镜头拉远：当每个人都成为超级个体，团队、公司和商业关系会怎样重组？这一课讲理念推演与正在探索的岗位形态。'),
-    block('1', '组织怎样演进', '个体 → 团队 → <em>公司</em>', '超级个体形成能力，超级团队共同交付，超级公司连接团队、复用共同知识与经营资源。', evoCard),
-    block('2', '组织方式的变化', '从岗位，到<em>圈子</em>', '当一个人拥有多个分身，公司的组织方式也会改变。', vsCard),
-    block('3', '协作的基础', '分身之间的<em>信任网络</em>', '人与分身共同进入社交网络后，信任成为合作的门槛，也是最大的机会。', trustCard),
-    block('4', '一个新岗位', 'CAIO：把第二大脑<em>卖成岗位</em>', '不是卖软件，而是派“分身 + 真人助理”进企业，做四件事、解决真实问题。', caioCard),
-    block('5', '怎样交付', 'FDE 的<em>三步验收</em>', '做成一个真实任务 → 改变条件再做一次 → 让客户独立更新与完成。', fdeCard),
-    el('p', 'idea-boundary', '本课时间判断（2027–2029 个人数字化、2036 文明共同记忆）与跨组织市场为创始人愿景与推演；CAIO 定价为口述口径。学习时区分“理念方向”与“已交付能力”。')
-  );
+  window.addEventListener('courserolechange', (event) => {
+    const r = event.detail?.role;
+    if (!r || !Object.hasOwn(dayRoles, r) || r === roleKey) return;
+    fillDiagnosticFromRole(r);
+  });
 })();

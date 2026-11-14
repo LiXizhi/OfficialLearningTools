@@ -6,8 +6,8 @@ header { background:transparent; border-color:#cccec3; }
 .bar strong::before { content:""; display:inline-block; width:13px; height:13px; background:#213c2d; border-radius:2px; margin-right:9px; transform:rotate(-8deg); }
 .mast { display:flex; justify-content:space-between; align-items:flex-end; gap:22px; margin:28px 0 20px; }
 .mast .eyebrow { color:#566253; font-size:.75rem; letter-spacing:.14em; }
-.mast h1 { font:700 clamp(36px,5.6vw,70px)/1.06 "Noto Serif SC","STSong","SimSun",serif; letter-spacing:-.055em; }
-.mast h1 span { color:#628144; }
+.mast h1,.mast h2 { font:700 clamp(36px,5.6vw,70px)/1.06 "Noto Serif SC","STSong","SimSun",serif; letter-spacing:-.055em; }
+.mast h1 span,.mast h2 span { color:#628144; }
 .mast>p { margin:0; font-size:.93rem; color:#505a52; }
 .roles { display:grid; grid-template-columns:repeat(4,1fr); gap:5px; margin:0 0 12px; }
 .roles button { display:flex; align-items:center; gap:11px; padding:5px 10px 5px 5px; text-align:left; border:1px solid #d5d7cd; border-radius:6px; color:#3d483d; background:transparent; font-size:.9rem; font-weight:650; }

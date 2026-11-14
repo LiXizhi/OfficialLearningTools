@@ -1,453 +1,414 @@
-'use strict';
-// 真实 AIChat 演示引擎：把“超级个体怎么工作”做成可步进、可 autoplay 的工作台回放。
-// 场景数据复用 roles.js 的 dayRoles，与放映室保持一致；界面复刻 AIChat 浅色工作台。
-(function () {
+/* 第 3 课 3.1：模拟 KeepWork AIChat 工作台 7 步回放 + 角色同步 + 直通任务卡按钮 */
+(() => {
   const mount = document.getElementById('sim');
   if (!mount || typeof dayRoles === 'undefined') return;
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = text; return n; };
-  const btn = (text, cls, fn) => { const b = el('button', cls, text); b.type = 'button'; if (fn) b.addEventListener('click', fn); return b; };
 
-  /* ---------- 每个角色的第二大脑图谱与文件 ---------- */
-  const brainMap = {
-    student: { nodes: ['豆苗实验', '观察记录', '控制条件', '光照假设', '复测卡'], files: [['原始信源', '周一观察本.md'], ['原始信源', '实验照片说明.md'], ['知识地图', '豆苗实验.md'], ['Skills', '证据核验.rule']] },
-    teacher: { nodes: ['分数诊断', '离堂题', '整体概念', '推理缺口', '题卡'], files: [['原始信源', '离堂题汇总.md'], ['原始信源', '匿名口述样例.md'], ['知识地图', '分数诊断.md'], ['Skills', '学情核验.rule']] },
-    leader: { nodes: ['课后服务', '报名意向', '实际签到', '接送冲突', '决策单'], files: [['原始信源', '报名表.md'], ['原始信源', '现场签到.md'], ['知识地图', '课后服务试点.md'], ['Skills', '校务核验.rule']] },
-    founder: { nodes: ['经营简报', '试用', '签约', '回款', '口径'], files: [['原始信源', '业务周报.md'], ['原始信源', '财务对账.md'], ['知识地图', '经营核验.md'], ['Skills', '口径核验.rule']] }
+  let roleKey = (window.getCourseRole && window.getCourseRole()) || 'student';
+  let stepIdx = 0;
+  let playing = false;
+  let brainOpen = true;
+  let timer = 0;
+  let speedMs = 2900;
+
+  const avatarThumbs = {
+    student: 'assets/student-scene.webp',
+    teacher: 'assets/teacher-scene.webp',
+    leader: 'assets/leader-scene.webp',
+    founder: 'assets/founder-scene.webp'
   };
 
-  /* ---------- 把角色案例编成工作台节拍 ---------- */
-  function buildScenario(id) {
-    const r = dayRoles[id], bm = brainMap[id];
-    const beats = [];
-    const add = (type, payload, narr, stage) => beats.push(Object.assign({ type, narr, stage }, payload));
-    add('greet', { text: '我是你的分身，连着你的第二大脑。把目标告诉我，我带着你的积累去做，做完把经验写回来。' },
-      '工作台是起点。分身不是空白的聊天机器人——它一开口就带着你的第二大脑。', '阶段 1 · 口喷委托');
-    add('user', { text: r.vague }, '先随口说一句。这是大多数人的起点：一个模糊的目标。', '阶段 1 · 口喷委托');
-    add('ai', { text: '交给谁用？怎样算完成？给我使用者、目标和可检查的成果，我才能做对。' },
-      '分身不急着动手，先问清验收标准。模糊委托 → 清晰委托，是超级个体的第一课。', '阶段 1 · 口喷委托');
-    add('user', { text: r.brief }, '把委托补完整：给谁用、要什么、怎样算完成。', '阶段 1 · 口喷委托');
-    add('brain-read', { nodes: [0, 1, 2], files: [0, 1, 2], tool: '读取第二大脑', detail: '检索 <code>' + bm.files[2][1] + '</code> 与 2 份原始信源，沿来源取背景。' },
-      '分身先读第二大脑：知识地图给概念关系，原始信源给依据。这一步让它“懂你的上下文”。', '阶段 3 · 调用经验');
-    add('agents', { agents: r.agents, pair: r.pair },
-      '一个目标拆给两个分身并行：一个整理事实，一个独立核验。注意力从“执行”转向“判断”。', '阶段 2 · 并行调度');
-    add('choice', { options: r.options, correct: r.correct, why: r.why },
-      '两份材料出现分歧，停下来由你判断。这是超级个体最关键的动作：人做最终裁决。', '阶段 2 · 判断力');
-    add('brain-write', { node: 4, file: 3, rule: r.rule, tool: '写回第二大脑 · RSI', detail: '把这次容易犯的错写成一条可执行规则 <code>' + bm.files[3][1] + '</code>。' },
-      '判断完不是结束：把经验写回大脑（RSI 递归自我改进）。下次任何分身都不会再犯同样的错。', '阶段 3 · 经验回流');
-    add('rerun', { before: r.before, after: r.after, source: r.sources[2].split('｜')[0] },
-      '开一个全新对话复跑。同样的问题，分身带着新规则给出修订版，并标注来源。', '阶段 3 · 越用越厚');
-    add('handoff', { text: r.handoff, value: r.value },
-      '成果交给圈子里的下一位（真人或分身）。经验留在你的大脑，能力进入协作网络。', '阶段 4 · 交付协作');
-    return { id, role: r, bm, beats };
-  }
-
-  /* ---------- 静态外壳 ---------- */
-  const device = el('div', 'sim-device');
-  const titlebar = el('div', 'sim-titlebar');
-  const dots = el('div', 'sim-dots'); dots.append(el('i'), el('i'), el('i'));
-  titlebar.append(dots, el('strong', '', 'KeepWork 第二大脑 · 工作台'), el('span', 'sim-url', 'aichat.keepwork.com'));
-  const shell = el('div', 'sim-shell');
-  // 图标栏
-  const rail = el('div', 'sim-rail');
-  [['💬', true], ['🗂', false], ['🖼', false], ['▶', false], ['🧠', false], ['🎓', false], ['🛠', false]].forEach(([ico, active]) => {
-    const b = btn(ico, active ? 'active' : ''); b.setAttribute('aria-label', '导航'); b.tabIndex = -1; rail.append(b);
-  });
-  rail.append(el('div', 'sim-rail-spacer'));
-  const railAvatar = el('img', 'sim-rail-avatar'); railAvatar.src = 'assets/student-scene.webp'; railAvatar.alt = ''; rail.append(railAvatar);
-  // 会话侧栏
-  const side = el('div', 'sim-side');
-  const sideHead = el('div', 'sim-side-head');
-  const shImg = el('img'); shImg.src = 'assets/student-scene.webp'; shImg.alt = '';
-  const shTxt = el('div'); shTxt.append(el('strong', '', '我的分身'), el('small', '', '第二大脑 · LiXizhiDocs'));
-  sideHead.append(shImg, shTxt);
-  const newChat = el('div', 'sim-newchat', '＋ 新对话');
-  const sessions = el('div', 'sim-sessions');
-  const sideFoot = el('div', 'sim-side-foot', '☁ 云端会话 · 已同步');
-  side.append(sideHead, newChat, sessions, sideFoot);
-  // 主区
-  const main = el('div', 'sim-main');
-  const topbar = el('div', 'sim-topbar');
-  const tbImg = el('img'); tbImg.src = 'assets/student-scene.webp'; tbImg.alt = '';
-  const persona = el('div', 'sim-persona');
-  const pName = el('strong', '', '我的分身');
-  const pSub = el('small'); pSub.append(el('span', 'sim-brain-chip', '🧠 第二大脑'), document.createTextNode(' LiXizhiDocs'));
-  persona.append(pName, pSub);
-  const topActions = el('div', 'sim-top-actions'); topActions.append(el('span', '', '钉钉'), el('span', '', '飞书'));
-  topbar.append(tbImg, persona, topActions);
-  const chat = el('div', 'sim-chat'); chat.id = 'sim-chat';
-  const composer = el('div', 'sim-composer');
-  const composerBox = el('div', 'sim-composer-box');
-  const composerInput = el('div', 'sim-composer-input placeholder', '输入消息…');
-  const composerBar = el('div', 'sim-composer-bar');
-  const model = el('span', 'sim-model', 'gpt-6-astra');
-  const sendBtn = btn('➤', 'sim-send'); sendBtn.disabled = true; sendBtn.setAttribute('aria-label', '发送');
-  composerBar.append(model, sendBtn);
-  composerBox.append(composerInput, composerBar);
-  composer.append(composerBox);
-  main.append(topbar, chat, composer);
-  // 第二大脑面板
-  const brain = el('div', 'sim-brain');
-  const brainHead = el('div', 'sim-brain-head'); brainHead.append(el('strong', '', '🧠 第二大脑'), el('span', 'sim-brain-tag', 'LiXizhiDocs'));
-  const brainClose = btn('✕', 'sim-brain-close'); brainClose.setAttribute('aria-label', '关闭大脑面板');
-  brainClose.addEventListener('click', () => { shell.classList.remove('sim-brain-open'); brainToggle.setAttribute('aria-pressed', 'false'); });
-  brainHead.append(brainClose);
-  const brainGraph = el('div', 'sim-brain-graph');
-  const brainFiles = el('div', 'sim-brain-files');
-  brain.append(brainHead, brainGraph, brainFiles);
-  shell.append(rail, side, main, brain);
-  // 讲解条
-  const narration = el('div', 'sim-narration');
-  const narrNum = el('div', 'sim-narr-num', '1');
-  const narrTxt = el('div'); const narrTitle = el('strong'); const narrBody = el('p');
-  narrTxt.append(narrTitle, narrBody);
-  narration.append(narrNum, narrTxt);
-  device.append(titlebar, shell, narration);
-
-  /* ---------- 控制区 ---------- */
-  const controls = el('div', 'sim-controls');
-  const scenarios = el('div', 'sim-scenarios');
-  const transport = el('div', 'sim-transport');
-  const playBtn = btn('▶ 播放', 'sim-play');
-  const prevBtn = btn('‹ 上一步'); prevBtn.setAttribute('aria-label', '上一步');
-  const nextBtn = btn('下一步 ›'); nextBtn.setAttribute('aria-label', '下一步');
-  const restartBtn = btn('↺ 重播'); restartBtn.setAttribute('aria-label', '重播');
-  const speedSel = el('select'); speedSel.setAttribute('aria-label', '播放速度');
-  [['慢', 2600], ['正常', 1700], ['快', 950]].forEach(([t, v], i) => { const o = new Option(t, v); if (i === 1) o.selected = true; speedSel.add(o); });
-  const narrToggle = btn('讲解 开', ''); narrToggle.setAttribute('aria-pressed', 'true');
-  const brainToggle = btn('大脑面板', ''); brainToggle.setAttribute('aria-pressed', 'true');
-  transport.append(playBtn, prevBtn, nextBtn, restartBtn, speedSel, narrToggle, brainToggle);
-  const progress = el('div', 'sim-progress');
-  controls.append(scenarios, transport, progress);
-
-  const head = el('div', 'sim-head');
-  const headTxt = el('div');
-  const headH2 = el('h2');
-  headH2.innerHTML = '在真实 AIChat 里，<em>跑一遍</em>';
-  headTxt.append(headH2, el('p', '', '这不是视频，是可以步进的工作台回放。选一个身份，看分身如何读你的第二大脑、并行做事、由你判断、再把经验写回。'));
-  head.append(headTxt);
-  mount.append(head, controls, device);
-
-  /* ---------- 状态 ---------- */
-  let scenario = buildScenario('student');
-  let cursor = -1, playing = false, timer = 0, runToken = 0, choiceDone = false;
-  let speed = 1700, narrOn = true;
-
-  function scenarioButtons() {
-    scenarios.replaceChildren();
-    Object.entries(dayRoles).forEach(([id, r]) => {
-      const b = btn('', 'sim-scenario');
-      const img = el('img'); img.src = 'assets/' + id + '-scene.webp'; img.alt = '';
-      b.append(img, document.createTextNode(r.label));
-      b.dataset.scenario = id;
-      b.setAttribute('aria-pressed', String(id === scenario.id));
-      b.addEventListener('click', () => selectScenario(id));
-      scenarios.append(b);
-    });
-  }
-  function progressButtons() {
-    progress.replaceChildren();
-    scenario.beats.forEach((b, i) => {
-      const p = btn('', '');
-      p.setAttribute('aria-label', '第 ' + (i + 1) + ' 步');
-      const label = el('span', '', (i + 1) + ' ' + shortName(b.type));
-      p.append(label);
-      p.addEventListener('click', () => { stop(); jumpTo(i); });
-      progress.append(p);
-    });
-  }
-  function shortName(t) {
-    return { greet: '开场', user: '委托', ai: '追问', 'brain-read': '读脑', agents: '分身', choice: '判断', 'brain-write': '写回', rerun: '复跑', handoff: '交接' }[t] || t;
-  }
-  function syncProgress() {
-    [...progress.children].forEach((p, i) => {
-      p.classList.toggle('done', i < cursor);
-      p.classList.toggle('current', i === cursor);
-    });
-  }
-
-  /* ---------- 第二大脑渲染 ---------- */
-  const NS = 'http://www.w3.org/2000/svg';
-  function renderBrain(litNodes, litFiles, newFile, newNode) {
-    const bm = scenario.bm;
-    brainGraph.replaceChildren();
-    const svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('viewBox', '0 0 230 150');
-    svg.setAttribute('role', 'img'); svg.setAttribute('aria-label', '第二大脑知识图谱');
-    const cx = 115, cy = 75;
-    const positions = [[cx, cy], [45, 35], [185, 35], [40, 115], [190, 115], [115, 18]];
-    // edges
-    for (let i = 1; i <= bm.nodes.length; i++) {
-      const [x, y] = positions[i] || [cx, cy];
-      const line = document.createElementNS(NS, 'line');
-      line.setAttribute('x1', cx); line.setAttribute('y1', cy); line.setAttribute('x2', x); line.setAttribute('y2', y);
-      line.setAttribute('stroke', '#dde0ea'); line.setAttribute('stroke-width', '1.5');
-      svg.append(line);
-    }
-    const allNodes = ['个人超脑'].concat(bm.nodes);
-    allNodes.forEach((name, i) => {
-      const [x, y] = i === 0 ? [cx, cy] : (positions[i] || [cx, cy]);
-      const g = document.createElementNS(NS, 'g');
-      const isCenter = i === 0;
-      const lit = isCenter || litNodes.includes(i - 1) || (newNode === i - 1);
-      g.setAttribute('class', 'sim-bg-node' + (lit ? ' lit' : ''));
-      const c = document.createElementNS(NS, 'circle');
-      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', isCenter ? 20 : 15);
-      c.setAttribute('fill', lit ? '#6366f1' : '#eef0f6');
-      c.setAttribute('stroke', newNode === i - 1 ? '#2f9e57' : '#c3c8d8');
-      c.setAttribute('stroke-width', newNode === i - 1 ? '2.5' : '1.5');
-      g.append(c);
-      const t = document.createElementNS(NS, 'text');
-      t.setAttribute('x', x); t.setAttribute('y', y + (isCenter ? 3 : 26)); t.setAttribute('text-anchor', 'middle');
-      if (isCenter) { t.setAttribute('fill', '#fff'); t.setAttribute('font-size', '8'); }
-      else { t.setAttribute('fill', lit ? '#4f46e5' : '#6a7280'); t.setAttribute('font-weight', lit ? '700' : '600'); }
-      t.textContent = name;
-      g.append(t);
-      svg.append(g);
-    });
-    brainGraph.append(svg);
-    brainFiles.replaceChildren();
-    bm.files.forEach(([layer, name], i) => {
-      const f = el('div', 'sim-brain-file');
-      if (litFiles.includes(i)) f.classList.add('lit');
-      if (newFile === i) f.classList.add('new');
-      const s = el('strong'); s.append(document.createTextNode((newFile === i ? '✚ ' : '▤ ') + name));
-      f.append(s, el('small', '', layer + (newFile === i ? ' · 本次新写入' : '')));
-      brainFiles.append(f);
-    });
-  }
-
-  /* ---------- 聊天渲染 ---------- */
-  function aiAvatar() { const a = el('div', 'sim-avatar ai', '◈'); return a; }
-  function userAvatar() { const a = el('img', 'sim-avatar'); a.src = 'assets/' + scenario.id + '-scene.webp'; a.alt = ''; return a; }
-  function msgShell(who) {
-    const m = el('div', 'sim-msg ' + who);
-    m.append(who === 'user' ? userAvatar() : aiAvatar());
-    const b = el('div', 'sim-bubble');
-    m.append(b);
-    return { m, b };
-  }
-  function toolCard(name, detail, running) {
-    const t = el('div', 'sim-tool');
-    const h = el('div', 'sim-tool-head');
-    h.append(el('span', 'sim-tool-ico', '🧠'), el('strong', '', name));
-    const st = el('span', 'sim-tool-status' + (running ? ' running' : ''));
-    if (running) { st.append(el('span', 'sim-spinner'), document.createTextNode(' 调用中')); }
-    else st.textContent = '✓ 完成';
-    h.append(st);
-    const body = el('div', 'sim-tool-body'); body.innerHTML = detail;
-    t.append(h, body);
-    return t;
-  }
-  function renderBeat(b, animate) {
-    if (b.type === 'greet' || b.type === 'ai') {
-      const { m, b: bub } = msgShell('ai');
-      bub.textContent = b.text;
-      chat.append(m);
-    } else if (b.type === 'user') {
-      const { m, b: bub } = msgShell('user');
-      chat.append(m);
-      if (animate && !reduce.matches) {
-        composerInput.textContent = b.text; composerInput.classList.remove('placeholder');
-        typeInto(bub, b.text);
-      } else bub.textContent = b.text;
-    } else if (b.type === 'brain-read') {
-      const { m, b: bub } = msgShell('ai');
-      bub.append(toolCard(b.tool, b.detail, false));
-      const note = el('div'); note.innerHTML = '已取到背景与依据，开始做事。';
-      bub.append(note);
-      chat.append(m);
-    } else if (b.type === 'agents') {
-      const { m, b: bub } = msgShell('ai');
-      bub.append(el('div', '', '我把任务拆给两个分身并行：'));
-      const grid = el('div', 'sim-agents');
-      b.agents.forEach((name, i) => {
-        const card = el('div', 'sim-agent-card');
-        const s = el('strong'); s.append(document.createTextNode('🤖 ' + name));
-        card.append(s, el('p', '', b.pair[i]));
-        grid.append(card);
-      });
-      bub.append(grid);
-      chat.append(m);
-    } else if (b.type === 'choice') {
-      const wrap = el('div', 'sim-choice');
-      wrap.append(el('h4', '', '⚖ 轮到你判断'));
-      const fb = el('p', 'sim-choice-fb');
-      b.options.forEach((opt, i) => {
-        const ob = btn(opt, '');
-        ob.addEventListener('click', () => {
-          [...wrap.querySelectorAll('button')].forEach(x => x.classList.remove('correct', 'wrong'));
-          if (i === b.correct) {
-            ob.classList.add('correct');
-            fb.className = 'sim-choice-fb ok';
-            fb.textContent = '✓ 判断有据。' + b.why;
-            choiceDone = true;
-            if (playing) scheduleNext();
-          } else {
-            ob.classList.add('wrong');
-            fb.className = 'sim-choice-fb no';
-            fb.textContent = '✗ 再核对一下两份材料。' + b.why;
-            choiceDone = false;
+  function buildBeats(d) {
+    return [
+      {
+        stage: '第 1 步 · 发起清晰委托',
+        narr: `用户在左侧「${d.sessions[0]?.[1] || d.title}」会话中不再只打一句口号，而是写出包含受众与成果的委托。`,
+        composer: d.brief,
+        brainFiles: [],
+        litNodes: [0],
+        messages: [
+          {
+            role: 'user',
+            html: `<strong>委托目标：</strong>${esc(d.brief)}<div style="margin-top:6px"><span class="sim-src">🎯 读者：${esc(d.audience)}</span></div>`
           }
-        });
-        wrap.append(ob);
-      });
-      wrap.append(fb);
-      chat.append(wrap);
-    } else if (b.type === 'brain-write') {
-      const { m, b: bub } = msgShell('ai');
-      bub.append(toolCard(b.tool, b.detail, false));
-      const rule = el('div'); rule.innerHTML = '<strong>新规则：</strong>' + b.rule;
-      bub.append(rule);
-      chat.append(m);
-    } else if (b.type === 'rerun') {
-      const { m, b: bub } = msgShell('ai');
-      bub.append(el('div', '', '全新对话复跑 · 版本比较'));
-      const old = el('div', 'sim-tool'); const oh = el('div', 'sim-tool-head');
-      oh.append(el('span', 'sim-tool-ico', '🕘'), el('strong', '', '第一版'));
-      const ob = el('div', 'sim-tool-body'); ob.textContent = b.before; ob.style.textDecoration = 'line-through'; ob.style.color = '#b0433f';
-      old.append(oh, ob);
-      const neu = el('div', 'sim-tool'); const nh = el('div', 'sim-tool-head');
-      nh.append(el('span', 'sim-tool-ico', '✨'), el('strong', '', '修订版'));
-      const nb = el('div', 'sim-tool-body'); nb.textContent = b.after; nb.style.color = '#2f7a45';
-      neu.append(nh, nb);
-      bub.append(old, neu);
-      const src = el('span', 'sim-src', '🔗 引用 ' + b.source);
-      bub.append(src);
-      chat.append(m);
-    } else if (b.type === 'handoff') {
-      const { m, b: bub } = msgShell('ai');
-      bub.append(el('div', '', '👥 交给圈子：' + b.text));
-      const v = el('div'); v.innerHTML = '<strong>下一步：</strong>' + b.value;
-      bub.append(v);
-      chat.append(m);
-    }
-    chat.scrollTop = chat.scrollHeight;
-  }
-  function typeInto(bub, text) {
-    const token = runToken;
-    bub.textContent = '';
-    const cursorEl = el('span', 'sim-cursor');
-    bub.append(cursorEl);
-    let i = 0;
-    const step = () => {
-      if (token !== runToken) return;
-      i = Math.min(text.length, i + 2);
-      bub.textContent = text.slice(0, i);
-      if (i < text.length) { bub.append(cursorEl); setTimeout(step, 24); }
-      else {
-        cursorEl.remove();
-        composerInput.textContent = '输入消息…'; composerInput.classList.add('placeholder');
-        if (playing) scheduleNext();
+        ]
+      },
+      {
+        stage: '第 2 步 · 绑定 raw/ 原始事实',
+        narr: `主分身先只读扫描第 ${d.sources.length} 份本地资料，右侧第二大脑亮起对应来源页。`,
+        composer: '',
+        brainFiles: d.sources.map((s, i) => ({ name: s.split('｜')[0] || `来源${i + 1}`, note: s.split('｜')[1] || s, state: 'lit' })),
+        litNodes: [0, 1],
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `收到。先锁定证据范围，避免脑补。<div class="sim-tool"><div class="sim-tool-head"><span class="sim-tool-ico">📁</span><strong>读取 raw/ 与当前目录</strong><span class="sim-tool-status">✓ 已核对 ${d.sources.length} 份</span></div><div class="sim-tool-body">${d.sources.map((s) => `<div>• <code>${esc(s.split('｜')[0])}</code> ${esc(s.split('｜').slice(1).join('｜'))}</div>`).join('')}</div></div>`
+          }
+        ]
+      },
+      {
+        stage: '第 3 步 · 双分身并行压测',
+        narr: `主分身拆出「${d.agents[0]}」和「${d.agents[1]}」两个视角并行检查，防止单个分身既写又吹。`,
+        composer: '',
+        brainFiles: d.sources.map((s, i) => ({ name: s.split('｜')[0] || `来源${i + 1}`, note: '参与压测核验', state: 'lit' })),
+        litNodes: [0, 1, 2],
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `已派出双分身并行压测：
+              <div class="sim-agents">
+                <div class="sim-agent-card"><strong>⚡ ${esc(d.agents[0])}</strong><p>${esc(d.pair[0])}</p></div>
+                <div class="sim-agent-card"><strong>🔍 ${esc(d.agents[1])}</strong><p>${esc(d.pair[1])}</p></div>
+              </div>`
+          }
+        ]
+      },
+      {
+        stage: '第 4 步 · 停下来由人裁决',
+        narr: '质疑分身发现事实与外推之间有缺口，工作台把判断卡抛给人来选，而不擅自代做决定。',
+        composer: '',
+        brainFiles: d.sources.map((s, i) => ({ name: s.split('｜')[0] || `来源${i + 1}`, note: '发现潜在分歧', state: 'lit' })),
+        litNodes: [1, 2],
+        choice: true,
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `<strong>⚠ 检查出证据断点：</strong>若直接给出无条件结论（<code>${esc(d.before)}</code>），就会越过现有材料边界。请你在下方做选择：`
+          }
+        ]
+      },
+      {
+        stage: '第 5 步 · 对照修订保留边界',
+        narr: '按人工选定的边界修订输出，清楚标明已核实事实与待补条件，同时防止历史错误复发。',
+        composer: '',
+        brainFiles: d.sources.map((s, i) => ({ name: s.split('｜')[0] || `来源${i + 1}`, note: '已纳入引用依据', state: 'lit' })),
+        litNodes: [0, 1, 2],
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `已按你的裁决生成新版交付物：<div class="sim-tool"><div class="sim-tool-head"><span class="sim-tool-ico">✎</span><strong>版本差异对比</strong><span class="sim-tool-status">✓ 边界清晰</span></div><div class="sim-tool-body"><div style="color:#9c3831;text-decoration:line-through">改前风险：${esc(d.before)}</div><div style="color:#21542d;margin-top:4px"><b>改后留痕：</b>${esc(d.after)}</div></div></div>`
+          }
+        ]
+      },
+      {
+        stage: '第 6 步 · 写回第二大脑与 RSI',
+        narr: '不让这次经验随着关网页消失：把新知识页与“防再次踩坑规则”同时写回 Git + Markdown 目录。',
+        composer: '',
+        brainFiles: [
+          ...d.sources.slice(0, 2).map((s) => ({ name: s.split('｜')[0], note: '已索引关联', state: 'lit' })),
+          { name: '_wiki/ & RSI 检验规则', note: d.rule, state: 'new' }
+        ],
+        litNodes: [0, 1, 2, 3],
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `已同步沉淀两条文件资产：
+              <div class="sim-tool"><div class="sim-tool-head"><span class="sim-tool-ico">🧠</span><strong>写入 _wiki/ 与 AGENTS.md (RSI)</strong><span class="sim-tool-status">✓ 已入库</span></div><div class="sim-tool-body"><div>• 规则沉淀：<code>${esc(d.rule)}</code></div><div>• 目录状态：可在右侧“第二大脑面板”随时审计回滚。</div></div></div>`
+          }
+        ]
+      },
+      {
+        stage: '第 7 步 · 盲测交接与复用价值',
+        narr: `最后一关不是“自己看着挺好”，而是交给「${d.audience}」盲测验证是否真能复用。`,
+        composer: '',
+        brainFiles: [
+          { name: '_wiki/projects/当前任务.md', note: '附盲测记录与验收标准', state: 'new' },
+          { name: '_wiki/index.md', note: '已登记 1 条新摘要', state: 'lit' }
+        ],
+        litNodes: [0, 1, 2, 3],
+        messages: [
+          { role: 'user', html: `<strong>委托目标：</strong>${esc(d.brief)}` },
+          {
+            role: 'ai',
+            html: `<strong>✓ 今日可交接结果已就绪：</strong><br>• 盲测安排：${esc(d.handoff)}<br>• 长期价值：${esc(d.value)}<br><div style="margin-top:6px"><span class="sim-src">下一步：点下方“直接填进任务卡”带走这整套配置</span></div>`
+          }
+        ]
       }
-    };
-    step();
+    ];
   }
 
-  /* ---------- 累计大脑状态 ---------- */
-  function brainStateUpTo(index) {
-    const litNodes = [], litFiles = [];
-    let newFile = -1, newNode = -1;
-    for (let i = 0; i <= index; i++) {
-      const b = scenario.beats[i];
-      if (b.type === 'brain-read') { litNodes.push(...b.nodes); litFiles.push(...b.files); }
-      if (b.type === 'brain-write') { newFile = b.file; newNode = b.node; litFiles.push(b.file); litNodes.push(b.node); }
+  function clearTimer() {
+    if (timer) {
+      window.clearTimeout(timer);
+      timer = 0;
     }
-    return { litNodes, litFiles, newFile, newNode };
-  }
-  function renderUpTo(index, animateLast) {
-    chat.replaceChildren();
-    composerInput.textContent = '输入消息…'; composerInput.classList.add('placeholder');
-    for (let i = 0; i <= index; i++) renderBeat(scenario.beats[i], animateLast && i === index);
-    const bs = brainStateUpTo(index);
-    renderBrain(bs.litNodes, bs.litFiles, bs.newFile, bs.newNode);
-    const b = scenario.beats[index];
-    if (b) {
-      narrNum.textContent = index + 1;
-      narrTitle.textContent = shortName(b.type);
-      const tag = el('span', 'sim-stage-tag', b.stage);
-      narrTitle.append(tag);
-      narrBody.textContent = b.narr;
-    }
-    syncProgress();
-    prevBtn.disabled = index <= 0;
-    nextBtn.disabled = index >= scenario.beats.length - 1;
   }
 
-  /* ---------- 播放控制 ---------- */
-  function scheduleNext() {
-    clearTimeout(timer);
-    const b = scenario.beats[cursor];
-    if (b && b.type === 'choice' && !choiceDone) return; // 等待判断
-    timer = setTimeout(() => { if (playing) advance(); }, speed);
-  }
-  function advance() {
-    if (cursor >= scenario.beats.length - 1) { stop(); return; }
-    const next = cursor + 1;
-    const nb = scenario.beats[next];
-    if (nb.type === 'choice') choiceDone = false;
-    cursor = next;
-    renderUpTo(cursor, true);
-    if (nb.type === 'choice') { playing = true; playBtn.textContent = 'Ⅱ 暂停'; return; } // 暂停等判断
-    if (nb.type === 'user' && !reduce.matches) return; // 打字结束后由 typeInto 推进
-    scheduleNext();
-  }
-  function play() {
-    if (cursor >= scenario.beats.length - 1) { jumpTo(0); }
-    playing = true; playBtn.textContent = 'Ⅱ 暂停';
-    if (cursor < 0) { cursor = 0; renderUpTo(0, true); }
-    scheduleNext();
-  }
-  function stop() {
-    playing = false; clearTimeout(timer); runToken++; playBtn.textContent = '▶ 播放';
-  }
-  function jumpTo(i) {
-    runToken++; clearTimeout(timer);
-    cursor = Math.max(0, Math.min(scenario.beats.length - 1, i));
-    choiceDone = scenario.beats[cursor].type !== 'choice';
-    renderUpTo(cursor, false);
-  }
-  function selectScenario(id) {
-    stop();
-    scenario = buildScenario(id);
-    cursor = -1; choiceDone = false;
-    scenarioButtons(); progressButtons();
-    // 更新头像与侧栏会话
-    railAvatar.src = shImg.src = tbImg.src = 'assets/' + id + '-scene.webp';
-    pName.textContent = dayRoles[id].label + '的分身';
-    sessions.replaceChildren();
-    const active = el('div', 'sim-session active');
-    active.append(el('span', 'ss-ico', '💬'));
-    const at = el('div'); at.append(el('strong', '', dayRoles[id].task), el('small', '', '进行中 · 第二大脑已连接'));
-    active.append(at);
-    sessions.append(active);
-    [['🗂', '豆苗实验 · 知识地图', '昨天'], ['🧠', 'RSI 规则整理', '周二'], ['👥', '圈子交接记录', '周一']].forEach(([ico, t, d]) => {
-      const s = el('div', 'sim-session'); s.append(el('span', 'ss-ico', ico));
-      const st = el('div'); st.append(el('strong', '', t), el('small', '', d)); s.append(st); sessions.append(s);
+  function render() {
+    const d = dayRoles[roleKey] || dayRoles.student;
+    const beats = buildBeats(d);
+    const beat = beats[stepIdx] || beats[0];
+
+    mount.innerHTML = `
+      <div class="sim-section">
+        <div class="sim-head">
+          <div>
+            <p class="eyebrow">3.1 模拟 AIChat 工作台 · 7 步实操回放</p>
+            <h2>在真实<em>工作台布局</em>里走一遍同一任务</h2>
+            <p>这里和 KeepWork AIChat 的三栏（空间会话栏 + 对话工具链 + 右侧第二大脑面板）一致；第 4 步可直接在聊天流里做裁决。</p>
+          </div>
+        </div>
+
+        <div class="sim-controls">
+          <div class="sim-scenarios" role="group" aria-label="工作台角色场景">
+            ${Object.entries(dayRoles).map(([k, rd]) => `
+              <button type="button" class="sim-scenario" data-sim-role="${k}" aria-pressed="${k === roleKey ? 'true' : 'false'}">
+                <img src="${avatarThumbs[k]}" alt="">
+                <span>${esc(rd.label)}</span>
+              </button>`).join('')}
+          </div>
+          <div class="sim-transport">
+            <button type="button" id="sim-prev" ${stepIdx <= 0 ? 'disabled' : ''}>上一步</button>
+            <button type="button" id="sim-play" class="sim-play">${playing ? '暂停' : '▶ 回放'}</button>
+            <button type="button" id="sim-next" ${stepIdx >= beats.length - 1 ? 'disabled' : ''}>下一步</button>
+            <button type="button" id="sim-brain-toggle" aria-pressed="${brainOpen ? 'true' : 'false'}">第二大脑面板</button>
+            <select id="sim-speed" aria-label="回放速度">
+              <option value="2900"${speedMs === 2900 ? ' selected' : ''}>1.0x</option>
+              <option value="1800"${speedMs === 1800 ? ' selected' : ''}>1.5x</option>
+              <option value="4200"${speedMs === 4200 ? ' selected' : ''}>慢速</option>
+            </select>
+          </div>
+          <div class="sim-progress" role="navigation" aria-label="工作台 7 步进度">
+            ${beats.map((_, i) => `<button type="button" data-sim-step="${i}" class="${i < stepIdx ? 'done' : i === stepIdx ? 'current' : ''}" aria-label="第 ${i + 1} 步"><span>${i + 1}</span></button>`).join('')}
+          </div>
+        </div>
+
+        <div class="sim-device">
+          <div class="sim-titlebar">
+            <span class="sim-dots"><i></i><i></i><i></i></span>
+            <strong>KeepWork AIChat · ${esc(d.label)}工作空间</strong>
+            <span class="sim-url">keepwork.com/aichat · 本地 Git 工作区</span>
+          </div>
+
+          <div class="sim-shell${brainOpen ? ' sim-brain-open' : ''}">
+            <div class="sim-rail" aria-hidden="true">
+              <button type="button" class="active" title="对话工作台">💬</button>
+              <button type="button" title="知识目录">🧠</button>
+              <button type="button" title="分身规则">⚙</button>
+              <span class="sim-rail-spacer"></span>
+              <img class="sim-rail-avatar" src="${avatarThumbs[roleKey]}" alt="">
+            </div>
+
+            <aside class="sim-side" aria-label="当前角色会话列表">
+              <div class="sim-side-head">
+                <img src="${avatarThumbs[roleKey]}" alt="">
+                <div>
+                  <strong>${esc(d.label)}主空间</strong>
+                  <small>${esc(d.task)}</small>
+                </div>
+              </div>
+              <div class="sim-newchat">+ 新建协同会话</div>
+              <div class="sim-sessions">
+                ${(d.sessions || []).map((ss, si) => `
+                  <div class="sim-session${si === 0 ? ' active' : ''}">
+                    <span class="ss-ico">${esc(ss[0])}</span>
+                    <div><strong>${esc(ss[1])}</strong><small>${esc(ss[2])}</small></div>
+                  </div>`).join('')}
+              </div>
+              <div class="sim-side-foot">Git 仓库已挂载 · raw/ 只读</div>
+            </aside>
+
+            <div class="sim-main">
+              <div class="sim-topbar">
+                <img src="${avatarThumbs[roleKey]}" alt="">
+                <div class="sim-persona">
+                  <strong>主分身（调度 ${esc(d.agents.join(' + '))}）</strong>
+                  <small><span class="sim-brain-chip">已连 第二大脑</span> <span>受众：${esc(d.audience)}</span></small>
+                </div>
+                <div class="sim-top-actions"><span>本地工作区在线</span></div>
+              </div>
+
+              <div class="sim-chat" id="sim-chat">
+                ${beat.messages.map((m) => `
+                  <div class="sim-msg ${m.role}">
+                    ${m.role === 'user'
+                      ? `<img class="sim-avatar" src="${avatarThumbs[roleKey]}" alt="">`
+                      : `<span class="sim-avatar ai" aria-hidden="true">AI</span>`}
+                    <div class="sim-bubble">${m.html}</div>
+                  </div>`).join('')}
+                ${beat.choice ? `
+                  <div class="sim-choice" id="sim-choice-box">
+                    <h4>⚖ 需要你拍板（${esc(d.label)}）：怎么写这份结论？</h4>
+                    ${d.options.map((opt, oi) => `<button type="button" data-sim-opt="${oi}">${esc(opt)}</button>`).join('')}
+                    <p class="sim-choice-fb" id="sim-choice-fb"></p>
+                  </div>` : ''}
+              </div>
+
+              <div class="sim-composer">
+                <div class="sim-composer-box">
+                  <div class="sim-composer-input${beat.composer ? '' : ' placeholder'}">${esc(beat.composer || '输入下一步指示，或引用 //.brain/ 目录文件…')}</div>
+                  <div class="sim-composer-bar">
+                    <span class="sim-src">📎 @raw/ (${d.sources.length} 份)</span>
+                    <span class="sim-model">主分身 · 双路互查</span>
+                    <button type="button" class="sim-send" aria-label="发送指示">↑</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="sim-brain" aria-label="第二大脑实时面板">
+              <div class="sim-brain-head">
+                <strong>第二大脑图谱</strong>
+                <span class="sim-brain-tag">Git+MD</span>
+                <button type="button" class="sim-brain-close" id="sim-brain-close" aria-label="收起第二大脑面板">✕</button>
+              </div>
+              <div class="sim-brain-graph">
+                <svg viewBox="0 0 220 96" aria-hidden="true">
+                  <line x1="36" y1="48" x2="90" y2="24" stroke="#cbd5e1" stroke-width="1.5"/>
+                  <line x1="90" y1="24" x2="152" y2="30" stroke="#cbd5e1" stroke-width="1.5"/>
+                  <line x1="90" y1="24" x2="132" y2="72" stroke="#cbd5e1" stroke-width="1.5"/>
+                  <line x1="152" y1="30" x2="188" y2="62" stroke="#cbd5e1" stroke-width="1.5"/>
+                  ${[
+                    [36, 48, 'raw'],
+                    [90, 24, 'wiki'],
+                    [152, 30, '压测'],
+                    [188, 62, 'RSI']
+                  ].map(([cx, cy, label], ni) => `
+                    <g class="sim-bg-node${(beat.litNodes || []).includes(ni) ? ' lit' : ''}">
+                      <circle cx="${cx}" cy="${cy}" r="14" fill="#eef0f6" stroke="#c3c8d8"/>
+                      <text x="${cx}" y="${cy + 3}" text-anchor="middle">${label}</text>
+                    </g>`).join('')}
+                </svg>
+              </div>
+              <div class="sim-brain-files">
+                ${(beat.brainFiles || []).length
+                  ? beat.brainFiles.map((f) => `<div class="sim-brain-file ${f.state}"><strong>${f.state === 'new' ? '✨ ' : '📄 '}${esc(f.name)}</strong><small>${esc(f.note)}</small></div>`).join('')
+                  : `<div class="sim-brain-file"><strong>⏳ 等待挂载资料</strong><small>下一步将只读检索 raw/ 来源文件</small></div>`}
+              </div>
+            </aside>
+          </div>
+
+          <div class="sim-narration">
+            <span class="sim-narr-num">${stepIdx + 1}</span>
+            <div>
+              <strong>${esc(beat.stage)} <span class="sim-stage-tag">${stepIdx + 1} / ${beats.length}</span></strong>
+              <p>${esc(beat.narr)}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sim-handoff-bar">
+          <p>看完「<b>${esc(d.label)}</b>」这 7 步走法后，直接把它的委托、双分身分工、RSI 规则与盲测标准带进下方四步任务卡，改成你自己的真实题目：</p>
+          <button type="button" id="sim-to-practice" class="primary">把这一套填进下方任务卡 →</button>
+        </div>
+      </div>`;
+
+    mount.querySelectorAll('[data-sim-role]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const nextRole = btn.dataset.simRole;
+        playing = false;
+        clearTimer();
+        roleKey = nextRole;
+        stepIdx = 0;
+        window.setCourseRole?.(nextRole, 'sim');
+        render();
+      });
     });
-    const brainOpen = window.innerWidth > 900;
-    shell.classList.toggle('sim-brain-open', brainOpen);
-    brainToggle.setAttribute('aria-pressed', String(brainOpen));
-    jumpTo(0);
+
+    mount.querySelector('#sim-prev')?.addEventListener('click', () => {
+      playing = false;
+      clearTimer();
+      stepIdx = Math.max(0, stepIdx - 1);
+      render();
+    });
+
+    mount.querySelector('#sim-next')?.addEventListener('click', () => {
+      playing = false;
+      clearTimer();
+      stepIdx = Math.min(beats.length - 1, stepIdx + 1);
+      render();
+    });
+
+    mount.querySelector('#sim-play')?.addEventListener('click', () => {
+      playing = !playing;
+      if (playing && stepIdx >= beats.length - 1) stepIdx = 0;
+      render();
+      scheduleNext(beats.length);
+    });
+
+    mount.querySelector('#sim-brain-toggle')?.addEventListener('click', () => {
+      brainOpen = !brainOpen;
+      render();
+    });
+
+    mount.querySelector('#sim-brain-close')?.addEventListener('click', () => {
+      brainOpen = false;
+      render();
+    });
+
+    mount.querySelector('#sim-speed')?.addEventListener('change', (e) => {
+      speedMs = Number(e.target.value) || 2900;
+      if (playing) scheduleNext(beats.length);
+    });
+
+    mount.querySelectorAll('[data-sim-step]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        playing = false;
+        clearTimer();
+        stepIdx = Number(btn.dataset.simStep) || 0;
+        render();
+      });
+    });
+
+    mount.querySelectorAll('[data-sim-opt]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const oi = Number(btn.dataset.simOpt);
+        const fb = mount.querySelector('#sim-choice-fb');
+        mount.querySelectorAll('[data-sim-opt]').forEach((other, idx) => {
+          other.classList.remove('correct', 'wrong');
+          if (idx === oi) other.classList.add(oi === d.correct ? 'correct' : 'wrong');
+        });
+        if (fb) {
+          fb.className = `sim-choice-fb ${oi === d.correct ? 'ok' : 'no'}`;
+          fb.textContent = oi === d.correct ? `✓ 判断正确：${d.why}` : `⚠ 这会越界：${d.why}`;
+        }
+      });
+    });
+
+    mount.querySelector('#sim-to-practice')?.addEventListener('click', () => {
+      playing = false;
+      clearTimer();
+      window.applyRoleExampleToPractice?.(roleKey);
+      document.getElementById('practice')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+    });
   }
 
-  playBtn.addEventListener('click', () => playing ? stop() : play());
-  prevBtn.addEventListener('click', () => { stop(); jumpTo(cursor - 1); });
-  nextBtn.addEventListener('click', () => { stop(); jumpTo(cursor + 1); });
-  restartBtn.addEventListener('click', () => { stop(); jumpTo(0); });
-  speedSel.addEventListener('change', () => { speed = Number(speedSel.value); });
-  narrToggle.addEventListener('click', () => {
-    narrOn = !narrOn;
-    narrToggle.setAttribute('aria-pressed', String(narrOn));
-    narrToggle.textContent = narrOn ? '讲解 开' : '讲解 关';
-    narration.classList.toggle('hidden', !narrOn);
-  });
-  brainToggle.addEventListener('click', () => {
-    const open = shell.classList.toggle('sim-brain-open');
-    brainToggle.setAttribute('aria-pressed', String(open));
-  });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); });
+  function scheduleNext(total) {
+    clearTimer();
+    if (!playing) return;
+    if (stepIdx >= total - 1) {
+      playing = false;
+      render();
+      return;
+    }
+    timer = window.setTimeout(() => {
+      stepIdx += 1;
+      render();
+      scheduleNext(total);
+    }, speedMs);
+  }
 
-  scenarioButtons();
-  selectScenario('student');
+  window.addEventListener('courserolechange', (event) => {
+    const r = event.detail?.role;
+    if (!r || !Object.hasOwn(dayRoles, r) || r === roleKey) return;
+    roleKey = r;
+    stepIdx = 0;
+    playing = false;
+    clearTimer();
+    render();
+  });
+
+  render();
+
+  function esc(str) {
+    return String(str ?? '')
+      .replaceAll('&', '&amp;')
+      .replaceAll('<', '&lt;')
+      .replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;');
+  }
 })();

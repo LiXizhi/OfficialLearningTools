@@ -1,158 +1,403 @@
-'use strict';
-// 四节课路由：课时切换、课程目录卡、进度记忆（localStorage，沙箱内优雅降级）。
-// 兼容旧锚点：#idea → 第1课；#sim / #day / #practice → 第3课；#lesson-N 直达。
-(function () {
-  const TOTAL = 4;
-  const STORE_KEY = 'super-individual-lessons.progress.v1';
-  const lessons = [...document.querySelectorAll('.lesson[data-lesson]')];
-  const links = [...document.querySelectorAll('[data-lesson-link]')];
-  if (lessons.length !== TOTAL) return;
-  const meta = [
-    { title: '超级个体', sub: '一个人，活成一支队伍', desc: '碳基 + 硅基的融合、一人多分身、成长四阶段。先懂“超级个体”到底是什么。', tags: ['碳硅融合', '分身', '四阶段'], time: '约 15 分钟', accent: '#4c7a3f', tint: '#e9f3e2' },
-    { title: '第二大脑', sub: '会长大的经验体系', desc: '三层结构（信源 / 知识地图 / Skills）与四模块工作循环，看懂 RSI 怎样解放注意力。', tags: ['三层结构', '四模块', 'RSI'], time: '约 15 分钟', accent: '#4f46e5', tint: '#eef0fb' },
-    { title: '上手工作', sub: '在真实 AIChat 里跑一遍', desc: '工作台演示 + 角色放映室 + 任务卡：读脑、并行、判断、写回，亲手训练自己的分身。', tags: ['AIChat 演示', '放映室', '任务卡'], time: '约 40 分钟', accent: '#b8860b', tint: '#f6efe2' },
-    { title: '超级组织', sub: '从一个人到一支军团', desc: '超级团队、超级公司、圈子组织、信任网络，以及 CAIO 新岗位与 FDE 交付。', tags: ['超级团队', '信任网络', 'CAIO'], time: '约 15 分钟', accent: '#7c3aed', tint: '#f1ecfb' }
-  ];
-  function setHash(hash) { try { setHash(hash); } catch { /* opaque-origin sandbox */ } }
-  let current = 1;
-  let visited = new Set();
-  let storageOK = true;
-  try {
-    const saved = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
-    if (saved && Array.isArray(saved.visited)) {
-      visited = new Set(saved.visited.filter(n => Number.isInteger(n) && n >= 1 && n <= TOTAL));
-      if (Number.isInteger(saved.last) && saved.last >= 1 && saved.last <= TOTAL) current = saved.last;
+/* 课程路由、目录弹窗、共享无障碍 UI 组件（Tabs / CopyButton / Checkpoint）与宿主上下文摘要 */
+(() => {
+  const STORE_KEY = 'super-individual.lessons.v2';
+
+  const lessonsMeta = [
+    {
+      id: 1,
+      short: '理念',
+      title: '第 1 课 · 理念与现场一天',
+      time: '约 20 分钟',
+      accent: '#4c7a3f',
+      tint: '#e9f3e2',
+      summary: '先看 4 位角色的六幕工作现场，再理解“碳基 + 硅基”、一人多分身与 3+1 成长路径。',
+      tags: ['六幕现场', '一人多分身', '3+1 阶段']
+    },
+    {
+      id: 2,
+      short: '建脑',
+      title: '第 2 课 · 第二大脑与建脑循环',
+      time: '约 20 分钟',
+      accent: '#4f46e5',
+      tint: '#eef0fb',
+      summary: '拆解 Git + Markdown 真实目录，对比纯向量 RAG，掌握 Ingest / Query / Lint / RSI 与两条建脑路。',
+      tags: ['Git+Markdown', 'Wiki vs RAG', '四模块循环']
+    },
+    {
+      id: 3,
+      short: '上手',
+      title: '第 3 课 · 工作台与四步任务卡',
+      time: '约 25 分钟',
+      accent: '#0f766e',
+      tint: '#e6f5f2',
+      summary: '回放 KeepWork AIChat 7 步实战，再按 4 步填写任务卡并导出 .txt / 第二大脑 .md 启动包。',
+      tags: ['AIChat 回放', '四步任务卡', '导出 .md']
+    },
+    {
+      id: 4,
+      short: '组织',
+      title: '第 4 课 · 超级组织与六问诊断',
+      time: '约 20 分钟',
+      accent: '#b45309',
+      tint: '#fdf3e7',
+      summary: '从个体到圈子组织、跨组织分身与 CAIO / FDE 交付路径，并用“首次诊断六问”生成试点卡。',
+      tags: ['圈子组织', 'CAIO / FDE', '首次诊断六问']
     }
-  } catch { storageOK = false; }
-  function persist() {
-    if (!storageOK) return;
-    try { localStorage.setItem(STORE_KEY, JSON.stringify({ visited: [...visited], last: current })); }
-    catch { storageOK = false; }
+  ];
+
+  const copyTimers = new WeakMap();
+
+  function el(tag, attrs = {}, children = []) {
+    const node = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs || {})) {
+      if (v === undefined || v === null) continue;
+      if (k === 'className') node.className = v;
+      else if (k === 'textContent') node.textContent = v;
+      else if (k === 'innerHTML') node.innerHTML = v;
+      else if (k in node && k !== 'list' && typeof v === 'boolean') node[k] = v;
+      else node.setAttribute(k, String(v));
+    }
+    for (const child of Array.isArray(children) ? children : [children]) {
+      if (child === null || child === undefined) continue;
+      node.appendChild(typeof child === 'string' ? document.createTextNode(child) : child);
+    }
+    return node;
   }
 
-  /* 课程目录卡 */
-  const cardsRoot = document.getElementById('course-cards');
-  const cards = [];
-  if (cardsRoot) {
-    meta.forEach((m, i) => {
-      const n = i + 1;
-      const card = document.createElement('button');
-      card.type = 'button';
-      card.className = 'course-card';
-      card.dataset.card = String(n);
-      card.style.setProperty('--card-accent', m.accent);
-      card.style.setProperty('--card-tint', m.tint);
-      card.setAttribute('aria-label', '第 ' + n + ' 课：' + m.title + '，' + m.time);
-      const top = document.createElement('div'); top.className = 'cc-top';
-      const num = document.createElement('span'); num.className = 'cc-num'; num.textContent = n;
-      const time = document.createElement('span'); time.className = 'cc-time'; time.textContent = m.time;
-      top.append(num, time);
-      const h = document.createElement('h3'); h.textContent = m.title + ' · ' + m.sub;
-      const p = document.createElement('p'); p.textContent = m.desc;
-      const tags = document.createElement('div'); tags.className = 'cc-tags';
-      m.tags.forEach(t => { const s = document.createElement('span'); s.textContent = t; tags.append(s); });
-      const go = document.createElement('span'); go.className = 'cc-go'; go.textContent = '进入第 ' + n + ' 课 →';
-      const done = document.createElement('span'); done.className = 'cc-done'; done.textContent = '✓ 已学';
-      card.append(top, h, p, tags, go, done);
-      card.addEventListener('click', () => open(n, true));
-      cardsRoot.append(card);
-      cards.push(card);
+  function initTablist(tablistEl, getPanels, onSelect) {
+    if (!tablistEl) return { activate() {} };
+    const tabs = Array.from(tablistEl.querySelectorAll('[role="tab"]'));
+    const resolvePanels = () => {
+      if (typeof getPanels === 'function') return getPanels();
+      return tabs.map((t) => document.getElementById(t.getAttribute('aria-controls')));
+    };
+
+    const activate = (idx, focusTab = false) => {
+      const panels = resolvePanels();
+      const target = Math.max(0, Math.min(idx, tabs.length - 1));
+      tabs.forEach((tab, i) => {
+        const active = i === target;
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.setAttribute('tabindex', active ? '0' : '-1');
+        if (panels[i]) panels[i].hidden = !active;
+      });
+      if (focusTab && tabs[target]) tabs[target].focus();
+      onSelect?.(target, tabs[target], panels[target]);
+    };
+
+    tablistEl.addEventListener('click', (event) => {
+      const tab = event.target.closest('[role="tab"]');
+      if (!tab) return;
+      const idx = tabs.indexOf(tab);
+      if (idx >= 0) activate(idx, false);
+    });
+
+    tablistEl.addEventListener('keydown', (event) => {
+      const tab = event.target.closest('[role="tab"]');
+      if (!tab) return;
+      const idx = tabs.indexOf(tab);
+      if (idx < 0) return;
+      let next = -1;
+      if (event.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+      else if (event.key === 'ArrowLeft') next = (idx - 1 + tabs.length) % tabs.length;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = tabs.length - 1;
+      if (next >= 0) {
+        event.preventDefault();
+        activate(next, true);
+      }
+    });
+
+    activate(0, false);
+    return { activate, tabs };
+  }
+
+  async function writeClipboard(text) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch { /* fallback below */ }
+    }
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      ta.remove();
+      return Boolean(ok);
+    } catch {
+      return false;
+    }
+  }
+
+  function bindCopyButton(btn, getText, statusEl, defaultLabel) {
+    if (!btn) return;
+    const baseText = defaultLabel || btn.textContent.trim();
+    btn.addEventListener('click', async () => {
+      const text = typeof getText === 'function' ? getText() : String(getText || '');
+      if (!text) return;
+      const ok = await writeClipboard(text);
+      const prevTimer = copyTimers.get(btn);
+      if (prevTimer) window.clearTimeout(prevTimer);
+
+      if (ok) {
+        btn.dataset.copied = 'true';
+        btn.textContent = '已复制 ✓';
+        if (statusEl) statusEl.textContent = '已复制到剪贴板，可直接粘贴使用。';
+      } else {
+        btn.textContent = '请手动全选下方内容复制';
+        if (statusEl) statusEl.textContent = '当前环境禁止剪贴板写入，可直接使用下载或框选复制。';
+      }
+
+      const t = window.setTimeout(() => {
+        delete btn.dataset.copied;
+        btn.textContent = baseText;
+      }, 2200);
+      copyTimers.set(btn, t);
     });
   }
 
-  function sync() {
-    links.forEach(a => {
-      const n = Number(a.dataset.lessonLink);
-      a.classList.toggle('active', n === current);
-      a.classList.toggle('visited', visited.has(n));
-      if (n === current) a.setAttribute('aria-current', 'page');
+  function createCheckpointCard({ title, prompt, options, correct, explain }) {
+    const card = el('section', { className: 'checkpoint-card', 'aria-label': title || '本课自检' });
+    card.appendChild(el('h3', { textContent: title || '本课 1 分钟自检' }));
+    card.appendChild(el('p', { className: 'cp-prompt', textContent: prompt }));
+    const optWrap = el('div', { className: 'cp-options' });
+    const fb = el('p', { className: 'cp-fb', 'aria-live': 'polite' });
+
+    options.forEach((optText, idx) => {
+      const b = el('button', { type: 'button', textContent: optText, 'aria-pressed': 'false' });
+      b.addEventListener('click', () => {
+        optWrap.querySelectorAll('button').forEach((other, oi) => {
+          other.setAttribute('aria-pressed', oi === idx ? 'true' : 'false');
+          other.classList.remove('is-right', 'is-wrong');
+          if (oi === idx) other.classList.add(idx === correct ? 'is-right' : 'is-wrong');
+        });
+        const isRight = idx === correct;
+        fb.className = `cp-fb ${isRight ? 'ok' : 'no'}`;
+        fb.textContent = `${isRight ? '理解准确：' : '再想一下：'}${explain}`;
+      });
+      optWrap.appendChild(b);
+    });
+
+    card.appendChild(optWrap);
+    card.appendChild(fb);
+    return card;
+  }
+
+  window.CourseUI = { el, initTablist, bindCopyButton, createCheckpointCard };
+
+  function setHash(hash) {
+    try {
+      history.replaceState(null, '', hash);
+    } catch { /* ignore restricted history frames */ }
+  }
+
+  function lessonForHash(raw) {
+    const h = (raw || '').replace(/^#/, '').trim();
+    if (!h || h === 'lesson-1' || h === 'day' || h === 'theater' || h === 'idea' || h === 'idea-individual') {
+      return { lesson: 1, anchor: h && h !== 'lesson-1' ? h : null };
+    }
+    if (h === 'lesson-2' || h === 'idea-brain') {
+      return { lesson: 2, anchor: h === 'idea-brain' ? h : null };
+    }
+    if (h === 'lesson-3' || h === 'sim' || h === 'practice') {
+      return { lesson: 3, anchor: h !== 'lesson-3' ? h : null };
+    }
+    if (h === 'lesson-4' || h === 'org') {
+      return { lesson: 4, anchor: h === 'org' ? h : null };
+    }
+    return { lesson: 1, anchor: null };
+  }
+
+  function loadProgress() {
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORE_KEY) || '{}');
+      return {
+        last: Number(parsed.last) >= 1 && Number(parsed.last) <= 4 ? Number(parsed.last) : 1,
+        visited: Array.isArray(parsed.visited) ? parsed.visited.filter((x) => x >= 1 && x <= 4) : [1]
+      };
+    } catch {
+      return { last: 1, visited: [1] };
+    }
+  }
+
+  function saveProgress(state) {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+    } catch { /* ignore private mode quota */ }
+  }
+
+  const state = loadProgress();
+  if (!state.visited.includes(1)) state.visited.push(1);
+  let activeLesson = 1;
+
+  const syllabusPop = document.getElementById('syllabus-pop');
+  const syllabusBody = document.getElementById('syllabus-pop-body');
+  const courseCards = document.getElementById('course-cards');
+  const navProgress = document.getElementById('nav-progress');
+  const resumeBanner = document.getElementById('resume-banner');
+  const resumeText = document.getElementById('resume-text');
+  const resumeGo = document.getElementById('resume-go');
+  const resumeDismiss = document.getElementById('resume-dismiss');
+
+  function renderCourseNavigation() {
+    if (courseCards) {
+      courseCards.innerHTML = '';
+      lessonsMeta.forEach((m) => {
+        const card = el('button', {
+          type: 'button',
+          className: `course-card${activeLesson === m.id ? ' current' : ''}${state.visited.includes(m.id) ? ' visited' : ''}`,
+          style: `--card-accent:${m.accent};--card-tint:${m.tint}`
+        });
+        card.innerHTML = `
+          <span class="cc-done">已学过</span>
+          <div class="cc-top">
+            <span class="cc-num">${m.id}</span>
+            <span class="cc-time">${m.time}</span>
+          </div>
+          <h3>${m.title}</h3>
+          <p>${m.summary}</p>
+          <div class="cc-tags">${m.tags.map((t) => `<span>${t}</span>`).join('')}</div>
+          <span class="cc-go">${activeLesson === m.id ? '正在学习' : '进入这一课 →'}</span>`;
+        card.addEventListener('click', () => openCourseLesson(m.id));
+        courseCards.appendChild(card);
+      });
+    }
+
+    if (syllabusBody) {
+      syllabusBody.innerHTML = '';
+      lessonsMeta.forEach((m) => {
+        const item = el('button', {
+          type: 'button',
+          className: 'syllabus-pop-item',
+          ...(activeLesson === m.id ? { 'aria-current': 'page' } : {})
+        });
+        item.innerHTML = `<b>${m.id}</b><div><span>${m.title}</span><small>${m.time} · ${m.tags.join(' / ')}</small></div>`;
+        item.addEventListener('click', () => {
+          if (syllabusPop) syllabusPop.open = false;
+          openCourseLesson(m.id);
+        });
+        syllabusBody.appendChild(item);
+      });
+    }
+  }
+
+  function openCourseLesson(n, anchorId = null, opts = {}) {
+    const targetNum = Math.max(1, Math.min(4, Number(n) || 1));
+    activeLesson = targetNum;
+    if (!state.visited.includes(targetNum)) state.visited.push(targetNum);
+    state.last = targetNum;
+    saveProgress(state);
+
+    document.querySelectorAll('.lesson').forEach((sec, idx) => {
+      sec.hidden = idx + 1 !== targetNum;
+    });
+    document.querySelectorAll('.lesson-nav a').forEach((a) => {
+      const lid = Number(a.dataset.lesson);
+      a.classList.toggle('active', lid === targetNum);
+      a.classList.toggle('visited', state.visited.includes(lid));
+      if (lid === targetNum) a.setAttribute('aria-current', 'page');
       else a.removeAttribute('aria-current');
     });
-    cards.forEach((c, i) => {
-      c.classList.toggle('current', i + 1 === current);
-      c.classList.toggle('visited', visited.has(i + 1));
-    });
-    document.title = '超级个体培训课 · 第' + current + '课 ' + meta[current - 1].title;
-  }
+    if (navProgress) navProgress.textContent = `${targetNum}/4`;
+    renderCourseNavigation();
 
-  function open(n, scroll) {
-    n = Math.max(1, Math.min(TOTAL, n));
-    current = n;
-    visited.add(n);
-    lessons.forEach(sec => { sec.hidden = Number(sec.dataset.lesson) !== n; });
-    persist();
-    sync();
-    if (scroll) {
-      const target = lessons[n - 1];
-      requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+    if (!opts.skipHash) {
+      setHash(anchorId ? `#${anchorId}` : `#lesson-${targetNum}`);
     }
-    // 通知课时变化（供宿主或扩展使用）
-    window.dispatchEvent(new CustomEvent('lessonchange', { detail: { lesson: n } }));
-  }
 
-  /* 锚点 → 课时映射（兼容旧链接） */
-  function lessonForHash(hash) {
-    const m = /^#lesson-([1-4])$/.exec(hash);
-    if (m) return { lesson: Number(m[1]), anchor: null };
-    if (hash === '#idea' || hash === '#idea-individual') return { lesson: 1, anchor: null };
-    if (hash === '#idea-brain') return { lesson: 2, anchor: null };
-    if (['#sim', '#day', '#practice'].includes(hash)) return { lesson: 3, anchor: hash.slice(1) };
-    return null;
-  }
-  function handleHash(scroll) {
-    const route = lessonForHash(location.hash);
-    if (!route) return false;
-    open(route.lesson, false);
-    if (route.anchor) {
-      const el = document.getElementById(route.anchor);
-      if (el) requestAnimationFrame(() => el.scrollIntoView({ block: 'start' }));
-    } else if (scroll) {
-      lessons[route.lesson - 1].scrollIntoView({ block: 'start' });
+    if (!opts.skipScroll) {
+      const scrollTarget = anchorId ? document.getElementById(anchorId) : document.getElementById(`lesson-${targetNum}`);
+      scrollTarget?.scrollIntoView?.({ behavior: 'auto', block: 'start' });
     }
-    return true;
+
+    window.dispatchEvent(new CustomEvent('courselessonchange', { detail: { lesson: targetNum, anchorId } }));
   }
 
-  /* 点击拦截：课时导航、目录卡、data-goto-lesson、旧锚点 */
-  document.addEventListener('click', e => {
-    const goto = e.target.closest('[data-goto-lesson]');
-    if (goto) {
-      e.preventDefault();
-      open(Number(goto.dataset.gotoLesson), true);
-      setHash('#lesson-' + goto.dataset.gotoLesson);
+  window.openCourseLesson = openCourseLesson;
+
+  window.buildCourseToolContext = () => {
+    const roleKey = window.getCourseRole?.() || 'student';
+    const d = typeof dayRoles !== 'undefined' ? dayRoles[roleKey] : null;
+    const meta = lessonsMeta.find((m) => m.id === activeLesson) || lessonsMeta[0];
+    const practice = window.getActivePracticeSummary?.() || '';
+    const lines = [
+      `课程：超级个体培训课（当前所在：${meta.title}）`,
+      `当前视角：${d ? `${d.label}（${d.task}）` : roleKey}`,
+      `已访问课时：${state.visited.sort().join(', ')} / 4`,
+      d ? `关键约束规则：${d.rule}` : '',
+      practice ? `\n当前任务卡摘要：\n${practice}` : ''
+    ].filter(Boolean).join('\n');
+    return lines.slice(0, 8000);
+  };
+
+  document.querySelector('.lesson-nav')?.addEventListener('click', (event) => {
+    const link = event.target.closest('a[data-lesson]');
+    if (!link) return;
+    event.preventDefault();
+    openCourseLesson(Number(link.dataset.lesson));
+  });
+
+  document.addEventListener('click', (event) => {
+    const pagerBtn = event.target.closest('[data-go-lesson]');
+    if (pagerBtn) {
+      const target = Number(pagerBtn.dataset.goLesson);
+      if (target >= 1 && target <= 4) openCourseLesson(target);
       return;
     }
-    const link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    const hash = link.getAttribute('href');
-    const route = lessonForHash(hash);
-    if (route) {
-      e.preventDefault();
-      open(route.lesson, false);
-      setHash(hash);
-      const target = route.anchor ? document.getElementById(route.anchor) : lessons[route.lesson - 1];
-      if (target) requestAnimationFrame(() => target.scrollIntoView({ block: 'start', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }));
+    if (syllabusPop?.open && !syllabusPop.contains(event.target)) {
+      syllabusPop.open = false;
     }
   });
 
-  /* 课间导航 */
-  document.querySelectorAll('[data-pager]').forEach(b => {
-    b.addEventListener('click', () => {
-      const kind = b.dataset.pager;
-      if (kind === 'prev') open(current - 1, true);
-      else if (kind === 'next') open(current + 1, true);
-      else if (kind === 'finish') {
-        open(3, false);
-        setHash('#practice');
-        const p = document.getElementById('practice');
-        if (p) requestAnimationFrame(() => p.scrollIntoView({ block: 'start' }));
-      }
-      if (kind !== 'finish') setHash('#lesson-' + current);
-    });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && syllabusPop?.open) syllabusPop.open = false;
   });
 
-  window.addEventListener('hashchange', () => handleHash(true));
+  document.querySelector('.role-lens')?.addEventListener('click', (event) => {
+    const btn = event.target.closest('[data-course-role]');
+    if (!btn) return;
+    window.setCourseRole?.(btn.dataset.courseRole, 'header');
+  });
 
-  /* 初始化：hash 优先，其次恢复上次进度 */
-  if (!handleHash(false)) open(current, false);
-  else sync();
+  document.getElementById('hero-watch')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    document.getElementById('day')?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+  });
+
+  document.getElementById('hero-try')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    openCourseLesson(3, 'practice');
+  });
+
+  // 初始路由策略：无 hash 时始终默认显示第 1 课，避免隐藏 #day；若有历史进度则提示恢复条
+  const initialHash = location.hash;
+  if (initialHash) {
+    const target = lessonForHash(initialHash);
+    openCourseLesson(target.lesson, target.anchor, { skipScroll: !target.anchor, skipHash: true });
+  } else {
+    const savedLast = state.last;
+    openCourseLesson(1, null, { skipScroll: true, skipHash: true });
+    if (savedLast > 1 && resumeBanner && resumeText) {
+      const savedMeta = lessonsMeta.find((m) => m.id === savedLast);
+      resumeText.textContent = `欢迎回来：你上次学到「${savedMeta?.title || `第 ${savedLast} 课`}」。`;
+      resumeBanner.hidden = false;
+      resumeGo?.addEventListener('click', () => {
+        resumeBanner.hidden = true;
+        openCourseLesson(savedLast);
+      });
+      resumeDismiss?.addEventListener('click', () => {
+        resumeBanner.hidden = true;
+      });
+    }
+  }
+
+  window.addEventListener('hashchange', () => {
+    const target = lessonForHash(location.hash);
+    openCourseLesson(target.lesson, target.anchor, { skipHash: true });
+  });
 })();

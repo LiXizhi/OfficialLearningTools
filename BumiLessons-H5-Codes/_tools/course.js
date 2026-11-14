@@ -1,5 +1,39 @@
 (function () {
   'use strict';
+  document.addEventListener('click', function (event) {
+    var step = event.target.closest('button[data-step]');
+    if (!step) return;
+    var lesson = step.closest('.lesson');
+    lesson.querySelectorAll('button[data-step]').forEach(function (button) {
+      button.setAttribute('aria-pressed', String(button === step));
+      document.getElementById(button.getAttribute('aria-controls')).hidden = button !== step;
+    });
+  });
+  var params = new URLSearchParams(location.search);
+  var returnLink = document.querySelector('.classroom-return');
+  var lessonId = /^l(?:0[1-9]|1[0-2])$/;
+  if (returnLink && !params.has('print') && params.get('view') !== 'card') {
+    var originLesson = params.get('classroom');
+    function updateClassroomLink() {
+      var current = document.querySelector('.lesson.on');
+      returnLink.href = lessonId.test(originLesson)
+        ? 'classroom.html?step=explain#' + originLesson
+        : 'classroom.html' + (current ? '#' + current.id : '');
+    }
+    updateClassroomLink();
+    returnLink.hidden = false;
+    window.addEventListener('hashchange', updateClassroomLink);
+  }
+  if (params.get('step') === 'explain') {
+    document.querySelector('.role-classroom .lesson.on [data-step="5"]')?.click();
+  }
+  if (params.get('view') === 'card') document.documentElement.classList.add('print-material');
+  if (params.get('print') === '1' && /^#l(?:0[1-9]|1[0-2])$/.test(location.hash)) {
+    document.documentElement.classList.add('print-material');
+    window.addEventListener('load', function () {
+      requestAnimationFrame(function () { window.print(); });
+    }, {once:true});
+  }
   function announce(text) {
     var el = document.querySelector('.toast');
     el.textContent = text;
