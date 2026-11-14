@@ -7,19 +7,38 @@
     window.setTimeout(function () { el.classList.remove('on'); }, 2400);
   }
   document.addEventListener('click', async function (event) {
-    var button = event.target.closest('[data-copy-code]');
+    var button = event.target.closest('[data-copy-code],[data-start-draft],[data-copy-draft]');
     if (!button) return;
-    var code = button.closest('.code-card').querySelector('pre code');
+    var scope = button.closest('[data-save]');
+    var draft = scope?.querySelector('.code-draft');
+    var code = (button.closest('.code-card') || scope)?.querySelector('pre code');
+    if (button.hasAttribute('data-start-draft')) {
+      if (!draft.value.trim()) {
+        draft.value = code.textContent;
+        draft.dispatchEvent(new Event('input', {bubbles:true}));
+      } else announce('已有草稿，继续编辑即可。');
+      draft.focus();
+      return;
+    }
+    var copyDraft = button.hasAttribute('data-copy-draft');
+    if (copyDraft && !draft.value.trim()) {
+      announce('先填写代码，或选择“使用本课示例”。');
+      draft.focus();
+      return;
+    }
     try {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('manual copy');
-      await navigator.clipboard.writeText(code.textContent);
+      await navigator.clipboard.writeText(copyDraft ? draft.value : code.textContent);
       announce('代码已复制，请粘贴到小布米世界的代码输入框。');
     } catch (_) {
-      var range = document.createRange();
-      range.selectNodeContents(code);
-      var selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
+      if (copyDraft) { draft.focus(); draft.select(); }
+      else {
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      }
       announce('代码已选中，请按 Ctrl+C（Mac：⌘C）复制。');
     }
   });

@@ -5,6 +5,17 @@
   if (window.self === window.top) return;
 
   var worldUrl = 'https://webparacraft.keepwork.com/?pid=5316902';
+  var channel = 'aichat.external-tool.v1', wrapperOrigin = '';
+  window.addEventListener('message', function (event) {
+    if (event.source !== parent || event.data?.channel !== channel) return;
+    if (event.data.type === 'host:course-world-ready') wrapperOrigin = event.origin;
+    if (event.origin === wrapperOrigin && event.data.type === 'host:course-world-error') {
+      if (!dialog) createDialog();
+      status.textContent = '世界暂时未能打开，可复制下方网址重试。';
+      if (!dialog.open) dialog.showModal();
+    }
+  });
+  parent.postMessage({channel:channel, type:'tool:course-world-ready'}, '*');
   var dialog, frame, address, status, opener;
 
   function createDialog() {
@@ -87,6 +98,10 @@
     if (!link || link.href !== worldUrl || link.hasAttribute('download')) return;
     event.preventDefault();
     opener = link;
+    if (wrapperOrigin) {
+      parent.postMessage({channel:channel, type:'tool:open-course-world', pid:'5316902'}, wrapperOrigin);
+      return;
+    }
     if (!dialog) createDialog();
     if (dialog.open) return;
     if (window.origin === 'null') {

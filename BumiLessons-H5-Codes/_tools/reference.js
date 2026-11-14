@@ -78,6 +78,40 @@
     });
   }
   var timers = {};
+  // The classroom viewer has an opaque origin. Exchange only this role's worksheet fields.
+  if (parent !== window && window.origin === 'null') {
+    var channel = 'aichat.external-tool.v1';
+    var request = crypto.randomUUID(), wrapperOrigin = '', records = new Map(), edited = new Set();
+    var prefix = 'bumi-npl-h5:v1:' + PAGE + ':';
+    function hint(message) { $$('.storage-hint').forEach(function (el) { el.textContent = message; }); }
+    window.addEventListener('message', function (event) {
+      var message = event.data;
+      if (event.source !== parent || message?.channel !== channel || message.type !== 'host:cache') return;
+      if (message.requestId === request && !wrapperOrigin && message.ok && Array.isArray(message.value)) {
+        wrapperOrigin = event.origin;
+        for (var pair of message.value) {
+          if (Array.isArray(pair) && !edited.has(pair[0])) records.set(pair[0], pair[1]);
+        }
+        store.get = function (k) { return records.get(k); };
+        store.set = function (k, v) {
+          records.set(k, v);
+          parent.postMessage({channel:channel, type:'tool:cache:set', key:prefix+k, value:v, requestId:request+'-save'}, wrapperOrigin);
+        };
+        scopes().forEach(function (scope) {
+          if (edited.has(scope.dataset.save)) save(scope); else load(scope);
+        });
+        markNav();
+        hint('学习单和代码草稿保存在当前浏览器的 AIChat 课程库。');
+      } else if (event.origin === wrapperOrigin && message.requestId === request+'-save' && !message.ok) {
+        hint('本次填写未能保存，请先复制留存。');
+      }
+    });
+    document.addEventListener('input', function (event) {
+      var scope = event.target.closest('[data-save]');
+      if (!wrapperOrigin && scope) edited.add(scope.dataset.save);
+    });
+    parent.postMessage({channel:channel, type:'tool:cache:get', key:prefix, requestId:request}, '*');
+  }
   document.addEventListener('input', function (e) {
     var scope = e.target.closest && e.target.closest('[data-save]');
     if (!scope) return;

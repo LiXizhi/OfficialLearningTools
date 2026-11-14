@@ -31,7 +31,10 @@ def ul(items, ordered=False, cls=''):
 
 def field(label, code=False):
     css = 'cell code-draft' if code else 'cell'
-    return f'<label class="field-label">{e(label)}<textarea class="{css}" aria-label="{e(label)}" rows="{7 if code else 2}" spellcheck="false"></textarea></label>'
+    editor = f'<label class="field-label">{e(label)}<textarea class="{css}" aria-label="{e(label)}" rows="{7 if code else 2}" spellcheck="false"></textarea></label>'
+    if code:
+        editor += '<div class="acts noprint"><button class="tbtn" type="button" data-start-draft>使用本课示例</button><button class="tbtn" type="button" data-copy-draft>复制我的代码</button>' + world_link('打开世界试运行') + '</div>'
+    return editor
 
 
 def section(title, text):
@@ -197,8 +200,9 @@ def document(role, body, nav=''):
         top += '<a class="tbtn hide-s" href="student.html" target="_blank" rel="noopener">学生页面 ↗</a><a class="tbtn hide-s" href="#overview">使用说明</a>'
     top += world_link('小布米世界 ↗')
     scripts = ''.join('<script>\n'+(TOOLS/name).read_text(encoding='utf-8')+'\n</script>' for name in ['reference.js','course.js']) if nav else ''
+    scripts += '<script src="world-launcher.js"></script>'
     if nav:
-        scripts += '<script src="world-launcher.js"></script><script src="embedded-preview.js"></script>'
+        scripts += '<script src="embedded-preview.js"></script>'
     return f'<!doctype html>\n<html lang="zh-CN" class="role-{role}" data-page="{role}" data-site="{e(title)}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="小布米 NPL 代码编程课程：12 个示例、学生学习单与教师教案"><title>{e(title)}</title><style>\n{css}\n</style></head><body><header class="top">{top}</header>{nav}<main'+(' style="margin-left:0"' if not nav else '')+f'>{body}</main><div id="fig-store"></div><div class="modal" role="dialog" aria-label="放大查看"><div class="box"></div></div><div class="toast" role="status" aria-live="polite"></div>{scripts}</body></html>\n'
 
 
