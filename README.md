@@ -3,7 +3,7 @@
 帕拉卡官方课程源码。下载仓库，打开下列目录内的 `index.html` 即可浏览课程。
 
 - [超级学生 AI 通识课](AIDirectorLessons/README.md) 面向三至九年级，56 课均提供教师与学生入口。
-- [超级个体培训课](SuperIndividualLessons/index.html) 四节课（约 85 分钟），按学生、老师、领导或创业者同一视角贯穿全课：从六幕工作现场与碳基+硅基理念，到 Git+Markdown 第二大脑与四模块循环，再到模拟 AIChat 工作台、四步任务卡及超级组织六问试点诊断。[课程与素材来源](SuperIndividualLessons/README.md)
+- [超级个体培训课](SuperIndividualLessons/index.html) 面向学生和老师的 AI 原生入门（约 40 分钟）：用生活场景动画学会四件事——AI 工作台、第二大脑、AI 工具、人机圈子，每课复制一段话到 KeepWork AIChat 里练习。[课程说明](SuperIndividualLessons/README.md)
 - [和小布米一起理解具身智能](BumiLessons/README.md) 包含 8 个单元、16 课时的教师教案、学生学习单及互动实验。
 - [和小布米一起学 NPL 代码编程](BumiLessons-H5-Codes/index.html) 将编程面板的 12 个示例组织为课程，提供学生学习单、教师教案、代码复制与观察记录。[使用说明](BumiLessons-H5-Codes/README.md)
 

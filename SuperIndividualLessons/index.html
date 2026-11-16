@@ -3,360 +3,96 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>超级个体培训课 · 从碳基思考到硅基协作</title>
+  <title>超级个体：四件事，一个 AIChat</title>
+  <meta name="description" content="面向学生和老师的 AI 原生入门课：AI 工作台、第二大脑、AI 工具、人机圈子，全部在 KeepWork AIChat 里练习。">
   <link rel="stylesheet" href="course.css">
-  <link rel="stylesheet" href="hero.css">
-  <link rel="stylesheet" href="cinema.css">
-  <link rel="stylesheet" href="idea.css">
-  <link rel="stylesheet" href="sim.css">
-  <link rel="stylesheet" href="lessons.css">
+  <link rel="stylesheet" href="scene.css">
 </head>
 <body>
-  <header>
-    <div class="bar">
-      <strong>超级个体培训课</strong>
-      <div class="header-strip">
-        <nav class="lesson-nav" aria-label="课时导航">
-          <a href="#lesson-1" data-lesson="1" class="active"><i>1</i><span>理念</span></a>
-          <a href="#lesson-2" data-lesson="2"><i>2</i><span>建脑</span></a>
-          <a href="#lesson-3" data-lesson="3"><i>3</i><span>上手</span></a>
-          <a href="#lesson-4" data-lesson="4"><i>4</i><span>组织</span></a>
-        </nav>
-        <div class="role-lens" role="group" aria-label="身份视角">
-          <span class="role-lens-label">视角</span>
-          <button type="button" data-course-role="student" aria-pressed="true">学生</button>
-          <button type="button" data-course-role="teacher" aria-pressed="false">老师</button>
-          <button type="button" data-course-role="leader" aria-pressed="false">领导</button>
-          <button type="button" data-course-role="founder" aria-pressed="false">创业者</button>
-        </div>
-      </div>
-      <details id="syllabus-pop" class="syllabus-pop">
-        <summary>目录 <span id="nav-progress">1/4</span></summary>
-        <div id="syllabus-pop-body" class="syllabus-pop-body"></div>
-      </details>
+  <header class="topbar">
+    <a class="brand" href="#intro" data-go="0"><span class="brand-mark">超</span><span class="brand-text">超级个体 · 四件事</span></a>
+    <nav class="steps" aria-label="课程步骤"></nav>
+    <div class="role-switch" role="group" aria-label="我是">
+      <span class="role-label">我是</span>
+      <button type="button" data-role="student" aria-pressed="true">学生</button>
+      <button type="button" data-role="teacher" aria-pressed="false">老师</button>
     </div>
   </header>
 
   <main id="main">
-    <article class="lesson" id="lesson-1">
-      <div id="resume-banner" class="resume-banner" hidden>
-        <span id="resume-text">上次学到第 1 课。</span>
-        <div>
-          <button type="button" id="resume-go" class="primary">继续上次进度</button>
-          <button type="button" id="resume-dismiss">留在第 1 课</button>
+    <!-- 开场 -->
+    <section class="page" id="intro" data-page="0" aria-labelledby="intro-title">
+      <div class="hero" style="--art:url('assets/art-intro.webp')">
+        <div class="hero-text">
+          <p class="kicker">AI 原生入门课 · 学生和老师都能学</p>
+          <h1 id="intro-title">四件事，<br>一个 <span>AIChat</span></h1>
+          <p class="lead">从“问 AI 一句”，到和 AI 一起学习、工作、生活。约 40 分钟，全程在 KeepWork AIChat 里练习。</p>
+          <button type="button" class="btn primary big" id="start">开始第 1 课 →</button>
         </div>
       </div>
 
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-bg"></div>
-        <div class="hero-grain"></div>
-        <div class="hero-inner">
-          <div>
-            <p class="hero-eyebrow">SUPER INDIVIDUAL CURRICULUM · FOUR LESSONS</p>
-            <h1 id="hero-title">把一个人的思考，<br><span class="hero-accent">长成可协同的团队</span></h1>
-            <p class="hero-lead">
-              基于真实 <b>Git + Markdown 第二大脑</b> 与 KeepWork 工作台实践重写：四节课沿 <b>先看现场 → 搭第二大脑 → 工作台实操与任务卡 → 组织交付与六问评估</b> 展开，不讲空概念，每课都能带走可验证资产。
-            </p>
-            <div class="hero-cta">
-              <a href="#day" class="hero-primary" id="hero-watch">↓ 先看第 1 课工作现场</a>
-              <a href="#lesson-3" class="hero-ghost" id="hero-try">直接去做任务卡 →</a>
-            </div>
-            <div class="hero-stats">
-              <div class="hero-stat"><b>4<i>节</i></b><span>约 85 分钟可分次学</span></div>
-              <div class="hero-stat"><b>4<i>类</i></b><span>同一视角贯穿全课</span></div>
-              <div class="hero-stat"><b>3<i>+1</i></b><span>3 个能力阶段 + 1 个商业检验</span></div>
-            </div>
-          </div>
-          <div class="hero-art" aria-hidden="true">
-            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="200" cy="200" r="158" fill="#eef3e6" stroke="#c8d5ba" stroke-width="1.5" stroke-dasharray="6 6"/>
-              <circle cx="200" cy="200" r="106" fill="#f7f8f1" stroke="#b9c9aa" stroke-width="1.5"/>
-              <g class="hero-pulse">
-                <circle cx="200" cy="200" r="48" fill="#23382b"/>
-                <text x="200" y="196" text-anchor="middle" fill="#d3f77c" font-size="15" font-weight="700">碳基核心</text>
-                <text x="200" y="216" text-anchor="middle" fill="#dfe7d3" font-size="11">判断 · 拍板</text>
-              </g>
-              <g class="hero-float d1">
-                <circle cx="200" cy="64" r="34" fill="#fff" stroke="#4c7a3f" stroke-width="2"/>
-                <text x="200" y="61" text-anchor="middle" fill="#23382b" font-size="12" font-weight="700">第二大脑</text>
-                <text x="200" y="77" text-anchor="middle" fill="#5c6759" font-size="10">Facts + Wiki</text>
-              </g>
-              <g class="hero-float d2">
-                <circle cx="76" cy="272" r="34" fill="#eef0fb" stroke="#4f46e5" stroke-width="2"/>
-                <text x="76" y="269" text-anchor="middle" fill="#312e81" font-size="12" font-weight="700">硅基分身</text>
-                <text x="76" y="285" text-anchor="middle" fill="#4f46e5" font-size="10">并行 · 压测</text>
-              </g>
-              <g class="hero-float d3">
-                <circle cx="324" cy="272" r="34" fill="#fff" stroke="#4c7a3f" stroke-width="2"/>
-                <text x="324" y="269" text-anchor="middle" fill="#23382b" font-size="12" font-weight="700">可复测卡</text>
-                <text x="324" y="285" text-anchor="middle" fill="#5c6759" font-size="10">RSI · 交接</text>
-              </g>
-            </svg>
-            <p class="hero-caption"><b>一人多分身</b>：知识透明可控，圈子授权有边界</p>
-          </div>
+      <ol class="four" aria-label="要学会的四件事"></ol>
+
+      <section class="block" aria-labelledby="day-title">
+        <h2 id="day-title" class="block-title"><span class="role-day"></span></h2>
+        <p class="block-sub">看看一个 AI 原生的人，一天里怎么用这四件事。</p>
+        <div id="intro-scene"></div>
+      </section>
+    </section>
+
+    <!-- 四课：由 app.js 按同一版式渲染 -->
+    <section class="page" id="lesson-1" data-page="1" hidden></section>
+    <section class="page" id="lesson-2" data-page="2" hidden></section>
+    <section class="page" id="lesson-3" data-page="3" hidden></section>
+    <section class="page" id="lesson-4" data-page="4" hidden></section>
+
+    <!-- 收尾 -->
+    <section class="page" id="finish" data-page="5" hidden aria-labelledby="finish-title">
+      <header class="lesson-head" style="--c:#23382b;--art:url('assets/art-intro.webp')">
+        <span class="lh-num">✓</span>
+        <div>
+          <p class="kicker">学完了</p>
+          <h1 id="finish-title">四件事，都在一个 AIChat 里</h1>
+          <p class="lead">记住这张地图：以后学习、工作，都从 AIChat 开始。</p>
+        </div>
+      </header>
+
+      <section class="block" aria-labelledby="map-title">
+        <h2 id="map-title" class="block-title">AIChat 地图</h2>
+        <div class="map-wrap">
+          <div id="aichat-map" class="sc-window"></div>
+          <ol class="map-legend"></ol>
         </div>
       </section>
 
-      <section class="course-map" id="course-map" aria-labelledby="course-map-title">
-        <div class="course-map-head">
-          <h2 id="course-map-title">四节课学习路线</h2>
-          <p>切换顶部“视角”后，第 1–4 课的场景、目录样例、工作台会话与诊断模板会同步切换。</p>
-        </div>
-        <div id="course-cards" class="course-cards"></div>
-      </section>
-
-      <div class="lesson-banner">
-        <span class="lb-num">01</span>
-        <div>
-          <strong>第 1 课 · 超级个体：先看工作现场，再讲碳基 + 硅基</strong>
-          <small>为什么 AI 越强越需要你自己的事实边界与知识积累？从六个真实镜头开始。</small>
-        </div>
-        <span class="lb-time">约 20 分钟</span>
-      </div>
-
-      <section id="day" aria-labelledby="day-title">
-        <div class="mast">
-          <div>
-            <p class="eyebrow">1.1 先看现场 · 六幕工作日常</p>
-            <h2 id="day-title">一位<span>超级个体</span>的真实一天</h2>
-          </div>
-          <p>切换下面 4 位角色（或顶部视角）观察他怎么拆分材料、双分身压测、人工拍板并交接给同伴。</p>
-        </div>
-
-        <div id="roles" class="roles" role="group" aria-label="选择角色短片"></div>
-
-        <section id="theater" class="theater" aria-label="互动工作日短片">
-          <div id="screen" class="movie-screen">
-            <img id="location-still" src="assets/student-scene.webp" alt="">
-            <div class="shade"></div>
-            <div class="slate">
-              <span id="clock"></span>
-              <span id="location"></span>
-            </div>
-            <div id="opening">
-              <p id="role-label"></p>
-              <h3 id="story-title"></h3>
-              <p id="opening-line"></p>
-              <button type="button" id="start-film" class="watch">▶　进入现场</button>
-            </div>
-            <div id="shot-content" hidden></div>
-            <div id="subtitle" hidden></div>
-          </div>
-
-          <div class="deck">
-            <button type="button" id="play" class="watch">▶ 播放</button>
-            <button type="button" id="previous" aria-label="上一镜">‹</button>
-            <button type="button" id="next" aria-label="下一镜">›</button>
-            <div id="timeline" role="navigation" aria-label="短片分镜"></div>
-            <button type="button" id="restart" title="从头重播">重播</button>
-            <button type="button" id="sound" aria-pressed="false" hidden>旁白</button>
-          </div>
-        </section>
-
-        <div id="choice" class="exercise" hidden>
-          <h3>轮到你判断</h3>
-          <div id="answers"></div>
-          <p id="feedback" role="status"></p>
-        </div>
-
-        <div class="under">
-          <span id="story-status" role="status"></span>
-          <a href="#lesson-3" id="jump-practice">去第 3 课：自己动手做任务卡 →</a>
+      <section class="block" aria-labelledby="habit-title">
+        <h2 id="habit-title" class="block-title">我的 AI 原生习惯</h2>
+        <ul class="habits"></ul>
+        <div class="row">
+          <button type="button" class="btn" id="print">🖨 打印这一页</button>
+          <a class="btn ghost" id="open-aichat" target="_blank" rel="noopener">打开 KeepWork AIChat ↗</a>
         </div>
       </section>
 
-      <div id="idea-individual"></div>
+      <details class="block glossary">
+        <summary>小词典</summary>
+        <dl></dl>
+      </details>
 
-      <div class="lesson-pager" data-pager="1">
-        <button type="button" data-go-lesson="0" disabled>← 已是第 1 课</button>
-        <span class="lp-progress">进度 <b>1 / 4</b> · 理念与一天现场</span>
-        <button type="button" class="next" data-go-lesson="2">下一课：第 2 课 第二大脑与建脑循环 →</button>
-      </div>
-    </article>
-
-    <article class="lesson" id="lesson-2" hidden>
-      <div class="lesson-banner">
-        <span class="lb-num">02</span>
-        <div>
-          <strong>第 2 课 · 第二大脑与四模块循环（Git + Markdown）</strong>
-          <small>先摸清楚实际文件夹里放什么，再看为什么 LLM Wiki 比“裸聊 AI / 纯向量 RAG”更稳。</small>
-        </div>
-        <span class="lb-time">约 20 分钟</span>
-      </div>
-
-      <div id="idea-brain"></div>
-
-      <div class="lesson-pager" data-pager="2">
-        <button type="button" data-go-lesson="1">← 上一课：第 1 课 理念与现场</button>
-        <span class="lp-progress">进度 <b>2 / 4</b> · 第二大脑结构与运营</span>
-        <button type="button" class="next" data-go-lesson="3">下一课：第 3 课 模拟工作台与四步任务卡 →</button>
-      </div>
-    </article>
-
-    <article class="lesson" id="lesson-3" hidden>
-      <div class="lesson-banner">
-        <span class="lb-num">03</span>
-        <div>
-          <strong>第 3 课 · 在模拟 AIChat 工作台走一遍，再用四步任务卡带走</strong>
-          <small>用同一个角色贯通“工作台回放 → 4 步可导出任务卡 → 第二大脑 .md 启动包”。</small>
-        </div>
-        <span class="lb-time">约 25 分钟</span>
-      </div>
-
-      <section id="sim" aria-label="模拟 AIChat 工作台"></section>
-
-      <section id="practice" aria-labelledby="practice-title">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">3.2 四步任务卡工坊 · OFFLINE STUDIO</p>
-            <h2 id="practice-title">写一张今天就能用的任务卡</h2>
-          </div>
-          <div class="toolbar">
-            <button type="button" id="example">填入当前角色示例</button>
-            <button type="button" id="new">新建空白卡</button>
-            <label>
-              <span>已存任务</span>
-              <select id="tasks"></select>
-            </label>
-          </div>
-        </div>
-
-        <form id="sheet">
-          <h3 id="sheet-title">第 1 张工作卡 · 学生视角</h3>
-
-          <div id="practice-tabs" class="ui-tablist" role="tablist" aria-label="任务卡四步工作流">
-            <button type="button" role="tab" id="ptab-0" aria-selected="true" aria-controls="ppanel-0" tabindex="0">① 清晰委托</button>
-            <button type="button" role="tab" id="ptab-1" aria-selected="false" aria-controls="ppanel-1" tabindex="-1">② 双分身压测</button>
-            <button type="button" role="tab" id="ptab-2" aria-selected="false" aria-controls="ppanel-2" tabindex="-1">③ 建脑与 RSI</button>
-            <button type="button" role="tab" id="ptab-3" aria-selected="false" aria-controls="ppanel-3" tabindex="-1">④ 盲测与试点</button>
-          </div>
-
-          <div id="ppanel-0" class="ui-tabpanel practice-step-panel" role="tabpanel" aria-labelledby="ptab-0">
-            <fieldset>
-              <legend>第 1 步 · 说清读者、交付物、事实来源与禁止脑补红线</legend>
-              <label>这张卡要完成什么任务？（简短命名）
-                <input name="title" placeholder="例如：科学社豆苗对照实验复测卡">
-              </label>
-              <div id="intent-chips" class="intent-chips" aria-label="委托三要素快捷填充"></div>
-              <label>给主分身的一句清晰委托（读者 + 可检查结果 + 红线）
-                <textarea name="brief" placeholder="谁来用？要生成什么？哪些情况必须标“待验证”？"></textarea>
-              </label>
-              <label>绑定哪些真实材料？（来源文件、观察记录、原始约束）
-                <textarea name="materials" placeholder="列出 raw/ 里的真实素材，不要只写“大概记住”。"></textarea>
-              </label>
-            </fieldset>
-          </div>
-
-          <div id="ppanel-1" class="ui-tabpanel practice-step-panel" role="tabpanel" aria-labelledby="ptab-1" hidden>
-            <fieldset>
-              <legend>第 2 步 · 主分身 / 子分身并行分工，人与证据一起裁决</legend>
-              <label>请哪两个分身协同？（例如记录员 vs 质疑员 / 正方 vs 反方）
-                <textarea name="roles" placeholder="分身 A 负责起草或整理什么？分身 B 专挑什么漏洞或证据缺口？"></textarea>
-              </label>
-              <label>遇到材料冲突或证据不足时，人怎么拍板裁决？
-                <textarea name="decision" placeholder="写明需要人工确认哪一点，防止模型替你拍脑袋做结论。"></textarea>
-              </label>
-            </fieldset>
-          </div>
-
-          <div id="ppanel-2" class="ui-tabpanel practice-step-panel" role="tabpanel" aria-labelledby="ptab-2" hidden>
-            <fieldset>
-              <legend>第 3 步 · 写进第二大脑的 Wiki 词条与可复用 RSI 规则</legend>
-              <label>这次要沉淀哪些 `_wiki/` 知识页？矛盾怎么并列标记？
-                <textarea name="knowledge" placeholder="注意：一份资料 ≠ 一个词条；写进主题页或项目页，冲突保留双来源。"></textarea>
-              </label>
-              <label>提炼成哪条可复用检验规则 / Skill / `.agents` 规范？
-                <textarea name="agent" placeholder="下次类似任务只要触发这条规则，就能少踩同一类坑。"></textarea>
-              </label>
-              <details id="update-material">
-                <summary>发现新材料或反例后怎么迭代？（RSI 自改进）</summary>
-                <label>后来新增了什么材料、边界变化或反例？
-                  <textarea name="change" placeholder="记录新到手的事实或用户驳回意见。"></textarea>
-                </label>
-                <label>规则、知识页或下一步怎么改才真正生效？
-                  <textarea name="review" placeholder="不要只记日记，写清楚修订了哪一页或哪个检查项。"></textarea>
-                </label>
-              </details>
-            </fieldset>
-          </div>
-
-          <div id="ppanel-3" class="ui-tabpanel practice-step-panel" role="tabpanel" aria-labelledby="ptab-3" hidden>
-            <fieldset>
-              <legend>第 4 步 · 盲测交接给“外人”，定义一次试点通过标准</legend>
-              <label>这张卡交给谁做盲测？不看口头解释能跑通哪一步才算成功？
-                <textarea name="pilot" placeholder="写明盲测人、验收指标，也可以在第 4 课六问诊断生成后一键同步到这里。"></textarea>
-              </label>
-            </fieldset>
-          </div>
-
-          <div class="step-nav">
-            <button type="button" id="step-prev" disabled>← 上一步</button>
-            <button type="button" id="step-next">下一步 →</button>
-          </div>
-
-          <div class="copy-row">
-            <button type="button" id="done" class="primary">完成并检查这张卡</button>
-            <button type="button" id="download">导出 .txt 任务卡</button>
-            <button type="button" id="download-md" class="copy-btn">导出第二大脑 .md 启动包</button>
-            <span id="task-status" class="status-inline" role="status" aria-live="polite"></span>
-          </div>
-
-          <div id="copy-text" class="exercise" hidden>
-            <p>已为你整理成纯文本（可直接复制粘贴进本地工作区、KeepWork AIChat 或发给同伴审阅）：</p>
-            <pre id="copy-pre" class="wiki-code"></pre>
-            <div class="copy-row">
-              <button type="button" id="copy-btn" class="copy-btn">复制纯文本任务卡</button>
-              <span id="copy-fb" class="status-inline" role="status" aria-live="polite"></span>
-            </div>
-          </div>
-        </form>
-      </section>
-
-      <div class="lesson-pager" data-pager="3">
-        <button type="button" data-go-lesson="2">← 上一课：第 2 课 第二大脑与建脑</button>
-        <span class="lp-progress">进度 <b>3 / 4</b> · 工作台实操与任务卡</span>
-        <button type="button" class="next" data-go-lesson="4">下一课：第 4 课 超级组织与首次诊断六问 →</button>
-      </div>
-    </article>
-
-    <article class="lesson" id="lesson-4" hidden>
-      <div class="lesson-banner">
-        <span class="lb-num">04</span>
-        <div>
-          <strong>第 4 课 · 超级团队、信任网络与 CAIO / FDE 组织落地</strong>
-          <small>分清哪些已经能在个人与小团队立即跑起来，哪些是圈子组织与商业模式的试点推演。</small>
-        </div>
-        <span class="lb-time">约 20 分钟</span>
-      </div>
-
-      <div id="org"></div>
-
-      <div class="lesson-pager" data-pager="finish">
-        <button type="button" data-go-lesson="3">← 上一课：第 3 课 任务卡工坊</button>
-        <span class="lp-progress">进度 <b>4 / 4</b> · 全部课程主体已完成</span>
-        <button type="button" class="next" data-go-lesson="1">回到第 1 课首页总览 →</button>
-      </div>
-    </article>
+      <nav class="pager">
+        <button type="button" class="btn ghost" data-go="4">← 上一课</button>
+        <button type="button" class="btn" data-go="0">回到开场</button>
+      </nav>
+    </section>
   </main>
 
-  <footer>
-    课程内容基于 <code>LiXizhiDocs</code> 第二大脑笔记与 KeepWork AIChat 实操流程编写；支持离线打开与本地浏览器自动存档。
-  </footer>
-
   <dialog id="viewer" closedby="any" aria-labelledby="viewer-title">
-    <div class="viewer-bar">
-      <strong id="viewer-title">参考画面</strong>
-      <button type="button" id="close">关闭</button>
-    </div>
-    <img alt="" id="large">
+    <div class="viewer-bar"><strong id="viewer-title">在 AIChat 里的样子</strong><button type="button" class="btn ghost" id="viewer-close">关闭</button></div>
+    <img alt="" id="viewer-img">
   </dialog>
 
-  <script src="roles.js"></script>
-  <script src="lessons.js"></script>
-  <script src="day.js"></script>
-  <script src="idea.js"></script>
-  <script src="sim.js"></script>
-  <script src="practice.js"></script>
-  <script src="org.js"></script>
+  <script src="data.js"></script>
+  <script src="scene.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
