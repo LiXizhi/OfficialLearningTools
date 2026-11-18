@@ -1,5 +1,5 @@
 /* 模拟的 KeepWork AIChat 窗口 + 场景播放控件 */
-.scene { display: grid; gap: 10px; }
+.scene { display: grid; gap: 10px; container-type: inline-size; }
 .sc-stage {
   padding: clamp(10px, 2vw, 22px);
   border-radius: 22px;
@@ -122,8 +122,8 @@
   padding: 2px 10px; border-radius: 99px; color: #fff; font-size: 12px; font-weight: 700;
   box-shadow: 0 4px 12px rgb(0 0 0 / .15);
 }
-.mock[data-hl="main"] .m-main::after, .mock[data-hl="composer"] .m-main::after { content: "① AI 工作台"; background: #2f7a55; }
-.mock[data-hl="side"] .m-side::after { content: "② 第二大脑"; background: #4f46e5; top: auto; bottom: 8px; right: 6px; }
+.mock[data-hl="main"] .m-main::after, .mock[data-hl="composer"] .m-main::after { content: "AI 工作台"; background: #2f7a55; }
+.mock[data-hl="side"] .m-side::after { content: "第二大脑"; background: #4f46e5; top: auto; bottom: 8px; right: 6px; }
 .mock[data-hl="tools"] .m-main::after { content: "③ AI 工具"; background: #b45309; }
 .mock[data-hl="top"] .m-panel::after { content: "④ 人机圈子"; background: #be185d; }
 
@@ -166,7 +166,7 @@
 .mock.is-map .m-msgs { padding-top: 40px; }
 
 /* ---------- 窄屏：隐藏侧栏，右栏放到下面 ---------- */
-@media (max-width: 720px) {
+@container (max-width: 680px) {
   .mock { height: auto; min-height: 0; }
   .m-body, .mock.show-panel .m-body { grid-template-columns: 1fr; grid-template-rows: auto auto; }
   .m-msgs { min-height: 150px; max-height: 300px; }

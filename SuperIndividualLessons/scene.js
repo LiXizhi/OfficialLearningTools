@@ -121,6 +121,7 @@
       let panel = null;
       let firstNewMsg = 0;
       beats.slice(0, idx + 1).forEach((b, bi) => {
+        if (b.fresh) { msgs.length = 0; panel = null; }
         if (bi === idx) firstNewMsg = msgs.length;
         if (b.msgs) msgs.push(...b.msgs);
         if (b.panel) panel = b.panel;
