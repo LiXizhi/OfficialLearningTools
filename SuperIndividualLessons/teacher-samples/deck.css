@@ -1,3 +1,25 @@
 *{box-sizing:border-box}html{color-scheme:light}body{--accent:#245f53;--light:#e2efe9;margin:0;background:#faf8f0;color:#19382f;font:16px/1.55 "Microsoft YaHei",system-ui,sans-serif}body[data-subject=reading]{--accent:#865033;--light:#f2e6d8}body[data-subject=english]{--accent:#315d89;--light:#e1ebf5}header,main,nav,footer{width:min(100%,920px);margin:auto}header,nav,footer{display:flex;align-items:center;gap:12px;padding:10px clamp(12px,4vw,42px)}header{border-bottom:1px solid #d8ddd2;font-size:14px;color:var(--accent)}header b{white-space:nowrap}.slide{padding:clamp(16px,4vw,40px);min-height:min(62vh,480px)}.slide+.slide{border-top:1px solid #d7ddce}.eyebrow{font:600 13px/1.6 system-ui;color:var(--accent)}h1{font:700 clamp(25px,5vw,48px)/1.23 Georgia,"Songti SC",serif;margin:10px 0}.lead{font-size:clamp(17px,2.7vw,24px);margin:12px 0}.visual,fieldset{padding:15px;border:1px solid #c8d7cb;border-radius:12px;background:white;margin:14px 0}legend,b{font-weight:700}button,select{font:inherit;color:var(--accent);background:white;border:1px solid #afc2b9;border-radius:8px;padding:6px 12px;cursor:pointer}button:focus-visible,summary:focus-visible{outline:3px solid #ad742f}button:disabled{opacity:.5}button[aria-pressed=true],nav #next{background:var(--accent);color:#fff}nav{border-top:1px solid #cbd5c9;justify-content:center}nav[hidden],[hidden]{display:none!important}details{margin-top:14px}summary{color:var(--accent);cursor:pointer}details p{max-width:48em}footer{font-size:12px;flex-wrap:wrap;color:#4b6054}a{color:var(--accent)}.status{display:block;color:var(--accent);font-weight:600;margin-top:8px}blockquote{margin:8px 0;border-left:4px solid var(--accent);padding:10px 14px;background:var(--light)}.bar{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;height:27px;max-width:500px;margin:8px 0 14px;border:1px solid #41564d}.bar i{border-right:1px solid #596d60}.bar i:last-child{border:0}.bar .on{background:#dca155}.bar.second .on{background:#529783}.map{position:relative;display:grid;grid-template-columns:repeat(3,1fr);max-width:480px;background:#f0e9d8;gap:4px;padding:4px;margin:8px 0}.map span{display:grid;place-items:center;background:#fffefb;min-height:42px;font-size:14px}.map .here{outline:3px solid #376a9b;outline-offset:-3px;background:#d7ebfe}.path-controls,.choices{display:flex;gap:6px;flex-wrap:wrap}.line{padding:7px}.marked{background:#f8e7a4}table{border-collapse:collapse}th,td{padding:6px;border-bottom:1px solid #ccc;text-align:left}@media(prefers-reduced-motion:no-preference){.on,.here,.marked{animation:appear .35s ease-out}@keyframes appear{from{opacity:.35}to{opacity:1}}}@media print{header,footer,nav,button{display:none!important}.slide[hidden]{display:block!important}.slide{break-after:page}}
 .coach{width:min(92%,840px);margin:14px auto;color:var(--accent)}.coach textarea{display:block;width:100%;min-height:72px;font:inherit;margin:8px 0;padding:8px}
 .cover{width:100%;height:clamp(115px,23vh,220px);display:block;object-fit:cover;border-radius:12px}
+.sample-preview body{display:flow-root;font-size:15px}
+.sample-preview .coach,.sample-preview footer{display:none}
+.sample-preview .slide{min-height:0;padding:clamp(10px,2vw,20px) clamp(12px,3vw,26px);border:0}
+.sample-preview .eyebrow{margin:0}.sample-preview h1{font-size:clamp(23px,3.5vw,35px);margin:5px 0}
+.sample-preview .lead{font-size:clamp(16px,2.3vw,20px);margin:6px 0}
+.sample-preview .visual,.sample-preview fieldset{margin:8px 0;padding:9px 12px}
+.sample-preview .status{margin:5px 0}.sample-preview .cover{height:clamp(95px,18vw,145px)}
+.sample-preview header,.sample-preview nav{padding-block:6px}.sample-preview details{margin-top:6px}
+
+@media screen {
+  /* All six slides size one grid cell, so pagination stays below the tallest. */
+  main:has(> .slide[hidden]){display:grid;grid-template-columns:minmax(0,1fr)}
+  main > .slide{grid-area:1 / 1;min-width:0}
+  main > .slide[hidden]{display:block!important;visibility:hidden}
+  .slide .status{min-height:2lh}
+  /* Keep space for the teacher's notes even before the summary is opened. */
+  .slide details::details-content{content-visibility:visible}
+  .slide details:not([open])::details-content{visibility:hidden}
+}
+@media screen and (max-width:440px){
+  .slide .status{min-height:3lh}
+}

@@ -1,0 +1,24 @@
+.course-menu{position:relative;flex:none;color:#244537;font:14px/1.5 "Microsoft YaHei",system-ui,sans-serif}
+.course-menu summary{display:list-item;cursor:pointer;border:1px solid #b8c8b9;border-radius:6px;padding:5px 10px;background:#fffdf6;font-weight:650}
+.course-menu nav{position:absolute;z-index:20;top:calc(100% + 6px);left:0;width:min(710px,80vw);max-height:min(65vh,500px);overflow:auto;overscroll-behavior:contain;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;padding:16px;background:#fffdf6;border:1px solid #bac8bb;border-radius:10px;box-shadow:0 8px 24px #23372b2b}
+.course-menu h2{margin:0 0 4px;color:#546b5e;font:700 14px/1.5 "Microsoft YaHei",sans-serif}
+.course-menu nav a{display:block;padding:4px 7px;border-radius:4px;color:#234536;text-decoration:none;font:400 14px/1.5 "Microsoft YaHei",sans-serif}
+.course-menu nav a:hover,.course-menu nav a:focus-visible,.course-menu nav a[aria-current=page]{background:#e5eee2}
+.course-menu nav a[aria-current=page]{font-weight:700}
+.course-links{display:flex;align-items:center;gap:12px}
+.course-header .home-link{font-size:14px}
+.course-header .current-section{font-size:14px;color:#566a5b}
+.course-header{position:relative;flex-wrap:wrap;padding-block:7px}
+@media(max-width:850px){
+  .course-header,.mast .bar{position:relative}
+  .course-menu{position:static}
+  .course-menu nav{left:10px;right:10px;width:auto;top:100%}
+}
+@media(max-width:550px){
+  .course-menu nav{grid-template-columns:1fr}
+  .course-header .course-links{width:100%;gap:9px}
+  .course-header .course-menu{margin-left:auto}
+  .course-header label{width:100%;font-size:12px}
+  .course-header select{max-width:none;flex:1;min-width:0}
+}
+.course-menu nav a[hidden]{display:none}

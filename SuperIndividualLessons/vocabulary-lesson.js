@@ -1,0 +1,31 @@
+// Both days use the same wiki and immutable file snapshots as the other lessons.
+window.buildVocabularyDays=function({event,read,wiki,index,log,topic,related,raw,proof,out,previous,result}){
+  const v=window.brainVocabulary;
+  const cards='docs/11月10日英语课的两句话.md';
+  const prompt='docs/11月13日填词题.md',receipt='docs/11月13日填词记录.md';
+  const clue='May I ___ your ruler? I’ll give it back after class.';
+  event('从索引开始','What do I need to practise today?', 'Yesterday you found the exact step that went wrong in maths. Let’s try that with two English words.',index,undefined,wiki(topic));
+  event('取回上节作品','How did I check my work last time?', 'You checked one line at a time. Today, try one sentence at a time and notice when you need help.',previous.out,undefined,previous.final);
+  event('保存我的原件','Here are my two practice questions.', 'I’ll keep the questions so we can try them again later.',raw,'# Nov 12 · Practice questions\n\n'+window.brainCourses.student.lessons[2].material);
+  event('从英语页找课本原句','Where are the sentences from Tuesday?', 'Your English page links to your notes from Nov 10. Let’s open them.',topic,undefined,wiki(cards));
+  event('打开单词和例句','What did I say when I needed a pencil?', '“May I borrow your pencil?” Then you promised, “I will return it tomorrow.”',cards,undefined,'May I borrow your pencil?');
+  event('AI 起草作品','Should I practise both words on Sunday?', 'That’s one possible plan. Let’s test it. Close your book and try both sentences.',out,'# Nov 12 · Review plan\n\nTry both words on Sunday.\nSource: '+wiki(topic));
+  event('记录人的检验','I needed “bor…” for the first sentence. I said the second one on my own.', 'I’ll keep those results separately. Which word would you practise first?',proof,'# Nov 12 · Recall check\n'+v.check);
+  event('推演遗忘曲线','Which word might I forget sooner?', 'You needed a hint for borrow. The model suggests checking it tomorrow. Return can wait until Nov 15.',topic,read(topic)+'\n\n## Vocabulary review\n'+v.forecast+'\nEvidence: '+wiki(proof)+'\nQuestions: '+wiki(raw));
+  event('读两条曲线','How do I read these lines?', 'The solid line is borrow. Two days from now, the estimate is 25%. For return, the dashed line is about 71%. Let’s see what you actually remember.',topic,undefined,v.borrowLine(),false,{curve:true});
+  const plan='Review borrow on Nov 13. Review return on Nov 15.';
+  event('按证据改稿','Put those dates on my review list, please.', 'Done. Tomorrow I can open this list and give you a new sentence.',out,read(out).replace('Try both words on Sunday.',plan)+'\nRecall check: '+wiki(proof));
+  event('把成果写回词条','','I linked the review list to your English page.',topic,read(topic)+'\nReview list: '+wiki(out)+'\nLearning progress: '+wiki(related));
+  event('写入另一页','Where can I find my homework?', 'Your learning progress page has the same dates and a link to the sentences.',related,read(related)+'\n\n## English practice\n'+plan+'\n'+wiki(topic)+'　'+wiki(out));
+  event('登记改动','','I’ve logged today’s evidence. Let’s meet again tomorrow.',log,read(log)+'\n\n## Nov 12 · English\n'+wiki(topic)+'　'+wiki(related)+'　'+wiki(proof));
+  event('次日 · 找回复习计划','Good morning! What’s due today?', 'It’s Nov 13. I found one word due today in yesterday’s review list. Let’s try it in a new sentence.',out,undefined,plan,true);
+  event('次日 · 自己填词','I’m ready. Give me a sentence.',clue,prompt,'# Nov 13 · Word check\n\n'+clue,undefined,false,{quiz:true});
+  if(!result)return plan;
+  event('保存本次作答','May I borrow your ruler?', 'Yes! You can borrow it now and return it after class.',receipt,'# Nov 13 · Recall check\n'+clue+'\nAnswer: borrow\nResult: '+v.observed(result)+'\nQuestion: '+wiki(prompt));
+  const newPlan='Review borrow on Nov '+v.due(result)+'. Review return on Nov 15.';
+  event('更新复习单','','I’ve updated your review list. Return is still due on Nov 15.',out,read(out).replace(plan,newPlan)+'\nNov 13 check: '+wiki(receipt),undefined,false,{fileOnly:true});
+  event('同步学习进展','','Your next practice date is also on your learning progress page.',related,read(related).replace(plan,newPlan)+'\n'+wiki(receipt),undefined,false,{fileOnly:true});
+  event('登记本次复习','','The log links to today’s answer and your English page.',log,read(log)+'\n\n## Nov 13 · English\n'+wiki(receipt)+'　'+wiki(topic)+'　'+wiki(out),undefined,false,{fileOnly:true});
+  event('查看本次改动','',(result==='solo'?'You got it on your first try. Let’s give it two days.':'Let’s try it again tomorrow with a different sentence.')+' Your next check is Nov '+v.due(result)+'.',topic,read(topic).replace(v.borrowLine(),v.borrowLine(result))+'\nNov 13 evidence: '+wiki(receipt),undefined,false,{curve:true,result});
+  return newPlan;
+};

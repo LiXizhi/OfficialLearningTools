@@ -1,16 +1,25 @@
 (() => {
   const slides=[...document.querySelectorAll('.slide')];
   const prev=document.querySelector('#prev'),next=document.querySelector('#next');
+  const params=new URLSearchParams(location.search);
+  const preview=parent!==window&&params.get('preview')==='1';
+  document.documentElement.classList.toggle('sample-preview',preview);
   let page=0;
   function show(index){
     page=Math.max(0,Math.min(slides.length-1,index));
     slides.forEach((slide,i)=>slide.hidden=i!==page);
     prev.disabled=page===0;next.disabled=page===slides.length-1;
     document.querySelector('output').textContent=(page+1)+' / '+slides.length;
-    try{history.replaceState(null,'','#p'+(page+1));}catch{/* The classroom wrapper can own navigation. */}
-    window.scrollTo(0,0);
+    if(!preview){
+      try{history.replaceState(null,'','#p'+(page+1));}catch{/* The classroom wrapper can own navigation. */}
+    }
   }
-  function openPage(){const m=/^#p(\d+)$/.exec(location.hash);show(m?Number(m[1])-1:0);}
+  function openPage(){
+    const numbered=/^#p(\d+)$/.exec(location.hash);
+    const initial=Number(preview?params.get('page'):numbered?.[1]);
+    show(Number.isInteger(initial)&&initial>0?initial-1:0);
+    if(!preview)window.scrollTo(0,0);
+  }
   prev.onclick=()=>show(page-1);next.onclick=()=>show(page+1);
   const copy=document.querySelector('[data-copy-request]');
   copy.onclick=async()=>{
@@ -52,4 +61,14 @@
   });
   window.addEventListener('hashchange',openPage);
   openPage();
+  if(preview){
+    // Only intrinsic content is measured; the receiving iframe may have an opaque sandbox origin.
+    function reportHeight(){
+      parent.postMessage({channel:'aichat.external-tool.v1',type:'tool:sample-height',
+        height:Math.ceil(document.body.getBoundingClientRect().height)},'*');
+    }
+    reportHeight();
+    const observer=new ResizeObserver(reportHeight);
+    observer.observe(document.body);
+  }
 })();

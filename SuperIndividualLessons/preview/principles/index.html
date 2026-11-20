@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一条消息怎样写进第二大脑？ · 共享通识第一课</title>
+<link rel="stylesheet" href="lesson.css"><link rel="stylesheet" href="theatre.css">
+<link rel="stylesheet" href="../../course-menu.css">
+</head><body>
+<header class="course-header">
+  <div class="course-links"><a class="home-link" href="../../index.html#intro">← 课程首页</a><span class="current-section">共享通识</span>
+    <details class="course-menu" data-index="../../index.html"><summary>课程目录</summary><nav aria-label="选择课程与课次"></nav></details>
+  </div>
+  <label>切换案例 <select id="case-select"></select></label>
+</header>
+<main>
+  <article id="case" class="show">
+    <div class="heading"><div><p class="eyebrow" id="counter"></p><h1 id="title"></h1></div><div class="case-nav"><button id="prev" aria-label="上一例">←</button><button id="next" aria-label="下一例">→</button></div></div>
+    <p id="input"></p>
+    <div class="duet">
+      <section class="scene-side" aria-label="现场和对话">
+        <div class="picture"><img id="scene" alt=""><span class="location" id="place"></span>
+          <div class="prop" id="prop"><div class="prop-back" aria-hidden="true"></div><div class="prop-face"><small id="prop-kind"></small><canvas id="prop-drawing" width="320" height="108" aria-hidden="true"></canvas><strong id="prop-text"></strong><i class="ink-mark" aria-hidden="true"></i></div><i class="pencil" aria-hidden="true">✎</i></div>
+        </div>
+        <div class="dialogue"><div id="transcript" tabindex="0" role="region" aria-label="本例聊天记录，可向上翻阅"></div>
+          <div id="decision" hidden><button data-action="new">新建词条</button><button data-action="keep">写在项目页</button></div>
+        </div>
+      </section>
+      <section class="brain-side" aria-label="第二大脑中的文件变化">
+        <div class="bench-title"><strong>我的第二大脑</strong><div class="diff-key" aria-label="改动图例"><span class="plus">＋ 新增</span><span class="minus">− 删除</span></div></div>
+        <div class="workbench" id="bench">
+          <button type="button" class="resting" id="resting" hidden>已放回文件夹</button>
+          <div id="paper" class="paper">
+            <button type="button" class="paper-head" title="打开当前文件"><span class="page-kind" id="paper-kind"></span><strong id="paper-name"></strong><span class="mode" id="op"></span></button>
+            <div class="sheet-body"><button type="button" id="line-scope" title="查看文件内容"></button><div id="lines"></div></div>
+          </div>
+          <section id="inspect" aria-labelledby="inspect-title" hidden><div class="inspect-toolbar"><button id="inspect-back" aria-label="返回上一个文件">←</button><strong id="inspect-title" tabindex="-1"></strong><button id="inspect-close">回到动画</button></div><div id="inspect-body"></div></section>
+        </div>
+        <div id="dock" class="dock" aria-label="课堂文件夹"></div>
+      </section>
+    </div>
+    <div class="transport" aria-label="演示控制"><button id="play">播放</button><button id="back" aria-label="上一步">‹</button><button id="forward" aria-label="下一步">›</button><span id="step-label" role="status"></span><div id="segments" aria-label="选择演示步骤"></div>
+      <label class="timebar">时间轴 <input id="scrubber" type="range" min="0" max="1" step="1" value="0" aria-label="拖动时间轴，同步查看对话和文件"><span id="timecode"></span></label></div>
+  </article>
+  <details id="reference" class="guide"><summary>查看本例的完整 Markdown 与原件</summary>
+    <section class="reader"><div class="tabs" id="tabs" aria-label="查看本次处理"></div><div id="view" aria-live="polite"></div></section>
+  </details>
+  <details class="guide"><summary>材料与制作说明</summary><p>四个场景取材于 2026 年 10 月至 11 月的会议、工作坊、彩排与课堂演示。人物、对话与文件编辑是根据材料编排的教学重现。第 11 例另附真实 Git 修改。可从文件页点回来源，或用本机原件核对引文。</p></details>
+  <section id="teacher-example" hidden aria-labelledby="teacher-example-title">
+    <h2 id="teacher-example-title">一位数学老师用了三个月，留下了什么？</h2>
+    <p>这份教学样例有 16 个 Markdown 文件。第一张看目录，第二张看老师如何根据学生原话修改备课。</p>
+    <img loading="lazy" src="art/teacher-library.png" alt="数学小组九月至十一月的 16 份文件，旁边打开了备课索引。">
+    <img loading="lazy" src="art/teacher-evidence.png" alt="左侧是分数比较教学卡的两次写法，右侧是两名学生在九月出门条上的不同解释。">
+  </section>
+</main>
+<script src="../../data.js"></script><script src="../../foundation.js"></script><script src="../../course-menu.js"></script>
+<script src="materials.js"></script><script src="source-library.js"></script><script src="markdown.js"></script><script src="scenario.js"></script><script src="props.js"></script><script src="theatre.js"></script><script src="lesson.js"></script></body></html>
