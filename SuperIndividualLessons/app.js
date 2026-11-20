@@ -86,7 +86,7 @@
     bench?.stop();bench=null;
     scene?.stop();
     scene = null;
-    const shared = /^foundation(?:\/([1-4])(?:\/(.+))?)?$/.exec(hash);
+    const shared = /^foundation(?:\/([1-5])(?:\/(.+))?)?$/.exec(hash);
     const target = shared ? shared[2] : hash;
     let match = /^(?:(student|teacher|enterprise)\/)?(lesson-([1-5])|finish)$/.exec(target || '');
     if(match?.[3]==='5'&&!fifthPage(match[1]))match=null;
@@ -98,7 +98,7 @@
       role = ''; page = 0; requested = 0;
       switchRole.hidden = true;
       renderFoundation();
-      document.title = (chapter===4?'分身怎样组圈 · 协作与信任':window.brainFoundation[chapter-1].title) + ' · 共享通识';
+      document.title = window.brainFoundation[chapter-1].title + ' · 共享通识';
       window.dispatchEvent(new CustomEvent('coursepagechange',{detail:{page,chapter}}));
       return;
     }
@@ -115,9 +115,9 @@
         <h1 tabindex="-1">你想用第二大脑解决哪类问题？</h1>
         <a class="foundation-card" href="#${foundationRoute(1,destination)}" data-review>
           <div><span class="meta">三种身份共同的第一课</span><h2>共享通识课</h2>
-          <p>先看未来随身 AI 的中文图解，再走进今天的工作台：从一份彩排记录找回原话，写出下一班同学能拿去用的交接单。</p>
+          <p>认识超级个体、第二大脑、分身与圈子，看一段日常想法如何沉淀为知识页，并被多个分身和团队复用。</p>
           <span class="foundation-cta">${records.get('foundation.done') === '1' ? '重看共享通识' : '开始共享通识'} →</span></div>
-          <img src="assets/films/exhibit-4.jpg" alt="科学展上，小禾准备把机器人展台交给下一班同学。"></a>
+          <img src="assets/stage-3-brain.webp" width="1024" height="683" alt="一个人和几个分身围绕同一个知识网络工作。"></a>
         <h2 class="track-heading">选择你的实操课</h2>
         <div class="tracks">${Object.entries(courses).map(([id,c]) => {
           const last = lastPage(id);
@@ -129,43 +129,43 @@
     window.dispatchEvent(new CustomEvent('coursepagechange', {detail:{role, page}}));
   }
   function renderFoundation() {
-    const chapters = window.brainFoundation;
-    const lesson = chapters[chapter-1];
+    const chapters = window.brainFoundation, lesson = chapters[chapter-1], sections = chapters.length - 1;
+    const figure = (src, alt, note = '', cls = '') => `<figure class="real-figure ${cls}"><img src="assets/${src}" alt="${escape(alt)}" ${(([w,h]) => w ? `width="${w}" height="${h}"` : '')(window.foundationImageSizes?.[src] || [])} loading="lazy">${note?`<figcaption>${note}</figcaption>`:''}</figure>`;
+    const cards = (items, cls) => `<ol class="${cls}">${items.map(([a,b,c]) => `<li><b>${a}</b><strong>${b}</strong><span>${c}</span></li>`).join('')}</ol>`;
+    let body = '';
+    if (lesson.layers) body += `<section class="concept"><h2>三层结构</h2>${cards(lesson.layers,'layer-cards')}
+      ${figure(lesson.image, lesson.alt, lesson.imageNote)}<h3>给 AI 定的三条维护原则</h3>${cards(lesson.rules.map(([a,b]) => ['',a,b]),'rule-list')}</section>`;
+    if (lesson.modules) body += `<section class="concept module-tour"><h2>四个模块，一个循环</h2>
+      <div class="module-tabs" role="tablist">${lesson.modules.map(([m,s],i) => `<button type="button" role="tab" data-module="${i}" aria-selected="${i===0}"><i>${i+1}</i><b>${m}</b><small>${s}</small></button>`).join('<span aria-hidden="true">→</span>')}</div>
+      <div class="module-view">${figure(lesson.modules[0][2], lesson.modules[0][0], lesson.modules[0][4])}<p><b>留下什么：</b><span>${lesson.modules[0][3]}</span></p></div>
+      <p class="loop-note">↺ 核验后的经验，回到个人脑与团队脑，成为下一次工作的起点。</p></section>`;
+    if (lesson.entries) body += `<section class="concept">${figure(lesson.image, lesson.alt)}<p class="transparent">${lesson.transparent}</p>
+      <h2>不同的人，分身从哪里开始</h2>${cards(lesson.entries,'entry-cards')}</section>`;
+    if (lesson.brains) body += `<section class="concept">${figure(lesson.image, lesson.alt)}
+      <h2>三种脑，各管各的</h2>${cards(lesson.brains,'layer-cards')}<h3>两条建脑路径</h3>${cards(lesson.paths,'entry-cards')}</section>`;
+    let extra = '';
+    if (lesson.evidence) extra += `<section class="panel evidence"><h2>${lesson.evidence.title}</h2><p>${lesson.evidence.text}</p>
+      <div class="evidence-pair">${lesson.evidence.images.map(([src,alt]) => figure(src, alt, alt)).join('')}</div></section>`;
+    if (lesson.future) extra += `<section class="panel future-note"><h2>再往前一步：跨组织的分身</h2>${figure(lesson.future.image, lesson.future.alt)}<p>${lesson.future.text}</p></section>`;
+    if (lesson.caio) extra += `<aside class="caio-card"><h2>${lesson.caio.title}</h2><ol class="caio-steps">${lesson.caio.steps.map(([t,d],i)=>`<li><i>0${i+1}</i><strong>${t}</strong><span>${d}</span></li>`).join('')}</ol></aside>
+      <details class="future-circle"><summary>互动演示 · 两个分身怎样临时组圈协作</summary><section class="circle-story" aria-label="分身与协作圈"></section></details>`;
+    const pager = `<nav class="pager" aria-label="通识翻页">${chapter>1?`<button data-chapter="${chapter-1}">← 上一节</button>`:''}
+      ${chapter<chapters.length?`<button class="primary" data-chapter="${chapter+1}">下一节 · ${chapters[chapter].name} →</button>`:
+        `<button class="primary" id="finish-foundation">${destination.includes('/')?'进入身份课':'继续选择身份'} →</button>`}</nav>`;
     root.innerHTML = `<article class="foundation">
       <nav class="lessons" aria-label="共享通识章节">${chapters.map((c,i) =>
-        `<a data-chapter="${i+1}" href="#${foundationRoute(i+1,destination)}" ${i+1===chapter?'aria-current="page"':''}>${c.name}</a>`).join('')}</nav>
-      ${chapter===1?window.renderBrainOrientation():''}
-      ${chapter===4?'<section class="circle-story" aria-label="分身与协作圈"></section>':''}
-      <header class="foundation-head" id="shared-first-case" tabindex="-1"><p class="meta">共享通识 · ${chapter} / ${chapters.length}</p>${chapter===1||chapter===4?`<h2>${lesson.title}</h2>`:`<h1 tabindex="-1">${lesson.title}</h1>`}<p>${lesson.story}</p></header>
-      <div id="brain-workbench" tabindex="-1"></div>
-      <details class="film-extra" open><summary>看现场短片 · ${lesson.filmTitle}</summary>
-      <figure class="exhibit-film">
-        <figcaption><span>${lesson.place}</span><strong>${lesson.filmTitle}</strong>
-          <p class="film-setup">${lesson.story}</p><p class="film-watch">${lesson.watch}</p></figcaption>
-        <div class="film-frame">
-          <video playsinline preload="metadata" poster="assets/films/exhibit-${chapter}.jpg" src="assets/films/exhibit-${chapter}.mp4"></video>
-          <img data-still src="assets/films/exhibit-${chapter}.jpg" alt="${lesson.filmAlt}">
-        </div>
-        <div class="film-controls" role="group" aria-label="短片播放">
-          <button type="button" data-play>播放短片</button><button type="button" data-prev>上一幕</button><button type="button" data-next>下一幕</button>
-          <button type="button" data-mute aria-label="播放普通话旁白">旁白开</button>
-        </div>
-        <div class="film-notes"><div aria-live="polite" aria-atomic="true"><b data-phase></b><p data-voice></p></div>
-          <div class="film-record"><small data-record-title></small><strong data-current></strong><span data-previous hidden></span></div>
-        </div><p data-video-status role="status"></p>
-      </figure></details>
-      <div class="foundation-grid"><section class="panel foundation-reading"><h2>${lesson.idea}</h2><p>${lesson.concept}</p><img src="assets/${lesson.image}" alt="${lesson.alt}" loading="lazy"></section>
-      <section class="panel foundation-activity"><h2>${lesson.activityTitle}</h2>
-        ${lesson.activity}</section></div>
-      <section class="reflection"><h2>轮到你判断</h2><p>${lesson.question}</p></section>
-      <nav class="pager" aria-label="通识翻页">${chapter>1?`<button data-chapter="${chapter-1}">← 上一节</button>`:''}
-      ${chapter<chapters.length?`<button class="primary" data-chapter="${chapter+1}">下一节 · ${chapters[chapter].name} →</button>`:
-        `<button class="primary" id="finish-foundation">${destination.includes('/')?'进入身份课':'继续选择身份'} →</button>`}</nav></article>`;
-    if(chapter===4)circleContext=window.mountCircleStory(root.querySelector('.circle-story'));
-    scene = window.createFoundationPlayer(root.querySelector('.exhibit-film'),lesson,chapter);
-    bench=window.mountBrainBench(root.querySelector('#brain-workbench'),'foundation',chapter);
-    const extra=root.querySelector('.film-extra');
-    extra.addEventListener('toggle',()=>{if(extra.open)bench.stop();else scene?.stop();});
+        `<a data-chapter="${i+1}" href="#${foundationRoute(i+1,destination)}" ${i+1===chapter?'aria-current="page"':''}>${i?i+' · ':''}${c.name}</a>`).join('')}</nav>
+      ${chapter===1?window.renderBrainOrientation():`<header class="foundation-head" id="shared-first-case" tabindex="-1"><p class="meta">共享通识 · 第 ${chapter-1} 节 / ${sections}</p>
+        <h1 tabindex="-1">${lesson.title}</h1><p class="lead">${lesson.lead}</p></header>${body}
+        <div id="brain-workbench" tabindex="-1"></div>
+        <section class="panel foundation-activity"><h2>${lesson.activityTitle}</h2>${lesson.activity}</section>${extra}`}
+      <section class="reflection"><h2>轮到你想一想</h2><p>${lesson.question}</p></section>${pager}</article>`;
+    if (chapter > 1) bench = window.mountFoundationBench(root.querySelector('#brain-workbench'), chapter-1);
+    const circle = root.querySelector('.future-circle');
+    circle?.addEventListener('toggle', () => {
+      if (circle.open && !circleContext) circleContext = window.mountCircleStory(circle.querySelector('.circle-story'));
+      if (circle.open) bench?.stop(); else circleContext?.stop();
+    });
   }
   function link(n, label, cls = '') {
     return `<a class="${cls}" data-go="${n}" href="#${role}/${pageName(n)}" ${n === page ? 'aria-current="page"' : ''}>${label}</a>`;
@@ -292,11 +292,12 @@
   window.buildCourseToolContext = () => {
     if (chapter) {
       const l = window.brainFoundation[chapter-1];
-      return ['课程：用第二大脑成为超级个体 · 共享通识。当前章节：'+l.title,chapter===1?'开场：认知共生体和可穿戴设备是未来设想。今天学员主动提供原件，从第二大脑检索、核对并写回。':'',bench?.context(), l.place, l.story, l.watch, l.concept,
-        circleContext?'未来分身协作情境：'+circleContext.context():'',
-        '当前动画画面：'+root.querySelector('[data-phase]').textContent+'。'+root.querySelector('[data-current]').textContent+' '+root.querySelector('.exhibit-film video').getAttribute('aria-label'),
-        '本幕旁白：'+root.querySelector('[data-voice]').textContent,root.querySelector('.foundation-activity')?.textContent.trim(), '讨论题：'+l.question,
-        '这是虚构的科学展案例。请引导学员依据原件说明判断，区分今天能做的练习与对未来工作的设想。'].join('\n');
+      const stage = root.querySelector('[data-stage][aria-pressed=true] strong')?.textContent;
+      return ['课程：用第二大脑成为超级个体 · 共享通识。当前章节：'+l.title, l.lead,
+        chapter===1?'开场：超级个体的定义、三级台阶、认知共生体研究远景与成为超级个体的阶段自测。'+(stage?'学员选择的阶段：'+stage+'。':''):'',
+        bench?.context(), circleContext?'分身协作情境：'+circleContext.context():'',
+        root.querySelector('.foundation-activity')?.textContent.replace(/\s+/g,' ').trim(), '讨论题：'+l.question,
+        '请引导学员依据原件判断，把目标、推论与已验证的事实分开，并联系自己的日常资料。'].filter(Boolean).join('\n');
     }
     if (!role) return '课程：用第二大脑成为超级个体。学员正在选择学生、学校老师或 IT 企业员工或管理者身份。';
     if(page===fifthPage(role)){
@@ -335,11 +336,17 @@
     } else if (target.id === 'finish-foundation') {
       set('done','1','foundation'); move(destination);
     } else if (target.dataset.verdict) {
-      const accurate = target.dataset.verdict === 'scoped';
-      root.querySelectorAll('[data-verdict]').forEach(b => b.setAttribute('aria-pressed',String(b===target)));
-      document.getElementById('source-feedback').textContent = accurate
-        ? '证据范围对上了。B 验证了录像；A 记录了控制台重启要登录。把这两个条件分别链接到原件，留下一项复测。'
-        : '再看原件 B 的最后一句：当天启动过控制台吗？日期更新了，接受测试的对象也变了。';
+      const group = target.closest('.source-choice');
+      group.querySelectorAll('[data-verdict]').forEach(b => b.setAttribute('aria-pressed',String(b===target)));
+      const status = group.nextElementSibling;
+      if (status?.classList.contains('answer')) { status.textContent = target.dataset.feedback || ''; status.dataset.result = target.dataset.verdict; }
+    } else if (target.dataset.module) {
+      const tour = target.closest('.module-tour'), i = Number(target.dataset.module), m = window.brainFoundation[chapter-1].modules[i];
+      tour.querySelectorAll('[data-module]').forEach(b => b.setAttribute('aria-selected',String(b===target)));
+      const img = tour.querySelector('.module-view img');
+      img.src = 'assets/'+m[2]; img.alt = m[0];
+      tour.querySelector('.module-view figcaption').textContent = m[4];
+      tour.querySelector('.module-view p span').textContent = m[3];
     } else if (target.dataset.role) {
       const id = target.dataset.role;
       const last = lastPage(id);
@@ -356,6 +363,12 @@
     if (event.target.tagName === 'TEXTAREA') drafts.set(draftingKey(event.target.id),event.target.value);
   });
   root.addEventListener('change', ({target}) => {
+    if (target.dataset.expect !== undefined) {
+      const ok = target.value === target.dataset.expect;
+      target.nextElementSibling.textContent = !target.value ? '' : ok ? '✓ 对' : '✗ 再想想';
+      target.dataset.result = !target.value ? '' : ok ? 'right' : 'wrong';
+      return;
+    }
     if (target.dataset.check) {
       set(target.dataset.check+'.'+page,target.checked?'1':'0');
       if (target.dataset.check==='done') root.querySelector('nav.lessons').outerHTML=nav();

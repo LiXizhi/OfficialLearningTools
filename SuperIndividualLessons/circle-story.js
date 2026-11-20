@@ -58,7 +58,7 @@
   window.mountCircleStory=host=>{
     let time=0,step=-1,approved=false,playing=false,raf=0,start=0,view='',follow=true;
     const get=s=>host.querySelector(s);
-    host.innerHTML='<header><p class="meta">共享通识 · 未来协作情境</p><h1 tabindex="-1">两个 AI 分身怎样一起办成一件事？</h1><p>科学展九点开门。林老师需要试车，周工负责设备。看他们的分身怎样联系，再把亲手试过的结果交给下一班。</p></header>'+
+    host.innerHTML='<header><p class="meta">分身协作演示</p><h2 tabindex="-1">两个 AI 分身怎样一起办成一件事？</h2><p>科学展九点开门。林老师需要试车，周工负责设备。看他们的分身怎样联系，再把亲手试过的结果交给下一班。</p></header>'+
       '<nav class="circle-stops" aria-label="分身协作场景">'+buttons(scenes.map(s=>s[0]),'stop')+'</nav>'+
       '<div class="ct-player"><div class="ct-panels"><section class="ct-left"><figure><img alt=""><figcaption></figcaption></figure><div class="ct-chat" tabindex="0" aria-label="分身对话记录"></div></section>'+
       '<section class="ct-right"><h3>工作台操作</h3><div class="ct-trace"></div><nav class="ct-tabs" aria-label="查看同步记录">'+buttons(['当前操作','圈内消息','团队第二大脑','个人原件'],'view')+'</nav><div class="circle-sheet" tabindex="0" aria-label="工作台记录"></div></section></div>'+

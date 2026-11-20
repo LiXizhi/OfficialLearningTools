@@ -20,9 +20,9 @@
     groups.append(section);
   }
   group('共享通识', [
-    ['开场与共同记忆 · 超级个体的今天与未来',course.href+'#foundation/1'],
-    ['第二大脑的工作原理 · 16 个案例', examples.href],
-    ...window.brainFoundation.slice(1).map((chapter, i) => [i===2?'协作与信任 · 分身怎样组圈':chapter.name, course.href + '#foundation/' + (i + 2)])
+    ['开场 · 什么是超级个体？',course.href+'#foundation/1'],
+    ...window.brainFoundation.slice(1).map((chapter, i) => ['第 '+(i+1)+' 节 · '+chapter.name, course.href + '#foundation/' + (i + 2)]),
+    ['第二大脑的工作原理 · 16 个案例', examples.href]
   ]);
   const practice = new URL(course);
   practice.searchParams.set('browse','1');
