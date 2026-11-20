@@ -24,9 +24,7 @@ An editorial illustration-story triptych for a Chinese lesson about future AI co
 
 企业路线的第5课以 CEO 的一个早晨为案例。内容依据[峰会情境对话](https://keepwork.com/api/raw/official/docs/2026/super-organization-summit.html)，练习核对门店承诺、修订共享岗位卡和确定对外合作范围。
 
-教师第5课以七年级手机使用情境从零生成独立 H5，核对真实页序后在同一份教案写逐页演讲稿。学生自定义两张 AI 角色卡，按原话对照两轮对话。页内预演和可下载的离线 H5 共用工作台展示的源文件。
-
-教师前三课配有[五年级数学](teacher-samples/fractions.html)、[四年级语文](teacher-samples/reading.html)、[六年级英语](teacher-samples/english.html)的 H5 和对应目录的 lesson-plan.md。课堂情节均为模拟。各页可独立读取，PageUp/PageDown 与左右键可翻页。内嵌预览、逐页大纲与 AI课程互动助手备课/授课入口位于工作台下方。第四课比较三科的证据、反例与延迟复验。教师场景取自内置 ImageGen 按产品参考图创作的四联画：家中备课、手持白色翻页笔在 A 班上课、晚上复盘、B 班复教。课件开场图分别表现等长纸条、铃铛间飞行的蝙蝠和问路街区。
+教师五节课统一采用「四步工作台实录 → 课堂大屏课件与逐页讲稿（或跨科证据总表）→ A/B 班迭代与备课组教研实录 → 3 道课后小问答」四段式结构。前三课配有[五年级数学](teacher-samples/fractions.html)、[四年级语文](teacher-samples/reading.html)、[六年级英语](teacher-samples/english.html)的 6 页课堂大屏 H5 和对应目录的 `lesson-plan.md`；第四课以统一三维观察表（独立完成 / 提示后完成 / 未完成）汇总三科匿名证据、保留典型反例并追踪隔周无提示延迟复验；第五课以七年级手机使用情境从零生成独立 4 页 H5，核对真实页序与控件后在同一份教案写逐页讲稿，组织双 AI 单变量劝说对照实验。各课件可独立打开，PageUp/PageDown 与左右键可翻页，点击逐页大纲可同步切换内嵌预览页码。教师场景取自内置 ImageGen 按产品参考图创作的四联画：家中备课、手持白色翻页笔在首班上课、晚上复盘、平行班复教。
 
 - 首页和 `#intro` 将共享通识图文卡放在三张身份卡前。首次选择身份或打开课次深链，会先进入通识再返回目标。通识完成状态在三套课间共享，随时可从首页或身份课重看。独立页与课堂库均可用 `#foundation`（`#foundation/1` 至 `/5`）进入。
 - 独立页按身份保存浏览位置、看过示范、实操自评和企业交付物选择。课堂库里的沙箱通过课程专属缓存保存相同字段；缺少缓存支持时使用页面内进度。旧版 v3 记录保留。
