@@ -29,7 +29,7 @@
   for (const [id, track] of Object.entries(window.brainCourses)) {
     group(track.label, [
       ...track.lessons.map((lesson, i) => ['第 '+(i+1)+' 课 · '+lesson.title, practice.href+'#'+id+'/lesson-'+(i+1)]),
-      ...(id!=='enterprise'?[]:[['第5课',practice.href+'#'+id+'/lesson-5']]),
+      ...(id!=='enterprise'?[]:[['第 5 课 · 十家店想同一天开，今天能答应几家？',practice.href+'#'+id+'/lesson-5']]),
       ...(id==='teacher'?[['第5课 · 心理活动：从零制作 H5',practice.href+'#teacher/lesson-5']]:[]),
       ['结课作品', practice.href+'#'+id+'/finish']
     ]);

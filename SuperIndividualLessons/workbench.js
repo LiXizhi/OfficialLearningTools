@@ -52,7 +52,7 @@
     frames.forEach((f,idx)=>{if(f.stageName&&!stageList.some(s=>s.name===f.stageName))stageList.push({name:f.stageName,start:idx});});
     host.className=summit?'wb wb-summit':'wb';
     host.innerHTML='<div class="wb-head"><h2>第二大脑工作台</h2><span>第 '+lesson+' 课 · 课堂示例</span></div>'+
-      (stageList.length?'<nav class="wb-stages" aria-label="教学迭代四阶段">'+stageList.map(s=>'<button type="button" data-stage-start="'+s.start+'">'+esc(s.name)+'</button>').join('')+'</nav>':'')+
+      (stageList.length?'<nav class="wb-stages" aria-label="'+(track==='enterprise'?'项目决策与治理四阶段':track==='student'?'自主学习四阶段':'教学迭代四阶段')+'">'+stageList.map(s=>'<button type="button" data-stage-start="'+s.start+'">'+esc(s.name)+'</button>').join('')+'</nav>':'')+
       '<div class="wb-duet"><section class="wb-left"><div class="wb-picture"><img alt="" src="assets/'+image+'"><strong>'+esc(actor)+'的工作台</strong></div><div class="wb-chat" tabindex="0" aria-label="本课对话"></div><div class="wb-judge" hidden></div></section>'+
       '<section class="wb-right"><div class="wb-tools"><strong>'+(summit?'第二大脑目录':'我的第二大脑')+'</strong><button data-mode="sample">课堂示例</button><button data-mode="mine">我的文档</button></div>'+
       '<div class="wb-sample">'+(summit?'<nav class="wb-vaults" aria-label="选择第二大脑目录">'+Object.entries(vaultNames).map(([key,label])=>'<button data-vault="'+key+'">'+label+'</button>').join('')+'</nav>':'<nav class="wb-wiki-pages" aria-label="直接打开 Wiki 词条"></nav>')+'<label class="wb-file-label">文件 <select aria-label="浏览第二大脑的文件"></select></label><div class="wb-filehead"><b></b><span>＋ 新增　− 删除</span></div><div class="wb-lines" tabindex="0" aria-label="Markdown 文件正文"></div></div>'+
@@ -125,12 +125,12 @@
       const paths=Object.keys(files),wikiPages=paths.filter(p=>p.startsWith('_wiki/')&&p.split('/').length===3);
       if(!summit){
         get('.wb-wiki-pages').innerHTML='<b>Wiki 词条</b>'+wikiPages.map(p=>'<button data-file="'+esc(p)+'">'+esc(short(p))+'</button>').join('');
-        tree.innerHTML=fileOptions([['Wiki 词条',wikiPages],['索引与日志',paths.filter(p=>p.startsWith('_wiki/')&&!wikiPages.includes(p))],['我的原始文档',paths.filter(p=>p.startsWith('docs/'))],['教案、课堂与教研记录',paths.filter(p=>p.startsWith('TeachingArtifacts/'))],['教学包与成果作品',paths.filter(p=>p.startsWith('作品/'))]]);
+        tree.innerHTML=fileOptions([['Wiki 词条',wikiPages],['索引与日志',paths.filter(p=>p.startsWith('_wiki/')&&!wikiPages.includes(p))],['我的原始文档',paths.filter(p=>p.startsWith('docs/'))],['教案、课堂与教研记录',paths.filter(p=>p.startsWith('TeachingArtifacts/'))],[track==='enterprise'?'项目交付与指南作品':track==='student'?'学习单与指南作品':'教学包与成果作品',paths.filter(p=>p.startsWith('作品/'))]]);
       }
       for(const btn of host.querySelectorAll('[data-stage-start]'))btn.setAttribute('aria-current',current().stageName===btn.textContent?'step':'false');
       chat.innerHTML=frames.slice(0,step+1).filter((s,i)=>!s.fileOnly||i===step).map(s=>(s.fresh?'<p class="wb-break">'+(english?'Nov 13 · A new conversation':'新对话 · 从索引重新查找')+'</p>':'')+
         (s.user?'<p class="wb-message wb-user"><b>'+esc(s.speaker||actor)+' · 我</b><span>'+esc(s.user)+'</span></p>':'')+
-        '<p class="wb-message wb-ai"'+(s===f?' hidden':'')+'><b>'+(s.photo?'AI课程互动助手':'AI 助手')+'</b><span>'+esc(s.ai)+'</span></p>').join('');
+        '<p class="wb-message wb-ai"'+(s===f?' hidden':'')+'><b>'+esc(s.assistant||(track==='teacher'&&s.photo?'AI课程互动助手':'AI 助手'))+'</b><span>'+esc(s.ai)+'</span></p>').join('');
       chat.scrollTop=follow?chat.scrollHeight:oldTop;
       const judge=get('.wb-judge');judge.hidden=!f.quiz&&(f.label!=='记录人的检验'||answered);
       if(f.quiz){

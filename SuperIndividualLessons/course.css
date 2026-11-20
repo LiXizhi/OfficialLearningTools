@@ -198,8 +198,23 @@ input{accent-color:var(--brand);margin-top:.43em}
 .quiz-card .answer[data-result="wrong"]{background:#f8eee7;color:#6e361a}
 .quiz-card .answer[data-result="right"]{background:#e7f2e4;color:#1f4b32}
 .quiz-done-bar{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-weight:650}
+.wb-variant{margin:16px 0 -4px;padding:12px 16px;border:1px solid #c9d7c5;border-radius:13px;background:#f2f6ec}
+.wb-variant legend{float:left;width:100%;font-size:14px;font-weight:700;color:var(--brand);margin-bottom:8px;padding:0}
+.wb-variant label{display:inline-flex;align-items:center;gap:7px;margin:0 10px 4px 0;padding:6px 13px;border-radius:999px;border:1px solid #c5d3c1;background:#fff;font-size:14.5px;font-weight:600;cursor:pointer}
+.wb-variant label:has(input:checked){border-color:var(--brand);background:var(--brand);color:#fff}
+.wb-variant input{margin:0}
+.deliverable-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin:10px 0 12px}
+.deliverable-head .ab-badge{margin:0;background:#e1ecdc;color:var(--brand)}
+.brain-boundary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:12px 0}
+.boundary-card{padding:14px 15px;border-radius:12px;border:1px solid #d9e1d4;background:#faf9f3;display:grid;align-content:start;gap:6px;min-width:0}
+.boundary-card b{font-size:15px;color:var(--brand)}
+.boundary-card code{font:12px/1.45 Consolas,"Microsoft YaHei",monospace;color:#355645;background:#ebf1e6;padding:3px 7px;border-radius:6px;overflow-wrap:anywhere}
+.boundary-card p{font-size:14px;line-height:1.6;color:var(--ink)}
+.enterprise-guide{margin-top:10px}
+.enterprise-guide details{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+.enterprise-guide summary{font-weight:650;color:var(--brand)}
 @media(max-width:760px){
-  .studio-meta-grid,.teacher-outline,.ab-compare{grid-template-columns:1fr}
+  .studio-meta-grid,.teacher-outline,.ab-compare,.brain-boundary-grid{grid-template-columns:1fr}
   .ab-arrow{flex-direction:row;max-width:none;padding:2px 0}
   .ab-arrow b{transform:rotate(90deg)}
   .group-turn{grid-template-columns:1fr;gap:3px}
