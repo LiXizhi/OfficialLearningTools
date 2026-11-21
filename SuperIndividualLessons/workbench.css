@@ -1,4 +1,3 @@
-.bar-tools{display:flex;gap:6px;align-items:center}.bar-tools button{font-size:14px;padding:5px 9px}
 .wb{scroll-margin-top:85px;margin:18px 0 22px;border:1px solid #bdcdbf;border-radius:15px;overflow:hidden;background:#fffdf6}
 .wb-head,.wb-tools,.wb-filehead,.wb-controls{display:flex;align-items:center;gap:8px}
 .wb-head{justify-content:space-between;padding:9px 16px;border-bottom:1px solid #cbd7cb;background:#eef2e7}
@@ -83,7 +82,6 @@
   .wb-left{display:grid;grid-template-columns:30% minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto}.wb-picture{height:100%}
   .wb-picture strong{left:4px;top:5px;font-size:11px;padding:2px 4px}.wb-chat{padding:5px}
   .wb-controls label{flex-basis:65%}.wb-head{padding:6px 10px}
-  .bar{flex-wrap:wrap;gap:3px;padding-block:4px}.bar-tools{margin-left:auto}.bar-tools button{font-size:12px}
   .wb{scroll-margin-top:100px}
   .wb-judge{grid-column:1/-1;max-height:100px}
 }

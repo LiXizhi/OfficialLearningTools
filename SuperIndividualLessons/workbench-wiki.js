@@ -4,7 +4,7 @@ window.brainWiki = {
   student: {
     pages: {
       数学学习: {scope:'按单元整理我会解释的数学方法、错题和验算。', source:'上周的小数练习', excerpt:'0.5 和 0.50 在数线上是同一个点。我能画出来，但还想试试怎样用图解释分数。'},
-      英语学习: {scope:'把学过的词放回句子里，记下回忆结果和下次复习日期。',source:'11月10日英语课的两句话',excerpt:window.brainVocabulary.cards},
+      英语学习: {scope:'把学过的词放回句子里，记下回忆结果和下次复习日期。',source:'11月10日英语课的两句话',get excerpt(){return window.brainVocabulary.cards;}},
       我的学习进展: {scope:'记下各科这周学会了什么、用什么证明、下回练什么。', source:'周五学习回顾', excerpt:'这周的两篇观察日记都把“我看到的”和“我猜的”写在了一起。下周找同桌帮我圈一句。'},
       语文学习: {scope:'把阅读、观察写作和同学的试读意见按单元整理。'}
     },

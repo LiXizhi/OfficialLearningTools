@@ -72,16 +72,64 @@
     const saved=Number(records.get(id+'.last'));
     return id==='teacher' && saved===adultPage ? 5 : saved;
   };
-  function move(hash, navigation='') {
+  // Classic scripts also work in the opaque course iframe and from a local file.
+  // Insert in dependency order while allowing the browser to download in parallel.
+  const loads = new Map();
+  function loadAsset(name) {
+    if (loads.has(name)) return loads.get(name);
+    const style = document.querySelector('link[data-lesson-style="' + name + '"]');
+    const node = style || document.createElement('script');
+    const ready = new Promise((resolve, reject) => {
+      node.onload = resolve;
+      node.onerror = () => {
+        loads.delete(name);
+        if (style) style.removeAttribute('href');
+        else node.remove();
+        reject(new Error(name));
+      };
+    });
+    loads.set(name, ready);
+    if (style) style.href = name;
+    else {
+      node.async = false;
+      node.src = name + '.js';
+      document.head.append(node);
+    }
+    return ready;
+  }
+  function lessonScripts(chapter, role, lesson) {
+    if (chapter === 1) return ['foundation-intro'];
+    if (chapter) return ['foundation-bench-data', 'foundation-bench', ...(chapter === 5 ? ['circle-story'] : [])];
+    if (!role) return [];
+    const files = ['workbench-stories', 'workbench-wiki', 'workbench-model', 'workbench'];
+    if (role === 'student') files.push('vocabulary-review', 'student-workshop', 'vocabulary-lesson');
+    if (role === 'teacher') {
+      files.push('teacher-workshop');
+      if (lesson === 'lesson-5' || lesson === 'finish') files.push('teacher-phone-deck', 'teacher-psychology');
+    }
+    if (role === 'enterprise') {
+      files.push('enterprise-workshop');
+      if (lesson === 'lesson-5' || lesson === 'finish') files.push('adult-summit');
+    }
+    return files;
+  }
+  let navigationId = 0;
+  let pendingPage;
+  function openPage(hash) {
+    pendingPage = display(hash);
+    return pendingPage;
+  }
+  async function move(hash, navigation='') {
     const position=window.scrollY;
     try { history.replaceState(null, '', '#' + hash); } catch { /* 沙箱由外层保留地址。 */ }
     send('tool:course-page', {page:hash});
-    display(hash);
+    if (!await openPage(hash)) return;
     const focus=navigation?root.querySelector(navigation+' [aria-current="page"]'):root.querySelector('h1');
     focus?.focus({preventScroll:true});
     window.scrollTo({top:navigation?position:0,behavior:'instant'});
   }
-  function display(hash) {
+  async function display(hash) {
+    const id = ++navigationId;
     circleContext?.stop();circleContext=null;
     bench?.stop();bench=null;
     scene?.stop();
@@ -90,9 +138,30 @@
     const target = shared ? shared[2] : hash;
     let match = /^(?:(student|teacher|enterprise)\/)?(lesson-([1-5])|finish)$/.exec(target || '');
     if(match?.[3]==='5'&&!fifthPage(match[1]))match=null;
-    destination = match ? match[0] : 'intro';
     const browsingLesson = match?.[1] && new URLSearchParams(location.search).get('browse') === '1';
-    chapter = shared ? Number(shared[1] || 1) : match && !browsingLesson && records.get('foundation.done') !== '1' ? 1 : 0;
+    const nextChapter = shared ? Number(shared[1] || 1) : match && !browsingLesson && records.get('foundation.done') !== '1' ? 1 : 0;
+    const files = lessonScripts(nextChapter, match?.[1], match?.[2]);
+    if (files.length) {
+      for (const link of document.querySelectorAll('link[data-lesson-style]')) files.push(link.dataset.lessonStyle);
+    }
+    if (files.some(name => !loads.has(name))) {
+      root.innerHTML = '<p role="status">正在加载课件…</p>';
+    }
+    root.setAttribute('aria-busy', 'true');
+    try {
+      await Promise.all(files.map(loadAsset));
+    } catch {
+      if (id !== navigationId) return false;
+      role = ''; chapter = page = requested = 0;
+      root.innerHTML = '<p role="alert">课件加载失败。</p><button type="button">重新加载本课</button>';
+      root.querySelector('button').onclick = () => openPage(hash);
+      root.setAttribute('aria-busy', 'false');
+      return false;
+    }
+    if (id !== navigationId) return false;
+    root.setAttribute('aria-busy', 'false');
+    destination = match ? match[0] : 'intro';
+    chapter = nextChapter;
     if (chapter) {
       jumpBrain.hidden=false;
       role = ''; page = 0; requested = 0;
@@ -100,7 +169,7 @@
       renderFoundation();
       document.title = window.brainFoundation[chapter-1].title + ' · 共享通识';
       window.dispatchEvent(new CustomEvent('coursepagechange',{detail:{page,chapter}}));
-      return;
+      return true;
     }
     role = match?.[1] || '';
     requested = match ? (match[3]==='5'?fifthPage(role):Number(match[3] || 5)) : 0;
@@ -127,6 +196,7 @@
     }
     document.title = (role ? courses[role].label + ' · ' + (page === 5 ? '结课作品' : page===psychologyPage?window.teacherPsychology.title:page===adultPage?window.adultSummit.title:courses[role].lessons[page-1].title) : '用第二大脑成为超级个体') + ' · 超级个体培训课';
     window.dispatchEvent(new CustomEvent('coursepagechange', {detail:{role, page}}));
+    return true;
   }
   function renderFoundation() {
     const chapters = window.brainFoundation, lesson = chapters[chapter-1], sections = chapters.length - 1;
@@ -171,9 +241,7 @@
     return `<a class="${cls}" data-go="${n}" href="#${role}/${pageName(n)}" ${n === page ? 'aria-current="page"' : ''}>${label}</a>`;
   }
   const teacherNavNames=['','第1课 · 数学','第2课 · 语文','第3课 · 英语','第4课 · 跨科教研'];
-  const enterpriseNavNames=window.enterpriseWorkshop?.navNames||['','第1课','第2课','第3课','第4课'];
-  const studentNavNames=window.studentWorkshop?.navNames||['','第1课','第2课','第3课','第4课'];
-  const nav = () => `<nav class="lessons" aria-label="课程导航"><a href="#${foundationRoute(1,destination)}" data-review>共享通识</a>${[1,2,3,4].map(n => link(n,(role==='teacher'?teacherNavNames[n]:role==='enterprise'?enterpriseNavNames[n]:studentNavNames[n]) + (get('done.'+n) === '1' ? ' ✓' : ''))).join('')}${!fifthPage(role)?'':link(fifthPage(role),(role==='teacher'?'第5课 · 心理班会':'第5课 · 组织授权')+(get('done.'+fifthPage(role))==='1'?' ✓':''))}${link(5,'结课作品')}</nav>`;
+  const nav = () => `<nav class="lessons" aria-label="课程导航"><a href="#${foundationRoute(1,destination)}" data-review>共享通识</a>${[1,2,3,4].map(n => link(n,(role==='teacher'?teacherNavNames[n]:role==='enterprise'?window.enterpriseWorkshop.navNames[n]:window.studentWorkshop.navNames[n]) + (get('done.'+n) === '1' ? ' ✓' : ''))).join('')}${!fifthPage(role)?'':link(fifthPage(role),(role==='teacher'?'第5课 · 心理班会':'第5课 · 组织授权')+(get('done.'+fifthPage(role))==='1'?' ✓':''))}${link(5,'结课作品')}</nav>`;
   const variant = () => get('variant') === 'manager' ? 'manager' : 'employee';
   const draftingKey = id => [role,page,variant(),id].join('/');
   const renderOutline = items => `<ol class="teacher-outline" role="list">${items.map(([t,title,note,tag],idx)=>
@@ -267,7 +335,7 @@
     }
     if(n===3 || n===4){
       const mode=variant(), d=ew.deliverables[n][mode];
-      const historyNav=n===4?`<nav class="teacher-samples-nav" aria-label="回看前序项目沉淀"><span>快速回看前序沉淀：</span>${[1,2,3].map(i=>link(i,enterpriseNavNames[i])).join('')}</nav>`:'';
+      const historyNav=n===4?`<nav class="teacher-samples-nav" aria-label="回看前序项目沉淀"><span>快速回看前序沉淀：</span>${[1,2,3].map(i=>link(i,window.enterpriseWorkshop.navNames[i])).join('')}</nav>`:'';
       return `<section class="panel teacher-studio enterprise-studio" id="sec-deck">
         <p class="meta">二、${n===3?'同源双视角正式交付单预览 · 切换上方管理者 / 员工角色实时对照':'跨项目压力测试与可复用指南 · 从〈报表试点〉迁移到〈门店库存预警〉'}</p>
         <h2>${d.title}</h2>${historyNav}
@@ -291,7 +359,7 @@
     return `<section class="panel teacher-studio enterprise-studio" id="sec-deck">
       <p class="meta">二、十店排期双条件核验与三层脑权限边界 · 峰会 CEO 晨间决策实战</p>
       <h2>哪些店今天能答应？哪些话只能留在个人脑？</h2>
-      <div class="teacher-samples-nav"><span>回看前四课方法基础：</span>${[1,2,3,4].map(i=>link(i,enterpriseNavNames[i])).join('')}</div>
+      <div class="teacher-samples-nav"><span>回看前四课方法基础：</span>${[1,2,3,4].map(i=>link(i,window.enterpriseWorkshop.navNames[i])).join('')}</div>
       <div class="studio-meta-grid">
         <div><b>晨间 08:40 决策压力</b><span>溪桥、北岸、东林三份交接单全压在 CEO 等签字；客户来电催十家店周五齐开；周四样板店还要约设备方与商场办体验日。</span></div>
         <div><b>超级组织破局动作</b><span>用“设备到货 × 人员排班”双条件锁死对外承诺；把交期承诺权附条件写进团队共享岗位卡，释放创始人单点签字瓶颈。</span></div>
@@ -385,7 +453,7 @@
     return `<section class="panel teacher-studio student-studio" id="sec-deck">
       <p class="meta">二、跨科迁移作品《给同学的一页学习指南》· 经同桌试读打磨定稿</p>
       <h2>怎样把数学找错因的方法，变成语文和科学都能用的检查卡？</h2>
-      <nav class="teacher-samples-nav" aria-label="回看前三课攒下的方法"><span>回看前三课攒下的方法：</span>${[1,2,3].map(i=>link(i,studentNavNames[i])).join('')}</nav>
+      <nav class="teacher-samples-nav" aria-label="回看前三课攒下的方法"><span>回看前三课攒下的方法：</span>${[1,2,3].map(i=>link(i,window.studentWorkshop.navNames[i])).join('')}</nav>
       <div class="deliverable-head"><span class="ab-badge">结课作品预览 · 同桌 3 分钟可照做</span><button type="button" class="primary" data-download-student-guide="1">下载这页指南模板 (one-page-study-guide.md)</button></div>
       <div class="studio-meta-grid">
         <div><b>可选观察写作素材</b><span>${escape(l.material)}</span></div>
@@ -713,14 +781,17 @@
     const msg = event.data;
     if (msg.type === 'host:cache') pending.get(msg.requestId)?.(msg);
     else if (msg.type === 'host:always-on-top-support' && msg.supported) send('tool:always-on-top',{enabled:true});
-    else if (msg.type === 'host:get-tool-context') send('tool:tool-context',{requestId:msg.requestId,context:window.buildCourseToolContext()});
+    else if (msg.type === 'host:get-tool-context') {
+      // A tutor request can follow a tab click while its lesson files are in flight.
+      Promise.resolve(pendingPage).then(() => send('tool:tool-context', {requestId:msg.requestId,
+        context:root.getAttribute('aria-busy') === 'true' ? '正在加载课件…' : window.buildCourseToolContext()}));
+    }
   });
   document.addEventListener('visibilitychange', () => { if (document.hidden){scene?.stop();bench?.stop();circleContext?.stop();} });
   window.addEventListener('pagehide',()=>{scene?.stop();bench?.stop();circleContext?.stop();});
   send('tool:ready',{capabilities:['tool-context']});
   loadProgress().then(() => {
-    display(location.hash.slice(1));
-    root.setAttribute('aria-busy','false');
-    window.addEventListener('hashchange', () => display(location.hash.slice(1)));
+    openPage(location.hash.slice(1));
+    window.addEventListener('hashchange', () => openPage(location.hash.slice(1)));
   });
 })();
